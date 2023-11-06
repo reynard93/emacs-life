@@ -5,7 +5,6 @@
 
 (use-package evil
   :pin nongnu
-  :defer 1
   :config
   (message "evil is loaded")
   (evil-mode 1)
