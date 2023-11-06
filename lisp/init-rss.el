@@ -1,5 +1,6 @@
 (use-package elfeed
   :pin melpa
+  :defer t
   :config
   (message "elfeed is loaded"))
 
