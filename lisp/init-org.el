@@ -35,4 +35,10 @@
   (evil-org-agenda-set-keys)
   :hook (org-mode . (lambda () evil-org-mode)))
 
+(push '("*Org Select*"
+        (display-buffer-in-direction)
+        (direction . below)
+        (window-height . 0.3))
+      display-buffer-alist)
+
 (provide 'init-org)
