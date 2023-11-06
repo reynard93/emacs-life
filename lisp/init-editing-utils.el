@@ -15,6 +15,7 @@
   (evil-ex-substitute-global t)
   (evil-move-cursor-back nil)
   (evil-kill-on-visual-paste nil)
+  (evil-symbol-word-search t)
   (evil-vsplit-window-right t)
   (evil-split-window-below t))
 
