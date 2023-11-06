@@ -8,3 +8,4 @@
 (require 'init-mode-line)
 (require 'init-themes)
 (require 'init-minibuffer)
+(require 'init-git)

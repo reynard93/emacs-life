@@ -1,5 +1,6 @@
 *~
-custom.el
-eln-cache/
-elpa/
-transient/
+/custom.el
+/projects
+/eln-cache/
+/elpa/
+/transient/
