@@ -9,4 +9,5 @@
 (require 'init-themes)
 (require 'init-fonts)
 (require 'init-minibuffer)
+(require 'init-corfu)
 (require 'init-git)
