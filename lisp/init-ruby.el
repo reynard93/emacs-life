@@ -16,14 +16,6 @@
   :pin melpa
   :defer t
   :config
-  (message "rspec-mode is loaded")
-  :hook (ruby-mode . yejun/maybe-enable-rspec-mode))
-
-(defun yejun/maybe-enable-rspec-mode ()
-  (when-let* ((project (project-current))
-              (root (project-root project))
-              (rspec-config (expand-file-name ".rspec" root)))
-    (when (file-exists-p rspec-config)
-      (rspec-mode 1))))
+  (message "rspec-mode is loaded"))
 
 (provide 'init-ruby)
