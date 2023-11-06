@@ -43,6 +43,27 @@
   :custom
   (org-hugo-delete-trailing-ws nil))
 
+(use-package citar
+  :pin melpa
+  :init
+  (setq citar-bibliography '("~/src/notes/reference.bib"))
+  (setq citar-notes-paths '("~/src/notes/reference"))
+  :config
+  (message "citar is loaded")
+  :bind (("C-c n b" . citar-open)
+         ("C-c n B" . citar-open-notes)))
+
+(use-package org-cite
+  :ensure nil
+  :after org
+  :custom
+  (org-cite-global-bibliography citar-bibliography)
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  :bind (:map org-mode-map
+         ("C-c i" . org-cite-insert)))
+
 (push '("*Org Select*"
         (display-buffer-in-direction)
         (direction . below)
