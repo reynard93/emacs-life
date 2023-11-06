@@ -17,3 +17,4 @@
 (require 'init-nix)
 (require 'init-ruby)
 (require 'init-elixir)
+(require 'init-chatgpt)
