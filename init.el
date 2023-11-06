@@ -18,3 +18,5 @@
 (require 'init-ruby)
 (require 'init-elixir)
 (require 'init-chatgpt)
+(require 'init-mail)
+(require 'init-rss)
