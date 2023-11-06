@@ -17,6 +17,7 @@
 (require 'init-nix)
 (require 'init-ruby)
 (require 'init-elixir)
+(require 'init-web)
 (require 'init-chatgpt)
 (require 'init-mail)
 (require 'init-rss)
