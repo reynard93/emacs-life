@@ -35,6 +35,14 @@
   (evil-org-agenda-set-keys)
   :hook (org-mode . (lambda () evil-org-mode)))
 
+(use-package ox-hugo
+  :pin melpa
+  :after ox
+  :config
+  (message "ox-hugo is loaded")
+  :custom
+  (org-hugo-delete-trailing-ws nil))
+
 (push '("*Org Select*"
         (display-buffer-in-direction)
         (direction . below)
