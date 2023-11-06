@@ -3,9 +3,9 @@
   :config
   (message "helpful is loaded")
   :bind (("C-h f" . helpful-callable)
-	 ("C-h v" . helpful-variable)
-	 ("C-h k" . helpful-key)
-	 ("C-h x" . helpful-command)))
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-h x" . helpful-command)))
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
