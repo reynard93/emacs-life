@@ -22,3 +22,5 @@
 (require 'init-mail)
 (require 'init-rss)
 (require 'init-mastodon)
+(require 'init-github)
+(require 'init-sourcehut)
