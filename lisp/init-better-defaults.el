@@ -27,6 +27,8 @@
       password-cache-expiry nil                   ; I can trust my computers ... can't I?
       scroll-margin 2                             ; It's nice to maintain a little margin
       display-time-default-load-average nil       ; I don't think I've ever found this useful
-      use-short-answers t)                        ; Prefer short anwsers
+      use-short-answers t                         ; Prefer short anwsers
+      require-final-newline t)                    ; Save file with a trailing newline
+
 
 (provide 'init-better-defaults)
