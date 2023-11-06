@@ -12,3 +12,4 @@
 (require 'init-minibuffer)
 (require 'init-corfu)
 (require 'init-git)
+(require 'init-nix)
