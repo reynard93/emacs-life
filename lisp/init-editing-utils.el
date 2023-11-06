@@ -26,4 +26,12 @@
   (message "evil-collection is loaded")
   (evil-collection-init))
 
+(use-package goggles
+  :pin melpa
+  :init
+  (setq-default goggles-pulse t)
+  :config
+  (message "goggles is loaded")
+  :hook ((prog-mode text-mode) . goggles-mode))
+
 (provide 'init-editing-utils)
