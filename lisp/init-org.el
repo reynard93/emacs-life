@@ -2,6 +2,23 @@
   :init
   (setq org-directory "~/src/org")
   (setq org-agenda-files (list org-directory))
+  :config
+  (message "org is loaded")
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "KILL(k@)")))
+  (setq org-todo-keyword-faces
+        '(("KILL" . (:inherit (italic org-warning)))
+          ("HOLD" . (:inherit (italic org-warning)))))
+  (setq org-capture-templates
+        '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
+          ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
+  :custom
+  (org-startup-indented t)
+  (org-src-preserve-indentation t)
+  (org-confirm-babel-evaluate nil)
+  (org-src-window-setup 'other-window)
+  (org-log-into-drawer t)
+  (org-log-done 'time)
   :bind ("C-c n F" . yejun/browse-org))
 
 (defun yejun/browse-org ()
