@@ -24,3 +24,4 @@
 (require 'init-mastodon)
 (require 'init-github)
 (require 'init-sourcehut)
+(require 'init-irc)
