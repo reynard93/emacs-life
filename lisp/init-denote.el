@@ -1,5 +1,4 @@
 (use-package denote
-  :commands denote-directory
   :init
   (setq denote-directory "~/src/notes")
   :config
@@ -18,11 +17,11 @@
 
 (defun yejun/browse-notes ()
   (interactive)
-  (let ((project (project-current nil (denote-directory))))
+  (let ((project (project-current nil denote-directory)))
     (project-find-file-in nil nil project)))
 
 (defun yejun/search-notes ()
   (interactive)
-  (consult-ripgrep (denote-directory) (thing-at-point 'symbol)))
+  (consult-ripgrep denote-directory (thing-at-point 'symbol)))
 
 (provide 'init-denote)
