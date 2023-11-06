@@ -21,3 +21,4 @@
 (require 'init-chatgpt)
 (require 'init-mail)
 (require 'init-rss)
+(require 'init-mastodon)
