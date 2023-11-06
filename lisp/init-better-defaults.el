@@ -7,6 +7,15 @@
          ("C-h k" . helpful-key)
          ("C-h x" . helpful-command)))
 
+(use-package consult
+  :after vertico
+  :config
+  (message "consult is loaded")
+  :bind (([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+         ([remap goto-line] . consult-goto-line)))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
