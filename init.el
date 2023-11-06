@@ -1,0 +1,10 @@
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'init-elpa)
+
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(require 'init-macos-keybindings)
+(require 'init-editing-utils)
+(require 'init-gui-frames)
+(require 'init-mode-line)
+(require 'init-themes)
+(require 'init-minibuffer)
