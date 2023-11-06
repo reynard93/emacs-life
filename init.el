@@ -14,3 +14,4 @@
 (require 'init-git)
 (require 'init-nix)
 (require 'init-elixir)
+(require 'init-denote)
