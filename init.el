@@ -7,5 +7,6 @@
 (require 'init-gui-frames)
 (require 'init-mode-line)
 (require 'init-themes)
+(require 'init-fonts)
 (require 'init-minibuffer)
 (require 'init-git)
