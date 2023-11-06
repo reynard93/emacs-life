@@ -15,3 +15,4 @@
 (require 'init-nix)
 (require 'init-elixir)
 (require 'init-denote)
+(require 'init-org)
