@@ -1,5 +1,6 @@
 (blink-cursor-mode -1)
 (global-subword-mode 1)
+(save-place-mode 1)
 
 (setq-default indent-tabs-mode nil)
 

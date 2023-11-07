@@ -1,3 +1,5 @@
+(savehist-mode 1)
+
 (use-package vertico
   :init
   (message "vertico is loaded")
