@@ -3,6 +3,7 @@
 
 (use-package mu4e
   :ensure nil
+  :defer t
   :init
   (setq mu4e-maildir "~/.mail")
   :config
