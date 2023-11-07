@@ -50,9 +50,12 @@
     "cw"  #'delete-trailing-whitespace
 
     "f"   '(:ignore t :which-key "file")
-    "fr"  #'recentf-open-files
+    "fb"  #'yejun/browse-blog
+    "fe"  #'yejun/browse-emacs-config
+    "fn"  #'yejun/browse-nix-config
     "fs"  #'save-buffer
     "fS"  #'write-file
+    "fr"  #'recentf-open-files
 
     "g"   '(:ignore t :which-key "git")
     "g/"  #'magit-dispatch
@@ -82,7 +85,16 @@
 
     "o"   '(:ignore t :which-key "open")
     "oe"  #'eshell
+    "of"  #'make-frame
+    "oF"  #'select-frame-by-name
     "om"  #'mu4e
+    "oo"  #'yejun/show-current-file-in-finder
+
+    "q"   '(:ignore t :which-key "quit")
+    "qf"  #'delete-frame
+    "qK"  #'save-buffers-kill-emacs
+    "qq"  #'save-buffers-kill-terminal
+    "qQ"  #'evil-quit-all-with-error-code
 
     "s"   '(:ignore t :which-key "search")
     "si"  #'consult-imenu
@@ -127,5 +139,25 @@
     "tl" #'rspec-run-last-failed
     "te" #'rspec-toggle-example-pendingness)
   )
+
+(defun yejun/browse-project (dir)
+  (let ((project (project-current nil dir)))
+    (project-find-file-in nil nil project)))
+
+(defun yejun/browse-emacs-config ()
+  (interactive)
+  (yejun/browse-project "~/.config/emacs"))
+
+(defun yejun/browse-nix-config ()
+  (interactive)
+  (yejun/browse-project "~/.config/nix-config/"))
+
+(defun yejun/browse-blog ()
+  (interactive)
+  (yejun/browse-project "~/src/yejun.dev"))
+
+(defun yejun/show-current-file-in-finder ()
+  (interactive)
+  (shell-command (concat "open -R " (shell-quote-argument (buffer-file-name)))))
 
 (provide 'init-evil-keybindings)
