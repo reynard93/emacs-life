@@ -88,10 +88,6 @@
   (which-key-min-display-columns nil)
   (which-key-add-column-padding 1))
 
-(defun yejun/search-buffer ()
-  (interactive)
-  (consult-line))
-
 (defalias 'yejun/search-buffer 'consult-line)
 (defalias 'yejun/search-project 'consult-ripgrep)
 
