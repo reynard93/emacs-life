@@ -1,5 +1,6 @@
 *~
 /.org-id-locations
+/bookmarks
 /custom.el
 /mastodon.plstore
 /projects
