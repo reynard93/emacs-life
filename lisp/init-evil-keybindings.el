@@ -86,6 +86,7 @@
     "gcp" #'forge-create-pullreq
 
     "n"   '(:ignore t :which-key "notes")
+    "na"  #'org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
     "nd"  #'denote-date
@@ -175,6 +176,11 @@
     "tr" #'rspec-rerun
     "tl" #'rspec-run-last-failed
     "te" #'rspec-toggle-example-pendingness)
+
+  (yejun/local-leader-key
+    :keymaps 'org-mode-map
+    :major-modes t
+    "e"  #'org-export-dispatch)
   )
 
 (defun yejun/browse-project (dir)
