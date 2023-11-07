@@ -27,6 +27,16 @@
   (message "evil-collection is loaded")
   (evil-collection-init))
 
+(use-package evil-nerd-commenter
+  :pin nongnu
+  :after evil
+  :config
+  (message "evil-nerd-commenter is loaded")
+  (general-define-key :states '(normal visual)
+                      "gcc" #'evilnc-comment-or-uncomment-lines
+                      "gcp" #'evilnc-comment-or-uncomment-paragraphs
+                      "gcy" #'evilnc-copy-and-comment-lines))
+
 (use-package goggles
   :pin melpa
   :defer t
