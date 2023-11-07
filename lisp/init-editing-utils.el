@@ -28,6 +28,7 @@
 
 (use-package goggles
   :pin melpa
+  :defer t
   :init
   (setq-default goggles-pulse t)
   :config
