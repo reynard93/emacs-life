@@ -2,6 +2,7 @@
 /.org-id-locations
 /bookmarks
 /custom.el
+/forge-database.sqlite
 /history
 /mastodon.plstore
 /places
@@ -13,4 +14,4 @@
 /eshell/
 /persist/
 /transient/
-/forge-database.sqlite
+
