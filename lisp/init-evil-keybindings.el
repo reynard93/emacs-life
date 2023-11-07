@@ -135,7 +135,16 @@
     "tf"  '(flymake-mode :which-key "Flymake")
     "tn"  '(yejun/toggle-nix-formatter :which-key "Nix formatter")
     "tr"  '(read-only-mode :which-key "Read-only mode")
-    "tv"  '(visible-mode :which-key "Visible mode"))
+    "tv"  '(visible-mode :which-key "Visible mode")
+
+    "z"   '(:ignore t :which-key "chatgpt-shell")
+    "zz"  #'chatgpt-shell
+    "zb"  #'chatgpt-shell-prompt
+    "zc"  #'chatgpt-shell-prompt-compose
+    "zs"  #'chatgpt-shell-send-region
+    "zS"  #'chatgpt-shell-send-and-review-region
+    "ze"  #'chatgpt-shell-explain-code
+    "zr"  #'chatgpt-shell-refactor-code)
 
   (yejun/local-leader-key
     :keymaps 'ruby-mode-map
