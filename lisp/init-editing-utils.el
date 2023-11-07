@@ -36,31 +36,4 @@
   (message "goggles is loaded")
   :hook ((prog-mode text-mode) . goggles-mode))
 
-(use-package cape
-  :pin melpa
-  :init
-  (message "cape is loaded")
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
-  (add-to-list 'completion-at-point-functions #'cape-history)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  :bind (("C-c c p" . completion-at-point)
-         ("C-c c t" . complete-tag)
-         ("C-c c d" . cape-dabbrev)
-         ("C-c c h" . cape-history)
-         ("C-c c f" . cape-file)
-         ("C-c c k" . cape-keyword)
-         ("C-c c s" . cape-elisp-symbol)
-         ("C-c c e" . cape-elisp-block)
-         ("C-c c a" . cape-abbrev)
-         ("C-c c l" . cape-line)
-         ("C-c c w" . cape-dict)
-         ("C-c c :" . cape-emoji)
-         ("C-c c \\" . cape-tex)
-         ("C-c c _" . cape-tex)
-         ("C-c c ^" . cape-tex)
-         ("C-c c &" . cape-sgml)
-         ("C-c c r" . cape-rfc1345)))
-
 (provide 'init-editing-utils)
