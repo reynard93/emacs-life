@@ -8,7 +8,8 @@
   (vertico-cycle t)
   :bind (:map vertico-map
               ("C-j" . vertico-next)
-              ("C-k" . vertico-previous)))
+              ("C-k" . vertico-previous))
+  :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package vertico-directory
   :after vertico
