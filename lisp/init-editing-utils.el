@@ -5,7 +5,7 @@
 (setq-default indent-tabs-mode nil)
 
 (use-package evil
-  :pin nongnu
+  :pin melpa
   :config
   (message "evil is loaded")
   (evil-mode 1)
