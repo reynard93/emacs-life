@@ -29,7 +29,6 @@
 
 (use-package browse-at-remote
   :pin melpa
-  :defer 1
   :config
   (message "browse-at-remote is loaded")
   :custom
