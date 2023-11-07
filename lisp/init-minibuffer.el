@@ -25,6 +25,14 @@
   (message "marginalia is loaded")
   (marginalia-mode))
 
+(use-package orderless
+  :after vertico
+  :config
+  (message "orderless is loaded")
+  :custom
+  (completion-styles '(orderless basic))
+  (completion-category-overrides '((file (styles basic partial-completion)))))
+
 (use-package consult
   :after vertico
   :config
