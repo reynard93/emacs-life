@@ -33,6 +33,8 @@
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
+    "bi"  #'ibuffer
+    "bk"  #'kill-current-buffer
     "bm"  #'bookmark-set
     "bM"  #'bookmark-delete
     "bn"  #'evil-buffer-new
