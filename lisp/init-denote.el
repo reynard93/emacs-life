@@ -1,4 +1,5 @@
 (use-package denote
+  :defer t
   :init
   (setq denote-directory "~/src/notes")
   :config

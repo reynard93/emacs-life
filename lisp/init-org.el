@@ -1,4 +1,5 @@
 (use-package org
+  :defer t
   :init
   (setq org-directory "~/src/org")
   (setq org-agenda-files (list org-directory))
@@ -43,6 +44,7 @@
 
 (use-package citar
   :pin melpa
+  :defer t
   :init
   (setq citar-bibliography '("~/src/notes/reference.bib"))
   (setq citar-notes-paths '("~/src/notes/reference"))

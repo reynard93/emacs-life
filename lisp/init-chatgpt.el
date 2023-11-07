@@ -1,5 +1,6 @@
 (use-package chatgpt-shell
   :pin melpa
+  :defer t
   :config
   (message "chatgpt-shell is loaded")
   :custom
