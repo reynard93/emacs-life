@@ -22,8 +22,7 @@
           (:name "GitHub notifications" :query "github.com" :key ?g)))
   :custom
   (mu4e-update-interval (* 15 60))
-  (mu4e-get-mail-command "mbsync -a")
-  :bind ("C-c o m" . mu4e))
+  (mu4e-get-mail-command "mbsync -a"))
 
 (use-package message
   :ensure nil

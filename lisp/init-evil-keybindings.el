@@ -78,6 +78,10 @@
     "gci" #'forge-create-issue
     "gcp" #'forge-create-pullreq
 
+    "o"   '(:ignore t :which-key "open")
+    "oe"  #'eshell
+    "om"  #'mu4e
+
     "s"   '(:ignore t :which-key "search")
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
