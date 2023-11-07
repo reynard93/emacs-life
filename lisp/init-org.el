@@ -18,12 +18,10 @@
   (org-confirm-babel-evaluate nil)
   (org-src-window-setup 'other-window)
   (org-log-into-drawer t)
-  (org-log-done 'time)
-  :bind ("C-c n F" . yejun/browse-org))
+  (org-log-done 'time))
 
 (defun yejun/browse-org ()
-  (interactive)
-  (let ((project (project-current nil org-directory)))
+  (interactive) (let ((project (project-current nil org-directory)))
     (project-find-file-in nil nil project)))
 
 (use-package evil-org
@@ -49,9 +47,7 @@
   (setq citar-bibliography '("~/src/notes/reference.bib"))
   (setq citar-notes-paths '("~/src/notes/reference"))
   :config
-  (message "citar is loaded")
-  :bind (("C-c n b" . citar-open)
-         ("C-c n B" . citar-open-notes)))
+  (message "citar is loaded"))
 
 (use-package org-cite
   :ensure nil

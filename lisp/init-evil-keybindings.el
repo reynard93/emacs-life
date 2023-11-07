@@ -83,6 +83,20 @@
     "gci" #'forge-create-issue
     "gcp" #'forge-create-pullreq
 
+    "n"   '(:ignore t :which-key "notes")
+    "nb"  #'citar-open
+    "nB"  #'citar-open-notes
+    "nd"  #'denote-date
+    "nf"  #'yejun/browse-notes
+    "nF"  #'yejun/browse-org
+    "nl"  #'denote-link
+    "nn"  #'denote
+    "nN"  #'denote-type
+    "nr"  #'denote-subdirectory
+    "ns"  #'yejun/search-notes
+    "nS"  #'yejun/search-notes-for-symbol-at-point
+    "nt"  #'denote-template
+
     "o"   '(:ignore t :which-key "open")
     "oe"  #'eshell
     "of"  #'make-frame

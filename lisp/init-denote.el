@@ -5,15 +5,7 @@
   (message "denote is loaded")
   :custom
   (denote-date-prompt-use-org-read-date t)
-  (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev"))
-  :bind (("C-c n n" . denote)
-         ("C-c n N" . denote-type)
-         ("C-c n d" . denote-date)
-         ("C-c n D" . denote-subdirectory)
-         ("C-c n t" . denote-template)
-         ("C-c n l" . denote-link)
-         ("C-c n f" . yejun/browse-notes)
-         ("C-c n s" . yejun/search-notes)))
+  (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev")))
 
 (defun yejun/browse-notes ()
   (interactive)
@@ -21,6 +13,10 @@
     (project-find-file-in nil nil project)))
 
 (defun yejun/search-notes ()
+  (interactive)
+  (consult-ripgrep denote-directory))
+
+(defun yejun/search-notes-for-symbol-at-point ()
   (interactive)
   (consult-ripgrep denote-directory (thing-at-point 'symbol)))
 
