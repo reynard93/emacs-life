@@ -20,6 +20,7 @@
 (require 'init-ruby)
 (require 'init-elixir)
 (require 'init-web)
+(require 'init-pass)
 (require 'init-mail)
 (require 'init-rss)
 (require 'init-irc)
