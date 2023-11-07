@@ -16,6 +16,14 @@
   :custom
   (css-indent-offset 2))
 
+(use-package js-mode
+  :ensure nil
+  :defer t
+  :config
+  (message "js-mode is loaded")
+  :custom
+  (js-indent-level 2))
+
 (use-package haml-mode
   :pin nongnu
   :defer t
