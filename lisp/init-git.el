@@ -1,5 +1,6 @@
 (use-package magit
-  :pin nongnu
+  :pin melpa
+  :defer t
   :config
   (message "magit is loaded")
 
@@ -17,5 +18,22 @@
 
   :custom
   (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
+
+(use-package forge
+  :pin melpa
+  :after magit
+  :config
+  (message "forge is loaded")
+  :custom
+  (forge-topic-list-limit '(20 . 5)))
+
+(use-package browse-at-remote
+  :pin melpa
+  :defer 1
+  :config
+  (message "browse-at-remote is loaded")
+  :custom
+  (browse-at-remote-add-line-number-if-no-region-selected nil)
+  :bind ("M-g r" . browse-at-remote))
 
 (provide 'init-git)
