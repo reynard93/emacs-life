@@ -48,6 +48,21 @@
          ("M-s l" . consult-line)
          ("M-s L" . consult-line-multi)))
 
+(use-package embark
+  :after vertico
+  :config
+  (message "embark is loaded")
+  :bind (("C-;" . embark-act)
+         :map vertico-map
+         ("C-;" . embark-act)
+         ("C-c C-;" . embark-export)
+         ("C-c C-l" . embark-collect)))
+
+(use-package embark-consult
+  :config
+  (message "embark-consult is loaded")
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
+
 (use-package which-key
   :defer 1
   :config
