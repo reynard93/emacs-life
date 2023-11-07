@@ -3,6 +3,7 @@
   :defer t
   :config
   (message "magit is loaded")
+  (add-to-list 'savehist-additional-variables 'log-edit-comment-ring)
 
   ;; git push with skip-ci option
   (transient-append-suffix 'magit-push "-n"
