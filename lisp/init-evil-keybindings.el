@@ -4,15 +4,13 @@
   (message "general is loaded")
 
   (general-create-definer yejun/leader-key
-    :states '(normal visual insert emacs)
+    :states '(normal visual)
     :keymaps 'override
-    :prefix "SPC"
-    :non-normal-prefix "M-SPC")
+    :prefix "SPC")
 
   (general-create-definer yejun/local-leader-key
-    :states '(normal visual insert emacs)
-    :prefix "SPC m"
-    :non-normal-prefix "M-SPC m")
+    :states '(normal visual)
+    :prefix "SPC m")
 
   (yejun/leader-key
     "u"   #'universal-argument
