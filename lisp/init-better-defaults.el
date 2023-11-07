@@ -1,3 +1,10 @@
+(use-package recentf
+  :ensure nil
+  :init
+  (recentf-mode 1)
+  :config
+  (message "recentf is loaded"))
+
 (use-package helpful
   :pin melpa
   :config
@@ -6,6 +13,9 @@
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
          ("C-h x" . helpful-command)))
+
+(setq create-lockfiles nil                        ; Avoid creating ".#filename"
+      make-backup-files nil)                      ; Avoid creating "filename~"
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
@@ -20,6 +30,5 @@
       display-time-default-load-average nil       ; I don't think I've ever found this useful
       use-short-answers t                         ; Prefer short anwsers
       require-final-newline t)                    ; Save file with a trailing newline
-
 
 (provide 'init-better-defaults)

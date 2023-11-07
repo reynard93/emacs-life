@@ -4,8 +4,10 @@
 /custom.el
 /mastodon.plstore
 /projects
+/recentf
 /chatgpt/
 /eln-cache/
 /elpa/
+/eshell/
 /persist/
 /transient/
