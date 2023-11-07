@@ -6,8 +6,7 @@
   (nix-nixfmt-bin "nixfmt")
   :hook
   (nix-mode . yejun/display-formatter)
-  (before-save . nix-format-before-save)
-  :bind ("C-c t n" . yejun/toggle-nix-formatter))
+  (before-save . nix-format-before-save))
 
 (defun yejun/display-formatter ()
   (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))

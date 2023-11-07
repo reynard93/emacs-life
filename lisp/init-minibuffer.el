@@ -45,6 +45,8 @@
          ([remap bookmark-jump] . consult-bookmark)
          ([remap project-switch-to-buffer] . consult-project-buffer)
          ([remap goto-line] . consult-goto-line)
+         ([remap recentf-open-files] . consult-recent-file)
+         ([remap imenu] . consult-imenu)
          ("M-y" . consult-yank-pop)
          ;; M-g bindings in `goto-map'
          ("M-g e" . consult-compile-error)
@@ -85,8 +87,22 @@
   (which-key-min-display-columns nil)
   (which-key-add-column-padding 1))
 
-(defun yejun/consult-line-at-point ()
+(defun yejun/search-buffer ()
+  (interactive)
+  (consult-line))
+
+(defalias 'yejun/search-buffer 'consult-line)
+(defalias 'yejun/search-project 'consult-ripgrep)
+
+(defun yejun/search-buffer-for-symbol-at-point ()
   (interactive)
   (consult-line (thing-at-point 'symbol)))
+
+(defun yejun/search-project-for-symbol-at-point ()
+  (interactive)
+  (if-let* ((project (project-current))
+            (root-dir (project-root project)))
+      (consult-ripgrep root-dir (thing-at-point 'symbol))
+    (message "You are not in a project.")))
 
 (provide 'init-minibuffer)

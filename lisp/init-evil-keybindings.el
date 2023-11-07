@@ -19,14 +19,16 @@
     "w"   evil-window-map
     "h"   help-map
 
-    "."   #'find-file
-    ","   #'switch-to-buffer
-    "`"   #'evil-switch-to-windows-last-buffer
     "'"   #'vertico-repeat
-    "x"   #'org-capture
+    ","   #'project-find-file
+    "."   #'find-file
+    "/"   #'yejun/search-project
+    "*"   #'yejun/search-project-for-symbol-at-point
+    "`"   #'evil-switch-to-windows-last-buffer
 
-    "SPC" #'project-find-file
+    "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
+    "x"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -48,7 +50,7 @@
     "cw"  #'delete-trailing-whitespace
 
     "f"   '(:ignore t :which-key "file")
-    "fr"  #'consult-recent-file
+    "fr"  #'recentf-open-files
     "fs"  #'save-buffer
     "fS"  #'write-file
 
@@ -86,9 +88,10 @@
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
     "sl"  #'ffap-menu
-    "sr"  #'consult-ripgrep
-    "ss"  #'consult-line
-    "sS"  #'yejun/consult-line-at-point
+    "ss"  #'yejun/search-buffer
+    "sS"  #'yejun/search-buffer-for-symbol-at-point
+    "sr"  #'yejun/search-project
+    "sR"  #'yejun/search-project-for-symbol-at-point
 
     "t"   '(:ignore t :which-key "toggle")
     "tf"  '(flymake-mode :which-key "Flymake")
