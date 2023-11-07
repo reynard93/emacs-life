@@ -26,3 +26,4 @@
 (require 'init-irc)
 (require 'init-chatgpt)
 (require 'init-mastodon)
+(require 'init-evil-keybindings)

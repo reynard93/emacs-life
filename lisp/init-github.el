@@ -22,6 +22,4 @@
       (kill-new (thing-at-point 'line)))
     (kill-buffer output-buffer)))
 
-(global-set-key (kbd "C-c b g") #'yejun/gist-region-or-buffer)
-
 (provide 'init-github)

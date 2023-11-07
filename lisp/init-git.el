@@ -32,7 +32,6 @@
   :config
   (message "browse-at-remote is loaded")
   :custom
-  (browse-at-remote-add-line-number-if-no-region-selected nil)
-  :bind ("M-g r" . browse-at-remote))
+  (browse-at-remote-add-line-number-if-no-region-selected nil))
 
 (provide 'init-git)

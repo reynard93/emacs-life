@@ -85,4 +85,8 @@
   (which-key-min-display-columns nil)
   (which-key-add-column-padding 1))
 
+(defun yejun/consult-line-at-point ()
+  (interactive)
+  (consult-line (thing-at-point 'symbol)))
+
 (provide 'init-minibuffer)
