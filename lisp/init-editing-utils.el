@@ -37,6 +37,21 @@
                       "gcp" #'evilnc-comment-or-uncomment-paragraphs
                       "gcy" #'evilnc-copy-and-comment-lines))
 
+(use-package evil-snipe
+  :pin melpa
+  :after evil
+  :config
+  (message "evil-snipe is loaded")
+  (evil-snipe-mode +1)
+  (evil-snipe-override-mode +1))
+
+(use-package avy
+  :after evil
+  :config
+  (message "avy is loaded")
+  (general-define-key :states '(normal visual)
+                      "gss" #'evil-avy-goto-char-2))
+
 (use-package goggles
   :pin melpa
   :defer t
