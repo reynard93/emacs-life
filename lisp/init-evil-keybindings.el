@@ -22,7 +22,6 @@
     "'"   #'vertico-repeat
     ","   #'project-find-file
     "."   #'project-find-dir
-    "/"   #'yejun/search-project
     "*"   #'yejun/search-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
 
@@ -60,14 +59,16 @@
     "fr"  #'recentf-open-files
 
     "g"   '(:ignore t :which-key "git")
-    "g/"  #'magit-dispatch
-    "g."  #'magit-file-dispatch
     "g'"  #'forge-dispatch
+    "g,"  #'magit-file-dispatch
+    "g."  #'magit-dispatch
     "gb"  #'magit-branch-checkout
     "gB"  #'magit-blame-addition
+    "gd"  #'magit-dired-jump
     "gD"  #'magit-file-delete
     "gg"  #'magit-status
     "gG"  #'magit-status-here
+    "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
     "gR"  #'vc-revert
     "gS"  #'magit-stage-file
