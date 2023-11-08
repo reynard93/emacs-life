@@ -1,9 +1,12 @@
 (use-package recentf
-  :ensure nil
-  :init
-  (recentf-mode 1)
   :config
-  (message "recentf is loaded"))
+  (message "recentf is loaded")
+  (recentf-mode 1))
+
+(use-package savehist
+  :config
+  (message "savehist is loaded")
+  (savehist-mode 1))
 
 (use-package helpful
   :pin melpa
