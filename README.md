@@ -1,6 +1,13 @@
 # emacs-config
 
-My Emacs configuration is based on these packages:
+With the built-in packages such as
+[use-package](https://www.gnu.org/software/emacs/manual/html_mono/use-package.html),
+[eglot](https://www.gnu.org/software/emacs/manual/html_mono/eglot.html)
+and
+[project](https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html),
+Emacs configuration can be really simple.
+
+This configuration is based on the following packages:
 
 - [vertico](https://github.com/minad/vertico)
 - [marginalia](https://github.com/minad/marginalia)
@@ -16,3 +23,4 @@ My Emacs configuration is based on these packages:
 - [denote](https://github.com/protesilaos/denote)
 - [modus-themes](https://protesilaos.com/emacs/modus-themes)
 - [doom-modeline](https://github.com/seagle0128/doom-modeline)
+- [magit](https://magit.vc/)
