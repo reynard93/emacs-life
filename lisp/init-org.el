@@ -20,7 +20,9 @@
   (org-confirm-babel-evaluate nil)
   (org-src-window-setup 'other-window)
   (org-log-into-drawer t)
-  (org-log-done 'time))
+  (org-log-done 'time)
+  :bind (:map org-mode-map
+              ("C-M-S-h" . org-babel-mark-block)))
 
 (defun yejun/browse-org ()
   (interactive)
