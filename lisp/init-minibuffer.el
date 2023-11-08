@@ -30,7 +30,11 @@
   :after vertico
   :config
   (message "orderless is loaded")
+  (setq read-file-name-completion-ignore-case t
+        read-buffer-completion-ignore-case t
+        completion-ignore-case t)
   :custom
+  (orderless-smart-case nil)
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
