@@ -1,5 +1,6 @@
 (use-package org
   :defer t
+  :commands (org-clock-goto org-clock-cancel)
   :init
   (setq org-directory "~/src/org")
   (setq org-agenda-files (list org-directory))
@@ -24,6 +25,21 @@
 (defun yejun/browse-org ()
   (interactive) (let ((project (project-current nil org-directory)))
     (project-find-file-in nil nil project)))
+
+;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/lang/org/autoload/org.el#L318-L336
+(defun yejun/toggle-last-clock (arg)
+  (interactive "P")
+  (require 'org-clock)
+  (cond ((org-clocking-p)
+         (if arg
+             (org-clock-cancel)
+           (org-clock-out)))
+        ((and (null org-clock-history)
+              (or (org-on-heading-p)
+                  (org-at-item-p))
+              (y-or-n-p "No active clock. Clock in on current item?"))
+         (org-clock-in))
+        ((org-clock-in-last arg))))
 
 (use-package evil-org
   :pin melpa

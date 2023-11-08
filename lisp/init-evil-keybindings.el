@@ -90,12 +90,15 @@
     "na"  #'org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
+    "nc"  #'yejun/toggle-last-clock
+    "nC"  #'org-clock-cancel
     "nd"  #'denote-date
     "nf"  #'yejun/browse-notes
     "nF"  #'yejun/browse-org
     "nl"  #'denote-link
     "nn"  #'denote
     "nN"  #'denote-type
+    "no"  #'org-clock-goto
     "nr"  #'denote-subdirectory
     "ns"  #'yejun/search-notes
     "nS"  #'yejun/search-notes-for-symbol-at-point
@@ -172,12 +175,11 @@
   (yejun/local-leader-key
     :keymaps 'org-mode-map
     :major-modes t
-    "e"  #'org-export-dispatch)
-  )
+    "e"  #'org-export-dispatch
 
-(defun yejun/browse-project (dir)
-  (let ((project (project-current nil dir)))
-    (project-find-file-in nil nil project)))
+    "c"  '(:ignore t :which-key "clock")
+    "ci" #'org-clock-in)
+  )
 
 (defun yejun/browse-emacs-config ()
   (interactive)
