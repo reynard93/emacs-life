@@ -23,8 +23,8 @@
   (org-log-done 'time))
 
 (defun yejun/browse-org ()
-  (interactive) (let ((project (project-current nil org-directory)))
-    (project-find-file-in nil nil project)))
+  (interactive)
+  (yejun/browse-project org-directory))
 
 ;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/lang/org/autoload/org.el#L318-L336
 (defun yejun/toggle-last-clock (arg)

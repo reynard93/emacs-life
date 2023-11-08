@@ -10,8 +10,7 @@
 
 (defun yejun/browse-notes ()
   (interactive)
-  (let ((project (project-current nil denote-directory)))
-    (project-find-file-in nil nil project)))
+  (yejun/browse-project denote-directory))
 
 (defun yejun/search-notes ()
   (interactive)
