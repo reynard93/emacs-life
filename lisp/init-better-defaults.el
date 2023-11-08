@@ -1,3 +1,8 @@
+(setq inhibit-startup-screen t        ; Skip the startup screen
+      initial-scratch-message nil     ; Display nothing on the *scratch* buffer
+      create-lockfiles nil            ; Avoid creating ".#filename"
+      make-backup-files nil)          ; Avoid creating "filename~"
+
 (use-package recentf
   :config
   (message "recentf is loaded")
@@ -17,9 +22,6 @@
          ("C-h k" . helpful-key)
          ("C-h x" . helpful-command)))
 
-(setq create-lockfiles nil                        ; Avoid creating ".#filename"
-      make-backup-files nil)                      ; Avoid creating "filename~"
-
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
@@ -33,5 +35,8 @@
       display-time-default-load-average nil       ; I don't think I've ever found this useful
       use-short-answers t                         ; Prefer short anwsers
       require-final-newline t)                    ; Save file with a trailing newline
+
+(add-to-list 'default-frame-alist '(height . 24))
+(add-to-list 'default-frame-alist '(width . 80))
 
 (provide 'init-better-defaults)
