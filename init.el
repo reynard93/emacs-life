@@ -27,3 +27,4 @@
 (require 'init-chatgpt)
 (require 'init-mastodon)
 (require 'init-evil-keybindings)
+(require 'init-server)
