@@ -203,4 +203,9 @@
   (interactive)
   (shell-command (concat "open -R " (shell-quote-argument (buffer-file-name)))))
 
+(defun yejun/native-compile-packages ()
+  (interactive)
+  (let ((package-directory (expand-file-name "elpa" user-emacs-directory)))
+    (native-compile-async package-directory 'recursively)))
+
 (provide 'init-evil-keybindings)
