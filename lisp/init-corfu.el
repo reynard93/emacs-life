@@ -50,4 +50,10 @@
               (cons #'tempel-expand
                     completion-at-point-functions)))
 
+(use-package tempel-collection
+  :pin melpa
+  :after tempel
+  :config
+  (message "tempel-collection is loaded"))
+
 (provide 'init-corfu)
