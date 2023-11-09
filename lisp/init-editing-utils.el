@@ -61,4 +61,8 @@
   (message "goggles is loaded")
   :hook ((prog-mode text-mode) . goggles-mode))
 
+(use-package rainbow-delimiters
+  :pin nongnu
+  :hook (prog-mode . rainbow-delimiters-mode))
+
 (provide 'init-editing-utils)
