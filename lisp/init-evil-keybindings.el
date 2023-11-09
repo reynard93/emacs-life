@@ -95,13 +95,13 @@
     "nc"  #'yejun/toggle-last-clock
     "nC"  #'org-clock-cancel
     "nd"  #'denote-date
+    "nD"  #'denote-subdirectory
     "nf"  #'yejun/browse-notes
     "nF"  #'yejun/browse-org
     "nl"  #'denote-link
     "nn"  #'denote
     "nN"  #'denote-type
     "no"  #'org-clock-goto
-    "nr"  #'denote-subdirectory
     "ns"  #'yejun/search-notes
     "nS"  #'yejun/search-notes-for-symbol-at-point
     "nt"  #'denote-template
