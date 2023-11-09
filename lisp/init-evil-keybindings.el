@@ -20,18 +20,18 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    ","   #'project-find-file
-    "."   #'project-find-dir
     "*"   #'yejun/search-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
+    ";"   #'pp-eval-expression
 
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
-    "x"   #'org-capture
+    "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
+    "bd"  #'dired-jump
     "bi"  #'ibuffer
     "bk"  #'kill-current-buffer
     "bm"  #'bookmark-set
