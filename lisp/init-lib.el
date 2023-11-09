@@ -1,5 +1,5 @@
-(defun yejun/browse-project (dir)
+(defun yejun/find-file-in-project (dir)
   (let ((project (project-current nil dir)))
     (project-find-file-in nil nil project)))
 
-(provide 'init-core)
+(provide 'init-lib)

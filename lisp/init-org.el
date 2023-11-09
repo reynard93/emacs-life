@@ -26,7 +26,7 @@
 
 (defun yejun/browse-org ()
   (interactive)
-  (yejun/browse-project org-directory))
+  (yejun/find-file-in-project org-directory))
 
 ;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/lang/org/autoload/org.el#L318-L336
 (defun yejun/toggle-last-clock (arg)

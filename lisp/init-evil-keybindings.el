@@ -183,15 +183,15 @@
 
 (defun yejun/browse-emacs-config ()
   (interactive)
-  (yejun/browse-project "~/.config/emacs"))
+  (yejun/find-file-in-project "~/.config/emacs"))
 
 (defun yejun/browse-nix-config ()
   (interactive)
-  (yejun/browse-project "~/.config/nix-config/"))
+  (yejun/find-file-in-project "~/.config/nix-config/"))
 
 (defun yejun/browse-blog ()
   (interactive)
-  (yejun/browse-project "~/src/yejun.dev"))
+  (yejun/find-file-in-project "~/src/yejun.dev"))
 
 (defun yejun/show-current-file-in-finder ()
   (interactive)

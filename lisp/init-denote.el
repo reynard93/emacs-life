@@ -10,7 +10,7 @@
 
 (defun yejun/browse-notes ()
   (interactive)
-  (yejun/browse-project denote-directory))
+  (yejun/find-file-in-project denote-directory))
 
 (defun yejun/search-notes ()
   (interactive)
