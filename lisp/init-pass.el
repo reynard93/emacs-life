@@ -11,6 +11,6 @@
   (let* ((secret (replace-regexp-in-string "\\s-" "" secret))
          (otp-uri (format "otpauth://totp/totp-secret?secret=%s&issuer=%s" secret issuer)))
     (kill-new otp-uri)
-    (message "OTP key URI created and copied.")))
+    (message "OTP key URI created and copied")))
 
 (provide 'init-pass)
