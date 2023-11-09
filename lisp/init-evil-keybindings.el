@@ -16,7 +16,6 @@
     "u"   #'universal-argument
 
     "p"   project-prefix-map
-    "w"   evil-window-map
     "h"   help-map
 
     "'"   #'vertico-repeat
@@ -144,7 +143,11 @@
     "tf"  '(flymake-mode :which-key "Flymake")
     "tn"  '(yejun/toggle-nix-formatter :which-key "Nix formatter")
     "tr"  '(read-only-mode :which-key "Read-only mode")
-    "tv"  '(visible-mode :which-key "Visible mode"))
+    "tv"  '(visible-mode :which-key "Visible mode")
+
+    "w"   '(evil-window-map :which-key "window")
+    "wu"  #'winner-undo
+    "wr"  #'winner-redo)
 
   (yejun/local-leader-key
     :keymaps 'ruby-mode-map

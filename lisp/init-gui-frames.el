@@ -9,4 +9,9 @@
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ([remap other-window] . ace-window))
 
+(use-package winner
+  :config
+  (message "winner is loaded")
+  (winner-mode 1))
+
 (provide 'init-gui-frames)
