@@ -14,10 +14,10 @@
 
 (defun yejun/search-notes ()
   (interactive)
-  (consult-ripgrep denote-directory))
+  (yejun/search-in-project denote-directory))
 
 (defun yejun/search-notes-for-symbol-at-point ()
   (interactive)
-  (consult-ripgrep denote-directory (thing-at-point 'symbol)))
+  (yejun/search-in-project denote-directory 'symbol))
 
 (provide 'init-denote)

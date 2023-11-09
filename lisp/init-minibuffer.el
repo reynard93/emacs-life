@@ -91,17 +91,22 @@
   (which-key-add-column-padding 1))
 
 (defalias 'yejun/search-buffer 'consult-line)
-(defalias 'yejun/search-project 'consult-ripgrep)
-
 (defun yejun/search-buffer-for-symbol-at-point ()
   (interactive)
   (consult-line (thing-at-point 'symbol)))
 
-(defun yejun/search-project-for-symbol-at-point ()
+(defun yejun/search-current-project ()
   (interactive)
   (if-let* ((project (project-current))
             (root-dir (project-root project)))
-      (consult-ripgrep root-dir (thing-at-point 'symbol))
-    (message "You are not in a project.")))
+      (yejun/search-in-project root-dir)
+    (message "Not in a project")))
+
+(defun yejun/search-current-project-for-symbol-at-point ()
+  (interactive)
+  (if-let* ((project (project-current))
+            (root-dir (project-root project)))
+      (yejun/search-in-project root-dir 'symbol)
+    (message "Not in a project")))
 
 (provide 'init-minibuffer)

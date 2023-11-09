@@ -21,6 +21,8 @@
 
     "'"   #'vertico-repeat
     "*"   #'yejun/search-project-for-symbol-at-point
+    "/"   #'yejun/search-current-project
+    "*"   #'yejun/search-current-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
     ";"   #'pp-eval-expression
 
@@ -135,8 +137,8 @@
     "sl"  #'ffap-menu
     "ss"  #'yejun/search-buffer
     "sS"  #'yejun/search-buffer-for-symbol-at-point
-    "sr"  #'yejun/search-project
-    "sR"  #'yejun/search-project-for-symbol-at-point
+    "sr"  #'yejun/search-current-project
+    "sR"  #'yejun/search-current-project-for-symbol-at-point
 
     "t"   '(:ignore t :which-key "toggle")
     "tf"  '(flymake-mode :which-key "Flymake")
