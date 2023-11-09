@@ -6,6 +6,7 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
+  (corfu-quit-no-match t)
   (corfu-scroll-margin 5))
 
 (use-package cape
