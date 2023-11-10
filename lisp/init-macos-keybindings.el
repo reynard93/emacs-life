@@ -12,4 +12,12 @@
 (global-set-key (kbd "s-v") #'yank)                      ; Paste
 (global-set-key (kbd "s-z") #'undo)                      ; Undo
 
+(defun yejun/move-beginning-of-line ()
+  (interactive)
+  (let ((orig-point (point)))
+    (beginning-of-line-text)
+    (when (= orig-point (point))
+      (beginning-of-line))))
+(define-key global-map [remap move-beginning-of-line] 'yejun/move-beginning-of-line)
+
 (provide 'init-macos-keybindings)
