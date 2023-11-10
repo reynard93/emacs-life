@@ -16,7 +16,7 @@
   (message "circe is loaded")
   (circe-set-display-handler "353" 'circe-display-ignore)
   (circe-set-display-handler "366" 'circe-display-ignore)
-  :bind (("s-k" . yejun/vertico-jump-to-channel)
+  :bind (("s-k" . yejun/jump-to-channel)
          :map circe-channel-mode-map
          ("C-c C-p" . yejun/pull-chat-history)))
 
@@ -25,33 +25,16 @@
   (circe-command-QUOTE
    (format "CHATHISTORY LATEST %s * 50" circe-chat-target)))
 
-;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/app/irc/autoload/vertico.el
-(defun yejun/vertico-jump-to-channel ()
-  "Jump to an open channel or server buffer with vertico."
+(defun yejun/jump-to-channel ()
   (interactive)
-  (consult--multi (list (plist-put (copy-sequence yejun/irc--consult-circe-source)
-                                   :hidden nil))
-                  :narrow nil
-                  :require-match t
-                  :prompt "Jump to:"
-                  :sort nil))
-
-(defvar yejun/irc--consult-circe-source
-        `(:name     "circe"
-          :hidden   t
-          :narrow   ?c
-          :category buffer
-          :state    ,#'consult--buffer-state
-          :items    ,(lambda () (mapcar #'buffer-name (yejun/irc--circe-all-buffers)))))
-
-;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/app/irc/autoload/irc.el#L76-L83
-(defun yejun/irc--circe-all-buffers ()
-  (cl-loop with servers = (circe-server-buffers)
-           for server in servers
-           collect server
-           nconc
-           (with-current-buffer server
-             (cl-loop for buf in (circe-server-chat-buffers)
-                      collect buf))))
+  (let* ((channel-buffers (delq nil
+                                (mapcar (lambda (buf)
+                                          (with-current-buffer buf
+                                            (when (eq major-mode 'circe-channel-mode)
+                                              (buffer-name buf))))
+                                        (buffer-list))))
+         (target (completing-read "Jump to channel: " channel-buffers nil t)))
+    (when target
+      (switch-to-buffer target))))
 
 (provide 'init-irc)
