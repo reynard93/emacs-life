@@ -20,6 +20,7 @@
 
     "'"   #'vertico-repeat
     "~"   #'popwin:popup-last-buffer
+    ","   #'popwin:messages
     "/"   #'yejun/search-current-project
     "*"   #'yejun/search-current-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
