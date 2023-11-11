@@ -106,6 +106,13 @@
     "nt"  #'denote-template
 
     "o"   '(:ignore t :which-key "open")
+
+    "oa"  '(:ignore t :which-key "org agenda")
+    "oat" #'org-todo-list
+    "oam" #'org-tags-view
+    "oas" #'org-search-view
+
+    "oA"  #'org-agenda
     "oe"  #'eshell
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
