@@ -27,6 +27,7 @@
 
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
+    "x"   #'yejun/popup-scratch-buffer
     "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
@@ -218,5 +219,9 @@
   (interactive)
   (let ((package-directory (expand-file-name "elpa" user-emacs-directory)))
     (native-compile-async package-directory 'recursively)))
+
+(defun yejun/popup-scratch-buffer ()
+  (interactive)
+  (pop-to-buffer "*scratch*"))
 
 (provide 'init-evil-keybindings)

@@ -80,10 +80,4 @@
   :bind (:map org-mode-map
          ("C-c i" . org-cite-insert)))
 
-(push '("*Org Select*"
-        (display-buffer-in-direction)
-        (direction . below)
-        (window-height . 0.3))
-      display-buffer-alist)
-
 (provide 'init-org)

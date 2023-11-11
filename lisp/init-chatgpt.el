@@ -14,10 +14,4 @@
          ("C-c z e" . chatgpt-shell-explain-code)
          ("C-c z r" . chatgpt-shell-refactor-code)))
 
-(push '("*chatgpt*"
-        (display-buffer-in-direction)
-        (direction . below)
-        (window-height . 0.5))
-      display-buffer-alist)
-
 (provide 'init-chatgpt)
