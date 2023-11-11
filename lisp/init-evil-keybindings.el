@@ -19,6 +19,7 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
+    "~"   #'popwin:popup-last-buffer
     "*"   #'yejun/search-project-for-symbol-at-point
     "/"   #'yejun/search-current-project
     "*"   #'yejun/search-current-project-for-symbol-at-point
