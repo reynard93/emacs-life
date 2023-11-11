@@ -38,6 +38,7 @@
 
 (use-package git-gutter-fringe
   :pin melpa
+  :defer 1
   :config
   (message "git-gutter-fringe is loaded")
   (global-git-gutter-mode))
