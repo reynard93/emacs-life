@@ -36,11 +36,11 @@
   :custom
   (browse-at-remote-add-line-number-if-no-region-selected nil))
 
-(use-package git-gutter
+(use-package git-gutter-fringe
   :pin melpa
   :config
-  (message "git-gutter is loaded")
-  (global-git-gutter-mode 1))
+  (message "git-gutter-fringe is loaded")
+  (global-git-gutter-mode))
 
 (use-package git-timemachine
   :pin melpa
