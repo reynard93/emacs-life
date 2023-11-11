@@ -63,6 +63,8 @@
     "g'"  #'forge-dispatch
     "g,"  #'magit-file-dispatch
     "g."  #'magit-dispatch
+    "g["  #'git-gutter:previous-hunk
+    "g]"  #'git-gutter:next-hunk
     "gb"  #'magit-branch-checkout
     "gB"  #'magit-blame-addition
     "gd"  #'magit-dired-jump
@@ -71,8 +73,11 @@
     "gG"  #'magit-status-here
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
+    "gr"  #'git-gutter:revert-hunk
     "gR"  #'vc-revert
+    "gs"  #'git-gutter:stage-hunk
     "gS"  #'magit-stage-file
+    "gt"  #'git-timemachine-toggle
     "gU"  #'magit-unstage-file
 
     "go"  '(:ignore t :which-key "open in browser")

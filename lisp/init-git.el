@@ -36,4 +36,16 @@
   :custom
   (browse-at-remote-add-line-number-if-no-region-selected nil))
 
+(use-package git-gutter
+  :pin melpa
+  :config
+  (message "git-gutter is loaded")
+  (global-git-gutter-mode 1))
+
+(use-package git-timemachine
+  :pin melpa
+  :defer t
+  :config
+  (message "git-timemachine is loaded"))
+
 (provide 'init-git)
