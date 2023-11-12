@@ -14,6 +14,7 @@
 
   (yejun/leader-key
     "u"   #'universal-argument
+    "a"   #'embark-act
 
     "p"   project-prefix-map
     "h"   help-map

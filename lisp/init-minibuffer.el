@@ -70,7 +70,8 @@
         prefix-help-command #'embark-prefix-help-command)
   :config
   (message "embark is loaded")
-  :bind (("C-;" . embark-act)
+  :bind (([remap describe-bindings] . embark-bindings)
+         ("C-;" . embark-act)
          :map vertico-map
          ("C-;" . embark-act)
          ("C-c C-;" . embark-export)
