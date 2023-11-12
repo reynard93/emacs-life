@@ -65,6 +65,9 @@
 
 (use-package embark
   :after vertico
+  :init
+  (setq which-key-use-C-h-commands nil
+        prefix-help-command #'embark-prefix-help-command)
   :config
   (message "embark is loaded")
   :bind (("C-;" . embark-act)
