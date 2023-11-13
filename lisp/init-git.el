@@ -23,6 +23,8 @@
 (use-package forge
   :pin melpa
   :after magit
+  :init
+  (setq forge-add-default-bindings nil)
   :config
   (message "forge is loaded")
   :custom
