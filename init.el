@@ -27,6 +27,7 @@
 (require 'init-irc)
 (require 'init-chatgpt)
 (require 'init-mastodon)
+(require 'init-lookup)
 (require 'init-evil-keybindings)
 (require 'init-popups)
 (require 'init-server)
