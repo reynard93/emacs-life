@@ -150,6 +150,8 @@
     "s"   '(:ignore t :which-key "search")
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
+    "sk"  #'dash-at-point
+    "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
     "ss"  #'yejun/search-buffer
     "sS"  #'yejun/search-buffer-for-symbol-at-point
