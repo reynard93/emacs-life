@@ -66,22 +66,21 @@
   (setq-default goggles-pulse t)
   :config
   (message "goggles is loaded")
-  :hook ((prog-mode text-mode) . goggles-mode))
+  :hook (prog-mode text-mode))
 
 (use-package rainbow-delimiters
   :pin nongnu
   :defer t
   :config
   (message "rainbow-delimiters is loaded")
-  :hook (prog-mode . rainbow-delimiters-mode))
+  :hook prog-mode)
 
 (use-package hl-todo
   :pin melpa
   :defer t
   :config
   (message "hl-todo is loaded")
-  :hook
-  (prog-mode . hl-todo-mode))
+  :hook prog-mode)
 
 (use-package smartparens
   :pin melpa
