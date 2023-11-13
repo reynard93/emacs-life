@@ -45,6 +45,13 @@
   (evil-snipe-mode +1)
   (evil-snipe-override-mode +1))
 
+(use-package evil-surround
+  :pin melpa
+  :after evil
+  :config
+  (message "evil-surround is loaded")
+  (global-evil-surround-mode 1))
+
 (use-package avy
   :after evil
   :config
