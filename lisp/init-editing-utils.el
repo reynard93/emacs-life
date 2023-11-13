@@ -83,4 +83,11 @@
   :hook
   (prog-mode . hl-todo-mode))
 
+(use-package smartparens
+  :pin melpa
+  :config
+  (message "smartparens is loaded")
+  (require 'smartparens-config)
+  :hook (prog-mode text-mode))
+
 (provide 'init-editing-utils)
