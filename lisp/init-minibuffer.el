@@ -1,7 +1,7 @@
 (use-package vertico
   :init
   (message "vertico is loaded")
-  (vertico-mode)
+  (vertico-mode 1)
   :custom
   (vertico-cycle t)
   :bind (:map vertico-map
@@ -24,7 +24,7 @@
   :after vertico
   :config
   (message "marginalia is loaded")
-  (marginalia-mode))
+  (marginalia-mode 1))
 
 (use-package orderless
   :after vertico
