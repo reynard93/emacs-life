@@ -69,6 +69,8 @@
 
 (use-package rainbow-delimiters
   :pin nongnu
+  :config
+  (message "rainbow-delimiters is loaded")
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package hl-todo
