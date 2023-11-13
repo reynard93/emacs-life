@@ -61,6 +61,7 @@
 
 (use-package goggles
   :pin melpa
+  :defer t
   :init
   (setq-default goggles-pulse t)
   :config
@@ -69,6 +70,7 @@
 
 (use-package rainbow-delimiters
   :pin nongnu
+  :defer t
   :config
   (message "rainbow-delimiters is loaded")
   :hook (prog-mode . rainbow-delimiters-mode))
