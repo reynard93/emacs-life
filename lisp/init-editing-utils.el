@@ -42,8 +42,8 @@
   :after evil
   :config
   (message "evil-snipe is loaded")
-  (evil-snipe-mode +1)
-  (evil-snipe-override-mode +1))
+  (evil-snipe-mode 1)
+  (evil-snipe-override-mode 1))
 
 (use-package evil-surround
   :pin melpa
