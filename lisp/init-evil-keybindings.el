@@ -153,6 +153,7 @@
     "sk"  #'dash-at-point
     "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
+    "so"  #'yejun/lookup-online
     "ss"  #'yejun/search-buffer
     "sS"  #'yejun/search-buffer-for-symbol-at-point
     "sr"  #'yejun/search-current-project
