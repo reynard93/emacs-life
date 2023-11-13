@@ -101,16 +101,12 @@
 
 (defun yejun/search-current-project ()
   (interactive)
-  (if-let* ((project (project-current))
-            (root-dir (project-root project)))
-      (yejun/search-in-project root-dir)
-    (message "Not in a project")))
+  (let ((root-dir (yejun/current-project-root)))
+      (yejun/search-in-project root-dir)))
 
 (defun yejun/search-current-project-for-symbol-at-point ()
   (interactive)
-  (if-let* ((project (project-current))
-            (root-dir (project-root project)))
-      (yejun/search-in-project root-dir 'symbol)
-    (message "Not in a project")))
+  (let ((root-dir (yejun/current-project-root)))
+      (yejun/search-in-project root-dir 'symbol)))
 
 (provide 'init-minibuffer)

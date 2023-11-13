@@ -6,4 +6,9 @@
   (let ((thing (when thing-p (thing-at-point thing-p))))
     (consult-ripgrep dir thing)))
 
+(defun yejun/current-project-root ()
+  (or (when-let ((project (project-current)))
+        (project-root project))
+      (user-error "Not in a project")))
+
 (provide 'init-lib)
