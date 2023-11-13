@@ -2,7 +2,7 @@
   :defer 1
   :config
   (message "corfu is loaded")
-  (global-corfu-mode)
+  (global-corfu-mode 1)
   :custom
   (corfu-cycle t)
   (corfu-auto t)

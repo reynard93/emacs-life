@@ -41,7 +41,7 @@
   :defer 1
   :config
   (message "git-gutter-fringe is loaded")
-  (global-git-gutter-mode))
+  (global-git-gutter-mode 1))
 
 (use-package git-timemachine
   :pin melpa

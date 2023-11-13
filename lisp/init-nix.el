@@ -33,6 +33,6 @@
   :pin melpa
   :config
   (message "envrc is loaded")
-  (envrc-global-mode))
+  (envrc-global-mode 1))
 
 (provide 'init-nix)
