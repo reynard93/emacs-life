@@ -5,11 +5,13 @@
       make-backup-files nil)          ; Avoid creating "filename~"
 
 (use-package recentf
+  :ensure nil
   :config
   (message "recentf is loaded")
   (recentf-mode 1))
 
 (use-package savehist
+  :ensure nil
   :config
   (message "savehist is loaded")
   (savehist-mode 1))
