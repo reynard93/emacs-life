@@ -71,4 +71,12 @@
   :pin nongnu
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package hl-todo
+  :pin melpa
+  :defer t
+  :config
+  (message "hl-todo is loaded")
+  :hook
+  (prog-mode . hl-todo-mode))
+
 (provide 'init-editing-utils)
