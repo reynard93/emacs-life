@@ -272,7 +272,7 @@
 
 (defun yejun/kill-all-buffers ()
   (interactive)
-  (when (yes-or-no-p "Kill all buffers? ")
+  (when (yes-or-no-p "Really kill all buffers? ")
     (mapc 'kill-buffer (buffer-list))))
 
 (defun yejun/delete-current-file ()
