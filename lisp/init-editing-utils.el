@@ -6,7 +6,7 @@
 
 (use-package evil
   :pin melpa
-  :config
+  :init
   (message "evil is loaded")
   (evil-mode 1)
   :custom
@@ -18,7 +18,11 @@
   (evil-kill-on-visual-paste nil)
   (evil-symbol-word-search t)
   (evil-vsplit-window-right t)
-  (evil-split-window-below t))
+  (evil-split-window-below t)
+  :bind (:map evil-ex-completion-map
+              ("C-a" . evil-beginning-of-line)
+              ("C-b" . evil-backward-char)
+              ("C-f" . evil-forward-char)))
 
 (use-package evil-collection
   :pin melpa
