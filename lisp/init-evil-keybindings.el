@@ -38,6 +38,7 @@
     "bd"  #'dired-jump
     "bi"  #'ibuffer
     "bk"  #'kill-current-buffer
+    "bK"  #'yejun/kill-all-buffers
     "bm"  #'bookmark-set
     "bM"  #'bookmark-delete
     "bn"  #'evil-buffer-new
@@ -266,5 +267,10 @@
         (kill-new path)
         (message "Copied path: %s" path))
     (error "Couldn't find filename in current buffer")))
+
+(defun yejun/kill-all-buffers ()
+  (interactive)
+  (when (yes-or-no-p "Kill all buffers? ")
+    (mapc 'kill-buffer (buffer-list))))
 
 (provide 'init-evil-keybindings)
