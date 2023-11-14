@@ -21,4 +21,20 @@
   (interactive)
   (yejun/search-buffer 'symbol))
 
+(defun yejun/yank-file-path ()
+  (interactive)
+  (when-let* ((filename (buffer-file-name))
+              (path (abbreviate-file-name filename)))
+    (kill-new path)
+    (message "Copied path: %s" path)))
+
+(defun yejun/yank-file-path-relative-to-project ()
+  (interactive)
+  (when-let* ((filename (buffer-file-name))
+              (project (project-current))
+              (root-dir (project-root project))
+              (path (file-relative-name filename root-dir)))
+    (kill-new path)
+    (message "Copied path: %s" path)))
+
 (provide 'init-lib)

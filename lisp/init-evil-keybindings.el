@@ -63,8 +63,8 @@
     "fs"  #'save-buffer
     "fS"  #'write-file
     "fr"  #'recentf-open-files
-    "fy"  #'yejun/yank-buffer-path
-    "fY"  #'yejun/yank-buffer-path-relative-to-project
+    "fy"  #'yejun/yank-file-path
+    "fY"  #'yejun/yank-file-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
     "g'"  #'forge-dispatch
@@ -252,23 +252,6 @@
   (interactive)
   (pop-to-buffer "*scratch*"))
 
-(defun yejun/yank-buffer-path ()
-  (interactive)
-  (if-let* ((filename (buffer-file-name))
-            (path (abbreviate-file-name filename)))
-      (progn
-        (kill-new path)
-        (message "Copied path: %s" path))
-    (error "Couldn't find filename in current buffer")))
-
-(defun yejun/yank-buffer-path-relative-to-project ()
-  (interactive)
-  (if-let* ((filename (buffer-file-name))
-            (path (file-relative-name filename (yejun/current-project-root))))
-      (progn
-        (kill-new path)
-        (message "Copied path: %s" path))
-    (error "Couldn't find filename in current buffer")))
 
 (defun yejun/kill-all-buffers ()
   (interactive)
