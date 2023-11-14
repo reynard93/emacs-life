@@ -43,7 +43,10 @@
   :defer 1
   :config
   (message "git-gutter-fringe is loaded")
-  (global-git-gutter-mode 1))
+  (global-git-gutter-mode 1)
+  (general-define-key :states '(motion)
+                      "]d" #'git-gutter:next-hunk
+                      "[d" #'git-gutter:previous-hunk))
 
 (use-package git-timemachine
   :pin melpa
