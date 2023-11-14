@@ -37,4 +37,14 @@
     (kill-new path)
     (message "Copied path: %s" path)))
 
+(defun yejun/delete-this-file ()
+  (interactive)
+  (when-let* ((buffer (current-buffer))
+              (filename (buffer-file-name buffer))
+              (path (abbreviate-file-name filename)))
+    (when (y-or-n-p (format "Really delete %s? " path))
+      (move-file-to-trash path)
+      (kill-buffer buffer)
+      (message "Deleted %s" path))))
+
 (provide 'init-lib)
