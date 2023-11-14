@@ -78,6 +78,6 @@
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
   :bind (:map org-mode-map
-         ("C-c i" . org-cite-insert)))
+              ("C-c i" . org-cite-insert)))
 
 (provide 'init-org)

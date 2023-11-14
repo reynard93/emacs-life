@@ -102,11 +102,11 @@
 (defun yejun/search-current-project ()
   (interactive)
   (let ((root-dir (yejun/current-project-root)))
-      (yejun/search-in-project root-dir)))
+    (yejun/search-in-project root-dir)))
 
 (defun yejun/search-current-project-for-symbol-at-point ()
   (interactive)
   (let ((root-dir (yejun/current-project-root)))
-      (yejun/search-in-project root-dir 'symbol)))
+    (yejun/search-in-project root-dir 'symbol)))
 
 (provide 'init-minibuffer)
