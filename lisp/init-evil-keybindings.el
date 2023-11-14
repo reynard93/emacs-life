@@ -22,8 +22,8 @@
     "'"   #'vertico-repeat
     "~"   #'popwin:popup-last-buffer
     ","   #'popwin:messages
-    "/"   #'yejun/search-current-project
-    "*"   #'yejun/search-current-project-for-symbol-at-point
+    "/"   #'yejun/search-project
+    "*"   #'yejun/search-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
     ";"   #'pp-eval-expression
 
@@ -160,8 +160,8 @@
     "so"  #'yejun/lookup-online
     "ss"  #'yejun/search-buffer
     "sS"  #'yejun/search-buffer-for-symbol-at-point
-    "sr"  #'yejun/search-current-project
-    "sR"  #'yejun/search-current-project-for-symbol-at-point
+    "sr"  #'yejun/search-project
+    "sR"  #'yejun/search-project-for-symbol-at-point
     "st"  #'osx-dictionary-search-word-at-point
 
     "t"   '(:ignore t :which-key "toggle")

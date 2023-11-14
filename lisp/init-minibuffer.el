@@ -94,19 +94,4 @@
   (which-key-min-display-columns nil)
   (which-key-add-column-padding 1))
 
-(defalias 'yejun/search-buffer 'consult-line)
-(defun yejun/search-buffer-for-symbol-at-point ()
-  (interactive)
-  (consult-line (thing-at-point 'symbol)))
-
-(defun yejun/search-current-project ()
-  (interactive)
-  (let ((root-dir (yejun/current-project-root)))
-    (yejun/search-in-project root-dir)))
-
-(defun yejun/search-current-project-for-symbol-at-point ()
-  (interactive)
-  (let ((root-dir (yejun/current-project-root)))
-    (yejun/search-in-project root-dir 'symbol)))
-
 (provide 'init-minibuffer)

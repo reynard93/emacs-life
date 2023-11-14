@@ -25,10 +25,10 @@
 
 (defun yejun/search-notes ()
   (interactive)
-  (yejun/search-in-project denote-directory))
+  (yejun/search-project denote-directory))
 
 (defun yejun/search-notes-for-symbol-at-point ()
   (interactive)
-  (yejun/search-in-project denote-directory 'symbol))
+  (yejun/search-project denote-directory 'symbol))
 
 (provide 'init-denote)
