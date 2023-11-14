@@ -114,6 +114,8 @@
     "ns"  #'yejun/search-notes
     "nS"  #'yejun/search-notes-for-symbol-at-point
     "nt"  #'denote-template
+    "nT"  #'org-todo-list
+    "nx"  #'org-capture-goto-last-stored
 
     "o"   '(:ignore t :which-key "open")
 
@@ -204,7 +206,28 @@
     "e"  #'org-export-dispatch
 
     "c"  '(:ignore t :which-key "clock")
-    "ci" #'org-clock-in)
+    "ci" #'org-clock-in
+
+    "d"  '(:ignore t :which-key "date/deadline")
+    "dd" #'org-deadline
+    "ds" #'org-schedule
+    "dt" #'org-time-stamp
+    "dT" #'org-time-stamp-inactive
+
+    "g"  '(:ignore t :which-key "goto")
+    "gg" #'consult-org-heading
+    "gG" #'consult-org-agenda
+
+    "l"  '(:ignore t :which-key "links")
+    "ll" #'org-insert-link
+    "lL" #'org-insert-all-links
+    "ls" #'org-store-link
+    "lS" #'org-insert-last-stored-link
+    "lt" #'org-toggle-link-display
+
+    "o"  #'org-set-property
+    "p"  #'org-priority
+    "t"  #'org-todo)
   )
 
 (defun yejun/browse-emacs-config ()
