@@ -81,6 +81,9 @@
   :pin melpa
   :config
   (message "hl-todo is loaded")
+  (general-define-key :states '(motion)
+                      "]t" #'hl-todo-next
+                      "[t" #'hl-todo-previous)
   :hook prog-mode)
 
 (use-package smartparens
