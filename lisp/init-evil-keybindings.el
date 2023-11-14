@@ -57,6 +57,7 @@
 
     "f"   '(:ignore t :which-key "file")
     "fb"  #'yejun/browse-blog
+    "fD"  #'yejun/delete-current-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
     "fs"  #'save-buffer
@@ -272,5 +273,15 @@
   (interactive)
   (when (yes-or-no-p "Kill all buffers? ")
     (mapc 'kill-buffer (buffer-list))))
+
+(defun yejun/delete-current-file ()
+  (interactive)
+  (when-let* ((buffer (current-buffer))
+              (filename (buffer-file-name buffer))
+              (path (abbreviate-file-name filename)))
+    (when (y-or-n-p (format "Really delete %s? " path))
+      (move-file-to-trash path)
+      (kill-buffer buffer)
+      (message "Deleted %s" path))))
 
 (provide 'init-evil-keybindings)
