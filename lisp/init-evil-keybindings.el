@@ -37,8 +37,6 @@
     "bB"  #'switch-to-buffer-other-window
     "bd"  #'dired-jump
     "bi"  #'ibuffer
-    "bk"  #'kill-current-buffer
-    "bK"  #'yejun/kill-all-buffers
     "bm"  #'bookmark-set
     "bM"  #'bookmark-delete
     "bn"  #'evil-buffer-new
@@ -251,12 +249,6 @@
 (defun yejun/popup-scratch-buffer ()
   (interactive)
   (pop-to-buffer "*scratch*"))
-
-
-(defun yejun/kill-all-buffers ()
-  (interactive)
-  (when (yes-or-no-p "Really kill all buffers? ")
-    (mapc 'kill-buffer (buffer-list))))
 
 (defun yejun/delete-current-file ()
   (interactive)
