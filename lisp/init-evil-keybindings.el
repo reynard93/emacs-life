@@ -254,10 +254,11 @@
 
 (defun yejun/yank-buffer-path ()
   (interactive)
-  (if-let ((filename (buffer-file-name)))
+  (if-let* ((filename (buffer-file-name))
+            (path (abbreviate-file-name filename)))
       (progn
-        (kill-new filename)
-        (message "Copied path: %s" filename))
+        (kill-new path)
+        (message "Copied path: %s" path))
     (error "Couldn't find filename in current buffer")))
 
 (defun yejun/yank-buffer-path-relative-to-project ()
