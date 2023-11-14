@@ -4,6 +4,17 @@
   (setq denote-directory "~/src/notes")
   :config
   (message "denote is loaded")
+
+  (with-eval-after-load 'org-capture
+    (add-to-list 'org-capture-templates
+                 '("d" "Denote" plain
+                   (file denote-last-path)
+                   #'denote-org-capture
+                   :no-save t
+                   :immediate-finish nil
+                   :kill-buffer t
+                   :jump-to-captured t)))
+
   :custom
   (denote-date-prompt-use-org-read-date t)
   (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev")))
