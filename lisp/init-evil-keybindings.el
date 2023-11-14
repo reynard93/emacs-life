@@ -131,7 +131,7 @@
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
     "om"  #'mu4e
-    "oo"  #'yejun/show-current-file-in-finder
+    "oo"  #'yejun/reveal-in-finder
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
@@ -244,7 +244,7 @@
   (interactive)
   (yejun/find-file-in-project "~/src/yejun.dev"))
 
-(defun yejun/show-current-file-in-finder ()
+(defun yejun/reveal-in-finder ()
   (interactive)
   (shell-command (concat "open -R " (shell-quote-argument (buffer-file-name)))))
 
