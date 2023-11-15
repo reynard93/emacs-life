@@ -1,6 +1,5 @@
 (use-package magit
   :pin melpa
-  :defer t
   :config
   (message "magit is loaded")
   (add-to-list 'savehist-additional-variables 'log-edit-comment-ring)
