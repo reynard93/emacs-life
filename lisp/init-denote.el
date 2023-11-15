@@ -7,7 +7,7 @@
 
   (with-eval-after-load 'org-capture
     (add-to-list 'org-capture-templates
-                 '("d" "Denote" plain
+                 '("n" "Note" plain
                    (file denote-last-path)
                    #'denote-org-capture
                    :no-save t
