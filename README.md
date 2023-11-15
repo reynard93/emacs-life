@@ -1,16 +1,15 @@
 # emacs-config
 
-With the built-in packages such as
-[use-package](https://www.gnu.org/software/emacs/manual/html_mono/use-package.html),
-[eglot](https://www.gnu.org/software/emacs/manual/html_mono/eglot.html)
-and
-[project](https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html),
-Emacs configuration can be really simple.
+## Requirement
+- Emacs 29+
 
 ## Packages
 
-This configuration is based on the following packages:
+This configuration is built on top of these packages:
 
+- [use-package](https://www.gnu.org/software/emacs/manual/html_mono/use-package.html) (built-in)
+- [eglot](https://www.gnu.org/software/emacs/manual/html_mono/eglot.html) (built-in)
+- [project](https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html) (built-in)
 - [vertico](https://github.com/minad/vertico)
 - [marginalia](https://github.com/minad/marginalia)
 - [consult](https://github.com/minad/consult)
@@ -26,10 +25,3 @@ This configuration is based on the following packages:
 - [modus-themes](https://protesilaos.com/emacs/modus-themes)
 - [doom-modeline](https://github.com/seagle0128/doom-modeline)
 - [magit](https://magit.vc/)
-
-## Keybindings
-
-Since I've been using [Doom
-Emacs](https://github.com/doomemacs/doomemacs) for a long time, most
-of the [evil keybindings](https://git.sr.ht/~goofansu/emacs-config/tree/main/item/lisp/init-evil-keybindings.el)
-remain the same for muscle memory.
