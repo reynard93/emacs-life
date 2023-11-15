@@ -3,11 +3,16 @@
   (let ((project (project-current nil dir)))
     (project-find-file-in nil nil project)))
 
+(defun project--root-dir (&optional dir)
+  (if-let ((project (project-current nil dir)))
+      (project-root project)
+    nil))
+
 (defun yejun/search-project (&optional dir thing)
   (interactive)
-  (let* ((project (project-current nil dir))
-         (root-dir (project-root project)))
-    (consult-ripgrep root-dir (when thing (thing-at-point thing)))))
+  (consult-ripgrep
+   (project--root-dir dir)
+   (when thing (thing-at-point thing))))
 
 (defun yejun/search-project-for-symbol-at-point ()
   (interactive)
@@ -43,9 +48,7 @@ file path, otherwise, get a full file path with
   "Save the relative buffer path into the kill-ring.
 The path is relative to `project-current'."
   (interactive)
-  (when-let* ((project (project-current))
-              (root-dir (project-root project)))
-    (yejun/yank-buffer-path nil root-dir)))
+  (yejun/yank-buffer-path nil (project--root-dir)))
 
 (defun yejun/delete-this-file ()
   (interactive)
