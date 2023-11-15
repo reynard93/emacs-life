@@ -21,21 +21,31 @@
   (interactive)
   (yejun/search-buffer 'symbol))
 
-(defun yejun/yank-file-path ()
+(defun yejun/yank-buffer-path (&optional buffer dir)
+  "Save the buffer path into the kill-ring.
+If BUFFER is not nil, find filename of BUFFER, otherwise, find
+filename of `current-buffer'. If DIR is not nil, get a relative
+file path, otherwise, get a full file path with
+`abbreviate-file-name'."
   (interactive)
-  (when-let* ((filename (buffer-file-name))
-              (path (abbreviate-file-name filename)))
-    (kill-new path)
-    (message "Copied path: %s" path)))
+  (if-let* ((filename (if buffer
+                          (buffer-filename buffer)
+                        (buffer-file-name)))
+            (path (if dir
+                      (file-relative-name filename dir)
+                    (abbreviate-file-name filename))))
+      (progn
+        (kill-new path)
+        (message "Copied path: %s" path))
+    (error "Couldn't find filename")))
 
-(defun yejun/yank-file-path-relative-to-project ()
+(defun yejun/yank-buffer-path-relative-to-project ()
+  "Save the relative buffer path into the kill-ring.
+The path is relative to `project-current'."
   (interactive)
-  (when-let* ((filename (buffer-file-name))
-              (project (project-current))
-              (root-dir (project-root project))
-              (path (file-relative-name filename root-dir)))
-    (kill-new path)
-    (message "Copied path: %s" path)))
+  (when-let* ((project (project-current))
+              (root-dir (project-root project)))
+    (yejun/yank-buffer-path nil root-dir)))
 
 (defun yejun/delete-this-file ()
   (interactive)

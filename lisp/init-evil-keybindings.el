@@ -61,8 +61,8 @@
     "fs"  #'save-buffer
     "fS"  #'write-file
     "fr"  #'recentf-open-files
-    "fy"  #'yejun/yank-file-path
-    "fY"  #'yejun/yank-file-path-relative-to-project
+    "fy"  #'yejun/yank-buffer-path
+    "fY"  #'yejun/yank-buffer-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
     "g'"  #'forge-dispatch
