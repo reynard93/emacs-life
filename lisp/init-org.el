@@ -22,7 +22,8 @@
   (org-log-into-drawer t)
   (org-log-done 'time)
   :bind (:map org-mode-map
-              ("C-M-S-h" . org-babel-mark-block)))
+              ("C-M-S-h" . org-babel-mark-block))
+  :hook (org-capture-mode . evil-insert-state))
 
 (defun yejun/browse-org ()
   (interactive)
