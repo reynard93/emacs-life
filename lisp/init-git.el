@@ -19,16 +19,6 @@
   :custom
   (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
 
-(use-package forge
-  :pin melpa
-  :after magit
-  :init
-  (setq forge-add-default-bindings nil)
-  :config
-  (message "forge is loaded")
-  :custom
-  (forge-topic-list-limit '(20 . 5)))
-
 (use-package browse-at-remote
   :pin melpa
   :defer t

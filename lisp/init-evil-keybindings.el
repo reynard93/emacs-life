@@ -65,7 +65,6 @@
     "fY"  #'yejun/yank-buffer-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
-    "g'"  #'forge-dispatch
     "g,"  #'magit-file-dispatch
     "g."  #'magit-dispatch
     "g["  #'git-gutter:previous-hunk
@@ -87,15 +86,6 @@
 
     "go"  '(:ignore t :which-key "open in browser")
     "goo" #'browse-at-remote
-    "goc" #'forge-browse-commit
-    "goi" #'forge-browse-issue
-    "goI" #'forge-browse-issues
-    "gop" #'forge-browse-pullreq
-    "goP" #'forge-browse-pullreqs
-
-    "gc"  '(:ignore t :which-key "create")
-    "gci" #'forge-create-issue
-    "gcp" #'forge-create-pullreq
 
     "n"   '(:ignore t :which-key "notes")
     "na"  #'org-agenda
