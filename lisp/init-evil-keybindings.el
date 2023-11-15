@@ -20,8 +20,8 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    "~"   #'popwin:popup-last-buffer
-    ","   #'popwin:messages
+    "."   #'popwin:popup-buffer-tail
+    ","   #'popwin:popup-last-buffer
     "/"   #'yejun/search-project
     "*"   #'yejun/search-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
