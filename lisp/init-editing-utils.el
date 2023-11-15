@@ -11,12 +11,23 @@
   (evil-mode 1)
   :custom
   (evil-want-keybinding nil)            ; required by evil-collection
+  (evil-kill-on-visual-paste nil)       ; avoid adding replaced text to kill-ring
+  ;; undo
   (evil-undo-system 'undo-redo)         ; required by `evil-redo'
   (evil-want-fine-undo t)
-  (evil-ex-substitute-global t)
-  (evil-move-cursor-back nil)
-  (evil-kill-on-visual-paste nil)
+  ;; cursor
+  (evil-normal-state-cursor 'box)
+  (evil-insert-state-cursor 'bar)
+  (evil-visual-state-cursor 'hollow)
+  ;; search
   (evil-symbol-word-search t)
+  (evil-ex-visual-char-range t)
+  ;; replace
+  (evil-ex-substitute-global t)
+  ;; move
+  (evil-move-cursor-back nil)
+  (evil-move-beyond-eol nil)
+  ;; window
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
   :bind (:map evil-ex-completion-map
