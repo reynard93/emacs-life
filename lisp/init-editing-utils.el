@@ -9,6 +9,8 @@
   :init
   (message "evil is loaded")
   (evil-mode 1)
+  :config
+  (evil-select-search-module 'evil-search-module 'evil-search)
   :custom
   (evil-want-keybinding nil)            ; required by evil-collection
   (evil-kill-on-visual-paste nil)       ; avoid adding replaced text to kill-ring
@@ -31,9 +33,13 @@
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
   :bind (:map evil-ex-completion-map
-              ("C-a" . evil-beginning-of-line)
-              ("C-b" . evil-backward-char)
-              ("C-f" . evil-forward-char)))
+         ("C-a" . evil-beginning-of-line)
+         ("C-b" . evil-backward-char)
+         ("C-f" . evil-forward-char)
+         :map evil-ex-search-keymap
+         ("C-a" . evil-beginning-of-line)
+         ("C-b" . evil-backward-char)
+         ("C-f" . evil-forward-char)))
 
 (use-package evil-collection
   :pin melpa
