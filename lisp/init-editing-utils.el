@@ -42,13 +42,6 @@
          ("C-b" . evil-backward-char)
          ("C-f" . evil-forward-char)))
 
-(use-package evil-collection
-  :pin melpa
-  :after evil
-  :config
-  (message "evil-collection is loaded")
-  (evil-collection-init))
-
 (use-package evil-nerd-commenter
   :pin nongnu
   :after evil
