@@ -21,8 +21,9 @@
   (org-src-window-setup 'other-window)
   (org-log-into-drawer t)
   (org-log-done 'time)
-  :bind (:map org-mode-map
-              ("C-M-S-h" . org-babel-mark-block))
+  :bind (;; placeholder
+         :map org-mode-map
+         ("C-M-S-h" . org-babel-mark-block))
   :hook (org-capture-mode . evil-insert-state))
 
 (defun yejun/browse-org ()
@@ -78,7 +79,8 @@
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
-  :bind (:map org-mode-map
-              ("C-c i" . org-cite-insert)))
+  :bind (;; placeholder
+         :map org-mode-map
+         ("C-c i" . org-cite-insert)))
 
 (provide 'init-org)
