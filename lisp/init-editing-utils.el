@@ -8,6 +8,9 @@
   :pin melpa
   :init
   (message "evil is loaded")
+  (setq evil-normal-state-cursor 'box
+        evil-insert-state-cursor 'bar
+        evil-visual-state-cursor 'hollow)
   (evil-mode 1)
   :config
   (evil-select-search-module 'evil-search-module 'evil-search)
@@ -17,10 +20,6 @@
   ;; undo
   (evil-undo-system 'undo-redo)         ; required by `evil-redo'
   (evil-want-fine-undo t)
-  ;; cursor
-  (evil-normal-state-cursor 'box)
-  (evil-insert-state-cursor 'bar)
-  (evil-visual-state-cursor 'hollow)
   ;; search
   (evil-symbol-word-search t)
   (evil-ex-visual-char-range t)
