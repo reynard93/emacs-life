@@ -40,16 +40,16 @@
   :defer 1
   :config
   (message "tempel is loaded")
+
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
   :custom
   (tempel-trigger-prefix "<")
   :hook
   ((conf-mode prog-mode text-mode) . tempel-setup-capf))
-
-(defun tempel-setup-capf ()
-  (interactive)
-  (setq-local completion-at-point-functions
-              (cons #'tempel-expand
-                    completion-at-point-functions)))
 
 (use-package tempel-collection
   :pin melpa
