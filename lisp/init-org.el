@@ -1,9 +1,14 @@
 (use-package org
   :defer t
   :commands (org-clock-goto org-clock-cancel)
-  :init
-  (setq org-directory "~/src/org")
-  (setq org-agenda-files (list org-directory))
+  :preface
+  (setq org-directory "~/src/org"
+        org-agenda-files (list org-directory))
+
+  (defun yejun/browse-org ()
+    (interactive)
+    (yejun/find-file-in-project org-directory))
+
   :config
   (message "org is loaded")
   (setq org-todo-keywords
@@ -14,6 +19,7 @@
   (setq org-capture-templates
         '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
           ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
+
   :custom
   (org-startup-indented t)
   (org-src-preserve-indentation t)
@@ -21,14 +27,12 @@
   (org-src-window-setup 'other-window)
   (org-log-into-drawer t)
   (org-log-done 'time)
+
   :bind (;; placeholder
          :map org-mode-map
          ("C-M-S-h" . org-babel-mark-block))
-  :hook (org-capture-mode . evil-insert-state))
 
-(defun yejun/browse-org ()
-  (interactive)
-  (yejun/find-file-in-project org-directory))
+  :hook (org-capture-mode . evil-insert-state))
 
 ;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/lang/org/autoload/org.el#L318-L336
 (defun yejun/toggle-last-clock (arg)
