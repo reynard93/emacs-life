@@ -3,7 +3,7 @@
 
 (use-package doom-modeline
   :pin melpa
-  :init
+  :config
   (message "doom-modeline is loaded")
   (doom-modeline-mode 1))
 
