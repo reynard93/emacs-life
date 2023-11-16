@@ -1,5 +1,6 @@
 (use-package vertico
-  :init
+  :demand t
+  :config
   (message "vertico is loaded")
   (vertico-mode 1)
   :custom

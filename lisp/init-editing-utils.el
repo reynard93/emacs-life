@@ -6,14 +6,15 @@
 
 (use-package evil
   :pin melpa
+  :demand t
   :init
-  (message "evil is loaded")
   (setq evil-normal-state-cursor 'box
         evil-insert-state-cursor 'bar
         evil-visual-state-cursor 'hollow)
-  (evil-mode 1)
   :config
+  (message "evil is loaded")
   (evil-select-search-module 'evil-search-module 'evil-search)
+  (evil-mode 1)
   :custom
   (evil-want-keybinding nil)            ; required by evil-collection
   (evil-kill-on-visual-paste nil)       ; avoid adding replaced text to kill-ring
