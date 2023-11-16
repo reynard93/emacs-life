@@ -2,21 +2,23 @@
   :pin melpa
   :config
   (message "nix-mode is loaded")
+
+  (defun yejun/toggle-nix-formatter ()
+    (interactive)
+    (if (string-match "nixfmt" nix-nixfmt-bin)
+        (setq nix-nixfmt-bin "nixpkgs-fmt")
+      (setq nix-nixfmt-bin "nixfmt"))
+    (message (concat "Switched nix-nixfmt-bin to " nix-nixfmt-bin)))
+
+  (defun nix-formatter-mode-line-display ()
+    (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))
+
   :custom
   (nix-nixfmt-bin "nixfmt")
+
   :hook
-  (nix-mode . yejun/display-formatter)
+  (nix-mode . nix-formatter-mode-line-display)
   (before-save . nix-format-before-save))
-
-(defun yejun/display-formatter ()
-  (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))
-
-(defun yejun/toggle-nix-formatter ()
-  (interactive)
-  (if (string-match "nixfmt" nix-nixfmt-bin)
-      (setq nix-nixfmt-bin "nixpkgs-fmt")
-    (setq nix-nixfmt-bin "nixfmt"))
-  (message (concat "Nix formatter is set to " nix-nixfmt-bin)))
 
 (defun org-babel-execute:nix (body params)
   (setq strict-option (if (assoc :strict params) "--strict" ""))
