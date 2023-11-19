@@ -71,6 +71,8 @@
   :init
   (setq which-key-use-C-h-commands nil
         prefix-help-command #'embark-prefix-help-command)
+  :custom
+  (embark-cycle-key "C-;")
   :config
   (message "embark is loaded")
 
