@@ -15,6 +15,7 @@
   (tab-bar-show 1))
 
 (use-package ace-window
+  :pin melpa
   :config
   (message "ace-window is loaded")
   :custom
