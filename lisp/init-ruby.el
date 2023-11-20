@@ -18,4 +18,10 @@
   :config
   (message "rspec-mode is loaded"))
 
+(use-package yaml-mode
+  :pin nongnu
+  :defer t
+  :config
+  (message "yaml-mode is loaded"))
+
 (provide 'init-ruby)
