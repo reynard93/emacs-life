@@ -170,7 +170,7 @@
     "wr"  #'winner-redo)
 
   (yejun/local-leader-key
-    :keymaps 'ruby-mode-map
+    :keymaps 'ruby-ts-mode-map
     :major-modes t
     "b"  '(:ignore t :which-key "bundle")
     "bc" #'bundle-check
