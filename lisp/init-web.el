@@ -25,7 +25,7 @@
   (js-indent-level 2))
 
 (use-package haml-mode
-  :pin nongnu
+  :pin melpa
   :defer t
   :config
   (message "haml-mode is loaded"))
