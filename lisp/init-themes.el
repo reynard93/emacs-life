@@ -16,4 +16,9 @@
      (agenda-structure . (variable-pitch light 1.6))
      (t . (1.1)))))
 
+(use-package spacious-padding
+  :when (display-graphic-p)
+  :config
+  (spacious-padding-mode 1))
+
 (provide 'init-themes)
