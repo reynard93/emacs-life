@@ -37,7 +37,6 @@
 
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
-    "x"   #'yejun/popup-scratch-buffer
     "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
@@ -243,9 +242,5 @@
 (defun yejun/reveal-in-finder ()
   (interactive)
   (shell-command (concat "open -R " (shell-quote-argument (buffer-file-name)))))
-
-(defun yejun/popup-scratch-buffer ()
-  (interactive)
-  (pop-to-buffer "*scratch*"))
 
 (provide 'init-evil-keybindings)

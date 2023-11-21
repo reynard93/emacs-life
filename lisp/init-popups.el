@@ -9,7 +9,6 @@
      rspec-compilation-mode
      chatgpt-shell-mode
      osx-dictionary-mode
-     "*scratch*"
      "*Org Select*"
      "^CAPTURE-.*\\.org$")))
 
