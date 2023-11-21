@@ -1,13 +1,16 @@
-(use-package popwin
-  :pin melpa
+(use-package popper
   :config
-  (message "popwin is loaded")
-  (popwin-mode 1)
-  (push '("*scratch*" :stick t) popwin:special-display-config)
-  (push "*Org Select*" popwin:special-display-config)
-  (push '("^CAPTURE-.*\\.org$" :regexp t :stick t) popwin:special-display-config)
-  (push '(chatgpt-shell-mode :height 0.5 :stick t) popwin:special-display-config)
-  (push '(rspec-compilation-mode :height 0.3 :stick t) popwin:special-display-config)
-  (push '(osx-dictionary-mode :height 0.3 :stick t) popwin:special-display-config))
+  (message "popper is loaded")
+  (popper-mode 1)
+  (popper-echo-mode 1)
+  :custom
+  (popper-reference-buffers
+   '(compilation-mode
+     rspec-compilation-mode
+     chatgpt-shell-mode
+     osx-dictionary-mode
+     "*scratch*"
+     "*Org Select*"
+     "^CAPTURE-.*\\.org$")))
 
 (provide 'init-popups)

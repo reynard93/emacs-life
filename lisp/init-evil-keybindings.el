@@ -28,8 +28,8 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    "."   #'popwin:popup-buffer-tail
-    ","   #'popwin:popup-last-buffer
+    "."   #'popper-cycle
+    ","   #'popper-toggle
     "/"   #'yejun/search-project
     "*"   #'yejun/search-project-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
