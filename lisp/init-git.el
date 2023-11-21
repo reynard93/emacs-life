@@ -27,11 +27,11 @@
   :custom
   (browse-at-remote-add-line-number-if-no-region-selected nil))
 
-(use-package git-gutter-fringe
+(use-package git-gutter
   :pin melpa
   :defer 1
   :config
-  (message "git-gutter-fringe is loaded")
+  (message "git-gutter is loaded")
   (global-git-gutter-mode 1)
   (general-define-key :states '(motion)
                       "]d" #'git-gutter:next-hunk
