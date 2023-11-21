@@ -1,6 +1,8 @@
 (use-package web-mode
   :pin nongnu
   :defer t
+  :mode "\\.erb\\'"
+  :mode "\\.vue\\'"
   :config
   (message "web-mode is loaded")
   :custom
