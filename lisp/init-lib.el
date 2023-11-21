@@ -42,7 +42,7 @@ file path, otherwise, get a full file path with
       (progn
         (kill-new path)
         (message "Copied path: %s" path))
-    (error "Couldn't find filename")))
+    (user-error "Buffer is not visiting a file")))
 
 (defun yejun/yank-buffer-path-relative-to-project ()
   "Save the relative buffer path into the kill-ring.
@@ -59,5 +59,12 @@ The path is relative to `project-current'."
       (move-file-to-trash path)
       (kill-buffer buffer)
       (message "Deleted %s" path))))
+
+(defun yejun/reveal-in-finder ()
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (if filename
+        (call-process "open" nil 0 nil "-R" filename)
+      (user-error "Buffer is not visiting a file"))))
 
 (provide 'init-lib)

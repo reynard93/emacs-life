@@ -239,8 +239,4 @@
   (interactive)
   (yejun/find-file-in-project "~/src/yejun.dev"))
 
-(defun yejun/reveal-in-finder ()
-  (interactive)
-  (shell-command (concat "open -R " (shell-quote-argument (buffer-file-name)))))
-
 (provide 'init-evil-keybindings)
