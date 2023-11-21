@@ -30,4 +30,10 @@
   :config
   (message "haml-mode is loaded"))
 
+(use-package coffee-mode
+  :pin melpa
+  :defer t
+  :config
+  (message "coffee-mode is loaded"))
+
 (provide 'init-web)
