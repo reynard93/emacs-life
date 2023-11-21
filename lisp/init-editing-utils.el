@@ -21,6 +21,8 @@
   ;; undo
   (evil-undo-system 'undo-redo)         ; required by `evil-redo'
   (evil-want-fine-undo t)
+  ;; copy
+  (evil-visual-update-x-selection-p nil)
   ;; search
   (evil-symbol-word-search t)
   (evil-ex-visual-char-range t)
