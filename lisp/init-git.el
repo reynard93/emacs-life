@@ -35,7 +35,11 @@
   (global-git-gutter-mode 1)
   (general-define-key :states '(motion)
                       "]d" #'git-gutter:next-hunk
-                      "[d" #'git-gutter:previous-hunk))
+                      "[d" #'git-gutter:previous-hunk)
+  :custom
+  (git-gutter:added-sign " ")
+  (git-gutter:deleted-sign " ")
+  (git-gutter:modified-sign " "))
 
 (use-package git-timemachine
   :pin melpa
