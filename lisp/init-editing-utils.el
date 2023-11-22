@@ -106,4 +106,10 @@
   (require 'smartparens-config)
   :hook (prog-mode text-mode))
 
+(use-package xclip
+  :unless (display-graphic-p)
+  :config
+  (message "xclip is loaded")
+  (xclip-mode 1))
+
 (provide 'init-editing-utils)
