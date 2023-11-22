@@ -1,6 +1,7 @@
 (defun yejun/find-file-in-project (&optional dir)
   (interactive)
-  (let ((project (project-current nil dir)))
+  (when-let* ((project (project-current nil dir))
+              (default-directory (project-root project)))
     (project-find-file-in nil nil project)))
 
 (defun +project-root-dir (&optional dir)
