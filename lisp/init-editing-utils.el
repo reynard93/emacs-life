@@ -112,4 +112,13 @@
   (message "xclip is loaded")
   (xclip-mode 1))
 
+(use-package ediff
+  :ensure nil
+  :defer t
+  :config
+  (message "ediff is loaded")
+  :custom
+  (ediff-window-setup-function 'ediff-setup-windows-plain)
+  (ediff-split-window-function 'split-window-horizontally))
+
 (provide 'init-editing-utils)
