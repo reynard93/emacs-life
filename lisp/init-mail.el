@@ -36,6 +36,6 @@
   :ensure nil
   :custom
   (sendmail-program (executable-find "msmtp"))
-  (send-mail-function 'smtpmail-send-it))
+  (send-mail-function #'smtpmail-send-it))
 
 (provide 'init-mail)

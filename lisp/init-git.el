@@ -17,7 +17,7 @@
       (magit-push-to-remote remote args)))
 
   :custom
-  (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
+  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
 
 (use-package browse-at-remote
   :pin melpa
