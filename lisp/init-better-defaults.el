@@ -1,4 +1,5 @@
 (setq confirm-kill-emacs 'y-or-n-p    ; Confirm when leaving Emacs
+      ring-bell-function 'ignore      ; Disable ring bell
       inhibit-startup-screen t        ; Skip the startup screen
       initial-scratch-message nil     ; Display nothing on the *scratch* buffer
       create-lockfiles nil            ; Avoid creating ".#filename"
