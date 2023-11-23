@@ -3,12 +3,14 @@
   :when (display-graphic-p)
   :config
   (message "tab-bar is loaded")
+
+  ;; bind s-1 through s-9 to switch tabs
   (dolist (i (number-sequence 1 9))
     (global-set-key (kbd (format "s-%d" i))
                     `(lambda ()
                        (interactive)
-                       (if (<= ,i (length (tab-bar-tabs)))
-                           (tab-bar-select-tab ,i)))))
+                       (when (<= ,i (length (tab-bar-tabs)))
+                         (tab-bar-select-tab ,i)))))
 
   :custom
   (tab-bar-show 1)
