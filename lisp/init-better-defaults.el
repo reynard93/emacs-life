@@ -3,7 +3,8 @@
       inhibit-startup-screen t        ; Skip the startup screen
       initial-scratch-message nil     ; Display nothing on the *scratch* buffer
       create-lockfiles nil            ; Avoid creating ".#filename"
-      make-backup-files nil)          ; Avoid creating "filename~"
+      make-backup-files nil           ; Avoid creating "filename~"
+      enable-recursive-minibuffers t) ; M-x in M-x
 
 (use-package recentf
   :ensure nil

@@ -66,6 +66,13 @@
          ("M-s l" . consult-line)
          ("M-s L" . consult-line-multi)))
 
+(use-package consult-dir
+  :pin melpa
+  :defer t
+  :after consult
+  :config
+  (message "consult-dir is loaded"))
+
 (use-package embark
   :after vertico
   :init
