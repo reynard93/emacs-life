@@ -26,6 +26,15 @@
          ("C-h k" . helpful-key)
          ("C-h x" . helpful-command)))
 
+(use-package ibuffer
+  :ensure nil
+  :config
+  (message "ibuffer is loaded")
+  :custom
+  (ibuffer-expert t)
+  :bind ([remap list-buffers] . ibuffer)
+  :hook (ibuffer-mode . ibuffer-auto-mode))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
