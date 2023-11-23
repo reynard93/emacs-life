@@ -7,13 +7,6 @@
   (message "scroll-bar is loaded")
   (set-scroll-bar-mode nil))
 
-(use-package tab-bar
-  :ensure nil
-  :config
-  (message "tab-bar is loaded")
-  :custom
-  (tab-bar-show 1))
-
 (use-package ace-window
   :pin melpa
   :config

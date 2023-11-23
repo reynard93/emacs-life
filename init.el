@@ -31,5 +31,6 @@
 (require 'init-lookup)
 (require 'init-evil-keybindings)
 (require 'init-tree-sitter)
+(require 'init-workspaces)
 (require 'init-popups)
 (require 'init-server)
