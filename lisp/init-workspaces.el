@@ -1,5 +1,6 @@
 (use-package tab-bar
   :ensure nil
+  :when (display-graphic-p)
   :config
   (message "tab-bar is loaded")
   (dolist (i (number-sequence 1 9))
