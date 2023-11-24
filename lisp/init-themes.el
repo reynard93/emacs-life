@@ -1,8 +1,9 @@
 (use-package modus-themes
+  :init
+  (setq current-theme (if (display-graphic-p) 'modus-operandi 'modus-vivendi))
   :config
   (message "modus-themes is loaded")
-  (let ((theme (if (display-graphic-p) 'modus-operandi 'modus-vivendi)))
-    (load-theme theme :no-confirm))
+  (load-theme current-theme :no-confirm)
   :custom
   (modus-themes-completions
    '((matches . (extrabold underline))
