@@ -81,7 +81,9 @@
   :config
   (message "avy is loaded")
   (evil-define-key '(normal visual) 'global
-    "gss" #'evil-avy-goto-char-2))
+    "gss" #'evil-avy-goto-char-2)
+  :custom
+  (avy-all-windows nil))
 
 (use-package goggles
   :pin melpa
