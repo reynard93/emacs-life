@@ -24,6 +24,7 @@ This configuration is built on top of these packages:
 - [which-key](https://github.com/justbur/emacs-which-key)
 - [denote](https://github.com/protesilaos/denote)
 - [modus-themes](https://protesilaos.com/emacs/modus-themes)
+- [fontaine](https://protesilaos.com/emacs/fontaine)
 - [doom-modeline](https://github.com/seagle0128/doom-modeline)
 - [magit](https://magit.vc/)
 

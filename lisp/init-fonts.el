@@ -1,5 +1,24 @@
-(set-face-attribute 'default nil :family "JetBrains Mono" :height 160)
-(set-face-attribute 'variable-pitch nil :family "Iosevka" :height 1.0)
-(set-fontset-font t 'han (font-spec :family "Source Han Mono"))
+(use-package fontaine
+  :when (display-graphic-p)
+  :demand t
+  :config
+  (message "fontaine is loaded")
+  (fontaine-set-preset 'default)
+  :custom
+  (fontaine-presets
+   '((default
+      :default-height 160)
+     (presentation
+      :default-height 240
+      :default-weight semilight
+      :bold-weight extrabold)
+     (t
+      :default-family "JetBrains Mono"
+      :default-weight regular
+      :variable-pitch-family "Iosevka"
+      :variable-pitch-weight regular
+      :variable-pitch-height 1.0)))
+  :bind ("C-c f" . fontaine-set-preset)
+  :hook (modus-themes-after-load-theme . fontaine-apply-current-preset))
 
 (provide 'init-fonts)
