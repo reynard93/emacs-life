@@ -21,4 +21,10 @@
   (message "winner is loaded")
   (winner-mode 1))
 
+(use-package beframe
+  :config
+  (message "beframe is loaded")
+  (beframe-mode 1)
+  :bind-keymap ("C-c b" . beframe-prefix-map))
+
 (provide 'init-gui-frames)
