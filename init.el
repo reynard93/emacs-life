@@ -3,6 +3,8 @@
 (require 'init-lib)
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
+(setq native-comp-async-report-warnings-errors 'silent)
+
 (require 'init-better-defaults)
 (require 'init-macos-keybindings)
 (require 'init-editing-utils)
