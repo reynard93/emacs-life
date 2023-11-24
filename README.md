@@ -24,8 +24,10 @@ This configuration is built on top of these packages:
 - [which-key](https://github.com/justbur/emacs-which-key)
 - [denote](https://github.com/protesilaos/denote)
 - [modus-themes](https://protesilaos.com/emacs/modus-themes)
-- [fontaine](https://protesilaos.com/emacs/fontaine)
+- [spacious-padding](https://git.sr.ht/~protesilaos/spacious-padding)
 - [doom-modeline](https://github.com/seagle0128/doom-modeline)
+- [fontaine](https://protesilaos.com/emacs/fontaine)
+- [beframe](https://protesilaos.com/emacs/beframe)
 - [magit](https://magit.vc/)
 
 ## Inspirations
