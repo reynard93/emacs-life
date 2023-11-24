@@ -69,6 +69,13 @@
   (message "evil-surround is loaded")
   (global-evil-surround-mode 1))
 
+(use-package evil-mc
+  :pin melpa
+  :after evil
+  :config
+  (message "evil-mc is loaded")
+  (global-evil-mc-mode 1))
+
 (use-package avy
   :after evil
   :config
