@@ -34,15 +34,14 @@
   ;; window
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
-  :bind (;; placeholder
-         :map evil-ex-completion-map
-         ("C-a" . evil-beginning-of-line)
-         ("C-b" . evil-backward-char)
-         ("C-f" . evil-forward-char)
-         :map evil-ex-search-keymap
-         ("C-a" . evil-beginning-of-line)
-         ("C-b" . evil-backward-char)
-         ("C-f" . evil-forward-char)))
+  :bind ( :map evil-ex-completion-map
+          ("C-a" . evil-beginning-of-line)
+          ("C-b" . evil-backward-char)
+          ("C-f" . evil-forward-char)
+          :map evil-ex-search-keymap
+          ("C-a" . evil-beginning-of-line)
+          ("C-b" . evil-backward-char)
+          ("C-f" . evil-forward-char)))
 
 (use-package evil-nerd-commenter
   :pin nongnu

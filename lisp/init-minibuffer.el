@@ -5,10 +5,9 @@
   (vertico-mode 1)
   :custom
   (vertico-cycle t)
-  :bind (;; placeholder
-         :map vertico-map
-         ("C-j" . vertico-next)
-         ("C-k" . vertico-previous))
+  :bind ( :map vertico-map
+          ("C-j" . vertico-next)
+          ("C-k" . vertico-previous))
   :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package vertico-directory
@@ -16,11 +15,10 @@
   :ensure nil
   :config
   (message "vertico-directory is loaded")
-  :bind (;; placeholder
-         :map vertico-map
-         ("RET" . vertico-directory-enter)
-         ("DEL" . vertico-directory-delete-char)
-         ("M-DEL" . vertico-directory-delete-word))
+  :bind ( :map vertico-map
+          ("RET" . vertico-directory-enter)
+          ("DEL" . vertico-directory-delete-char)
+          ("M-DEL" . vertico-directory-delete-word))
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
 
 (use-package marginalia

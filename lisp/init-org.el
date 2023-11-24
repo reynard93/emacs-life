@@ -28,9 +28,8 @@
   (org-log-into-drawer t)
   (org-log-done 'time)
 
-  :bind (;; placeholder
-         :map org-mode-map
-         ("C-M-S-h" . org-babel-mark-block))
+  :bind ( :map org-mode-map
+          ("C-M-S-h" . org-babel-mark-block))
 
   :hook (org-capture-mode . evil-insert-state))
 
@@ -83,8 +82,7 @@
   (org-cite-insert-processor 'citar)
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
-  :bind (;; placeholder
-         :map org-mode-map
-         ("C-c i" . org-cite-insert)))
+  :bind ( :map org-mode-map
+          ("C-c i" . org-cite-insert)))
 
 (provide 'init-org)
