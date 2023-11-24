@@ -49,10 +49,10 @@
   :after evil
   :config
   (message "evil-nerd-commenter is loaded")
-  (general-define-key :states '(normal visual)
-                      "gcc" #'evilnc-comment-or-uncomment-lines
-                      "gcp" #'evilnc-comment-or-uncomment-paragraphs
-                      "gcy" #'evilnc-copy-and-comment-lines))
+  (evil-define-key '(normal visual) 'global
+    "gcc" #'evilnc-comment-or-uncomment-lines
+    "gcp" #'evilnc-comment-or-uncomment-paragraphs
+    "gcy" #'evilnc-copy-and-comment-lines))
 
 (use-package evil-snipe
   :pin melpa
@@ -73,8 +73,8 @@
   :after evil
   :config
   (message "avy is loaded")
-  (general-define-key :states '(normal visual)
-                      "gss" #'evil-avy-goto-char-2))
+  (evil-define-key '(normal visual) 'global
+    "gss" #'evil-avy-goto-char-2))
 
 (use-package goggles
   :pin melpa
@@ -92,11 +92,12 @@
 
 (use-package hl-todo
   :pin melpa
+  :after evil
   :config
   (message "hl-todo is loaded")
-  (general-define-key :states '(motion)
-                      "]t" #'hl-todo-next
-                      "[t" #'hl-todo-previous)
+  (evil-define-key 'motion 'global
+    "]t" #'hl-todo-next
+    "[t" #'hl-todo-previous)
   :hook prog-mode)
 
 (use-package smartparens

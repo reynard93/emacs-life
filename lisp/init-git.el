@@ -29,13 +29,13 @@
 
 (use-package git-gutter
   :pin melpa
-  :defer 1
+  :after evil
   :config
   (message "git-gutter is loaded")
   (global-git-gutter-mode 1)
-  (general-define-key :states '(motion)
-                      "]d" #'git-gutter:next-hunk
-                      "[d" #'git-gutter:previous-hunk)
+  (evil-define-key 'motion 'global
+    "]d" #'git-gutter:next-hunk
+    "[d" #'git-gutter:previous-hunk)
   :custom
   (git-gutter:added-sign " ")
   (git-gutter:deleted-sign " ")
