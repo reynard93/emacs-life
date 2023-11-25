@@ -2,7 +2,9 @@
   :pin melpa
   :config
   (message "magit is loaded")
-  (add-to-list 'savehist-additional-variables 'log-edit-comment-ring)
+
+  (when (featurep 'savehist)
+    (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
 
   ;; git push with skip-ci option
   (transient-append-suffix 'magit-push "-n"
