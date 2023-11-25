@@ -164,6 +164,7 @@
     "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
     "tn"  '(yejun/toggle-nix-formatter :which-key "Nix formatter")
     "tr"  '(read-only-mode :which-key "Read-only mode")
+    "tR"  '(repeat-mode :which-key "Repeat mode")
     "tv"  '(visible-mode :which-key "Visible mode")
 
     "w"   '(evil-window-map :which-key "window")
