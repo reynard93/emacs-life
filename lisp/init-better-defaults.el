@@ -6,6 +6,18 @@
       make-backup-files nil           ; Avoid creating "filename~"
       enable-recursive-minibuffers t) ; M-x in M-x
 
+(when (display-graphic-p)
+  (tool-bar-mode -1))
+
+(unless (display-graphic-p)
+  (menu-bar-mode -1))
+
+(use-package scroll-bar
+  :ensure nil
+  :config
+  (message "scroll-bar is loaded")
+  (set-scroll-bar-mode nil))
+
 (use-package recentf
   :ensure nil
   :config
