@@ -67,6 +67,7 @@
   :init
   (setq server-name "gui")
   :config
+  (message "server is loaded")
   (unless (server-running-p)
     (server-start)))
 
