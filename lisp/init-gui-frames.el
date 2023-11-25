@@ -22,6 +22,7 @@
   (winner-mode 1))
 
 (use-package beframe
+  :when (display-graphic-p)
   :config
   (message "beframe is loaded")
   (beframe-mode 1)
