@@ -161,6 +161,7 @@
 
     "t"   '(:ignore t :which-key "toggle")
     "tf"  '(flymake-mode :which-key "Flymake")
+    "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
     "tn"  '(yejun/toggle-nix-formatter :which-key "Nix formatter")
     "tr"  '(read-only-mode :which-key "Read-only mode")
     "tv"  '(visible-mode :which-key "Visible mode")
