@@ -108,18 +108,4 @@ The path is relative to `project-current'."
       (kill-new (thing-at-point 'line)))
     (kill-buffer output-buffer)))
 
-(defun yejun/toggle-presentation ()
-  (interactive)
-  (if (eq fontaine-current-preset 'presentation)
-      (yejun/stop-presentation)
-    (yejun/start-presentation)))
-
-(defun yejun/start-presentation ()
-  (fontaine-set-preset 'presentation)
-  (logos-focus-mode 1))
-
-(defun yejun/stop-presentation ()
-  (fontaine-set-preset 'default)
-  (logos-focus-mode -1))
-
 (provide 'init-lib)
