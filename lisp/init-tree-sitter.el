@@ -1,6 +1,6 @@
 (use-package treesit
   :ensure nil
-  :preface
+  :init
   (setq treesit-language-source-alist
         '((ruby "https://github.com/tree-sitter/tree-sitter-ruby")
           (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
