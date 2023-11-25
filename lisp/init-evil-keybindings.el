@@ -160,10 +160,8 @@
     "st"  #'osx-dictionary-search-word-at-point
 
     "t"   '(:ignore t :which-key "toggle")
-    "tf"  '(flymake-mode :which-key "Flymake")
-    "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
-    "tn"  '(yejun/toggle-nix-formatter :which-key "Nix formatter")
-    "tp"  '(yejun/toggle-presentation :which-key "Presentation")
+    "tf"  '(flymake-mode :which-key "Flymake mode")
+    "tF"  '(logos-focus-mode :which-key "Logos-Focus Mode")
     "tr"  '(read-only-mode :which-key "Read-only mode")
     "tR"  '(repeat-mode :which-key "Repeat mode")
     "tv"  '(visible-mode :which-key "Visible mode")
