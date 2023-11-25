@@ -163,6 +163,7 @@
     "tf"  '(flymake-mode :which-key "Flymake")
     "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
     "tn"  '(yejun/toggle-nix-formatter :which-key "Nix formatter")
+    "tp"  '(yejun/toggle-presentation :which-key "Presentation")
     "tr"  '(read-only-mode :which-key "Read-only mode")
     "tR"  '(repeat-mode :which-key "Repeat mode")
     "tv"  '(visible-mode :which-key "Visible mode")
