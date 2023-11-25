@@ -68,4 +68,44 @@ The path is relative to `project-current'."
         (call-process "open" nil 0 nil "-R" filename)
       (user-error "Buffer is not visiting a file"))))
 
+(defun yejun/gh-pr-create ()
+  (interactive)
+  (shell-command "gh pr create -w"))
+
+(defun yejun/gh-pr-view ()
+  (interactive)
+  (shell-command "gh pr view -w"))
+
+(defun yejun/gist-region-or-buffer (&optional p)
+  (interactive "P")
+  (let ((filename (buffer-name))
+        (output-buffer " *gist-output*")
+        (public (if p " --public" "")))
+    (shell-command-on-region
+     (if (use-region-p) (region-beginning) (point-min))
+     (if (use-region-p) (region-end) (point-max))
+     (concat "gh gist create --filename " filename public " -")
+     output-buffer)
+    (with-current-buffer output-buffer
+      (goto-char (point-max))
+      (forward-line -1)
+      (kill-new (thing-at-point 'line)))
+    (kill-buffer output-buffer)))
+
+(defun yejun/paste-region-or-buffer (&optional p)
+  (interactive "P")
+  (let ((filename (read-string "Enter filename: " (buffer-name)))
+        (output-buffer " *paste-output*")
+        (public (if p " --visibility public" "")))
+    (shell-command-on-region
+     (if (use-region-p) (region-beginning) (point-min))
+     (if (use-region-p) (region-end) (point-max))
+     (concat "hut paste create --name \"" filename "\"" public)
+     output-buffer)
+    (with-current-buffer output-buffer
+      (goto-char (point-max))
+      (forward-line -1)
+      (kill-new (thing-at-point 'line)))
+    (kill-buffer output-buffer)))
+
 (provide 'init-lib)
