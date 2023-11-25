@@ -1,8 +1,7 @@
 (use-package nix-mode
   :pin melpa
-  :config
-  (message "nix-mode is loaded")
-
+  :init
+  (setq nix-nixfmt-bin "nixfmt")
   (defun yejun/toggle-nix-formatter ()
     (interactive)
     (if (string-match "nixfmt" nix-nixfmt-bin)
@@ -10,11 +9,11 @@
       (setq nix-nixfmt-bin "nixfmt"))
     (message (concat "Switched nix-nixfmt-bin to " nix-nixfmt-bin)))
 
+  :config
+  (message "nix-mode is loaded")
+
   (defun nix-formatter-mode-line-display ()
     (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))
-
-  :custom
-  (nix-nixfmt-bin "nixfmt")
 
   :hook
   (nix-mode . nix-formatter-mode-line-display)
