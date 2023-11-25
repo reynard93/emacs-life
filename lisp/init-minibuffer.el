@@ -72,7 +72,7 @@
   (message "consult-dir is loaded"))
 
 (use-package embark
-  :after vertico
+  :demand t
   :init
   (setq which-key-use-C-h-commands nil
         prefix-help-command #'embark-prefix-help-command)
