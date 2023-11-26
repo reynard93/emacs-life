@@ -154,9 +154,8 @@
 
     "t"   '(:ignore t :which-key "toggle")
     "tf"  '(flymake-mode :which-key "Flymake mode")
-    "tF"  '(logos-focus-mode :which-key "Logos-Focus Mode")
-    "tr"  '(read-only-mode :which-key "Read-only mode")
-    "tR"  '(repeat-mode :which-key "Repeat mode")
+    "tl"  '(logos-focus-mode :which-key "Logos-Focus Mode")
+    "tr"  '(repeat-mode :which-key "Repeat mode")
     "tv"  '(visible-mode :which-key "Visible mode")
 
     "w"   '(evil-window-map :which-key "window")
