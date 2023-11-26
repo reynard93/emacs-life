@@ -119,7 +119,7 @@
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
     "om"  #'mu4e
-    "oo"  #'yejun/reveal-in-finder
+    "oo"  #'yejun/macos-reveal-in-finder
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append

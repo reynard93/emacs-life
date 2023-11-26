@@ -61,7 +61,7 @@ The path is relative to `project-current'."
       (kill-buffer buffer)
       (message "Deleted %s" path))))
 
-(defun yejun/reveal-in-finder ()
+(defun yejun/macos-reveal-in-finder ()
   (interactive)
   (let ((filename (buffer-file-name)))
     (if filename
