@@ -2,7 +2,8 @@
   :pin melpa
   :defer t
   :config
-  (message "osx-dictionary is loaded"))
+  (message "osx-dictionary is loaded")
+  (evil-collection-init 'osx-dictionary))
 
 (use-package dash-at-point
   :pin melpa

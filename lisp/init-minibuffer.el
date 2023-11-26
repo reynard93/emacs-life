@@ -80,6 +80,7 @@
   (embark-cycle-key "C-;")
   :config
   (message "embark is loaded")
+  (evil-collection-init 'embark)
 
   ;; Use which-key like a key menu prompt
   ;; https://github.com/oantolin/embark/wiki/Additional-Configuration#use-which-key-like-a-key-menu-prompt

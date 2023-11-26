@@ -6,14 +6,18 @@
   :defer t
   :init
   (setq mu4e-maildir "~/.mail")
+
   :config
   (message "mu4e is loaded")
+  (evil-collection-init 'mu4e)
+
   (setq mu4e-maildir-shortcuts
         '((:maildir "/Inbox"             :key ?i)
           (:maildir "/[Gmail]/Sent Mail" :key ?s)
           (:maildir "/[Gmail]/Drafts"    :key ?d)
           (:maildir "/[Gmail]/Trash"     :key ?t)
           (:maildir "/[Gmail]/All Mail"  :key ?a)))
+
   (setq mu4e-bookmarks
         '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key ?u)
           (:name "Today's messages" :query "date:today..now" :key ?t)
@@ -21,6 +25,7 @@
           (:name "Messages with images" :query "mime:image/*" :key ?p)
           (:name "SourceHut lists" :query "lists.sr.ht" :key ?s)
           (:name "GitHub notifications" :query "github.com" :key ?g)))
+
   :custom
   (mu4e-update-interval (* 15 60))
   (mu4e-get-mail-command "mbsync -a"))

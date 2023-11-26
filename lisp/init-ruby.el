@@ -24,6 +24,7 @@
   :mode "Procfile\\'"
   :mode "Procfile\\.dev\\'"
   :config
-  (message "yaml-mode is loaded"))
+  (message "yaml-mode is loaded")
+  (evil-collection-init 'yaml-mode))
 
 (provide 'init-ruby)

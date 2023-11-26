@@ -1,10 +1,3 @@
-(use-package evil-collection
-  :pin melpa
-  :after evil
-  :config
-  (message "evil-collection is loaded")
-  (evil-collection-init))
-
 (use-package general
   :pin melpa
   :after evil

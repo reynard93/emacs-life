@@ -7,6 +7,7 @@
 
 (require 'init-better-defaults)
 (require 'init-macos-keybindings)
+(require 'init-evil-keybindings)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 (require 'init-windows)
@@ -28,4 +29,3 @@
 (require 'init-irc)
 (require 'init-lookup)
 (require 'init-network-tools)
-(require 'init-evil-keybindings)
