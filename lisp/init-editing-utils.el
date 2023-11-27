@@ -48,7 +48,7 @@
   :after evil
   :config
   (message "evil-collection is loaded")
-  (evil-collection-init '(calendar dired ediff eglot xref)))
+  (evil-collection-init '(calendar dired ediff eglot flymake xref)))
 
 (use-package evil-nerd-commenter
   :pin nongnu
