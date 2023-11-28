@@ -5,24 +5,32 @@
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (setq native-comp-async-report-warnings-errors 'silent)
 
+;; basic
 (require 'init-better-defaults)
 (require 'init-macos-keybindings)
 (require 'init-evil-keybindings)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 (require 'init-windows)
-(require 'init-themes)
-(require 'init-mode-line)
+
+;; core
 (require 'init-minibuffer)
-(require 'init-corfu)
-(require 'init-denote)
+(require 'init-completion)
+(require 'init-appearance)
+
+;; note-taking
 (require 'init-org)
-(require 'init-git)
+(require 'init-denote)
+
+;; programming
 (require 'init-tree-sitter)
 (require 'init-nix)
 (require 'init-ruby)
 (require 'init-elixir)
 (require 'init-web)
+
+;; tools
+(require 'init-git)
 (require 'init-pass)
 (require 'init-mail)
 (require 'init-rss)

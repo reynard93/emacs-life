@@ -1,3 +1,49 @@
+(use-package evil
+  :pin melpa
+  :demand t
+  :init
+  (setq evil-normal-state-cursor 'box
+        evil-insert-state-cursor 'bar
+        evil-visual-state-cursor 'hollow)
+  :config
+  (message "evil is loaded")
+  (evil-select-search-module 'evil-search-module 'evil-search)
+  (evil-mode 1)
+  :custom
+  (evil-want-keybinding nil)            ; required by evil-collection
+  (evil-kill-on-visual-paste nil)       ; avoid adding replaced text to kill-ring
+  ;; undo
+  (evil-undo-system 'undo-redo)         ; required by `evil-redo'
+  (evil-want-fine-undo t)
+  ;; copy
+  (evil-visual-update-x-selection-p nil)
+  ;; search
+  (evil-symbol-word-search t)
+  (evil-ex-visual-char-range t)
+  ;; replace
+  (evil-ex-substitute-global t)
+  ;; move
+  (evil-move-cursor-back nil)
+  (evil-move-beyond-eol nil)
+  ;; window
+  (evil-vsplit-window-right t)
+  (evil-split-window-below t)
+  :bind ( :map evil-ex-completion-map
+          ("C-a" . evil-beginning-of-line)
+          ("C-b" . evil-backward-char)
+          ("C-f" . evil-forward-char)
+          :map evil-ex-search-keymap
+          ("C-a" . evil-beginning-of-line)
+          ("C-b" . evil-backward-char)
+          ("C-f" . evil-forward-char)))
+
+(use-package evil-collection
+  :pin melpa
+  :after evil
+  :config
+  (message "evil-collection is loaded")
+  (evil-collection-init '(calendar dired ediff eglot flymake replace xref)))
+
 (use-package general
   :pin melpa
   :after evil

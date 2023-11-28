@@ -58,4 +58,4 @@
   :config
   (message "tempel-collection is loaded"))
 
-(provide 'init-corfu)
+(provide 'init-completion)
