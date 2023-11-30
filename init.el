@@ -28,6 +28,7 @@
 (require 'init-ruby)
 (require 'init-elixir)
 (require 'init-web)
+(require 'init-yaml)
 
 ;; tools
 (require 'init-git)
