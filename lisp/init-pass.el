@@ -1,4 +1,4 @@
-(add-to-list 'auth-sources "~/.password-store/authinfo.gpg")
+(add-to-list 'auth-sources "~/.password-store/.authinfo.gpg")
 
 (use-package pass
   :pin melpa
