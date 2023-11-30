@@ -5,7 +5,14 @@
   :custom
   (chatgpt-shell-welcome-function nil)
   (chatgpt-shell-model-version (cl-position "gpt-4" chatgpt-shell-model-versions :test 'string=))
-  (chatgpt-shell-openai-key (lambda () (auth-source-pick-first-password :host "api.openai.com")))
+  (chatgpt-shell-openai-key (lambda () (auth-source-pick-first-password :host "beepboop.openai.azure.com")))
+
+  ;; Azure OpenAI
+  (chatgpt-shell-api-url-base "https://beepboop.openai.azure.com")
+  (chatgpt-shell-api-url-path "/openai/deployments/gpt-4/chat/completions?api-version=2023-07-01-preview")
+  (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
+  (chatgpt-shell-streaming nil)
+
   :bind (("C-c z z" . chatgpt-shell)
          ("C-c z b" . chatgpt-shell-prompt)
          ("C-c z c" . chatgpt-shell-prompt-compose)
