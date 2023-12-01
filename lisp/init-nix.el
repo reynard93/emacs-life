@@ -1,5 +1,17 @@
 (use-package nix-mode
   :pin melpa
+  :preface
+  (defun org-babel-execute:nix (body params)
+    (setq strict-option (if (assoc :strict params) "--strict" ""))
+    (with-temp-buffer
+      (insert body)
+      (shell-command-on-region
+       (point-min) (point-max)
+       (concat "nix-instantiate --eval " strict-option " - <<EOF\n$(cat)\nEOF")
+       (current-buffer)
+       t)
+      (buffer-string)))
+
   :init
   (setq nix-nixfmt-bin "nixfmt")
   (defun yejun/toggle-nix-formatter ()
@@ -11,24 +23,12 @@
 
   :config
   (message "nix-mode is loaded")
-
   (defun nix-formatter-mode-line-display ()
     (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))
 
   :hook
   (nix-mode . nix-formatter-mode-line-display)
   (before-save . nix-format-before-save))
-
-(defun org-babel-execute:nix (body params)
-  (setq strict-option (if (assoc :strict params) "--strict" ""))
-  (with-temp-buffer
-    (insert body)
-    (shell-command-on-region
-     (point-min) (point-max)
-     (concat "nix-instantiate --eval " strict-option " - <<EOF\n$(cat)\nEOF")
-     (current-buffer)
-     t)
-    (buffer-string)))
 
 (use-package envrc
   :pin melpa
