@@ -57,6 +57,16 @@
   (evil-org-agenda-set-keys)
   :hook (org-mode . (lambda () evil-org-mode)))
 
+(use-package ob
+  :ensure nil
+  :after org
+  :config
+  (message "ob is loaded")
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (shell . t))))
+
 (use-package ox-hugo
   :pin melpa
   :after ox
