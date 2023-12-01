@@ -13,9 +13,8 @@
 
 (defun yejun/lookup-online ()
   (interactive)
-  (let* ((url "https://kagi.com/search?q=%s")
-         (query (read-string "Search for: " (thing-at-point 'symbol t))))
-    (browse-url (format url query))))
+  (let ((query (read-string "Search for: " (thing-at-point 'symbol t))))
+    (browse-url (format "https://kagi.com/search?q=%s" query))))
 
 (defun yejun/google-translate (source-lang target-lang)
   (let ((query (if (use-region-p)
