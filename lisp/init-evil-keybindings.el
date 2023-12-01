@@ -187,6 +187,7 @@
 
     "s"   '(:ignore t :which-key "search")
     "sg"  #'yejun/google-translate-guess-source-lang
+    "sG"  #'yejun/google-translate-guess-source-lang-force-select
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
     "sk"  #'dash-at-point
