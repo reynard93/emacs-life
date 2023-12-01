@@ -186,6 +186,7 @@
     "qQ"  #'evil-quit-all-with-error-code
 
     "s"   '(:ignore t :which-key "search")
+    "sg"  #'yejun/google-translate-guess-source-lang
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
     "sk"  #'dash-at-point
