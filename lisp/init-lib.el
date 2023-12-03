@@ -1,33 +1,33 @@
-(defun yejun/find-file-in-project (&optional dir)
+(defun +project/browse-files (&optional dir)
   (interactive)
   (when-let* ((project (project-current nil dir))
               (default-directory (project-root project)))
     (project-find-file-in nil nil project)))
 
-(defun +project-root-dir (&optional dir)
+(defun +project/root-dir (&optional dir)
   (if-let ((project (project-current nil dir)))
       (project-root project)
     nil))
 
-(defun yejun/search-project (&optional dir thing)
+(defun +project/search (&optional dir thing)
   (interactive)
   (consult-ripgrep
-   (+project-root-dir dir)
+   (+project/root-dir dir)
    (when thing (thing-at-point thing))))
 
-(defun yejun/search-project-for-symbol-at-point ()
+(defun +project/search-for-symbol-at-point ()
   (interactive)
-  (yejun/search-project nil 'symbol))
+  (+project/search nil 'symbol))
 
-(defun yejun/search-buffer (&optional thing)
+(defun +buffer/search (&optional thing)
   (interactive)
   (consult-line (when thing (thing-at-point thing))))
 
-(defun yejun/search-buffer-for-symbol-at-point ()
+(defun +buffer/search-for-symbol-at-point ()
   (interactive)
-  (yejun/search-buffer 'symbol))
+  (+buffer/search 'symbol))
 
-(defun yejun/yank-buffer-path (&optional buffer dir)
+(defun +buffer/yank-path (&optional buffer dir)
   "Save the buffer path into the kill-ring.
 If BUFFER is not nil, find filename of BUFFER, otherwise, find
 filename of `current-buffer'. If DIR is not nil, get a relative
@@ -45,13 +45,13 @@ file path, otherwise, get a full file path with
         (message "Copied path: %s" path))
     (user-error "Buffer is not visiting a file")))
 
-(defun yejun/yank-buffer-path-relative-to-project ()
+(defun +buffer/yank-path-relative-to-project ()
   "Save the relative buffer path into the kill-ring.
 The path is relative to `project-current'."
   (interactive)
-  (yejun/yank-buffer-path nil (+project-root-dir)))
+  (+buffer/yank-path nil (+project/root-dir)))
 
-(defun yejun/delete-this-file ()
+(defun +file/delete-this-file ()
   (interactive)
   (when-let* ((buffer (current-buffer))
               (filename (buffer-file-name buffer))
@@ -61,22 +61,22 @@ The path is relative to `project-current'."
       (kill-buffer buffer)
       (message "Deleted %s" path))))
 
-(defun yejun/macos-reveal-in-finder ()
+(defun +macos/reveal-in-finder ()
   (interactive)
   (let ((filename (buffer-file-name)))
     (if filename
         (call-process "open" nil 0 nil "-R" filename)
       (user-error "Buffer is not visiting a file"))))
 
-(defun yejun/gh-pr-create ()
+(defun +github/create-pull-request ()
   (interactive)
   (shell-command "gh pr create -w"))
 
-(defun yejun/gh-pr-view ()
+(defun +github/browse-pull-request ()
   (interactive)
   (shell-command "gh pr view -w"))
 
-(defun yejun/gist-region-or-buffer (&optional p)
+(defun +github/create-gist-region-or-buffer (&optional p)
   (interactive "P")
   (let ((filename (buffer-name))
         (output-buffer " *gist-output*")
@@ -92,7 +92,7 @@ The path is relative to `project-current'."
       (kill-new (thing-at-point 'line)))
     (kill-buffer output-buffer)))
 
-(defun yejun/paste-region-or-buffer (&optional p)
+(defun +sourcehut/create-paste-region-or-buffer (&optional p)
   (interactive "P")
   (let ((filename (read-string "Enter filename: " (buffer-name)))
         (output-buffer " *paste-output*")

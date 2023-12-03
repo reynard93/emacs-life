@@ -69,8 +69,8 @@
     "'"   #'vertico-repeat
     "."   #'popper-cycle
     ","   #'popper-toggle
-    "/"   #'yejun/search-project
-    "*"   #'yejun/search-project-for-symbol-at-point
+    "/"   #'+project/search
+    "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
     ";"   #'pp-eval-expression
 
@@ -96,20 +96,19 @@
     "c"   '(:ignore t :which-key "code")
     "cc"  #'compile
     "cC"  #'recompile
-    "cg"  #'yejun/gist-region-or-buffer
-    "cp"  #'yejun/paste-region-or-buffer
+    "cg"  #'+github/create-gist-region-or-buffer
+    "cp"  #'+sourcehut/create-paste-region-or-buffer
     "cw"  #'delete-trailing-whitespace
 
     "f"   '(:ignore t :which-key "file")
-    "fb"  #'yejun/browse-blog
-    "fD"  #'yejun/delete-this-file
+    "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
     "fs"  #'save-buffer
     "fS"  #'write-file
     "fr"  #'recentf-open-files
-    "fy"  #'yejun/yank-buffer-path
-    "fY"  #'yejun/yank-buffer-path-relative-to-project
+    "fy"  #'+buffer/yank-path
+    "fY"  #'+buffer/yank-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
     "g,"  #'magit-file-dispatch
@@ -131,8 +130,12 @@
     "gt"  #'git-timemachine-toggle
     "gU"  #'magit-unstage-file
 
+    "gc"  '(:ignore t :which-key "create")
+    "gcp" #'+github/create-pull-request
+
     "go"  '(:ignore t :which-key "open in browser")
     "goo" #'browse-at-remote
+    "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
     "na"  #'org-agenda
@@ -143,7 +146,7 @@
     "nd"  #'denote-date
     "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
-    "nF"  #'yejun/browse-org
+    "nF"  #'+org/browse-files
     "nl"  #'denote-link
     "nn"  #'denote
     "nN"  #'denote-type
@@ -167,7 +170,7 @@
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
     "om"  #'mu4e
-    "oo"  #'yejun/macos-reveal-in-finder
+    "oo"  #'+macos/reveal-in-finder
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
@@ -196,10 +199,10 @@
     "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
     "so"  #'yejun/lookup-online
-    "ss"  #'yejun/search-buffer
-    "sS"  #'yejun/search-buffer-for-symbol-at-point
-    "sr"  #'yejun/search-project
-    "sR"  #'yejun/search-project-for-symbol-at-point
+    "ss"  #'+buffer/search
+    "sS"  #'+buffer/search-for-symbol-at-point
+    "sr"  #'+project/search
+    "sR"  #'+project/search-for-symbol-at-point
     "st"  #'osx-dictionary-search-word-at-point
 
     "t"   '(:ignore t :which-key "toggle")
@@ -281,14 +284,10 @@
 
 (defun yejun/browse-emacs-config ()
   (interactive)
-  (yejun/find-file-in-project "~/.config/emacs"))
+  (+project/browse-files "~/.config/emacs"))
 
 (defun yejun/browse-nix-config ()
   (interactive)
-  (yejun/find-file-in-project "~/.config/nix-config/"))
-
-(defun yejun/browse-blog ()
-  (interactive)
-  (yejun/find-file-in-project "~/src/yejun.dev"))
+  (+project/browse-files "~/.config/nix-config/"))
 
 (provide 'init-evil-keybindings)

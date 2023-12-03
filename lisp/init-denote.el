@@ -5,11 +5,11 @@
 
   (defun +denote/search ()
     (interactive)
-    (yejun/search-project denote-directory))
+    (+project/search denote-directory))
 
   (defun +denote/search-for-symbol-at-point ()
     (interactive)
-    (yejun/search-project denote-directory 'symbol))
+    (+project/search denote-directory 'symbol))
 
   (defun +denote/scratch ()
     (interactive)

@@ -5,9 +5,9 @@
   (setq org-directory "~/src/org"
         org-agenda-files (list org-directory))
 
-  (defun yejun/browse-org ()
+  (defun +org/browse-files ()
     (interactive)
-    (yejun/find-file-in-project org-directory))
+    (+project/browse-files org-directory))
 
   ;; https://github.com/doomemacs/doomemacs/blob/986398504d09e585c7d1a8d73a6394024fe6f164/modules/lang/org/autoload/org.el#L318-L336
   (defun +org/toggle-last-clock (arg)
