@@ -137,7 +137,7 @@
     "na"  #'org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
-    "nc"  #'yejun/toggle-last-clock
+    "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-cancel
     "nd"  #'denote-date
     "nD"  #'denote-subdirectory
