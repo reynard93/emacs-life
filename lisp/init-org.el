@@ -9,6 +9,36 @@
     (interactive)
     (yejun/find-file-in-project org-directory))
 
+  ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/config.el#L132
+  (setq org-refile-targets
+        '((nil :maxlevel . 3)
+          (org-agenda-files :maxlevel . 3))
+        org-refile-use-outline-path 'file
+        org-outline-path-complete-in-steps nil)
+
+  ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/autoload/org-refile.el
+  (defun +org/refile-to-current-file (arg &optional file)
+    "Refile current heading to elsewhere in the current buffer.
+If prefix ARG, copy instead of move."
+    (interactive "P")
+    (let ((org-refile-targets `((,file :maxlevel . 10)))
+          (org-refile-use-outline-path t)
+          (org-refile-keep arg)
+          current-prefix-arg)
+      (call-interactively #'org-refile)))
+
+  (defun +org/refile-to-file (arg file)
+    "Refile current heading to a particular org file.
+If prefix ARG, copy instead of move."
+    (interactive
+     (list current-prefix-arg
+           (read-file-name "Select file to refile to: "
+                           default-directory
+                           (buffer-file-name (buffer-base-buffer))
+                           t nil
+                           (lambda (f) (string-match-p "\\.org$" f)))))
+    (+org/refile-to-current-file arg file))
+
   :config
   (message "org is loaded")
   (setq org-todo-keywords

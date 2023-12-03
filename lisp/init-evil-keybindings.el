@@ -151,7 +151,6 @@
     "nS"  #'yejun/search-notes-for-symbol-at-point
     "nt"  #'denote-template
     "nT"  #'org-todo-list
-    "nx"  #'org-capture-goto-last-stored
 
     "o"   '(:ignore t :which-key "open")
 
@@ -255,6 +254,8 @@
     "g"  '(:ignore t :which-key "goto")
     "gg" #'consult-org-heading
     "gG" #'consult-org-agenda
+    "gr" #'org-refile-goto-last-stored
+    "gx" #'org-capture-goto-last-stored
 
     "l"  '(:ignore t :which-key "links")
     "ll" #'org-insert-link
@@ -265,6 +266,13 @@
 
     "o"  #'org-set-property
     "p"  #'org-priority
+
+    "r"  '(:ignore t :which-key "refile")
+    "r." #'+org/refile-to-current-file
+    "rf" #'+org/refile-to-file
+    "rr" #'org-refile
+    "rR" #'org-refile-reverse
+
     "t"  #'org-todo)
   )
 
