@@ -191,14 +191,14 @@
     "qQ"  #'evil-quit-all-with-error-code
 
     "s"   '(:ignore t :which-key "search")
-    "sg"  #'yejun/google-translate-guess-source-lang
-    "sG"  #'yejun/google-translate-guess-source-lang-force-select
+    "sg"  #'+lookup/google-translate-guess-source-lang
+    "sG"  #'+lookup/google-translate-guess-source-lang-force-select
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
     "sk"  #'dash-at-point
     "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
-    "so"  #'yejun/lookup-online
+    "so"  #'+lookup/search-kagi
     "ss"  #'+buffer/search
     "sS"  #'+buffer/search-for-symbol-at-point
     "sr"  #'+project/search
