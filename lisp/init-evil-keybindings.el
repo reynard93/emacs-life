@@ -141,7 +141,7 @@
     "nC"  #'org-clock-cancel
     "nd"  #'denote-date
     "nD"  #'denote-subdirectory
-    "nf"  #'yejun/browse-notes
+    "nf"  #'denote-open-or-create-with-command
     "nF"  #'yejun/browse-org
     "nl"  #'denote-link
     "nn"  #'denote

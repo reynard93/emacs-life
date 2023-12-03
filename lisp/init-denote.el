@@ -3,10 +3,6 @@
   :preface
   (setq denote-directory "~/src/notes")
 
-  (defun yejun/browse-notes ()
-    (interactive)
-    (yejun/find-file-in-project denote-directory))
-
   (defun yejun/search-notes ()
     (interactive)
     (yejun/search-project denote-directory))
