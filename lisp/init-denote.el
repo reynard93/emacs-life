@@ -3,13 +3,19 @@
   :preface
   (setq denote-directory "~/src/notes")
 
-  (defun yejun/search-notes ()
+  (defun +denote/search ()
     (interactive)
     (yejun/search-project denote-directory))
 
-  (defun yejun/search-notes-for-symbol-at-point ()
+  (defun +denote/search-for-symbol-at-point ()
     (interactive)
     (yejun/search-project denote-directory 'symbol))
+
+  (defun +denote/scratch ()
+    (interactive)
+    (let ((denote-prompts '(keywords))
+          (denote-file-type 'text))
+      (call-interactively #'denote)))
 
   :config
   (message "denote is loaded")

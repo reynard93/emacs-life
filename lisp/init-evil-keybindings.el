@@ -76,6 +76,7 @@
 
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
+    "x"   #'+denote/scratch
     "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
@@ -147,8 +148,10 @@
     "nn"  #'denote
     "nN"  #'denote-type
     "no"  #'org-clock-goto
-    "ns"  #'yejun/search-notes
-    "nS"  #'yejun/search-notes-for-symbol-at-point
+    "ns"  #'+denote/search
+    "nS"  #'+denote/search-for-symbol-at-point
+    "nr"  #'denote-change-file-type-and-front-matter
+    "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'denote-template
     "nT"  #'org-todo-list
 
