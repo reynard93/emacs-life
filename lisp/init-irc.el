@@ -18,12 +18,12 @@
   (circe-set-display-handler "353" 'circe-display-ignore)
   (circe-set-display-handler "366" 'circe-display-ignore)
 
-  (defun yejun/pull-chat-history ()
+  (defun +irc/pull-chat-history ()
     (interactive)
     (circe-command-QUOTE
      (format "CHATHISTORY LATEST %s * 50" circe-chat-target)))
 
-  (defun yejun/jump-to-channel ()
+  (defun +irc/jump-to-channel ()
     (interactive)
     (let* ((channel-buffers (delq nil
                                   (mapcar (lambda (buf)
@@ -35,8 +35,8 @@
       (when target
         (switch-to-buffer target))))
 
-  :bind (("s-k" . yejun/jump-to-channel)
+  :bind (("s-k" . +irc/jump-to-channel)
          :map circe-channel-mode-map
-         ("C-c C-p" . yejun/pull-chat-history)))
+         ("C-c C-p" . +irc/pull-chat-history)))
 
 (provide 'init-irc)

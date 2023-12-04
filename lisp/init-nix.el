@@ -14,7 +14,7 @@
 
   :init
   (setq nix-nixfmt-bin "nixfmt")
-  (defun yejun/toggle-nix-formatter ()
+  (defun +nix/toggle-formatter ()
     (interactive)
     (if (string-match "nixfmt" nix-nixfmt-bin)
         (setq nix-nixfmt-bin "nixpkgs-fmt")

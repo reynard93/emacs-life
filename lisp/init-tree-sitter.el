@@ -10,7 +10,7 @@
           (json "https://github.com/tree-sitter/tree-sitter-json")
           (toml "https://github.com/tree-sitter/tree-sitter-toml")))
 
-  (defun yejun/treesit-install-language-grammars ()
+  (defun +treesit/install-language-grammars ()
     "Build and install all tree-sitter language grammar libraries"
     (interactive)
     (mapc #'treesit-install-language-grammar

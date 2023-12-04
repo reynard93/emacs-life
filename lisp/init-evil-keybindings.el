@@ -182,7 +182,7 @@
     "opP" #'password-store-otp-token-copy
     "opr" #'password-store-rename
     "opR" #'password-store-remove
-    "opu" #'yejun/otp-key-uri
+    "opu" #'+pass/create-otp-key-uri
 
     "q"   '(:ignore t :which-key "quit")
     "qf"  #'delete-frame

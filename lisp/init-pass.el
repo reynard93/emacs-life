@@ -4,7 +4,7 @@
   :preface
   (add-to-list 'auth-sources "~/.password-store/.authinfo.gpg")
 
-  (defun yejun/otp-key-uri (issuer secret)
+  (defun +pass/create-otp-key-uri (issuer secret)
     "Create and copy the OTP key URI consisting of issuer and secret."
     (interactive (list (read-string "Issuer: ")
                        (read-passwd "Secret: " t)))
