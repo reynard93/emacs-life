@@ -11,12 +11,14 @@
 (global-set-key (kbd "s-v") #'yank)                      ; Paste
 (global-set-key (kbd "s-z") #'undo)                      ; Undo
 
-(defun yejun/move-beginning-of-line ()
-  (interactive)
+(defun move-beginning-of-line-advice (orig-fun &rest args)
+  "Advice to toggle point movement between first non-whitespace
+character and beginning of line."
   (let ((orig-point (point)))
     (beginning-of-line-text)
     (when (= orig-point (point))
-      (beginning-of-line))))
-(define-key global-map [remap move-beginning-of-line] 'yejun/move-beginning-of-line)
+      (apply orig-fun args))))
+
+(advice-add 'move-beginning-of-line :around #'move-beginning-of-line-advice)
 
 (provide 'init-macos-keybindings)
