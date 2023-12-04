@@ -50,16 +50,16 @@
   :config
   (message "general is loaded")
 
-  (general-create-definer yejun/leader-key
+  (general-create-definer +evil/leader-key
     :states '(normal visual)
     :keymaps 'override
     :prefix "SPC")
 
-  (general-create-definer yejun/local-leader-key
+  (general-create-definer +evil/local-leader-key
     :states '(normal visual)
     :prefix "SPC m")
 
-  (yejun/leader-key
+  (+evil/leader-key
     "u"   #'universal-argument
     "a"   #'embark-act
 
@@ -215,7 +215,7 @@
     "wu"  #'winner-undo
     "wr"  #'winner-redo)
 
-  (yejun/local-leader-key
+  (+evil/local-leader-key
     :keymaps 'ruby-ts-mode-map
     :major-modes t
     "b"  '(:ignore t :which-key "bundle")
@@ -232,7 +232,7 @@
     "kR" #'rake-regenerate-cache
     "kf" #'rake-find-task)
 
-  (yejun/local-leader-key
+  (+evil/local-leader-key
     :keymaps 'rspec-mode-map
     :major-modes t
     "t"  '(:ignore t :which-key "test")
@@ -243,7 +243,7 @@
     "tl" #'rspec-run-last-failed
     "te" #'rspec-toggle-example-pendingness)
 
-  (yejun/local-leader-key
+  (+evil/local-leader-key
     :keymaps 'org-mode-map
     :major-modes t
     "e"  #'org-export-dispatch
