@@ -17,16 +17,16 @@
 (require 'init-minibuffer)
 (require 'init-completion)
 (require 'init-appearance)
+(require 'init-tree-sitter)
 
 ;; note-taking
 (require 'init-org)
 (require 'init-denote)
 
 ;; programming
-(require 'init-tree-sitter)
+(require 'init-elixir)
 (require 'init-nix)
 (require 'init-ruby)
-(require 'init-elixir)
 (require 'init-web)
 (require 'init-yaml)
 
