@@ -1,5 +1,4 @@
 (defun +project/browse-files (&optional dir)
-  (interactive)
   (when-let* ((project (project-current nil dir))
               (default-directory (project-root project)))
     (project-find-file-in nil nil project)))
