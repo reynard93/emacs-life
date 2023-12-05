@@ -60,8 +60,6 @@
     :prefix "SPC m")
 
   (+evil/leader-key
-    "a"   #'embark-act
-
     "p"   project-prefix-map
     "h"   help-map
 
@@ -75,6 +73,7 @@
 
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
+    "a"   #'embark-act
     "x"   #'+denote/scratch
     "X"   #'org-capture
 
