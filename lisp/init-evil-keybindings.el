@@ -60,7 +60,6 @@
     :prefix "SPC m")
 
   (+evil/leader-key
-    "u"   #'universal-argument
     "a"   #'embark-act
 
     "p"   project-prefix-map
