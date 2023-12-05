@@ -67,8 +67,8 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    "."   #'popper-cycle
     ","   #'popper-toggle
+    "."   #'popper-toggle-type
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
