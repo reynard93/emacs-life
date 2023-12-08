@@ -3,7 +3,8 @@
   :defer t
   :config
   (message "osx-dictionary is loaded")
-  (evil-collection-init 'osx-dictionary))
+  (evil-collection-init 'osx-dictionary)
+  (evil-set-initial-state 'osx-dictionary-mode 'emacs))
 
 (use-package dash-at-point
   :pin melpa
