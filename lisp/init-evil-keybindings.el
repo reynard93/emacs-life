@@ -42,7 +42,7 @@
   :after evil
   :config
   (message "evil-collection is loaded")
-  (evil-collection-init '(calendar compile dired ediff eglot flymake help replace xref)))
+  (evil-collection-init '(calendar compile dired ediff eglot flymake help markdown replace xref)))
 
 (use-package general
   :pin melpa
