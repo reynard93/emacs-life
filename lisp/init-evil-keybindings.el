@@ -8,15 +8,17 @@
   :config
   (message "evil is loaded")
   (evil-select-search-module 'evil-search-module 'evil-search)
+  (evil-set-initial-state 'messages-buffer-mode 'emacs)
   (evil-mode 1)
   :custom
   (evil-want-keybinding nil)            ; required by evil-collection
-  (evil-kill-on-visual-paste nil)       ; avoid adding replaced text to kill-ring
   ;; undo
   (evil-undo-system 'undo-redo)         ; required by `evil-redo'
   (evil-want-fine-undo t)
   ;; copy
   (evil-visual-update-x-selection-p nil)
+  ;; kill
+  (evil-kill-on-visual-paste nil)
   ;; search
   (evil-symbol-word-search t)
   (evil-ex-visual-char-range t)
@@ -26,6 +28,7 @@
   (evil-move-cursor-back nil)
   (evil-move-beyond-eol nil)
   ;; window
+  (evil-want-C-w-in-emacs-state t)
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
   :bind ( :map evil-ex-completion-map
