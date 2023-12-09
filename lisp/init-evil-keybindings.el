@@ -129,6 +129,7 @@
     "gU"  #'magit-unstage-file
 
     "gc"  '(:ignore t :which-key "create")
+    "gcb" #'+git/create-backup-commit
     "gcp" #'+github/create-pull-request
 
     "go"  '(:ignore t :which-key "open in browser")

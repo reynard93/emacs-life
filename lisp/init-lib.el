@@ -107,4 +107,11 @@ The path is relative to `project-current'."
       (kill-new (thing-at-point 'line)))
     (kill-buffer output-buffer)))
 
+(defun +git/create-backup-commit ()
+  (interactive)
+  (let ((default-directory (+project/root-dir)))
+    (when default-directory
+      (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
+        (shell-command (format "git add --all && git commit -m \"%s\"" commit-message))))))
+
 (provide 'init-lib)
