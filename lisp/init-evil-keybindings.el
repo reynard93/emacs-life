@@ -283,6 +283,11 @@
     "rr" #'org-refile
     "rR" #'org-refile-reverse
 
+    "s"  '(:ignore t :which-key "subtree")
+    "sd" #'org-cut-subtree
+    "ss" #'org-sparse-tree
+    "sS" #'org-sort
+
     "t"  #'org-todo)
   )
 
