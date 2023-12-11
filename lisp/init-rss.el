@@ -2,7 +2,8 @@
   :pin melpa
   :defer t
   :config
-  (message "elfeed is loaded"))
+  (message "elfeed is loaded")
+  (evil-collection-init 'elfeed))
 
 (use-package elfeed-org
   :pin melpa
