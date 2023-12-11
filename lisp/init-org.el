@@ -74,6 +74,11 @@ If prefix ARG, copy instead of move."
         '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
           ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
 
+  ;; Advices
+  (defun move-to-eol-advice (&rest args) (end-of-line))
+  (advice-add 'org-meta-return :before #'move-to-eol-advice)
+  (advice-add 'org-insert-todo-heading :before #'move-to-eol-advice)
+
   :custom
   (org-startup-indented t)
   (org-src-preserve-indentation t)
