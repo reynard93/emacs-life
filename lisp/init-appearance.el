@@ -22,18 +22,21 @@
   :demand t
   :config
   (message "fontaine is loaded")
-  (fontaine-set-preset 'default)
+  (fontaine-set-preset 'regular)
   :custom
   (fontaine-presets
-   '((default
-      :default-height 160)
+   '((regular)
      (presentation
-      :default-height 240
       :default-weight semilight
+      :default-height 240
       :bold-weight extrabold)
      (t
       :default-family "JetBrains Mono"
       :default-weight regular
+      :default-height 160
+      :fixed-pitch-family nil
+      :fixed-pitch-weight nil
+      :fixed-pitch-height 1.0
       :variable-pitch-family "Iosevka"
       :variable-pitch-weight regular
       :variable-pitch-height 1.0)))
