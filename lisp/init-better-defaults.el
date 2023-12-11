@@ -28,7 +28,10 @@
   :ensure nil
   :config
   (message "savehist is loaded")
-  (savehist-mode 1))
+  (savehist-mode 1)
+  :custom
+  (history-length 500)
+  (history-delete-duplicates t))
 
 (use-package helpful
   :pin melpa
