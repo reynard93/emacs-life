@@ -275,6 +275,7 @@
 
     "o"  #'org-set-property
     "p"  #'org-priority
+    "q"  #'org-set-tags-command
 
     "r"  '(:ignore t :which-key "refile")
     "r." #'+org/refile-to-current-file
