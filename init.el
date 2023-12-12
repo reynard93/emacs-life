@@ -38,3 +38,6 @@
 (require 'init-irc)
 (require 'init-lookup)
 (require 'init-network-tools)
+
+;; customizations
+(load custom-file t)
