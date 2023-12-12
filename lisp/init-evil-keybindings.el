@@ -236,7 +236,7 @@
     "kf" #'rake-find-task)
 
   (+evil/local-leader-key
-    :keymaps '(ruby-ts-mode-map rspec-mode-map)
+    :keymaps '(ruby-ts-mode-map rspec-mode-map rspec-compilation-mode-map)
     :major-modes t
     "t"  '(:ignore t :which-key "test")
     "ta" #'rspec-verify-all
