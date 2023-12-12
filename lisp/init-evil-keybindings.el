@@ -8,7 +8,6 @@
   :config
   (message "evil is loaded")
   (evil-select-search-module 'evil-search-module 'evil-search)
-  (evil-set-initial-state 'messages-buffer-mode 'emacs)
   (evil-mode 1)
   :custom
   (evil-want-keybinding nil)            ; required by evil-collection
