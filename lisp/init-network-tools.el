@@ -11,7 +11,7 @@
   (chatgpt-shell-api-url-base "https://beepboop.openai.azure.com")
   (chatgpt-shell-api-url-path "/openai/deployments/gpt-4/chat/completions?api-version=2023-07-01-preview")
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
-  (chatgpt-shell-streaming nil)
+  (chatgpt-shell-streaming t)
 
   :bind (("C-c z z" . chatgpt-shell)
          ("C-c z b" . chatgpt-shell-prompt)
