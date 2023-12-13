@@ -4,7 +4,9 @@
       initial-scratch-message nil     ; Display nothing on the *scratch* buffer
       create-lockfiles nil            ; Avoid creating ".#filename"
       make-backup-files nil           ; Avoid creating "filename~"
-      enable-recursive-minibuffers t) ; M-x in M-x
+      enable-recursive-minibuffers t  ; M-x in M-x
+      tab-always-indent 'complete     ; Enable indentation+completion using the TAB key
+      completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
 
 (when (display-graphic-p)
   (tool-bar-mode -1))
