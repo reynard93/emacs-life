@@ -19,6 +19,7 @@
 
   :config
   (message "denote is loaded")
+  (require 'denote-org-dblock)
 
   :custom
   (denote-date-prompt-use-org-read-date t)
