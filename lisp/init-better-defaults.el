@@ -39,7 +39,6 @@
   :pin melpa
   :config
   (message "helpful is loaded")
-  (evil-collection-init 'helpful)
   :bind (("C-h f" . helpful-callable)
          ("C-h v" . helpful-variable)
          ("C-h k" . helpful-key)
@@ -49,7 +48,6 @@
   :ensure nil
   :config
   (message "ibuffer is loaded")
-  (evil-collection-init 'ibuffer)
   :custom
   (ibuffer-expert t)
   :bind ([remap list-buffers] . ibuffer)

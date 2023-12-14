@@ -34,7 +34,6 @@
   :after evil
   :config
   (message "evil-mc is loaded")
-  (evil-collection-init 'evil-mc)
   (global-evil-mc-mode 1))
 
 (use-package avy

@@ -44,8 +44,7 @@
   :after evil
   :config
   (message "evil-collection is loaded")
-  (evil-collection-init '( apropos bookmark calc calendar compile comint custom
-                           dired ediff eglot flymake help markdown replace xref)))
+  (evil-collection-init))
 
 (use-package general
   :pin melpa

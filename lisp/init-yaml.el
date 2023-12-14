@@ -4,7 +4,6 @@
   :mode "Procfile\\'"
   :mode "Procfile\\.dev\\'"
   :config
-  (message "yaml-mode is loaded")
-  (evil-collection-init 'yaml-mode))
+  (message "yaml-mode is loaded"))
 
 (provide 'init-yaml)

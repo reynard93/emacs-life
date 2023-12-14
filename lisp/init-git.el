@@ -3,7 +3,6 @@
   :defer t
   :config
   (message "magit is loaded")
-  (evil-collection-init 'magit)
 
   (when (featurep 'savehist)
     (add-to-list 'savehist-additional-variables 'log-edit-comment-ring))
@@ -49,7 +48,6 @@
   :pin melpa
   :defer t
   :config
-  (message "git-timemachine is loaded")
-  (evil-collection-init 'git-timemachine))
+  (message "git-timemachine is loaded"))
 
 (provide 'init-git)

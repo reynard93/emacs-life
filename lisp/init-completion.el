@@ -2,7 +2,6 @@
   :defer 1
   :config
   (message "corfu is loaded")
-  (evil-collection-init 'corfu)
   (global-corfu-mode 1)
   :custom
   (corfu-cycle t)

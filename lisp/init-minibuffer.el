@@ -80,7 +80,6 @@
   (embark-cycle-key "C-;")
   :config
   (message "embark is loaded")
-  (evil-collection-init 'embark)
 
   ;; Open any buffer by splitting any window
   ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window

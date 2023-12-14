@@ -9,7 +9,6 @@
 
   :config
   (message "mu4e is loaded")
-  (evil-collection-init 'mu4e)
 
   (setq mu4e-maildir-shortcuts
         '((:maildir "/Inbox"             :key ?i)
