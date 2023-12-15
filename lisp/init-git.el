@@ -10,6 +10,8 @@
   :ensure nil
   :after magit
   :config
+  (message "transient is loaded")
+
   ;; git push with skip-ci option
   (transient-append-suffix 'magit-push "-n"
     '("-s" "Skip CI" "--push-option=skip-ci"))
