@@ -24,6 +24,7 @@
 (require 'init-denote)
 
 ;; programming
+(require 'init-data)
 (require 'init-elixir)
 (require 'init-nix)
 (require 'init-ruby)
