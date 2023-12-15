@@ -24,6 +24,7 @@
   ;; replace
   (evil-ex-substitute-global t)
   ;; move
+  (evil-shift-width 2)
   (evil-move-cursor-back nil)
   (evil-move-beyond-eol nil)
   ;; window
