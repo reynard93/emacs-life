@@ -12,7 +12,7 @@
   :custom
   (evil-want-keybinding nil)            ; required by evil-collection
   ;; undo
-  (evil-undo-system 'undo-redo)         ; required by `evil-redo'
+  (evil-undo-system 'undo-fu)           ; required by `evil-redo'
   (evil-want-fine-undo t)
   ;; copy
   (evil-visual-update-x-selection-p nil)

@@ -54,6 +54,11 @@
   :bind ([remap list-buffers] . ibuffer)
   :hook (ibuffer-mode . ibuffer-auto-mode))
 
+(use-package undo-fu
+  :pin melpa
+  :config
+  (message "undo-fu is loaded"))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
