@@ -75,6 +75,27 @@ The path is relative to `project-current'."
   (interactive)
   (shell-command "gh pr view -w"))
 
+(defun +github/checkout-pull-request ()
+  "Select a GitHub pull request to checkout."
+  (interactive)
+  (if-let* ((pr-list (gh--pr-list))
+            (formatted-pr-list (mapcar (lambda (pr)
+                                         (format "%s: %s"
+                                                 (alist-get 'number pr)
+                                                 (alist-get 'title pr)))
+                                       pr-list))
+            (selected-pr (completing-read "Select PR: " formatted-pr-list))
+            (pr-number (progn (string-match "^\\([0-9]+\\):" selected-pr)
+                              (match-string 1 selected-pr))))
+      (shell-command (concat "gh pr checkout " pr-number))
+    (user-error "PR list is empty or not a GitHub repo")))
+
+(defun gh--pr-list ()
+  (let ((output (shell-command-to-string "gh pr list --json number,title,headRefName")))
+    (condition-case nil
+        (json-read-from-string output)
+      (error nil))))
+
 (defun +github/create-gist-region-or-buffer (&optional p)
   (interactive "P")
   (let ((filename (buffer-name))
