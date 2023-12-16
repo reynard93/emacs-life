@@ -9,16 +9,11 @@
       completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
 
 (when (display-graphic-p)
-  (tool-bar-mode -1))
+  (tool-bar-mode -1)
+  (set-scroll-bar-mode nil))
 
 (unless (display-graphic-p)
   (menu-bar-mode -1))
-
-(use-package scroll-bar
-  :ensure nil
-  :config
-  (message "scroll-bar is loaded")
-  (set-scroll-bar-mode nil))
 
 (use-package recentf
   :ensure nil
