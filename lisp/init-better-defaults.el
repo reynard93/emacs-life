@@ -60,6 +60,16 @@
   :config
   (message "undo-fu is loaded"))
 
+(use-package undo-fu-session
+  :pin melpa
+  :after undo-fu
+  :config
+  (message "undo-fu-session is loaded")
+  (undo-fu-session-global-mode)
+  :custom
+  (undo-fu-session-compression 'zst)
+  (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
