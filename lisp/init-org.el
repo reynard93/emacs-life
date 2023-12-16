@@ -1,5 +1,4 @@
 (use-package org
-  :defer t
   :commands (org-clock-goto org-clock-cancel)
   :preface
   (setq org-directory "~/src/org"
@@ -93,7 +92,7 @@ If prefix ARG, copy instead of move."
 
 (use-package evil-org
   :pin melpa
-  :after org
+  :after (evil org)
   :config
   (message "evil-org is loaded")
   (require 'evil-org-agenda)
