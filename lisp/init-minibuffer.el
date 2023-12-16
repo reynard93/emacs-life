@@ -84,8 +84,7 @@
   :init
   (setq which-key-use-C-h-commands nil
         prefix-help-command #'embark-prefix-help-command)
-  :custom
-  (embark-cycle-key "C-;")
+
   :config
   (message "embark is loaded")
 
@@ -105,6 +104,9 @@
   (define-key embark-file-map     (kbd "o") (+embark--aw-action find-file))
   (define-key embark-buffer-map   (kbd "o") (+embark--aw-action switch-to-buffer))
   (define-key embark-bookmark-map (kbd "o") (+embark--aw-action bookmark-jump))
+
+  :custom
+  (embark-cycle-key "C-;")
 
   :bind (([remap describe-bindings] . embark-bindings)
          ("C-;" . embark-act)
