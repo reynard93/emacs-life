@@ -98,7 +98,7 @@ If prefix ARG, copy instead of move."
   (message "evil-org is loaded")
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
-  :hook (org-mode . evil-org-mode))
+  :hook org-mode)
 
 (use-package ob
   :ensure nil
