@@ -1,6 +1,5 @@
 (use-package corfu
   :when (display-graphic-p)
-  :defer 1
   :preface
   (setq tab-always-indent 'complete     ; Enable indentation+completion using the TAB key
         completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
@@ -43,7 +42,6 @@
          ("C-c p r" . cape-rfc1345)))
 
 (use-package tempel
-  :defer 1
   :config
   (message "tempel is loaded")
 
