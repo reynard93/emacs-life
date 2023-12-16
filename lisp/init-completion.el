@@ -1,4 +1,5 @@
 (use-package corfu
+  :when (display-graphic-p)
   :defer 1
   :config
   (message "corfu is loaded")
