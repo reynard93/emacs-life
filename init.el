@@ -19,6 +19,7 @@
 (require 'init-appearance)
 (require 'init-tree-sitter)
 (require 'init-eglot)
+(require 'init-pulse)
 
 ;; note-taking
 (require 'init-org)
