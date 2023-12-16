@@ -1,3 +1,9 @@
+(use-package ruby-ts-mode
+  :ensure nil
+  :config
+  (message "ruby-ts-mode is loaded")
+  :hook (ruby-ts-mode . eglot-ensure))
+
 (use-package bundler
   :pin melpa
   :defer t

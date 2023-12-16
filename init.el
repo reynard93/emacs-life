@@ -18,6 +18,7 @@
 (require 'init-completion)
 (require 'init-appearance)
 (require 'init-tree-sitter)
+(require 'init-eglot)
 
 ;; note-taking
 (require 'init-org)

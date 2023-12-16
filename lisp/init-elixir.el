@@ -10,11 +10,6 @@
   :config
   (message "elixir-ts-mode is loaded")
 
-  (with-eval-after-load 'eglot
-    (add-to-list 'eglot-server-programs
-                 `((elixir-ts-mode heex-ts-mode) .
-                   ("nextls" "--stdio=true"))))
-
   (defun elixir-format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
       (eglot-format-buffer)))
