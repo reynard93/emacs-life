@@ -57,6 +57,10 @@
 
 (use-package undo-fu
   :pin melpa
+  :init
+  (setq undo-limit 67108864          ; 64mb
+        undo-strong-limit 100663296  ; 96mb
+        undo-outer-limit 1006632960) ; 960mb
   :config
   (message "undo-fu is loaded"))
 
@@ -75,8 +79,7 @@
               window-combination-resize t         ; take new window space from all other windows (not just current)
               x-stretch-cursor t)                 ; Stretch cursor to the glyph width
 
-(setq undo-limit 80000000                         ; Raise undo-limit to 80Mb
-      auto-save-default t                         ; Nobody likes to loose work, I certainly don't
+(setq auto-save-default t                         ; Nobody likes to loose work, I certainly don't
       truncate-string-ellipsis "…"                ; Unicode ellispis are nicer than "...", and also save /precious/ space
       password-cache-expiry nil                   ; I can trust my computers ... can't I?
       scroll-margin 2                             ; It's nice to maintain a little margin
