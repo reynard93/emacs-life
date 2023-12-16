@@ -14,6 +14,7 @@
   (corfu-scroll-margin 5))
 
 (use-package cape
+  :when (display-graphic-p)
   :pin melpa
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
