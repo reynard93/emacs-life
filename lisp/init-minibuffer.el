@@ -84,7 +84,7 @@
   ;; Open any buffer by splitting any window
   ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window
   (eval-when-compile
-    (defmacro +embark/aw-action (fn)
+    (defmacro +embark--aw-action (fn)
       `(defun ,(intern (concat "+embark/aw-" (symbol-name fn))) ()
          ,(format "Open %s buffer selected with ace-window." (symbol-name fn))
          (interactive)
@@ -94,9 +94,9 @@
              (aw-switch-to-window (aw-select nil))
              (call-interactively (symbol-function ',fn)))))))
 
-  (define-key embark-file-map     (kbd "o") (+embark/aw-action find-file))
-  (define-key embark-buffer-map   (kbd "o") (+embark/aw-action switch-to-buffer))
-  (define-key embark-bookmark-map (kbd "o") (+embark/aw-action bookmark-jump))
+  (define-key embark-file-map     (kbd "o") (+embark--aw-action find-file))
+  (define-key embark-buffer-map   (kbd "o") (+embark--aw-action switch-to-buffer))
+  (define-key embark-bookmark-map (kbd "o") (+embark--aw-action bookmark-jump))
 
   :bind (([remap describe-bindings] . embark-bindings)
          ("C-;" . embark-act)
