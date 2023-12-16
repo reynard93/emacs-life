@@ -4,7 +4,7 @@
               (default-directory (project-root project)))
     (project-find-file-in nil nil project)))
 
-(defun project--root-dir (&optional dir)
+(defun +project--root-dir (&optional dir)
   (if-let ((project (project-current nil dir)))
       (project-root project)
     nil))
@@ -12,7 +12,7 @@
 (defun +project/search (&optional dir thing)
   (interactive)
   (consult-ripgrep
-   (project--root-dir dir)
+   (+project--root-dir dir)
    (when thing (thing-at-point thing))))
 
 (defun +project/search-for-symbol-at-point ()
@@ -49,7 +49,7 @@ file path, otherwise, get a full file path with
   "Save the relative buffer path into the kill-ring.
 The path is relative to `project-current'."
   (interactive)
-  (+buffer/yank-path nil (project--root-dir)))
+  (+buffer/yank-path nil (+project--root-dir)))
 
 (defun +file/delete-this-file ()
   (interactive)
@@ -79,7 +79,7 @@ The path is relative to `project-current'."
 (defun +github/checkout-pull-request ()
   "Select a GitHub pull request to checkout."
   (interactive)
-  (if-let* ((pr-list (gh--pr-list '("number" "title")))
+  (if-let* ((pr-list (+github--gh-pr-list '("number" "title")))
             (formatted-pr-list (mapcar (lambda (pr)
                                          (format "%s: %s"
                                                  (alist-get 'number pr)
@@ -91,7 +91,7 @@ The path is relative to `project-current'."
       (shell-command (concat "gh pr checkout " pr-number))
     (user-error "PR list is empty or not a GitHub repo")))
 
-(defun gh--pr-list (fields)
+(defun +github--gh-pr-list (fields)
   (let ((command (concat "gh pr list --json " (string-join fields ","))))
     (condition-case nil
         (json-read-from-string (shell-command-to-string command))
@@ -131,7 +131,7 @@ The path is relative to `project-current'."
 
 (defun +git/create-backup-commit ()
   (interactive)
-  (let ((default-directory (project--root-dir)))
+  (let ((default-directory (+project--root-dir)))
     (when default-directory
       (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
         (shell-command (format "git add --all && git commit -m \"%s\"" commit-message))))))
