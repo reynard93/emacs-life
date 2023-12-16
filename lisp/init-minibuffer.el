@@ -119,7 +119,6 @@
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package which-key
-  :defer 1
   :config
   (message "which-key is loaded")
   (which-key-mode 1)

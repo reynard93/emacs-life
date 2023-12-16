@@ -9,7 +9,6 @@
 
 (use-package anzu
   :pin melpa
-  :defer 1
   :config
   (message "anzu is loaded")
   (global-anzu-mode 1))
