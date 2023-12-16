@@ -33,8 +33,8 @@
   :bind-keymap ("C-c b" . beframe-prefix-map))
 
 (use-package server
-  :when (display-graphic-p)
   :ensure nil
+  :when (display-graphic-p)
   :init
   (setq server-name "gui")
   :config
