@@ -12,12 +12,13 @@
 (use-package cape
   :pin melpa
   :init
-  (message "cape is loaded")
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
   (add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
+  :config
+  (message "cape is loaded")
   :bind (("C-c p p" . completion-at-point)
          ("C-c p t" . complete-tag)
          ("C-c p d" . cape-dabbrev)
