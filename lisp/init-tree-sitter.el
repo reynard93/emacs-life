@@ -11,7 +11,7 @@
           (toml "https://github.com/tree-sitter/tree-sitter-toml")))
 
   (defun +treesit/install-language-grammars ()
-    "Build and install all tree-sitter language grammar libraries"
+    "Build and install all tree-sitter language grammar libraries."
     (interactive)
     (mapc #'treesit-install-language-grammar
           (mapcar #'car treesit-language-source-alist)))

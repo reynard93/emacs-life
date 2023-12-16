@@ -86,7 +86,7 @@
   (eval-when-compile
     (defmacro +embark/aw-action (fn)
       `(defun ,(intern (concat "+embark/aw-" (symbol-name fn))) ()
-         ,(format "Open %s buffer selected with ace-window" (symbol-name fn))
+         ,(format "Open %s buffer selected with ace-window." (symbol-name fn))
          (interactive)
          (with-demoted-errors "%s"
            (require 'ace-window)
