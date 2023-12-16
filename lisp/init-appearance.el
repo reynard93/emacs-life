@@ -46,6 +46,7 @@
 (use-package spacious-padding
   :when (display-graphic-p)
   :config
+  (message "spacious-padding is loaded")
   (spacious-padding-mode 1))
 
 (use-package doom-modeline
