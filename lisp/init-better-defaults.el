@@ -28,10 +28,9 @@
 
 (use-package savehist
   :ensure nil
-  :init
-  (add-to-list 'savehist-additional-variables 'log-edit-comment-ring)
   :config
   (message "savehist is loaded")
+  (add-to-list 'savehist-additional-variables 'log-edit-comment-ring)
   (savehist-mode 1)
   :custom
   (history-length 500)
