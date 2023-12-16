@@ -13,13 +13,13 @@
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 (require 'init-windows)
+(require 'init-themes)
+(require 'init-fonts)
 
 ;; core
 (require 'init-minibuffer)
 (require 'init-completion)
-(require 'init-appearance)
-(require 'init-tree-sitter)
-(require 'init-eglot)
+(require 'init-mode-line)
 (require 'init-pulse)
 
 ;; note-taking
@@ -27,6 +27,8 @@
 (require 'init-denote)
 
 ;; programming
+(require 'init-tree-sitter)
+(require 'init-eglot)
 (require 'init-data)
 (require 'init-elixir)
 (require 'init-nix)
