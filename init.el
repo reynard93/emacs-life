@@ -3,8 +3,6 @@
 (require 'init-lib)
 
 (setq custom-file (locate-user-emacs-file "custom.el"))
-(setq native-comp-async-report-warnings-errors 'silent)
-(setq initial-major-mode 'fundamental-mode)
 
 ;; basic
 (require 'init-better-defaults)

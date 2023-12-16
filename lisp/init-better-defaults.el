@@ -1,12 +1,12 @@
-(setq confirm-kill-emacs 'y-or-n-p    ; Confirm when leaving Emacs
+(setq inhibit-startup-screen t        ; Skip the startup screen
+      initial-scratch-message nil     ; Blank the *scratch* buffer
+      confirm-kill-emacs 'y-or-n-p    ; Confirm when leaving Emacs
       ring-bell-function 'ignore      ; Disable ring bell
-      inhibit-startup-screen t        ; Skip the startup screen
-      initial-scratch-message nil     ; Display nothing on the *scratch* buffer
       create-lockfiles nil            ; Avoid creating ".#filename"
-      make-backup-files nil           ; Avoid creating "filename~"
-      enable-recursive-minibuffers t  ; M-x in M-x
-      tab-always-indent 'complete     ; Enable indentation+completion using the TAB key
-      completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
+      make-backup-files nil)          ; Avoid creating "filename~"
+
+(setq native-comp-async-report-warnings-errors 'silent)
+(setq initial-major-mode 'fundamental-mode)
 
 (when (display-graphic-p)
   (tool-bar-mode -1)

@@ -1,6 +1,10 @@
 (use-package corfu
   :when (display-graphic-p)
   :defer 1
+  :preface
+  (setq tab-always-indent 'complete     ; Enable indentation+completion using the TAB key
+        completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
+
   :config
   (message "corfu is loaded")
   (global-corfu-mode 1)
