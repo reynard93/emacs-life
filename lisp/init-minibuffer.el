@@ -3,7 +3,7 @@
   :preface
   (setq enable-recursive-minibuffers t) ; M-x in M-x
 
-  ;; Ensure minibuffer prompt is read only and cannot be modified
+  ;; Ensure minibuffer prompt is read-only and cannot be modified
   (setq minibuffer-prompt-properties
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
