@@ -36,6 +36,8 @@
   :pin melpa
   :defer t
   :config
-  (message "coffee-mode is loaded"))
+  (message "coffee-mode is loaded")
+  :custom
+  (coffee-tab-width 2))
 
 (provide 'init-web)
