@@ -1,15 +1,19 @@
+(setq gpt-api-host "beepboop.openai.azure.com")
+(setq gpt-api-path "/openai/deployments/%s/chat/completions?api-version=2023-07-01-preview")
+(setq gpt-api-key (lambda () (auth-source-pick-first-password :host gpt-api-host)))
+
 (use-package chatgpt-shell
   :pin melpa
   :config
   (message "chatgpt-shell is loaded")
   :custom
   (chatgpt-shell-welcome-function nil)
+  (chatgpt-shell-openai-key gpt-api-key)
   (chatgpt-shell-model-version (cl-position "gpt-4" chatgpt-shell-model-versions :test 'string=))
-  (chatgpt-shell-openai-key (lambda () (auth-source-pick-first-password :host "beepboop.openai.azure.com")))
 
   ;; Azure OpenAI
-  (chatgpt-shell-api-url-base "https://beepboop.openai.azure.com")
-  (chatgpt-shell-api-url-path "/openai/deployments/gpt-4/chat/completions?api-version=2023-07-01-preview")
+  (chatgpt-shell-api-url-base (format "https://%s" gpt-api-host))
+  (chatgpt-shell-api-url-path (format gpt-api-path "gpt-4"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
   (chatgpt-shell-streaming t)
 
@@ -20,6 +24,22 @@
          ("C-c z S" . chatgpt-shell-send-and-review-region)
          ("C-c z e" . chatgpt-shell-explain-code)
          ("C-c z r" . chatgpt-shell-refactor-code)))
+
+(use-package gptel
+  :pin melpa
+  :defer t
+  :config
+  (message "gptel is loaded")
+  (setq-default gptel-backend
+                (gptel-make-azure
+                 "Azure GPT-3.5"
+                 :host gpt-api-host
+                 :endpoint (format gpt-api-path "gpt-35-turbo")
+                 :models '("gpt-3.5-turbo")
+                 :stream t))
+  :custom
+  (gptel-api-key gpt-api-key)
+  (gptel-max-tokens 400))
 
 (use-package mastodon
   :pin nongnu
