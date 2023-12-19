@@ -4,6 +4,7 @@
 
 (use-package chatgpt-shell
   :pin melpa
+  :defer t
   :config
   (message "chatgpt-shell is loaded")
   :custom
@@ -15,15 +16,7 @@
   (chatgpt-shell-api-url-base (format "https://%s" gpt-api-host))
   (chatgpt-shell-api-url-path (format gpt-api-path "gpt-4"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
-  (chatgpt-shell-streaming t)
-
-  :bind (("C-c z z" . chatgpt-shell)
-         ("C-c z b" . chatgpt-shell-prompt)
-         ("C-c z c" . chatgpt-shell-prompt-compose)
-         ("C-c z s" . chatgpt-shell-send-region)
-         ("C-c z S" . chatgpt-shell-send-and-review-region)
-         ("C-c z e" . chatgpt-shell-explain-code)
-         ("C-c z r" . chatgpt-shell-refactor-code)))
+  (chatgpt-shell-streaming t))
 
 (use-package gptel
   :pin melpa

@@ -113,6 +113,10 @@
       (call-interactively #'gptel-send)))
 
   (define-key embark-region-map (kbd "RET") '+gptel/send)
+  (define-key embark-region-map (kbd "z e") 'chatgpt-shell-explain-code)
+  (define-key embark-region-map (kbd "z r") 'chatgpt-shell-refactor-code)
+  (define-key embark-region-map (kbd "z s") 'chatgpt-shell-send-region)
+  (define-key embark-region-map (kbd "z S") 'chatgpt-shell-send-and-review-region)
 
   :custom
   (embark-cycle-key "C-;")
