@@ -1,16 +1,34 @@
 (use-package tmr
+  :commands +tmr/list-active-timers
+  :init
+  (defun +tmr/list-active-timers (timer)
+    (interactive (list (tmr--read-timer "Timer: " t))))
+
   :config
   (message "tmr is loaded")
+
+  ;; embark actions
+  (defvar tmr-action-map
+    (let ((map (make-sparse-keymap)))
+      (define-key map "c" #'tmr-clone)
+      (define-key map "e" #'tmr-edit-description)
+      (define-key map "k" #'tmr-cancel)
+      (define-key map "r" #'tmr-remove)
+      (define-key map "s" #'tmr-reschedule)
+      map))
+
+  (with-eval-after-load 'embark
+    (add-to-list 'embark-keymap-alist '(tmr-timer . tmr-action-map))
+    (cl-loop
+     for cmd the key-bindings of tmr-action-map
+     if (commandp cmd) do
+     (add-to-list 'embark-post-action-hooks (list cmd 'embark--restart))))
+
   :custom
   (tmr-timer-finished-functions '(tmr-print-message-for-finished-timer))
+
   :bind (("C-c t t" . tmr)
          ("C-c t T" . tmr-with-description)
-         ("C-c t e" . tmr-edit-description)
-         ("C-c t l" . tmr-tabulated-view)
-         ("C-c t c" . tmr-clone)
-         ("C-c t k" . tmr-cancel)
-         ("C-c t s" . tmr-reschedule)
-         ("C-c t r" . tmr-remove)
-         ("C-c t R" . tmr-remove-finished)))
+         ("C-c t l" . tmr-tabulated-view)))
 
 (provide 'init-timer)
