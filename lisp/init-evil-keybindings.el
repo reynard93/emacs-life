@@ -143,8 +143,6 @@
     "na"  #'org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
-    "nc"  #'+org/toggle-last-clock
-    "nC"  #'org-clock-cancel
     "nd"  #'denote-date
     "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
@@ -152,7 +150,6 @@
     "nl"  #'denote-link
     "nn"  #'denote
     "nN"  #'denote-type
-    "no"  #'org-clock-goto
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
@@ -250,9 +247,6 @@
     :keymaps 'org-mode-map
     :major-modes t
     "e"  #'org-export-dispatch
-
-    "c"  '(:ignore t :which-key "clock")
-    "ci" #'org-clock-in
 
     "d"  '(:ignore t :which-key "date/deadline")
     "dd" #'org-deadline

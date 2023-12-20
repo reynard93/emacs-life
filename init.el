@@ -40,6 +40,7 @@
 (require 'init-mail)
 (require 'init-rss)
 (require 'init-irc)
+(require 'init-timer)
 (require 'init-lookup)
 (require 'init-network-tools)
 
