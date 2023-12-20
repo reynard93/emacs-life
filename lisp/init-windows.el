@@ -39,9 +39,7 @@
   (popper-echo-mode 1)
   :custom
   (popper-reference-buffers
-   '(compilation-mode
-     rspec-compilation-mode
-     chatgpt-shell-mode
+   '(chatgpt-shell-mode
      osx-dictionary-mode
      "*Org Select*"
      "^CAPTURE-.*\\.org$")))
