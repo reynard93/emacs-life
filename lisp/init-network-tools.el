@@ -6,6 +6,7 @@
   :pin melpa
   :config
   (message "chatgpt-shell is loaded")
+
   :custom
   (chatgpt-shell-welcome-function nil)
   (chatgpt-shell-openai-key gpt-api-key)
@@ -23,11 +24,13 @@
          ("C-c z s" . chatgpt-shell-send-region)
          ("C-c z S" . chatgpt-shell-send-and-review-region)
          ("C-c z e" . chatgpt-shell-explain-code)
-         ("C-c z r" . chatgpt-shell-refactor-code)))
+         ("C-c z r" . chatgpt-shell-refactor-code)
+         :map embark-region-map
+         ("z s" . chatgpt-shell-send-region)
+         ("z S" . chatgpt-shell-send-and-review-region)))
 
 (use-package gptel
   :pin melpa
-  :defer t
   :config
   (message "gptel is loaded")
   (setq-default gptel-backend
@@ -37,9 +40,19 @@
                  :endpoint (format gpt-api-path "gpt-35-turbo")
                  :models '("gpt-3.5-turbo")
                  :stream t))
+
+  (defun +gptel/send ()
+    "Call `gptel-send' with a C-u prefix."
+    (interactive)
+    (let ((current-prefix-arg t))
+      (call-interactively #'gptel-send)))
+
   :custom
   (gptel-api-key gpt-api-key)
-  (gptel-max-tokens 400))
+  (gptel-max-tokens 400)
+
+  :bind ( :map embark-region-map
+          ("RET" . +gptel/send)))
 
 (use-package mastodon
   :pin nongnu

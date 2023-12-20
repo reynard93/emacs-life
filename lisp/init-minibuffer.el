@@ -105,17 +105,6 @@
   (define-key embark-buffer-map   (kbd "o") (+embark--aw-action switch-to-buffer))
   (define-key embark-bookmark-map (kbd "o") (+embark--aw-action bookmark-jump))
 
-  ;; GPT on region
-  (defun +gptel/send ()
-    "Call `gptel-send' with a C-u prefix."
-    (interactive)
-    (let ((current-prefix-arg t))
-      (call-interactively #'gptel-send)))
-
-  (define-key embark-region-map (kbd "RET") '+gptel/send)
-  (define-key embark-region-map (kbd "z s") 'chatgpt-shell-send-region)
-  (define-key embark-region-map (kbd "z S") 'chatgpt-shell-send-and-review-region)
-
   :custom
   (embark-cycle-key "C-;")
 
