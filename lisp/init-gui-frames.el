@@ -5,11 +5,11 @@
   (message "tab-bar is loaded")
   ;; bind s-1 through s-9 to switch tabs
   (dolist (i (number-sequence 1 9))
-    (global-set-key (kbd (format "s-%d" i))
-                    `(lambda ()
-                       (interactive)
-                       (when (<= ,i (length (tab-bar-tabs)))
-                         (tab-bar-select-tab ,i)))))
+    (bind-key (format "s-%d" i)
+              `(lambda ()
+                 (interactive)
+                 (when (<= ,i (length (tab-bar-tabs)))
+                   (tab-bar-select-tab ,i)))))
 
   :custom
   (tab-bar-show 1)
