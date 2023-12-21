@@ -23,8 +23,15 @@
     (interactive)
     (list (tmr--read-timer "Timer: " t)))
 
+  (defun +tmr/notification-notify (timer)
+    (let ((title "TMR May Ring (Emacs tmr package)")
+          (body (tmr--long-description-for-finished-timer timer)))
+      (+macos/notify title body)))
+
   :custom
-  (tmr-timer-finished-functions '(tmr-print-message-for-finished-timer))
+  (tmr-timer-finished-functions
+   '(tmr-print-message-for-finished-timer
+     +tmr/notification-notify))
 
   :bind (("C-c t t" . tmr)
          ("C-c t T" . tmr-with-description)

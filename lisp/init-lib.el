@@ -68,6 +68,13 @@ The path is relative to `project-current'."
         (call-process "open" nil 0 nil "-R" filename)
       (user-error "Buffer is not visiting a file"))))
 
+(defun +macos/notify (title body &optional sound-name)
+  (interactive)
+  (let* ((sound (or sound-name "Default"))
+         (script (format "display notification \"%s\" with title \"%s\" sound name \"%s\""
+                         body title sound)))
+    (start-process "notifier" nil "osascript" "-e" script)))
+
 (defun +github/create-pull-request ()
   (interactive)
   (shell-command "gh pr create -w"))
