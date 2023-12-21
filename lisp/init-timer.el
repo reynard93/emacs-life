@@ -1,9 +1,4 @@
 (use-package tmr
-  :commands +tmr/list-active-timers
-  :init
-  (defun +tmr/list-active-timers (timer)
-    (interactive (list (tmr--read-timer "Timer: " t))))
-
   :config
   (message "tmr is loaded")
 
@@ -24,11 +19,16 @@
      if (commandp cmd) do
      (add-to-list 'embark-post-action-hooks (list cmd 'embark--restart))))
 
+  (defun +tmr/list-active-timers ()
+    (interactive)
+    (list (tmr--read-timer "Timer: " t)))
+
   :custom
   (tmr-timer-finished-functions '(tmr-print-message-for-finished-timer))
 
   :bind (("C-c t t" . tmr)
          ("C-c t T" . tmr-with-description)
-         ("C-c t l" . tmr-tabulated-view)))
+         ("C-c t l" . tmr-tabulated-view)
+         ("s-l" . +tmr/list-active-timers)))
 
 (provide 'init-timer)

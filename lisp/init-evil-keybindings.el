@@ -31,14 +31,15 @@
   (evil-want-C-w-in-emacs-state t)
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
-  :bind ( :map evil-ex-completion-map
-          ("C-a" . evil-beginning-of-line)
-          ("C-b" . evil-backward-char)
-          ("C-f" . evil-forward-char)
-          :map evil-ex-search-keymap
-          ("C-a" . evil-beginning-of-line)
-          ("C-b" . evil-backward-char)
-          ("C-f" . evil-forward-char)))
+  :bind (("s-n" . evil-window-new)
+         :map evil-ex-completion-map
+         ("C-a" . evil-beginning-of-line)
+         ("C-b" . evil-backward-char)
+         ("C-f" . evil-forward-char)
+         :map evil-ex-search-keymap
+         ("C-a" . evil-beginning-of-line)
+         ("C-b" . evil-backward-char)
+         ("C-f" . evil-forward-char)))
 
 (use-package evil-collection
   :pin melpa
@@ -68,7 +69,7 @@
 
     "'"   #'vertico-repeat
     ","   #'popper-toggle
-    "."   #'+tmr/list-active-timers
+    "."   #'popper-toggle-type
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
