@@ -4,7 +4,7 @@
   (defun +eglot/start-ruby-lsp ()
     "Start eglot if a .ruby-lsp directory exists in the project root."
     (interactive)
-    (let ((ruby-lsp-path (expand-file-name ".ruby-lsp" (+project--root-dir))))
+    (let ((ruby-lsp-path (expand-file-name ".ruby-lsp" (+project/root-dir))))
       (when (file-directory-p ruby-lsp-path)
         (eglot-ensure))))
 

@@ -4,7 +4,8 @@
               (default-directory (project-root project)))
     (project-find-file-in nil nil project)))
 
-(defun +project--root-dir (&optional dir)
+(defun +project/root-dir (&optional dir)
+  (interactive)
   (if-let ((project (project-current nil dir)))
       (project-root project)
     nil))
@@ -12,7 +13,7 @@
 (defun +project/search (&optional dir thing)
   (interactive)
   (consult-ripgrep
-   (+project--root-dir dir)
+   (+project/root-dir dir)
    (when thing (thing-at-point thing))))
 
 (defun +project/search-for-symbol-at-point ()
@@ -49,7 +50,7 @@ file path, otherwise, get a full file path with
   "Save the relative buffer path into the kill-ring.
 The path is relative to `project-current'."
   (interactive)
-  (+buffer/yank-path nil (+project--root-dir)))
+  (+buffer/yank-path nil (+project/root-dir)))
 
 (defun +file/delete-this-file ()
   (interactive)
@@ -138,7 +139,7 @@ The path is relative to `project-current'."
 
 (defun +git/create-backup-commit ()
   (interactive)
-  (let ((default-directory (+project--root-dir)))
+  (let ((default-directory (+project/root-dir)))
     (when default-directory
       (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
         (shell-command (format "git add --all && git commit -m \"%s\"" commit-message))))))
