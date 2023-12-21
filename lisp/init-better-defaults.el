@@ -63,7 +63,7 @@
   :after undo-fu
   :config
   (message "undo-fu-session is loaded")
-  (undo-fu-session-global-mode)
+  (undo-fu-session-global-mode 1)
   :custom
   (undo-fu-session-compression 'zst)
   (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
