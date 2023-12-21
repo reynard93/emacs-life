@@ -66,7 +66,7 @@ The path is relative to `project-current'."
   (interactive)
   (let ((filename (buffer-file-name)))
     (if filename
-        (call-process "open" nil 0 nil "-R" filename)
+        (start-process "finder" nil "open" "-R" filename)
       (user-error "Buffer is not visiting a file"))))
 
 (defun +macos/notify (title body &optional sound-name)
