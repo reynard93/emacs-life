@@ -1,5 +1,6 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (require 'init-elpa)
+(require 'init-env)
 (require 'init-lib)
 
 (setq custom-file (locate-user-emacs-file "custom.el"))

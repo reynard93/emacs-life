@@ -30,10 +30,4 @@
   (nix-mode . nix-formatter-mode-line-display)
   (before-save . nix-format-before-save))
 
-(use-package envrc
-  :pin melpa
-  :config
-  (message "envrc is loaded")
-  (envrc-global-mode 1))
-
 (provide 'init-nix)
