@@ -157,9 +157,8 @@ The path is relative to `project-current'."
 
 (defun +git/create-backup-commit ()
   (interactive)
-  (let ((default-directory (+project/root-dir)))
-    (when default-directory
-      (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
-        (shell-command (format "git add --all && git commit -m \"%s\"" commit-message))))))
+  (when-let ((default-directory (+project/root-dir)))
+    (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
+      (shell-command (format "git add --all && git commit -m \"%s\"" commit-message)))))
 
 (provide 'init-lib)
