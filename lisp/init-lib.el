@@ -6,9 +6,9 @@
 
 (defun +project/root-dir (&optional dir)
   (interactive)
-  (if-let ((project (project-current nil dir)))
-      (project-root project)
-    nil))
+  (let ((project (project-current nil dir)))
+    (unless project (user-error "Not in a project"))
+    (project-root project)))
 
 (defun +project/search (&optional dir thing)
   (interactive)
