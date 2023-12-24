@@ -109,6 +109,7 @@
     "fs"  #'save-buffer
     "fS"  #'write-file
     "fr"  #'recentf-open-files
+    "fR"  #'+file/move-this-file
     "fy"  #'+buffer/yank-path
     "fY"  #'+buffer/yank-path-relative-to-project
 
