@@ -44,7 +44,7 @@ file path, otherwise, get a full file path with
       (progn
         (kill-new path)
         (message "Copied path: %s" path))
-    (user-error "Buffer is not visiting a file")))
+    (user-error "Buffer is not visiting any file")))
 
 (defun +buffer/yank-path-relative-to-project ()
   "Save the relative buffer path into the kill-ring.
@@ -80,7 +80,7 @@ The path is relative to `project-current'."
   (let ((filename (buffer-file-name)))
     (if filename
         (start-process "finder" nil "open" "-R" filename)
-      (user-error "Buffer is not visiting a file"))))
+      (user-error "Buffer is not visiting any file"))))
 
 (defun +macos/notify (title body &optional sound-name)
   (interactive)
