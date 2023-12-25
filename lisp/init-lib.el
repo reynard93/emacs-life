@@ -77,10 +77,9 @@ The path is relative to `project-current'."
 
 (defun +macos/reveal-in-finder ()
   (interactive)
-  (let ((filename (buffer-file-name)))
-    (if filename
-        (start-process "finder" nil "open" "-R" filename)
-      (user-error "Buffer is not visiting any file"))))
+  (if-let ((filename (buffer-file-name)))
+      (start-process "finder" nil "open" "-R" filename)
+    (user-error "Buffer is not visiting any file")))
 
 (defun +macos/reveal-project-in-finder ()
   (interactive)
