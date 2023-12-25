@@ -172,6 +172,7 @@
     "oF"  #'select-frame-by-name
     "om"  #'mu4e
     "oo"  #'+macos/reveal-in-finder
+    "oO"  #'+macos/reveal-project-in-finder
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
