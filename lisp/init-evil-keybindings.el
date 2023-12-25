@@ -106,10 +106,12 @@
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
-    "fs"  #'save-buffer
-    "fS"  #'write-file
+    "fo"  #'+macos/reveal-in-finder
+    "fO"  #'+macos/reveal-project-in-finder
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
+    "fs"  #'save-buffer
+    "fS"  #'write-file
     "fy"  #'+buffer/yank-path
     "fY"  #'+buffer/yank-path-relative-to-project
 
@@ -171,8 +173,6 @@
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
     "om"  #'mu4e
-    "oo"  #'+macos/reveal-in-finder
-    "oO"  #'+macos/reveal-project-in-finder
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
