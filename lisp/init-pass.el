@@ -2,7 +2,7 @@
   :pin melpa
   :defer t
   :preface
-  (add-to-list 'auth-sources "~/.password-store/.authinfo.gpg")
+  (auth-source-pass-enable)
 
   (defun +pass/create-otp-key-uri (issuer secret)
     "Create and copy the OTP key URI consisting of issuer and secret."

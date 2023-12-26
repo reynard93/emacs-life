@@ -10,8 +10,8 @@
            :nick "goofansu"
            :realname "Yejun Su"
            :sasl-username "goofansu/irc.libera.chat"
-           :sasl-password (lambda (&rest _) (auth-source-pick-first-password :host "chat.sr.ht"))
-           :nickserv-password (lambda (&rest _) (auth-source-pick-first-password :host "irc.libera.chat")))))
+           :sasl-password (lambda (&rest _) (auth-source-pass-get 'secret "chat.sr.ht"))
+           :nickserv-password (lambda (&rest _) (auth-source-pass-get 'secret "irc.libera.chat")))))
 
   :config
   (message "circe is loaded")
