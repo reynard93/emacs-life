@@ -41,6 +41,14 @@
                  :models '("gpt-3.5-turbo")
                  :stream t))
 
+  (gptel-make-azure
+   "Azure GPT-4"
+   :host azure-openai-api-host
+   :key azure-openai-api-key
+   :endpoint (format azure-openai-api-path "gpt-4")
+   :models '("gpt-4")
+   :stream t)
+
   (gptel-make-gemini
    "Gemini"
    :host gemini-api-host
