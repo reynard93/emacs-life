@@ -35,7 +35,7 @@
 
   :bind (("C-c t t" . tmr)
          ("C-c t T" . tmr-with-description)
-         ("C-c t l" . tmr-tabulated-view)
-         ("s-l" . +tmr/list-active-timers)))
+         ("C-c t l" . +tmr/list-active-timers)
+         ("C-c t L" . tmr-tabulated-view)))
 
 (provide 'init-timer)
