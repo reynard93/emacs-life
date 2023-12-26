@@ -55,6 +55,17 @@
    :key gemini-api-key
    :stream t)
 
+  (defun +gptel/send-all-buffers (text)
+    "Insert TEXT in all buffers where gptel-mode is active."
+    (interactive "sEnter text: ")
+    (dolist (buffer (buffer-list))
+      (with-current-buffer buffer
+        (when (bound-and-true-p gptel-mode)
+          (save-excursion
+            (goto-char (point-max))
+            (insert text)
+            (gptel-send))))))
+
   :bind ("s-g" . gptel-menu))
 
 (use-package mastodon
