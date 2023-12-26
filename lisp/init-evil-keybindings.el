@@ -78,8 +78,6 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'+denote/scratch
-    "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -152,13 +150,12 @@
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
-    "nn"  #'denote
-    "nN"  #'denote-type
+    "nn"  #'+denote/scratch
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'denote-template
+    "nt"  #'org-capture
     "nT"  #'org-todo-list
 
     "o"   '(:ignore t :which-key "open")
