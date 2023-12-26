@@ -144,7 +144,6 @@
   :pin melpa
   :config
   (message "deadgrep is loaded")
-  (evil-set-initial-state 'deadgrep-mode 'emacs)
-  :bind ("C-c g" . deadgrep))
+  (evil-set-initial-state 'deadgrep-mode 'emacs))
 
 (provide 'init-minibuffer)

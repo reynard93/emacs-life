@@ -188,6 +188,7 @@
     "qQ"  #'evil-quit-all-with-error-code
 
     "s"   '(:ignore t :which-key "search")
+    "sd"  #'deadgrep
     "sg"  #'+lookup/google-translate-guess-source-lang
     "sG"  #'+lookup/google-translate-guess-source-lang-force-select
     "si"  #'consult-imenu
