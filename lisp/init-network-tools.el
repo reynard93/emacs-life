@@ -22,14 +22,11 @@
   (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
 
-  :bind (("C-c z z" . chatgpt-shell)
-         ("C-c z b" . chatgpt-shell-prompt)
-         ("C-c z c" . chatgpt-shell-prompt-compose)
-         ("C-c z e" . chatgpt-shell-explain-code)
-         ("C-c z r" . chatgpt-shell-refactor-code)
-         :map embark-region-map
-         ("z s" . chatgpt-shell-send-region)
-         ("z S" . chatgpt-shell-send-and-review-region)))
+  :bind ( :map embark-region-map
+          ("z e" . chatgpt-shell-explain-code)
+          ("z r" . chatgpt-shell-refactor-code)
+          ("z s" . chatgpt-shell-send-region)
+          ("z S" . chatgpt-shell-send-and-review-region)))
 
 (use-package gptel
   :pin melpa
