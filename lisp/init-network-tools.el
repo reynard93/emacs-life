@@ -30,6 +30,7 @@
 
 (use-package gptel
   :pin melpa
+  :defer t
   :config
   (message "gptel is loaded")
   (setq-default gptel-model "gpt-3.5-turbo"
@@ -56,7 +57,7 @@
    :stream t)
 
   (defun +gptel/send-all-buffers (text)
-    "Insert TEXT in all buffers where gptel-mode is active."
+    "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
     (interactive "sEnter text: ")
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
@@ -64,9 +65,7 @@
           (save-excursion
             (goto-char (point-max))
             (insert text)
-            (gptel-send))))))
-
-  :bind ("s-g" . gptel-menu))
+            (gptel-send)))))))
 
 (use-package mastodon
   :pin nongnu
