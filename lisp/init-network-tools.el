@@ -49,9 +49,7 @@
   (gptel-api-key gpt-api-key)
   (gptel-max-tokens 400)
 
-  :bind (("s-x" . +gptel/send)
-         :map embark-region-map
-         ("RET" . +gptel/send)))
+  :bind ("s-g" . gptel-menu))
 
 (use-package mastodon
   :pin nongnu
