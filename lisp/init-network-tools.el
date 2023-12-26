@@ -1,6 +1,11 @@
-(setq gpt-api-host "beepboop.openai.azure.com")
-(setq gpt-api-path "/openai/deployments/%s/chat/completions?api-version=2023-07-01-preview")
-(setq gpt-api-key (lambda () (auth-source-pick-first-password :host gpt-api-host)))
+;; Azure OpenAI
+(setq azure-openai-api-host "beepboop.openai.azure.com")
+(setq azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2023-07-01-preview")
+(setq azure-openai-api-key (lambda () (auth-source-pick-first-password :host azure-openai-api-host)))
+
+;; Google Gemini
+(setq gemini-api-host "generativelanguage.googleapis.com")
+(setq gemini-api-key (lambda () (auth-source-pick-first-password :host gemini-api-host)))
 
 (use-package chatgpt-shell
   :pin melpa
@@ -9,12 +14,12 @@
 
   :custom
   (chatgpt-shell-welcome-function nil)
-  (chatgpt-shell-openai-key gpt-api-key)
+  (chatgpt-shell-openai-key azure-openai-api-key)
   (chatgpt-shell-model-version (cl-position "gpt-4" chatgpt-shell-model-versions :test 'string=))
 
   ;; Azure OpenAI
-  (chatgpt-shell-api-url-base (format "https://%s" gpt-api-host))
-  (chatgpt-shell-api-url-path (format gpt-api-path "gpt-4"))
+  (chatgpt-shell-api-url-base (format "https://%s" azure-openai-api-host))
+  (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
   (chatgpt-shell-streaming t)
 
@@ -34,20 +39,17 @@
   (setq-default gptel-backend
                 (gptel-make-azure
                  "Azure GPT-3.5"
-                 :host gpt-api-host
-                 :endpoint (format gpt-api-path "gpt-35-turbo")
+                 :host azure-openai-api-host
+                 :key azure-openai-api-key
+                 :endpoint (format azure-openai-api-path "gpt-35-turbo")
                  :models '("gpt-3.5-turbo")
                  :stream t))
 
-  (defun +gptel/send ()
-    "Call `gptel-send' with a C-u prefix."
-    (interactive)
-    (let ((current-prefix-arg t))
-      (call-interactively #'gptel-send)))
-
-  :custom
-  (gptel-api-key gpt-api-key)
-  (gptel-max-tokens 400)
+  (gptel-make-gemini
+   "Gemini"
+   :host gemini-api-host
+   :key gemini-api-key
+   :stream t)
 
   :bind ("s-g" . gptel-menu))
 
