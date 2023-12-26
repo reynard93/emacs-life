@@ -21,7 +21,6 @@
   (chatgpt-shell-api-url-base (format "https://%s" azure-openai-api-host))
   (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
-  (chatgpt-shell-streaming t)
 
   :bind (("C-c z z" . chatgpt-shell)
          ("C-c z b" . chatgpt-shell-prompt)
