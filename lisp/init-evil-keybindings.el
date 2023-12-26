@@ -145,8 +145,6 @@
     "na"  #'org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
-    "nd"  #'denote-date
-    "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
