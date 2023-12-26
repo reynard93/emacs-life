@@ -167,6 +167,8 @@
     "oe"  #'eshell
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
+    "og"  #'gptel
+    "oG"  #'chatgpt-shell
     "om"  #'mu4e
 
     "op"  '(:ignore t :which-key "pass")
