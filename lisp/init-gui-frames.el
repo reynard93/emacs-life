@@ -22,7 +22,6 @@
          ("s-G" . tab-group)
          ("s-{" . tab-previous)
          ("s-}" . tab-next)
-         ("s-}" . tab-next)
          ("C-<tab>" . tab-recent)))
 
 (use-package beframe
