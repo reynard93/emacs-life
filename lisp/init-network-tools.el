@@ -21,8 +21,6 @@
   :bind (("C-c z z" . chatgpt-shell)
          ("C-c z b" . chatgpt-shell-prompt)
          ("C-c z c" . chatgpt-shell-prompt-compose)
-         ("C-c z s" . chatgpt-shell-send-region)
-         ("C-c z S" . chatgpt-shell-send-and-review-region)
          ("C-c z e" . chatgpt-shell-explain-code)
          ("C-c z r" . chatgpt-shell-refactor-code)
          :map embark-region-map
