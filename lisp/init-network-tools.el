@@ -32,14 +32,14 @@
   :pin melpa
   :config
   (message "gptel is loaded")
-  (setq-default gptel-backend
-                (gptel-make-azure
-                 "Azure GPT-3.5"
-                 :host azure-openai-api-host
-                 :key azure-openai-api-key
-                 :endpoint (format azure-openai-api-path "gpt-35-turbo")
-                 :models '("gpt-3.5-turbo")
-                 :stream t))
+  (setq-default gptel-model "gpt-3.5-turbo"
+                gptel-backend (gptel-make-azure
+                               "Azure GPT-3.5"
+                               :host azure-openai-api-host
+                               :key azure-openai-api-key
+                               :endpoint (format azure-openai-api-path "gpt-35-turbo")
+                               :models '("gpt-3.5-turbo")
+                               :stream t))
 
   (gptel-make-azure
    "Azure GPT-4"
