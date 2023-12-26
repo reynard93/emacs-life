@@ -49,7 +49,7 @@
   (gptel-api-key gpt-api-key)
   (gptel-max-tokens 400)
 
-  :bind (("s-j" . +gptel/send)
+  :bind (("s-x" . +gptel/send)
          :map embark-region-map
          ("RET" . +gptel/send)))
 
