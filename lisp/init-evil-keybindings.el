@@ -78,6 +78,7 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
+    "x"   #'gptel-menu
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
