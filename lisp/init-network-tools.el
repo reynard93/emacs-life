@@ -32,28 +32,34 @@
   :pin melpa
   :config
   (message "gptel is loaded")
+
+  (defvar gptel--azure-gpt-35
+    (gptel-make-azure
+     "Azure GPT-3.5"
+     :host azure-openai-api-host
+     :key azure-openai-api-key
+     :endpoint (format azure-openai-api-path "gpt-35-turbo")
+     :models '("gpt-3.5-turbo")
+     :stream t))
+
+  (defvar gptel--azure-gpt-4
+    (gptel-make-azure
+     "Azure GPT-4"
+     :host azure-openai-api-host
+     :key azure-openai-api-key
+     :endpoint (format azure-openai-api-path "gpt-4")
+     :models '("gpt-4")
+     :stream t))
+
+  (defvar gptel--gemini
+    (gptel-make-gemini
+     "Gemini"
+     :host gemini-api-host
+     :key gemini-api-key
+     :stream t))
+
   (setq-default gptel-model "gpt-3.5-turbo"
-                gptel-backend (gptel-make-azure
-                               "Azure GPT-3.5"
-                               :host azure-openai-api-host
-                               :key azure-openai-api-key
-                               :endpoint (format azure-openai-api-path "gpt-35-turbo")
-                               :models '("gpt-3.5-turbo")
-                               :stream t))
-
-  (gptel-make-azure
-   "Azure GPT-4"
-   :host azure-openai-api-host
-   :key azure-openai-api-key
-   :endpoint (format azure-openai-api-path "gpt-4")
-   :models '("gpt-4")
-   :stream t)
-
-  (gptel-make-gemini
-   "Gemini"
-   :host gemini-api-host
-   :key gemini-api-key
-   :stream t)
+                gptel-backend gptel--azure-gpt-35)
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -76,8 +82,9 @@
      (t (message "[gptel] Request cancelled"))))
 
   :custom
-  (gptel-default-mode 'org-mode)
   (gptel-max-tokens 400)
+  (gptel-default-mode 'org-mode)
+  (gptel-prompt-prefix-alist '((org-mode . "* ")))
 
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
