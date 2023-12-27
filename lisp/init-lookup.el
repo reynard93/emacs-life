@@ -33,11 +33,11 @@
     (browse-url (format "https://translate.google.com/?sl=%s&tl=%s&text=%s&op=translate"
                         source-lang target-lang (url-encode-url query)))))
 
-(defun +lookup/google-translate-guess-source-lang (&optional force-select)
+(defun +lookup/google-translate-guess-source-lang (&optional arg)
   (interactive "P")
   (let* ((filename (buffer-file-name))
          (source-lang (if filename (file-name-base filename) "en"))
-         (target-lang-full (if (or force-select (not google-translate-target-lang))
+         (target-lang-full (if (or arg (not google-translate-target-lang))
                                (completing-read "Select target language: " (mapcar 'car google-translate-target-langs))
                              (car (rassoc google-translate-target-lang google-translate-target-langs))))
          (target-lang (cdr (assoc target-lang-full google-translate-target-langs))))

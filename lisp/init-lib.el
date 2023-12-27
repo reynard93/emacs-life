@@ -123,11 +123,11 @@ The path is relative to `project-current'."
         (json-read-from-string (shell-command-to-string command))
       (error nil))))
 
-(defun +github/create-gist-region-or-buffer (&optional p)
+(defun +github/create-gist-region-or-buffer (&optional arg)
   (interactive "P")
   (let ((filename (buffer-name))
         (output-buffer " *gist-output*")
-        (public (if p " --public" "")))
+        (public (if arg " --public" "")))
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))
      (if (use-region-p) (region-end) (point-max))
@@ -139,11 +139,11 @@ The path is relative to `project-current'."
       (kill-new (thing-at-point 'line)))
     (kill-buffer output-buffer)))
 
-(defun +sourcehut/create-paste-region-or-buffer (&optional p)
+(defun +sourcehut/create-paste-region-or-buffer (&optional arg)
   (interactive "P")
   (let ((filename (read-string "Enter filename: " (buffer-name)))
         (output-buffer " *paste-output*")
-        (public (if p " --visibility public" "")))
+        (public (if arg " --visibility public" "")))
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))
      (if (use-region-p) (region-end) (point-max))
