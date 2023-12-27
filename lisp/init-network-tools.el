@@ -30,7 +30,6 @@
 
 (use-package gptel
   :pin melpa
-  :defer t
   :config
   (message "gptel is loaded")
   (setq-default gptel-model "gpt-3.5-turbo"
@@ -65,7 +64,25 @@
           (save-excursion
             (goto-char (point-max))
             (insert text)
-            (gptel-send)))))))
+            (gptel-send))))))
+
+  (defun +gptel/send (&optional arg)
+    (interactive "P")
+    (cond
+     (gptel-mode (gptel-send arg))
+     ((use-region-p) (gptel-send arg))
+     ((< (point) 2000) (gptel-send arg))
+     ((y-or-n-p "[gptel] Prompt has more than 2000 chars, really send?") (gptel-send arg))
+     (t (message "[gptel] Request cancelled"))))
+
+  :custom
+  (gptel-default-mode 'org-mode)
+  (gptel-max-tokens 400)
+
+  :bind (("C-c C-<return>" . gptel-menu)
+         ("C-c <return>" . +gptel/send)
+         :map gptel-mode-map
+         ("C-c C-x t" . gptel-set-topic)))
 
 (use-package mastodon
   :pin nongnu

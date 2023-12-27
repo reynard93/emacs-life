@@ -78,8 +78,6 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'gptel-menu
-    "X"   #'gptel-send
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -170,7 +168,6 @@
     "of"  #'make-frame
     "oF"  #'select-frame-by-name
     "og"  #'gptel
-    "oG"  #'chatgpt-shell
     "om"  #'mu4e
 
     "op"  '(:ignore t :which-key "pass")
