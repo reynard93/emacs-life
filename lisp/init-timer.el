@@ -1,5 +1,4 @@
 (use-package tmr
-  :commands +tmr/list-active-timers
   :config
   (message "tmr is loaded")
 
@@ -9,7 +8,7 @@
       (define-key map "c" #'tmr-clone)
       (define-key map "e" #'tmr-edit-description)
       (define-key map "k" #'tmr-cancel)
-      (define-key map "K" #'tmr-remove)
+      (define-key map "r" #'tmr-remove)
       (define-key map "s" #'tmr-reschedule)
       map))
 
@@ -37,7 +36,8 @@
   :bind ( :prefix-map tmr-prefix-map
           :prefix "C-c t"
           ("t" . tmr)
-          ("n" . tmr-with-description)
-          ("l" . tmr-tabulated-view)))
+          ("T" . tmr-with-description)
+          ("l" . tmr-tabulated-view)
+          ("R" . tmr-remove-finished)))
 
 (provide 'init-timer)
