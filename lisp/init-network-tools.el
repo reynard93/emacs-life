@@ -1,11 +1,11 @@
 ;; Azure OpenAI
-(setq azure-openai-api-host "beepboop.openai.azure.com")
-(setq azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2023-07-01-preview")
-(setq azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
+(defvar azure-openai-api-host "beepboop.openai.azure.com")
+(defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2023-07-01-preview")
+(defvar azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
 
 ;; Google Gemini
-(setq gemini-api-host "generativelanguage.googleapis.com")
-(setq gemini-api-key (lambda () (auth-source-pass-get 'secret gemini-api-host)))
+(defvar gemini-api-host "generativelanguage.googleapis.com")
+(defvar gemini-api-key (lambda () (auth-source-pass-get 'secret gemini-api-host)))
 
 (use-package chatgpt-shell
   :pin melpa
