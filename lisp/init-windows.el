@@ -34,17 +34,26 @@
 
 (use-package popper
   :demand t
+  :init
+  (require 'project)
+  (setq popper-group-function #'popper-group-by-project)
+
   :config
   (message "popper is loaded")
   (popper-mode 1)
   (popper-echo-mode 1)
+
   :custom
   (popper-reference-buffers
    '("\\*Messages\\*"
      "\\*Org Select\\*"
      "^CAPTURE-.*\\.org$"
      chatgpt-shell-mode
-     osx-dictionary-mode))
+     compilation-mode
+     osx-dictionary-mode
+     rspec-compilation-mode
+     shell-mode))
+
   :bind (("C-`"   . popper-toggle)
          ("M-`"   . popper-cycle)
          ("C-M-`" . popper-toggle-type)))
