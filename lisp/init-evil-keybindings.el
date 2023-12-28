@@ -94,7 +94,7 @@
     "br"  #'revert-buffer
     "bR"  #'rename-buffer
     "bs"  #'basic-save-buffer
-    "bw"  #'evil-write-all
+    "bS"  #'evil-write-all
     "bz"  #'bury-buffer
 
     "c"   '(:ignore t :which-key "code")
