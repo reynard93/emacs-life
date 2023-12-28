@@ -1,4 +1,5 @@
 (use-package tmr
+  :commands +tmr/list-active-timers
   :config
   (message "tmr is loaded")
 
@@ -8,7 +9,7 @@
       (define-key map "c" #'tmr-clone)
       (define-key map "e" #'tmr-edit-description)
       (define-key map "k" #'tmr-cancel)
-      (define-key map "r" #'tmr-remove)
+      (define-key map "K" #'tmr-remove)
       (define-key map "s" #'tmr-reschedule)
       map))
 

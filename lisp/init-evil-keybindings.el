@@ -69,6 +69,7 @@
 
     "'"   #'vertico-repeat
     ","   #'gptel-menu
+    "."   #'+tmr/list-active-timers
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
