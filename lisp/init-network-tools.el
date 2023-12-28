@@ -93,7 +93,9 @@
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
          :map gptel-mode-map
-         ("C-c C-x t" . gptel-set-topic)))
+         ("C-c C-x t" . gptel-set-topic))
+
+  :hook (gptel-mode . visual-line-mode))
 
 (use-package mastodon
   :pin nongnu
