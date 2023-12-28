@@ -69,7 +69,8 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    ","   #'gptel-menu
+    ","   #'switch-to-buffer
+    "."   #'find-file
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
@@ -78,7 +79,8 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'org-capture
+    "x"   #'+denote/scratch
+    "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -144,6 +146,7 @@
     "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
+    "na"  #'denote-signature
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
     "nd"  #'denote-date
@@ -151,14 +154,14 @@
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
-    "nn"  #'+denote/scratch
+    "nn"  #'denote
+    "nN"  #'denote-type
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'denote-template
     "nT"  #'org-todo-list
-    "nx"  #'org-capture-goto-last-stored
 
     "o"   '(:ignore t :which-key "open")
 
