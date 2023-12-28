@@ -33,15 +33,20 @@
   :bind ([remap other-window] . ace-window))
 
 (use-package popper
+  :demand t
   :config
   (message "popper is loaded")
   (popper-mode 1)
   (popper-echo-mode 1)
   :custom
   (popper-reference-buffers
-   '(chatgpt-shell-mode
-     osx-dictionary-mode
-     "*Org Select*"
-     "^CAPTURE-.*\\.org$")))
+   '("\\*Messages\\*"
+     "\\*Org Select\\*"
+     "^CAPTURE-.*\\.org$"
+     chatgpt-shell-mode
+     osx-dictionary-mode))
+  :bind (("C-`"   . popper-toggle)
+         ("M-`"   . popper-cycle)
+         ("C-M-`" . popper-toggle-type)))
 
 (provide 'init-windows)
