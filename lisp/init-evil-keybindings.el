@@ -77,6 +77,7 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
+    "x"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -141,9 +142,10 @@
     "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
-    "na"  #'org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
+    "nd"  #'denote-date
+    "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
@@ -152,8 +154,9 @@
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'org-capture
+    "nt"  #'denote-template
     "nT"  #'org-todo-list
+    "nx"  #'org-capture-goto-last-stored
 
     "o"   '(:ignore t :which-key "open")
 
