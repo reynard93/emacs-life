@@ -33,9 +33,10 @@
    '(tmr-print-message-for-finished-timer
      +tmr/notification-notify))
 
-  :bind (("C-c t t" . tmr)
-         ("C-c t T" . tmr-with-description)
-         ("C-c t l" . +tmr/list-active-timers)
-         ("C-c t L" . tmr-tabulated-view)))
+  :bind ( :prefix-map tmr-prefix-map
+          :prefix "C-c t"
+          ("t" . tmr)
+          ("n" . tmr-with-description)
+          ("l" . tmr-tabulated-view)))
 
 (provide 'init-timer)
