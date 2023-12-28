@@ -31,7 +31,8 @@
   (evil-want-C-w-in-emacs-state t)
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
-  :bind (("s-n" . evil-window-new)
+  :bind (("s-n" . evil-buffer-new)
+         ("s-N" . evil-window-new)
          :map evil-ex-completion-map
          ("C-a" . evil-beginning-of-line)
          ("C-b" . evil-backward-char)
@@ -88,6 +89,7 @@
     "bm"  #'bookmark-set
     "bM"  #'bookmark-delete
     "bn"  #'evil-buffer-new
+    "bN"  #'evil-window-new
     "br"  #'revert-buffer
     "bR"  #'rename-buffer
     "bs"  #'basic-save-buffer
