@@ -68,6 +68,7 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
+    ","   #'gptel-menu
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
@@ -76,7 +77,6 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'gptel-menu
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
