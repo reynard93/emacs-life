@@ -95,9 +95,11 @@ If prefix ARG, copy instead of move."
   :config
   (message "citar is loaded"))
 
-(use-package org-cite
+(use-package oc
   :ensure nil
   :after org
+  :config
+  (message "oc is loaded")
   :custom
   (org-cite-global-bibliography citar-bibliography)
   (org-cite-insert-processor 'citar)
