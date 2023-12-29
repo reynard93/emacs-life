@@ -59,7 +59,9 @@
   :custom
   (shackle-rules
    `((magit-status-mode :same t)
-     (magit-log-mode :align right :size 0.5)
+     (magit-log-mode :popup t)
+     (magit-log-select-mode :same t)
+     (magit-revision-mode :popup t)
      (mu4e-main-mode :same t)
      (mu4e-headers-mode :same t)
      (osx-dictionary-mode :align below :size 0.3)
