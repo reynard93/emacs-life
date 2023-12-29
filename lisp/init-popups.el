@@ -25,6 +25,8 @@
   :custom
   (shackle-rules
    `((magit-status-mode :same t)
+     (mu4e-main-mode :same t)
+     (mu4e-headers-mode :same t)
      (osx-dictionary-mode :align below :size 0.3)
      ((:custom
        ,(lambda (buffer)
