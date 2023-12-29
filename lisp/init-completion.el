@@ -15,7 +15,6 @@
 
 (use-package cape
   :when (display-graphic-p)
-  :pin melpa
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
