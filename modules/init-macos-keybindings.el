@@ -1,6 +1,5 @@
 (setq mac-command-modifier      'super
-      mac-option-modifier       'meta
-      mac-right-option-modifier 'none)
+      mac-option-modifier       'meta)
 
 (bind-key "C-s-f" #'toggle-frame-fullscreen) ; Toggle fullscreen
 (bind-key "s-x" #'execute-extended-command)  ; M-x
