@@ -15,8 +15,6 @@
 
 ;; basic
 (require 'init-better-defaults)
-(require 'init-macos-keybindings)
-(require 'init-evil-keybindings)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 
@@ -44,6 +42,10 @@
 (require 'init-timer)
 (require 'init-lookup)
 (require 'init-network-tools)
+
+;; keybindings
+(require 'init-macos-keybindings)
+(require 'init-evil-keybindings)
 
 ;; customizations
 (load custom-file t)
