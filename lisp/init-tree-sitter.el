@@ -24,7 +24,7 @@
    '((ruby-mode . ruby-ts-mode)
      (css-mode . css-ts-mode)
      (javascript-mode . js-ts-mode)
-     (json-mode . json-ts-mode)
+     (js-json-mode . json-ts-mode)
      (conf-toml-mode . toml-ts-mode))))
 
 (provide 'init-tree-sitter)
