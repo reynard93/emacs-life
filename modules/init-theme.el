@@ -22,32 +22,6 @@
   (message "spacious-padding is loaded")
   (spacious-padding-mode 1))
 
-(use-package logos
-  :init
-  (setq-default logos-hide-cursor nil
-                logos-hide-mode-line t
-                logos-hide-buffer-boundaries t
-                logos-hide-fringe t
-                logos-variable-pitch nil
-                logos-buffer-read-only nil
-                logos-scroll-lock nil
-                logos-olivetti t)
-  :config
-  (message "logos is loaded")
-  :custom
-  (logos-outlines-are-pages t)
-  :bind (([remap narrow-to-region] . logos-narrow-dwim)
-         ([remap forward-page]     . logos-forward-page-dwim)
-         ([remap backward-page]    . logos-backward-page-dwim)))
-
-(use-package olivetti
-  :pin melpa
-  :after logos
-  :config
-  (message "olivetti is loaded")
-  :custom
-  (olivetti-body-width 80))
-
 (use-package fontaine
   :demand t
   :config
@@ -104,5 +78,31 @@
      tab-next
      tab-previous
      widen)))
+
+(use-package logos
+  :init
+  (setq-default logos-hide-cursor nil
+                logos-hide-mode-line t
+                logos-hide-buffer-boundaries t
+                logos-hide-fringe t
+                logos-variable-pitch nil
+                logos-buffer-read-only nil
+                logos-scroll-lock nil
+                logos-olivetti t)
+  :config
+  (message "logos is loaded")
+  :custom
+  (logos-outlines-are-pages t)
+  :bind (([remap narrow-to-region] . logos-narrow-dwim)
+         ([remap forward-page]     . logos-forward-page-dwim)
+         ([remap backward-page]    . logos-backward-page-dwim)))
+
+(use-package olivetti
+  :pin melpa
+  :after logos
+  :config
+  (message "olivetti is loaded")
+  :custom
+  (olivetti-body-width 80))
 
 (provide 'init-theme)
