@@ -1,9 +1,15 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq custom-file (locate-user-emacs-file "custom.el"))
+(require 'init-lib)
 (require 'init-elpa)
 (require 'init-env)
-(require 'init-lib)
 
-(setq custom-file (locate-user-emacs-file "custom.el"))
+;; core
+(require 'init-minibuffer)
+(require 'init-mode-line)
+(require 'init-window)
+(require 'init-theme)
+(require 'init-evil)
 
 ;; basic
 (require 'init-better-defaults)
@@ -11,20 +17,10 @@
 (require 'init-evil-keybindings)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
-(require 'init-windows)
-(require 'init-popups)
-(require 'init-themes)
-(require 'init-fonts)
-
-;; core
-(require 'init-minibuffer)
-(require 'init-completion)
-(require 'init-mode-line)
-(require 'init-pulse)
 
 ;; note-taking
-(require 'init-org)
 (require 'init-denote)
+(require 'init-org)
 
 ;; programming
 (require 'init-tree-sitter)
@@ -49,3 +45,5 @@
 
 ;; customizations
 (load custom-file t)
+
+(provide 'init)

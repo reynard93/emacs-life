@@ -139,11 +139,4 @@
   (which-key-min-display-columns nil)
   (which-key-add-column-padding 1))
 
-(use-package deadgrep
-  :defer t
-  :pin melpa
-  :config
-  (message "deadgrep is loaded")
-  (evil-set-initial-state 'deadgrep-mode 'emacs))
-
 (provide 'init-minibuffer)

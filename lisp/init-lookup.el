@@ -11,6 +11,13 @@
   :config
   (message "dash-at-point is loaded"))
 
+(use-package deadgrep
+  :defer t
+  :pin melpa
+  :config
+  (message "deadgrep is loaded")
+  (evil-set-initial-state 'deadgrep-mode 'emacs))
+
 (defun +lookup/search-kagi ()
   (interactive)
   (let ((query (read-string "Search for: " (thing-at-point 'symbol t))))

@@ -31,15 +31,6 @@
   (history-length 500)
   (history-delete-duplicates t))
 
-(use-package helpful
-  :pin melpa
-  :config
-  (message "helpful is loaded")
-  :bind (("C-h f" . helpful-callable)
-         ("C-h v" . helpful-variable)
-         ("C-h k" . helpful-key)
-         ("C-h x" . helpful-command)))
-
 (use-package ibuffer
   :ensure nil
   :config
@@ -48,6 +39,24 @@
   (ibuffer-expert t)
   :bind ([remap list-buffers] . ibuffer)
   :hook (ibuffer-mode . ibuffer-auto-mode))
+
+(use-package ediff
+  :ensure nil
+  :defer t
+  :config
+  (message "ediff is loaded")
+  :custom
+  (ediff-window-setup-function #'ediff-setup-windows-plain)
+  (ediff-split-window-function #'split-window-horizontally))
+
+(use-package helpful
+  :pin melpa
+  :config
+  (message "helpful is loaded")
+  :bind (("C-h f" . helpful-callable)
+         ("C-h v" . helpful-variable)
+         ("C-h k" . helpful-key)
+         ("C-h x" . helpful-command)))
 
 (use-package undo-fu
   :pin melpa
@@ -67,6 +76,12 @@
   :custom
   (undo-fu-session-compression 'zst)
   (undo-fu-session-incompatible-files '("/COMMIT_EDITMSG\\'" "/git-rebase-todo\\'")))
+
+(use-package xclip
+  :unless (display-graphic-p)
+  :config
+  (message "xclip is loaded")
+  (xclip-mode 1))
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash

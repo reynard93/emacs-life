@@ -68,15 +68,6 @@ If prefix ARG, copy instead of move."
 
   :hook (org-capture-mode . evil-insert-state))
 
-(use-package evil-org
-  :pin melpa
-  :after (evil org)
-  :config
-  (message "evil-org is loaded")
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys)
-  :hook org-mode)
-
 (use-package ob
   :ensure nil
   :after org

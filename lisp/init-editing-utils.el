@@ -4,37 +4,68 @@
 
 (setq-default indent-tabs-mode nil)
 
-(use-package evil-nerd-commenter
-  :pin nongnu
-  :after evil
-  :config
-  (message "evil-nerd-commenter is loaded")
-  (evil-define-key '(normal visual) 'global
-    "gcc" #'evilnc-comment-or-uncomment-lines
-    "gcp" #'evilnc-comment-or-uncomment-paragraphs
-    "gcy" #'evilnc-copy-and-comment-lines))
+(use-package corfu
+  :preface
+  (setq tab-always-indent 'complete     ; Enable indentation+completion using the TAB key
+        completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
 
-(use-package evil-snipe
-  :pin melpa
-  :after evil
   :config
-  (message "evil-snipe is loaded")
-  (evil-snipe-mode 1)
-  (evil-snipe-override-mode 1))
+  (message "corfu is loaded")
+  (global-corfu-mode 1)
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  (corfu-quit-no-match t)
+  (corfu-scroll-margin 5))
 
-(use-package evil-surround
-  :pin melpa
-  :after evil
+(use-package cape
+  :init
+  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
+  (add-to-list 'completion-at-point-functions #'cape-file)
+  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-history)
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
   :config
-  (message "evil-surround is loaded")
-  (global-evil-surround-mode 1))
+  (message "cape is loaded")
+  :bind ( :prefix-map cape-prefix-map
+          :prefix "C-c p"
+          ("p" . completion-at-point)
+          ("t" . complete-tag)
+          ("d" . cape-dabbrev)
+          ("h" . cape-history)
+          ("f" . cape-file)
+          ("k" . cape-keyword)
+          ("s" . cape-elisp-symbol)
+          ("e" . cape-elisp-block)
+          ("a" . cape-abbrev)
+          ("l" . cape-line)
+          ("w" . cape-dict)
+          (":" . cape-emoji)
+          ("\\" . cape-tex)
+          ("_" . cape-tex)
+          ("^" . cape-tex)
+          ("&" . cape-sgml)
+          ("r" . cape-rfc1345)))
 
-(use-package evil-mc
-  :pin melpa
-  :after evil
+(use-package tempel
   :config
-  (message "evil-mc is loaded")
-  (global-evil-mc-mode 1))
+  (message "tempel is loaded")
+
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
+  :custom
+  (tempel-trigger-prefix "<")
+  :hook
+  ((prog-mode text-mode) . tempel-setup-capf))
+
+(use-package tempel-collection
+  :pin melpa
+  :after tempel
+  :config
+  (message "tempel-collection is loaded"))
 
 (use-package avy
   :after evil
@@ -45,11 +76,13 @@
   :custom
   (avy-all-windows nil))
 
-(use-package rainbow-delimiters
-  :pin nongnu
+(use-package goggles
+  :pin melpa
+  :init
+  (setq-default goggles-pulse t)
   :config
-  (message "rainbow-delimiters is loaded")
-  :hook prog-mode)
+  (message "goggles is loaded")
+  :hook (prog-mode text-mode))
 
 (use-package hl-todo
   :pin melpa
@@ -59,7 +92,13 @@
   (evil-define-key 'motion 'global
     "]t" #'hl-todo-next
     "[t" #'hl-todo-previous)
-  :hook prog-mode)
+  :hook (prog-mode text-mode))
+
+(use-package rainbow-delimiters
+  :pin nongnu
+  :config
+  (message "rainbow-delimiters is loaded")
+  :hook (prog-mode text-mode))
 
 (use-package smartparens
   :pin melpa
@@ -67,46 +106,5 @@
   (message "smartparens is loaded")
   (require 'smartparens-config)
   :hook (prog-mode text-mode))
-
-(use-package xclip
-  :unless (display-graphic-p)
-  :config
-  (message "xclip is loaded")
-  (xclip-mode 1))
-
-(use-package ediff
-  :ensure nil
-  :defer t
-  :config
-  (message "ediff is loaded")
-  :custom
-  (ediff-window-setup-function #'ediff-setup-windows-plain)
-  (ediff-split-window-function #'split-window-horizontally))
-
-(use-package logos
-  :init
-  (setq-default logos-hide-cursor nil
-                logos-hide-mode-line t
-                logos-hide-buffer-boundaries t
-                logos-hide-fringe t
-                logos-variable-pitch nil
-                logos-buffer-read-only nil
-                logos-scroll-lock nil
-                logos-olivetti t)
-  :config
-  (message "logos is loaded")
-  :custom
-  (logos-outlines-are-pages t)
-  :bind (([remap narrow-to-region] . logos-narrow-dwim)
-         ([remap forward-page]     . logos-forward-page-dwim)
-         ([remap backward-page]    . logos-backward-page-dwim)))
-
-(use-package olivetti
-  :pin melpa
-  :after logos
-  :config
-  (message "olivetti is loaded")
-  :custom
-  (olivetti-body-width 80))
 
 (provide 'init-editing-utils)
