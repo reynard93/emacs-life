@@ -1,4 +1,4 @@
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-lib)
 (require 'init-elpa)
