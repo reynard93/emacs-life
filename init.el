@@ -12,6 +12,7 @@
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 (require 'init-windows)
+(require 'init-popups)
 (require 'init-themes)
 (require 'init-fonts)
 
