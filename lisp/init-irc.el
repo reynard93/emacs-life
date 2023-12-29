@@ -2,8 +2,8 @@
   :pin melpa
   :defer t
   :init
-  (setq circe-network-options
-        '(("sourcehut/liberachat"
+  (setq circe-network-defaults
+        '(("chat.sr.ht/Libera.Chat"
            :host "chat.sr.ht"
            :port 6697
            :use-tls t
