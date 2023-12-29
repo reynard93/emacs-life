@@ -1,8 +1,10 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+
+;; bootstrap
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-lib)
 (require 'init-elpa)
-(require 'init-env)
+(require 'init-envrc)
 
 ;; core
 (require 'init-minibuffer)

@@ -4,4 +4,4 @@
   (message "envrc is loaded")
   (envrc-global-mode 1))
 
-(provide 'init-env)
+(provide 'init-envrc)
