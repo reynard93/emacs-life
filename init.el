@@ -31,6 +31,7 @@
 (require 'init-eglot)
 (require 'init-data)
 (require 'init-elixir)
+(require 'init-markdown)
 (require 'init-nix)
 (require 'init-ruby)
 (require 'init-web)
