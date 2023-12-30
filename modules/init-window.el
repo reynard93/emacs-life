@@ -57,6 +57,8 @@
   (message "shackle is loaded")
   (shackle-mode 1)
   :custom
+  (shackle-inhibit-window-quit-on-same-windows t)
+  (shackle-default-size 0.4)
   (shackle-rules
    `((magit-status-mode :same t)
      (magit-log-mode :popup t)
@@ -69,8 +71,6 @@
        ,(lambda (buffer)
           (with-current-buffer buffer
             (bound-and-true-p gptel-mode))))
-      :align right :size 0.5)))
-  (shackle-default-rule
-   '(:align below :size 0.4)))
+      :align right :size 0.5))))
 
 (provide 'init-window)
