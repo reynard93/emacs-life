@@ -1,5 +1,6 @@
 (use-package magit
   :pin melpa
+  :defer t
   :config
   (message "magit is loaded")
   :custom
