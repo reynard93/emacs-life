@@ -6,14 +6,18 @@
 (require 'init-elpa)
 (require 'init-envrc)
 
-;; core
+;; interaction
 (require 'init-minibuffer)
-(require 'init-mode-line)
+(require 'init-completion)
 (require 'init-window)
-(require 'init-theme)
 (require 'init-evil)
 
-;; basic
+;; visualization
+(require 'init-ui)
+(require 'init-pulse)
+(require 'init-mode-line)
+
+;; common
 (require 'init-better-defaults)
 (require 'init-editing-utils)
 (require 'init-gui-frames)

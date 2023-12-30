@@ -4,69 +4,6 @@
 
 (setq-default indent-tabs-mode nil)
 
-(use-package corfu
-  :preface
-  (setq tab-always-indent 'complete     ; Enable indentation+completion using the TAB key
-        completion-cycle-threshold 3)   ; TAB cycle if there are only few candidates
-
-  :config
-  (message "corfu is loaded")
-  (global-corfu-mode 1)
-  :custom
-  (corfu-cycle t)
-  (corfu-auto t)
-  (corfu-quit-no-match t)
-  (corfu-scroll-margin 5))
-
-(use-package cape
-  :init
-  (add-to-list 'completion-at-point-functions #'cape-dabbrev)
-  (add-to-list 'completion-at-point-functions #'cape-file)
-  (add-to-list 'completion-at-point-functions #'cape-elisp-block)
-  (add-to-list 'completion-at-point-functions #'cape-history)
-  (add-to-list 'completion-at-point-functions #'cape-keyword)
-  :config
-  (message "cape is loaded")
-  :bind ( :prefix-map cape-prefix-map
-          :prefix "C-c p"
-          ("p" . completion-at-point)
-          ("t" . complete-tag)
-          ("d" . cape-dabbrev)
-          ("h" . cape-history)
-          ("f" . cape-file)
-          ("k" . cape-keyword)
-          ("s" . cape-elisp-symbol)
-          ("e" . cape-elisp-block)
-          ("a" . cape-abbrev)
-          ("l" . cape-line)
-          ("w" . cape-dict)
-          (":" . cape-emoji)
-          ("\\" . cape-tex)
-          ("_" . cape-tex)
-          ("^" . cape-tex)
-          ("&" . cape-sgml)
-          ("r" . cape-rfc1345)))
-
-(use-package tempel
-  :config
-  (message "tempel is loaded")
-
-  (defun tempel-setup-capf ()
-    (setq-local completion-at-point-functions
-                (cons #'tempel-expand
-                      completion-at-point-functions)))
-
-  :custom
-  (tempel-trigger-prefix "<")
-  :hook
-  ((prog-mode text-mode) . tempel-setup-capf))
-
-(use-package tempel-collection
-  :pin melpa
-  :after tempel
-  :config
-  (message "tempel-collection is loaded"))
-
 (use-package avy
   :after evil
   :config
@@ -75,14 +12,6 @@
     "gss" #'evil-avy-goto-char-2)
   :custom
   (avy-all-windows nil))
-
-(use-package goggles
-  :pin melpa
-  :init
-  (setq-default goggles-pulse t)
-  :config
-  (message "goggles is loaded")
-  :hook (prog-mode text-mode))
 
 (use-package hl-todo
   :pin melpa
@@ -106,5 +35,31 @@
   (message "smartparens is loaded")
   (require 'smartparens-config)
   :hook (prog-mode text-mode))
+
+(use-package logos
+  :init
+  (setq-default logos-hide-cursor nil
+                logos-hide-mode-line t
+                logos-hide-buffer-boundaries t
+                logos-hide-fringe t
+                logos-variable-pitch nil
+                logos-buffer-read-only nil
+                logos-scroll-lock nil
+                logos-olivetti t)
+  :config
+  (message "logos is loaded")
+  :custom
+  (logos-outlines-are-pages t)
+  :bind (([remap narrow-to-region] . logos-narrow-dwim)
+         ([remap forward-page]     . logos-forward-page-dwim)
+         ([remap backward-page]    . logos-backward-page-dwim)))
+
+(use-package olivetti
+  :pin melpa
+  :after logos
+  :config
+  (message "olivetti is loaded")
+  :custom
+  (olivetti-body-width 80))
 
 (provide 'init-editing-utils)
