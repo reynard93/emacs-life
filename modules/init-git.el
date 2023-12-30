@@ -3,7 +3,8 @@
   :config
   (message "magit is loaded")
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
+  (magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  (magit-bury-buffer-function #'quit-window))
 
 (use-package transient
   :ensure nil
