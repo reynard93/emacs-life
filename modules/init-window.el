@@ -44,8 +44,7 @@
   (popper-display-control nil)
   (popper-reference-buffers
    '(compilation-mode
-     rspec-compilation-mode
-     shell-mode))
+     rspec-compilation-mode))
 
   :bind (("C-`"   . popper-toggle)
          ("M-`"   . popper-cycle)
@@ -67,6 +66,7 @@
      (mu4e-main-mode :same t)
      (mu4e-headers-mode :same t)
      (osx-dictionary-mode :align below :size 0.3)
+     (shell-mode :align below :size 0.3)
      ((:custom
        ,(lambda (buffer)
           (with-current-buffer buffer
