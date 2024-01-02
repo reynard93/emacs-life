@@ -3,6 +3,7 @@
 ;; bootstrap
 (setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-lib)
+(require 'init-lisp)
 (require 'init-elpa)
 (require 'init-envrc)
 

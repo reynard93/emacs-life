@@ -62,6 +62,13 @@
      :key gemini-api-key
      :stream t))
 
+  (require 'gptel-kagi)
+  (defvar gptel--kagi
+    (gptel-make-kagi
+     "Kagi"
+     :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))
+     :stream nil))
+
   (setq-default gptel-model "gpt-3.5-turbo"
                 gptel-backend gptel--azure-gpt-35)
 
