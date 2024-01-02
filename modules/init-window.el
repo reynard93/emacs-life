@@ -59,7 +59,8 @@
   (shackle-inhibit-window-quit-on-same-windows t)
   (shackle-default-size 0.4)
   (shackle-rules
-   `((magit-status-mode :same t)
+   `((help-mode :select t)
+     (magit-status-mode :same t)
      (magit-log-mode :popup t)
      (magit-log-select-mode :same t)
      (magit-revision-mode :popup t)
