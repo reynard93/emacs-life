@@ -59,6 +59,7 @@ If prefix ARG, copy instead of move."
   (org-startup-indented t)
   (org-src-preserve-indentation t)
   (org-confirm-babel-evaluate nil)
+  (org-hide-emphasis-markers t)
   (org-src-window-setup 'other-window)
   (org-log-into-drawer t)
   (org-log-done 'time)
