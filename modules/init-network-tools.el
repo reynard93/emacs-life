@@ -92,6 +92,9 @@
      ((y-or-n-p "[gptel] Prompt has more than 2000 chars, really send?") (gptel-send arg))
      (t (message "[gptel] Request cancelled"))))
 
+  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "Prompt: ")
+  (setf (alist-get 'org-mode gptel-response-prefix-alist) "Response: ")
+
   :custom
   (gptel-max-tokens 400)
   (gptel-default-mode 'org-mode)
@@ -100,7 +103,8 @@
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
          :map gptel-mode-map
-         ("C-c C-x t" . gptel-set-topic))
+         ("C-c C-x t" . gptel-set-topic)
+         ("M-n" . gptel-end-of-response))
 
   :hook (gptel-mode . visual-line-mode))
 
