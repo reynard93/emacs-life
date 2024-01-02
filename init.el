@@ -42,10 +42,10 @@
 (require 'init-git)
 (require 'init-pass)
 (require 'init-mail)
-(require 'init-rss)
 (require 'init-irc)
 (require 'init-timer)
 (require 'init-lookup)
+(require 'init-reading)
 (require 'init-network-tools)
 
 ;; keybindings
