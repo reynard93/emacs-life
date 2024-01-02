@@ -43,6 +43,7 @@
 (require 'init-pass)
 (require 'init-mail)
 (require 'init-irc)
+(require 'init-gpt)
 (require 'init-timer)
 (require 'init-lookup)
 (require 'init-reading)
