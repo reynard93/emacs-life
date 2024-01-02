@@ -127,4 +127,19 @@
           :map embark-file-map
           ("U" . 0x0-upload-file)))
 
+(use-package wombag
+  :ensure nil
+  :commands wombag
+  :defer t
+  :load-path "lisp/wombag"
+  :custom
+  (wombag-host "https://app.wallabag.it")
+  (wombag-username (auth-source-pass-get 'user "app.wallabag.it"))
+  (wombag-password (auth-source-pass-get 'secret "app.wallabag.it"))
+  (wombag-client-id (auth-source-pass-get "client_id" "app.wallabag.it"))
+  (wombag-client-secret (auth-source-pass-get "client_secret" "app.wallabag.it"))
+  :config
+  (message "wombag is loaded")
+  (evil-set-initial-state 'wombag-search-mode 'emacs))
+
 (provide 'init-network-tools)
