@@ -27,6 +27,7 @@
 (require 'cl-generic)
 (eval-when-compile
   (require 'cl-lib))
+(require 'compat)
 
 ;;; Kagi
 (cl-defstruct (gptel-kagi (:constructor gptel--make-kagi)
@@ -49,7 +50,7 @@
                         (lambda (text url)
                           (format "[%s](%s)" text url)))
                        (_ (lambda (text url)
-                            (gptel--button-buttonize
+                            (buttonize
                              text (lambda (data) (browse-url data))
                              url))))
                      for ref across references
