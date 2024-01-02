@@ -108,6 +108,17 @@
 
   :hook (gptel-mode . visual-line-mode))
 
+(use-package kagi
+  :load-path "lisp/kagi"
+  :commands (kagi-fastgpt-shell)
+  :defer t
+  :config
+  (message "kagi is loaded")
+  :custom
+  (kagi-api-token (lambda () (auth-source-pass-get 'secret "api.kagi.com")))
+  :bind ( :map embark-url-map
+          ("K" . kagi-summarize-url)))
+
 (use-package mastodon
   :pin nongnu
   :defer t
