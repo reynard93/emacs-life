@@ -18,7 +18,6 @@
      (t . (1.1)))))
 
 (use-package spacious-padding
-  :defer 1
   :config
   (message "spacious-padding is loaded")
   (spacious-padding-mode 1)
