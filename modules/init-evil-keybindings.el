@@ -94,7 +94,7 @@
     "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
-    "na"  #'denote-signature
+    "na"  #'wombag-add-entry
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
     "nd"  #'denote-date
