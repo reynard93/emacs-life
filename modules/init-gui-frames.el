@@ -1,3 +1,11 @@
+(use-package frame
+  :ensure nil
+  :when (display-graphic-p)
+  :config
+  (message "frame is loaded")
+  :bind (("C-s-f" . toggle-frame-fullscreen)
+         ("s-f" . select-frame-by-name)))
+
 (use-package tab-bar
   :ensure nil
   :when (display-graphic-p)

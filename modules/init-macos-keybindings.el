@@ -1,7 +1,6 @@
 (setq mac-command-modifier      'super
       mac-option-modifier       'meta)
 
-(bind-key "C-s-f" #'toggle-frame-fullscreen) ; Toggle fullscreen
 (bind-key "s-x" #'execute-extended-command)  ; M-x
 (bind-key "s-s" #'save-buffer)               ; File -> Save
 (bind-key "s-S" #'write-file)                ; File -> Save As
