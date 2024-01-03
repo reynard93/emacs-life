@@ -27,7 +27,8 @@
 
   :custom
   (mu4e-update-interval (* 15 60))
-  (mu4e-get-mail-command "mbsync -a"))
+  (mu4e-get-mail-command "mbsync -a")
+  (mu4e-change-filenames-when-moving t))
 
 (use-package message
   :ensure nil
