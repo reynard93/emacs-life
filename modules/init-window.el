@@ -68,6 +68,8 @@
      (mu4e-headers-mode :same t)
      (osx-dictionary-mode :align below :size 0.3)
      (shell-mode :align below :size 0.3)
+     ("*Org Select*" :align below)
+     ("^CAPTURE-.+\\.org$" :regexp t :align below)
      ((:custom
        ,(lambda (buffer)
           (with-current-buffer buffer
