@@ -12,7 +12,7 @@
                          ('elfeed-show-mode
                           (list elfeed-show-entry)))))
     (dolist (entry (ensure-list entries))
-      (wombag-url (elfeed-entry-link entry))))
+      (+wombag/url (elfeed-entry-link entry))))
 
   (defun +elfeed/switch-to-wombag ()
     (interactive)
@@ -40,7 +40,7 @@
   :commands (wombag wombag-add-entry)
   :defer t
   :init
-  (defsubst wombag-url (url)
+  (defsubst +wombag/url (url)
     "Add URL to Wombag."
     (wombag-add-entry url ""))
 
@@ -61,8 +61,8 @@
   (wombag-client-id "23745_3qjblkrgo0qo4w4cwscg0g88wk4408wckw0gc8oskwg0cgkocw")
   (wombag-client-secret (auth-source-pass-get "client_secret" "app.wallabag.it"))
 
-  :bind ( :map embark-url-map
-          ("R" . wombag-url)))
+  :bind (:map embark-url-map
+         ("R" . +wombag/url)))
 
 (use-package wombag-search
   :ensure nil
