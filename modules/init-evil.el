@@ -32,7 +32,6 @@
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
   :bind (("s-n" . evil-buffer-new)
-         ("s-N" . evil-window-new)
          :map evil-ex-completion-map
          ("C-a" . evil-beginning-of-line)
          ("C-b" . evil-backward-char)

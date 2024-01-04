@@ -119,7 +119,6 @@
 
     "oA"  #'org-agenda
     "oe"  #'eshell
-    "of"  #'make-frame
     "om"  #'mu4e
 
     "op"  '(:ignore t :which-key "pass")
@@ -135,7 +134,6 @@
     "opu" #'+pass/create-otp-key-uri
 
     "q"   '(:ignore t :which-key "quit")
-    "qf"  #'delete-frame
     "qK"  #'save-buffers-kill-emacs
     "qq"  #'save-buffers-kill-terminal
     "qQ"  #'evil-quit-all-with-error-code
