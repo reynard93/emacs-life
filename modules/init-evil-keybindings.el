@@ -29,6 +29,7 @@
     "RET" #'bookmark-jump
     "a"   #'embark-act
     "x"   #'org-capture
+    "X"   #'wombag-add-entry
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
