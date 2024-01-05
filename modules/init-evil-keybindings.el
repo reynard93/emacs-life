@@ -163,9 +163,7 @@
     "t"   '(:ignore t :which-key "toggle")
     "tf"  '(flymake-mode :which-key "Flymake mode")
     "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
-    "tr"  '(repeat-mode :which-key "Repeat mode")
-    "tt"  '(modus-themes-toggle :which-key "Modus themes")
-    "tv"  '(visible-mode :which-key "Visible mode")
+    "tm"  '(modus-themes-toggle :which-key "Modus themes")
 
     "w"   '(evil-window-map :which-key "window")
     "wu"  #'winner-undo
