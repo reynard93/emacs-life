@@ -3,7 +3,6 @@
   :defer t
   :config
   (message "elfeed is loaded")
-  (evil-set-initial-state 'elfeed-search-mode 'emacs)
 
   (defun +elfeed/post-to-wombag (entries)
     (interactive (list (pcase major-mode
@@ -20,11 +19,15 @@
         (switch-to-buffer buf)
       (wombag)))
 
-  :bind ( :map elfeed-search-mode-map
-          ("R" . +elfeed/post-to-wombag)
-          ("W" . +elfeed/switch-to-wombag)
-          :map elfeed-show-mode-map
-          ("R" . +elfeed/post-to-wombag)))
+  (when (featurep 'evil)
+    (evil-define-key 'normal elfeed-search-mode-map
+      "R" #'+elfeed/post-to-wombag
+      "W" #'+elfeed/switch-to-wombag)
+    (evil-define-key 'normal elfeed-show-mode-map
+      "R" #'+elfeed/post-to-wombag))
+
+  :custom
+  (elfeed-search-remain-on-entry t))
 
 (use-package elfeed-org
   :pin melpa
@@ -46,13 +49,26 @@
 
   :config
   (message "wombag is loaded")
-  (evil-set-initial-state 'wombag-search-mode 'emacs)
 
   (defun +wombag/switch-to-elfeed ()
     (interactive)
     (if-let ((buf (get-buffer "*elfeed-search*")))
         (switch-to-buffer buf)
       (elfeed)))
+
+  (when (and
+         (featurep 'evil)
+         (featurep 'evil-collection))
+    (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
+    (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
+    (evil-define-key 'normal wombag-search-mode-map
+      "E"  #'+wombag/switch-to-elfeed
+      (kbd "<return>") #'wombag-search-show-entry
+      (kbd "S-<return>") 'wombag-search-browse-url
+      "y"  #'wombag-search-copy
+      "A"  #'wombag-search-archive-entry
+      "gr" #'wombag-search-update--force
+      "gR" #'wombag-sync))
 
   :custom
   (wombag-host "https://app.wallabag.it")
@@ -62,13 +78,7 @@
   (wombag-client-secret (auth-source-pass-get "client_secret" "app.wallabag.it"))
 
   :bind (:map embark-url-map
-         ("R" . +wombag/url)))
-
-(use-package wombag-search
-  :ensure nil
-  :after wombag
-  :bind ( :map wombag-search-mode-map
-          ("E" . +wombag/switch-to-elfeed)))
+              ("R" . +wombag/url)))
 
 (use-package logos
   :init
