@@ -19,10 +19,17 @@
         (switch-to-buffer buf)
       (wombag)))
 
+  (defun +elfeed/search-eww-open ()
+    (interactive)
+    (when-let* ((entry (elfeed-search-selected :ignore-region))
+                (link (elfeed-entry-link entry)))
+      (eww link)))
+
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
-      "R" #'+elfeed/post-to-wombag
-      "W" #'+elfeed/switch-to-wombag)
+      "R"  #'+elfeed/post-to-wombag
+      "W"  #'+elfeed/switch-to-wombag
+      "go" #'+elfeed/search-eww-open)
     (evil-define-key 'normal elfeed-show-mode-map
       "R" #'+elfeed/post-to-wombag))
 
@@ -62,11 +69,12 @@
     (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
     (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
     (evil-define-key 'normal wombag-search-mode-map
-      "E"  #'+wombag/switch-to-elfeed
       (kbd "<return>") #'wombag-search-show-entry
       (kbd "S-<return>") 'wombag-search-browse-url
       "y"  #'wombag-search-copy
       "A"  #'wombag-search-archive-entry
+      "E"  #'+wombag/switch-to-elfeed
+      "go" #'wombag-search-eww-open
       "gr" #'wombag-search-update--force
       "gR" #'wombag-sync))
 
