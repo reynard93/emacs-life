@@ -53,7 +53,7 @@
   :after evil
   :config
   (message "evil-nerd-commenter is loaded")
-  (evil-define-key '(normal visual) 'global
+  (evil-define-key 'normal 'global
     "gcc" #'evilnc-comment-or-uncomment-lines
     "gcp" #'evilnc-comment-or-uncomment-paragraphs
     "gcy" #'evilnc-copy-and-comment-lines))
