@@ -7,35 +7,11 @@
 (defvar gemini-api-host "generativelanguage.googleapis.com")
 (defvar gemini-api-key (lambda () (auth-source-pass-get 'secret gemini-api-host)))
 
-(use-package chatgpt-shell
-  :pin melpa
-  :config
-  (message "chatgpt-shell is loaded")
-
-  :custom
-  (chatgpt-shell-welcome-function nil)
-  (chatgpt-shell-openai-key azure-openai-api-key)
-  (chatgpt-shell-model-version (cl-position "gpt-4" chatgpt-shell-model-versions :test 'string=))
-
-  ;; Azure OpenAI
-  (chatgpt-shell-api-url-base (format "https://%s" azure-openai-api-host))
-  (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4"))
-  (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key))))
-
-  :bind ( :prefix-map chatgpt-shell-prefix-map
-          :prefix "C-c z"
-          ("z" . chatgpt-shell)
-          ("b" . chatgpt-shell-prompt)
-          ("c" . chatgpt-shell-prompt-compose)
-          ("e" . chatgpt-shell-explain-code)
-          ("r" . chatgpt-shell-refactor-code)
-          ("s" . chatgpt-shell-send-region)
-          ("S" . chatgpt-shell-send-and-review-region)))
-
 (use-package gptel
   :pin melpa
   :config
   (message "gptel is loaded")
+  (require 'gptel-kagi)
 
   (defvar gptel--azure-gpt-35
     (gptel-make-azure
@@ -62,15 +38,14 @@
      :key gemini-api-key
      :stream t))
 
-  (require 'gptel-kagi)
   (defvar gptel--kagi
     (gptel-make-kagi
      "Kagi"
      :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))
      :stream nil))
 
-  (setq-default gptel-model "gpt-3.5-turbo"
-                gptel-backend gptel--azure-gpt-35)
+  (setq-default gptel-model "gpt-4"
+                gptel-backend gptel--azure-gpt-4)
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -107,6 +82,22 @@
          ("M-n" . gptel-end-of-response))
 
   :hook (gptel-mode . visual-line-mode))
+
+(use-package chatgpt-shell
+  :pin melpa
+  :defer t
+  :config
+  (message "chatgpt-shell is loaded")
+
+  :custom
+  (chatgpt-shell-welcome-function nil)
+  (chatgpt-shell-openai-key azure-openai-api-key)
+  (chatgpt-shell-model-version (cl-position "gpt-3.5-turbo" chatgpt-shell-model-versions :test 'string=))
+
+  ;; Azure OpenAI
+  (chatgpt-shell-api-url-base (format "https://%s" azure-openai-api-host))
+  (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-35-turbo"))
+  (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key)))))
 
 (use-package kagi
   :load-path "lisp/kagi"
