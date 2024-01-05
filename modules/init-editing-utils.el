@@ -5,20 +5,20 @@
 (setq-default indent-tabs-mode nil)
 
 (use-package avy
-  :after evil
   :config
   (message "avy is loaded")
-  (evil-define-key 'motion 'global
-    "gss" #'evil-avy-goto-char-2))
+  (with-eval-after-load 'evil
+    (evil-define-key 'motion 'global
+      "gss" #'evil-avy-goto-char-2)))
 
 (use-package hl-todo
   :pin melpa
-  :after evil
   :config
   (message "hl-todo is loaded")
-  (evil-define-key 'motion 'global
-    "]t" #'hl-todo-next
-    "[t" #'hl-todo-previous)
+  (with-eval-after-load 'evil
+    (evil-define-key 'motion 'global
+      "]t" #'hl-todo-next
+      "[t" #'hl-todo-previous))
   :hook (prog-mode text-mode))
 
 (use-package rainbow-delimiters
