@@ -39,7 +39,6 @@ If prefix ARG, copy instead of move."
 
   :config
   (message "org is loaded")
-  (evil-define-key '(normal visual) 'global (kbd "RET") #'org-open-at-point)
 
   (setq org-todo-keywords
         '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "KILL(k@)")))
@@ -65,9 +64,8 @@ If prefix ARG, copy instead of move."
   (org-log-done 'time)
 
   :bind ( :map org-mode-map
-          ("C-M-S-h" . org-babel-mark-block))
-
-  :hook (org-capture-mode . evil-insert-state))
+          ("<return>" . org-open-at-point)
+          ("C-M-S-h" . org-babel-mark-block)))
 
 (use-package ob
   :ensure nil
