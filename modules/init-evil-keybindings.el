@@ -94,7 +94,7 @@
     "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
-    "na"  #'wombag-add-entry
+    "na"  #'+tmr/active-timers
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
     "nd"  #'denote-date
@@ -103,23 +103,23 @@
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
     "nn"  #'+denote/scratch
+    "nN"  #'denote-template
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'denote-template
+    "nt"  #'tmr
     "nT"  #'org-todo-list
 
     "o"   '(:ignore t :which-key "open")
+    "oA"  #'org-agenda
+    "oe"  #'eshell
+    "om"  #'mu4e
 
     "oa"  '(:ignore t :which-key "org agenda")
     "oat" #'org-todo-list
     "oam" #'org-tags-view
     "oas" #'org-search-view
-
-    "oA"  #'org-agenda
-    "oe"  #'eshell
-    "om"  #'mu4e
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
@@ -132,6 +132,12 @@
     "opr" #'password-store-rename
     "opR" #'password-store-remove
     "opu" #'+pass/create-otp-key-uri
+
+    "ot"  '(:ignore t :which-key "timer")
+    "ott" #'tmr
+    "otT" #'tmr-with-description
+    "otl" #'tmr-tabulated-view
+    "otR" #'tmr-remove-finished
 
     "q"   '(:ignore t :which-key "quit")
     "qK"  #'save-buffers-kill-emacs

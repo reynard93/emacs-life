@@ -1,4 +1,6 @@
 (use-package tmr
+  :defer t
+  :commands +tmr/active-timers
   :config
   (message "tmr is loaded")
 
@@ -19,7 +21,7 @@
      if (commandp cmd) do
      (add-to-list 'embark-post-action-hooks (list cmd 'embark--restart))))
 
-  (defun +tmr/list-active-timers ()
+  (defun +tmr/active-timers ()
     (interactive)
     (list (tmr--read-timer "Timer: " t)))
 
@@ -31,13 +33,6 @@
   :custom
   (tmr-timer-finished-functions
    '(tmr-print-message-for-finished-timer
-     +tmr/notification-notify))
-
-  :bind ( :prefix-map tmr-prefix-map
-          :prefix "C-c t"
-          ("t" . tmr)
-          ("T" . tmr-with-description)
-          ("l" . tmr-tabulated-view)
-          ("R" . tmr-remove-finished)))
+     +tmr/notification-notify)))
 
 (provide 'init-timer)
