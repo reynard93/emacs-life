@@ -27,7 +27,7 @@
   :pin nongnu
   :config
   (message "rainbow-delimiters is loaded")
-  :hook (prog-mode text-mode))
+  :hook prog-mode)
 
 (use-package smartparens
   :pin melpa
