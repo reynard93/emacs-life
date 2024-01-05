@@ -8,10 +8,8 @@
   :after evil
   :config
   (message "avy is loaded")
-  (evil-define-key '(normal visual) 'global
-    "gss" #'evil-avy-goto-char-2)
-  :custom
-  (avy-all-windows nil))
+  (evil-define-key 'motion 'global
+    "gss" #'evil-avy-goto-char-2))
 
 (use-package hl-todo
   :pin melpa
