@@ -67,14 +67,17 @@
     "fY"  #'+buffer/yank-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
-    "g,"  #'magit-file-dispatch
-    "g."  #'magit-dispatch
+    "g/"  #'magit-dispatch
+    "g."  #'magit-file-dispatch
     "g["  #'git-gutter:previous-hunk
     "g]"  #'git-gutter:next-hunk
     "gb"  #'magit-branch-checkout
     "gB"  #'magit-blame-addition
+    "gC"  #'magit-clone
     "gd"  #'magit-dired-jump
     "gD"  #'magit-file-delete
+    "gf"  #'magit-fetch
+    "gF"  #'magit-pull
     "gg"  #'magit-status
     "gG"  #'magit-status-here
     "gl"  #'magit-log-current
@@ -87,8 +90,10 @@
     "gU"  #'magit-unstage-file
 
     "gc"  '(:ignore t :which-key "create")
-    "gcb" #'+git/create-backup-commit
+    "gcb" #'magit-branch-and-checkout
+    "gcB" #'+git/create-backup-commit
     "gcp" #'+github/create-pull-request
+    "gcr" #'magit-init
 
     "go"  '(:ignore t :which-key "open in browser")
     "goo" #'browse-at-remote
