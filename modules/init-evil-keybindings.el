@@ -103,6 +103,8 @@
     "na"  #'+tmr/active-timers
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
+    "nc"  #'tmr
+    "nC"  #'tmr-with-description
     "nd"  #'denote-date
     "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
@@ -114,7 +116,7 @@
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'tmr
+    "nt"  #'tmr-tabulated-view
     "nT"  #'org-todo-list
 
     "o"   '(:ignore t :which-key "open")
@@ -138,12 +140,6 @@
     "opr" #'password-store-rename
     "opR" #'password-store-remove
     "opu" #'+pass/create-otp-key-uri
-
-    "ot"  '(:ignore t :which-key "timer")
-    "ott" #'tmr
-    "otT" #'tmr-with-description
-    "otl" #'tmr-tabulated-view
-    "otR" #'tmr-remove-finished
 
     "q"   '(:ignore t :which-key "quit")
     "qK"  #'save-buffers-kill-emacs
