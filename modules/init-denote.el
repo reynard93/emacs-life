@@ -14,7 +14,7 @@
   (defun +denote/scratch ()
     (interactive)
     (let ((denote-prompts '(keywords))
-          (denote-file-type 'markdown-yaml))
+          (denote-file-type 'org))
       (call-interactively #'denote)))
 
   :config
