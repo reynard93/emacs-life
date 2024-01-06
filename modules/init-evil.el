@@ -26,7 +26,7 @@
   ;; move
   (evil-shift-width 2)
   (evil-move-cursor-back nil)
-  (evil-move-beyond-eol t)
+  (evil-move-beyond-eol nil)
   ;; window
   (evil-want-C-w-in-emacs-state t)
   (evil-vsplit-window-right t)
