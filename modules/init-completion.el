@@ -48,7 +48,8 @@
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand
                       completion-at-point-functions)))
-
+  :custom
+  (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
   :hook
   ((prog-mode text-mode) . tempel-setup-capf))
 

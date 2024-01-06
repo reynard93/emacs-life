@@ -1,5 +1,3 @@
-;; My tempel templates
-
 org-mode
 
 (begin & "#+begin_" (s name) n r n "#+end_" name)
@@ -9,8 +7,3 @@ org-mode
 (nix & "#+begin_src nix" n r n "#+end_src")
 (rest & "#+begin_src restclient" n r n "#+end_src")
 (ruby & "#+begin_src ruby" n r n "#+end_src")
-
-;; Local Variables:
-;; mode: lisp-data
-;; outline-regexp: "[a-z]"
-;; End:
