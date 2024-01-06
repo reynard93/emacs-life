@@ -37,8 +37,8 @@
   (message "ibuffer is loaded")
   :custom
   (ibuffer-expert t)
-  :bind ([remap list-buffers] . ibuffer)
-  :hook (ibuffer-mode . ibuffer-auto-mode))
+  :hook (ibuffer-mode . ibuffer-auto-mode)
+  :bind ([remap list-buffers] . ibuffer))
 
 (use-package ediff
   :ensure nil

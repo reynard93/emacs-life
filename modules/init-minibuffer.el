@@ -21,21 +21,21 @@
 
   :custom
   (vertico-cycle t)
+  :hook (minibuffer-setup . vertico-repeat-save)
   :bind ( :map vertico-map
           ("C-j" . vertico-next)
-          ("C-k" . vertico-previous))
-  :hook (minibuffer-setup . vertico-repeat-save))
+          ("C-k" . vertico-previous)))
 
 (use-package vertico-directory
   :after vertico
   :ensure nil
   :config
   (message "vertico-directory is loaded")
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   :bind ( :map vertico-map
           ("RET" . vertico-directory-enter)
           ("DEL" . vertico-directory-delete-char)
-          ("M-DEL" . vertico-directory-delete-word))
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy))
+          ("M-DEL" . vertico-directory-delete-word)))
 
 (use-package marginalia
   :after vertico

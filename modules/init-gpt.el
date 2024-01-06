@@ -75,13 +75,12 @@
   (gptel-default-mode 'org-mode)
   (gptel-prompt-prefix-alist '((org-mode . "* ")))
 
+  :hook (gptel-mode . visual-line-mode)
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
          :map gptel-mode-map
          ("C-c C-x t" . gptel-set-topic)
-         ("M-n" . gptel-end-of-response))
-
-  :hook (gptel-mode . visual-line-mode))
+         ("M-n" . gptel-end-of-response)))
 
 (use-package chatgpt-shell
   :pin melpa

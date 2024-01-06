@@ -46,7 +46,7 @@
       :variable-pitch-family "Iosevka"
       :variable-pitch-weight regular
       :variable-pitch-height 1.0)))
-  :bind ("C-c f" . fontaine-set-preset)
-  :hook (modus-themes-after-load-theme . fontaine-apply-current-preset))
+  :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
+  :bind ("C-c f" . fontaine-set-preset))
 
 (provide 'init-ui)
