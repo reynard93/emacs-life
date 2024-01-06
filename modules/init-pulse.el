@@ -35,6 +35,7 @@
   :init
   (setq-default goggles-pulse t)
   :config
-  (message "goggles is loaded"))
+  (message "goggles is loaded")
+  :hook (prog-mode text-mode))
 
 (provide 'init-pulse)
