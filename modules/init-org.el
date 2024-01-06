@@ -64,7 +64,6 @@ If prefix ARG, copy instead of move."
   (org-log-done 'time)
 
   :bind ( :map org-mode-map
-          ("<return>" . org-open-at-point)
           ("C-M-S-h" . org-babel-mark-block)))
 
 (use-package ob
