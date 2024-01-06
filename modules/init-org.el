@@ -74,7 +74,9 @@ If prefix ARG, copy instead of move."
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
-     (shell . t))))
+     (ruby . t)
+     (shell . t)
+     (restclient . t))))
 
 (use-package ox-hugo
   :pin melpa
