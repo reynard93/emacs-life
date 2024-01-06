@@ -6,6 +6,7 @@
 /eln-cache/
 /elpa/
 /eshell/
+/fastgpt/
 /forge-database.sqlite
 /gptel-crowdsourced-prompts.csv
 /history
@@ -15,9 +16,9 @@
 /projects
 /recentf
 /request/
+/templates/private.eld
 /transient/
 /tree-sitter/
 /undo-fu-session/
 /url/
 /wombag/
-/fastgpt/
