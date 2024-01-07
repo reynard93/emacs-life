@@ -7,6 +7,13 @@
 *** [[https://www.erlang.org/blog.xml][Erlang]]                                                         :erlang:
 *** [[https://www.ruby-lang.org/en/feeds/news.rss][Ruby]]                                                             :ruby:
 *** [[https://world.hey.com/this.week.in.rails/feed.atom][This Week in Rails]]                                         :rails:ruby:
+** Videos                                                            :video:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ][@SystemCrafters]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw][@vimjoyer]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCbh_g91w0T6OYp40xFrtnhA][@karthink]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g][@protesilaos]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9zbLaqReIdoFfzdUbh13Nw][@railsofficial]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ][@ElixirConf]]
 ** People
 *** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
 *** [[https://fasterthanli.me/index.xml][Amos Wenger]]

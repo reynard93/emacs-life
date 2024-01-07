@@ -1,6 +1,15 @@
 (use-package elfeed
   :pin melpa
   :defer t
+  :init
+  (defvar elfeed-browse-url-handlers
+    '(("https:\\/\\/www\\.youtu\\.*be." . browse-url-mpv)
+      ("." . eww-browse-url)))
+
+  (defun browse-url-mpv (url &optional single)
+    (message "Opening in mpv: %s" url)
+    (start-process "mpv" nil "mpv" url))
+
   :config
   (message "elfeed is loaded")
 
@@ -21,12 +30,12 @@
 
   (defun +elfeed/show-eww-open (&optional use-generic-p)
     (interactive "P")
-    (let ((browse-url-browser-function #'eww-browse-url))
+    (let ((browse-url-handlers elfeed-browse-url-handlers))
       (elfeed-show-visit use-generic-p)))
 
   (defun +elfeed/search-eww-open (&optional use-generic-p)
     (interactive "P")
-    (let ((browse-url-browser-function #'eww-browse-url))
+    (let ((browse-url-handlers elfeed-browse-url-handlers))
       (elfeed-search-browse-url use-generic-p)))
 
   (when (featurep 'evil)
