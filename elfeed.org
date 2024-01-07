@@ -28,6 +28,7 @@
 *** [[https://world.hey.com/jason/feed.atom][Jason Fried]]
 *** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
 *** [[https://jvns.ca/atom.xml][Julia Evans]]
+*** [[https://karthinks.com/index.xml][Karthik Chikmagalur]]
 *** [[https://underjord.io/feed.xml][Lars Wikman]]
 *** [[https://drewdevault.com/blog/index.xml][Drew DeVault]]
 *** [[https://emersion.fr/blog/atom.xml][Simon Ser]]
