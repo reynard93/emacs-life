@@ -19,19 +19,24 @@
         (switch-to-buffer buf)
       (wombag)))
 
-  (defun +elfeed/search-eww-open ()
-    (interactive)
-    (when-let* ((entry (elfeed-search-selected :ignore-region))
-                (link (elfeed-entry-link entry)))
-      (eww link)))
+  (defun +elfeed/show-eww-open (&optional use-generic-p)
+    (interactive "P")
+    (let ((browse-url-browser-function #'eww-browse-url))
+      (elfeed-show-visit use-generic-p)))
+
+  (defun +elfeed/search-eww-open (&optional use-generic-p)
+    (interactive "P")
+    (let ((browse-url-browser-function #'eww-browse-url))
+      (elfeed-search-browse-url use-generic-p)))
 
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
-      "R"  #'+elfeed/post-to-wombag
-      "W"  #'+elfeed/switch-to-wombag
-      "go" #'+elfeed/search-eww-open)
+      "R" #'+elfeed/post-to-wombag
+      "W" #'+elfeed/switch-to-wombag
+      "B" #'+elfeed/search-eww-open)
     (evil-define-key 'normal elfeed-show-mode-map
-      "R" #'+elfeed/post-to-wombag))
+      "R" #'+elfeed/post-to-wombag
+      "B" #'+elfeed/show-eww-open))
 
   :custom
   (elfeed-search-remain-on-entry t))
