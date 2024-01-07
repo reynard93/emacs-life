@@ -40,12 +40,12 @@
 
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
+      "B" #'+elfeed/search-eww-open
       "R" #'+elfeed/post-to-wombag
-      "W" #'+elfeed/switch-to-wombag
-      "B" #'+elfeed/search-eww-open)
+      "W" #'+elfeed/switch-to-wombag)
     (evil-define-key 'normal elfeed-show-mode-map
-      "R" #'+elfeed/post-to-wombag
-      "B" #'+elfeed/show-eww-open))
+      "B" #'+elfeed/show-eww-open
+      "R" #'+elfeed/post-to-wombag))
 
   :custom
   (elfeed-search-remain-on-entry t))
@@ -75,20 +75,53 @@
         (switch-to-buffer buf)
       (elfeed)))
 
+  (defun +wombag/show-eww-open ()
+    "Open Wombag entry in EWW."
+    (interactive)
+    (when-let ((url (alist-get 'url wombag-show-entry)))
+      (eww-browse-url url)))
+
+  (defun +wombag/show-browse-url ()
+    "Open Wombag entry in original URL."
+    (interactive)
+    (when-let ((url (alist-get 'url wombag-show-entry)))
+      (browse-url url)))
+
+  (defun +wombag/show-browse-host ()
+    "Open Wombag entry on `wombag-host'."
+    (interactive)
+    (when-let* ((id (alist-get 'id wombag-show-entry))
+                (url (format "%s/view/%s" wombag-host id)))
+      (browse-url url)))
+
+  (defun +wombag/search-browse-host ()
+    "Open Wombag entry on `wombag-host'."
+    (interactive)
+    (wombag-search--with-entry
+     (when-let* ((id (map-elt entry 'id))
+                 (url (format "%s/view/%s" wombag-host id)))
+       (browse-url url))))
+
   (when (and
          (featurep 'evil)
          (featurep 'evil-collection))
-    (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
     (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
+    (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
+    (evil-define-key 'normal wombag-show-mode-map
+      "B"  #'+wombag/show-eww-open
+      "go" #'+wombag/show-browse-url
+      "gO" #'+wombag/show-browse-host)
     (evil-define-key 'normal wombag-search-mode-map
       (kbd "<return>") #'wombag-search-show-entry
       (kbd "S-<return>") 'wombag-search-browse-url
-      "y"  #'wombag-search-copy
       "A"  #'wombag-search-archive-entry
+      "B"  #'wombag-search-eww-open
       "E"  #'+wombag/switch-to-elfeed
-      "go" #'wombag-search-eww-open
+      "go" #'wombag-search-browse-url
+      "gO" #'+wombag/search-browse-host
       "gr" #'wombag-search-update--force
-      "gR" #'wombag-sync))
+      "gR" #'wombag-sync
+      "y"  #'wombag-search-copy))
 
   :custom
   (wombag-host "https://app.wallabag.it")
