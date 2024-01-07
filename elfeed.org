@@ -22,6 +22,7 @@
 *** [[http://antirez.com/rss][antirez]]
 *** [[https://overreacted.io/rss.xml][Dan Abramov]]
 *** [[https://world.hey.com/dhh/feed.atom][David Heinemeier Hansson]]
+*** [[https://drewdevault.com/blog/index.xml][Drew DeVault]]
 *** [[https://blog.cloud-mes.com/atom.xml][Eric Guo]]                                                       :friend:
 *** [[https://ferd.ca/feed.rss][Fred Hebert]]
 *** [[https://ferd.ca/notes/feed.rss][Fred Hebert - Notes]]
@@ -30,8 +31,6 @@
 *** [[https://jvns.ca/atom.xml][Julia Evans]]
 *** [[https://karthinks.com/index.xml][Karthik Chikmagalur]]
 *** [[https://underjord.io/feed.xml][Lars Wikman]]
-*** [[https://drewdevault.com/blog/index.xml][Drew DeVault]]
-*** [[https://emersion.fr/blog/atom.xml][Simon Ser]]
 *** [[https://maggieappleton.com/rss.xml][Maggie Appleton]]
 *** [[https://martinfowler.com/feed.atom][Martin Fowler]]
 *** [[https://www.mikeperham.com/index.xml][Mike Perham]]
@@ -40,6 +39,7 @@
 *** [[https://blog.cleancoder.com/atom.xml][Robert C. Martin]]
 *** [[https://www.feltpresence.com/rss/][Ryan Singer]]
 *** [[https://www.theerlangelist.com/rss][Saša Jurić]]
+*** [[https://emersion.fr/blog/atom.xml][Simon Ser]]
 *** [[https://yiming.dev/rss.xml][Yiming Chen]]                                                    :friend:
 *** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]
 *** [[https://hauleth.dev/atom.xml][Łukasz Niemier]]
