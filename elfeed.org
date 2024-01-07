@@ -1,14 +1,37 @@
 * root                                                               :elfeed:
-** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
-** [[https://andrealeopardi.com/feed.xml][Andrea Leopardi]]
-** [[https://world.hey.com/dhh/feed.atom][David Heinemeier Hansson]]
-** [[https://blog.cloud-mes.com/atom.xml][Eric Guo]]
-** [[https://world.hey.com/jason/feed.atom][Jason Fried]]
-** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
-** [[https://jvns.ca/atom.xml][Julia Evans]]
-** [[https://protesilaos.com/master.xml][Protesilaos Stavrou]]
-** [[https://www.feltpresence.com/rss/][Ryan Singer]]
-** [[https://www.theerlangelist.com/rss][Saša Jurić]]
-** [[https://yiming.dev/rss.xml][Yiming Chen]]
-** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]
-** [[https://hauleth.dev/atom.xml][Łukasz Niemier]]
+** News                                                               :news:
+*** [[https://dev.37signals.com/feed/posts.xml][37signals Dev]]
+*** [[https://dashbit.co/feed][Dashbit]]                                                        :elixir:
+*** [[https://elixir-lang.org/atom.xml][Elixir]]                                                         :elixir:
+*** [[https://sachachua.com/blog/category/emacs-news/feed][Emacs]]                                                           :emacs:
+*** [[https://www.erlang.org/blog.xml][Erlang]]                                                         :erlang:
+*** [[https://www.ruby-lang.org/en/feeds/news.rss][Ruby]]                                                             :ruby:
+*** [[https://world.hey.com/this.week.in.rails/feed.atom][This Week in Rails]]                                         :rails:ruby:
+** People
+*** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
+*** [[https://fasterthanli.me/index.xml][Amos Wenger]]
+*** [[https://andrealeopardi.com/feed.xml][Andrea Leopardi]]
+*** [[https://andrewkelley.me/rss.xml][Andrew Kelley]]
+*** [[http://antirez.com/rss][antirez]]
+*** [[https://overreacted.io/rss.xml][Dan Abramov]]
+*** [[https://world.hey.com/dhh/feed.atom][David Heinemeier Hansson]]
+*** [[https://blog.cloud-mes.com/atom.xml][Eric Guo]]                                                       :friend:
+*** [[https://ferd.ca/feed.rss][Fred Hebert]]
+*** [[https://ferd.ca/notes/feed.rss][Fred Hebert - Notes]]
+*** [[https://world.hey.com/jason/feed.atom][Jason Fried]]
+*** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
+*** [[https://jvns.ca/atom.xml][Julia Evans]]
+*** [[https://underjord.io/feed.xml][Lars Wikman]]
+*** [[https://drewdevault.com/blog/index.xml][Drew DeVault]]
+*** [[https://emersion.fr/blog/atom.xml][Simon Ser]]
+*** [[https://maggieappleton.com/rss.xml][Maggie Appleton]]
+*** [[https://martinfowler.com/feed.atom][Martin Fowler]]
+*** [[https://www.mikeperham.com/index.xml][Mike Perham]]
+*** [[https://mitchellh.com/feed.xml][Mitchell Hashimoto]]
+*** [[https://protesilaos.com/master.xml][Protesilaos Stavrou]]
+*** [[https://blog.cleancoder.com/atom.xml][Robert C. Martin]]
+*** [[https://www.feltpresence.com/rss/][Ryan Singer]]
+*** [[https://www.theerlangelist.com/rss][Saša Jurić]]
+*** [[https://yiming.dev/rss.xml][Yiming Chen]]                                                    :friend:
+*** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]
+*** [[https://hauleth.dev/atom.xml][Łukasz Niemier]]
