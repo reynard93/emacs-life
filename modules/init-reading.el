@@ -43,6 +43,7 @@
       "B" #'+elfeed/search-eww-open
       "R" #'+elfeed/post-to-wombag
       "W" #'+elfeed/switch-to-wombag)
+
     (evil-define-key 'normal elfeed-show-mode-map
       "B" #'+elfeed/show-eww-open
       "R" #'+elfeed/post-to-wombag))
@@ -106,11 +107,12 @@
          (featurep 'evil)
          (featurep 'evil-collection))
     (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
-    (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
     (evil-define-key 'normal wombag-show-mode-map
       "B"  #'+wombag/show-eww-open
       "go" #'+wombag/show-browse-url
       "gO" #'+wombag/show-browse-host)
+
+    (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
     (evil-define-key 'normal wombag-search-mode-map
       (kbd "<return>") #'wombag-search-show-entry
       (kbd "S-<return>") 'wombag-search-browse-url
