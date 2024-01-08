@@ -7,7 +7,7 @@
       ("." . eww-browse-url)))
 
   (defun browse-url-mpv (url &optional single)
-    (message "Opening in mpv: %s" url)
+    (message "Streaming in mpv: %s" url)
     (start-process "mpv" nil "mpv" url))
 
   :config
