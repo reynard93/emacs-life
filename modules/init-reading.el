@@ -28,24 +28,21 @@
         (switch-to-buffer buf)
       (wombag)))
 
-  (defun +elfeed/show-eww-open (&optional use-generic-p)
-    (interactive "P")
+  (defun +elfeed/browse ()
+    (interactive)
     (let ((browse-url-handlers elfeed-browse-url-handlers))
-      (elfeed-show-visit use-generic-p)))
-
-  (defun +elfeed/search-eww-open (&optional use-generic-p)
-    (interactive "P")
-    (let ((browse-url-handlers elfeed-browse-url-handlers))
-      (elfeed-search-browse-url use-generic-p)))
+      (pcase major-mode
+        ('elfeed-search-mode (elfeed-search-browse-url))
+        ('elfeed-show-mode (elfeed-show-visit)))))
 
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
-      "B" #'+elfeed/search-eww-open
+      "B" #'+elfeed/browse
       "R" #'+elfeed/post-to-wombag
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
-      "B" #'+elfeed/show-eww-open
+      "B" #'+elfeed/browse
       "R" #'+elfeed/post-to-wombag))
 
   :custom
