@@ -103,12 +103,6 @@
   (when (and
          (featurep 'evil)
          (featurep 'evil-collection))
-    (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
-    (evil-define-key 'normal wombag-show-mode-map
-      "B"  #'+wombag/show-eww-open
-      "go" #'+wombag/show-browse-url
-      "gO" #'+wombag/show-browse-host)
-
     (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
     (evil-define-key 'normal wombag-search-mode-map
       (kbd "<return>") #'wombag-search-show-entry
@@ -121,7 +115,13 @@
       "gO" #'+wombag/search-browse-host
       "gr" #'wombag-search-update--force
       "gR" #'wombag-sync
-      "y"  #'wombag-search-copy))
+      "y"  #'wombag-search-copy)
+
+    (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
+    (evil-define-key 'normal wombag-show-mode-map
+      "B"  #'+wombag/show-eww-open
+      "go" #'+wombag/show-browse-url
+      "gO" #'+wombag/show-browse-host))
 
   :custom
   (wombag-host "https://app.wallabag.it")
