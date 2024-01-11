@@ -205,6 +205,28 @@
     :major-modes t
     "e"  #'org-export-dispatch
 
+    "b"  '(:ignore t :which-key "table")
+    "b-" #'org-table-insert-hline
+    "ba" #'org-table-align
+    "bb" #'org-table-blank-field
+    "bc" #'org-table-create-or-convert-from-region
+    "be" #'org-table-edit-field
+    "bf" #'org-table-edit-formulas
+    "bh" #'org-table-field-info
+    "bs" #'org-table-sort-lines
+    "br" #'org-table-recalculate
+    "bR" #'org-table-recalculate-buffer-tables
+
+    "bd"  '(:ignore t :which-key "delete")
+    "bdc" #'org-table-delete-column
+    "bdr" #'org-table-kill-row
+
+    "bi"  '(:ignore t :which-key "insert")
+    "bic" #'org-table-insert-column
+    "bih" #'org-table-insert-hline
+    "biH" #'org-table-hline-and-move
+    "bir" #'org-table-insert-row
+
     "d"  '(:ignore t :which-key "date/deadline")
     "dd" #'org-deadline
     "ds" #'org-schedule
