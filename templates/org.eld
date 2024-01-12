@@ -7,3 +7,4 @@ org-mode
 (nix & "#+begin_src nix" n r n "#+end_src")
 (rest & "#+begin_src restclient" n r n "#+end_src")
 (ruby & "#+begin_src ruby" n r n "#+end_src")
+(shell & "#+begin_src shell" n r n "#+end_src")
