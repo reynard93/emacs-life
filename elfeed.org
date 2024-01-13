@@ -7,6 +7,7 @@
 *** [[https://www.erlang.org/blog.xml][Erlang]]                                                         :erlang:
 *** [[https://www.ruby-lang.org/en/feeds/news.rss][Ruby]]                                                             :ruby:
 *** [[https://world.hey.com/this.week.in.rails/feed.atom][This Week in Rails]]                                         :rails:ruby:
+*** [[https://www.allaboutbirds.org/news/feed/][All About Birds]]                                                  :bird:
 ** Videos                                                            :video:
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ][@ElixirConf]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCbh_g91w0T6OYp40xFrtnhA][@karthink]]
