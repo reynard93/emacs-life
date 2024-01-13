@@ -1,6 +1,3 @@
 [submodule "lisp/wombag"]
 	path = lisp/wombag
 	url = https://github.com/karthink/wombag.git
-[submodule "lisp/kagi"]
-	path = lisp/kagi
-	url = https://codeberg.org/bram85/kagi.el.git

@@ -99,8 +99,7 @@
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key)))))
 
 (use-package kagi
-  :load-path "lisp/kagi"
-  :commands (kagi-fastgpt-shell)
+  :pin melpa
   :defer t
   :config
   (message "kagi is loaded")
