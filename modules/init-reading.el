@@ -111,6 +111,7 @@
       "B"  #'wombag-search-eww-open
       "E"  #'+wombag/switch-to-elfeed
       "s"  #'wombag-search-live-filter
+      "S"  #'wombag-search-starred-entry
       "go" #'wombag-search-browse-url
       "gO" #'+wombag/search-browse-host
       "gr" #'wombag-search-update--force
