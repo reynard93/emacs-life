@@ -42,26 +42,26 @@
             (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")))))
 
   (setq mu4e-maildir-shortcuts
-        '(
-          (:maildir "/Personal/Inbox"             :key ?i)
+        '((:maildir "/Personal/Inbox"             :key ?i :hide t)
           (:maildir "/Personal/[Gmail]/Sent Mail" :key ?s)
           (:maildir "/Personal/[Gmail]/Drafts"    :key ?d)
-          (:maildir "/Personal/[Gmail]/Trash"     :key ?t)
-          (:maildir "/Personal/[Gmail]/All Mail"  :key ?a)
-          (:maildir "/Work/Inbox"                 :key ?I)
+          (:maildir "/Personal/[Gmail]/Trash"     :key ?t :hide t)
+          (:maildir "/Personal/[Gmail]/All Mail"  :key ?a :hide t)
+          (:maildir "/Work/Inbox"                 :key ?I :hide t)
           (:maildir "/Work/[Gmail]/Sent Mail"     :key ?S)
           (:maildir "/Work/[Gmail]/Drafts"        :key ?D)
-          (:maildir "/Work/[Gmail]/Trash"         :key ?T)
-          (:maildir "/Work/[Gmail]/All Mail"      :key ?A)))
+          (:maildir "/Work/[Gmail]/Trash"         :key ?T :hide t)
+          (:maildir "/Work/[Gmail]/All Mail"      :key ?A :hide t)))
 
   (setq mu4e-bookmarks
-        '((:name "Unread messages" :query "flag:unread AND NOT flag:trashed" :key ?u)
-          (:name "Today's messages" :query "date:today..now" :key ?t)
-          (:name "Last 7 days" :query "date:7d..now" :hide-unread t :key ?w)
-          (:name "Sourcehut lists" :query "flag:list AND to:lists.sr.ht" :key ?s)
-          (:name "Codeberg lists" :query "flag:list AND from:codeberg.org" :key ?c)
-          (:name "GitHub lists" :query "flag:list AND from:github.com" :key ?g)
-          (:name "Jira" :query "fariaedu.atlassian.net" :key ?j)))
+        '((:name "Inbox"       :key ?i :query "m:/Personal/Inbox or m:/Work/Inbox" :hide t)
+          (:name "Unread"      :key ?u :query "flag:unread AND NOT flag:trashed")
+          (:name "Today"       :key ?t :query "date:today..now")
+          (:name "Last 7 days" :key ?w :query "date:7d..now" :hide-unread t)
+          (:name "Sourcehut"   :key ?s :query "flag:list AND to:lists.sr.ht" :hide t)
+          (:name "Codeberg"    :key ?c :query "flag:list AND from:codeberg.org" :hide t)
+          (:name "GitHub"      :key ?g :query "flag:list AND from:github.com" :hide t)
+          (:name "Jira"        :key ?j :query "fariaedu.atlassian.net" :hide t)))
 
   :custom
   (mu4e-update-interval (* 15 60))
