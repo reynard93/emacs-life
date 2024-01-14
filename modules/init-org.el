@@ -47,7 +47,9 @@ If prefix ARG, copy instead of move."
           ("HOLD" . (:inherit (italic org-warning)))))
   (setq org-capture-templates
         '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
-          ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
+          ("n" "Notes" entry (file "notes.org") "* %?\n%i" :prepend t)
+          ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
+          ("b" "Bookmark" entry (file+headline "notes.org" "Bookmarks") "* %?\n%x" :prepend t)))
 
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
