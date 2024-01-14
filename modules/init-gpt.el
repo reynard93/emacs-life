@@ -11,7 +11,6 @@
   :pin melpa
   :config
   (message "gptel is loaded")
-  (require 'gptel-kagi)
 
   (defvar gptel--azure-gpt-35
     (gptel-make-azure
