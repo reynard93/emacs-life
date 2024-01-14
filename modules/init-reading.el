@@ -45,8 +45,14 @@
       "B" #'+elfeed/browse
       "R" #'+elfeed/post-to-wombag))
 
+  (defun elfeed--display-entry (buf)
+    (switch-to-buffer buf)
+    (logos-focus-mode)
+    (elfeed-show-refresh))
+
   :custom
-  (elfeed-search-remain-on-entry t))
+  (elfeed-search-remain-on-entry t)
+  (elfeed-show-entry-switch #'elfeed--display-entry))
 
 (use-package elfeed-org
   :pin melpa
@@ -124,12 +130,17 @@
       "go" #'+wombag/show-browse-url
       "gO" #'+wombag/show-browse-host))
 
+  (defun wombag--display-entry (buf)
+    (switch-to-buffer buf)
+    (logos-focus-mode))
+
   :custom
   (wombag-host "https://app.wallabag.it")
   (wombag-username "goofansu")
   (wombag-password (auth-source-pass-get 'secret "app.wallabag.it"))
   (wombag-client-id "23745_3qjblkrgo0qo4w4cwscg0g88wk4408wckw0gc8oskwg0cgkocw")
   (wombag-client-secret (auth-source-pass-get "client_secret" "app.wallabag.it"))
+  (wombag-show-entry-switch #'wombag--display-entry)
 
   :bind (:map embark-url-map
               ("R" . +wombag/url)))
