@@ -49,6 +49,7 @@
     "c"   '(:ignore t :which-key "code")
     "cc"  #'compile
     "cC"  #'recompile
+    "cf"  #'apheleia-format-buffer
     "cg"  #'+github/create-gist-region-or-buffer
     "cp"  #'+sourcehut/create-paste-region-or-buffer
     "cw"  #'delete-trailing-whitespace

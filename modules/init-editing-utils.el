@@ -4,6 +4,10 @@
 
 (setq-default indent-tabs-mode nil)
 
+(use-package apheleia
+  :pin melpa
+  :defer t)
+
 (use-package avy
   :config
   (message "avy is loaded")
