@@ -63,6 +63,8 @@ If prefix ARG, copy instead of move."
   (org-log-into-drawer t)
   (org-log-done 'time)
 
+  :hook (org-capture-mode . evil-insert-state)
+
   :bind ( :map org-mode-map
           ("C-M-S-h" . org-babel-mark-block)))
 
