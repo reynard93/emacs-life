@@ -115,14 +115,15 @@
       (kbd "S-<return>") 'wombag-search-browse-url
       "A"  #'wombag-search-archive-entry
       "B"  #'wombag-search-eww-open
+      "D"  #'wombag-search-delete-entry
       "E"  #'+wombag/switch-to-elfeed
+      "F"  #'wombag-search-starred-entry
       "s"  #'wombag-search-live-filter
-      "S"  #'wombag-search-starred-entry
+      "y"  #'wombag-search-copy
       "go" #'wombag-search-browse-url
       "gO" #'+wombag/search-browse-host
       "gr" #'wombag-search-update--force
-      "gR" #'wombag-sync
-      "y"  #'wombag-search-copy)
+      "gR" #'wombag-sync)
 
     (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
     (evil-define-key 'normal wombag-show-mode-map
