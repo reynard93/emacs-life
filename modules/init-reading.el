@@ -3,10 +3,10 @@
   :defer t
   :init
   (defvar elfeed-browse-url-handlers
-    '(("https:\\/\\/www\\.youtu\\.*be." . browse-url-mpv)
+    '(("https:\\/\\/www\\.youtu\\.*be." . mpv-browse-url)
       ("." . eww-browse-url)))
 
-  (defun browse-url-mpv (url &optional single)
+  (defun mpv-browse-url (url &rest args)
     (message "Streaming in mpv: %s" url)
     (start-process "mpv" nil "mpv" url))
 
