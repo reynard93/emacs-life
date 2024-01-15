@@ -6,6 +6,7 @@
 
 (use-package ace-window
   :pin melpa
+  :demand t
   :config
   (message "ace-window is loaded")
 
