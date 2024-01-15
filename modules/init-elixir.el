@@ -10,12 +10,12 @@
   :config
   (message "elixir-ts-mode is loaded")
 
-  (defun elixir-format-before-save ()
+  (defun +elixir--format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
       (eglot-format-buffer)))
 
   :hook
   (elixir-ts-mode . eglot-ensure)
-  (before-save . elixir-format-before-save))
+  (before-save . +elixir--format-before-save))
 
 (provide 'init-elixir)

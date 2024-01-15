@@ -44,13 +44,13 @@
 (use-package tempel
   :config
   (message "tempel is loaded")
-  (defun tempel-setup-capf ()
+  (defun +tempel--setup-capf ()
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand
                       completion-at-point-functions)))
   :custom
   (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
   :hook
-  ((prog-mode text-mode) . tempel-setup-capf))
+  ((prog-mode text-mode) . +tempel--setup-capf))
 
 (provide 'init-completion)

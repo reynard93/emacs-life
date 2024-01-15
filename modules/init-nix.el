@@ -23,11 +23,11 @@
 
   :config
   (message "nix-mode is loaded")
-  (defun nix-formatter-mode-line-display ()
+  (defun +nix--formatter-mode-line-display ()
     (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))
 
   :hook
-  (nix-mode . nix-formatter-mode-line-display)
+  (nix-mode . +nix--formatter-mode-line-display)
   (before-save . nix-format-before-save))
 
 (provide 'init-nix)
