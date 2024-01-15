@@ -105,7 +105,7 @@ The path is relative to `project-current'."
 (defun +github/checkout-pull-request ()
   "Select a GitHub pull request to checkout."
   (interactive)
-  (if-let* ((pr-list (github--gh-pr-list '("number" "title")))
+  (if-let* ((pr-list (+github--gh-pr-list '("number" "title")))
             (formatted-pr-list (mapcar (lambda (pr)
                                          (format "%s: %s"
                                                  (alist-get 'number pr)
@@ -117,7 +117,7 @@ The path is relative to `project-current'."
       (shell-command (concat "gh pr checkout " pr-number))
     (user-error "PR list is empty or not a GitHub repo")))
 
-(defun github--gh-pr-list (fields)
+(defun +github--gh-pr-list (fields)
   (let ((command (concat "gh pr list --json " (string-join fields ","))))
     (condition-case nil
         (json-read-from-string (shell-command-to-string command))

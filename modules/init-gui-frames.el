@@ -44,7 +44,7 @@
     '((t :inherit modus-themes-fg-magenta))
     "Face for `consult' framed buffers.")
 
-  (defun beframe--buffer-names-sorted (&optional frame)
+  (defun +beframe--buffer-names-sorted (&optional frame)
     (beframe-buffer-names frame :sort #'beframe-buffer-sort-visibility))
 
   (defvar beframe-consult-source
@@ -53,7 +53,7 @@
        :category buffer
        :face     beframe-buffer
        :history  beframe-history
-       :items    ,#'beframe--buffer-names-sorted
+       :items    ,#'+beframe--buffer-names-sorted
        :action   ,#'switch-to-buffer
        :state    ,#'consult--buffer-state))
 
