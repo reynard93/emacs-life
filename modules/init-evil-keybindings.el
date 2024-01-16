@@ -105,26 +105,26 @@
     "na"  #'+tmr/active-timers
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
-    "nc"  #'tmr
-    "nC"  #'tmr-with-description
+    "nc"  #'+org/toggle-last-clock
+    "nC"  #'org-clock-goto
     "nd"  #'denote-date
     "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
     "nn"  #'+denote/scratch
-    "nN"  #'denote-template
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-change-file-type-and-front-matter
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'tmr-tabulated-view
+    "nt"  #'denote-template
     "nT"  #'org-todo-list
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda
     "oe"  #'eshell
     "om"  #'mu4e
+    "ot"  #'tmr
 
     "oa"  '(:ignore t :which-key "org agenda")
     "oat" #'org-todo-list
@@ -227,6 +227,11 @@
     "bih" #'org-table-insert-hline
     "biH" #'org-table-hline-and-move
     "bir" #'org-table-insert-row
+
+    "c"  '(:ignore t :which-key "clock")
+    "ci" #'org-clock-in
+    "co" #'org-clock-out
+    "cR" #'org-clock-report
 
     "d"  '(:ignore t :which-key "date/deadline")
     "dd" #'org-deadline
