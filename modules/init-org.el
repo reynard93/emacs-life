@@ -1,19 +1,12 @@
 (use-package org
-  :commands org-clock-goto
-  :preface
+  :ensure nil
+  :init
   (setq org-directory "~/src/org"
         org-agenda-files (list org-directory))
 
   (defun +org/browse-files ()
     (interactive)
     (+project/browse-files org-directory))
-
-  ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/config.el#L132
-  (setq org-refile-targets
-        '((nil :maxlevel . 3)
-          (org-agenda-files :maxlevel . 3))
-        org-refile-use-outline-path 'file
-        org-outline-path-complete-in-steps nil)
 
   ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/autoload/org-refile.el
   (defun +org/refile-to-current-file (arg &optional file)
@@ -62,17 +55,6 @@ see how ARG affects this command."
   :config
   (message "org is loaded")
 
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "KILL(k@)")))
-  (setq org-todo-keyword-faces
-        '(("KILL" . (:inherit (italic org-warning)))
-          ("HOLD" . (:inherit (italic org-warning)))))
-  (setq org-capture-templates
-        '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
-          ("n" "Notes" entry (file "notes.org") "* %?\n%i" :prepend t)
-          ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
-          ("b" "Bookmark" entry (file+headline "notes.org" "Bookmarks") "* %?\n%x" :prepend t)))
-
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
   (advice-add 'org-meta-return :before #'move-to-eol-advice)
@@ -80,29 +62,53 @@ see how ARG affects this command."
 
   :custom
   (org-startup-indented t)
-  (org-src-preserve-indentation t)
-  (org-confirm-babel-evaluate nil)
   (org-hide-emphasis-markers t)
-  (org-src-window-setup 'other-window)
-  (org-log-into-drawer t)
+
+  ;; Task
   (org-log-done 'time)
+  (org-log-into-drawer t)
+  (org-todo-keywords
+   '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "KILL(k@)")))
+  (org-todo-keyword-faces
+   '(("KILL" . (:inherit (italic org-warning)))
+     ("HOLD" . (:inherit (italic org-warning)))))
 
-  :hook (org-capture-mode . evil-insert-state)
+  ;; Capture
+  (org-capture-templates
+   '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
+     ("n" "Notes" entry (file "notes.org") "* %?\n%i" :prepend t)
+     ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
+     ("b" "Bookmark" entry (file+headline "notes.org" "Bookmarks") "* %?\n%x" :prepend t)))
 
-  :bind ( :map org-mode-map
-          ("C-M-S-h" . org-babel-mark-block)))
+  ;; Refile
+  (org-outline-path-complete-in-steps nil)
+  (org-refile-use-outline-path 'file)
+  (org-refile-targets
+   '((nil :maxlevel . 3)
+     (org-agenda-files :maxlevel . 3)))
 
-(use-package ob
-  :ensure nil
-  :after org
-  :config
-  (message "ob is loaded")
+  ;; Code
+  (org-confirm-babel-evaluate nil)
+  (org-src-preserve-indentation t)
+  (org-src-window-setup 'other-window)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
      (ruby . t)
      (shell . t)
-     (restclient . t))))
+     (restclient . t)))
+
+  ;; Cite
+  (org-cite-global-bibliography citar-bibliography)
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+
+  :hook (org-capture-mode . evil-insert-state)
+
+  :bind ( :map org-mode-map
+          ("C-M-S-h" . org-babel-mark-block)
+          ("C-c i" . org-cite-insert)))
 
 (use-package ox-hugo
   :pin melpa
@@ -120,18 +126,5 @@ see how ARG affects this command."
   (setq citar-notes-paths '("~/src/notes/reference"))
   :config
   (message "citar is loaded"))
-
-(use-package oc
-  :ensure nil
-  :after org
-  :config
-  (message "oc is loaded")
-  :custom
-  (org-cite-global-bibliography citar-bibliography)
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
-  :bind ( :map org-mode-map
-          ("C-c i" . org-cite-insert)))
 
 (provide 'init-org)
