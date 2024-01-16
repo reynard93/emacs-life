@@ -1,6 +1,6 @@
 (use-package nix-mode
   :pin melpa
-  :preface
+  :init
   (defun org-babel-execute:nix (body params)
     (setq strict-option (if (assoc :strict params) "--strict" ""))
     (with-temp-buffer

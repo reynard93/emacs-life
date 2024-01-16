@@ -1,6 +1,6 @@
 (use-package denote
   :defer t
-  :preface
+  :init
   (setq denote-directory "~/src/notes")
 
   (defun +denote/search ()

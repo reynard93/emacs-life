@@ -1,7 +1,7 @@
 (use-package pass
   :pin melpa
   :defer t
-  :preface
+  :init
   (auth-source-pass-enable)
 
   (defun +pass/create-otp-key-uri (issuer secret)
