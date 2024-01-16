@@ -1,6 +1,5 @@
 (use-package tmr
   :defer t
-  :commands +tmr/active-timers
   :config
   (message "tmr is loaded")
 
@@ -33,6 +32,8 @@
   :custom
   (tmr-timer-finished-functions
    '(tmr-print-message-for-finished-timer
-     +tmr--notification-notify)))
+     +tmr--notification-notify))
+
+  :bind ("s-l" . +tmr/active-timers))
 
 (provide 'init-timer)

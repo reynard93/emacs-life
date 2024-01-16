@@ -102,7 +102,7 @@
     "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
-    "na"  #'+tmr/active-timers
+    "na"  #'consult-org-agenda
     "nb"  #'citar-open
     "nB"  #'citar-open-notes
     "nc"  #'+org/toggle-last-clock
