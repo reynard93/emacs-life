@@ -1,7 +1,9 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
+;; making custom-file disposable
+(setq custom-file (make-temp-file "emacs-custom-"))
+
 ;; bootstrap
-(setq custom-file (locate-user-emacs-file "custom.el"))
 (require 'init-lib)
 (require 'init-lisp)
 (require 'init-elpa)
@@ -53,8 +55,5 @@
 ;; keybindings
 (require 'init-macos-keybindings)
 (require 'init-evil-keybindings)
-
-;; customizations
-(load custom-file t)
 
 (provide 'init)
