@@ -25,43 +25,23 @@
             (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
             (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
             (mu4e-trash-folder  . "/Personal/[Gmail]/Trash")
-            (mu4e-refile-folder  . "/Personal/[Gmail]/All Mail")))
-
-         (make-mu4e-context
-          :name "Work"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Work" (mu4e-message-field msg :maildir))))
-          :vars
-          '((user-mail-address . "james.su@managebac.com")
-            (user-full-name    . "James Su")
-            (mu4e-sent-folder  . "/Work/[Gmail]/Sent Mail")
-            (mu4e-drafts-folder  . "/Work/[Gmail]/Drafts")
-            (mu4e-trash-folder  . "/Work/[Gmail]/Trash")
-            (mu4e-refile-folder  . "/Work/[Gmail]/All Mail")))))
+            (mu4e-refile-folder  . "/Personal/[Gmail]/All Mail")))))
 
   (setq mu4e-maildir-shortcuts
         '((:maildir "/Personal/Inbox"             :key ?i :hide t)
           (:maildir "/Personal/[Gmail]/Sent Mail" :key ?s)
           (:maildir "/Personal/[Gmail]/Drafts"    :key ?d)
           (:maildir "/Personal/[Gmail]/Trash"     :key ?t :hide t)
-          (:maildir "/Personal/[Gmail]/All Mail"  :key ?a :hide t)
-          (:maildir "/Work/Inbox"                 :key ?I :hide t)
-          (:maildir "/Work/[Gmail]/Sent Mail"     :key ?S)
-          (:maildir "/Work/[Gmail]/Drafts"        :key ?D)
-          (:maildir "/Work/[Gmail]/Trash"         :key ?T :hide t)
-          (:maildir "/Work/[Gmail]/All Mail"      :key ?A :hide t)))
+          (:maildir "/Personal/[Gmail]/All Mail"  :key ?a :hide t)))
 
   (setq mu4e-bookmarks
-        '((:name "Inbox"       :key ?i :query "m:/Personal/Inbox or m:/Work/Inbox" :hide t)
+        '((:name "Inbox"       :key ?i :query "m:/Personal/Inbox" :hide t)
           (:name "Unread"      :key ?u :query "flag:unread AND NOT flag:trashed")
           (:name "Today"       :key ?t :query "date:today..now")
           (:name "Last 7 days" :key ?w :query "date:7d..now" :hide-unread t)
           (:name "Sourcehut"   :key ?s :query "flag:list AND to:lists.sr.ht" :hide t)
           (:name "Codeberg"    :key ?c :query "flag:list AND from:codeberg.org" :hide t)
-          (:name "GitHub"      :key ?g :query "flag:list AND from:github.com" :hide t)
-          (:name "Jira"        :key ?j :query "fariaedu.atlassian.net" :hide t)))
+          (:name "GitHub"      :key ?g :query "flag:list AND from:github.com" :hide t)))
 
   :custom
   (mu4e-update-interval (* 15 60))
