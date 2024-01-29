@@ -11,9 +11,9 @@ The configuration is based on these packages:
 - [project](https://www.gnu.org/software/emacs/manual/html_node/emacs/Projects.html)
 - [treesit](https://www.gnu.org/software/emacs/manual/html_node/elisp/Parsing-Program-Source.html)
 - [eglot](https://www.gnu.org/software/emacs/manual/html_mono/eglot.html)
-- [modus-themes](https://git.sr.ht/~protesilaos/modus-themes)
-- [spacious-padding](https://git.sr.ht/~protesilaos/spacious-padding)
-- [fontaine](https://git.sr.ht/~protesilaos/fontaine)
+- [modus-themes](https://github.com/protesilaos/modus-themes)
+- [spacious-padding](https://github.com/protesilaos/spacious-padding)
+- [fontaine](https://github.com/protesilaos/fontaine)
 - [doom-modeline](https://github.com/seagle0128/doom-modeline)
 - [vertico](https://github.com/minad/vertico)
 - [marginalia](https://github.com/minad/marginalia)
@@ -26,7 +26,7 @@ The configuration is based on these packages:
 - [evil](https://github.com/emacs-evil/evil)
 - [general](https://github.com/noctuid/general.el)
 - [which-key](https://github.com/justbur/emacs-which-key)
-- [denote](https://git.sr.ht/~protesilaos/denote)
+- [denote](https://github.com/protesilaos/denote)
 
 ## Thanks
 
