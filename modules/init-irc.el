@@ -3,15 +3,15 @@
   :defer t
   :init
   (setq circe-network-defaults
-        '(("chat.sr.ht/Libera.Chat"
-           :host "chat.sr.ht"
+        '(("Libera Chat"
+           :host "irc.libera.chat"
            :port 6697
            :use-tls t
            :nick "goofansu"
            :realname "Yejun Su"
-           :sasl-username "goofansu/irc.libera.chat"
-           :sasl-password (lambda (&rest _) (auth-source-pass-get 'secret "chat.sr.ht"))
-           :nickserv-password (lambda (&rest _) (auth-source-pass-get 'secret "irc.libera.chat")))))
+           :sasl-username "goofansu"
+           :sasl-password (lambda (&rest _) (auth-source-pass-get 'secret "irc.libera.chat"))
+           :channels ("#emacs" "#nixos" "#ruby" "#elixir"))))
 
   :config
   (message "circe is loaded")
