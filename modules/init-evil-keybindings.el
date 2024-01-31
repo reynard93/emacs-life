@@ -111,7 +111,8 @@
     "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
-    "nl"  #'denote-link
+    "nl"  #'org-store-link
+    "nL"  #'denote-link
     "nn"  #'+denote/scratch
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
@@ -204,7 +205,20 @@
   (+evil/local-leader-key
     :keymaps 'org-mode-map
     :major-modes t
-    "e"  #'org-export-dispatch
+    "." #'consult-org-heading
+    "A" #'org-archive-subtree
+    "e" #'org-export-dispatch
+    "f" #'org-footnote-action
+    "h" #'org-toggle-heading
+    "i" #'org-toggle-item
+    "I" #'org-id-get-create
+    "k" #'org-babel-remove-result
+    "o" #'org-set-property
+    "p" #'org-priority
+    "q" #'org-set-tags-command
+    "t" #'org-todo
+    "T" #'org-todo-list
+    "x" #'org-toggle-checkbox
 
     "b"  '(:ignore t :which-key "table")
     "b-" #'org-table-insert-hline
@@ -240,21 +254,11 @@
     "dT" #'org-time-stamp-inactive
 
     "g"  '(:ignore t :which-key "goto")
-    "gg" #'consult-org-heading
-    "gG" #'consult-org-agenda
     "gr" #'org-refile-goto-last-stored
     "gx" #'org-capture-goto-last-stored
 
     "l"  '(:ignore t :which-key "links")
-    "ll" #'org-insert-link
-    "lL" #'org-insert-all-links
-    "ls" #'org-store-link
-    "lS" #'org-insert-last-stored-link
     "lt" #'org-toggle-link-display
-
-    "o"  #'org-set-property
-    "p"  #'org-priority
-    "q"  #'org-set-tags-command
 
     "r"  '(:ignore t :which-key "refile")
     "r." #'+org/refile-to-current-file
@@ -265,10 +269,7 @@
     "s"  '(:ignore t :which-key "subtree")
     "sd" #'org-cut-subtree
     "ss" #'org-sparse-tree
-    "sS" #'org-sort
-
-    "t"  #'org-todo)
-  )
+    "sS" #'org-sort))
 
 (defun yejun/browse-emacs-config ()
   (interactive)
