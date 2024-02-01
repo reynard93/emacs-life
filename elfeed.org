@@ -7,12 +7,22 @@
 *** [[https://world.hey.com/this.week.in.rails/feed.atom][This Week in Rails]]                                         :rails:ruby:
 *** [[https://www.allaboutbirds.org/news/feed/][All About Birds]]                                                  :bird:
 ** Videos                                                            :video:
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ][@ElixirConf]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBtAnLa32mguFAqwV951yIg][@37signals]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUcnff014EvHLjJED71CURQ][@arthurkhomenko]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0l2QTnO1P2iph-86HHilMQ][@ElixirConf]] :elixir:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUcnff014EvHLjJED71CURQ][@EmacsConf]] :emacs:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUcnff014EvHLjJED71CURQ][@EnglishwithLucy]]                                              :english:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBtAnLa32mguFAqwV951yIg][@JakeBox0]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCbh_g91w0T6OYp40xFrtnhA][@karthink]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUcnff014EvHLjJED71CURQ][@LearnEnglishwithBobtheCanadian]] :english:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCBtAnLa32mguFAqwV951yIg][@mzamansky]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g][@protesilaos]]
-*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9zbLaqReIdoFfzdUbh13Nw][@railsofficial]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC9zbLaqReIdoFfzdUbh13Nw][@railsofficial]] :rails:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCxDvN76bPeo3FUEyyR6uPjg][@royhoo7177]] :family:
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ][@SystemCrafters]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUcnff014EvHLjJED71CURQ][@TED]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCCwuRBRF-IPihV4bob3Ko2w][@TenderlovesCoolStuff]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCUcnff014EvHLjJED71CURQ][@tweag]]
 *** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC_zBdZ0_H_jn41FDRG7q4Tw][@vimjoyer]]
 ** People
 *** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
@@ -44,6 +54,7 @@
 *** [[https://feeds.feedblitz.com/sethsblog][Seth Godin]]
 *** [[https://emersion.fr/blog/atom.xml][Simon Ser]]
 *** [[https://writings.stephenwolfram.com/feed/][Stephen Wolfram]]
+*** [[https://tonyhan.dev/feed][Tony Han]]                         :friend:
 *** [[https://tylerayoung.com/feed.xml][Tyler A. Young]]
 *** [[https://yiming.dev/rss.xml][Yiming Chen]]                                                    :friend:
 *** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]
