@@ -63,6 +63,8 @@ see how ARG affects this command."
   :custom
   (org-startup-indented t)
   (org-hide-emphasis-markers t)
+  (org-use-sub-superscripts nil)
+  (org-export-with-sub-superscripts nil)
 
   ;; Task
   (org-log-done 'time)
