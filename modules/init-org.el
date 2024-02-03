@@ -98,7 +98,8 @@ see how ARG affects this command."
    '((emacs-lisp . t)
      (ruby . t)
      (shell . t)
-     (restclient . t)))
+     (restclient . t)
+     (racket . t)))
 
   ;; Cite
   (org-cite-global-bibliography citar-bibliography)
