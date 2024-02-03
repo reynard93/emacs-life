@@ -43,6 +43,7 @@
 *** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
 *** [[https://jvns.ca/atom.xml][Julia Evans]]
 *** [[https://karthinks.com/index.xml][Karthik Chikmagalur]]
+*** [[https://kchousos.github.io/index.xml][Konstantinos Chousos]]
 *** [[https://underjord.io/feed.xml][Lars Wikman]]
 *** [[https://maggieappleton.com/rss.xml][Maggie Appleton]]
 *** [[https://martinfowler.com/feed.atom][Martin Fowler]]
