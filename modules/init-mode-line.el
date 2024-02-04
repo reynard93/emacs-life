@@ -20,7 +20,9 @@
                   "  "
                   prot-modeline-flymake
                   "  "
-                  prot-modeline-misc-info)))
+                  prot-modeline-misc-info))
+  :custom
+  (prot-modeline-string-truncate-length 50))
 
 (use-package anzu
   :pin melpa
