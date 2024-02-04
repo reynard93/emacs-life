@@ -1,11 +1,26 @@
-(use-package doom-modeline
-  :pin melpa
-  :preface
-  (column-number-mode 1)
-  (display-time-mode 1)
+(use-package prot-modeline
+  :ensure nil
+  :load-path "lisp/prot-lisp"
   :config
-  (message "doom-modeline is loaded")
-  (doom-modeline-mode 1))
+  (setq-default mode-line-format
+                '("%e"
+                  prot-modeline-kbd-macro
+                  prot-modeline-narrow
+                  prot-modeline-buffer-status
+                  prot-modeline-input-method
+                  prot-modeline-evil
+                  prot-modeline-buffer-identification
+                  "  "
+                  prot-modeline-major-mode
+                  prot-modeline-process
+                  "  "
+                  prot-modeline-vc-branch
+                  "  "
+                  prot-modeline-eglot
+                  "  "
+                  prot-modeline-flymake
+                  "  "
+                  prot-modeline-misc-info)))
 
 (use-package anzu
   :pin melpa

@@ -14,7 +14,6 @@ The configuration is based on these packages:
 - [modus-themes](https://github.com/protesilaos/modus-themes)
 - [spacious-padding](https://github.com/protesilaos/spacious-padding)
 - [fontaine](https://github.com/protesilaos/fontaine)
-- [doom-modeline](https://github.com/seagle0128/doom-modeline)
 - [vertico](https://github.com/minad/vertico)
 - [marginalia](https://github.com/minad/marginalia)
 - [consult](https://github.com/minad/consult)
