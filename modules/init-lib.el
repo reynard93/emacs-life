@@ -161,4 +161,11 @@ The path is relative to `project-current'."
     (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
       (shell-command (format "git add --all && git commit -m \"%s\"" commit-message)))))
 
+(defun +mail/add-to-things (subject)
+  "Add to-dos to my Things by sending emails to Things Cloud."
+  (interactive "sSubject: ")
+  (let ((recipient (auth-source-pass-get "email" "add-to-things")))
+    (compose-mail recipient subject)
+    (message-goto-body)))
+
 (provide 'init-lib)
