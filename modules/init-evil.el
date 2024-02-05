@@ -94,6 +94,6 @@
   (message "evil-org is loaded")
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys)
-  :hook org-mode)
+  :hook (org-mode . (lambda () evil-org-mode)))
 
 (provide 'init-evil)
