@@ -1,7 +1,7 @@
-[submodule "lisp/wombag"]
+[submodule "wombag"]
 	path = lisp/wombag
 	url = https://github.com/goofansu/wombag.git
-[submodule "lisp/ob-racket"]
+[submodule "ob-racket"]
 	path = lisp/ob-racket
 	url = https://github.com/goofansu/emacs-ob-racket.git
 [submodule "tempel-templates"]
