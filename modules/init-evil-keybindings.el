@@ -111,8 +111,7 @@
     "nD"  #'denote-subdirectory
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
-    "nl"  #'org-store-link
-    "nL"  #'denote-link
+    "nl"  #'denote-link
     "nn"  #'+denote/scratch
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
