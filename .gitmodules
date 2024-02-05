@@ -1,6 +1,6 @@
 [submodule "lisp/wombag"]
 	path = lisp/wombag
 	url = https://github.com/goofansu/wombag.git
-[submodule "lisp/emacs-ob-racket"]
-	path = lisp/emacs-ob-racket
+[submodule "lisp/ob-racket"]
+	path = lisp/ob-racket
 	url = https://github.com/goofansu/emacs-ob-racket.git
