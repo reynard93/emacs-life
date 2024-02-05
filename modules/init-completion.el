@@ -49,7 +49,7 @@
                 (cons #'tempel-expand
                       completion-at-point-functions)))
   :custom
-  (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
+  (tempel-path (expand-file-name "templates/*/*.eld" user-emacs-directory))
   :hook
   ((prog-mode text-mode) . +tempel--setup-capf))
 

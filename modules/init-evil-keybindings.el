@@ -279,8 +279,4 @@
   (interactive)
   (+project/browse-files "~/.config/nix-config/"))
 
-(defun yejun/open-private-template ()
-  (interactive)
-  (find-file "~/.config/emacs/templates/private.eld"))
-
 (provide 'init-evil-keybindings)

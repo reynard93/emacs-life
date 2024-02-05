@@ -4,3 +4,6 @@
 [submodule "lisp/ob-racket"]
 	path = lisp/ob-racket
 	url = https://github.com/goofansu/emacs-ob-racket.git
+[submodule "tempel-templates"]
+	path = templates/private
+	url = git@git.sr.ht:~goofansu/tempel-templates
