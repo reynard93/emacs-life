@@ -10,6 +10,7 @@
   :config
   (message "mu4e is loaded")
   (setq mu4e-context-policy 'pick-first)
+  (setq mu4e-compose-context-policy 'pick-first)
 
   (setq mu4e-contexts
         (list
