@@ -58,7 +58,6 @@
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
-    "fp"  #'yejun/open-private-template
     "fo"  #'+macos/reveal-in-finder
     "fO"  #'+macos/reveal-project-in-finder
     "fr"  #'recentf-open-files
