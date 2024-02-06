@@ -4,7 +4,6 @@
 (setq custom-file (make-temp-file "emacs-custom-"))
 
 ;; bootstrap
-(require 'init-lib)
 (require 'init-lisp)
 (require 'init-elpa)
 (require 'init-envrc)
