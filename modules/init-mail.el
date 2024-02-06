@@ -68,4 +68,16 @@
   (sendmail-program (executable-find "msmtp"))
   (send-mail-function #'smtpmail-send-it))
 
+(defun yejun/mail-to-things (subject)
+  "Add to-dos to my Things."
+  (interactive "s[Things] Subject: ")
+  (let ((recipient (auth-source-pass-get "email" "mail-to-things")))
+    (+mail/compose recipient subject)))
+
+(defun yejun/mail-to-dayone (subject)
+  "Write to my Day One."
+  (interactive "s[Day One] Subject: ")
+  (let ((recipient (auth-source-pass-get "email" "mail-to-dayone")))
+    (+mail/compose recipient subject)))
+
 (provide 'init-mail)
