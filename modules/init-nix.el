@@ -24,7 +24,7 @@
   :config
   (message "nix-mode is loaded")
   (defun +nix--formatter-mode-line-display ()
-    (add-to-list 'mode-line-process '(:eval nix-nixfmt-bin)))
+    (add-to-list 'mode-line-process '(:eval (concat " (" nix-nixfmt-bin ")"))))
 
   :hook
   (nix-mode . +nix--formatter-mode-line-display)

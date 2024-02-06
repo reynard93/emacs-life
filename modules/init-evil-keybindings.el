@@ -267,7 +267,12 @@
     "s"  '(:ignore t :which-key "subtree")
     "sd" #'org-cut-subtree
     "ss" #'org-sparse-tree
-    "sS" #'org-sort))
+    "sS" #'org-sort)
+
+  (+evil/local-leader-key
+    :keymaps 'nix-mode-map
+    :major-modes t
+    "t" #'+nix/toggle-formatter))
 
 (defun yejun/browse-emacs-config ()
   (interactive)
