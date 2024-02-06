@@ -1,8 +1,8 @@
 [submodule "wombag"]
-	path = lisp/wombag
+	path = vendor/wombag
 	url = https://github.com/goofansu/wombag.git
 [submodule "ob-racket"]
-	path = lisp/ob-racket
+	path = vendor/ob-racket
 	url = https://github.com/goofansu/emacs-ob-racket.git
 [submodule "tempel-templates"]
 	path = templates/private

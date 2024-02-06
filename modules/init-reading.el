@@ -62,7 +62,7 @@
   (elfeed-org))
 
 (use-package wombag
-  :load-path "lisp/wombag"
+  :load-path "vendor/wombag"
   :commands (wombag wombag-add-entry)
   :defer t
   :init

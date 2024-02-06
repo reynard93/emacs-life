@@ -1,6 +1,6 @@
 (use-package prot-modeline
   :ensure nil
-  :load-path "lisp/prot-lisp"
+  :load-path "vendor/prot-lisp"
   :config
   (setq-default mode-line-format
                 '("%e"

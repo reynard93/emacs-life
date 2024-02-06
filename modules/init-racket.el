@@ -7,7 +7,7 @@
 (use-package ob-racket
   :ensure nil
   :after racket-mode
-  :load-path "lisp/ob-racket"
+  :load-path "vendor/ob-racket"
   :config
   (message "ob-racket is loaded"))
 
