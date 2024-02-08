@@ -55,5 +55,3 @@
 ;; keybindings
 (require 'init-macos-keybindings)
 (require 'init-evil-keybindings)
-
-(provide 'init)
