@@ -68,6 +68,7 @@
   :init
   (defsubst +wombag/url (url)
     "Add URL to Wombag."
+    (message "Sending to Wombag: %s" url)
     (wombag-add-entry url ""))
 
   :config

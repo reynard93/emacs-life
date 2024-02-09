@@ -11,7 +11,10 @@
 *** [[https://yiming.dev/rss.xml][Yiming Chen]]
 ** Organizations                                                       :org:
 *** [[https://dev.37signals.com/feed/posts.xml][37signals]]
+*** [[https://blog.appsignal.com/feed.xml][AppSignal]]
 *** [[https://dashbit.co/feed][Dashbit]]
+*** [[https://fly.io/blog/feed.xml][Fly.io]]
+*** [[https://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots][Thoughtbot]]
 ** People                                                           :people:
 *** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
 *** [[https://fasterthanli.me/index.xml][Amos Wenger]]
