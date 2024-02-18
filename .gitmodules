@@ -6,4 +6,4 @@
 	url = https://github.com/goofansu/emacs-ob-racket.git
 [submodule "tempel-templates"]
 	path = templates/private
-	url = git@github.com:goofansu/tempel-templates
+	url = git@git.sr.ht:~goofansu/tempel-templates
