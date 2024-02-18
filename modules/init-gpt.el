@@ -70,7 +70,7 @@
   (setf (alist-get 'org-mode gptel-response-prefix-alist) "Response: ")
 
   :custom
-  (gptel-max-tokens 400)
+  (gptel-max-tokens 700)
   (gptel-default-mode 'org-mode)
   (gptel-prompt-prefix-alist '((org-mode . "* ")))
 
