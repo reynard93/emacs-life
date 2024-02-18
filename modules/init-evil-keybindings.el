@@ -114,7 +114,7 @@
     "nn"  #'+denote/scratch
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
-    "nr"  #'denote-change-file-type-and-front-matter
+    "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'denote-template
     "nT"  #'org-todo-list
