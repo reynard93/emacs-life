@@ -17,6 +17,7 @@
 *** [[https://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots][Thoughtbot]]
 ** People                                                           :people:
 *** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
+*** [[https://foosoft.net/feeds/posts.xml][Alex Yatskov]]
 *** [[https://fasterthanli.me/index.xml][Amos Wenger]]
 *** [[https://andrealeopardi.com/feed.xml][Andrea Leopardi]]
 *** [[https://andrewkelley.me/rss.xml][Andrew Kelley]]
