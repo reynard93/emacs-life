@@ -61,7 +61,7 @@ see how ARG affects this command."
   (advice-add 'org-insert-todo-heading :before #'move-to-eol-advice)
 
   :custom
-  (org-startup-indented t)
+  (org-startup-indented nil)
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts nil)
   (org-export-with-sub-superscripts nil)
@@ -132,5 +132,14 @@ see how ARG affects this command."
   (setq citar-notes-paths '("~/src/notes/reference"))
   :config
   (message "citar is loaded"))
+
+(use-package org-superstar
+  :pin melpa
+  :after org
+  :custom
+  (org-hide-leading-stars nil)
+  (org-superstar-leading-bullet ?\s)
+  (org-superstar-remove-leading-stars t)
+  :hook org-mode)
 
 (provide 'init-org)
