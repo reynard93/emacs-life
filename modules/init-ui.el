@@ -5,18 +5,20 @@
   (message "modus-themes is loaded")
   (load-theme current-theme :no-confirm)
   :custom
-  (modus-themes-org-blocks 'gray-background)
+  (modus-themes-custom-auto-reload nil)
+  (modus-themes-mixed-fonts t)
+  (modus-themes-variable-pitch-ui t)
+  (modus-themes-italic-constructs t)
+  (modus-themes-bold-constructs nil)
+  (modus-themes-org-blocks nil)
   (modus-themes-completions
-   '((matches . (extrabold underline))
-     (selection . (semibold italic))))
+   '((matches . ( underline))
+     (selection . (extrabold))))
+  (modus-themes-prompts '(extrabold))
   (modus-themes-headings
-   '((1 . (variable-pitch 1.2))
-     (2 . (variable-pitch 1.1))
-     (3 . (variable-pitch 1.05))
-     (4 . (1.0))
-     (agenda-date . (1.2))
-     (agenda-structure . (variable-pitch light 1.6))
-     (t . (1.1)))))
+   '((agenda-structure . (variable-pitch light 2.2))
+     (agenda-date . (variable-pitch regular 1.3))
+     (t . (regular 1.15)))))
 
 (use-package spacious-padding
   :config
