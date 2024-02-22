@@ -73,6 +73,10 @@
   (gptel-max-tokens 700)
   (gptel-default-mode 'org-mode)
   (gptel-prompt-prefix-alist '((org-mode . "* ")))
+  (gptel-directives
+   '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
+     (ffmpeg . "You are an FFmpeg expert. Provide code and only code as output without any additional text, prompt or note.")
+     (imagemagick . "You are an ImageMagick expert. Provide code and only code as output without any additional text, prompt or note.")))
 
   :hook (gptel-mode . visual-line-mode)
   :bind (("C-c C-<return>" . gptel-menu)
