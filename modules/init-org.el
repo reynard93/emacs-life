@@ -60,6 +60,15 @@ see how ARG affects this command."
   (advice-add 'org-meta-return :before #'move-to-eol-advice)
   (advice-add 'org-insert-todo-heading :before #'move-to-eol-advice)
 
+  ;; Org babel
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (ruby . t)
+     (shell . t)
+     (restclient . t)
+     (racket . t)))
+
   :custom
   (org-startup-indented nil)
   (org-hide-emphasis-markers t)
@@ -96,13 +105,6 @@ see how ARG affects this command."
   (org-confirm-babel-evaluate nil)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'other-window)
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((emacs-lisp . t)
-     (ruby . t)
-     (shell . t)
-     (restclient . t)
-     (racket . t)))
 
   ;; Cite
   (org-cite-global-bibliography citar-bibliography)
