@@ -30,4 +30,11 @@
   (nix-mode . +nix--formatter-mode-line-display)
   (before-save . nix-format-before-save))
 
+(use-package org-nix-shell
+  :pin melpa
+  :after org
+  :config
+  (message "org-nix-shell is loaded")
+  :hook org-mode)
+
 (provide 'init-nix)
