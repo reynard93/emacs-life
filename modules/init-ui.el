@@ -5,6 +5,7 @@
   (message "modus-themes is loaded")
   (load-theme current-theme :no-confirm)
   :custom
+  (modus-themes-org-blocks 'gray-background)
   (modus-themes-completions
    '((matches . (extrabold underline))
      (selection . (semibold italic))))
