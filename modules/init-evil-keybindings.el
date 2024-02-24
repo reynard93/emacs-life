@@ -156,7 +156,7 @@
     "sk"  #'dash-at-point
     "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
-    "so"  #'+lookup/search-kagi
+    "so"  #'+lookup/search-online
     "ss"  #'+buffer/search
     "sS"  #'+buffer/search-for-symbol-at-point
     "sr"  #'+project/search

@@ -18,9 +18,13 @@
   (message "deadgrep is loaded")
   (evil-set-initial-state 'deadgrep-mode 'emacs))
 
-(defun +lookup/search-kagi ()
+(defun +lookup/search-online ()
   (interactive)
-  (let ((query (read-string "Search for: " (thing-at-point 'symbol t))))
+  (let* ((default-query
+          (if (use-region-p)
+              (buffer-substring-no-properties (region-beginning) (region-end))
+            (thing-at-point 'word t)))
+         (query (read-string "Search for: " default-query)))
     (browse-url (format "https://kagi.com/search?q=%s" (url-encode-url query)))))
 
 (defvar google-translate-target-lang nil)
