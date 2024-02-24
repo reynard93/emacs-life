@@ -68,16 +68,20 @@
   (sendmail-program (executable-find "msmtp"))
   (send-mail-function #'smtpmail-send-it))
 
-(defun yejun/mail-to-things (subject)
-  "Add to-dos to my Things."
-  (interactive "s[Things] Subject: ")
-  (let ((recipient (auth-source-pass-get "email" "mail-to-things")))
-    (+mail/compose recipient subject)))
+(defvar yejun--mail-service-alist
+  '(("Things" . "add-to-things")
+    ("Day One" . "add-to-dayone")
+    ("Instapaper" . "add-to-instapaper"))
+  "Alist of services with their corresponding auth-source keys.")
 
-(defun yejun/mail-to-dayone (subject)
-  "Write to my Day One."
-  (interactive "s[Day One] Subject: ")
-  (let ((recipient (auth-source-pass-get "email" "mail-to-dayone")))
-    (+mail/compose recipient subject)))
+(defun yejun/mail-to-service (service-name subject)
+  "Compose a mail for a specified service."
+  (interactive
+   (list
+    (completing-read "Choose service: " (mapcar #'car yejun--mail-service-alist))
+    (read-string "Subject: ")))
+  (let ((key (cdr (assoc service-name yejun--mail-service-alist))))
+    (let ((recipient (auth-source-pass-get "email" key)))
+      (+mail/compose recipient subject))))
 
 (provide 'init-mail)
