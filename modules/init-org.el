@@ -138,6 +138,8 @@ see how ARG affects this command."
 (use-package org-superstar
   :pin melpa
   :after org
+  :config
+  (message "org-superstart is loaded")
   :custom
   (org-hide-leading-stars nil)
   (org-superstar-leading-bullet ?\s)
