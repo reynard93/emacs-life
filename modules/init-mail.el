@@ -78,7 +78,9 @@
   "Compose a mail for a specified service."
   (interactive
    (list
-    (completing-read "Choose service: " (mapcar #'car yejun--mail-service-alist))
+    (completing-read "Choose service: "
+                     (mapcar #'car yejun--mail-service-alist)
+                     nil t)
     (read-string "Subject: ")))
   (let ((key (cdr (assoc service-name yejun--mail-service-alist))))
     (let ((recipient (auth-source-pass-get "email" key)))
