@@ -12,13 +12,13 @@
   (modus-themes-bold-constructs nil)
   (modus-themes-org-blocks nil)
   (modus-themes-completions
-   '((matches . ( underline))
+   '((matches . (underline))
      (selection . (extrabold))))
   (modus-themes-prompts '(extrabold))
   (modus-themes-headings
    '((agenda-structure . (variable-pitch light 2.2))
      (agenda-date . (variable-pitch regular 1.3))
-     (t . (regular 1.15)))))
+     (t . (variable-pitch 1.15)))))
 
 (use-package spacious-padding
   :config
