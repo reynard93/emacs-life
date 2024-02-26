@@ -66,13 +66,12 @@
      ((y-or-n-p "[gptel] Prompt has more than 2000 chars, really send?") (gptel-send arg))
      (t (message "[gptel] Request cancelled"))))
 
-  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "Prompt: ")
+  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "* Prompt: ")
   (setf (alist-get 'org-mode gptel-response-prefix-alist) "Response: ")
 
   :custom
   (gptel-max-tokens 700)
   (gptel-default-mode 'org-mode)
-  (gptel-prompt-prefix-alist '((org-mode . "* ")))
   (gptel-directives
    '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
      (ffmpeg . "You are an FFmpeg expert. Provide code and only code as output without any additional text, prompt or note.")
