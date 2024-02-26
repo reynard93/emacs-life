@@ -74,16 +74,15 @@
     ("Instapaper" . "add-to-instapaper"))
   "Alist of services with their corresponding auth-source keys.")
 
-(defun yejun/mail-to-service (service-name subject)
+(defun yejun/mail-to-service (name)
   "Compose a mail for a specified service."
   (interactive
-   (list
-    (completing-read "Choose service: "
-                     (mapcar #'car yejun--mail-service-alist)
-                     nil t)
-    (read-string "Subject: ")))
-  (let ((key (cdr (assoc service-name yejun--mail-service-alist))))
-    (let ((recipient (auth-source-pass-get "email" key)))
-      (+mail/compose recipient subject))))
+   (list (completing-read
+          "Choose service: " (mapcar #'car yejun--mail-service-alist)
+          nil t)))
+  (if-let* ((pass-entry (cdr (assoc name yejun--mail-service-alist)))
+            (recipient (auth-source-pass-get "email" pass-entry)))
+      (+mail/compose recipient)
+    (error "Recipient not found for service: %s" name)))
 
 (provide 'init-mail)
