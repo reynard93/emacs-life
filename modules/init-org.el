@@ -74,6 +74,7 @@ see how ARG affects this command."
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts nil)
   (org-export-with-sub-superscripts nil)
+  (org-export-with-section-numbers nil)
 
   ;; Task
   (org-log-done 'time)
