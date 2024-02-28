@@ -140,7 +140,7 @@ see how ARG affects this command."
   :pin melpa
   :after org
   :config
-  (message "org-superstart is loaded")
+  (message "org-superstar is loaded")
   :custom
   (org-hide-leading-stars nil)
   (org-superstar-leading-bullet ?\s)
