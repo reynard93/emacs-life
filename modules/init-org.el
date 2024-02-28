@@ -146,4 +146,10 @@ see how ARG affects this command."
   (org-superstar-remove-leading-stars t)
   :hook org-mode)
 
+(use-package org-pandoc-import
+  :after org
+  :load-path "vendor/org-pandoc-import"
+  :config
+  (message "org-pandoc-import is loaded"))
+
 (provide 'init-org)
