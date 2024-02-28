@@ -113,7 +113,9 @@ see how ARG affects this command."
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
 
-  :hook (org-capture-mode . evil-insert-state)
+  :hook
+  (org-mode . visual-line-mode)
+  (org-capture-mode . evil-insert-state)
 
   :bind ( :map org-mode-map
           ("C-M-S-h" . org-babel-mark-block)
