@@ -1,9 +1,9 @@
 [submodule "wombag"]
 	path = vendor/wombag
-	url = https://github.com/goofansu/wombag.git
+	url = https://github.com/karthink/wombag.git
 [submodule "ob-racket"]
 	path = vendor/ob-racket
-	url = https://github.com/goofansu/emacs-ob-racket.git
+	url = https://github.com/hasu/emacs-ob-racket.git
 [submodule "tempel-templates"]
 	path = templates/private
 	url = git@git.sr.ht:~goofansu/tempel-templates
