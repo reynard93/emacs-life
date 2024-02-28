@@ -70,7 +70,7 @@ see how ARG affects this command."
      (racket . t)))
 
   :custom
-  (org-startup-indented nil)
+  (org-startup-indented t)
   (org-hide-emphasis-markers t)
   (org-use-sub-superscripts nil)
   (org-export-with-sub-superscripts nil)
@@ -144,7 +144,7 @@ see how ARG affects this command."
   :custom
   (org-hide-leading-stars nil)
   (org-superstar-leading-bullet ?\s)
-  (org-superstar-remove-leading-stars t)
+  (org-indent-mode-turns-on-hiding-stars nil)
   :hook org-mode)
 
 (use-package org-pandoc-import
