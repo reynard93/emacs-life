@@ -147,6 +147,7 @@ see how ARG affects this command."
   (org-hide-leading-stars nil)
   (org-superstar-leading-bullet ?\s)
   (org-indent-mode-turns-on-hiding-stars nil)
+  (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
   :hook org-mode)
 
 (use-package org-pandoc-import
