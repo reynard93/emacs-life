@@ -106,8 +106,8 @@
     "nB"  #'citar-open-notes
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
-    "nd"  #'denote-date
-    "nD"  #'denote-subdirectory
+    "nd"  #'denote-subdirectory
+    "nD"  #'denote-date
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nl"  #'denote-link
