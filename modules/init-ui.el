@@ -18,7 +18,7 @@
   (modus-themes-headings
    '((agenda-structure . (variable-pitch light 2.2))
      (agenda-date . (variable-pitch regular 1.3))
-     (t . (variable-pitch 1.15)))))
+     (t . (regular 1.15)))))
 
 (use-package spacious-padding
   :config
@@ -40,14 +40,13 @@
       :default-height 240
       :bold-weight extrabold)
      (t
-      :default-family "JetBrains Mono"
+      :default-family "Iosevka Comfy"
       :default-weight regular
+      :default-slant normal
       :default-height 160
-      :fixed-pitch-family nil
-      :fixed-pitch-weight nil
-      :fixed-pitch-height 1.0
-      :variable-pitch-family "Iosevka"
-      :variable-pitch-weight regular
+      :variable-pitch-family "Iosevka Comfy Motion Duo"
+      :variable-pitch-weight nil
+      :variable-pitch-slant nil
       :variable-pitch-height 1.0)))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
   :bind ("C-c f" . fontaine-set-preset))
