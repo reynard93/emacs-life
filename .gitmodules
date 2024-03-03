@@ -4,9 +4,6 @@
 [submodule "ob-racket"]
 	path = vendor/ob-racket
 	url = https://github.com/hasu/emacs-ob-racket.git
-[submodule "tempel-templates"]
-	path = templates/private
-	url = git@git.sr.ht:~goofansu/tempel-templates
 [submodule "org-pandoc-import"]
 	path = vendor/org-pandoc-import
 	url = https://github.com/tecosaur/org-pandoc-import.git
