@@ -18,6 +18,8 @@
   (modus-themes-headings
    '((agenda-structure . (variable-pitch light 2.2))
      (agenda-date . (variable-pitch regular 1.3))
+     (1 . (variable-pitch 1.2))
+     (2 . (variable-pitch 1.15))
      (t . (regular 1.15)))))
 
 (use-package spacious-padding
@@ -40,7 +42,7 @@
       :default-height 240
       :bold-weight extrabold)
      (t
-      :default-family "Iosevka Comfy"
+      :default-family "JetBrains Mono"
       :default-weight regular
       :default-slant normal
       :default-height 160
