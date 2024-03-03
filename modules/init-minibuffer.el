@@ -13,7 +13,7 @@
   (vertico-mode 1)
 
   ;; Disable `ffap-menu's completion buffer
-  (advice-add #'ffap-menu-ask :around
+  (advice-add 'ffap-menu-ask :around
               (lambda (&rest args)
                 (cl-letf (((symbol-function #'minibuffer-completion-help)
                            #'ignore))

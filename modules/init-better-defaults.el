@@ -108,7 +108,7 @@ character and beginning of line."
     (when (= orig-point (point))
       (apply orig-fun args))))
 
-(advice-add #'move-beginning-of-line :around #'move-beginning-of-line-advice)
+(advice-add 'move-beginning-of-line :around #'move-beginning-of-line-advice)
 
 (defun delete-other-windows-advice (orig-func &rest args)
   "Advice to call `delete-other-windows-vertically' with a prefix
