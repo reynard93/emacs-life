@@ -77,10 +77,10 @@
      (ffmpeg . "You are an FFmpeg expert. Provide code and only code as output without any additional text, prompt or note.")
      (imagemagick . "You are an ImageMagick expert. Provide code and only code as output without any additional text, prompt or note.")))
 
-  :hook (gptel-mode . visual-line-mode)
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
          :map gptel-mode-map
+         ("C-c C-g" . gptel-abort)
          ("C-c C-x t" . gptel-set-topic)
          ("M-n" . gptel-end-of-response)))
 

@@ -31,6 +31,10 @@
   (evil-want-C-w-in-emacs-state t)
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
+
+  :hook
+  (org-capture-mode . evil-insert-state)
+
   :bind (("s-n" . evil-buffer-new)
          :map evil-ex-completion-map
          ("C-a" . evil-beginning-of-line)

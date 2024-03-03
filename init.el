@@ -49,6 +49,7 @@
 (require 'init-timer)
 (require 'init-lookup)
 (require 'init-reading)
+(require 'init-writing)
 (require 'init-restclient)
 (require 'init-network-tools)
 

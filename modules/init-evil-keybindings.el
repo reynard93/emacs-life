@@ -167,6 +167,7 @@
     "tf"  '(flymake-mode :which-key "Flymake mode")
     "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
     "tm"  '(modus-themes-toggle :which-key "Modus themes")
+    "to"  '(olivetti-mode :which-key "Olivetti mode")
 
     "w"   '(evil-window-map :which-key "window")
     "wu"  #'winner-undo
