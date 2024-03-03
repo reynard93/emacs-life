@@ -110,4 +110,13 @@ character and beginning of line."
 
 (advice-add #'move-beginning-of-line :around #'move-beginning-of-line-advice)
 
+(defun delete-other-windows-advice (orig-func &rest args)
+  "Advice to call `delete-other-windows-vertically' with a prefix
+argument, otherwise call original `delete-other-windows'."
+  (if (= (prefix-numeric-value current-prefix-arg) 4)
+      (delete-other-windows-vertically)
+    (apply orig-func args)))
+
+(advice-add 'delete-other-windows :around #'delete-other-windows-advice)
+
 (provide 'init-better-defaults)
