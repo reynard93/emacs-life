@@ -1,5 +1,6 @@
 (use-package org
   :ensure nil
+  :commands (org-store-link)
   :init
   (setq org-directory "~/src/org"
         org-agenda-files (list org-directory))

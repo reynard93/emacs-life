@@ -29,7 +29,7 @@
     "RET" #'bookmark-jump
     "a"   #'embark-act
     "x"   #'org-capture
-    "X"   #'wombag-add-entry
+    "X"   #'org-store-link
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
