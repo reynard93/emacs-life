@@ -18,7 +18,7 @@
   (modus-themes-headings
    '((agenda-structure . (variable-pitch light 1.8))
      (agenda-date . (1.3))
-     (t . (1.15)))))
+     (t . (regular 1.15)))))
 
 (use-package spacious-padding
   :config
