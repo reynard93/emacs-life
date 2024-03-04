@@ -28,8 +28,8 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'org-capture
-    "X"   #'org-store-link
+    "x"   #'org-store-link
+    "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
