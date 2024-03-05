@@ -80,6 +80,7 @@ see how ARG affects this command."
   ;; Task
   (org-log-done 'time)
   (org-log-into-drawer t)
+  (org-use-fast-todo-selection 'expert)
   (org-todo-keywords
    '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "KILL(k@)")))
   (org-todo-keyword-faces
