@@ -71,11 +71,10 @@ see how ARG affects this command."
      (racket . t)))
 
   :custom
+  ;; Appearance
   (org-startup-indented t)
   (org-hide-emphasis-markers t)
-  (org-use-sub-superscripts nil)
-  (org-export-with-sub-superscripts nil)
-  (org-export-with-section-numbers nil)
+  (org-ellipsis " ▾")
 
   ;; Task
   (org-log-done 'time)
@@ -108,6 +107,11 @@ see how ARG affects this command."
   (org-confirm-babel-evaluate nil)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'other-window)
+
+  ;; Export
+  (org-export-with-sub-superscripts nil)
+  (org-export-with-section-numbers nil)
+  (org-use-sub-superscripts nil)
 
   ;; Cite
   (org-cite-global-bibliography citar-bibliography)
