@@ -204,20 +204,23 @@
   (+evil/local-leader-key
     :keymaps 'org-mode-map
     :major-modes t
-    "." #'consult-org-heading
-    "A" #'org-archive-subtree
-    "e" #'org-export-dispatch
-    "f" #'org-footnote-action
-    "h" #'org-toggle-heading
-    "i" #'org-toggle-item
-    "I" #'org-id-get-create
-    "k" #'org-babel-remove-result
-    "o" #'org-set-property
-    "p" #'org-priority
-    "q" #'org-set-tags-command
-    "t" #'org-todo
-    "T" #'org-todo-list
-    "x" #'org-toggle-checkbox
+    "."  #'consult-org-heading
+    "a"  '(:ignore t :which-key "anki")
+    "aa" #'org-anki-sync-entry
+    "aA" #'org-anki-sync-all
+    "A"  #'org-archive-subtree
+    "e"  #'org-export-dispatch
+    "f"  #'org-footnote-action
+    "h"  #'org-toggle-heading
+    "i"  #'org-toggle-item
+    "I"  #'org-id-get-create
+    "k"  #'org-babel-remove-result
+    "o"  #'org-set-property
+    "p"  #'org-priority
+    "q"  #'org-set-tags-command
+    "t"  #'org-todo
+    "T"  #'org-todo-list
+    "x"  #'org-toggle-checkbox
 
     "b"  '(:ignore t :which-key "table")
     "b-" #'org-table-insert-hline
