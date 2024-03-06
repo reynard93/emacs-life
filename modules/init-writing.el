@@ -32,6 +32,8 @@
 
 (use-package visual-line-mode
   :ensure nil
+  :config
+  (message "visual-line-mode is enabled")
   :hook (org-mode gptel-mode))
 
 (provide 'init-writing)
