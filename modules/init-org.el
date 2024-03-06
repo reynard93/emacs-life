@@ -152,6 +152,12 @@ see how ARG affects this command."
   (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
   :hook org-mode)
 
+(use-package org-anki
+  :pin melpa
+  :after org
+  :config
+  (message "org-anki is loaded"))
+
 (use-package org-pandoc-import
   :after org
   :load-path "vendor/org-pandoc-import"

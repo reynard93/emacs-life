@@ -17,10 +17,4 @@
           :map embark-file-map
           ("U" . 0x0-upload-file)))
 
-(use-package org-anki
-  :pin melpa
-  :defer t
-  :config
-  (message "org-anki is loaded"))
-
 (provide 'init-network-tools)
