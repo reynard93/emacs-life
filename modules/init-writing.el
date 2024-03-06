@@ -25,7 +25,9 @@
   :config
   (message "olivetti is loaded")
   :custom
-  (olivetti-body-width 110)
+  (olivetti-body-width 0.7)
+  (olivetti-minimum-body-width 80)
+  (olivetti-recall-visual-line-mode-entry-state t)
   :hook (org-mode gptel-mode))
 
 (use-package visual-line-mode
