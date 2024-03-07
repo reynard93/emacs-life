@@ -92,9 +92,8 @@ see how ARG affects this command."
      ("n" "Notes" entry (file "notes.org") "* %?\n%i" :prepend t)
      ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
      ("b" "Bookmark" entry (file+headline "notes.org" "Bookmarks") "* %?\n%x" :prepend t)
-     ("a" "Anki")
-     ("aa" "Default" entry (file "anki/default.org") "* %?\n%x" :prepend t)
-     ("av" "Vocabulary" entry (file "anki/vocabulary.org") "* %?\n%x" :prepend t)))
+     ("d" "Decks of Anki")
+     ("dd" "Default" entry (file "decks/default.org") "* %?\n%x" :prepend t)))
 
   ;; Refile
   (org-outline-path-complete-in-steps nil)
