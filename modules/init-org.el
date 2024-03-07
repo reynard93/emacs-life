@@ -74,9 +74,15 @@ see how ARG affects this command."
      (racket . t)))
 
   :custom
+  ;; General
+  (org-use-sub-superscripts '{})
+  (org-read-date-prefer-future 'time)
+  (org-M-RET-may-split-line '((default . nil)))
+
   ;; Appearance
+  (org-ellipsis "▾")
   (org-hide-emphasis-markers t)
-  (org-ellipsis " ˖")
+  (org-cycle-separator-lines 0)
 
   ;; Task
   (org-log-done 'time)
@@ -112,7 +118,6 @@ see how ARG affects this command."
   ;; Export
   (org-export-with-sub-superscripts nil)
   (org-export-with-section-numbers nil)
-  (org-use-sub-superscripts nil)
 
   ;; Cite
   (org-cite-global-bibliography citar-bibliography)
