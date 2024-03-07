@@ -147,9 +147,10 @@ see how ARG affects this command."
   (message "org-superstar is loaded")
   :custom
   (org-hide-leading-stars nil)
-  (org-superstar-leading-bullet ?\s)
   (org-indent-mode-turns-on-hiding-stars nil)
-  (org-superstar-headline-bullets-list '("◉" "○" "●" "○" "●" "○" "●"))
+  (org-superstar-leading-bullet ?\s)
+  (org-superstar-remove-leading-stars t)
+  (org-superstar-headline-bullets-list '("◉" "○" "●" "◈" "◇" "◆"))
   :hook org-mode)
 
 (use-package org-anki
