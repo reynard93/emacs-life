@@ -56,6 +56,9 @@ see how ARG affects this command."
   :config
   (message "org is loaded")
 
+  (defun yejun/run-org-mode-hook ()
+    (setq-local evil-auto-indent nil))
+
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
   (advice-add 'org-meta-return :before #'move-to-eol-advice)
@@ -117,6 +120,7 @@ see how ARG affects this command."
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
 
+  :hook (org-mode . yejun/run-org-mode-hook)
   :bind ( :map org-mode-map
           ("C-M-S-h" . org-babel-mark-block)
           ("C-c i" . org-cite-insert)))
