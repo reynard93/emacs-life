@@ -72,7 +72,6 @@ see how ARG affects this command."
 
   :custom
   ;; Appearance
-  (org-startup-indented t)
   (org-hide-emphasis-markers t)
   (org-ellipsis " ˖")
 
@@ -138,19 +137,6 @@ see how ARG affects this command."
   (setq citar-notes-paths '("~/src/notes/reference"))
   :config
   (message "citar is loaded"))
-
-(use-package org-superstar
-  :pin melpa
-  :after org
-  :config
-  (message "org-superstar is loaded")
-  :custom
-  (org-hide-leading-stars nil)
-  (org-indent-mode-turns-on-hiding-stars nil)
-  (org-superstar-leading-bullet ?\s)
-  (org-superstar-remove-leading-stars nil)
-  (org-superstar-headline-bullets-list '("◉" "○" "◈" "◇"))
-  :hook org-mode)
 
 (use-package org-anki
   :pin melpa
