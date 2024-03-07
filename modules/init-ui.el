@@ -38,18 +38,14 @@
       :default-family "JetBrains Mono"
       :default-weight normal
       :default-height 160
+      :fixed-pitch-family "JetBrains Mono"
+      :fixed-pitch-weight nil
+      :fixed-pitch-height 170
       :variable-pitch-family "Iosevka Comfy Motion Duo"
       :variable-pitch-weight normal
-      :variable-pitch-height 1.2
+      :variable-pitch-height 180
       :line-spacing 1)
-     (large
-      :inherit regular
-      :default-height 180
-      :variable-pitch-height 1.3)
-     (presentation
-      :inherit regular
-      :default-height 240
-      :variable-pitch-height 1.6)))
+     ))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
   :bind ("C-c f" . fontaine-set-preset))
 
