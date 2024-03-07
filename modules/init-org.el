@@ -74,7 +74,7 @@ see how ARG affects this command."
   ;; Appearance
   (org-startup-indented t)
   (org-hide-emphasis-markers t)
-  (org-ellipsis " ▾")
+  (org-ellipsis " ˖")
 
   ;; Task
   (org-log-done 'time)
