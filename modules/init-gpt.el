@@ -1,6 +1,6 @@
 ;; Azure OpenAI
 (defvar azure-openai-api-host "beepboop.openai.azure.com")
-(defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2023-12-01-preview")
+(defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2024-02-15-preview")
 (defvar azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
 
 ;; Google Gemini
