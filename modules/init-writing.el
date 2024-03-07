@@ -27,8 +27,7 @@
   :custom
   (olivetti-body-width 0.7)
   (olivetti-minimum-body-width 80)
-  (olivetti-recall-visual-line-mode-entry-state t)
-  :hook (org-mode gptel-mode))
+  (olivetti-recall-visual-line-mode-entry-state t))
 
 (use-package visual-line-mode
   :ensure nil
