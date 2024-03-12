@@ -1,3 +1,6 @@
+(defun +exercism/exercise-root-dir ()
+  (locate-dominating-file default-directory ".exercism"))
+
 (defun +exercism/download (track exercise)
   (interactive
    (list (completing-read "Track Name: " '(elixir ruby))
@@ -16,5 +19,18 @@
         (forward-line -1)
         (kill-new (thing-at-point 'line)))
       (kill-buffer output-buffer))))
+
+(defun +exercism/open ()
+  (interactive)
+  (if-let ((dir (+exercism/exercise-root-dir)))
+      (shell-command (format "exercism open %s" dir))
+    (user-error "Cannot locate exercise root directory")))
+
+(defun +exercism/test ()
+  (interactive)
+  (if-let ((dir (+exercism/exercise-root-dir)))
+      (let ((default-directory dir))
+        (compile (format "exercism test %s" dir)))
+    (user-error "Cannot locate exercise root directory")))
 
 (provide 'lisp-exercism)
