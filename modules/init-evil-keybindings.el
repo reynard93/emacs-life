@@ -276,7 +276,7 @@
   (+evil/local-leader-key
     :keymaps 'nix-mode-map
     :major-modes t
-    "t" #'+nix/toggle-formatter)
+    "t" #'+nix/formatter-toggle)
 
   (+evil/local-leader-key
     :keymaps '(markdown-mode-map markdown-view-mode-map)
