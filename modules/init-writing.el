@@ -15,6 +15,7 @@
   :hook
   (org-mode . logos-focus-mode)
   (gptel-mode . logos-focus-mode)
+  (markdown-mode . logos-focus-mode)
   :bind (([remap narrow-to-region] . logos-narrow-dwim)
          ([remap forward-page]     . logos-forward-page-dwim)
          ([remap backward-page]    . logos-backward-page-dwim)))
@@ -33,6 +34,6 @@
   :ensure nil
   :config
   (message "visual-line-mode is enabled")
-  :hook (org-mode gptel-mode))
+  :hook (org-mode gptel-mode markdown-mode))
 
 (provide 'init-writing)
