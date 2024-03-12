@@ -30,7 +30,7 @@
 (defun +github/create-gist-region-or-buffer (&optional arg)
   (interactive "P")
   (let ((filename (buffer-name))
-        (output-buffer " *gist-output*")
+        (output-buffer "*gist-output*")
         (public (if arg " --public" "")))
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))
@@ -46,7 +46,7 @@
 (defun +sourcehut/create-paste-region-or-buffer (&optional arg)
   (interactive "P")
   (let ((filename (read-string "Enter filename: " (buffer-name)))
-        (output-buffer " *paste-output*")
+        (output-buffer "*paste-output*")
         (public (if arg " --visibility public" "")))
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))

@@ -6,7 +6,7 @@
 
 (defun +exercism/submit ()
   (interactive)
-  (let ((output-buffer " *exercism-output*"))
+  (let ((output-buffer "*exercism-output*"))
     (shell-command "exercism submit" output-buffer)
     (with-current-buffer output-buffer
       (goto-char (point-max))
