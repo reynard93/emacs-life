@@ -30,7 +30,7 @@
   (interactive)
   (if-let ((dir (+exercism/exercise-root-dir)))
       (let ((default-directory dir))
-        (compile (format "exercism test %s" dir)))
+        (compile "exercism test"))
     (user-error "Cannot locate exercise root directory")))
 
 (provide 'lisp-exercism)
