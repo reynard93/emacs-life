@@ -276,7 +276,12 @@
   (+evil/local-leader-key
     :keymaps 'nix-mode-map
     :major-modes t
-    "t" #'+nix/toggle-formatter))
+    "t" #'+nix/toggle-formatter)
+
+  (+evil/local-leader-key
+    :keymaps '(markdown-mode-map markdown-view-mode-map)
+    :major-modes t
+    "t" #'+markdown/preview-toggle))
 
 (defun yejun/browse-emacs-config ()
   (interactive)
