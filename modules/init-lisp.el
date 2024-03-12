@@ -6,5 +6,6 @@
 (require 'lisp-macos)
 (require 'lisp-mail)
 (require 'lisp-project)
+(require 'lisp-exercism)
 
 (provide 'init-lisp)
