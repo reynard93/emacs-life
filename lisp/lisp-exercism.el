@@ -6,12 +6,15 @@
 
 (defun +exercism/submit ()
   (interactive)
-  (let ((output-buffer "*exercism-output*"))
-    (shell-command "exercism submit" output-buffer)
-    (with-current-buffer output-buffer
-      (goto-char (point-max))
-      (forward-line -1)
-      (kill-new (thing-at-point 'line)))
-    (kill-buffer output-buffer)))
+  (let* ((filename (buffer-file-name))
+         (command (format "exercism submit %s" filename))
+         (output-buffer "*exercism-output*"))
+    (when (y-or-n-p (format "Really submit %s to Exercism?" filename))
+      (shell-command command output-buffer)
+      (with-current-buffer output-buffer
+        (goto-char (point-max))
+        (forward-line -1)
+        (kill-new (thing-at-point 'line)))
+      (kill-buffer output-buffer))))
 
 (provide 'lisp-exercism)
