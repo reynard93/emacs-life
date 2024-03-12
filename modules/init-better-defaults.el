@@ -83,6 +83,14 @@
   (message "xclip is loaded")
   (xclip-mode 1))
 
+(use-package compile
+  :ensure nil
+  :config
+  (defun yejun/colorize-compilation-buffer ()
+    (let ((inhibit-read-only t))
+      (ansi-color-apply-on-region compilation-filter-start (point-max))))
+  :hook (compilation-filter . yejun/colorize-compilation-buffer))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
