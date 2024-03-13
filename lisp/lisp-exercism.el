@@ -1,4 +1,4 @@
-(defun +exercism/exercise-root-dir ()
+(defun +exercism--exercise-root-dir ()
   (locate-dominating-file default-directory ".exercism"))
 
 (defun +exercism/download (track exercise)
@@ -16,13 +16,13 @@
 
 (defun +exercism/open ()
   (interactive)
-  (if-let ((dir (+exercism/exercise-root-dir)))
+  (if-let ((dir (+exercism--exercise-root-dir)))
       (shell-command (format "exercism open %s" dir))
     (user-error "Cannot locate exercise root directory")))
 
 (defun +exercism/test ()
   (interactive)
-  (if-let ((dir (+exercism/exercise-root-dir)))
+  (if-let ((dir (+exercism--exercise-root-dir)))
       (let ((default-directory dir))
         (compile "exercism test"))
     (user-error "Cannot locate exercise root directory")))
