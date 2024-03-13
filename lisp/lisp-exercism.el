@@ -10,15 +10,9 @@
 (defun +exercism/submit ()
   (interactive)
   (let* ((filename (buffer-file-name))
-         (command (format "exercism submit %s" filename))
-         (output-buffer "*exercism-output*"))
+         (command (format "exercism submit %s" filename)))
     (when (y-or-n-p (format "Really submit %s to Exercism?" filename))
-      (shell-command command output-buffer)
-      (with-current-buffer output-buffer
-        (goto-char (point-max))
-        (forward-line -1)
-        (kill-new (thing-at-point 'line)))
-      (kill-buffer output-buffer))))
+      (shell-command command))))
 
 (defun +exercism/open ()
   (interactive)
