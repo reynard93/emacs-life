@@ -55,11 +55,13 @@
     "cw"  #'delete-trailing-whitespace
 
     "f"   '(:ignore t :which-key "file")
+    "fb"  #'yejun/open-blog-index
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
     "fo"  #'+macos/reveal-in-finder
     "fO"  #'+macos/reveal-project-in-finder
+    "fp"  #'yejun/open-private-template
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
     "fs"  #'save-buffer
@@ -285,10 +287,18 @@
 
 (defun yejun/browse-emacs-config ()
   (interactive)
-  (+project/browse-files "~/.config/emacs"))
+  (+project/browse-files user-emacs-directory))
 
 (defun yejun/browse-nix-config ()
   (interactive)
   (+project/browse-files "~/.config/nix-config/"))
+
+(defun yejun/open-private-template ()
+  (interactive)
+  (find-file "~/.config/emacs/templates/private.eld"))
+
+(defun yejun/open-blog-index ()
+  (interactive)
+  (find-file "~/src/yejun.dev/content-org/index.org"))
 
 (provide 'init-evil-keybindings)
