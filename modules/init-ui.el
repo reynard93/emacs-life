@@ -45,6 +45,16 @@
       :variable-pitch-weight normal
       :variable-pitch-height 180
       :line-spacing 1)
+     (large
+      :inherit regular
+      :default-height 250
+      :fixed-pitch-height 260
+      :variable-pitch-height 270)
+     (presentation
+      :inherit regular
+      :default-height 340
+      :fixed-pitch-height 350
+      :variable-pitch-height 360)
      ))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
   :bind ("C-c f" . fontaine-set-preset))
