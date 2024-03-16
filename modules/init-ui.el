@@ -34,27 +34,18 @@
   (fontaine-set-preset 'regular)
   :custom
   (fontaine-presets
-   '((regular
+   '((regular)
+     (t
       :default-family "JetBrains Mono"
-      :default-weight normal
+      :default-weight regular
       :default-height 160
       :fixed-pitch-family "JetBrains Mono"
       :fixed-pitch-weight nil
-      :fixed-pitch-height 170
+      :fixed-pitch-height 1.0
       :variable-pitch-family "Iosevka Comfy Motion Duo"
-      :variable-pitch-weight normal
-      :variable-pitch-height 180
+      :variable-pitch-weight nil
+      :variable-pitch-height 1.0
       :line-spacing 1)
-     (large
-      :inherit regular
-      :default-height 250
-      :fixed-pitch-height 260
-      :variable-pitch-height 270)
-     (presentation
-      :inherit regular
-      :default-height 340
-      :fixed-pitch-height 350
-      :variable-pitch-height 360)
      ))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
   :bind ("C-c f" . fontaine-set-preset))
