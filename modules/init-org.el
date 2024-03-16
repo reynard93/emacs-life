@@ -151,6 +151,7 @@ see how ARG affects this command."
 (use-package org-anki
   :pin melpa
   :after org
+  :defer t
   :config
   (message "org-anki is loaded"))
 
