@@ -136,7 +136,8 @@ see how ARG affects this command."
   :config
   (message "ox-hugo is loaded")
   :custom
-  (org-hugo-delete-trailing-ws nil))
+  (org-hugo-delete-trailing-ws nil)
+  (org-hugo-auto-set-lastmod t))
 
 (use-package citar
   :pin melpa
