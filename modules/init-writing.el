@@ -4,7 +4,7 @@
                 logos-hide-mode-line t
                 logos-hide-buffer-boundaries t
                 logos-hide-fringe t
-                logos-variable-pitch t
+                logos-variable-pitch nil
                 logos-buffer-read-only nil
                 logos-scroll-lock nil
                 logos-olivetti nil)
