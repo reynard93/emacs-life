@@ -43,6 +43,16 @@
      :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))
      :stream nil))
 
+  (defvar gptel--groq
+    (gptel-make-openai "Groq"
+      :host "api.groq.com"
+      :endpoint "/openai/v1/chat/completions"
+      :stream nil
+      :key (lambda () (auth-source-pass-get 'secret "api.groq.com"))
+      :models '("mixtral-8x7b-32768"
+                "llama2-70b-4096"
+                "gemma-7b-it")))
+
   (setq-default gptel-model "gpt-4"
                 gptel-backend gptel--azure-gpt-4)
 
