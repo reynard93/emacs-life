@@ -5,13 +5,15 @@
   (message "general is loaded")
 
   (general-create-definer +evil/leader-key
-    :states '(normal visual)
+    :states '(normal visual insert)
     :keymaps 'override
-    :prefix "SPC")
+    :prefix "SPC"
+    :non-normal-prefix "M-S-SPC")
 
   (general-create-definer +evil/local-leader-key
-    :states '(normal visual)
-    :prefix "SPC m")
+    :states '(normal visual insert)
+    :prefix "SPC m"
+    :non-normal-prefix "M-S-SPC m")
 
   (+evil/leader-key
     "p"   project-prefix-map
