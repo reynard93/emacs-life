@@ -81,7 +81,7 @@ see how ARG affects this command."
 
   ;; Appearance
   (org-ellipsis "▾")
-  (org-hide-emphasis-markers t)
+  (org-hide-emphasis-markers nil)
   (org-cycle-separator-lines 0)
 
   ;; Task
