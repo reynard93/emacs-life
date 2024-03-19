@@ -10,7 +10,6 @@
   (modus-themes-variable-pitch-ui t)
   (modus-themes-italic-constructs t)
   (modus-themes-bold-constructs nil)
-  (modus-themes-org-blocks nil)
   (modus-themes-completions
    '((matches . (underline))
      (selection . (extrabold))))
