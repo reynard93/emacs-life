@@ -1,6 +1,14 @@
 (use-package prot-modeline
   :ensure nil
   :load-path "vendor/prot-lisp"
+  :init
+  (defvar-local yejun-modeline-position
+      '(:eval
+        (when (mode-line-window-selected-p)
+          (list
+           (propertize "%l" 'face 'font-lock-number-face) ":"
+           (propertize "%c" 'face 'font-lock-number-face)))))
+  (put 'yejun-modeline-position 'risky-local-variable t)
   :config
   (setq-default mode-line-format
                 '("%e"
@@ -15,6 +23,8 @@
                   prot-modeline-process
                   "  "
                   prot-modeline-vc-branch
+                  "  "
+                  yejun-modeline-position
                   "  "
                   prot-modeline-eglot
                   "  "
