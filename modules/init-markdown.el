@@ -12,5 +12,4 @@
         (markdown-view-mode)
       (markdown-mode))))
 
-
 (provide 'init-markdown)
