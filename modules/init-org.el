@@ -1,6 +1,5 @@
 (use-package org
   :ensure nil
-  :commands (org-store-link)
   :init
   (setq org-directory "~/src/org"
         org-agenda-files (list org-directory))
@@ -98,10 +97,7 @@ see how ARG affects this command."
   (org-capture-templates
    '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
      ("n" "Notes" entry (file "notes.org") "* %?\n%i" :prepend t)
-     ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
-     ("b" "Bookmark" entry (file+headline "notes.org" "Bookmarks") "* %?\n%x" :prepend t)
-     ("d" "Decks of Anki")
-     ("dd" "Default" entry (file "decks/default.org") "* %?\n%x" :prepend t)))
+     ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
 
   ;; Refile
   (org-outline-path-complete-in-steps nil)
@@ -126,9 +122,10 @@ see how ARG affects this command."
   (org-cite-activate-processor 'citar)
 
   :hook (org-mode . yejun/run-org-mode-hook)
-  :bind ( :map org-mode-map
-          ("C-M-S-h" . org-babel-mark-block)
-          ("C-c i" . org-cite-insert)))
+  :bind (("C-c l" . org-store-link)
+         :map org-mode-map
+         ("C-M-S-h" . org-babel-mark-block)
+         ("C-c i" . org-cite-insert)))
 
 (use-package ox-hugo
   :pin melpa
