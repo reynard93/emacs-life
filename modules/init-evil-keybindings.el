@@ -162,8 +162,8 @@
     "so"  #'+lookup/search-online
     "ss"  #'+buffer/search
     "sS"  #'+buffer/search-for-symbol-at-point
-    "sr"  #'+project/search
-    "sR"  #'+project/search-for-symbol-at-point
+    "sr"  #'+buffer/search-multi
+    "sR"  #'+buffer/search-multi-for-symbol-at-point
     "st"  #'osx-dictionary-search-word-at-point
 
     "t"   '(:ignore t :which-key "toggle")
