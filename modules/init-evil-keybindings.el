@@ -20,8 +20,8 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    ","   #'switch-to-buffer
-    "."   #'find-file
+    ","   #'consult-mark
+    "."   #'consult-register
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
