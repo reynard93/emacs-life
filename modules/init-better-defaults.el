@@ -86,6 +86,7 @@
 (use-package compile
   :ensure nil
   :config
+  (message "compile is loaded")
   (defun yejun/colorize-compilation-buffer ()
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
