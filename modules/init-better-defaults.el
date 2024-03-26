@@ -91,6 +91,21 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . yejun/colorize-compilation-buffer))
 
+(use-package project
+  :ensure nil
+  :defer t
+  :config
+  (message "project is loaded")
+  :custom
+  (project-switch-commands
+   '((project-find-file "Find file")
+     (deadgrep "Find regexp" "g")
+     (project-find-dir "Find directory")
+     (+project/search "Search project" "s")
+     (+project/search-for-symbol-at-point "Search project with symbol" "S")
+     (magit-project-status "Git" "v")
+     (project-eshell "Shell"))))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
