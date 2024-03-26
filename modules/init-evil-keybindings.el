@@ -109,11 +109,10 @@
     "nB"  #'citar-open-notes
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
-    "nd"  #'denote-subdirectory
-    "nD"  #'denote-date
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
-    "nl"  #'denote-link
+    "nk"  #'denote-keywords-add
+    "nK"  #'denote-keywords-remove
     "nn"  #'+denote/scratch
     "ns"  #'+denote/search
     "nS"  #'+denote/search-for-symbol-at-point
@@ -263,6 +262,9 @@
     "gx" #'org-capture-goto-last-stored
 
     "l"  '(:ignore t :which-key "links")
+    "la" #'denote-add-links
+    "lh" #'denote-org-extras-link-to-heading
+    "ll" #'denote-link-to-existing-or-new-note
     "lt" #'org-toggle-link-display
 
     "r"  '(:ignore t :which-key "refile")

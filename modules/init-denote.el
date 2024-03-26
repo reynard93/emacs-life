@@ -13,7 +13,7 @@
 
   (defun +denote/scratch ()
     (interactive)
-    (let ((denote-prompts '(keywords))
+    (let ((denote-prompts '(title))
           (denote-file-type 'org))
       (call-interactively #'denote)))
 
