@@ -11,6 +11,7 @@
   :config
   (message "vertico is loaded")
   (vertico-mode 1)
+  (vertico-multiform-mode 1)
 
   ;; Disable `ffap-menu's completion buffer
   (advice-add 'ffap-menu-ask :around
@@ -90,14 +91,18 @@
 (use-package embark
   :demand t
   :init
-  (setq which-key-use-C-h-commands nil
-        prefix-help-command #'embark-prefix-help-command)
+  (setq prefix-help-command #'embark-prefix-help-command)
+  (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
 
   :config
   (message "embark is loaded")
 
   :custom
   (embark-cycle-key "C-;")
+  (embark-indicators
+   '(embark-minimal-indicator
+     embark-highlight-indicator
+     embark-isearch-highlight-indicator))
 
   :bind (([remap describe-bindings] . embark-bindings)
          ("C-;" . embark-act)
@@ -120,6 +125,7 @@
   (which-key-sort-uppercase-first nil)
   (which-key-min-display-lines 6)
   (which-key-min-display-columns nil)
-  (which-key-add-column-padding 1))
+  (which-key-add-column-padding 1)
+  (which-key-use-C-h-commands nil))
 
 (provide 'init-minibuffer)
