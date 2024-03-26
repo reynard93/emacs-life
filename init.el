@@ -56,3 +56,6 @@
 ;; keybindings
 (require 'init-macos-keybindings)
 (require 'init-evil-keybindings)
+
+;; Misc
+(require 'init-misc)
