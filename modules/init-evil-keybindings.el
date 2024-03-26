@@ -31,6 +31,7 @@
     "RET" #'bookmark-jump
     "a"   #'embark-act
     "x"   #'org-capture
+    "X"   #'denote-template
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -118,19 +119,15 @@
     "nS"  #'+denote/search-for-symbol-at-point
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'denote-template
-    "nT"  #'org-todo-list
+    "nt"  #'org-todo-list
+    "nT"  #'org-tags-view
+    "nv"  #'org-search-view
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda
     "oe"  #'eshell
     "om"  #'mu4e
     "ot"  #'tmr
-
-    "oa"  '(:ignore t :which-key "org agenda")
-    "oat" #'org-todo-list
-    "oam" #'org-tags-view
-    "oas" #'org-search-view
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
