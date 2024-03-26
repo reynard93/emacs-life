@@ -69,6 +69,7 @@ Because of [[https://juliu.is/tidying-your-home-with-nix/][Tidying up your $HOME
 *** [[https://yiming.dev/rss.xml][Yiming Chen]]                                                      :friend:
 *** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]
 *** [[https://hauleth.dev/atom.xml][Łukasz Niemier]]
+*** [[https://emacsredux.com/atom.xml][Emacs Redux]]
 
 ** Newsletter                                                    :newsletter:
 *** [[https://buttondown.email/hillelwayne/rss][Computer Things]]
