@@ -169,6 +169,7 @@
     "to"  '(olivetti-mode :which-key "Olivetti mode")
 
     "w"   '(evil-window-map :which-key "window")
+    "wm"  #'switch-to-minibuffer
     "wu"  #'winner-undo
     "wr"  #'winner-redo)
 
