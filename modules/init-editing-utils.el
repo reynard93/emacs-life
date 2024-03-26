@@ -57,4 +57,10 @@
          ("C-k"       . sp-kill-hybrid-sexp)
          ("M-k"       . sp-backward-kill-sexp)))
 
+(use-package wgrep
+  :pin nongnu
+  :defer t
+  :config
+  (message "wgrep is loaded"))
+
 (provide 'init-editing-utils)
