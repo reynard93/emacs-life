@@ -19,9 +19,10 @@
 
   :config
   (message "denote is loaded")
-  (require 'denote-org-dblock)
+  (require 'denote-org-extras)
 
   :custom
+  (denote-history-completion-in-prompts nil)
   (denote-date-prompt-use-org-read-date t)
   (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev")))
 
