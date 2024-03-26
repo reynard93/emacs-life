@@ -1,34 +1,34 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
-;; making custom-file disposable
+;; Making custom-file disposable
 (setq custom-file (make-temp-file "emacs-custom-"))
 
-;; bootstrap
+;; Bootstrap
 (require 'init-lisp)
 (require 'init-elpa)
 (require 'init-envrc)
 
-;; interaction
+;; Interaction
 (require 'init-minibuffer)
 (require 'init-completion)
 (require 'init-window)
 (require 'init-evil)
 
-;; visualization
+;; Visualization
 (require 'init-ui)
 (require 'init-pulse)
 (require 'init-mode-line)
 
-;; common
+;; Common
 (require 'init-better-defaults)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 
-;; note-taking
+;; Note-taking
 (require 'init-denote)
 (require 'init-org)
 
-;; programming
+;; Programming
 (require 'init-tree-sitter)
 (require 'init-eglot)
 (require 'init-data)
@@ -40,7 +40,7 @@
 (require 'init-web)
 (require 'init-yaml)
 
-;; tools
+;; Tools
 (require 'init-git)
 (require 'init-pass)
 (require 'init-mail)
@@ -53,7 +53,7 @@
 (require 'init-restclient)
 (require 'init-network-tools)
 
-;; keybindings
+;; Keybindings
 (require 'init-macos-keybindings)
 (require 'init-evil-keybindings)
 
