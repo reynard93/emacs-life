@@ -100,11 +100,12 @@
   :custom
   (project-switch-commands
    '((project-find-file "Find file")
-     (deadgrep "Find regexp" "g")
+     (deadgrep "Find regexp" "r")
      (project-find-dir "Find directory")
+     (project-dired "Root dired")
      (+project/search "Search project" "s")
      (+project/search-for-symbol-at-point "Search project with symbol" "S")
-     (magit-project-status "Git" "v")
+     (magit-project-status "Git" "g")
      (project-eshell "Shell"))))
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
