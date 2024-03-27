@@ -209,6 +209,7 @@
     "aa" #'org-anki-sync-entry
     "aA" #'org-anki-sync-all
     "A"  #'org-archive-subtree
+    "C"  #'org-fold-hide-block-all
     "e"  #'org-export-dispatch
     "f"  #'org-footnote-action
     "h"  #'org-toggle-heading
