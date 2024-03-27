@@ -8,17 +8,16 @@
         '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 
-  :config
-  (message "vertico is loaded")
-  (vertico-mode 1)
-  (vertico-multiform-mode 1)
-
   ;; Disable `ffap-menu's completion buffer
   (advice-add 'ffap-menu-ask :around
               (lambda (&rest args)
                 (cl-letf (((symbol-function #'minibuffer-completion-help)
                            #'ignore))
                   (apply args))))
+
+  :config
+  (message "vertico is loaded")
+  (vertico-mode 1)
 
   :custom
   (vertico-cycle t)
@@ -28,8 +27,8 @@
           ("C-k" . vertico-previous)))
 
 (use-package vertico-directory
-  :after vertico
   :ensure nil
+  :after vertico
   :config
   (message "vertico-directory is loaded")
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
@@ -37,6 +36,25 @@
           ("RET" . vertico-directory-enter)
           ("DEL" . vertico-directory-delete-char)
           ("M-DEL" . vertico-directory-delete-word)))
+
+(use-package vertico-quick
+  :ensure nil
+  :after vertico
+  :config
+  (message "vertico-quick is loaded")
+  :bind ( :map vertico-map
+          ("M-q" . vertico-quick-insert)
+          ("C-q" . vertico-quick-exit)))
+
+(use-package vertico-multiform
+  :ensure nil
+  :after vertico
+  :config
+  (message "vertico-multiform is loaded")
+  (vertico-multiform-mode 1)
+  :custom
+  (vertico-multiform-categories
+   '((embark-keybinding grid))))
 
 (use-package marginalia
   :after vertico
@@ -92,7 +110,6 @@
   :demand t
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
-  (add-to-list 'vertico-multiform-categories '(embark-keybinding grid))
 
   :config
   (message "embark is loaded")
