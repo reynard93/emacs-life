@@ -7,5 +7,6 @@
 (require 'lisp-mail)
 (require 'lisp-project)
 (require 'lisp-exercism)
+(require 'lisp-org)
 
 (provide 'init-lisp)

@@ -219,7 +219,7 @@
     "p"  #'org-priority
     "q"  #'org-set-tags-command
     "t"  #'org-todo
-    "T"  #'org-todo-list
+    "T"  #'+org/preview-toggle
     "x"  #'org-toggle-checkbox
 
     "b"  '(:ignore t :which-key "table")
@@ -284,7 +284,7 @@
   (+evil/local-leader-key
     :keymaps '(markdown-mode-map markdown-view-mode-map)
     :major-modes t
-    "t" #'+markdown/preview-toggle))
+    "T" #'+markdown/preview-toggle))
 
 (defun yejun/browse-emacs-config ()
   (interactive)

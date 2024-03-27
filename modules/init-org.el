@@ -55,9 +55,6 @@ see how ARG affects this command."
   :config
   (message "org is loaded")
 
-  (defun yejun/run-org-mode-hook ()
-    (setq-local evil-auto-indent nil))
-
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
   (advice-add 'org-meta-return :before #'move-to-eol-advice)
@@ -121,7 +118,7 @@ see how ARG affects this command."
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
 
-  :hook (org-mode . yejun/run-org-mode-hook)
+  :hook (org-mode . +org/run-hook)
   :bind (("C-c l" . org-store-link)
          :map org-mode-map
          ("C-M-S-h" . org-babel-mark-block)
@@ -157,5 +154,16 @@ see how ARG affects this command."
   :load-path "vendor/org-pandoc-import"
   :config
   (message "org-pandoc-import is loaded"))
+
+(use-package org-superstar
+  :pin melpa
+  :after org
+  :defer t
+  :config
+  (message "org-superstar is loaded")
+  :custom
+  (org-superstar-leading-bullet ?\s)
+  (org-superstar-remove-leading-stars nil)
+  (org-superstar-headline-bullets-list '("◉" "○" "◈" "◇")))
 
 (provide 'init-org)
