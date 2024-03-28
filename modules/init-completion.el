@@ -48,6 +48,12 @@
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand
                       completion-at-point-functions)))
+
+  (defun +tempel/find-private-template ()
+    (interactive)
+    (let ((file (expand-file-name "templates/private.eld" user-emacs-directory)))
+      (find-file file)))
+
   :custom
   (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
   :hook

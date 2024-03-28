@@ -57,13 +57,11 @@
     "cw"  #'delete-trailing-whitespace
 
     "f"   '(:ignore t :which-key "file")
-    "fb"  #'yejun/open-blog-index
+    "fb"  #'yejun/browse-blog
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
-    "fo"  #'+macos/reveal-in-finder
-    "fO"  #'+macos/reveal-project-in-finder
-    "fp"  #'yejun/open-private-template
+    "fp"  #'+tempel/find-private-template
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
     "fs"  #'save-buffer
@@ -127,6 +125,8 @@
     "oA"  #'org-agenda
     "oe"  #'eshell
     "om"  #'mu4e
+    "oo"  #'+macos/reveal-in-finder
+    "oO"  #'+macos/reveal-project-in-finder
     "ot"  #'tmr
 
     "op"  '(:ignore t :which-key "pass")
@@ -286,21 +286,5 @@
     :keymaps '(markdown-mode-map markdown-view-mode-map)
     :major-modes t
     "T" #'+markdown/preview-toggle))
-
-(defun yejun/browse-emacs-config ()
-  (interactive)
-  (+project/browse-files user-emacs-directory))
-
-(defun yejun/browse-nix-config ()
-  (interactive)
-  (+project/browse-files "~/.config/nix-config/"))
-
-(defun yejun/open-private-template ()
-  (interactive)
-  (find-file "~/.config/emacs/templates/private.eld"))
-
-(defun yejun/open-blog-index ()
-  (interactive)
-  (find-file "~/src/yejun.dev/content-org/index.org"))
 
 (provide 'init-evil-keybindings)
