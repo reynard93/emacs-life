@@ -7,3 +7,6 @@
 [submodule "org-pandoc-import"]
 	path = vendor/org-pandoc-import
 	url = https://github.com/tecosaur/org-pandoc-import.git
+[submodule "vendor/browser-hist"]
+	path = vendor/browser-hist
+	url = https://github.com/agzam/browser-hist.el.git

@@ -10,4 +10,13 @@
   :custom
   (world-clock-time-format "%a %d %b %R %Z"))
 
+(use-package browser-hist
+  :load-path "vendor/browser-hist"
+  :commands (browser-hist-search)
+  :defer t
+  :config
+  (message "browser-hist is loaded")
+  :custom
+  (browser-hist-default-browser 'firefox))
+
 (provide 'init-misc)
