@@ -8,13 +8,13 @@
   (interactive)
   (if +org-preview-toggle
       (progn
-        (olivetti-mode -1)
+        (logos-focus-mode -1)
         (org-indent-mode -1)
         (org-superstar-mode -1)
         (setq-local org-hide-emphasis-markers nil)
         (setq-local +org-preview-toggle nil))
     (progn
-      (olivetti-mode 1)
+      (logos-focus-mode 1)
       (org-indent-mode 1)
       (org-superstar-mode 1)
       (setq-local org-hide-emphasis-markers t)

@@ -7,15 +7,11 @@
                 logos-variable-pitch nil
                 logos-buffer-read-only nil
                 logos-scroll-lock nil
-                logos-olivetti nil)
+                logos-olivetti t)
   :config
   (message "logos is loaded")
   :custom
   (logos-outlines-are-pages t)
-  :hook
-  (org-mode . logos-focus-mode)
-  (gptel-mode . logos-focus-mode)
-  (markdown-mode . logos-focus-mode)
   :bind (([remap narrow-to-region] . logos-narrow-dwim)
          ([remap forward-page]     . logos-forward-page-dwim)
          ([remap backward-page]    . logos-backward-page-dwim)))
