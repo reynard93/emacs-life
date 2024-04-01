@@ -84,8 +84,7 @@
   (gptel-default-mode 'org-mode)
   (gptel-directives
    '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
-     (ffmpeg . "You are an FFmpeg expert. Provide code and only code as output without any additional text, prompt or note.")
-     (imagemagick . "You are an ImageMagick expert. Provide code and only code as output without any additional text, prompt or note.")))
+     (translator . "You are a language translator. Translate the text delimited by triple backticks into a specific locale or zh-CN. Respond without backticks.")))
 
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
