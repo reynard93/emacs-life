@@ -11,8 +11,7 @@
   (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev")))
 
 (use-package consult-denote
-  :vc (consult-denote :url "https://github.com/protesilaos/consult-denote.git"
-                      :branch "main")
+  :vc (consult-denote :url "https://github.com/protesilaos/consult-denote.git")
   :after consult
   :config
   (message "consult-denote is loaded")

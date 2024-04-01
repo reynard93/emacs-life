@@ -56,8 +56,7 @@
   (elfeed-org))
 
 (use-package wombag
-  :vc (wombag :url "https://github.com/karthink/wombag"
-              :branch "master")
+  :vc (wombag :url "https://github.com/karthink/wombag.git")
   :commands (wombag-add-entry)
   :defer t
   :init

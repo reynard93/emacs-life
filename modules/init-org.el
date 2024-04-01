@@ -102,8 +102,7 @@
   (message "org-anki is loaded"))
 
 (use-package org-pandoc-import
-  :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import"
-                         :branch "master")
+  :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
   :after org
   :config
   (message "org-pandoc-import is loaded"))
