@@ -106,7 +106,7 @@
     "n"   '(:ignore t :which-key "notes")
     "na"  #'consult-org-agenda
     "nb"  #'citar-open
-    "nB"  #'citar-open-notes
+    "nB"  #'org-babel-tangle
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
     "nf"  #'consult-denote-open
@@ -115,11 +115,11 @@
     "nK"  #'denote-keywords-remove
     "nn"  #'denote-open-or-create-with-command
     "ns"  #'consult-denote-grep
+    "nS"  #'org-search-view
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'org-todo-list
     "nT"  #'org-tags-view
-    "nv"  #'org-search-view
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda
