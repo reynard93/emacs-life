@@ -65,6 +65,9 @@ Because of [[https://noonker.github.io/posts/2020-04-22-elfeed/][Elfeed Rules!]]
 *** [[https://simonwillison.net/atom/entries/][Simon Willison]]
 *** [[https://writings.stephenwolfram.com/feed/][Stephen Wolfram]]
 *** [[https://tonyhan.dev/feed][Tony Han]]                                                         :friend:
+*** [[https://tony-zorman.com/atom.xml][Tony Zorman]]
+Because of [[https://tony-zorman.com/posts/use-package-vc.html][Use-package now has a :vc keyword]].
+
 *** [[https://tylerayoung.com/feed.xml][Tyler A. Young]]
 *** [[https://lethain.com/feeds.xml][Will Larson]]
 *** [[https://yiming.dev/rss.xml][Yiming Chen]]                                                      :friend:
