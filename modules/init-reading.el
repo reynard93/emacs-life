@@ -56,8 +56,9 @@
   (elfeed-org))
 
 (use-package wombag
-  :load-path "vendor/wombag"
-  :commands (wombag wombag-add-entry)
+  :vc (wombag :url "https://github.com/karthink/wombag"
+              :branch "master")
+  :commands (wombag-add-entry)
   :defer t
   :init
   (defsubst +wombag/url (url)

@@ -11,8 +11,8 @@
   (world-clock-time-format "%a %d %b %R %Z"))
 
 (use-package browser-hist
-  :load-path "vendor/browser-hist"
-  :commands (browser-hist-search)
+  :vc (browser-hist :url "https://github.com/agzam/browser-hist.el"
+                    :branch "main")
   :defer t
   :config
   (message "browser-hist is loaded")

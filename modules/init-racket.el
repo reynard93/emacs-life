@@ -5,9 +5,9 @@
   (message "racket-mode is loaded"))
 
 (use-package ob-racket
-  :ensure nil
+  :vc (ob-racket :url "https://github.com/hasu/emacs-ob-racket"
+                 :rev :newest)
   :after racket-mode
-  :load-path "vendor/ob-racket"
   :config
   (message "ob-racket is loaded"))
 
