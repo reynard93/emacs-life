@@ -109,13 +109,12 @@
     "nB"  #'citar-open-notes
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
-    "nf"  #'denote-open-or-create-with-command
+    "nf"  #'consult-denote-open
     "nF"  #'+org/browse-files
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
-    "nn"  #'+denote/scratch
-    "ns"  #'+denote/search
-    "nS"  #'+denote/search-for-symbol-at-point
+    "nn"  #'denote-open-or-create-with-command
+    "ns"  #'consult-denote-grep
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'org-todo-list

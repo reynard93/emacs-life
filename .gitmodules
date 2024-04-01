@@ -10,3 +10,6 @@
 [submodule "vendor/browser-hist"]
 	path = vendor/browser-hist
 	url = https://github.com/agzam/browser-hist.el.git
+[submodule "vendor/consult-denote"]
+	path = vendor/consult-denote
+	url = https://github.com/protesilaos/consult-denote.git

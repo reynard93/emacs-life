@@ -2,28 +2,21 @@
   :defer t
   :init
   (setq denote-directory "~/src/notes")
-
-  (defun +denote/search ()
-    (interactive)
-    (+project/search denote-directory))
-
-  (defun +denote/search-for-symbol-at-point ()
-    (interactive)
-    (+project/search denote-directory 'symbol))
-
-  (defun +denote/scratch ()
-    (interactive)
-    (let ((denote-prompts '(title))
-          (denote-file-type 'org))
-      (call-interactively #'denote)))
-
   :config
   (message "denote is loaded")
   (require 'denote-org-extras)
-
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-date-prompt-use-org-read-date t)
   (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev")))
+
+(use-package consult-denote
+  :ensure nil
+  :load-path "vendor/consult-denote"
+  :after consult
+  :config
+  (message "consult-denote is loaded")
+  :custom
+  (consult-denote-grep-command #'consult-ripgrep))
 
 (provide 'init-denote)
