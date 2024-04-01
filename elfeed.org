@@ -39,9 +39,6 @@ Make long articles and videos about how computers work.
 Because of [[https://ismailefe.org/blog/org-awk-anki/][Org, AWK, and Anki]].
 
 *** [[https://world.hey.com/jason/feed.atom][Jason Fried]]
-*** [[https://www.jayeless.net/index.xml][Jessica Smith]]
-Because of [[https://www.jayeless.net/2021/02/integrating-webmentions-into-hugo.html][How I Integrated Webmentions Into My Hugo Static Site]].
-
 *** [[https://www.joelonsoftware.com/feed/][Joel Spolsky]]
 *** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
 *** [[https://juliu.is/rss.xml][Ju Liu]]
@@ -51,10 +48,14 @@ Because of [[https://juliu.is/tidying-your-home-with-nix/][Tidying up your $HOME
 *** [[https://karthinks.com/index.xml][Karthik Chikmagalur]]
 *** [[https://kchousos.github.io/index.xml][Konstantinos Chousos]]
 *** [[https://underjord.io/feed.xml][Lars Wikman]]
+*** [[https://surfingcomplexity.blog/feed/][Lorin Hochstein]]
 *** [[https://maggieappleton.com/rss.xml][Maggie Appleton]]
 *** [[https://martinfowler.com/feed.atom][Martin Fowler]]
 *** [[https://www.mikeperham.com/index.xml][Mike Perham]]
 *** [[https://mitchellh.com/feed.xml][Mitchell Hashimoto]]
+*** [[https://noonker.github.io/index.xml][Noonker]]
+Because of [[https://noonker.github.io/posts/2020-04-22-elfeed/][Elfeed Rules!]].
+
 *** [[https://protesilaos.com/master.xml][Protesilaos Stavrou]]
 *** [[https://blog.cleancoder.com/atom.xml][Robert C. Martin]]
 *** [[https://www.feltpresence.com/rss/][Ryan Singer]]
