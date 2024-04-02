@@ -89,7 +89,7 @@
   :pin melpa
   :defer t
   :init
-  (setq citar-bibliography '("~/src/notes/reference.bib"))
+  (setq citar-bibliography '("~/src/notes/reference/reference.bib"))
   (setq citar-notes-paths '("~/src/notes/reference"))
   :config
   (message "citar is loaded"))
