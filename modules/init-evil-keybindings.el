@@ -21,7 +21,7 @@
 
     "'"   #'vertico-repeat
     ","   #'consult-mark
-    "."   #'consult-register
+    "."   #'deadgrep
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
@@ -113,21 +113,20 @@
     "nF"  #'+org/browse-files
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
+    "nm"  #'org-tags-view
     "nn"  #'+denote/scratch
     "ns"  #'consult-denote-grep
     "nS"  #'org-search-view
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'org-todo-list
-    "nT"  #'org-tags-view
+    "nt"  #'tmr
+    "nT"  #'org-todo-list
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda
-    "oe"  #'eshell
     "om"  #'mu4e
     "oo"  #'+macos/reveal-in-finder
     "oO"  #'+macos/reveal-project-in-finder
-    "ot"  #'tmr
 
     "op"  '(:ignore t :which-key "pass")
     "opa" #'password-store-otp-append
@@ -147,7 +146,6 @@
     "qQ"  #'evil-quit-all-with-error-code
 
     "s"   '(:ignore t :which-key "search")
-    "sd"  #'deadgrep
     "sg"  #'+lookup/google-translate-guess-source-lang
     "sG"  #'+lookup/google-translate-guess-source-lang-force-select
     "si"  #'consult-imenu
