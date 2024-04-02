@@ -109,11 +109,11 @@
     "nB"  #'org-babel-tangle
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
-    "nf"  #'consult-denote-open
+    "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
-    "nn"  #'denote-open-or-create-with-command
+    "nn"  #'+denote/scratch
     "ns"  #'consult-denote-grep
     "nS"  #'org-search-view
     "nr"  #'denote-rename-file
