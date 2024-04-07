@@ -1,6 +1,6 @@
 (use-package frame
   :ensure nil
-  :when (display-graphic-p)
+  :if (display-graphic-p)
   :config
   (message "frame is loaded")
   :bind (("C-s-f" . toggle-frame-fullscreen)
@@ -10,7 +10,7 @@
 
 (use-package tab-bar
   :ensure nil
-  :when (display-graphic-p)
+  :if (display-graphic-p)
   :config
   (message "tab-bar is loaded")
   ;; bind s-1 through s-9 to switch tabs
@@ -33,7 +33,7 @@
          ("C-<tab>" . tab-recent)))
 
 (use-package beframe
-  :when (display-graphic-p)
+  :if (display-graphic-p)
   :after consult
   :demand t
   :config
@@ -66,7 +66,7 @@
   :bind-keymap ("C-c b" . beframe-prefix-map))
 
 (use-package server
-  :when (display-graphic-p)
+  :if (display-graphic-p)
   :ensure nil
   :defer 20
   :init
