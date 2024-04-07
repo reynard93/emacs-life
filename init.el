@@ -6,7 +6,7 @@
 ;; Bootstrap
 (require 'init-lisp)
 (require 'init-elpa)
-(require 'init-envrc)
+(require 'init-env)
 
 ;; Interaction
 (require 'init-minibuffer)

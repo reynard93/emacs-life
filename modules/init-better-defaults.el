@@ -7,6 +7,7 @@
 
 (setq native-comp-async-report-warnings-errors 'silent)
 (setq initial-major-mode 'fundamental-mode)
+(setq ns-use-native-fullscreen nil)
 
 (when (display-graphic-p)
   (tool-bar-mode -1)
