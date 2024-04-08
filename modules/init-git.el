@@ -53,11 +53,4 @@
   :config
   (message "git-timemachine is loaded"))
 
-(use-package magit-todos
-  :pin melpa
-  :after magit
-  :config
-  (message "magit-todos is loaded")
-  (magit-todos-mode 1))
-
 (provide 'init-git)
