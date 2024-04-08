@@ -31,7 +31,7 @@
     "RET" #'bookmark-jump
     "a"   #'embark-act
     "x"   #'org-capture
-    "X"   #'denote-template
+    "X"   #'scratch-buffer
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
@@ -121,6 +121,7 @@
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'tmr
     "nT"  #'org-todo-list
+    "nx"  #'denote-template
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda

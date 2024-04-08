@@ -13,7 +13,17 @@
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-date-prompt-use-org-read-date t)
-  (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev")))
+  (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev"))
+  (denote-templates
+   `((jira . ,(concat "Jira: "
+                      "\n\n"
+                      "* Problem"
+                      "\n\n"
+                      "* Investigation"
+                      "\n\n"
+                      "* Solution"
+                      "\n\n"))
+     )))
 
 (use-package consult-denote
   :vc (consult-denote :url "https://github.com/protesilaos/consult-denote.git")
