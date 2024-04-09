@@ -1,7 +1,18 @@
-(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
-
-;; Making custom-file disposable
+;;; Making custom-file disposable
 (setq custom-file (make-temp-file "emacs-custom-"))
+
+;;; macOS-compatible keybindings
+(when (display-graphic-p)
+  (bind-key "s-x" #'execute-extended-command)  ; M-x
+  (bind-key "s-s" #'save-buffer)               ; File -> Save
+  (bind-key "s-S" #'write-file)                ; File -> Save As
+  (bind-key "s-a" #'mark-whole-buffer)         ; File -> Select All
+  (bind-key "s-c" #'kill-ring-save)            ; Edit -> Copy
+  (bind-key "s-v" #'yank)                      ; Edit -> Paste
+  (bind-key "s-z" #'undo))                     ; Edit -> Undo
+
+;;; Load modules
+(add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
 ;; Bootstrap
 (require 'init-lisp)
@@ -54,7 +65,7 @@
 (require 'init-network-tools)
 
 ;; Keybindings
-(require 'init-macos-keybindings)
+(require 'init-emacs-keybindings)
 (require 'init-evil-keybindings)
 
 ;; Misc
