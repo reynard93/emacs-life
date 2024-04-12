@@ -63,6 +63,7 @@
 (require 'init-writing)
 (require 'init-restclient)
 (require 'init-network-tools)
+(require 'init-spell-checker)
 
 ;; Keybindings
 (require 'init-emacs-keybindings)
