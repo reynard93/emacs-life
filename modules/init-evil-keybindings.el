@@ -30,8 +30,8 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'org-capture
-    "X"   #'scratch-buffer
+    "x"   #'scratch-buffer
+    "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
     "bb"  #'switch-to-buffer
