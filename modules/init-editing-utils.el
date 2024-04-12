@@ -2,7 +2,8 @@
 (global-subword-mode 1)
 (save-place-mode 1)
 
-(setq-default indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil
+              fill-column 80)
 
 (use-package apheleia
   :pin melpa
