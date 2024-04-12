@@ -4,6 +4,7 @@
 (require 'lisp-file)
 (require 'lisp-git)
 (require 'lisp-macos)
+(require 'lisp-lookup)
 (require 'lisp-mail)
 (require 'lisp-project)
 (require 'lisp-exercism)
