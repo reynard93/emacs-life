@@ -1,12 +1,11 @@
-(use-package frame
-  :ensure nil
-  :if (display-graphic-p)
-  :config
-  (message "frame is loaded")
-  :bind (("C-s-f" . toggle-frame-fullscreen)
-         ("s-F" . select-frame-by-name)
-         ("s-N" . make-frame)
-         ("s-W" . delete-frame)))
+(when (display-graphic-p)
+  (bind-key "s-x" #'execute-extended-command)  ; M-x
+  (bind-key "s-s" #'save-buffer)               ; File -> Save
+  (bind-key "s-S" #'write-file)                ; File -> Save As
+  (bind-key "s-a" #'mark-whole-buffer)         ; File -> Select All
+  (bind-key "s-c" #'kill-ring-save)            ; Edit -> Copy
+  (bind-key "s-v" #'yank)                      ; Edit -> Paste
+  (bind-key "s-z" #'undo))                     ; Edit -> Undo
 
 (use-package tab-bar
   :ensure nil
@@ -31,6 +30,16 @@
          ("s-{" . tab-previous)
          ("s-}" . tab-next)
          ("C-<tab>" . tab-recent)))
+
+(use-package frame
+  :ensure nil
+  :if (display-graphic-p)
+  :config
+  (message "frame is loaded")
+  :bind (("C-s-f" . toggle-frame-fullscreen)
+         ("s-F" . select-frame-by-name)
+         ("s-N" . make-frame)
+         ("s-W" . delete-frame)))
 
 (use-package beframe
   :if (display-graphic-p)
