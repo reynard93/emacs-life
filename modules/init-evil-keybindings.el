@@ -114,7 +114,7 @@
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
     "nm"  #'org-tags-view
-    "nn"  #'+denote/scratch
+    "nn"  #'denote
     "ns"  #'consult-denote-grep
     "nS"  #'org-search-view
     "nr"  #'denote-rename-file

@@ -5,11 +5,6 @@
   :config
   (message "denote is loaded")
   (require 'denote-org-extras)
-  (defun +denote/scratch ()
-    (interactive)
-    (let ((denote-prompts '(title))
-          (denote-file-type 'org))
-      (call-interactively #'denote)))
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-date-prompt-use-org-read-date t)
