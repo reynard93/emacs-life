@@ -70,5 +70,5 @@
 (require 'init-evil-keybindings)
 
 ;; Misc
-(require 'init-project)
+(require 'init-projects)
 (require 'init-misc)
