@@ -7,7 +7,7 @@
     (interactive)
     (let ((ruby-lsp-path (expand-file-name ".ruby-lsp" (+project/root-dir))))
       (when (file-directory-p ruby-lsp-path)
-        (setq-local eglot-ignored-server-capabilities '(:completionProvider))
+        (setq-local eglot-ignored-server-capabilities '(:hoverProvider))
         (eglot-ensure))))
 
   :config
