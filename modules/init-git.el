@@ -1,6 +1,10 @@
 (use-package magit
   :pin melpa
   :defer t
+  :init
+  (setq magit-repository-directories
+        '(("~/src" . 1)
+          ("~/work" . 1)))
   :config
   (message "magit is loaded")
   :custom
