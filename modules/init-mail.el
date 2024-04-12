@@ -68,21 +68,4 @@
   (sendmail-program (executable-find "msmtp"))
   (send-mail-function #'smtpmail-send-it))
 
-(defvar yejun--mail-service-alist
-  '(("Things" . "add-to-things")
-    ("Day One" . "add-to-dayone")
-    ("Instapaper" . "add-to-instapaper"))
-  "Alist of services with their corresponding auth-source keys.")
-
-(defun yejun/mail-to-service (name)
-  "Compose a mail for a specified service."
-  (interactive
-   (list (completing-read
-          "Choose service: " (mapcar #'car yejun--mail-service-alist)
-          nil t)))
-  (if-let* ((pass-entry (cdr (assoc name yejun--mail-service-alist)))
-            (recipient (auth-source-pass-get "email" pass-entry)))
-      (+mail/compose recipient)
-    (error "Recipient not found for service: %s" name)))
-
 (provide 'init-mail)
