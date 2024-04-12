@@ -97,10 +97,10 @@
      (deadgrep "Find regexp" "r")
      (project-find-dir "Find directory")
      (project-dired "Root dired")
-     (+project/search "Search project" "s")
-     (+project/search-for-symbol-at-point "Search project with symbol" "S")
+     (project-eshell "Eshell")
      (magit-project-status "Git" "g")
-     (project-eshell "Shell"))))
+     (+project/search "Search project" "s")
+     (+project/search-for-symbol-at-point "Search project with symbol" "S"))))
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
