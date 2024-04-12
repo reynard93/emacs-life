@@ -162,10 +162,11 @@
     "st"  #'osx-dictionary-search-word-at-point
 
     "t"   '(:ignore t :which-key "toggle")
-    "tf"  '(flymake-mode :which-key "Flymake mode")
-    "tl"  '(logos-focus-mode :which-key "Logos-Focus mode")
-    "tm"  '(modus-themes-toggle :which-key "Modus themes")
-    "to"  '(olivetti-mode :which-key "Olivetti mode")
+    "tc"  '(global-display-fill-column-indicator-mode :which-key "Fill Column Indicator")
+    "tf"  '(flymake-mode :which-key "Flymake")
+    "ts"  '(flyspell-mode :which-key "Spell checker")
+    "tw"  '(visual-line-mode :which-key "Soft line wrapping")
+    "tz"  '(logos-focus-mode :which-key "Zen mode")
 
     "w"   '(evil-window-map :which-key "window")
     "wm"  #'switch-to-minibuffer
