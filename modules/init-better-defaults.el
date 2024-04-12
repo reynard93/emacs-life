@@ -9,13 +9,6 @@
 (setq initial-major-mode 'fundamental-mode)
 (setq ns-use-native-fullscreen nil)
 
-(when (display-graphic-p)
-  (tool-bar-mode -1)
-  (set-scroll-bar-mode nil))
-
-(unless (display-graphic-p)
-  (menu-bar-mode -1))
-
 (use-package recentf
   :ensure nil
   :config
