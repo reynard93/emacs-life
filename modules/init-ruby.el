@@ -1,8 +1,7 @@
 (use-package ruby-ts-mode
   :ensure nil
   :config
-  (message "ruby-ts-mode is loaded")
-  :hook (ruby-ts-mode . +eglot/start-ruby-lsp))
+  (message "ruby-ts-mode is loaded"))
 
 (use-package bundler
   :pin melpa
