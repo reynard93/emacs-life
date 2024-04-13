@@ -34,6 +34,14 @@
   :custom
   (fontaine-presets
    '((regular)
+     (medium
+      :default-family "Iosevka Comfy"
+      :default-height 180
+      :variable-pitch-height 160)
+     (large
+      :default-family "Iosevka Comfy"
+      :default-height 280
+      :variable-pitch-height 160)
      (t
       :default-family "JetBrains Mono"
       :default-weight regular
@@ -43,8 +51,7 @@
       :fixed-pitch-height 1.0
       :variable-pitch-family "Iosevka Comfy Motion Duo"
       :variable-pitch-weight nil
-      :variable-pitch-height 1.0
-      :line-spacing 1)
+      :variable-pitch-height 1.0)
      ))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
   :bind ("C-c f" . fontaine-set-preset))
