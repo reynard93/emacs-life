@@ -29,6 +29,7 @@
   (evil-move-beyond-eol nil)
   ;; window
   (evil-want-C-w-in-emacs-state t)
+  (evil-want-C-w-delete nil)
   (evil-vsplit-window-right t)
   (evil-split-window-below t)
 
@@ -43,7 +44,10 @@
          :map evil-ex-search-keymap
          ("C-a" . evil-beginning-of-line)
          ("C-b" . evil-backward-char)
-         ("C-f" . evil-forward-char)))
+         ("C-f" . evil-forward-char)
+         :map evil-window-map
+         ("C-h" . nil)
+         ("C-l" . nil)))
 
 (use-package evil-collection
   :pin melpa
