@@ -9,5 +9,6 @@
 (require 'lisp-project)
 (require 'lisp-exercism)
 (require 'lisp-org)
+(require 'lisp-zen)
 
 (provide 'init-lisp)

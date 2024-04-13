@@ -167,7 +167,7 @@
     "tf"  '(flymake-mode :which-key "Flymake")
     "ts"  '(flyspell-mode :which-key "Spell checker")
     "tw"  '(visual-line-mode :which-key "Soft line wrapping")
-    "tz"  '(logos-focus-mode :which-key "Zen mode")
+    "tz"  '(+zen/toggle :which-key "Zen mode")
 
     "w"   '(evil-window-map :which-key "window")
     "wm"  #'switch-to-minibuffer
