@@ -7,6 +7,9 @@
   :config
   (message "org is loaded")
 
+  (defun my-org-mode-hook ()
+    (setq-local evil-auto-indent nil))
+
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
   (advice-add 'org-meta-return :before #'move-to-eol-advice)
@@ -70,7 +73,7 @@
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar)
 
-  :hook (org-mode . +org/run-hook)
+  :hook (org-mode . my-org-mode-hook)
   :bind (("C-c l" . org-store-link)
          :map org-mode-map
          ("C-M-S-h" . org-babel-mark-block)

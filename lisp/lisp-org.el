@@ -1,9 +1,6 @@
 (defvar-local +org-preview-toggle nil
   "Non-nil if +org-preview-toggle is enabled.")
 
-(defun +org/run-hook ()
-  (setq-local evil-auto-indent nil))
-
 (defun +org/preview-toggle ()
   (interactive)
   (if +org-preview-toggle
