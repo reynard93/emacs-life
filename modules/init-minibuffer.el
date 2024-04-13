@@ -133,16 +133,4 @@
   (message "embark-consult is loaded")
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
-(use-package which-key
-  :config
-  (message "which-key is loaded")
-  (which-key-mode 1)
-  :custom
-  (which-key-sort-order #'which-key-key-order-alpha)
-  (which-key-sort-uppercase-first nil)
-  (which-key-min-display-lines 6)
-  (which-key-min-display-columns nil)
-  (which-key-add-column-padding 1)
-  (which-key-use-C-h-commands nil))
-
 (provide 'init-minibuffer)
