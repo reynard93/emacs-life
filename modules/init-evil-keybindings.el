@@ -97,6 +97,7 @@
     "gcb" #'magit-branch-and-checkout
     "gcB" #'+git/create-backup-commit
     "gcp" #'+github/create-pull-request
+    "gco" #'+github/checkout-pull-request
     "gcr" #'magit-init
 
     "go"  '(:ignore t :which-key "open in browser")
