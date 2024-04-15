@@ -6,6 +6,16 @@
   (interactive)
   (shell-command "gh pr view -w"))
 
+(defun +github/yank-pull-request ()
+  (interactive)
+  (let* ((command "gh pr view --json url --template '{{.url}}'")
+         (output (shell-command-to-string command)))
+    (if (string-prefix-p "https:" output)
+        (progn
+          (kill-new output)
+          (message "Copied URL: %s" output))
+      (user-error "PR list is empty or not a GitHub repo"))))
+
 (defun +github/checkout-pull-request ()
   "Select a GitHub pull request to checkout."
   (interactive)

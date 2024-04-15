@@ -103,6 +103,9 @@
     "goo" #'browse-at-remote
     "gop" #'+github/browse-pull-request
 
+    "gy"  '(:ignore t :which-key "yank")
+    "gyp" #'+github/yank-pull-request
+
     "n"   '(:ignore t :which-key "notes")
     "na"  #'consult-org-agenda
     "nb"  #'citar-open
