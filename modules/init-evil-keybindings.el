@@ -113,6 +113,8 @@
     "nB"  #'org-babel-tangle
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
+    "nd"  #'denote-subdirectory
+    "nD"  #'denote-date
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nk"  #'denote-keywords-add
@@ -129,6 +131,7 @@
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda
+    "oe"  #'elfeed
     "om"  #'mu4e
     "oM"  #'+mail/compose-for-service
     "oo"  #'+macos/reveal-in-finder
