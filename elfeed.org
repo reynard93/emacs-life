@@ -9,21 +9,21 @@
 ** Organizations                                                       :org:
 *** [[https://dev.37signals.com/feed/posts.xml][37signals]]
 *** [[https://blog.appsignal.com/feed.xml][AppSignal]]
-*** [[https://dashbit.co/feed][Dashbit]]
+*** [[https://dashbit.co/feed][Dashbit]]                                                          :elixir:
 *** [[https://evilmartians.com/chronicles.atom][Evil Martians]]
 *** [[https://fly.io/blog/feed.xml][Fly.io]]
-*** [[https://developer.mozilla.org/en-US/blog/rss.xml][MDN]]
+*** [[https://developer.mozilla.org/en-US/blog/rss.xml][MDN]]                                                              :webdev:
 *** [[https://feeds.feedburner.com/GiantRobotsSmashingIntoOtherGiantRobots][Thoughtbot]]
 
 ** People                                                            :people:
-*** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]
+*** [[https://tenderlovemaking.com/atom.xml][Aaron Patterson]]                                                    :ruby:
 *** [[https://foosoft.net/feeds/posts.xml][Alex Yatskov]]
 Author of [[https://foosoft.net/projects/anki-connect/][Anki-Connect]]
 
 *** [[https://fasterthanli.me/index.xml][Amos Wenger]]
 Make long articles and videos about how computers work.
 
-*** [[https://andrealeopardi.com/feed.xml][Andrea Leopardi]]
+*** [[https://andrealeopardi.com/feed.xml][Andrea Leopardi]]                                                  :elixir:
 *** [[https://andrewkelley.me/rss.xml][Andrew Kelley]]
 *** [[http://antirez.com/rss][antirez]]
 *** [[https://overreacted.io/rss.xml][Dan Abramov]]
@@ -31,10 +31,10 @@ Make long articles and videos about how computers work.
 *** [[https://sive.rs/en.atom][Derek Sivers]]
 *** [[https://drewdevault.com/blog/index.xml][Drew DeVault]]
 *** [[https://blog.cloud-mes.com/atom.xml][Eric Guo]]                                                         :friend:
-*** [[https://ferd.ca/feed.rss][Fred Hebert]]
-*** [[https://ferd.ca/notes/feed.rss][Fred Hebert - Notes]]
+*** [[https://ferd.ca/feed.rss][Fred Hebert]]                                                      :erlang:
+*** [[https://ferd.ca/notes/feed.rss][Fred Hebert - Notes]]                                               :paper:
 *** [[https://www.hillelwayne.com/index.xml][Hillel Wayne]]
-*** [[https://irreal.org/blog/?feed=rss2][Irreal]]
+*** [[https://irreal.org/blog/?feed=rss2][Irreal]]                                                            :emacs:
 *** [[https://ismailefe.org/feed.xml][İsmail Efe Top]]
 Because of [[https://ismailefe.org/blog/org-awk-anki/][Org, AWK, and Anki]].
 
@@ -45,9 +45,9 @@ Because of [[https://ismailefe.org/blog/org-awk-anki/][Org, AWK, and Anki]].
 Because of [[https://juliu.is/tidying-your-home-with-nix/][Tidying up your $HOME with Nix]].
 
 *** [[https://jvns.ca/atom.xml][Julia Evans]]
-*** [[https://karthinks.com/index.xml][Karthik Chikmagalur]]
+*** [[https://karthinks.com/index.xml][Karthik Chikmagalur]]                                               :emacs:
 *** [[https://kchousos.github.io/index.xml][Konstantinos Chousos]]
-*** [[https://underjord.io/feed.xml][Lars Wikman]]
+*** [[https://underjord.io/feed.xml][Lars Wikman]]                                                      :elixir:
 *** [[https://surfingcomplexity.blog/feed/][Lorin Hochstein]]
 *** [[https://maggieappleton.com/rss.xml][Maggie Appleton]]
 *** [[https://martinfowler.com/feed.atom][Martin Fowler]]
@@ -56,7 +56,7 @@ Because of [[https://juliu.is/tidying-your-home-with-nix/][Tidying up your $HOME
 *** [[https://noonker.github.io/index.xml][Noonker]]
 Because of [[https://noonker.github.io/posts/2020-04-22-elfeed/][Elfeed Rules!]].
 
-*** [[https://protesilaos.com/master.xml][Protesilaos Stavrou]]
+*** [[https://protesilaos.com/master.xml][Protesilaos Stavrou]]                                               :emacs:
 *** [[https://blog.cleancoder.com/atom.xml][Robert C. Martin]]
 *** [[https://www.feltpresence.com/rss/][Ryan Singer]]
 *** [[https://www.theerlangelist.com/rss][Saša Jurić]]
@@ -71,9 +71,9 @@ Because of [[https://tony-zorman.com/posts/use-package-vc.html][Use-package now 
 *** [[https://tylerayoung.com/feed.xml][Tyler A. Young]]
 *** [[https://lethain.com/feeds.xml][Will Larson]]
 *** [[https://yiming.dev/rss.xml][Yiming Chen]]                                                      :friend:
-*** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]
+*** [[https://xenodium.com/rss.xml][Álvaro Ramírez]]                                                    :emacs:
 *** [[https://hauleth.dev/atom.xml][Łukasz Niemier]]
-*** [[https://emacsredux.com/atom.xml][Emacs Redux]]
+*** [[https://emacsredux.com/atom.xml][Emacs Redux]]                                                       :emacs:
 
 ** Newsletter                                                    :newsletter:
 *** [[https://buttondown.email/hillelwayne/rss][Computer Things]]
