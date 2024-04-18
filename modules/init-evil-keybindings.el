@@ -20,8 +20,8 @@
     "h"   help-map
 
     "'"   #'vertico-repeat
-    ","   #'consult-mark
-    "."   #'deadgrep
+    ","   #'project-find-file
+    "."   #'find-file
     "/"   #'+project/search
     "*"   #'+project/search-for-symbol-at-point
     "`"   #'evil-switch-to-windows-last-buffer
@@ -155,6 +155,7 @@
     "qQ"  #'evil-quit-all-with-error-code
 
     "s"   '(:ignore t :which-key "search")
+    "sd"  #'deadgrep
     "sg"  #'+lookup/google-translate-guess-source-lang
     "sG"  #'+lookup/google-translate-guess-source-lang-force-select
     "si"  #'consult-imenu
@@ -213,9 +214,7 @@
     :keymaps 'org-mode-map
     :major-modes t
     "."  #'consult-org-heading
-    "a"  '(:ignore t :which-key "anki")
-    "aa" #'org-anki-sync-entry
-    "aA" #'org-anki-sync-all
+    "a"  #'org-anki-sync-entry
     "A"  #'org-archive-subtree
     "C"  #'org-fold-hide-block-all
     "e"  #'org-export-dispatch
