@@ -6,36 +6,24 @@
   (interactive)
   (shell-command "gh pr view -w"))
 
-(defun +github/yank-pull-request ()
+(defun +github/list-pull-requests ()
+  "List all pull requests for current repository."
   (interactive)
-  (let* ((command "gh pr view --json url --template '{{.url}}'")
-         (output (shell-command-to-string command)))
-    (if (string-prefix-p "https:" output)
-        (progn
-          (kill-new output)
-          (message "Copied URL: %s" output))
-      (user-error "PR list is empty or not a GitHub repo"))))
-
-(defun +github/checkout-pull-request ()
-  "Select a GitHub pull request to checkout."
-  (interactive)
-  (if-let* ((pr-list (+github--gh-pr-list))
-            (selected-pr (completing-read "Select PR: " pr-list nil t))
-            (pr-number (progn (string-match "^#\\([0-9]+\\)" selected-pr)
-                              (match-string 1 selected-pr))))
-      (shell-command (concat "gh pr checkout " pr-number))
+  (if-let ((pr-list (+github--gh-pr-list)))
+      (completing-read "Select pull request: " pr-list nil t)
     (user-error "PR list is empty or not a GitHub repo")))
 
 (defun +github--gh-pr-list ()
-  (let ((command (concat "gh pr list --json number,title,author")))
+  (let ((command (concat "gh pr list --json number,title,headRefName,author")))
     (condition-case nil
         (let ((json (json-read-from-string (shell-command-to-string command))))
           (mapcar (lambda (pr)
                     (let* ((number (alist-get 'number pr))
                            (title (alist-get 'title pr))
+                           (branch (alist-get 'headRefName pr))
                            (author (alist-get 'author pr))
                            (login (alist-get 'login author)))
-                      (format "#%-10s %-20s %s" number login title)))
+                      (format "#%-10.10s %-80.80s %s:%s" number title login branch)))
                   json))
       (error nil))))
 

@@ -84,6 +84,7 @@
     "gF"  #'magit-pull
     "gg"  #'magit-status
     "gG"  #'magit-status-here
+    "gh"  #'+github/list-pull-requests
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
     "gr"  #'git-gutter:revert-hunk
@@ -97,15 +98,11 @@
     "gcb" #'magit-branch-and-checkout
     "gcB" #'+git/create-backup-commit
     "gcp" #'+github/create-pull-request
-    "gco" #'+github/checkout-pull-request
     "gcr" #'magit-init
 
     "go"  '(:ignore t :which-key "open in browser")
     "goo" #'browse-at-remote
     "gop" #'+github/browse-pull-request
-
-    "gy"  '(:ignore t :which-key "yank")
-    "gyp" #'+github/yank-pull-request
 
     "n"   '(:ignore t :which-key "notes")
     "na"  #'consult-org-agenda
