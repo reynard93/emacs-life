@@ -24,9 +24,9 @@
              (call-interactively (symbol-function ',fn)))))))
 
   (with-eval-after-load 'embark
-    (define-key embark-file-map     (kbd "o") (+embark--aw-action find-file))
-    (define-key embark-buffer-map   (kbd "o") (+embark--aw-action switch-to-buffer))
-    (define-key embark-bookmark-map (kbd "o") (+embark--aw-action bookmark-jump)))
+    (keymap-set embark-file-map     "o" (+embark--aw-action find-file))
+    (keymap-set embark-buffer-map   "o" (+embark--aw-action switch-to-buffer))
+    (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump)))
 
   :custom
   (aw-scope 'frame)
