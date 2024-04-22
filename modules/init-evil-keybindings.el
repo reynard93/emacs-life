@@ -57,6 +57,12 @@
     "cp"  #'+sourcehut/create-paste-region-or-buffer
     "cw"  #'delete-trailing-whitespace
 
+    "e"   '(:ignore t :which-key "eglot")
+    "el"  #'eglot-list-connections
+    "ek"  #'eglot-shutdown
+    "eK"  #'eglot-shutdown-all
+    "eR"  #'eglot-reconnect
+
     "f"   '(:ignore t :which-key "file")
     "fb"  #'yejun/browse-blog
     "fD"  #'+file/delete-this-file
