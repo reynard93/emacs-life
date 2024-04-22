@@ -22,7 +22,7 @@
 
 (use-package consult-denote
   :vc (consult-denote :url "https://github.com/protesilaos/consult-denote.git")
-  :after consult
+  :after (consult denote)
   :config
   (message "consult-denote is loaded")
   :custom
