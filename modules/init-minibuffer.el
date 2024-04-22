@@ -108,7 +108,6 @@
   (message "consult-dir is loaded"))
 
 (use-package embark
-  :demand t
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
 
