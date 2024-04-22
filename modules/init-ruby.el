@@ -1,5 +1,6 @@
 (use-package ruby-ts-mode
   :ensure nil
+  :defer t
   :config
   (message "ruby-ts-mode is loaded"))
 

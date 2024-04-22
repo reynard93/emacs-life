@@ -14,6 +14,9 @@
   (message "eglot is loaded")
   (add-to-list 'eglot-server-programs '((elixir-ts-mode heex-ts-mode) . ("nextls" "--stdio=true")))
   (add-to-list 'eglot-server-programs '((ruby-ts-mode) "ruby-lsp"))
-  :hook (ruby-ts-mode . +eglot/start-ruby-lsp))
+  :hook
+  (ruby-ts-mode . +eglot/start-ruby-lsp)
+  (elixir-ts-mode . eglot-ensure)
+  (heex-ts-mode . eglot-ensure))
 
 (provide 'init-eglot)

@@ -2,6 +2,7 @@
   :config
   (message "pulsar is loaded")
   (pulsar-global-mode 1)
+  (add-hook 'fontaine-set-preset-hook #'pulsar-pulse-line)
   :custom
   (pulsar-face 'pulsar-magenta)
   (pulsar-pulse-functions
