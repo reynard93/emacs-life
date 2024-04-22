@@ -53,6 +53,7 @@
 
 (use-package message
   :ensure nil
+  :defer t
   :config
   (message "message is loaded")
   :custom
@@ -62,6 +63,7 @@
 
 (use-package sendmail
   :ensure nil
+  :defer t
   :config
   (message "sendmail is loaded")
   :custom

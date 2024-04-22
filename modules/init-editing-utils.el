@@ -7,7 +7,9 @@
 
 (use-package apheleia
   :pin melpa
-  :defer t)
+  :defer t
+  :config
+  (message "apheleia is loaded"))
 
 (use-package avy
   :config

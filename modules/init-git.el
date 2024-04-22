@@ -49,7 +49,8 @@
   :custom
   (git-gutter:added-sign " ")
   (git-gutter:deleted-sign " ")
-  (git-gutter:modified-sign " "))
+  (git-gutter:modified-sign " ")
+  :hook (prog-mode text-mode))
 
 (use-package git-timemachine
   :pin melpa
