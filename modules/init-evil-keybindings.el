@@ -205,7 +205,8 @@
     "tv" #'rspec-verify
     "tr" #'rspec-rerun
     "tl" #'rspec-run-last-failed
-    "te" #'rspec-toggle-example-pendingness)
+    "te" #'rspec-toggle-example-pendingness
+    "tt" #'rspec-toggle-spec-and-target)
 
   (+evil/local-leader-key
     :keymaps 'org-mode-map
