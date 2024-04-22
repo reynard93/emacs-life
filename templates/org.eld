@@ -1,5 +1,6 @@
 org-mode
 
+;; org-babel
 (begin & "#+begin_" (s name) n r n "#+end_" name)
 (quote & "#+begin_quote" n r n "#+end_quote")
 (example & "#+begin_example" n r n "#+end_example")
@@ -10,3 +11,6 @@ org-mode
 (shell & "#+begin_src shell" n r n "#+end_src")
 (rest & "#+begin_src restclient" n r n "#+end_src")
 (sicp & "#+begin_src racket :lang sicp" n r n "#+end_src")
+
+;; gptel
+(ask & "* Prompt: ")
