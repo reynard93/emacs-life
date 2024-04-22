@@ -77,38 +77,27 @@
     "fY"  #'+buffer/yank-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
-    "g/"  #'magit-dispatch
-    "g."  #'magit-file-dispatch
-    "g["  #'git-gutter:previous-hunk
-    "g]"  #'git-gutter:next-hunk
-    "gb"  #'magit-branch-checkout
+    "gb"  #'magit-checkout
     "gB"  #'magit-blame-addition
-    "gC"  #'magit-clone
-    "gd"  #'magit-dired-jump
-    "gD"  #'magit-file-delete
-    "gf"  #'magit-fetch
-    "gF"  #'magit-pull
-    "gg"  #'magit-status
-    "gG"  #'magit-status-here
-    "gh"  #'+github/list-pull-requests
-    "gl"  #'magit-log-current
-    "gL"  #'magit-log-buffer-file
-    "gr"  #'git-gutter:revert-hunk
-    "gR"  #'vc-revert
-    "gs"  #'git-gutter:stage-hunk
-    "gS"  #'magit-stage-file
-    "gt"  #'git-timemachine-toggle
-    "gU"  #'magit-unstage-file
 
     "gc"  '(:ignore t :which-key "create")
     "gcb" #'magit-branch-and-checkout
-    "gcB" #'+git/create-backup-commit
     "gcp" #'+github/create-pull-request
-    "gcr" #'magit-init
+
+    "gd"  #'magit-dispatch
+    "gf"  #'magit-file-dispatch
+    "gg"  #'magit-status
+    "gl"  #'magit-log-current
+    "gL"  #'magit-log-buffer-file
 
     "go"  '(:ignore t :which-key "open in browser")
     "goo" #'browse-at-remote
     "gop" #'+github/browse-pull-request
+
+    "gp"  #'+github/list-pull-requests
+    "gr"  #'git-gutter:revert-hunk
+    "gs"  #'git-gutter:stage-hunk
+    "gt"  #'git-timemachine-toggle
 
     "n"   '(:ignore t :which-key "notes")
     "na"  #'consult-org-agenda
