@@ -5,10 +5,20 @@
   :config
   (message "denote is loaded")
   (require 'denote-org-extras)
+
+  (defun +denote/scratch ()
+    (interactive)
+    (let ((denote-prompts nil))
+      (call-interactively #'denote)))
+
+  (defun +denote/template-with-subdirectory ()
+    (interactive)
+    (let ((denote-prompts '(template subdirectory title keywords)))
+      (call-interactively #'denote)))
+
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-date-prompt-use-org-read-date t)
-  (denote-known-keywords '("emacs" "nix" "ruby" "elixir" "webdev"))
   (denote-templates
    `((jira . ,(concat "Jira: "
                       "\n\n"

@@ -30,7 +30,7 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'scratch-buffer
+    "x"   #'+denote/scratch
     "X"   #'org-capture
 
     "b"   '(:ignore t :which-key "buffer")
@@ -79,22 +79,18 @@
     "g"   '(:ignore t :which-key "git")
     "gb"  #'magit-checkout
     "gB"  #'magit-blame-addition
-
     "gc"  '(:ignore t :which-key "create")
     "gcb" #'magit-branch-and-checkout
     "gcp" #'+github/create-pull-request
-
-    "gd"  #'magit-dispatch
     "gf"  #'magit-file-dispatch
+    "gF"  #'magit-pull
     "gg"  #'magit-status
+    "gh"  #'+github/list-pull-requests
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
-
     "go"  '(:ignore t :which-key "open in browser")
     "goo" #'browse-at-remote
     "gop" #'+github/browse-pull-request
-
-    "gp"  #'+github/list-pull-requests
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
@@ -105,8 +101,6 @@
     "nB"  #'org-babel-tangle
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
-    "nd"  #'denote-subdirectory
-    "nD"  #'denote-date
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'+org/browse-files
     "nk"  #'denote-keywords-add
@@ -119,7 +113,7 @@
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'tmr
     "nT"  #'org-todo-list
-    "nx"  #'denote-template
+    "nx"  #'+denote/template-with-subdirectory
 
     "o"   '(:ignore t :which-key "open")
     "oA"  #'org-agenda
