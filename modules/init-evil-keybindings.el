@@ -77,23 +77,28 @@
     "fY"  #'+buffer/yank-path-relative-to-project
 
     "g"   '(:ignore t :which-key "git")
+    "g/"  #'magit-dispatch
+    "g."  #'magit-file-dispatch
     "gb"  #'magit-checkout
     "gB"  #'magit-blame-addition
-    "gc"  '(:ignore t :which-key "create")
-    "gcb" #'magit-branch-and-checkout
-    "gcp" #'+github/create-pull-request
-    "gf"  #'magit-file-dispatch
+    "gf"  #'magit-fetch
     "gF"  #'magit-pull
     "gg"  #'magit-status
-    "gh"  #'+github/list-pull-requests
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
-    "go"  '(:ignore t :which-key "open in browser")
-    "goo" #'browse-at-remote
-    "gop" #'+github/browse-pull-request
+    "gp"  #'+github/list-pull-requests
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
+
+    "gc"  '(:ignore t :which-key "create")
+    "gcb" #'magit-branch-and-checkout
+    "gcB" #'+git/create-backup-commit
+    "gcp" #'+github/create-pull-request
+
+    "go"  '(:ignore t :which-key "open in browser")
+    "goo" #'browse-at-remote
+    "gop" #'+github/browse-pull-request
 
     "n"   '(:ignore t :which-key "notes")
     "na"  #'consult-org-agenda
