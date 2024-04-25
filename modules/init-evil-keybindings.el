@@ -201,7 +201,11 @@
     :keymaps 'org-mode-map
     :major-modes t
     "."  #'consult-org-heading
-    "a"  #'org-anki-sync-entry
+    "a"  '(:ignore t :which-key "anki")
+    "aa" #'org-anki-sync-entry
+    "aA" #'org-anki-sync-all
+    "ab" #'org-anki-browse-entry
+    "ac" #'org-anki-cloze-dwim
     "A"  #'org-archive-subtree
     "C"  #'org-fold-hide-block-all
     "e"  #'org-export-dispatch

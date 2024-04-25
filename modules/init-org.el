@@ -107,7 +107,9 @@
   :after org
   :defer t
   :config
-  (message "org-anki is loaded"))
+  (message "org-anki is loaded")
+  :custom
+  (org-anki-inherit-tags nil))
 
 (use-package org-pandoc-import
   :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
