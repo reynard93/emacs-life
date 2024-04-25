@@ -109,7 +109,9 @@
 
 (use-package embark
   :init
+  ;; Display commands under a prefix with C-h
   (setq prefix-help-command #'embark-prefix-help-command)
+  (unbind-key "C-h C-h")
 
   :config
   (message "embark is loaded")
