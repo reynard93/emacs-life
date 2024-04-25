@@ -108,6 +108,7 @@
   (message "consult-dir is loaded"))
 
 (use-package embark
+  :demand t
   :init
   ;; Display commands under a prefix with C-h
   (setq prefix-help-command #'embark-prefix-help-command)
