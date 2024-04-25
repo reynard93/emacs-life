@@ -20,14 +20,22 @@
   (denote-history-completion-in-prompts nil)
   (denote-date-prompt-use-org-read-date t)
   (denote-templates
-   `((jira . ,(concat "Jira: "
-                      "\n\n"
-                      "* Problem"
-                      "\n\n"
-                      "* Investigation"
-                      "\n\n"
-                      "* Solution"
-                      "\n\n"))
+   `((jira-bug . ,(concat "Jira: "
+                          "\n\n"
+                          "* Problem"
+                          "\n\n"
+                          "* Investigation"
+                          "\n\n"
+                          "* Solution"
+                          "\n\n"))
+     (jira-story . ,(concat "Jira: "
+                            "\n\n"
+                            "* Requirements"
+                            "\n\n"
+                            "* Research"
+                            "\n\n"
+                            "* Solution"
+                            "\n\n"))
      )))
 
 (use-package consult-denote
