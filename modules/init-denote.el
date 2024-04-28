@@ -2,14 +2,14 @@
   :defer t
   :init
   (setq denote-directory "~/src/notes")
-  :config
-  (message "denote is loaded")
-  (require 'denote-org-extras)
-
   (defun +denote/scratch ()
     (interactive)
     (let ((denote-prompts nil))
       (call-interactively #'denote)))
+
+  :config
+  (message "denote is loaded")
+  (require 'denote-org-extras)
 
   (defun +denote/template-with-subdirectory ()
     (interactive)
