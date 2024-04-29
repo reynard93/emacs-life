@@ -126,6 +126,7 @@
 
   :bind (([remap describe-bindings] . embark-bindings)
          ("C-;" . embark-act)
+         ("M-." . embark-dwim)
          :map vertico-map
          ("C-;" . embark-act)
          ("C-c C-;" . embark-export)

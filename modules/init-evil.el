@@ -37,6 +37,9 @@
   (org-capture-mode . evil-insert-state)
 
   :bind (("s-n" . evil-buffer-new)
+         :map evil-normal-state-map
+         ("C-." . nil)
+         ("M-." . nil)
          :map evil-ex-completion-map
          ("C-a" . evil-beginning-of-line)
          ("C-b" . evil-backward-char)
