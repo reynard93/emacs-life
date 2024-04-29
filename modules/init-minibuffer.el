@@ -78,7 +78,6 @@
   :after vertico
   :config
   (message "consult is loaded")
-  :hook (embark-collect-mode . consult-preview-at-point-mode)
   :bind (([remap switch-to-buffer] . consult-buffer)
          ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
          ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
@@ -133,8 +132,9 @@
          ("C-c C-l" . embark-collect)))
 
 (use-package embark-consult
-  :defer t
+  :after (embark consult)
   :config
-  (message "embark-consult is loaded"))
+  (message "embark-consult is loaded")
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (provide 'init-minibuffer)
