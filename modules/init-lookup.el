@@ -18,12 +18,4 @@
   (message "deadgrep is loaded")
   (evil-set-initial-state 'deadgrep-mode 'emacs))
 
-(use-package browser-hist
-  :vc (browser-hist :url "https://github.com/agzam/browser-hist.el.git")
-  :defer t
-  :config
-  (message "browser-hist is loaded")
-  :custom
-  (browser-hist-default-browser 'firefox))
-
 (provide 'init-lookup)

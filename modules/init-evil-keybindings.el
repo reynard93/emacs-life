@@ -37,7 +37,6 @@
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
     "bd"  #'dired-jump
-    "bh"  #'browser-hist-search
     "bi"  #'ibuffer
     "bm"  #'bookmark-set
     "bM"  #'bookmark-delete
