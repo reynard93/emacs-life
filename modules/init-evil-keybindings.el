@@ -79,6 +79,7 @@
     "g"   '(:ignore t :which-key "git")
     "g/"  #'magit-dispatch
     "g."  #'magit-file-dispatch
+    "ga"  #'+github/list-pull-requests
     "gb"  #'magit-checkout
     "gB"  #'magit-blame-addition
     "gf"  #'magit-fetch
@@ -86,7 +87,6 @@
     "gg"  #'magit-status
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
-    "gp"  #'+github/list-pull-requests
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
