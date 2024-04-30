@@ -20,6 +20,7 @@
      (t . (regular 1.15)))))
 
 (use-package spacious-padding
+  :if (display-graphic-p)
   :config
   (message "spacious-padding is loaded")
   (spacious-padding-mode 1)
@@ -27,6 +28,7 @@
   (spacious-padding-subtle-mode-line t))
 
 (use-package fontaine
+  :if (display-graphic-p)
   :demand t
   :config
   (message "fontaine is loaded")
