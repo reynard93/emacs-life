@@ -1,6 +1,6 @@
 (use-package evil
   :pin melpa
-  :demand t
+  :defer 1
   :init
   (setq evil-normal-state-cursor 'box
         evil-insert-state-cursor 'bar

@@ -14,7 +14,7 @@
   :bind ([remap other-window] . ace-window))
 
 (use-package popper
-  :demand t
+  :defer t
   :config
   (message "popper is loaded")
   (popper-mode 1)
