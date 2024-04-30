@@ -15,8 +15,9 @@
                   prot-modeline-kbd-macro
                   prot-modeline-narrow
                   prot-modeline-buffer-status
+                  prot-modeline-window-dedicated-status
                   prot-modeline-input-method
-                  prot-modeline-evil
+                  "  "
                   prot-modeline-buffer-identification
                   "  "
                   prot-modeline-major-mode
