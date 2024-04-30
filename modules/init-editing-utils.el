@@ -18,16 +18,6 @@
     (evil-define-key 'motion 'global
       "gss" #'evil-avy-goto-char-2)))
 
-(use-package hl-todo
-  :pin melpa
-  :config
-  (message "hl-todo is loaded")
-  (with-eval-after-load 'evil
-    (evil-define-key 'motion 'global
-      "]t" #'hl-todo-next
-      "[t" #'hl-todo-previous))
-  :hook (prog-mode text-mode))
-
 (use-package rainbow-delimiters
   :pin nongnu
   :config
