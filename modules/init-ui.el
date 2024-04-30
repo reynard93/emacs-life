@@ -34,19 +34,13 @@
   :custom
   (fontaine-presets
    '((regular)
-     (medium
-      :default-family "Iosevka Comfy"
-      :default-height 180
-      :variable-pitch-height 160)
-     (large
-      :default-family "Iosevka Comfy"
-      :default-height 280
-      :variable-pitch-height 160)
+     (presentation
+      :default-height 240)
      (t
-      :default-family "JetBrains Mono"
+      :default-family "Iosevka Comfy"
       :default-weight regular
-      :default-height 160
-      :fixed-pitch-family "JetBrains Mono"
+      :default-height 180
+      :fixed-pitch-family "Iosevka Comfy"
       :fixed-pitch-weight nil
       :fixed-pitch-height 1.0
       :variable-pitch-family "Iosevka Comfy Motion Duo"
