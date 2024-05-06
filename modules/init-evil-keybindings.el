@@ -43,22 +43,12 @@
     "x"   #'+denote/scratch
     "X"   #'org-capture
 
-    "b"   '(:ignore t :which-key "buffer")
+    ;; buffer
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
-    "bd"  #'dired-jump
-    "bi"  #'ibuffer
-    "bm"  #'bookmark-set
-    "bM"  #'bookmark-delete
-    "bn"  #'evil-buffer-new
-    "bN"  #'evil-window-new
-    "br"  #'revert-buffer
-    "bR"  #'rename-buffer
-    "bs"  #'basic-save-buffer
-    "bS"  #'evil-write-all
     "bz"  #'bury-buffer
 
-    "c"   '(:ignore t :which-key "code")
+    ;; code
     "cc"  #'compile
     "cC"  #'recompile
     "cf"  #'apheleia-format-buffer
@@ -66,7 +56,7 @@
     "cp"  #'+sourcehut/create-paste-region-or-buffer
     "cw"  #'delete-trailing-whitespace
 
-    "f"   '(:ignore t :which-key "file")
+    ;; file
     "fb"  #'yejun/browse-blog
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
@@ -74,15 +64,10 @@
     "fp"  #'+tempel/find-private-template
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
-    "fs"  #'save-buffer
-    "fS"  #'write-file
     "fy"  #'+buffer/yank-path
     "fY"  #'+buffer/yank-path-relative-to-project
 
-    "g"   '(:ignore t :which-key "git")
-    "g/"  #'magit-dispatch
-    "g."  #'magit-file-dispatch
-    "ga"  #'+github/list-pull-requests
+    ;; git
     "gb"  #'magit-checkout
     "gB"  #'magit-blame-addition
     "gf"  #'magit-fetch
@@ -94,16 +79,16 @@
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
 
-    "gc"  '(:ignore t :which-key "create")
+    ;; git - create
     "gcb" #'magit-branch-and-checkout
     "gcB" #'+git/create-backup-commit
     "gcp" #'+github/create-pull-request
 
-    "go"  '(:ignore t :which-key "open in browser")
+    ;; git - open in browser
     "goo" #'browse-at-remote
     "gop" #'+github/browse-pull-request
 
-    "n"   '(:ignore t :which-key "notes")
+    ;; notes
     "na"  #'consult-org-agenda
     "nb"  #'citar-open
     "nB"  #'org-babel-tangle
@@ -123,7 +108,7 @@
     "nT"  #'org-todo-list
     "nx"  #'+denote/template-with-subdirectory
 
-    "o"   '(:ignore t :which-key "open")
+    ;; open
     "oA"  #'org-agenda
     "oe"  #'elfeed
     "om"  #'mu4e
@@ -131,7 +116,7 @@
     "oo"  #'+macos/reveal-in-finder
     "oO"  #'+macos/reveal-project-in-finder
 
-    "p"   '(:ignore t :which-key "pass")
+    ;; password-store
     "pa"  #'password-store-otp-append
     "pA"  #'password-store-otp-append-from-image
     "pe"  #'password-store-edit
@@ -143,17 +128,16 @@
     "pR"  #'password-store-remove
     "pu"  #'+pass/create-otp-key-uri
 
-    "t"   '(:ignore t :which-key "toggle")
-    "tc"  '(global-display-fill-column-indicator-mode :which-key "Fill Column Indicator")
-    "tf"  '(flymake-mode :which-key "Flymake")
-    "ts"  '(flyspell-mode :which-key "Spell checker")
-    "tw"  '(visual-line-mode :which-key "Soft line wrapping")
-    "tz"  '(+zen/toggle :which-key "Zen mode"))
+    ;; toggle
+    "tf"  #'flymake-mode
+    "ts"  #'flyspell-mode
+    "tw"  #'visual-line-mode
+    "tz"  #'+zen/toggle)
 
   (+evil/local-leader-key
     :keymaps 'ruby-ts-mode-map
     :major-modes t
-    "b"  '(:ignore t :which-key "bundle")
+    ;; bundle
     "bc" #'bundle-check
     "bC" #'bundle-console
     "bi" #'bundle-install
@@ -161,7 +145,7 @@
     "be" #'bundle-exec
     "bo" #'bundle-open
 
-    "k"  '(:ignore t :which-key "rake")
+    ;; rake
     "kk" #'rake
     "kr" #'rake-rerun
     "kR" #'rake-regenerate-cache
@@ -170,7 +154,7 @@
   (+evil/local-leader-key
     :keymaps '(ruby-ts-mode-map rspec-mode-map rspec-compilation-mode-map)
     :major-modes t
-    "t"  '(:ignore t :which-key "test")
+    ;; test
     "ta" #'rspec-verify-all
     "ts" #'rspec-verify-single
     "tv" #'rspec-verify
@@ -183,11 +167,13 @@
     :keymaps 'org-mode-map
     :major-modes t
     "."  #'consult-org-heading
-    "a"  '(:ignore t :which-key "anki")
+
+    ;; anki
     "aa" #'org-anki-sync-entry
     "aA" #'org-anki-sync-all
     "ab" #'org-anki-browse-entry
     "ac" #'org-anki-cloze-dwim
+
     "A"  #'org-archive-subtree
     "C"  #'org-fold-hide-block-all
     "e"  #'org-export-dispatch
@@ -203,7 +189,7 @@
     "T"  #'+org/preview-toggle
     "x"  #'org-toggle-checkbox
 
-    "b"  '(:ignore t :which-key "table")
+    ;; table
     "b-" #'org-table-insert-hline
     "ba" #'org-table-align
     "bb" #'org-table-blank-field
@@ -215,44 +201,44 @@
     "br" #'org-table-recalculate
     "bR" #'org-table-recalculate-buffer-tables
 
-    "bd"  '(:ignore t :which-key "delete")
+    ;; table - delete
     "bdc" #'org-table-delete-column
     "bdr" #'org-table-kill-row
 
-    "bi"  '(:ignore t :which-key "insert")
+    ;; table - insert
     "bic" #'org-table-insert-column
     "bih" #'org-table-insert-hline
     "biH" #'org-table-hline-and-move
     "bir" #'org-table-insert-row
 
-    "c"  '(:ignore t :which-key "clock")
+    ;; clock
     "ci" #'org-clock-in
     "co" #'org-clock-out
     "cR" #'org-clock-report
 
-    "d"  '(:ignore t :which-key "date/deadline")
+    ;; date/deadline
     "dd" #'org-deadline
     "ds" #'org-schedule
     "dt" #'org-time-stamp
     "dT" #'org-time-stamp-inactive
 
-    "g"  '(:ignore t :which-key "goto")
+    ;; goto
     "gr" #'org-refile-goto-last-stored
     "gx" #'org-capture-goto-last-stored
 
-    "l"  '(:ignore t :which-key "links")
+    ;; links
     "la" #'denote-add-links
     "lh" #'denote-org-extras-link-to-heading
     "ll" #'denote-link-to-existing-or-new-note
     "lt" #'org-toggle-link-display
 
-    "r"  '(:ignore t :which-key "refile")
+    ;; refile
     "r." #'+org/refile-to-current-file
     "rf" #'+org/refile-to-file
     "rr" #'org-refile
     "rR" #'org-refile-reverse
 
-    "s"  '(:ignore t :which-key "subtree")
+    ;; subtree
     "sd" #'org-cut-subtree
     "ss" #'org-sparse-tree
     "sS" #'org-sort)

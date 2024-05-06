@@ -33,7 +33,6 @@ The configuration is based on these packages:
 - [tempel](https://github.com/minad/tempel)
 - [evil](https://github.com/emacs-evil/evil)
 - [general](https://github.com/noctuid/general.el)
-- [which-key](https://github.com/justbur/emacs-which-key)
 - [denote](https://github.com/protesilaos/denote)
 
 ## Thanks
