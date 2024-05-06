@@ -131,17 +131,17 @@
     "oo"  #'+macos/reveal-in-finder
     "oO"  #'+macos/reveal-project-in-finder
 
-    "op"  '(:ignore t :which-key "pass")
-    "opa" #'password-store-otp-append
-    "opA" #'password-store-otp-append-from-image
-    "ope" #'password-store-edit
-    "opi" #'password-store-insert
-    "opI" #'password-store-otp-insert
-    "opp" #'password-store-copy
-    "opP" #'password-store-otp-token-copy
-    "opr" #'password-store-rename
-    "opR" #'password-store-remove
-    "opu" #'+pass/create-otp-key-uri
+    "p"   '(:ignore t :which-key "pass")
+    "pa"  #'password-store-otp-append
+    "pA"  #'password-store-otp-append-from-image
+    "pe"  #'password-store-edit
+    "pi"  #'password-store-insert
+    "pI"  #'password-store-otp-insert
+    "pp"  #'password-store-copy
+    "pP"  #'password-store-otp-token-copy
+    "pr"  #'password-store-rename
+    "pR"  #'password-store-remove
+    "pu"  #'+pass/create-otp-key-uri
 
     "q"   '(:ignore t :which-key "quit")
     "qK"  #'save-buffers-kill-emacs
