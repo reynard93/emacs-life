@@ -1,6 +1,19 @@
 (use-package general
   :pin melpa
   :after evil
+  :preface
+  (defun yejun/browse-emacs-config ()
+    (interactive)
+    (+project/browse-files user-emacs-directory))
+
+  (defun yejun/browse-nix-config ()
+    (interactive)
+    (+project/browse-files "~/.config/nix-config"))
+
+  (defun yejun/browse-blog ()
+    (interactive)
+    (+project/browse-files "~/src/yejun.dev"))
+
   :config
   (message "general is loaded")
 
@@ -8,17 +21,14 @@
     :states '(normal visual insert)
     :keymaps 'override
     :prefix "SPC"
-    :non-normal-prefix "M-S-SPC")
+    :non-normal-prefix "C-c SPC")
 
   (general-create-definer +evil/local-leader-key
     :states '(normal visual insert)
     :prefix "SPC m"
-    :non-normal-prefix "M-S-SPC m")
+    :non-normal-prefix "C-c SPC m")
 
   (+evil/leader-key
-    "p"   project-prefix-map
-    "h"   help-map
-
     "'"   #'vertico-repeat
     ","   #'project-find-file
     "."   #'find-file
@@ -55,12 +65,6 @@
     "cg"  #'+github/create-gist-region-or-buffer
     "cp"  #'+sourcehut/create-paste-region-or-buffer
     "cw"  #'delete-trailing-whitespace
-
-    "e"   '(:ignore t :which-key "eglot")
-    "el"  #'eglot-list-connections
-    "ek"  #'eglot-shutdown
-    "eK"  #'eglot-shutdown-all
-    "eR"  #'eglot-reconnect
 
     "f"   '(:ignore t :which-key "file")
     "fb"  #'yejun/browse-blog

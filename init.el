@@ -57,6 +57,3 @@
 (require 'init-restclient)
 (require 'init-network-tools)
 (require 'init-spell-checker)
-
-;; Misc
-(require 'init-misc)
