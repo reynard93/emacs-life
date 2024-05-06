@@ -50,7 +50,10 @@
          ("C-f" . evil-forward-char)
          :map evil-window-map
          ("C-h" . nil)
-         ("C-l" . nil)))
+         ("C-l" . nil)
+         ("m" . switch-to-minibuffer)
+         ("u" . winner-undo)
+         ("r" . winner-redo)))
 
 (use-package evil-collection
   :pin melpa
@@ -84,13 +87,6 @@
   :config
   (message "evil-surround is loaded")
   (global-evil-surround-mode 1))
-
-(use-package evil-mc
-  :pin melpa
-  :after evil
-  :config
-  (message "evil-mc is loaded")
-  (global-evil-mc-mode 1))
 
 (use-package evil-anzu
   :pin melpa

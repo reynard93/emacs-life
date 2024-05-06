@@ -87,17 +87,22 @@
          ([remap recentf-open-files] . consult-recent-file)
          ([remap imenu] . consult-imenu)
          ("M-y" . consult-yank-pop)
-         ;; M-g bindings in `goto-map'
-         ("M-g e" . consult-compile-error)
-         ("M-g f" . consult-flymake)
-         ("M-g m" . consult-mark)
-         ("M-g M" . consult-global-mark)
-         ("M-g i" . consult-imenu)
-         ("M-g I" . consult-imenu-multi)
-         ;; M-s bindings in `search-map'
-         ("M-s r" . consult-ripgrep)
-         ("M-s l" . consult-line)
-         ("M-s L" . consult-line-multi)))
+         :map goto-map
+         ("e" . consult-compile-error)
+         ("f" . consult-flymake)
+         ("i" . consult-imenu)
+         ("I" . consult-imenu-multi)
+         ("l" . ffap-menu)
+         ("m" . consult-mark)
+         ("M" . consult-global-mark)
+         :map search-map
+         ("g" . +lookup/google-translate-guess-source-lang)
+         ("G" . +lookup/google-translate-guess-source-lang-force-select)
+         ("l" . +buffer/search)
+         ("L" . +buffer/search-for-symbol-at-point)
+         ("r" . +buffer/search-multi)
+         ("R" . +buffer/search-multi-for-symbol-at-point)
+         ("s" . +lookup/search-online)))
 
 (use-package consult-dir
   :pin melpa

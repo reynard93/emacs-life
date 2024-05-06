@@ -143,38 +143,12 @@
     "pR"  #'password-store-remove
     "pu"  #'+pass/create-otp-key-uri
 
-    "q"   '(:ignore t :which-key "quit")
-    "qK"  #'save-buffers-kill-emacs
-    "qq"  #'save-buffers-kill-terminal
-    "qQ"  #'evil-quit-all-with-error-code
-
-    "s"   '(:ignore t :which-key "search")
-    "sd"  #'deadgrep
-    "sg"  #'+lookup/google-translate-guess-source-lang
-    "sG"  #'+lookup/google-translate-guess-source-lang-force-select
-    "si"  #'consult-imenu
-    "sI"  #'consult-imenu-multi
-    "sk"  #'dash-at-point
-    "sK"  #'dash-at-point-with-docset
-    "sl"  #'ffap-menu
-    "so"  #'+lookup/search-online
-    "ss"  #'+buffer/search
-    "sS"  #'+buffer/search-for-symbol-at-point
-    "sr"  #'+buffer/search-multi
-    "sR"  #'+buffer/search-multi-for-symbol-at-point
-    "st"  #'osx-dictionary-search-word-at-point
-
     "t"   '(:ignore t :which-key "toggle")
     "tc"  '(global-display-fill-column-indicator-mode :which-key "Fill Column Indicator")
     "tf"  '(flymake-mode :which-key "Flymake")
     "ts"  '(flyspell-mode :which-key "Spell checker")
     "tw"  '(visual-line-mode :which-key "Soft line wrapping")
-    "tz"  '(+zen/toggle :which-key "Zen mode")
-
-    "w"   '(evil-window-map :which-key "window")
-    "wm"  #'switch-to-minibuffer
-    "wu"  #'winner-undo
-    "wr"  #'winner-redo)
+    "tz"  '(+zen/toggle :which-key "Zen mode"))
 
   (+evil/local-leader-key
     :keymaps 'ruby-ts-mode-map
