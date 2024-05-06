@@ -1,14 +1,13 @@
-(use-package time
-  :ensure nil
-  :init
-  (setq zoneinfo-style-world-list
-        '(("America/Vancouver" "Vancouver")
-          ("America/Chicago" "Portland")
-          ("UTC" "UTC")
-          ("Europe/London" "London")
-          ("Europe/Kyiv" "Kyiv")
-          ("Asia/Shanghai" "Shanghai")))
-  :custom
-  (world-clock-time-format "%F %T %z"))
+(defun yejun/browse-emacs-config ()
+  (interactive)
+  (+project/browse-files user-emacs-directory))
+
+(defun yejun/browse-nix-config ()
+  (interactive)
+  (+project/browse-files "~/.config/nix-config"))
+
+(defun yejun/browse-blog ()
+  (interactive)
+  (+project/browse-files "~/src/yejun.dev"))
 
 (provide 'init-misc)

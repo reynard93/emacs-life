@@ -103,6 +103,24 @@
      (+project/search "Search project" "s")
      (+project/search-for-symbol-at-point "Search project with symbol" "S"))))
 
+(use-package time
+  :ensure nil
+  :custom
+  (world-clock-time-format "%F %T %z")
+  (zoneinfo-style-world-list
+        '(("America/Vancouver" "Vancouver")
+          ("America/Chicago" "Portland")
+          ("UTC" "UTC")
+          ("Europe/London" "London")
+          ("Europe/Kyiv" "Kyiv")
+          ("Asia/Shanghai" "Shanghai"))))
+
+(use-package window
+  :ensure nil
+  :config
+  (message "window is loaded")
+  :bind ("C-x !" . delete-other-windows-vertically))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)

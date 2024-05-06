@@ -13,7 +13,6 @@
 (require 'init-minibuffer)
 (require 'init-completion)
 (require 'init-window)
-(require 'init-evil)
 
 ;; Visualization
 (require 'init-ui)
@@ -24,6 +23,10 @@
 (require 'init-better-defaults)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
+
+;; Evil
+(require 'init-evil)
+(require 'init-evil-keybindings)
 
 ;; Note-taking
 (require 'init-denote)
@@ -55,10 +58,5 @@
 (require 'init-network-tools)
 (require 'init-spell-checker)
 
-;; Keybindings
-(require 'init-emacs-keybindings)
-(require 'init-evil-keybindings)
-
 ;; Misc
-(require 'init-projects)
 (require 'init-misc)
