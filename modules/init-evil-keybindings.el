@@ -166,16 +166,7 @@
   (+evil/local-leader-key
     :keymaps 'org-mode-map
     :major-modes t
-    "."  #'consult-org-heading
-
-    ;; anki
-    "aa" #'org-anki-sync-entry
-    "aA" #'org-anki-sync-all
-    "ab" #'org-anki-browse-entry
-    "ac" #'org-anki-cloze-dwim
-
     "A"  #'org-archive-subtree
-    "C"  #'org-fold-hide-block-all
     "e"  #'org-export-dispatch
     "f"  #'org-footnote-action
     "h"  #'org-toggle-heading
@@ -188,6 +179,12 @@
     "t"  #'org-todo
     "T"  #'+org/preview-toggle
     "x"  #'org-toggle-checkbox
+
+    ;; anki
+    "aa" #'org-anki-sync-entry
+    "aA" #'org-anki-sync-all
+    "ab" #'org-anki-browse-entry
+    "ac" #'org-anki-cloze-dwim
 
     ;; table
     "b-" #'org-table-insert-hline

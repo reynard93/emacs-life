@@ -90,6 +90,7 @@
          :map goto-map
          ("e" . consult-compile-error)
          ("f" . consult-flymake)
+         ("h" . consult-org-heading)
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
          ("l" . ffap-menu)
