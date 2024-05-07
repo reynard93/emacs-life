@@ -5,9 +5,7 @@
               (buffer-substring-no-properties (region-beginning) (region-end))
             (or (thing-at-point 'symbol t) "")))
          (query (read-string "Search for: " (string-trim default-query))))
-    (eww-browse-url (format "https://kagi.com/search?token=%s&q=%s"
-                            (auth-source-pass-get 'secret "kagi.com/token")
-                            (url-encode-url query)))))
+    (eww query)))
 
 (defvar google-translate-target-lang nil)
 (defvar google-translate-target-langs

@@ -121,6 +121,14 @@
   (message "window is loaded")
   :bind ("C-x !" . delete-other-windows-vertically))
 
+(use-package eww
+  :defer t
+  :config
+  (message "eww is loaded")
+  :custom
+  (eww-search-prefix (format "https://kagi.com/search?token=%s&q="
+                             (auth-source-pass-get 'secret "kagi.com/token"))))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
