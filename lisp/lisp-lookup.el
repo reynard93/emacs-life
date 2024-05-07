@@ -3,9 +3,11 @@
   (let* ((default-query
           (if (use-region-p)
               (buffer-substring-no-properties (region-beginning) (region-end))
-            (thing-at-point 'word t)))
-         (query (read-string "Search for: " default-query)))
-    (browse-url (format "https://kagi.com/search?q=%s" (url-encode-url query)))))
+            (or (thing-at-point 'symbol t) "")))
+         (query (read-string "Search for: " (string-trim default-query))))
+    (eww-browse-url (format "https://kagi.com/search?token=%s&q=%s"
+                            (auth-source-pass-get 'secret "kagi.com/token")
+                            (url-encode-url query)))))
 
 (defvar google-translate-target-lang nil)
 (defvar google-translate-target-langs
