@@ -93,17 +93,16 @@
          ("h" . consult-org-heading)
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
-         ("l" . ffap-menu)
          ("m" . consult-mark)
          ("M" . consult-global-mark)
          :map search-map
          ("g" . +lookup/google-translate-guess-source-lang)
          ("G" . +lookup/google-translate-guess-source-lang-force-select)
-         ("l" . +buffer/search)
-         ("L" . +buffer/search-for-symbol-at-point)
+         ("l" . ffap-menu)
          ("r" . +buffer/search-multi)
          ("R" . +buffer/search-multi-for-symbol-at-point)
-         ("s" . +lookup/search-online)))
+         ("s" . +buffer/search)
+         ("S" . +buffer/search-for-symbol-at-point)))
 
 (use-package consult-dir
   :pin melpa

@@ -43,9 +43,11 @@
     "x"   #'+denote/scratch
     "X"   #'org-capture
 
-    ;; buffer
+    ;; buffer/bookmark
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
+    "bm"  #'bookmark-set
+    "bM"  #'bookmark-delete
     "bz"  #'bury-buffer
 
     ;; code
@@ -90,6 +92,7 @@
 
     ;; notes
     "na"  #'consult-org-agenda
+    "nA"  #'consult-org-heading
     "nb"  #'citar-open
     "nB"  #'org-babel-tangle
     "nc"  #'+org/toggle-last-clock
@@ -128,11 +131,33 @@
     "pR"  #'password-store-remove
     "pu"  #'+pass/create-otp-key-uri
 
+    ;; search
+    "sd"  #'deadgrep
+    "sg"  #'+lookup/google-translate-guess-source-lang
+    "sG"  #'+lookup/google-translate-guess-source-lang-force-select
+    "si"  #'consult-imenu
+    "sI"  #'consult-imenu-multi
+    "sk"  #'dash-at-point
+    "sK"  #'dash-at-point-with-docset
+    "sl"  #'ffap-menu
+    "so"  #'+lookup/search-online
+    "sr"  #'+buffer/search-multi
+    "sR"  #'+buffer/search-multi-for-symbol-at-point
+    "ss"  #'+buffer/search
+    "sS"  #'+buffer/search-for-symbol-at-point
+    "st"  #'osx-dictionary-search-word-at-point
+
     ;; toggle
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
     "tw"  #'visual-line-mode
-    "tz"  #'+zen/toggle)
+    "tz"  #'+zen/toggle
+
+    ;; window
+    "w"   evil-window-map
+    "wm"  #'switch-to-minibuffer
+    "wu"  #'winner-undo
+    "wr"  #'winner-redo)
 
   (+evil/local-leader-key
     :keymaps 'ruby-ts-mode-map
