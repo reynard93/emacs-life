@@ -3,17 +3,18 @@
   :defer t
   :init
   (auth-source-pass-enable)
-
-  (defun +pass/create-otp-key-uri (issuer secret)
-    "Create and copy the OTP key URI consisting of issuer and secret."
-    (interactive (list (read-string "Issuer: ")
-                       (read-passwd "Secret: " t)))
-    (let* ((secret (replace-regexp-in-string "\\s-" "" secret))
-           (otp-uri (format "otpauth://totp/totp-secret?secret=%s&issuer=%s" secret issuer)))
-      (kill-new otp-uri)
-      (message "OTP key URI created and copied")))
-
   :config
-  (message "pass is loaded"))
+  (message "pass is loaded")
+  :bind ( :prefix-map password-store-prefix-map
+          :prefix "C-c p"
+          ("a" . password-store-otp-append)
+          ("A" . password-store-otp-append-from-image)
+          ("e" . password-store-edit)
+          ("i" . password-store-insert)
+          ("I" . password-store-otp-insert)
+          ("K" . password-store-remove)
+          ("p" . password-store-copy)
+          ("r" . password-store-rename)
+          ("t" . password-store-otp-token-copy)))
 
 (provide 'init-pass)

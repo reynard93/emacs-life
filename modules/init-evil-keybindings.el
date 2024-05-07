@@ -29,6 +29,8 @@
     :non-normal-prefix "C-c SPC m")
 
   (+evil/leader-key
+    "p"   project-prefix-map
+
     "'"   #'vertico-repeat
     ","   #'project-find-file
     "."   #'find-file
@@ -119,18 +121,6 @@
     "oM"  #'+mail/compose-for-service
     "oo"  #'+macos/reveal-in-finder
     "oO"  #'+macos/reveal-project-in-finder
-
-    ;; password-store
-    "pa"  #'password-store-otp-append
-    "pA"  #'password-store-otp-append-from-image
-    "pe"  #'password-store-edit
-    "pi"  #'password-store-insert
-    "pI"  #'password-store-otp-insert
-    "pp"  #'password-store-copy
-    "pP"  #'password-store-otp-token-copy
-    "pr"  #'password-store-rename
-    "pR"  #'password-store-remove
-    "pu"  #'+pass/create-otp-key-uri
 
     ;; search
     "sd"  #'deadgrep

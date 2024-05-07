@@ -20,26 +20,7 @@
   (add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
   :config
-  (message "cape is loaded")
-  :bind ( :prefix-map cape-prefix-map
-          :prefix "C-c p"
-          ("p" . completion-at-point)
-          ("t" . complete-tag)
-          ("d" . cape-dabbrev)
-          ("h" . cape-history)
-          ("f" . cape-file)
-          ("k" . cape-keyword)
-          ("s" . cape-elisp-symbol)
-          ("e" . cape-elisp-block)
-          ("a" . cape-abbrev)
-          ("l" . cape-line)
-          ("w" . cape-dict)
-          (":" . cape-emoji)
-          ("\\" . cape-tex)
-          ("_" . cape-tex)
-          ("^" . cape-tex)
-          ("&" . cape-sgml)
-          ("r" . cape-rfc1345)))
+  (message "cape is loaded"))
 
 (use-package tempel
   :init
