@@ -77,6 +77,7 @@
     "gg"  #'magit-status
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
+    "gp"  #'+github/list-pull-requests
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
