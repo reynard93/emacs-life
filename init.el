@@ -16,6 +16,7 @@
 
 ;; Visualization
 (require 'init-ui)
+(require 'init-ux)
 (require 'init-pulse)
 (require 'init-mode-line)
 
@@ -53,7 +54,6 @@
 (require 'init-timer)
 (require 'init-lookup)
 (require 'init-reading)
-(require 'init-writing)
 (require 'init-restclient)
 (require 'init-network-tools)
 (require 'init-spell-checker)

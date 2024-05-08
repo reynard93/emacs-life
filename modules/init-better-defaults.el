@@ -87,6 +87,14 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . compilation-filter-colorize))
 
+(use-package eww
+  :defer t
+  :config
+  (message "eww is loaded")
+  :custom
+  (eww-search-prefix (format "https://kagi.com/search?token=%s&q="
+                             (auth-source-pass-get 'secret "kagi.com/token"))))
+
 (use-package project
   :ensure nil
   :defer t
@@ -108,26 +116,24 @@
   :custom
   (world-clock-time-format "%F %T %z")
   (zoneinfo-style-world-list
-        '(("America/Vancouver" "Vancouver")
-          ("America/Chicago" "Portland")
-          ("UTC" "UTC")
-          ("Europe/London" "London")
-          ("Europe/Kyiv" "Kyiv")
-          ("Asia/Shanghai" "Shanghai"))))
+   '(("America/Vancouver" "Vancouver")
+     ("America/Chicago" "Portland")
+     ("UTC" "UTC")
+     ("Europe/London" "London")
+     ("Europe/Kyiv" "Kyiv")
+     ("Asia/Shanghai" "Shanghai"))))
+
+(use-package visual-line-mode
+  :ensure nil
+  :config
+  (message "visual-line-mode is enabled")
+  :hook (org-mode markdown-mode gptel-mode))
 
 (use-package window
   :ensure nil
   :config
   (message "window is loaded")
   :bind ("C-x !" . delete-other-windows-vertically))
-
-(use-package eww
-  :defer t
-  :config
-  (message "eww is loaded")
-  :custom
-  (eww-search-prefix (format "https://kagi.com/search?token=%s&q="
-                             (auth-source-pass-get 'secret "kagi.com/token"))))
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash

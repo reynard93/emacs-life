@@ -26,10 +26,4 @@
   (olivetti-minimum-body-width 80)
   (olivetti-recall-visual-line-mode-entry-state t))
 
-(use-package visual-line-mode
-  :ensure nil
-  :config
-  (message "visual-line-mode is enabled")
-  :hook (org-mode gptel-mode markdown-mode))
-
-(provide 'init-writing)
+(provide 'init-ux)
