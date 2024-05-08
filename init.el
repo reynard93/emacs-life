@@ -29,9 +29,10 @@
 (require 'init-evil)
 (require 'init-evil-keybindings)
 
-;; Note-taking
-(require 'init-denote)
+;; GTD/PKM
 (require 'init-org)
+(require 'init-denote)
+(require 'init-elfeed)
 
 ;; Programming
 (require 'init-tree-sitter)
@@ -53,7 +54,6 @@
 (require 'init-gpt)
 (require 'init-timer)
 (require 'init-lookup)
-(require 'init-reading)
 (require 'init-restclient)
 (require 'init-network-tools)
 (require 'init-spell-checker)

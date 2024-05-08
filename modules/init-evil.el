@@ -78,8 +78,7 @@
   :config
   (message "evil-snipe is loaded")
   (evil-snipe-mode 1)
-  (evil-snipe-override-mode 1)
-  (push 'wombag-search-mode evil-snipe-disabled-modes))
+  (evil-snipe-override-mode 1))
 
 (use-package evil-surround
   :pin melpa
