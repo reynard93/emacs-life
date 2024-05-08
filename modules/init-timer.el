@@ -3,26 +3,19 @@
   :config
   (message "tmr is loaded")
 
-  ;; embark actions
-  (defvar tmr-action-map
-    (let ((map (make-sparse-keymap)))
-      (define-key map "c" #'tmr-clone)
-      (define-key map "e" #'tmr-edit-description)
-      (define-key map "k" #'tmr-cancel)
-      (define-key map "r" #'tmr-remove)
-      (define-key map "s" #'tmr-reschedule)
-      map))
+  (defvar-keymap embark-tmr-map
+    "c" #'tmr-clone
+    "e" #'tmr-edit-description
+    "r" #'tmr-remove
+    "R" #'tmr-remove-finished
+    "s" #'tmr-reschedule)
 
   (with-eval-after-load 'embark
-    (add-to-list 'embark-keymap-alist '(tmr-timer . tmr-action-map))
+    (add-to-list 'embark-keymap-alist '(tmr-timer . embark-tmr-map))
     (cl-loop
-     for cmd the key-bindings of tmr-action-map
+     for cmd the key-bindings of embark-tmr-map
      if (commandp cmd) do
      (add-to-list 'embark-post-action-hooks (list cmd 'embark--restart))))
-
-  (defun +tmr/active-timers ()
-    (interactive)
-    (list (tmr--read-timer "Timer: " t)))
 
   (defun +tmr--notification-notify (timer)
     (let ((title "TMR May Ring (Emacs tmr package)")
@@ -34,6 +27,6 @@
    '(tmr-print-message-for-finished-timer
      +tmr--notification-notify))
 
-  :bind ("s-l" . +tmr/active-timers))
+  :bind ("C-c t" . tmr-edit-description))
 
 (provide 'init-timer)
