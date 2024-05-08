@@ -15,6 +15,21 @@
   :config
   (message "elfeed is loaded")
 
+  (defun +elfeed/post-to-wombag (entries)
+    (interactive (list (pcase major-mode
+                         ('elfeed-search-mode
+                          (elfeed-search-selected))
+                         ('elfeed-show-mode
+                          (list elfeed-show-entry)))))
+    (dolist (entry (ensure-list entries))
+      (+wombag/url (elfeed-entry-link entry))))
+
+  (defun +elfeed/switch-to-wombag ()
+    (interactive)
+    (if-let ((buf (get-buffer "*wallabag-search*")))
+        (switch-to-buffer buf)
+      (wombag)))
+
   (defun +elfeed/browse ()
     (interactive)
     (let ((browse-url-handlers elfeed-browse-url-handlers))
@@ -23,8 +38,14 @@
         ('elfeed-show-mode (elfeed-show-visit)))))
 
   (when (featurep 'evil)
-    (evil-define-key 'normal elfeed-search-mode-map "B" #'+elfeed/browse)
-    (evil-define-key 'normal elfeed-show-mode-map "B" #'+elfeed/browse))
+    (evil-define-key 'normal elfeed-search-mode-map
+      "B" #'+elfeed/browse
+      "R" #'+elfeed/post-to-wombag
+      "W" #'+elfeed/switch-to-wombag)
+
+    (evil-define-key 'normal elfeed-show-mode-map
+      "B" #'+elfeed/browse
+      "R" #'+elfeed/post-to-wombag))
 
   :custom
   (elfeed-search-remain-on-entry t))
