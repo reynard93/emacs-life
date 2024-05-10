@@ -72,6 +72,7 @@
   ;; Export
   (org-export-with-sub-superscripts nil)
   (org-export-with-section-numbers nil)
+  (org-export-dispatch-use-expert-ui t)
 
   :hook (org-mode . my-org-mode-hook)
   :bind (("C-c l" . org-store-link)
