@@ -135,6 +135,15 @@
   (message "window is loaded")
   :bind ("C-x !" . delete-other-windows-vertically))
 
+(use-package dictionary
+  :ensure nil
+  :custom
+  (dictionary-server "dict.org")
+  (dictionary-default-popup-strategy "lev")
+  (dictionary-create-buttons nil)
+  (dictionary-use-single-buffer t)
+  :bind ("C-c d" . dictionary-search))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
