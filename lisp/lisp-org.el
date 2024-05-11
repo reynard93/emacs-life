@@ -66,4 +66,11 @@ see how ARG affects this command."
          (org-clock-in))
         ((org-clock-in-last arg))))
 
+(defun +org/mastodon-toot-subtree ()
+  "Compose a buffer and include the current subtree."
+  (interactive)
+  (let ((text (org-export-as 'md t nil t)))
+    (mastodon-toot)
+    (insert text)))
+
 (provide 'lisp-org)

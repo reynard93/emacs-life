@@ -10,13 +10,6 @@
   (defun my-org-mode-hook ()
     (setq-local evil-auto-indent nil))
 
-  (defun +org/mastodon-toot-subtree ()
-    "Compose a buffer and include the current subtree."
-    (interactive)
-    (let ((text (org-export-as 'md t nil t)))
-      (mastodon-toot)
-      (insert text)))
-
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
   (advice-add 'org-meta-return :before #'move-to-eol-advice)
