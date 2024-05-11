@@ -1,25 +1,18 @@
-(defvar-local +org-preview-toggle nil
-  "Non-nil if +org-preview-toggle is enabled.")
-
-(defun +org/preview-toggle ()
-  (interactive)
-  (if +org-preview-toggle
+(define-minor-mode yejun/org-preview-mode
+  "Toggle modes for previewing org files."
+  :init-value nil
+  :global nil
+  (if yejun/org-preview-mode
       (progn
-        (logos-focus-mode -1)
-        (org-indent-mode -1)
-        (org-superstar-mode -1)
-        (setq-local org-hide-emphasis-markers nil)
-        (setq-local +org-preview-toggle nil))
+        (read-only-mode 1)
+        (org-indent-mode 1)
+        (org-superstar-mode 1)
+        (setq-local org-hide-emphasis-markers t))
     (progn
-      (logos-focus-mode 1)
-      (org-indent-mode 1)
-      (org-superstar-mode 1)
-      (setq-local org-hide-emphasis-markers t)
-      (setq-local +org-preview-toggle t))))
-
-(defun +org/browse-files ()
-  (interactive)
-  (+project/browse-files org-directory))
+      (read-only-mode -1)
+      (org-indent-mode -1)
+      (org-superstar-mode -1)
+      (setq-local org-hide-emphasis-markers nil))))
 
 ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/autoload/org-refile.el
 (defun +org/refile-to-current-file (arg &optional file)

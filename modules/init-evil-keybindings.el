@@ -14,6 +14,10 @@
     (interactive)
     (+project/browse-files "~/src/yejun.dev"))
 
+  (defun yejun/browse-org-directory ()
+    (interactive)
+    (+project/browse-files org-directory))
+
   :config
   (message "general is loaded")
 
@@ -101,7 +105,7 @@
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
     "nf"  #'denote-open-or-create-with-command
-    "nF"  #'+org/browse-files
+    "nF"  #'yejun/browse-org-directory
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
     "nm"  #'org-tags-view
@@ -142,7 +146,7 @@
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
     "tw"  #'visual-line-mode
-    "tz"  #'+zen/toggle
+    "tz"  #'yejun/zen-mode
 
     ;; window
     "w"   evil-window-map
@@ -193,7 +197,7 @@
     "p"  #'org-priority
     "q"  #'org-set-tags-command
     "t"  #'org-todo
-    "T"  #'+org/preview-toggle
+    "T"  #'yejun/org-preview-mode
     "x"  #'org-toggle-checkbox
 
     ;; anki

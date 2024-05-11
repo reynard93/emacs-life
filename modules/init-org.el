@@ -133,6 +133,6 @@
   :custom
   (org-superstar-leading-bullet ?\s)
   (org-superstar-remove-leading-stars nil)
-  (org-superstar-headline-bullets-list '("◉" "◎" "●" "○" "◈" "◇")))
+  (org-superstar-headline-bullets-list '("◉" "◎" "○")))
 
 (provide 'init-org)

@@ -1,14 +1,9 @@
-(defvar-local +zen-toggle nil
-  "Non-nil if +zen-toggle is enabled.")
-
-(defun +zen/toggle ()
-  (interactive)
-  (if +zen-toggle
-      (progn
-        (logos-focus-mode -1)
-        (setq-local +zen-toggle nil))
-    (progn
+(define-minor-mode yejun/zen-mode
+  "Toggle logos-focus-mode."
+  :init-value nil
+  :global nil
+  (if yejun/zen-mode
       (logos-focus-mode 1)
-      (setq-local +zen-toggle t))))
+    (logos-focus-mode -1)))
 
 (provide 'lisp-zen)
