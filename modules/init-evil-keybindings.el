@@ -46,6 +46,7 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
+    "x"   #'gptel
     "X"   #'org-capture
 
     ;; buffer/bookmark

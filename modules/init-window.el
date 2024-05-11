@@ -56,6 +56,6 @@
        ,(lambda (buffer)
           (with-current-buffer buffer
             (bound-and-true-p gptel-mode))))
-      :align right :size 0.5))))
+      :select t :align below :size 0.5))))
 
 (provide 'init-window)
