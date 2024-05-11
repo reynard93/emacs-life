@@ -263,11 +263,6 @@
   (+evil/local-leader-key
     :keymaps 'nix-mode-map
     :major-modes t
-    "t" #'+nix/formatter-toggle)
-
-  (+evil/local-leader-key
-    :keymaps '(markdown-mode-map markdown-view-mode-map)
-    :major-modes t
-    "T" #'+markdown/preview-toggle))
+    "t" #'+nix/formatter-toggle))
 
 (provide 'init-evil-keybindings)
