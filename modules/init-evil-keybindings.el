@@ -100,10 +100,11 @@
     ;; notes
     "na"  #'consult-org-agenda
     "nA"  #'consult-org-heading
-    "nb"  #'citar-open
+    "nb"  #'citar-create-note
     "nB"  #'org-babel-tangle
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
+    "nd"  #'denote-journal-extras-new-or-existing-entry
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'yejun/browse-org-directory
     "nk"  #'denote-keywords-add
@@ -116,6 +117,7 @@
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'tmr
     "nT"  #'org-todo-list
+    "nx"  #'denote-template
 
     ;; open
     "oA"  #'org-agenda

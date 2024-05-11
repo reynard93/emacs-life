@@ -93,15 +93,6 @@
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar))
 
-(use-package citar
-  :pin melpa
-  :defer t
-  :init
-  (setq citar-bibliography '("~/src/notes/reference/reference.bib"))
-  (setq citar-notes-paths '("~/src/notes/reference"))
-  :config
-  (message "citar is loaded"))
-
 (use-package org-anki
   :pin melpa
   :after org
