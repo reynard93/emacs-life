@@ -124,15 +124,4 @@
   :config
   (message "org-pandoc-import is loaded"))
 
-(use-package org-superstar
-  :pin melpa
-  :after org
-  :defer t
-  :config
-  (message "org-superstar is loaded")
-  :custom
-  (org-superstar-leading-bullet ?\s)
-  (org-superstar-remove-leading-stars nil)
-  (org-superstar-headline-bullets-list '("◉" "◎" "○")))
-
 (provide 'init-org)
