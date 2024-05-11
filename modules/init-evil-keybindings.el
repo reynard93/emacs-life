@@ -46,7 +46,6 @@
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
     "a"   #'embark-act
-    "x"   #'+denote/scratch
     "X"   #'org-capture
 
     ;; buffer/bookmark
@@ -116,7 +115,6 @@
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'tmr
     "nT"  #'org-todo-list
-    "nx"  #'+denote/template-with-subdirectory
 
     ;; open
     "oA"  #'org-agenda
@@ -194,6 +192,7 @@
     "i"  #'org-toggle-item
     "I"  #'org-id-get-create
     "k"  #'org-babel-remove-result
+    "l"  #'org-toggle-link-display
     "o"  #'org-set-property
     "p"  #'org-priority
     "q"  #'org-set-tags-command
@@ -243,12 +242,6 @@
     ;; goto
     "gr" #'org-refile-goto-last-stored
     "gx" #'org-capture-goto-last-stored
-
-    ;; links
-    "la" #'denote-add-links
-    "lh" #'denote-org-extras-link-to-heading
-    "ll" #'denote-link-to-existing-or-new-note
-    "lt" #'org-toggle-link-display
 
     ;; refile
     "r." #'+org/refile-to-current-file
