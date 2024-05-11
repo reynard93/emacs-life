@@ -25,8 +25,6 @@
   :custom
   (tmr-timer-finished-functions
    '(tmr-print-message-for-finished-timer
-     +tmr--notification-notify))
-
-  :bind ("C-c t" . tmr-edit-description))
+     +tmr--notification-notify)))
 
 (provide 'init-timer)

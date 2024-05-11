@@ -145,6 +145,7 @@
     ;; toggle
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
+    "tt"  #'tmr-reschedule
     "tw"  #'visual-line-mode
     "tz"  #'yejun/zen-mode
 
