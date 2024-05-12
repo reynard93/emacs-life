@@ -98,6 +98,8 @@
   :pin melpa
   :demand t
   :after (:any citar denote)
+  :preface
+  (bind-key "C-c w n" #'citar-denote-open-note)
   :config
   (message "citar-denote is loaded")
   (citar-denote-mode 1)
