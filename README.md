@@ -42,7 +42,7 @@ I learned a lot from the Emacs community, especially thanks to:
 - [Daniel Mendler](https://github.com/minad)
 - [David Wilson](https://systemcrafters.net/)
 - [Henrik Lissner](https://github.com/hlissner)
-- [Jonas Bernoulli](https://github.com/tecosaur)
+- [Jonas Bernoulli](https://github.com/tarsius)
 - [Karthik Chikmagalur](https://github.com/karthink)
 - [Mickey Petersen](https://www.masteringemacs.org/)
 - [Omar Antolín Camarena](https://github.com/oantolin)
