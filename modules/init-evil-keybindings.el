@@ -49,11 +49,11 @@
     "x"   #'gptel
     "X"   #'org-capture
 
-    ;; buffer/bookmark
+    ;; buffer
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
-    "bm"  #'bookmark-set
-    "bM"  #'bookmark-delete
+    "bd"  #'dired-jump
+    "bu"  #'revert-buffer
     "bz"  #'bury-buffer
 
     ;; code
@@ -232,7 +232,8 @@
     ;; clock
     "ci" #'org-clock-in
     "co" #'org-clock-out
-    "cR" #'org-clock-report
+    "cg" #'org-clock-goto
+    "cr" #'org-clock-report
 
     ;; date/deadline
     "dd" #'org-deadline
