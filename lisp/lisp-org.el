@@ -9,12 +9,12 @@
         (setq-local org-hide-emphasis-markers t)
         (setq-local yejun--org-preview-face-cookies
                     (list
-                     (face-remap-add-relative 'org-level-1 `(:background ,(face-background 'modus-themes-nuanced-cyan)))
-                     (face-remap-add-relative 'org-level-2 `(:background ,(face-background 'modus-themes-nuanced-green)))
-                     (face-remap-add-relative 'org-level-3 `(:background ,(face-background 'modus-themes-nuanced-blue)))
-                     (face-remap-add-relative 'org-level-4 `(:background ,(face-background 'modus-themes-nuanced-magenta)))
-                     (face-remap-add-relative 'org-level-5 `(:background ,(face-background 'modus-themes-nuanced-red)))
-                     (face-remap-add-relative 'org-level-6 `(:background ,(face-background 'modus-themes-nuanced-yellow))))))
+                     (face-remap-add-relative 'org-level-1 `(:background ,(face-background 'modus-themes-subtle-blue)))
+                     (face-remap-add-relative 'org-level-2 `(:background ,(face-background 'modus-themes-subtle-cyan)))
+                     (face-remap-add-relative 'org-level-3 `(:background ,(face-background 'modus-themes-subtle-green)))
+                     (face-remap-add-relative 'org-level-4 `(:background ,(face-background 'modus-themes-subtle-red)))
+                     (face-remap-add-relative 'org-level-5 `(:background ,(face-background 'modus-themes-subtle-magenta)))
+                     (face-remap-add-relative 'org-level-6 `(:background ,(face-background 'modus-themes-subtle-yellow))))))
     (progn
       (logos-focus-mode -1)
       (read-only-mode -1)
