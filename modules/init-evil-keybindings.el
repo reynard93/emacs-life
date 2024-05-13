@@ -100,10 +100,8 @@
     ;; notes
     "na"  #'consult-org-agenda
     "nA"  #'consult-org-heading
-    "nb"  #'citar-create-note
-    "nB"  #'org-babel-tangle
-    "nc"  #'+org/toggle-last-clock
-    "nC"  #'org-clock-goto
+    "nb"  #'citar-open
+    "nc"  #'citar-create-note
     "nd"  #'denote-journal-extras-new-or-existing-entry
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'yejun/browse-org-directory
