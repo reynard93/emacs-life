@@ -17,7 +17,7 @@
   (modus-themes-headings
    '((agenda-structure . (variable-pitch light 1.8))
      (agenda-date . (1.3))
-     (t . (regular 1.1)))))
+     (t . (regular 1.0)))))
 
 (use-package spacious-padding
   :if (display-graphic-p)
