@@ -49,12 +49,12 @@
     "x"   #'gptel
     "X"   #'org-capture
 
-    ;; buffer
+    ;; buffer/bookmark
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
     "bd"  #'dired-jump
-    "bi"  #'insert-file
-    "bu"  #'revert-buffer
+    "bm"  #'bookmark-set
+    "br"  #'revert-buffer
     "bz"  #'bury-buffer
 
     ;; code
