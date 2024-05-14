@@ -144,10 +144,6 @@
   (dictionary-use-single-buffer t)
   :bind ("C-c d" . dictionary-search))
 
-(use-package bookmark
-  :ensure nil
-  :bind ("s-d" . bookmark-set))
-
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
