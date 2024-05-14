@@ -53,6 +53,7 @@
     "bb"  #'switch-to-buffer
     "bB"  #'switch-to-buffer-other-window
     "bd"  #'dired-jump
+    "bi"  #'insert-file
     "bu"  #'revert-buffer
     "bz"  #'bury-buffer
 
