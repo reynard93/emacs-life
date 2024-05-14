@@ -46,7 +46,6 @@
   :custom
   (denote-known-keywords '("emacs" "programming"))
   (denote-rename-buffer-format "[D] %t")
-  (denote-journal-extras-directory nil)
   (denote-journal-extras-title-format nil)
 
   :bind (("C-c n n" . denote)
