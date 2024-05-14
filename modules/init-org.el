@@ -19,6 +19,7 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
+     (sql . t)
      (ruby . t)
      (shell . t)
      (restclient . t)
