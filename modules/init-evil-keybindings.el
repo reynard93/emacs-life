@@ -102,7 +102,8 @@
     "na"  #'consult-org-agenda
     "nA"  #'consult-org-heading
     "nb"  #'citar-open
-    "nc"  #'citar-create-note
+    "nB"  #'citar-create-note
+    "nc"  #'citar-denote-open-note
     "nd"  #'denote-journal-extras-new-or-existing-entry
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'yejun/browse-org-directory

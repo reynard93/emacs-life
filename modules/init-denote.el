@@ -86,9 +86,7 @@
   :init
   (setq citar-bibliography '("~/src/notes/reference.bib"))
   :config
-  (message "citar is loaded")
-  :bind (("C-c w b" . citar-open)
-         ("C-c w c" . citar-create-note)))
+  (message "citar is loaded"))
 
 (use-package citar-embark
   :pin melpa
