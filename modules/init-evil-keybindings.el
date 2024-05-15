@@ -147,7 +147,7 @@
     "ts"  #'flyspell-mode
     "tt"  #'tmr-reschedule
     "tw"  #'visual-line-mode
-    "tz"  #'yejun/zen-mode
+    "tz"  #'logos-focus-mode
 
     ;; window
     "w"   evil-window-map
