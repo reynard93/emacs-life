@@ -103,7 +103,7 @@
     "nA"  #'consult-org-heading
     "nb"  #'citar-open
     "nB"  #'citar-create-note
-    "nc"  #'citar-denote-open-note
+    "nc"  #'tmr-clone
     "nd"  #'denote-journal-extras-new-or-existing-entry
     "nf"  #'denote-open-or-create-with-command
     "nF"  #'yejun/browse-org-directory
@@ -146,7 +146,7 @@
     ;; toggle
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
-    "tt"  #'tmr-reschedule
+    "tt"  #'modus-themes-toggle
     "tw"  #'visual-line-mode
     "tz"  #'logos-focus-mode
 
