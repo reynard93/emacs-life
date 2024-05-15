@@ -195,7 +195,6 @@
     "i"  #'org-toggle-item
     "I"  #'org-id-get-create
     "k"  #'org-babel-remove-result
-    "l"  #'org-toggle-link-display
     "o"  #'org-set-property
     "p"  #'org-priority
     "q"  #'org-set-tags-command

@@ -71,6 +71,7 @@
   :hook (org-mode . my-org-mode-hook)
   :bind (("C-c l" . org-store-link)
          :map org-mode-map
+         ("C-u C-c C-l" . org-toggle-link-display)
          ("C-M-S-h" . org-babel-mark-block)
          ("C-c i" . org-cite-insert)))
 
