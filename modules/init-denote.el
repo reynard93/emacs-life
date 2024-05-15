@@ -73,9 +73,10 @@
 
 (use-package consult-denote
   :vc (consult-denote :url "https://github.com/protesilaos/consult-denote.git")
-  :after (consult denote)
+  :after denote
   :config
   (message "consult-denote is loaded")
+  (consult-denote-mode 1)
   :custom
   (consult-denote-grep-command #'consult-ripgrep))
 
