@@ -30,6 +30,7 @@
   (org-use-sub-superscripts '{})
   (org-read-date-prefer-future 'time)
   (org-M-RET-may-split-line '((default . nil)))
+  (org-tags-column 0)
 
   ;; Appearance
   (org-ellipsis "▾")
