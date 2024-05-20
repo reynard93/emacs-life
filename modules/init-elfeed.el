@@ -48,7 +48,8 @@
       "R" #'+elfeed/post-to-wombag))
 
   :custom
-  (elfeed-search-remain-on-entry t))
+  (elfeed-search-remain-on-entry t)
+  (elfeed-search-filter "@6-months-ago +unread -paper"))
 
 (use-package elfeed-org
   :pin melpa
