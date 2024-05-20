@@ -58,4 +58,10 @@
   :config
   (message "git-timemachine is loaded"))
 
+(use-package git-link
+  :pin melpa
+  :defer t
+  :config
+  (message "git-link is loaded"))
+
 (provide 'init-git)

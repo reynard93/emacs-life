@@ -88,6 +88,7 @@
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
+    "gy"  #'git-link
 
     ;; git - create
     "gcb" #'magit-branch-and-checkout
