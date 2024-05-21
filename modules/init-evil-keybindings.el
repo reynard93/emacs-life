@@ -8,11 +8,11 @@
 
   (defun yejun/browse-nix-config ()
     (interactive)
-    (+project/browse-files (expand-file-name "nix-config" yejun-config-directory)))
+    (+project/browse-files (expand-file-name "nix-config/" yejun-config-directory)))
 
   (defun yejun/browse-blog ()
     (interactive)
-    (+project/browse-files (expand-file-name "yejun.dev" yejun-source-directory)))
+    (+project/browse-files (expand-file-name "yejun.dev/" yejun-source-directory)))
 
   (defun yejun/browse-org-directory ()
     (interactive)
