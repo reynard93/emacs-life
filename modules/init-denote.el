@@ -4,13 +4,18 @@
   (setq denote-directory (expand-file-name "notes" yejun-source-directory))
 
   ;; Setup denote-templates
-  (require 'f)
-  (setq denote-templates-directory (expand-file-name "templates" denote-directory))
+  (defun denote-template-content (filename)
+    "Read the contents of FILE and return as a string."
+    (let ((denote-templates-directory (expand-file-name "templates" denote-directory)))
+      (with-temp-buffer
+        (insert-file-contents (expand-file-name filename denote-templates-directory))
+        (buffer-string))))
+
   (setq denote-templates
-        `((daily-checkin . ,(f-read (expand-file-name "daily-checkin.org" denote-templates-directory)))
-          (weekly-checkin . ,(f-read (expand-file-name "weekly-checkin.org" denote-templates-directory)))
-          (heartbeat . ,(f-read (expand-file-name "heartbeat.org" denote-templates-directory)))
-          (kickoff . ,(f-read (expand-file-name "kickoff.org" denote-templates-directory)))))
+        `((daily-checkin . ,(denote-template-content "daily-checkin.org"))
+          (weekly-checkin . ,(denote-template-content "weekly-checkin.org"))
+          (heartbeat . ,(denote-template-content "heartbeat.org"))
+          (kickoff . ,(denote-template-content "kickoff.org"))))
 
   :config
   (message "denote is loaded")
