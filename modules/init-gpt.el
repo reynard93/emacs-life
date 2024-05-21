@@ -1,6 +1,6 @@
 ;; Azure OpenAI
 (defvar azure-openai-api-host "beepboop.openai.azure.com")
-(defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2024-02-15-preview")
+(defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2024-02-01")
 (defvar azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
 
 ;; Google Gemini
@@ -12,22 +12,13 @@
   :config
   (message "gptel is loaded")
 
-  (defvar gptel--azure-gpt-35
+  (defvar gptel--azure-gpt-4o
     (gptel-make-azure
-     "Azure GPT-3.5"
+     "Azure GPT-4o"
      :host azure-openai-api-host
      :key azure-openai-api-key
-     :endpoint (format azure-openai-api-path "gpt-35-turbo")
-     :models '("gpt-3.5-turbo")
-     :stream t))
-
-  (defvar gptel--azure-gpt-4
-    (gptel-make-azure
-     "Azure GPT-4"
-     :host azure-openai-api-host
-     :key azure-openai-api-key
-     :endpoint (format azure-openai-api-path "gpt-4")
-     :models '("gpt-4")
+     :endpoint (format azure-openai-api-path "gpt-4o")
+     :models '("gpt-4o")
      :stream t))
 
   (defvar gptel--gemini
@@ -53,8 +44,8 @@
                 "llama2-70b-4096"
                 "gemma-7b-it")))
 
-  (setq-default gptel-model "gpt-4"
-                gptel-backend gptel--azure-gpt-4)
+  (setq-default gptel-model "gpt-4o"
+                gptel-backend gptel--azure-gpt-4o)
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -95,11 +86,12 @@
   :custom
   (chatgpt-shell-welcome-function nil)
   (chatgpt-shell-openai-key azure-openai-api-key)
-  (chatgpt-shell-model-version (cl-position "gpt-3.5-turbo" chatgpt-shell-model-versions :test 'string=))
+  (chatgpt-shell-model-versions '("gpt-4o"))
+  (chatgpt-shell-model-version 0)
 
   ;; Azure OpenAI
   (chatgpt-shell-api-url-base (format "https://%s" azure-openai-api-host))
-  (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-35-turbo"))
+  (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4o"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key)))))
 
 (use-package kagi
