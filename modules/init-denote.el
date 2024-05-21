@@ -1,7 +1,7 @@
 (use-package denote
   :defer t
   :init
-  (setq denote-directory "~/src/notes")
+  (setq denote-directory (expand-file-name "notes" yejun-source-directory))
 
   ;; Setup denote-templates
   (require 'f)
