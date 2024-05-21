@@ -63,6 +63,14 @@
   (org-confirm-babel-evaluate nil)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'other-window)
+  (org-structure-template-alist
+   '(("s" . "src")
+     ("e" . "src emacs-lisp")
+     ("n" . "src nix")
+     ("r" . "src ruby")
+     ("q" . "quote")
+     ("x" . "example")
+     ("X" . "export")))
 
   ;; Export
   (org-export-with-sub-superscripts nil)
