@@ -49,7 +49,7 @@
 
   :custom
   (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@6-months-ago +unread -paper"))
+  (elfeed-search-filter "@6-months-ago +unread +tracked"))
 
 (use-package elfeed-org
   :pin melpa
