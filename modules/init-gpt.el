@@ -76,16 +76,9 @@
      ((y-or-n-p "[gptel] Prompt has more than 2000 chars, really send?") (gptel-send arg))
      (t (message "[gptel] Request cancelled"))))
 
-  (setf (alist-get 'org-mode gptel-prompt-prefix-alist) "* Prompt: ")
-  (setf (alist-get 'org-mode gptel-response-prefix-alist) "Response: ")
-
   :custom
   (gptel-max-tokens 700)
   (gptel-default-mode 'org-mode)
-  (gptel-directives
-   '((default . "You are a large language model living in Emacs and a helpful assistant. Respond concisely.")
-     (translator . "You are a language translator. Translate the text delimited by triple backticks into a specific locale or zh-CN. Respond without backticks.")))
-
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
          ("C-c C-g" . gptel-abort)
