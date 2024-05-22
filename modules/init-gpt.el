@@ -13,26 +13,23 @@
   (message "gptel is loaded")
 
   (defvar gptel--azure-gpt-4o
-    (gptel-make-azure
-     "Azure GPT-4o"
-     :host azure-openai-api-host
-     :key azure-openai-api-key
-     :endpoint (format azure-openai-api-path "gpt-4o")
-     :models '("gpt-4o")
-     :stream t))
+    (gptel-make-azure "Azure GPT-4o"
+      :host azure-openai-api-host
+      :key azure-openai-api-key
+      :endpoint (format azure-openai-api-path "gpt-4o")
+      :models '("gpt-4o")
+      :stream t))
 
   (defvar gptel--gemini
-    (gptel-make-gemini
-     "Gemini"
-     :host gemini-api-host
-     :key gemini-api-key
-     :stream t))
+    (gptel-make-gemini "Gemini"
+      :host gemini-api-host
+      :key gemini-api-key
+      :stream t))
 
   (defvar gptel--kagi
-    (gptel-make-kagi
-     "Kagi"
-     :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))
-     :stream nil))
+    (gptel-make-kagi "Kagi"
+      :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))
+      :stream nil))
 
   (defvar gptel--groq
     (gptel-make-openai "Groq"
