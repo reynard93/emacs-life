@@ -41,6 +41,13 @@
                 "llama2-70b-4096"
                 "gemma-7b-it")))
 
+  (defvar gptel--llama-cpp
+    (gptel-make-openai "llama-cpp"
+      :protocol "http"
+      :host "localhost:8080"
+      :models '("llama2-7b")
+      :stream t))
+
   (setq-default gptel-model "gpt-4o"
                 gptel-backend gptel--azure-gpt-4o)
 
