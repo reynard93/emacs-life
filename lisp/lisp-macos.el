@@ -14,6 +14,6 @@
   (let* ((sound (or sound-name "Default"))
          (script (format "display notification \"%s\" with title \"%s\" sound name \"%s\""
                          body title sound)))
-    (start-process "notifier" nil "osascript" "-e" script)))
+    (do-applescript script)))
 
 (provide 'lisp-macos)
