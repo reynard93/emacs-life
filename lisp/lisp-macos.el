@@ -11,7 +11,6 @@
     (start-process "finder" nil "open" "-R" filename)))
 
 (defun +macos/notify (title body &optional sound-name)
-  (interactive)
   (let* ((sound (or sound-name "Default"))
          (script (format "display notification \"%s\" with title \"%s\" sound name \"%s\""
                          body title sound)))
