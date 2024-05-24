@@ -6,7 +6,7 @@
   (let ((script (format "tell application id \"com.runningwithcrayons.Alfred\" to run trigger \"%s\" in workflow \"%s\"" trigger workflow)))
     (do-applescript script)))
 
-(defun +alfred/browser-link (arg)
+(defun +alfred/browser-link (&optional arg)
   "Returns link in org-mode format, if ARG is present, returns link
 in markdown format."
   (interactive "P")

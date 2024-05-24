@@ -112,6 +112,7 @@
     "nK"  #'denote-keywords-remove
     "nm"  #'org-tags-view
     "nn"  #'denote
+    "nN"  #'+denote/create-note-using-browser-link-title
     "ns"  #'consult-denote-grep
     "nS"  #'org-search-view
     "nr"  #'denote-rename-file
