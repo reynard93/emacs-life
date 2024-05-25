@@ -54,6 +54,7 @@
     "bB"  #'switch-to-buffer-other-window
     "bd"  #'dired-jump
     "bm"  #'bookmark-set
+    "bn"  #'evil-buffer-new
     "br"  #'revert-buffer
     "bz"  #'bury-buffer
 
