@@ -128,4 +128,12 @@
          ("C-c w y" . citar-denote-cite-nocite)
          ("C-c w z" . citar-denote-nobib)))
 
+(use-package org-download
+  :pin melpa
+  :defer t
+  :init
+  (setq-default org-download-image-dir (expand-file-name "attachments/" denote-directory))
+  :config
+  (message "org-download is loaded"))
+
 (provide 'init-denote)
