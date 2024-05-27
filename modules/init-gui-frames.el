@@ -44,35 +44,9 @@
 
 (use-package beframe
   :if (display-graphic-p)
-  :after consult
-  :demand t
   :config
   (message "beframe is loaded")
   (beframe-mode 1)
-
-  (defface beframe-buffer
-    '((t :inherit modus-themes-fg-magenta))
-    "Face for `consult' framed buffers.")
-
-  (defun +beframe--buffer-names-sorted (&optional frame)
-    (beframe-buffer-names frame :sort #'beframe-buffer-sort-visibility))
-
-  (defvar beframe-consult-source
-    `( :name     "Frame-specific buffers (current frame)"
-       :narrow   ?F
-       :category buffer
-       :face     beframe-buffer
-       :history  beframe-history
-       :items    ,#'+beframe--buffer-names-sorted
-       :action   ,#'switch-to-buffer
-       :state    ,#'consult--buffer-state))
-
-  (add-to-list 'consult-buffer-sources 'beframe-consult-source)
-
-  :custom
-  (beframe-rename-function nil)
-  (beframe-create-frame-scratch-buffer nil)
-
   :bind-keymap ("C-c b" . beframe-prefix-map))
 
 (use-package server
