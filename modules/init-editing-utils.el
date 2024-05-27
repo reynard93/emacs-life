@@ -56,4 +56,9 @@
   :config
   (message "wgrep is loaded"))
 
+(use-package substitute
+  :config
+  (message "substitute is loaded")
+  :bind-keymap ("C-c s" . substitute-prefix-map))
+
 (provide 'init-editing-utils)
