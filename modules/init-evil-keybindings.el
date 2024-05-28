@@ -132,14 +132,12 @@
 
     ;; search
     "sd"  #'deadgrep
-    "sg"  #'+lookup/google-translate-guess-source-lang
-    "sG"  #'+lookup/google-translate-guess-source-lang-force-select
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
     "sk"  #'dash-at-point
     "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
-    "so"  #'+lookup/search-online
+    "so"  #'+kagi/search
     "sr"  #'+buffer/search-multi
     "sR"  #'+buffer/search-multi-for-symbol-at-point
     "ss"  #'+buffer/search

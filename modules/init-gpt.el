@@ -98,14 +98,4 @@
   (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4o"))
   (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key)))))
 
-(use-package kagi
-  :pin melpa
-  :defer t
-  :config
-  (message "kagi is loaded")
-  :custom
-  (kagi-api-token (lambda () (auth-source-pass-get 'secret "api.kagi.com")))
-  :bind ( :map embark-url-map
-          ("K" . kagi-summarize-url)))
-
 (provide 'init-gpt)
