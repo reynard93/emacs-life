@@ -3,12 +3,11 @@
 (defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2024-02-01")
 (defvar azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
 
-;; Google Gemini
-(defvar gemini-api-host "generativelanguage.googleapis.com")
-(defvar gemini-api-key (lambda () (auth-source-pass-get 'secret gemini-api-host)))
-
 (use-package gptel
   :pin melpa
+  :init
+  (setq gptel--openai nil)
+
   :config
   (message "gptel is loaded")
 
@@ -18,34 +17,6 @@
       :key azure-openai-api-key
       :endpoint (format azure-openai-api-path "gpt-4o")
       :models '("gpt-4o")
-      :stream t))
-
-  (defvar gptel--gemini
-    (gptel-make-gemini "Gemini"
-      :host gemini-api-host
-      :key gemini-api-key
-      :stream t))
-
-  (defvar gptel--kagi
-    (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))
-      :stream nil))
-
-  (defvar gptel--groq
-    (gptel-make-openai "Groq"
-      :host "api.groq.com"
-      :endpoint "/openai/v1/chat/completions"
-      :stream nil
-      :key (lambda () (auth-source-pass-get 'secret "api.groq.com"))
-      :models '("mixtral-8x7b-32768"
-                "llama2-70b-4096"
-                "gemma-7b-it")))
-
-  (defvar gptel--llama-cpp
-    (gptel-make-openai "llama-cpp"
-      :protocol "http"
-      :host "localhost:8080"
-      :models '("llama2-7b")
       :stream t))
 
   (setq-default gptel-model "gpt-4o"
@@ -80,22 +51,5 @@
          :map gptel-mode-map
          ("C-c C-x t" . gptel-set-topic)
          ("M-n" . gptel-end-of-response)))
-
-(use-package chatgpt-shell
-  :pin melpa
-  :defer t
-  :config
-  (message "chatgpt-shell is loaded")
-
-  :custom
-  (chatgpt-shell-welcome-function nil)
-  (chatgpt-shell-openai-key azure-openai-api-key)
-  (chatgpt-shell-model-versions '("gpt-4o"))
-  (chatgpt-shell-model-version 0)
-
-  ;; Azure OpenAI
-  (chatgpt-shell-api-url-base (format "https://%s" azure-openai-api-host))
-  (chatgpt-shell-api-url-path (format azure-openai-api-path "gpt-4o"))
-  (chatgpt-shell-auth-header (lambda () (format "api-key: %s" (chatgpt-shell-openai-key)))))
 
 (provide 'init-gpt)
