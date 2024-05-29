@@ -1,16 +1,23 @@
-(defun +kagi--token ()
+(defun +kagi-token ()
   (auth-source-pass-get 'secret "kagi.com/token"))
 
-(defun +kagi--query ()
+(defun +kagi-query ()
   (let ((selected-text (if (use-region-p)
                            (buffer-substring-no-properties (region-beginning) (region-end))
                          (or (thing-at-point 'symbol t) ""))))
     (string-trim selected-text)))
 
+(defun +kagi-query-prompt ()
+  (let ((query (+kagi-query)))
+    (let ((minibuffer-setup-hook (lambda () (goto-char (minibuffer-prompt-end)))))
+      (read-from-minibuffer "Search Kagi: " (concat "\n" query)))))
+
 (defun +kagi/search (&optional assistant-type)
-  (interactive)
-  (let* ((token (+kagi--token))
-         (query (+kagi--query))
+  (interactive "P")
+  (let* ((token (+kagi-token))
+         (query (if current-prefix-arg
+                    (+kagi-query)
+                  (+kagi-query-prompt)))
          (formatted-query (if assistant-type (format "%s %s" assistant-type query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
 
@@ -35,10 +42,10 @@
 
 (defun +kagi/assistant-custom-translate ()
   (interactive)
-  (+kagi/assistant-custom "!t"))
+  (+kagi/assistant-custom "translate"))
 
 (defun +kagi/assistant-custom-localize ()
   (interactive)
-  (+kagi/assistant-custom "!l"))
+  (+kagi/assistant-custom "localize"))
 
 (provide 'lisp-kagi)
