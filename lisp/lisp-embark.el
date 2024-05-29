@@ -13,6 +13,18 @@
   (when-let ((pr-number (+embark--gh-parse-pr-number target)))
     (shell-command (concat "gh pr view -w " pr-number))))
 
+(defun +embark/gh-pr-view (target)
+  "View a pull request with gh command line."
+  (when-let* ((pr-number (+embark--gh-parse-pr-number target))
+              (output (shell-command-to-string (concat "gh pr view " pr-number)))
+              (formatted-output (replace-regexp-in-string "\r" "" output))
+              (buffer-name (format "*gh-pr-view %s*" pr-number)))
+    (with-output-to-temp-buffer buffer-name
+      (with-current-buffer buffer-name
+        (gfm-mode)
+        (evil-local-set-key 'normal (kbd "q") 'quit-window))
+      (princ formatted-output))))
+
 (defun +embark/gh-pr-copy-url (target)
   "Copy a pull request's URL with gh command line."
   (when-let ((pr-number (+embark--gh-parse-pr-number target)))
@@ -22,9 +34,10 @@
       (message "Copied URL: %s" output))))
 
 (defvar-keymap embark-gh-pr-map
-  "b" #'+embark/gh-pr-browse
   "c" #'+embark/gh-pr-checkout
-  "U" #'+embark/gh-pr-copy-url)
+  "o" #'+embark/gh-pr-browse
+  "v" #'+embark/gh-pr-view
+  "y" #'+embark/gh-pr-copy-url)
 
 (with-eval-after-load 'embark
   (add-to-list 'embark-keymap-alist '(github-pull-request . embark-gh-pr-map)))
