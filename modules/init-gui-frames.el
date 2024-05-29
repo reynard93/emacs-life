@@ -44,6 +44,7 @@
 
 (use-package beframe
   :if (display-graphic-p)
+  :demand t
   :config
   (message "beframe is loaded")
   (beframe-mode 1)
