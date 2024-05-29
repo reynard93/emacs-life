@@ -1,9 +1,12 @@
 (use-package modus-themes
   :config
   (message "modus-themes is loaded")
-  (if (display-graphic-p)
-      (modus-themes-select 'modus-operandi)
-    (modus-themes-select 'modus-vivendi))
+  (modus-themes-load-theme
+   (if (display-graphic-p)
+       (if (+macos/dark-mode-p)
+           'modus-vivendi
+         'modus-operandi)
+     'modus-vivendi))
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-mixed-fonts t)
@@ -27,6 +30,21 @@
   (ef-themes-to-toggle '(ef-summer ef-winter))
   (ef-themes-mixed-fonts t)
   (ef-themes-variable-pitch-ui t))
+
+(use-package theme-buffet
+  :if (display-graphic-p)
+  :after (:any modus-themes ef-themes)
+  :defer 1
+  :config
+  (message "theme-buffet is loaded")
+  (theme-buffet-timer-hours 1)
+  :custom
+  (theme-buffet-menu 'end-user)
+  (theme-buffet-end-user
+   '( :night     (modus-vivendi ef-dark ef-winter ef-autumn ef-night ef-duo-dark ef-symbiosis)
+      :morning   (modus-operandi ef-light ef-cyprus ef-spring ef-frost ef-duo-light)
+      :afternoon (modus-operandi-tinted ef-arbutus ef-day ef-kassio ef-summer ef-elea-light ef-maris-light ef-melissa-light ef-trio-light ef-reverie)
+      :evening   (modus-vivendi-tinted ef-rosa ef-elea-dark ef-maris-dark ef-melissa-dark ef-trio-dark ef-dream))))
 
 (use-package spacious-padding
   :if (display-graphic-p)

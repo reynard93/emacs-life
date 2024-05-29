@@ -16,4 +16,15 @@
                          body title sound)))
     (do-applescript script)))
 
+(defun +macos/dark-mode-p ()
+  (string-equal "true" (do-applescript "tell application \"System Events\"
+        tell appearance preferences
+                if (dark mode) then
+                        return \"true\"
+                else
+                        return \"false\"
+                end if
+        end tell
+end tell")))
+
 (provide 'lisp-macos)
