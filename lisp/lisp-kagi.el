@@ -13,11 +13,11 @@
       (read-from-minibuffer "Search Kagi: " (concat "\n" query)))))
 
 (defun +kagi/search (&optional assistant-type)
-  (interactive "P")
+  (interactive)
   (let* ((token (+kagi-token))
-         (query (if current-prefix-arg
-                    (+kagi-query)
-                  (+kagi-query-prompt)))
+         (query (if assistant-type
+                    (+kagi-query-prompt)
+                  (+kagi-query)))
          (formatted-query (if assistant-type (format "%s %s" assistant-type query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
 
