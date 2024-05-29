@@ -25,7 +25,8 @@
   (popper-display-control nil)
   (popper-reference-buffers
    '(compilation-mode
-     rspec-compilation-mode))
+     rspec-compilation-mode
+     inf-ruby-mode))
 
   :bind (("C-`"   . popper-toggle)
          ("M-`"   . popper-cycle)

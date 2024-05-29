@@ -4,6 +4,18 @@
   :config
   (message "ruby-ts-mode is loaded"))
 
+(use-package inf-ruby
+  :defer t
+  :config
+  (message "inf-ruby is loaded")
+  (defun +inf-ruby/console-rails-in-root-dir ()
+    (interactive)
+    (when-let ((dir (+project/root-dir)))
+      (inf-ruby-console-rails dir)))
+
+  :custom
+  (inf-ruby-console-environment "development"))
+
 (use-package bundler
   :pin melpa
   :defer t

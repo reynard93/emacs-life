@@ -172,7 +172,10 @@
     "kk" #'rake
     "kr" #'rake-rerun
     "kR" #'rake-regenerate-cache
-    "kf" #'rake-find-task)
+    "kf" #'rake-find-task
+
+    ;; rails
+    "rc" #'+inf-ruby/console-rails-in-root-dir)
 
   (+evil/local-leader-key
     :keymaps '(ruby-ts-mode-map rspec-mode-map rspec-compilation-mode-map)
