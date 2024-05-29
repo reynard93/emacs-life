@@ -147,7 +147,6 @@
     ;; toggle
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
-    "tt"  #'modus-themes-toggle
     "tw"  #'visual-line-mode
     "tz"  #'logos-focus-mode
 

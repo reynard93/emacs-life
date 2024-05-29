@@ -1,9 +1,9 @@
 (use-package modus-themes
-  :init
-  (setq current-theme (if (display-graphic-p) 'modus-operandi 'modus-vivendi))
   :config
   (message "modus-themes is loaded")
-  (load-theme current-theme :no-confirm)
+  (if (display-graphic-p)
+      (modus-themes-select 'modus-operandi)
+    (modus-themes-select 'modus-vivendi))
   :custom
   (modus-themes-custom-auto-reload nil)
   (modus-themes-mixed-fonts t)
@@ -18,6 +18,15 @@
    '((agenda-structure . (variable-pitch light 1.8))
      (agenda-date . (1.3))
      (t . (regular 1.0)))))
+
+(use-package ef-themes
+  :defer t
+  :config
+  (message "ef-themes is loaded")
+  :custom
+  (ef-themes-to-toggle '(ef-summer ef-winter))
+  (ef-themes-mixed-fonts t)
+  (ef-themes-variable-pitch-ui t))
 
 (use-package spacious-padding
   :if (display-graphic-p)
