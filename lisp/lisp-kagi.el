@@ -48,4 +48,17 @@
   (interactive)
   (+kagi/assistant-custom "localize"))
 
+(defvar kagi-assistant-prefix-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map "r" '+kagi/assistant-research)
+    (define-key map "c" '+kagi/assistant-code)
+    (define-key map "h" '+kagi/assistant-chat)
+    (define-key map "a" '+kagi/assistant-custom)
+    (define-key map "L" '+kagi/assistant-custom-localize)
+    (define-key map "T" '+kagi/assistant-custom-translate)
+    map)
+  "Keymap for kagi assistant commands.")
+
+(bind-key "C-c a" kagi-assistant-prefix-map)
+
 (provide 'lisp-kagi)
