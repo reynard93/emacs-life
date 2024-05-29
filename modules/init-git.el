@@ -9,7 +9,8 @@
   (message "magit is loaded")
   :custom
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
-  (magit-bury-buffer-function #'quit-window))
+  (magit-bury-buffer-function #'quit-window)
+  (magit-show-long-lines-warning nil))
 
 (use-package transient
   :ensure nil
