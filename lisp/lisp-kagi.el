@@ -7,16 +7,18 @@
                          (or (thing-at-point 'symbol t) ""))))
     (string-trim selected-text)))
 
-(defun +kagi-query-prompt ()
-  (let ((query (+kagi-query)))
-    (let ((minibuffer-setup-hook (lambda () (goto-char (minibuffer-prompt-end)))))
-      (read-from-minibuffer "Search Kagi: " (concat "\n" query)))))
+(defun +kagi-query-prompt (assistant-type)
+  (let* ((query (+kagi-query))
+         (initial-contents (concat "\n" query))
+         (prompt (format "Kagi Assistant [%s]: " assistant-type)))
+    (let* ((minibuffer-setup-hook (lambda () (goto-char (minibuffer-prompt-end)))))
+      (read-from-minibuffer prompt initial-contents))))
 
 (defun +kagi/search (&optional assistant-type)
   (interactive)
   (let* ((token (+kagi-token))
          (query (if assistant-type
-                    (+kagi-query-prompt)
+                    (+kagi-query-prompt assistant-type)
                   (+kagi-query)))
          (formatted-query (if assistant-type (format "%s %s" assistant-type query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
