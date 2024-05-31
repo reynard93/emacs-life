@@ -100,26 +100,21 @@
     "goo" #'browse-at-remote
     "gop" #'+github/browse-pull-request
 
-    ;; notes
+    ;; notes/agenda/timer
     "na"  #'consult-org-agenda
-    "nA"  #'consult-org-heading
     "nb"  #'citar-open
     "nB"  #'citar-create-note
     "nc"  #'tmr-clone
-    "nd"  #'denote-journal-extras-new-or-existing-entry
-    "nf"  #'denote-open-or-create-with-command
+    "nC"  #'tmr-with-description
+    "nf"  #'denote-open-or-create
     "nF"  #'yejun/browse-org-directory
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
-    "nm"  #'org-tags-view
     "nn"  #'denote
-    "nN"  #'+denote/create-note-using-browser-link-title
     "ns"  #'consult-denote-grep
-    "nS"  #'org-search-view
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'tmr
-    "nT"  #'org-todo-list
+    "nt"  #'org-todo-list
     "nx"  #'denote-template
 
     ;; open
@@ -191,6 +186,7 @@
   (+evil/local-leader-key
     :keymaps 'org-mode-map
     :major-modes t
+    "a"  #'consult-org-heading
     "A"  #'org-archive-subtree
     "e"  #'org-export-dispatch
     "f"  #'org-footnote-action
@@ -204,12 +200,6 @@
     "t"  #'org-todo
     "T"  #'yejun/org-preview-mode
     "x"  #'org-toggle-checkbox
-
-    ;; anki
-    "aa" #'org-anki-sync-entry
-    "aA" #'org-anki-sync-all
-    "ab" #'org-anki-browse-entry
-    "ac" #'org-anki-cloze-dwim
 
     ;; table
     "b-" #'org-table-insert-hline

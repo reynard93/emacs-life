@@ -1,6 +1,6 @@
 (use-package denote
+  :vc (denote :url "https://github.com/protesilaos/denote.git")
   :defer t
-  :commands (denote-title-prompt denote-keywords-prompt)
   :init
   (setq denote-directory (expand-file-name "notes/" yejun-source-directory))
 
@@ -17,13 +17,6 @@
           (weekly-checkin . ,(denote-template-content "weekly-checkin.org"))
           (heartbeat . ,(denote-template-content "heartbeat.org"))
           (kickoff . ,(denote-template-content "kickoff.org"))))
-
-  (defun +denote/create-note-using-browser-link-title (title keywords)
-    "Create note using browser's link title."
-    (interactive
-     (list (denote-title-prompt (+alfred/browser-link-title))
-           (denote-keywords-prompt nil nil)))
-    (funcall-interactively 'denote title keywords))
 
   :config
   (message "denote is loaded")

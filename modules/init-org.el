@@ -104,15 +104,6 @@
   (org-cite-follow-processor 'citar)
   (org-cite-activate-processor 'citar))
 
-(use-package org-anki
-  :pin melpa
-  :after org
-  :defer t
-  :config
-  (message "org-anki is loaded")
-  :custom
-  (org-anki-inherit-tags nil))
-
 (use-package org-pandoc-import
   :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
   :after org
