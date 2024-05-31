@@ -6,21 +6,11 @@
       (progn
         (logos-focus-mode 1)
         (read-only-mode 1)
-        (setq-local org-hide-emphasis-markers t)
-        (setq-local yejun--org-preview-face-cookies
-                    (list
-                     (face-remap-add-relative 'org-level-3 `(:background ,(face-background 'modus-themes-subtle-blue)))
-                     (face-remap-add-relative 'org-level-4 `(:background ,(face-background 'modus-themes-subtle-cyan)))
-                     (face-remap-add-relative 'org-level-5 `(:background ,(face-background 'modus-themes-subtle-green)))
-                     (face-remap-add-relative 'org-level-6 `(:background ,(face-background 'modus-themes-subtle-red)))
-                     (face-remap-add-relative 'org-level-7 `(:background ,(face-background 'modus-themes-subtle-magenta)))
-                     (face-remap-add-relative 'org-level-8 `(:background ,(face-background 'modus-themes-subtle-yellow))))))
+        (setq-local org-hide-emphasis-markers t))
     (progn
       (logos-focus-mode -1)
       (read-only-mode -1)
-      (setq-local org-hide-emphasis-markers nil)
-      (mapc 'face-remap-remove-relative yejun--org-preview-face-cookies)
-      (kill-local-variable 'yejun--org-preview-face-cookies))))
+      (setq-local org-hide-emphasis-markers nil))))
 
 ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/autoload/org-refile.el
 (defun +org/refile-to-current-file (arg &optional file)
