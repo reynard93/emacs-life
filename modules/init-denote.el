@@ -63,7 +63,6 @@
          ("C-c n o" . denote-sort-dired) ; "order" mnemonic
          ("C-c n j" . denote-journal-extras-new-entry)
          ("C-c n J" . denote-journal-extras-new-or-existing-entry)
-         ("s-d" . denote-journal-extras-new-or-existing-entry)
 
          :map text-mode-map
          ("C-c n i" . denote-link)
