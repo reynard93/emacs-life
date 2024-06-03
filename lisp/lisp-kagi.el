@@ -23,9 +23,9 @@
          (formatted-query (if assistant-type (format "%s %s" assistant-type query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
 
-(defun +kagi/assistant-research (&optional arg)
+(defun +kagi/assistant-research (&optional ask-expert)
   (interactive "P")
-  (if arg
+  (if ask-expert
       (+kagi/search "!expert")
     (+kagi/search "!fast")))
 
@@ -37,9 +37,9 @@
   (interactive)
   (+kagi/search "!chat"))
 
-(defun +kagi/assistant-custom (&optional bang)
+(defun +kagi/assistant-custom (&optional instruction)
   (interactive)
-  (let ((search-type (format "!custom %s" bang)))
+  (let ((search-type (format "!custom %s" instruction)))
     (+kagi/search search-type)))
 
 (defun +kagi/assistant-custom-translate ()
