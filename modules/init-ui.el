@@ -35,6 +35,12 @@
   :if (display-graphic-p)
   :after (:any modus-themes ef-themes)
   :defer 1
+  :init
+  (defun +theme-buffet/toggle ()
+    (interactive)
+    (if theme-buffet-timer-hours
+        (theme-buffet--free-timer 'theme-buffet-timer-hours)
+      (theme-buffet-timer-hours 1)))
   :config
   (message "theme-buffet is loaded")
   (theme-buffet-timer-hours 1)
