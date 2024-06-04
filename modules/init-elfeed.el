@@ -15,14 +15,26 @@
   :config
   (message "elfeed is loaded")
 
-  (defun +elfeed/post-to-wombag (entries)
-    (interactive (list (pcase major-mode
-                         ('elfeed-search-mode
-                          (elfeed-search-selected))
-                         ('elfeed-show-mode
-                          (list elfeed-show-entry)))))
-    (dolist (entry (ensure-list entries))
-      (+wombag/url (elfeed-entry-link entry))))
+  (defun +elfeed--selected-entry ()
+    (pcase major-mode
+      ('elfeed-search-mode
+       (elfeed-search-selected :single))
+      ('elfeed-show-mode
+       elfeed-show-entry)))
+
+  (defun +elfeed/post-to-wombag (entry)
+    (interactive (list (+elfeed--selected-entry)))
+    (+wombag/url (elfeed-entry-link entry))
+    (elfeed-untag entry 'unread)
+    (elfeed-tag entry 'collected)
+    (elfeed-search-update--force))
+
+  (defun +elfeed/summarize (entry)
+    (interactive (list (+elfeed--selected-entry)))
+    (+kagi/summarize (elfeed-entry-link entry))
+    (elfeed-untag entry 'unread)
+    (elfeed-tag entry 'summarized)
+    (elfeed-search-update--force))
 
   (defun +elfeed/switch-to-wombag ()
     (interactive)
@@ -40,11 +52,13 @@
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
       "B" #'+elfeed/browse
+      "K" #'+elfeed/summarize
       "R" #'+elfeed/post-to-wombag
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
       "B" #'+elfeed/browse
+      "K" #'+elfeed/summarize
       "R" #'+elfeed/post-to-wombag))
 
   :custom
