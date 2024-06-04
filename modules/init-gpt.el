@@ -3,13 +3,20 @@
 (defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2024-02-01")
 (defvar azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
 
+;; Kagi
+(defvar kagi-api-key (lambda () (auth-source-pass-get 'secret "api.kagi.com")))
+
 (use-package gptel
   :pin melpa
   :init
+  ;; Hide OpenAI models
   (setq gptel--openai nil)
 
   :config
   (message "gptel is loaded")
+
+  (setq-default gptel-backend gptel--azure-gpt-4o
+                gptel-model "gpt-4o")
 
   (defvar gptel--azure-gpt-4o
     (gptel-make-azure "Azure GPT-4o"
@@ -19,8 +26,9 @@
       :models '("gpt-4o")
       :stream t))
 
-  (setq-default gptel-model "gpt-4o"
-                gptel-backend gptel--azure-gpt-4o)
+  (defvar gptel--kagi
+    (gptel-make-kagi "Kagi"
+      :key kagi-api-key))
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
