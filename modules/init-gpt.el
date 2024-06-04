@@ -1,34 +1,31 @@
-;; Azure OpenAI
-(defvar azure-openai-api-host "beepboop.openai.azure.com")
-(defvar azure-openai-api-path "/openai/deployments/%s/chat/completions?api-version=2024-02-01")
-(defvar azure-openai-api-key (lambda () (auth-source-pass-get 'secret azure-openai-api-host)))
-
-;; Kagi
-(defvar kagi-api-key (lambda () (auth-source-pass-get 'secret "api.kagi.com")))
-
 (use-package gptel
   :pin melpa
   :init
-  ;; Hide OpenAI models
-  (setq gptel--openai nil)
-
-  :config
-  (message "gptel is loaded")
-
-  (setq-default gptel-backend gptel--azure-gpt-4o
-                gptel-model "gpt-4o")
-
-  (defvar gptel--azure-gpt-4o
-    (gptel-make-azure "Azure GPT-4o"
-      :host azure-openai-api-host
-      :key azure-openai-api-key
-      :endpoint (format azure-openai-api-path "gpt-4o")
+  (defvar gptel--openai
+    (gptel-make-azure "OpenAI"
+      :host "beepboop.openai.azure.com"
+      :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-02-01"
+      :key (lambda () (auth-source-pass-get 'secret "beepboop.openai.azure.com"))
       :models '("gpt-4o")
       :stream t))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key kagi-api-key))
+      :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))))
+
+  (defvar gptel--groq
+    (gptel-make-openai "Groq"
+      :host "api.groq.com"
+      :endpoint "/openai/v1/chat/completions"
+      :key (lambda () (auth-source-pass-get 'secret "api.groq.com"))
+      :models '("llama3-70b-8192")
+      :stream t))
+  
+  (setq-default gptel-backend gptel--openai
+                gptel-model "gpt-4o")
+
+  :config
+  (message "gptel is loaded")
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
