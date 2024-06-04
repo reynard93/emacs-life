@@ -9,7 +9,7 @@
   :config
   (message "ace-window is loaded")
   :custom
-  (aw-scope 'frame)
+  (aw-scope 'global)
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ([remap other-window] . ace-window))
 
