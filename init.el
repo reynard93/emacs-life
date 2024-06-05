@@ -6,7 +6,7 @@
 
 ;; Variables
 (defvar yejun-config-directory "~/.config/")
-(defvar yejun-source-directory "~/src/")
+(defvar yejun-code-directory "~/src/")
 
 ;; Bootstrap
 (require 'init-lisp)

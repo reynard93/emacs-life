@@ -1,7 +1,7 @@
 (use-package org
   :ensure nil
   :init
-  (setq org-directory (expand-file-name "org/" yejun-source-directory)
+  (setq org-directory (expand-file-name "org/" yejun-code-directory)
         org-agenda-files (list org-directory))
 
   :config

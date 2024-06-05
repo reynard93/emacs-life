@@ -12,7 +12,7 @@
 
   (defun yejun/browse-blog ()
     (interactive)
-    (+project/browse-files (expand-file-name "yejun.dev/" yejun-source-directory)))
+    (+project/browse-files (expand-file-name "yejun.dev/" yejun-code-directory)))
 
   (defun yejun/browse-org-directory ()
     (interactive)
