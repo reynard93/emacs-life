@@ -23,11 +23,9 @@
          (formatted-query (if assistant-type (format "%s %s" assistant-type query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
 
-(defun +kagi/assistant-research (&optional ask-expert)
-  (interactive "P")
-  (if ask-expert
-      (+kagi/search "!expert")
-    (+kagi/search "!fast")))
+(defun +kagi/assistant-research ()
+  (interactive)
+  (+kagi/search "!expert"))
 
 (defun +kagi/assistant-code ()
   (interactive)
