@@ -5,10 +5,8 @@
 
   (defvar-keymap embark-tmr-map
     "c" #'tmr-clone
-    "e" #'tmr-edit-description
-    "r" #'tmr-remove
-    "R" #'tmr-remove-finished
-    "s" #'tmr-reschedule)
+    "d" #'tmr-remove
+    "r" #'tmr-reschedule)
 
   (with-eval-after-load 'embark
     (add-to-list 'embark-keymap-alist '(tmr-timer . embark-tmr-map))
