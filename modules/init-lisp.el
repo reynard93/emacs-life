@@ -9,7 +9,6 @@
 (require 'lisp-git)
 (require 'lisp-kagi)
 (require 'lisp-macos)
-(require 'lisp-mail)
 (require 'lisp-org)
 (require 'lisp-project)
 

@@ -1,56 +1,6 @@
 (setq user-full-name "Yejun Su"
       user-mail-address "goofan.su@gmail.com")
 
-(use-package mu4e
-  :ensure nil
-  :defer t
-  :init
-  (setq mu4e-maildir "~/.mail")
-
-  :config
-  (message "mu4e is loaded")
-  (setq mu4e-context-policy 'pick-first)
-  (setq mu4e-compose-context-policy 'pick-first)
-
-  (setq mu4e-contexts
-        (list
-         (make-mu4e-context
-          :name "Personal"
-          :match-func
-          (lambda (msg)
-            (when msg
-              (string-prefix-p "/Personal" (mu4e-message-field msg :maildir))))
-          :vars
-          '((user-mail-address . "goofan.su@gmail.com")
-            (user-full-name    . "Yejun Su")
-            (mu4e-sent-folder  . "/Personal/[Gmail]/Sent Mail")
-            (mu4e-drafts-folder  . "/Personal/[Gmail]/Drafts")
-            (mu4e-trash-folder  . "/Personal/[Gmail]/Trash")
-            (mu4e-refile-folder  . "/Personal/[Gmail]/All Mail")))))
-
-  (setq mu4e-maildir-shortcuts
-        '((:maildir "/Personal/Inbox"             :key ?i :hide t)
-          (:maildir "/Personal/[Gmail]/Sent Mail" :key ?s)
-          (:maildir "/Personal/[Gmail]/Drafts"    :key ?d)
-          (:maildir "/Personal/[Gmail]/Trash"     :key ?t :hide t)
-          (:maildir "/Personal/[Gmail]/All Mail"  :key ?a :hide t)))
-
-  (setq mu4e-bookmarks
-        '((:name "Inbox"       :key ?i :query "m:/Personal/Inbox" :hide t)
-          (:name "Unread"      :key ?u :query "flag:unread AND NOT flag:trashed")
-          (:name "Today"       :key ?t :query "date:today..now")
-          (:name "Last 7 days" :key ?w :query "date:7d..now" :hide-unread t)
-          (:name "Sourcehut"   :key ?s :query "flag:list AND to:lists.sr.ht" :hide t)
-          (:name "Codeberg"    :key ?c :query "flag:list AND from:codeberg.org" :hide t)
-          (:name "GitHub"      :key ?g :query "flag:list AND from:github.com" :hide t)))
-
-  :custom
-  (mu4e-update-interval (* 15 60))
-  (mu4e-get-mail-command "mbsync -a")
-  (mu4e-change-filenames-when-moving t)
-  (mu4e-read-option-use-builtin nil)
-  (mu4e-completing-read-function #'completing-read))
-
 (use-package message
   :ensure nil
   :defer t
@@ -63,11 +13,88 @@
 
 (use-package sendmail
   :ensure nil
-  :defer t
+  :after message
   :config
   (message "sendmail is loaded")
   :custom
   (sendmail-program (executable-find "msmtp"))
   (send-mail-function #'smtpmail-send-it))
+
+(use-package notmuch
+  :pin melpa
+  :init
+  (defun +notmuch/update-mail-and-index ()
+    "Update mail and index using mbsync and notmuch."
+    (interactive)
+    (unless (get-process "notmuch")
+      (message "[notmuch] Updating mail and index")
+      (let ((notmuch-process (start-process-shell-command "notmuch" "*notmuch-output*" "notmuch new")))
+        (set-process-sentinel
+         notmuch-process
+         (lambda (_process _event)
+           (message "[notmuch] Updating mail and index...done"))))))
+  :hook
+  (notmuch-hello-mode . +notmuch/update-mail-and-index)
+  (notmuch-mua-send . notmuch-mua-attachment-check)
+  :config
+  (message "notmuch is loaded")
+  :custom
+  ;; General UI
+  (notmuch-show-logo nil)
+  (notmuch-column-control 1.0)
+  (notmuch-hello-auto-refresh t)
+  (notmuch-hello-recent-searches-max 20)
+  (notmuch-hello-thousands-separator "")
+  (notmuch-show-all-tags-list t)
+  (notmuch-hello-sections
+   '(notmuch-hello-insert-saved-searches
+     notmuch-hello-insert-recent-searches))
+  ;; Search
+  (notmuch-search-oldest-first nil)
+  (notmuch-search-result-format
+   '(("date" . "%12s  ")
+     ("count" . "%-7s  ")
+     ("authors" . "%-20.20s  ")
+     ("subject" . "%-80.80s  ")
+     ("tags" . "(%s)")))
+  (notmuch-tree-result-format
+   '(("date" . "%12s  ")
+     ("authors" . "%-20.20s  ")
+     ((("tree" . "%s")
+       ("subject" . "%s"))
+      . " %-80.80s  ")
+     ("tags" . "(%s)")))
+  (notmuch-saved-searches
+   `(( :name "inbox"
+       :query "tag:inbox"
+       :sort-order newest-first
+       :key ,(kbd "i"))
+     ( :name "unread (inbox)"
+       :query "tag:unread and tag:inbox"
+       :sort-order newest-first
+       :key ,(kbd "u"))
+     ( :name "personal"
+       :query "to:goofan.su@gmail.com"
+       :sort-order newest-first
+       :key ,(kbd "p"))
+     ( :name "work"
+       :query "to:james.su@managebac.com"
+       :sort-order newest-first
+       :key ,(kbd "w"))))
+  ;; Compose
+  (notmuch-always-prompt-for-sender t)
+  ;; Reading
+  (notmuch-show-indent-messages-width 0)
+  (notmuch-show-part-button-default-action 'notmuch-show-view-part)
+  (notmuch-wash-wrap-lines-length 120)
+  (notmuch-unthreaded-show-out nil)
+  :bind (("C-c m" . notmuch)
+         ("C-x m" . notmuch-mua-new-mail)))
+
+(use-package ol-notmuch
+  :pin melpa
+  :after notmuch
+  :config
+  (message "ol-notmuch is loaded"))
 
 (provide 'init-mail)

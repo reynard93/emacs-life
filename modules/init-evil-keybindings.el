@@ -120,8 +120,6 @@
     ;; open
     "oA"  #'org-agenda
     "oe"  #'elfeed
-    "om"  #'mu4e
-    "oM"  #'+mail/compose-for-service
     "oo"  #'+macos/reveal-in-finder
     "oO"  #'+macos/reveal-project-in-finder
 
