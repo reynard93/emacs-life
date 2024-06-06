@@ -1,7 +1,6 @@
 (defun +embark--gh-parse-pr-number (target)
-  (progn
-    (string-match "^#\\([0-9]+\\)" target)
-    (match-string 1 target)))
+  (string-match "^#\\([0-9]+\\)" target)
+  (match-string 1 target))
 
 (defun +embark/gh-pr-checkout (target)
   "Checkout a pull request with gh command line."
