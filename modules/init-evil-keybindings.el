@@ -71,6 +71,8 @@
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
+    "fo"  #'+macos/reveal-in-finder
+    "fO"  #'+macos/reveal-project-in-finder
     "fp"  #'+tempel/find-private-template
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
@@ -120,8 +122,6 @@
     ;; open
     "oA"  #'org-agenda
     "oe"  #'elfeed
-    "oo"  #'+macos/reveal-in-finder
-    "oO"  #'+macos/reveal-project-in-finder
 
     ;; search
     "sd"  #'deadgrep
