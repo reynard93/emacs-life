@@ -6,10 +6,16 @@
       (progn
         (logos-focus-mode 1)
         (read-only-mode 1)
-        (setq-local org-hide-emphasis-markers t))
+        (setq-local org-hide-emphasis-markers t
+                    org-hide-macro-markers t
+                    org-hide-leading-stars t)
+        (font-lock-flush))
     (logos-focus-mode -1)
     (read-only-mode -1)
-    (setq-local org-hide-emphasis-markers nil)))
+    (setq-local org-hide-emphasis-markers nil
+                org-hide-macro-markers nil
+                org-hide-leading-stars nil)
+    (font-lock-flush)))
 
 ;; https://github.com/doomemacs/doomemacs/blob/4d072ce888577b023774460f6036abefcd0a1fa6/modules/lang/org/autoload/org-refile.el
 (defun +org/refile-to-current-file (arg &optional file)
