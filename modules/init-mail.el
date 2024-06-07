@@ -73,14 +73,7 @@
        :query "tag:unread and tag:inbox"
        :sort-order newest-first
        :key ,(kbd "u"))
-     ( :name "personal"
-       :query "to:goofan.su@gmail.com"
-       :sort-order newest-first
-       :key ,(kbd "p"))
-     ( :name "work"
-       :query "to:james.su@managebac.com"
-       :sort-order newest-first
-       :key ,(kbd "w"))))
+     ))
   ;; Compose
   (notmuch-always-prompt-for-sender t)
   ;; Reading
