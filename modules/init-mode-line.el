@@ -31,6 +31,8 @@
                   "  "
                   prot-modeline-flymake
                   "  "
+                  prot-modeline-notmuch-indicator
+                  "  "
                   prot-modeline-misc-info))
   :custom
   (prot-modeline-string-truncate-length 50))

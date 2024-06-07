@@ -91,6 +91,21 @@
   :bind (("C-c m" . notmuch)
          ("C-x m" . notmuch-mua-new-mail)))
 
+(use-package notmuch-indicator
+  :init
+  (setq notmuch-indicator-notmuch-config-file
+        (expand-file-name "notmuch/default/config" yejun-config-directory))
+  :config
+  (message "notmuch-indicator is loaded")
+  (notmuch-indicator-mode 1)
+  :custom
+  (notmuch-indicator-args
+   '((:terms "tag:unread and tag:inbox" :label "[A] " :face prot-modeline-indicator-green)))
+  (notmuch-indicator-add-to-mode-line-misc-info nil)
+  (notmuch-indicator-refresh-count (* 60 3))
+  (notmuch-indicator-hide-empty-counters nil)
+  (notmuch-indicator-force-refresh-commands '(notmuch-refresh-this-buffer)))
+
 (use-package ol-notmuch
   :pin melpa
   :after notmuch
