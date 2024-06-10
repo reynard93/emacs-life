@@ -57,4 +57,15 @@
          ("C-c C-x t" . gptel-set-topic)
          ("M-n" . gptel-end-of-response)))
 
+(use-package kagi
+  :pin melpa
+  :defer t
+  :config
+  (message "kagi is loaded")
+  :custom
+  (kagi-api-token (lambda () (auth-source-pass-get 'secret "api.kagi.com")))
+  (kagi-summarizer-default-summary-format 'takeaway)
+  :bind ( :map embark-url-map
+          ("K" . kagi-summarize-url)))
+
 (provide 'init-gpt)
