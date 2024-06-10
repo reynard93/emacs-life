@@ -22,18 +22,18 @@
       ('elfeed-show-mode
        elfeed-show-entry)))
 
-  (defun +elfeed/post-to-wombag (entry)
+  (defun +elfeed/read-it-later (entry)
     (interactive (list (+elfeed--selected-entry)))
     (+wombag/url (elfeed-entry-link entry))
+    (elfeed-tag entry 'later)
     (elfeed-untag entry 'unread)
-    (elfeed-tag entry 'wombag)
     (elfeed-search-update--force))
 
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
     (kagi-summarize-url (elfeed-entry-link entry))
-    (elfeed-untag entry 'unread)
     (elfeed-tag entry 'summarized)
+    (elfeed-untag entry 'unread)
     (elfeed-search-update--force))
 
   (defun +elfeed/switch-to-wombag ()
@@ -53,13 +53,13 @@
     (evil-define-key 'normal elfeed-search-mode-map
       "B" #'+elfeed/browse
       "K" #'+elfeed/summarize
-      "R" #'+elfeed/post-to-wombag
+      "L" #'+elfeed/read-it-later
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
       "B" #'+elfeed/browse
       "K" #'+elfeed/summarize
-      "R" #'+elfeed/post-to-wombag))
+      "L" #'+elfeed/read-it-later))
 
   :custom
   (elfeed-search-remain-on-entry t))
