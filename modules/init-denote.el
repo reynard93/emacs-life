@@ -13,10 +13,8 @@
         (buffer-string))))
 
   (setq denote-templates
-        `((daily-checkin . ,(denote-template-content "daily-checkin.org"))
-          (weekly-checkin . ,(denote-template-content "weekly-checkin.org"))
-          (heartbeat . ,(denote-template-content "heartbeat.org"))
-          (kickoff . ,(denote-template-content "kickoff.org"))))
+        `((brain-dump . ,(denote-template-content "brain-dump.org"))
+          (jira-ticket . ,(denote-template-content "jira-ticket.org"))))
 
   :config
   (message "denote is loaded")
