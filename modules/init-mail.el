@@ -22,20 +22,6 @@
 
 (use-package notmuch
   :pin melpa
-  :init
-  (defun +notmuch/update-mail-and-index ()
-    "Update mail and index using mbsync and notmuch."
-    (interactive)
-    (unless (get-process "notmuch")
-      (message "[notmuch] Updating mail and index")
-      (let ((notmuch-process (start-process-shell-command "notmuch" "*notmuch-output*" "notmuch new")))
-        (set-process-sentinel
-         notmuch-process
-         (lambda (_process _event)
-           (message "[notmuch] Updating mail and index...done"))))))
-  :hook
-  (notmuch-hello-mode . +notmuch/update-mail-and-index)
-  (notmuch-mua-send . notmuch-mua-attachment-check)
   :config
   (message "notmuch is loaded")
   :custom
@@ -81,6 +67,7 @@
   (notmuch-show-part-button-default-action 'notmuch-show-view-part)
   (notmuch-wash-wrap-lines-length 120)
   (notmuch-unthreaded-show-out nil)
+  :hook (notmuch-mua-send . notmuch-mua-attachment-check)
   :bind (("C-c m" . notmuch)
          ("C-x m" . notmuch-mua-new-mail)))
 
