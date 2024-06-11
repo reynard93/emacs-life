@@ -78,7 +78,8 @@
   :config
   (message "evil-snipe is loaded")
   (evil-snipe-mode 1)
-  (evil-snipe-override-mode 1))
+  (evil-snipe-override-mode 1)
+  (push 'osx-dictionary-mode evil-snipe-disabled-modes))
 
 (use-package evil-surround
   :pin melpa
