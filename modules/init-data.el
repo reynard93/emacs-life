@@ -11,7 +11,6 @@
 (use-package sqlite-mode
   :defer t
   :config
-  (message "sqlite-mode is loaded")
-  (evil-set-initial-state 'sqlite-mode 'emacs))
+  (message "sqlite-mode is loaded"))
 
 (provide 'init-data)
