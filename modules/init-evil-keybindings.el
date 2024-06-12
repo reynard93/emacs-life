@@ -104,12 +104,13 @@
 
     ;; notes/agenda/timer
     "na"  #'consult-org-agenda
+    "nA"  #'yejun/browse-org-directory
     "nb"  #'citar-open
     "nB"  #'citar-create-note
     "nc"  #'tmr-clone
     "nC"  #'tmr-with-description
     "nf"  #'denote-open-or-create
-    "nF"  #'yejun/browse-org-directory
+    "nF"  #'denote-silo-extras-open-or-create
     "nk"  #'denote-keywords-add
     "nK"  #'denote-keywords-remove
     "nn"  #'denote

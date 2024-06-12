@@ -18,9 +18,14 @@
 
   :config
   (message "denote is loaded")
+  (denote-rename-buffer-mode 1)
+
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
-  (denote-rename-buffer-mode 1)
+
+  ;; Silos
+  (require 'denote-silo-extras)
+  (add-to-list 'denote-silo-extras-directories '("~/work/openapply/notes/"))
 
   (with-eval-after-load 'org-capture
     (setq denote-org-capture-specifiers "%?\n%i\n%l")
