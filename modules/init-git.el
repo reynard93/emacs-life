@@ -42,7 +42,6 @@
   :pin melpa
   :config
   (message "git-gutter is loaded")
-  (global-git-gutter-mode 1)
   (with-eval-after-load 'evil
     (evil-define-key 'motion 'global
       "]d" #'git-gutter:next-hunk
@@ -51,7 +50,7 @@
   (git-gutter:added-sign " ")
   (git-gutter:deleted-sign " ")
   (git-gutter:modified-sign " ")
-  :hook (prog-mode text-mode))
+  :hook prog-mode)
 
 (use-package git-timemachine
   :pin melpa
