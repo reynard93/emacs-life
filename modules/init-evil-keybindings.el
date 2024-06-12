@@ -111,8 +111,7 @@
     "nC"  #'tmr-with-description
     "nf"  #'denote-open-or-create
     "nF"  #'denote-silo-extras-open-or-create
-    "nk"  #'denote-keywords-add
-    "nK"  #'denote-keywords-remove
+    "nk"  #'denote-rename-file-keywords
     "nn"  #'denote
     "ns"  #'consult-denote-grep
     "nr"  #'denote-rename-file
