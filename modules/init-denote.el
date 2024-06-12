@@ -2,7 +2,7 @@
   :vc (denote :url "https://github.com/protesilaos/denote.git")
   :defer t
   :init
-  (setq denote-directory (expand-file-name "notes/" yejun-code-directory))
+  (setq denote-directory "~/src/notes/")
 
   ;; Setup denote-templates
   (defun denote-template-content (filename)

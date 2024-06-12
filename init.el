@@ -4,10 +4,6 @@
 ;; Loading modules
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
-;; Variables
-(defvar yejun-config-directory "~/.config/")
-(defvar yejun-code-directory "~/src/")
-
 ;; Bootstrap
 (require 'init-lisp)
 (require 'init-elpa)
