@@ -74,7 +74,7 @@
   (wombag-username "goofansu")
   (wombag-password (auth-source-pass-get 'secret "app.wallabag.it"))
   (wombag-client-id "23745_3qjblkrgo0qo4w4cwscg0g88wk4408wckw0gc8oskwg0cgkocw")
-  (wombag-client-secret (auth-source-pass-get "client_secret" "app.wallabag.it"))
+  (wombag-client-secret (auth-source-pass-get 'secret "app.wallabag.it/api-key"))
 
   :bind ( :map embark-url-map
           ("R" . +wombag/url)))

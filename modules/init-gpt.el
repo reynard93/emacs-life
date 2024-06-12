@@ -5,19 +5,19 @@
     (gptel-make-azure "OpenAI"
       :host "beepboop.openai.azure.com"
       :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-02-01"
-      :key (lambda () (auth-source-pass-get 'secret "beepboop.openai.azure.com"))
+      :key (lambda () (auth-source-pass-get 'secret "openai.azure.com/api-key/beepboop"))
       :models '("gpt-4o")
       :stream t))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api.kagi.com"))))
+      :key (lambda () (auth-source-pass-get 'secret "kagi.com/api-key"))))
 
   (defvar gptel--groq
     (gptel-make-openai "Groq"
       :host "api.groq.com"
       :endpoint "/openai/v1/chat/completions"
-      :key (lambda () (auth-source-pass-get 'secret "api.groq.com"))
+      :key (lambda () (auth-source-pass-get 'secret "groq.com/api-key"))
       :models '("llama3-70b-8192")
       :stream t))
   
@@ -63,7 +63,7 @@
   :config
   (message "kagi is loaded")
   :custom
-  (kagi-api-token (lambda () (auth-source-pass-get 'secret "api.kagi.com")))
+  (kagi-api-token (lambda () (auth-source-pass-get 'secret "kagi.com/api-key")))
   (kagi-summarizer-default-summary-format 'takeaway)
   :bind ( :map embark-url-map
           ("K" . kagi-summarize-url)))
