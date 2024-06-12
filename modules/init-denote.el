@@ -13,8 +13,7 @@
         (buffer-string))))
 
   (setq denote-templates
-        `((brain-dump . ,(denote-template-content "brain-dump.org"))
-          (jira-ticket . ,(denote-template-content "jira-ticket.org"))))
+        `((jira-ticket . ,(denote-template-content "jira-ticket.org"))))
 
   :config
   (message "denote is loaded")
