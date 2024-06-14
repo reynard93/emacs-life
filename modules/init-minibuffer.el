@@ -96,8 +96,6 @@
          ("m" . consult-mark)
          ("M" . consult-global-mark)
          :map search-map
-         ("g" . +lookup/google-translate-guess-source-lang)
-         ("G" . +lookup/google-translate-guess-source-lang-force-select)
          ("l" . ffap-menu)
          ("r" . +buffer/search-multi)
          ("R" . +buffer/search-multi-for-symbol-at-point)
