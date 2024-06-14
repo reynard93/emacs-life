@@ -62,7 +62,8 @@
       "L" #'+elfeed/read-it-later))
 
   :custom
-  (elfeed-search-remain-on-entry t))
+  (elfeed-search-remain-on-entry t)
+  (elfeed-search-filter "@+12-months-ago -later -paper"))
 
 (use-package elfeed-org
   :pin melpa
