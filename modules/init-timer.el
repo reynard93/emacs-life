@@ -1,5 +1,6 @@
 (use-package tmr
   :defer t
+  :commands (+tmr/pomodoro)
   :config
   (message "tmr is loaded")
 
@@ -15,14 +16,27 @@
      if (commandp cmd) do
      (add-to-list 'embark-post-action-hooks (list cmd 'embark--restart))))
 
-  (defun +tmr--notification-notify (timer)
+  (defun tmr-notification-notify (timer)
+    "Override `tmr-notification-notify'. Use macOS notification."
     (let ((title "TMR May Ring (Emacs tmr package)")
           (body (tmr--long-description-for-finished-timer timer)))
       (+macos/notify title body)))
 
-  :custom
-  (tmr-timer-finished-functions
-   '(tmr-print-message-for-finished-timer
-     +tmr--notification-notify)))
+  (defun +tmr/pomodoro (arg)
+    "Start a Pomodoro timer. Prompt for duration if ARG is non-nil, otherwise use 25m."
+    (interactive "P")
+    (let ((timer (+tmr--timer-with-description "Pomodoro"))
+          (time (if arg (read-string "Time (default 25m): " nil nil "25m") "25m")))
+      (if timer
+          (when (yes-or-no-p (format "Cancel Pomodoro? (remaining: %s)"
+                                     (tmr--format-remaining timer)))
+            (tmr-cancel timer))
+        (funcall-interactively #'tmr-with-description time "Pomodoro"))))
+
+  (defun +tmr--timer-with-description (description)
+    (seq-find (lambda (timer)
+                (and (not (tmr--timer-finishedp timer))
+                     (string= (tmr--timer-description timer) description)))
+              tmr--timers)))
 
 (provide 'init-timer)

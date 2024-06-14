@@ -107,8 +107,8 @@
     "nA"  #'yejun/browse-org-directory
     "nb"  #'citar-open
     "nB"  #'citar-create-note
-    "nc"  #'tmr-clone
-    "nC"  #'tmr-with-description
+    "nc"  #'+org/toggle-last-clock
+    "nC"  #'org-clock-goto
     "nf"  #'denote-open-or-create
     "nF"  #'denote-silo-extras-open-or-create
     "nk"  #'denote-rename-file-keywords
@@ -139,7 +139,8 @@
     ;; toggle
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
-    "tt"  #'+theme-buffet/toggle
+    "tt"  #'+tmr/pomodoro
+    "tv"  #'visible-mode
     "tw"  #'visual-line-mode
     "tz"  #'logos-focus-mode
 
@@ -224,7 +225,6 @@
     ;; clock
     "ci" #'org-clock-in
     "co" #'org-clock-out
-    "cg" #'org-clock-goto
     "cr" #'org-clock-report
 
     ;; date/deadline
