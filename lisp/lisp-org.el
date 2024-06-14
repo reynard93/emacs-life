@@ -61,6 +61,7 @@ see how ARG affects this command."
          (org-clock-in))
         ((org-clock-in-last arg))))
 
+;; https://emacs.ch/@sachac/111732515520285898
 (defun +org/mastodon-toot-subtree ()
   "Compose a buffer and include the current subtree."
   (interactive)
