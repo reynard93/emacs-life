@@ -50,7 +50,8 @@
   ;; Capture
   (org-capture-templates
    '(("t" "Task" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
-     ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
+     ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
+     ("a" "Anki" entry (file "anki.org") "* %?\n%i")))
 
   ;; Refile
   (org-outline-path-complete-in-steps nil)
@@ -109,5 +110,14 @@
   :after org
   :config
   (message "org-pandoc-import is loaded"))
+
+(use-package org-anki
+  :pin melpa
+  :after org
+  :defer t
+  :config
+  (message "org-anki is loaded")
+  :custom
+  (org-anki-inherit-tags nil))
 
 (provide 'init-org)
