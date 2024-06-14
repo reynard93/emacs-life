@@ -103,7 +103,6 @@
   :custom
   (project-switch-commands
    '((project-find-file "Find file")
-     (deadgrep "Find regexp" "r")
      (project-find-dir "Find directory")
      (project-dired "Root dired")
      (project-eshell "Eshell")

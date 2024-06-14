@@ -124,7 +124,6 @@
     "oe"  #'elfeed
 
     ;; search
-    "sd"  #'deadgrep
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
     "sk"  #'dash-at-point

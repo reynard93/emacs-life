@@ -11,11 +11,4 @@
   :bind (("M-s k" . dash-at-point)
          ("M-s K" . dash-at-point-with-docset)))
 
-(use-package deadgrep
-  :pin melpa
-  :config
-  (message "deadgrep is loaded")
-  (evil-set-initial-state 'deadgrep-mode 'emacs)
-  :bind ("M-s d" . deadgrep))
-
 (provide 'init-lookup)
