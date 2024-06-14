@@ -2,7 +2,7 @@
   :ensure nil
   :init
   (setq org-directory "~/src/org/"
-        org-agenda-files (list org-directory))
+        org-agenda-files (list "todo.org"))
 
   :config
   (message "org is loaded")
@@ -49,7 +49,7 @@
 
   ;; Capture
   (org-capture-templates
-   '(("t" "Tasks" entry (file "todo.org") "* TODO %?\n%i\n%l" :prepend t)
+   '(("t" "Task" entry (file "todo.org") "* TODO %?\n%i" :prepend t)
      ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")))
 
   ;; Refile
