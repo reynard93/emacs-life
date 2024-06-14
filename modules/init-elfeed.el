@@ -31,7 +31,7 @@
 
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
-    (kagi-summarize-url (elfeed-entry-link entry))
+    (+gptel/kagi-summarize-url (elfeed-entry-link entry))
     (elfeed-tag entry 'summarized)
     (elfeed-untag entry 'unread)
     (elfeed-search-update--force))
@@ -53,13 +53,13 @@
     (evil-define-key 'normal elfeed-search-mode-map
       "B" #'+elfeed/browse
       "K" #'+elfeed/summarize
-      "L" #'+elfeed/read-it-later
+      "R" #'+elfeed/read-it-later
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
       "B" #'+elfeed/browse
       "K" #'+elfeed/summarize
-      "L" #'+elfeed/read-it-later))
+      "R" #'+elfeed/read-it-later))
 
   :custom
   (elfeed-search-remain-on-entry t)

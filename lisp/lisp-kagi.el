@@ -61,12 +61,4 @@
 
 (bind-key "C-c a" kagi-assistant-prefix-map)
 
-(defun +kagi/summarize (url)
-  "Summerize URL using Kagi's Universal Summarizer."
-  (interactive "sSummerize URL: ")
-  (browse-url (format "https://kagi.com/summarizer?summary=takeaway&url=%s" (url-hexify-string url))))
-
-(with-eval-after-load 'embark
-  (keymap-set embark-url-map "K" #'+kagi/summarize))
-
 (provide 'lisp-kagi)

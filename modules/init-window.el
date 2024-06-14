@@ -50,6 +50,7 @@
      (osx-dictionary-mode :align below :size 0.3)
      ("*Org Select*" :align below)
      ("^CAPTURE-.+$" :regexp t :align below)
+     ("*Kagi Summary*" :align below)
      ((:custom
        ,(lambda (buffer)
           (with-current-buffer buffer

@@ -47,6 +47,34 @@
      ((y-or-n-p "[gptel] Prompt has more than 2000 chars, really send?") (gptel-send arg))
      (t (message "[gptel] Request cancelled"))))
 
+  (cl-defmethod gptel--request-data ((_backend gptel-kagi) prompts)
+    "Override `gptel-kagi's `gptel--request-data'. Set summary_type to takeaway
+when using summarize models."
+    (pcase-exhaustive gptel-model
+      ("fastgpt"
+       `(,@prompts :web_search t :cache t))
+      ((and model (guard (string-prefix-p "summarize" model)))
+       `(,@prompts :engine ,(substring model 10) :summary_type "takeaway"))))
+
+  (defun +gptel/kagi-summarize-url (url)
+    "Summarize URL using Kagi's Universal Summarizer."
+    (interactive "sSummerize URL: ")
+    (let ((gptel-backend gptel--kagi)
+          (gptel-model "summarize:agnes"))
+      (gptel-request url
+        :callback
+        (lambda (response info)
+          (if response
+              (with-current-buffer (get-buffer-create "*Kagi Summary*")
+                (let ((inhibit-read-only t))
+                  (erase-buffer)
+                  (visual-line-mode 1)
+                  (insert response)
+                  (display-buffer (current-buffer)))
+                (special-mode))
+            (message "gptel-request failed with message: %s"
+                     (plist-get info :status)))))))
+
   :custom
   (gptel-max-tokens 700)
   (gptel-default-mode 'org-mode)
@@ -55,17 +83,8 @@
          ("C-c C-g" . gptel-abort)
          :map gptel-mode-map
          ("C-c C-x t" . gptel-set-topic)
-         ("M-n" . gptel-end-of-response)))
-
-(use-package kagi
-  :pin melpa
-  :defer t
-  :config
-  (message "kagi is loaded")
-  :custom
-  (kagi-api-token (lambda () (auth-source-pass-get 'secret "kagi.com/api-key")))
-  (kagi-summarizer-default-summary-format 'takeaway)
-  :bind ( :map embark-url-map
-          ("K" . kagi-summarize-url)))
+         ("M-n" . gptel-end-of-response)
+         :map embark-url-map
+         ("K" . +gptel/kagi-summarize-url)))
 
 (provide 'init-gpt)
