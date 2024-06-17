@@ -1,6 +1,6 @@
 (use-package denote
   :vc (denote :url "https://github.com/protesilaos/denote.git")
-  :defer t
+  :demand t
   :init
   (setq denote-directory "~/src/notes/")
 
