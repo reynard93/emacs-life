@@ -24,7 +24,7 @@
 
   ;; Silos
   (require 'denote-silo-extras)
-  (add-to-list 'denote-silo-extras-directories '("~/work/openapply/notes/"))
+  (add-to-list 'denote-silo-extras-directories "~/work/openapply/notes/")
 
   :custom
   (denote-history-completion-in-prompts nil)
