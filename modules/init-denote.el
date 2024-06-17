@@ -65,28 +65,34 @@
 
 (use-package citar
   :pin melpa
-  :defer t
-  :init
-  (setq citar-bibliography '("~/src/notes/reference.bib"))
+  :demand t
   :config
-  (message "citar is loaded"))
+  (message "citar is loaded")
+  :custom
+  (org-cite-global-bibliography '("~/src/notes/reference.bib"))
+  (org-cite-insert-processor 'citar)
+  (org-cite-follow-processor 'citar)
+  (org-cite-activate-processor 'citar)
+  (citar-bibliography org-cite-global-bibliography))
 
 (use-package citar-embark
   :pin melpa
-  :no-require t
   :after (citar embark)
-  :config (citar-embark-mode))
+  :config
+  (message "citar-embark is loaded")
+  (citar-embark-mode 1)
+  :custom
+  (citar-at-point-function #'embark-act))
 
 (use-package citar-denote
   :pin melpa
   :demand t
-  :after (:any citar denote)
-  :preface
-  (bind-key "C-c w n" #'citar-denote-open-note)
+  :after (citar denote)
   :config
   (message "citar-denote is loaded")
   (citar-denote-mode 1)
   :bind (("C-c w d" . citar-denote-dwim)
+         ("C-c w n" . citar-denote-open-note)
          ("C-c w e" . citar-denote-open-reference-entry)
          ("C-c w a" . citar-denote-add-citekey)
          ("C-c w k" . citar-denote-remove-citekey)

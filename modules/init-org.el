@@ -94,17 +94,6 @@
   (org-hugo-delete-trailing-ws nil)
   (org-hugo-auto-set-lastmod t))
 
-(use-package oc
-  :ensure nil
-  :after citar
-  :config
-  (message "oc is loaded")
-  :custom
-  (org-cite-global-bibliography citar-bibliography)
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar))
-
 (use-package org-pandoc-import
   :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
   :after org
