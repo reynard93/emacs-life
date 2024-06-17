@@ -87,14 +87,6 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . compilation-filter-colorize))
 
-(use-package eww
-  :defer t
-  :config
-  (message "eww is loaded")
-  :custom
-  (eww-search-prefix (format "https://kagi.com/search?token=%s&q="
-                             (auth-source-pass-get 'secret "kagi.com/token"))))
-
 (use-package project
   :ensure nil
   :defer t
