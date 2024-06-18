@@ -2,8 +2,6 @@
   :pin melpa
   :defer t
   :init
-  (setq rmh-elfeed-org-files (list "elfeed.org"))
-
   (defvar elfeed-browse-url-handlers
     '(("https:\\/\\/www\\.youtu\\.*be." . mpv-browse-url)
       ("." . eww-browse-url)))
@@ -68,6 +66,8 @@
 (use-package elfeed-org
   :pin melpa
   :after elfeed
+  :init
+  (setq rmh-elfeed-org-files (list "elfeed.org"))
   :config
   (message "elfeed-org is loaded")
   (elfeed-org))
