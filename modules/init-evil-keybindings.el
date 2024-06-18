@@ -62,8 +62,7 @@
     "cc"  #'compile
     "cC"  #'recompile
     "cf"  #'apheleia-format-buffer
-    "cg"  #'+github/create-gist-region-or-buffer
-    "cp"  #'+sourcehut/create-paste-region-or-buffer
+    "cg"  #'+gh/gist-create
     "cw"  #'delete-trailing-whitespace
 
     ;; file
