@@ -87,7 +87,8 @@
     "gg"  #'magit-status
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
-    "gp"  #'+github/list-pull-requests
+    "go"  #'browse-at-remote
+    "gp"  #'+gh/pr-list
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
@@ -96,11 +97,7 @@
     ;; git - create
     "gcb" #'magit-branch-and-checkout
     "gcB" #'+git/create-backup-commit
-    "gcp" #'+github/create-pull-request
-
-    ;; git - open in browser
-    "goo" #'browse-at-remote
-    "gop" #'+github/browse-pull-request
+    "gcp" #'+gh/pr-create
 
     ;; notes/agenda/timer
     "na"  #'consult-org-agenda

@@ -1,48 +1,3 @@
-(defun +embark--gh-parse-pr-number (target)
-  (string-match "^#\\([0-9]+\\)" target)
-  (match-string 1 target))
-
-(defun +embark/gh-pr-checkout (target)
-  "Checkout a pull request with gh command line."
-  (when-let ((pr-number (+embark--gh-parse-pr-number target)))
-    (shell-command (concat "gh pr checkout " pr-number))))
-
-(defun +embark/gh-pr-browse (target)
-  "Browse a pull request with gh command line."
-  (when-let ((pr-number (+embark--gh-parse-pr-number target)))
-    (shell-command (concat "gh pr view -w " pr-number))))
-
-(defun +embark/gh-pr-view (target)
-  "View a pull request with gh command line."
-  (when-let* ((pr-number (+embark--gh-parse-pr-number target))
-              (output (shell-command-to-string (concat "gh pr view " pr-number)))
-              (formatted-output (replace-regexp-in-string "\r" "" output))
-              (buffer-name (format "*gh-pr-view %s*" pr-number)))
-    (with-output-to-temp-buffer buffer-name
-      (with-current-buffer buffer-name
-        (gfm-mode)
-        (evil-local-set-key 'normal (kbd "q") 'quit-window))
-      (princ formatted-output))))
-
-(defun +embark/gh-pr-copy-url (target)
-  "Copy a pull request's URL with gh command line."
-  (when-let ((pr-number (+embark--gh-parse-pr-number target)))
-    (let* ((command (format "gh pr view %s --json url --template '{{.url}}'" pr-number))
-           (output (shell-command-to-string command)))
-      (kill-new output)
-      (message "Copied URL: %s" output))))
-
-(defvar-keymap embark-gh-pr-map
-  "c" #'+embark/gh-pr-checkout
-  "o" #'+embark/gh-pr-browse
-  "v" #'+embark/gh-pr-view
-  "y" #'+embark/gh-pr-copy-url)
-
-(with-eval-after-load 'embark
-  (add-to-list 'embark-keymap-alist '(github-pull-request . embark-gh-pr-map)))
-(with-eval-after-load 'marginalia
-  (add-to-list 'marginalia-prompt-categories '("Select pull request" . github-pull-request)))
-
 ;; Open any buffer by splitting any window
 ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window
 (eval-when-compile
@@ -60,5 +15,21 @@
   (keymap-set embark-file-map     "o" (+embark--aw-action find-file))
   (keymap-set embark-buffer-map   "o" (+embark--aw-action switch-to-buffer))
   (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump)))
+
+(defun +embark/jira-link ()
+  "Target a link at point of the form jira:OA-1234."
+  (save-excursion
+    (let* ((start (progn (skip-chars-backward "[:alnum:]-:") (point)))
+           (end (progn (skip-chars-forward "[:alnum:]-:") (point)))
+           (str (buffer-substring-no-properties start end)))
+      (save-match-data
+        (when (string-match "jira:\\([[:alnum:]-]+\\)" str)
+          `(url
+            ,(format "https://fariaedu.atlassian.net/browse/%s"
+                     (match-string 1 str))
+            ,start . ,end))))))
+
+(with-eval-after-load 'embark
+  (add-to-list 'embark-target-finders #'+embark/jira-link))
 
 (provide 'lisp-embark)
