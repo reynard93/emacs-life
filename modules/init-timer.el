@@ -22,7 +22,7 @@
           (body (tmr--long-description-for-finished-timer timer)))
       (+macos/notify title body)))
 
-  (defun +tmr/pomodoro (arg)
+  (defun +tmr/pomodoro (&optional arg)
     "Start a Pomodoro timer. Prompt for duration if ARG is non-nil, otherwise use 25m."
     (interactive "P")
     (let ((timer (+tmr--timer-with-description "Pomodoro"))
