@@ -85,6 +85,6 @@ when using summarize models."
          ("C-c C-x t" . gptel-set-topic)
          ("M-n" . gptel-end-of-response)
          :map embark-url-map
-         ("K" . +gptel/kagi-summarize-url)))
+         ("=" . +gptel/kagi-summarize-url)))
 
 (provide 'init-gpt)

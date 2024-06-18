@@ -51,14 +51,14 @@
 
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
+      "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
-      "K" #'+elfeed/summarize
       "R" #'+elfeed/read-it-later
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
+      "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
-      "K" #'+elfeed/summarize
       "R" #'+elfeed/read-it-later))
 
   :custom
