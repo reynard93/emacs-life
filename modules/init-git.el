@@ -1,6 +1,6 @@
 (use-package magit
   :pin melpa
-  :defer t
+  :demand t
   :init
   (setq magit-repository-directories
         '(("~/src" . 1)
