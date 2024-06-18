@@ -61,7 +61,6 @@
 
 (defun +gh/pr-view (target)
   "View a pull request with gh command line."
-  (interactive)
   (when-let* ((pr-number (+gh--pr-number target))
               (output (shell-command-to-string (concat "gh pr view " pr-number)))
               (formatted-output (replace-regexp-in-string "\r" "" output))
