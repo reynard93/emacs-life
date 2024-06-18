@@ -63,6 +63,7 @@
     "cC"  #'recompile
     "cf"  #'apheleia-format-buffer
     "cg"  #'+gh/gist-create
+    "cp"  #'+hut/paste-create
     "cw"  #'delete-trailing-whitespace
 
     ;; file

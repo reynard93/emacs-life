@@ -4,6 +4,22 @@
     (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
       (shell-command (format "git add --all && git commit -m \"%s\"" commit-message)))))
 
+(defun +hut/paste-create (&optional arg)
+  (interactive "P")
+  (let ((filename (read-string "Enter filename: " (buffer-name)))
+        (output-buffer "*paste-output*")
+        (public (if arg " --visibility public" "")))
+    (shell-command-on-region
+     (if (use-region-p) (region-beginning) (point-min))
+     (if (use-region-p) (region-end) (point-max))
+     (concat "hut paste create --name \"" filename "\"" public)
+     output-buffer)
+    (with-current-buffer output-buffer
+      (goto-char (point-max))
+      (forward-line -1)
+      (kill-new (thing-at-point 'url)))
+    (kill-buffer output-buffer)))
+
 (defun +gh/gist-create (&optional arg)
   (interactive "P")
   (let ((filename (buffer-name))
@@ -17,7 +33,7 @@
     (with-current-buffer output-buffer
       (goto-char (point-max))
       (forward-line -1)
-      (kill-new (string-trim (thing-at-point 'line))))
+      (kill-new (thing-at-point 'url)))
     (kill-buffer output-buffer)))
 
 (defun +gh/pr-create ()
