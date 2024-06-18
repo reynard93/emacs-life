@@ -7,22 +7,21 @@
                          (or (thing-at-point 'symbol t) ""))))
     (string-trim selected-text)))
 
-(defun +kagi-query-prompt (assistant-type)
-  (let* ((query (+kagi-query))
-         (initial-contents (concat "\n" query))
-         (prompt (format "Kagi Assistant [%s]: " assistant-type)))
+(defun +kagi-query-prompt (query &optional bang)
+  (let* ((initial-contents (if bang (concat "\n" query) query))
+         (prompt (if bang (format "Kagi Search [%s]: " bang) "Kagi Search: ")))
     (let* ((minibuffer-setup-hook (lambda () (goto-char (minibuffer-prompt-end)))))
       (read-from-minibuffer prompt initial-contents))))
 
-(defun +kagi/search (&optional assistant-type)
+(defun +kagi/search (&optional bang)
   (interactive)
   (let* ((token (+kagi-token))
-         (query (if assistant-type
-                    (+kagi-query-prompt assistant-type)
-                  (+kagi-query)))
-         (formatted-query (if assistant-type (format "%s %s" assistant-type query) query)))
+         (query (+kagi-query))
+         (query (+kagi-query-prompt query bang))
+         (formatted-query (if bang (format "%s %s" bang query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
 
+;; https://help.kagi.com/kagi/features/bangs.html#kagi-assistant-bangs
 (defun +kagi/assistant-research ()
   (interactive)
   (+kagi/search "!expert"))
