@@ -20,17 +20,20 @@
       ('elfeed-show-mode
        elfeed-show-entry)))
 
+  (defun +elfeed/discard (entry)
+    (interactive (list (+elfeed--selected-entry)))
+    (elfeed-tag entry 'junk)
+    (elfeed-search-update--force))
+
   (defun +elfeed/read-later (entry)
     (interactive (list (+elfeed--selected-entry)))
     (+wombag/url (elfeed-entry-link entry))
-    (elfeed-tag entry 'later)
+    (elfeed-tag entry 'archived)
     (elfeed-search-update--force))
 
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
-    (+gptel/kagi-summarize-url (elfeed-entry-link entry))
-    (elfeed-tag entry 'summarized)
-    (elfeed-search-update--force))
+    (+gptel/kagi-summarize-url (elfeed-entry-link entry)))
 
   (defun +elfeed/switch-to-wombag ()
     (interactive)
@@ -48,11 +51,11 @@
   (defun +elfeed/set-filter ()
     (interactive)
     (let ((categories
-           '(("Default" . "@6-months-ago -later -paper")
-             ("News" . "@6-months-ago +news")
-             ("Papers" . "@6-months-ago +paper")
-             ("Later" . "@6-months-ago +later")
-             ("Summarized" . "@6-months-ago +summarized"))))
+           '(("unread" . "@6-months-ago +unread -junk")
+             ("archived" . "@6-months-ago +archived")
+             ("read" . "@6-months-ago -unread -junk")
+             ("news" . "@6-months-ago +unread -junk +news")
+             ("videos" . "@6-months-ago +unread -junk +video"))))
       (if-let* ((category (completing-read "Select category: " categories))
                 (filter (cdr (assoc category categories))))
           (elfeed-search-set-filter filter)
@@ -62,6 +65,7 @@
     (evil-define-key 'normal elfeed-search-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
+      "D" #'+elfeed/discard
       "R" #'+elfeed/read-later
       "S" #'+elfeed/set-filter
       "W" #'+elfeed/switch-to-wombag)
@@ -69,11 +73,12 @@
     (evil-define-key 'normal elfeed-show-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
+      "D" #'+elfeed/discard
       "R" #'+elfeed/read-later))
 
   :custom
   (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@6-months-ago -later -paper"))
+  (elfeed-search-filter "@6-months-ago +unread -junk"))
 
 (use-package elfeed-org
   :pin melpa
