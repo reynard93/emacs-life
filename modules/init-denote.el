@@ -17,15 +17,12 @@
 
   :config
   (message "denote is loaded")
-  (denote-rename-buffer-mode 1)
-
   (require 'denote-org-extras)
-  (require 'denote-journal-extras)
+  (denote-rename-buffer-mode 1)
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-known-keywords '("emacs" "booknote"))
   (denote-rename-buffer-format "[D] %t")
-  (denote-journal-extras-title-format nil)
 
   :bind (("C-c n n" . denote)
          ("C-c n N" . denote-type)
@@ -33,8 +30,6 @@
          ("C-c n z" . denote-signature) ; "zettelkasten" mnemonic
          ("C-c n s" . denote-subdirectory)
          ("C-c n o" . denote-sort-dired) ; "order" mnemonic
-         ("C-c n j" . denote-journal-extras-new-entry)
-         ("C-c n J" . denote-journal-extras-new-or-existing-entry)
 
          :map text-mode-map
          ("C-c n i" . denote-link)
