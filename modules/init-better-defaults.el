@@ -126,6 +126,12 @@
   (message "window is loaded")
   :bind ("C-x !" . delete-other-windows-vertically))
 
+(use-package winner
+  :ensure nil
+  :config
+  (message "winner is loaded")
+  (winner-mode 1))
+
 (use-package dictionary
   :ensure nil
   :custom

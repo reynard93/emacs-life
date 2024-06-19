@@ -1,9 +1,3 @@
-(use-package winner
-  :ensure nil
-  :config
-  (message "winner is loaded")
-  (winner-mode 1))
-
 (use-package ace-window
   :pin melpa
   :init
@@ -76,4 +70,4 @@
             (bound-and-true-p gptel-mode))))
       :select t :align below :size 0.5))))
 
-(provide 'init-window)
+(provide 'init-windows)
