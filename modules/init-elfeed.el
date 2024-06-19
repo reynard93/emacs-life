@@ -20,18 +20,16 @@
       ('elfeed-show-mode
        elfeed-show-entry)))
 
-  (defun +elfeed/read-it-later (entry)
+  (defun +elfeed/read-later (entry)
     (interactive (list (+elfeed--selected-entry)))
     (+wombag/url (elfeed-entry-link entry))
     (elfeed-tag entry 'later)
-    (elfeed-untag entry 'unread)
     (elfeed-search-update--force))
 
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
     (+gptel/kagi-summarize-url (elfeed-entry-link entry))
     (elfeed-tag entry 'summarized)
-    (elfeed-untag entry 'unread)
     (elfeed-search-update--force))
 
   (defun +elfeed/switch-to-wombag ()
@@ -50,7 +48,8 @@
   (defun +elfeed/set-filter ()
     (interactive)
     (let ((categories
-           '(("News" . "@6-months-ago +news")
+           '(("Default" . "@6-months-ago -later -paper")
+             ("News" . "@6-months-ago +news")
              ("Papers" . "@6-months-ago +paper")
              ("Later" . "@6-months-ago +later")
              ("Summarized" . "@6-months-ago +summarized"))))
@@ -63,18 +62,18 @@
     (evil-define-key 'normal elfeed-search-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
-      "R" #'+elfeed/read-it-later
+      "R" #'+elfeed/read-later
       "S" #'+elfeed/set-filter
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
-      "R" #'+elfeed/read-it-later))
+      "R" #'+elfeed/read-later))
 
   :custom
   (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@+12-months-ago -later -paper"))
+  (elfeed-search-filter "@6-months-ago -later -paper"))
 
 (use-package elfeed-org
   :pin melpa
