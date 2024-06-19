@@ -2,7 +2,6 @@
 
 (require 'lisp-alfred)
 (require 'lisp-buffer)
-(require 'lisp-embark)
 (require 'lisp-exercism)
 (require 'lisp-file)
 (require 'lisp-git)

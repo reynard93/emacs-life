@@ -109,35 +109,4 @@
   :config
   (message "consult-dir is loaded"))
 
-(use-package embark
-  :demand t
-  :init
-  ;; Display commands under a prefix with C-h
-  (setq prefix-help-command #'embark-prefix-help-command)
-  (unbind-key "C-h C-h")
-
-  :config
-  (message "embark is loaded")
-
-  :custom
-  (embark-cycle-key "C-;")
-  (embark-indicators
-   '(embark-minimal-indicator
-     embark-highlight-indicator
-     embark-isearch-highlight-indicator))
-
-  :bind (([remap describe-bindings] . embark-bindings)
-         ("C-;" . embark-act)
-         ("M-." . embark-dwim)
-         :map vertico-map
-         ("C-;" . embark-act)
-         ("C-c C-;" . embark-export)
-         ("C-c C-l" . embark-collect)))
-
-(use-package embark-consult
-  :after (embark consult)
-  :config
-  (message "embark-consult is loaded")
-  :hook (embark-collect-mode . consult-preview-at-point-mode))
-
 (provide 'init-minibuffer)

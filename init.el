@@ -13,6 +13,7 @@
 (require 'init-minibuffer)
 (require 'init-completion)
 (require 'init-window)
+(require 'init-embark)
 
 ;; Visualization
 (require 'init-ui)
