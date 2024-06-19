@@ -21,11 +21,6 @@
 
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
-
-  ;; Silos
-  (require 'denote-silo-extras)
-  (add-to-list 'denote-silo-extras-directories "~/work/openapply/notes/")
-
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-known-keywords '("emacs" "booknote"))

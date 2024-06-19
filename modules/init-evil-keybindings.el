@@ -68,7 +68,6 @@
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
-    "fo"  #'yejun/browse-org-directory
     "fp"  #'+tempel/find-private-template
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
@@ -101,8 +100,9 @@
     "nB"  #'citar-create-note
     "nc"  #'+org/toggle-last-clock
     "nC"  #'org-clock-goto
+    "nd"  #'denote-subdirectory
     "nf"  #'denote-open-or-create
-    "nF"  #'denote-silo-extras-open-or-create
+    "nF"  #'yejun/browse-org-directory
     "nk"  #'denote-rename-file-keywords
     "nn"  #'denote
     "ns"  #'consult-denote-grep
