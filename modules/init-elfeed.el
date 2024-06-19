@@ -47,11 +47,24 @@
         ('elfeed-search-mode (elfeed-search-browse-url))
         ('elfeed-show-mode (elfeed-show-visit)))))
 
+  (defun +elfeed/set-filter ()
+    (interactive)
+    (let ((categories
+           '(("News" . "@6-months-ago +news")
+             ("Papers" . "@6-months-ago +paper")
+             ("Later" . "@6-months-ago +later")
+             ("Summarized" . "@6-months-ago +summarized"))))
+      (if-let* ((category (completing-read "Select category: " categories))
+                (filter (cdr (assoc category categories))))
+          (elfeed-search-set-filter filter)
+        (elfeed-search-set-filter category))))
+
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
       "R" #'+elfeed/read-it-later
+      "S" #'+elfeed/set-filter
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
