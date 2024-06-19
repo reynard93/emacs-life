@@ -12,6 +12,7 @@
 ;; Interaction
 (require 'init-minibuffer)
 (require 'init-completion)
+(require 'init-transient)
 (require 'init-embark)
 
 ;; Visualization
