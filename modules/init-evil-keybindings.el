@@ -51,11 +51,8 @@
 
     ;; buffer/bookmark
     "bb"  #'switch-to-buffer
-    "bB"  #'switch-to-buffer-other-window
     "bd"  #'dired-jump
     "bm"  #'bookmark-set
-    "bn"  #'evil-buffer-new
-    "br"  #'revert-buffer
     "bz"  #'bury-buffer
 
     ;; code
@@ -71,8 +68,7 @@
     "fD"  #'+file/delete-this-file
     "fe"  #'yejun/browse-emacs-config
     "fn"  #'yejun/browse-nix-config
-    "fo"  #'+macos/reveal-in-finder
-    "fO"  #'+macos/reveal-project-in-finder
+    "fo"  #'yejun/browse-org-directory
     "fp"  #'+tempel/find-private-template
     "fr"  #'recentf-open-files
     "fR"  #'+file/move-this-file
@@ -101,7 +97,6 @@
 
     ;; notes/agenda/timer
     "na"  #'consult-org-agenda
-    "nA"  #'yejun/browse-org-directory
     "nb"  #'citar-open
     "nB"  #'citar-create-note
     "nc"  #'+org/toggle-last-clock
@@ -113,12 +108,15 @@
     "ns"  #'consult-denote-grep
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'org-todo-list
-    "nx"  #'denote-template
+    "nt"  #'tmr-tabulated-view
+    "nT"  #'org-todo-list
+    "nz"  #'denote-signature
 
     ;; open
     "oA"  #'org-agenda
     "oe"  #'elfeed
+    "oo"  #'+macos/reveal-in-finder
+    "oO"  #'+macos/reveal-project-in-finder
 
     ;; search
     "si"  #'consult-imenu
