@@ -3,8 +3,8 @@
 
 (defun +exercism/download (track exercise)
   (interactive
-   (list (completing-read "Track Name: " '(elixir ruby))
-         (read-string "Exercise Name: ")))
+   (list (completing-read "Select track: " '(elixir ruby))
+         (read-string "Exercise name: ")))
   (shell-command (format "exercism download --track=%s --exercise=%s" track exercise)))
 
 (defun +exercism/submit ()
