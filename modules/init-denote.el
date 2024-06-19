@@ -65,14 +65,14 @@
 
 (use-package citar
   :pin melpa
-  :demand t
+  :init
+  (setq org-cite-global-bibliography '("~/src/notes/reference.bib"))
+  (setq org-cite-insert-processor 'citar)
+  (setq org-cite-follow-processor 'citar)
+  (setq org-cite-activate-processor 'citar)
   :config
   (message "citar is loaded")
   :custom
-  (org-cite-global-bibliography '("~/src/notes/reference.bib"))
-  (org-cite-insert-processor 'citar)
-  (org-cite-follow-processor 'citar)
-  (org-cite-activate-processor 'citar)
   (citar-bibliography org-cite-global-bibliography))
 
 (use-package citar-embark
