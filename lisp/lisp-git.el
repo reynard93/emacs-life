@@ -40,13 +40,6 @@
   (interactive)
   (shell-command "gh pr create -w"))
 
-(defun +gh/pr-list ()
-  "List all pull requests for current repository."
-  (interactive)
-  (if-let ((pr-list (+gh--pr-list)))
-      (completing-read "Select pull request: " pr-list nil t)
-    (user-error "PR list is empty or not a GitHub repo")))
-
 (defun +gh--pr-list ()
   (let ((command (concat "gh pr list --json number,title,headRefName,author")))
     (condition-case nil
@@ -61,24 +54,28 @@
                   json))
       (error nil))))
 
-(defun +gh--pr-number (target)
-  (string-match "^#\\([0-9]+\\)" target)
-  (match-string 1 target))
+(defun +gh--pr-number ()
+  (if-let* ((pr-list (+gh--pr-list))
+            (target (completing-read "Select pull request: " pr-list nil t)))
+      (progn
+        (string-match "^#\\([0-9]+\\)" target)
+        (match-string 1 target))
+    (user-error "PR list is empty or not a GitHub repo")))
 
-(defun +gh/pr-checkout (target)
-  "Checkout a pull request with gh command line."
-  (when-let ((pr-number (+gh--pr-number target)))
-    (shell-command (concat "gh pr checkout " pr-number))))
+(defun +gh/pr-browse (pr-number)
+  "Browse a pull request by PR-NUMBER."
+  (interactive (list (+gh--pr-number)))
+  (shell-command (concat "gh pr view -w " pr-number)))
 
-(defun +gh/pr-browse (target)
-  "Browse a pull request with gh command line."
-  (when-let ((pr-number (+gh--pr-number target)))
-    (shell-command (concat "gh pr view -w " pr-number))))
+(defun +gh/pr-checkout (pr-number)
+  "Checkout a pull request by PR-NUMBER."
+  (interactive (list (+gh--pr-number)))
+  (shell-command (concat "gh pr checkout " pr-number)))
 
-(defun +gh/pr-view (target)
-  "View a pull request with gh command line."
-  (when-let* ((pr-number (+gh--pr-number target))
-              (output (shell-command-to-string (concat "gh pr view " pr-number)))
+(defun +gh/pr-view (pr-number)
+  "View a pull request by PR-NUMBER."
+  (interactive (list (+gh--pr-number)))
+  (when-let* ((output (shell-command-to-string (concat "gh pr view " pr-number)))
               (formatted-output (replace-regexp-in-string "\r" "" output))
               (buffer-name (format "*gh-pr-view %s*" pr-number)))
     (with-output-to-temp-buffer buffer-name
@@ -87,13 +84,13 @@
         (evil-local-set-key 'normal (kbd "q") 'quit-window))
       (princ formatted-output))))
 
-(defun +gh/pr-link (target)
-  "Copy a pull request's URL with gh command line."
-  (when-let ((pr-number (+gh--pr-number target)))
-    (let* ((command (format "gh pr view %s --json url --template '{{.url}}'" pr-number))
-           (output (shell-command-to-string command)))
-      (kill-new output)
-      (message "Copied URL: %s" output))))
+(defun +gh/pr-link (pr-number)
+  "Copy a pull request's URL by PR-NUMBER."
+  (interactive (list (+gh--pr-number)))
+  (let* ((command (format "gh pr view %s --json url --template '{{.url}}'" pr-number))
+         (output (shell-command-to-string command)))
+    (kill-new output)
+    (message "Copied URL: %s" output)))
 
 (defvar-keymap embark-gh-pr-map
   "c" #'+gh/pr-checkout

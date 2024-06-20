@@ -83,7 +83,7 @@
     "gl"  #'magit-log-current
     "gL"  #'magit-log-buffer-file
     "go"  #'browse-at-remote
-    "gp"  #'+gh/pr-list
+    "gp"  #'+gh/pr-browse
     "gr"  #'git-gutter:revert-hunk
     "gs"  #'git-gutter:stage-hunk
     "gt"  #'git-timemachine-toggle
