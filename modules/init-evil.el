@@ -77,10 +77,9 @@
   :after evil
   :config
   (message "evil-snipe is loaded")
-  (evil-snipe-mode 1)
-  (evil-snipe-override-mode 1)
-  (push 'osx-dictionary-mode evil-snipe-disabled-modes)
-  (push 'wombag-search-mode evil-snipe-disabled-modes))
+  :hook
+  ((prog-mode text-mode) . turn-on-evil-snipe-mode)
+  ((prog-mode text-mode) . turn-on-evil-snipe-override-mode))
 
 (use-package evil-surround
   :pin melpa
