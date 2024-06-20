@@ -20,20 +20,28 @@
       ('elfeed-show-mode
        elfeed-show-entry)))
 
-  (defun +elfeed/discard (entry)
+  (defun +elfeed/delete (entry)
     (interactive (list (+elfeed--selected-entry)))
-    (elfeed-tag entry 'junk)
-    (elfeed-search-update--force))
+    (elfeed-untag entry 'inbox)
+    (if (eq major-mode 'elfeed-search-mode)
+        (elfeed-search-update--force)
+      (elfeed-show-refresh)))
 
-  (defun +elfeed/read-later (entry)
+  (defun +elfeed/send-to-wombag (entry)
     (interactive (list (+elfeed--selected-entry)))
     (+wombag/url (elfeed-entry-link entry))
-    (elfeed-tag entry 'archived)
-    (elfeed-search-update--force))
+    (elfeed-tag entry 'sent)
+    (if (eq major-mode 'elfeed-search-mode)
+        (elfeed-search-update--force)
+      (elfeed-show-refresh)))
 
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
-    (+gptel/kagi-summarize-url (elfeed-entry-link entry)))
+    (+gptel/kagi-summarize-url (elfeed-entry-link entry))
+    (elfeed-tag entry 'summarized)
+    (if (eq major-mode 'elfeed-search-mode)
+        (elfeed-search-update--force)
+      (elfeed-show-refresh)))
 
   (defun +elfeed/switch-to-wombag ()
     (interactive)
@@ -51,11 +59,16 @@
   (defun +elfeed/set-filter ()
     (interactive)
     (let ((categories
-           '(("unread" . "@6-months-ago +unread -junk")
-             ("archived" . "@6-months-ago +archived")
-             ("read" . "@6-months-ago -unread -junk")
-             ("news" . "@6-months-ago +unread -junk +news")
-             ("videos" . "@6-months-ago +unread -junk +video"))))
+           '(("all" . "@6-months-ago")
+             ("sent" . "@6-months-ago +sent")
+             ("inbox" . "@6-months-ago +inbox")
+             ("trash" . "@6-months-ago -inbox")
+             ("unread" . "@6-months-ago +inbox +unread")
+             ("read" . "@6-months-ago +inbox -unread")
+             ("news" . "@6-months-ago +inbox +unread +news")
+             ("videos" . "@6-months-ago +inbox +unread +video")
+             ("engineering" . "@6-months-ago +inbox +unread +engineering")
+             ("web" . "@6-months-ago +inbox +unread +web"))))
       (if-let* ((category (completing-read "Select category: " categories))
                 (filter (cdr (assoc category categories))))
           (elfeed-search-set-filter filter)
@@ -65,20 +78,21 @@
     (evil-define-key 'normal elfeed-search-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
-      "D" #'+elfeed/discard
-      "R" #'+elfeed/read-later
+      "D" #'+elfeed/delete
+      "R" #'+elfeed/send-to-wombag
       "S" #'+elfeed/set-filter
       "W" #'+elfeed/switch-to-wombag)
 
     (evil-define-key 'normal elfeed-show-mode-map
       "=" #'+elfeed/summarize
       "B" #'+elfeed/browse
-      "D" #'+elfeed/discard
-      "R" #'+elfeed/read-later))
+      "D" #'+elfeed/delete
+      "R" #'+elfeed/send-to-wombag))
 
   :custom
+  (elfeed-initial-tags '(unread inbox))
   (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@6-months-ago +unread -junk"))
+  (elfeed-search-filter "@6-months-ago +inbox +unread"))
 
 (use-package elfeed-org
   :pin melpa
