@@ -51,6 +51,7 @@
   (org-capture-templates
    '(("t" "Task" entry (file "todo.org") "* TODO %?\n%i\n%l" :prepend t)
      ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
+     ("n" "Note" entry (file "notes.org") "* %?\n%i\n%l")
      ("a" "Anki" entry (file "anki.org") "* %?\n%i")))
 
   ;; Refile
