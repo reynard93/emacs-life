@@ -62,10 +62,15 @@
         (match-string 1 target))
     (user-error "PR list is empty or not a GitHub repo")))
 
-(defun +gh/pr-browse (pr-number)
+(defun +gh/pr-browse (&optional pr-number)
   "Browse a pull request by PR-NUMBER."
   (interactive (list (+gh--pr-number)))
   (shell-command (concat "gh pr view -w " pr-number)))
+
+(defun +gh/pr-browse-at-remote ()
+  "Browse pull request for current branch at remote."
+  (interactive)
+  (+gh/pr-browse))
 
 (defun +gh/pr-checkout (pr-number)
   "Checkout a pull request by PR-NUMBER."
