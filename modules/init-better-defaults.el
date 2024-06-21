@@ -154,7 +154,7 @@
               x-stretch-cursor t)                 ; Stretch cursor to the glyph width
 
 (setq auto-save-default t                         ; Nobody likes to loose work, I certainly don't
-      truncate-string-ellipsis "…"                ; Unicode ellispis are nicer than "...", and also save /precious/ space
+      truncate-string-ellipsis "…"               ; Unicode ellispis are nicer than "...", and also save /precious/ space
       password-cache-expiry nil                   ; I can trust my computers ... can't I?
       scroll-margin 2                             ; It's nice to maintain a little margin
       display-time-default-load-average nil       ; I don't think I've ever found this useful
