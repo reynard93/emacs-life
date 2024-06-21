@@ -36,27 +36,17 @@
 
 (defun +kagi/assistant-custom (&optional instruction)
   (interactive)
-  (let ((search-type (format "!custom %s" instruction)))
+  (let ((search-type (if instruction
+                         (concat "!custom" instruction)
+                       "!custom")))
     (+kagi/search search-type)))
 
-(defun +kagi/assistant-custom-translate ()
-  (interactive)
-  (+kagi/assistant-custom "translate"))
-
-(defun +kagi/assistant-custom-localize ()
-  (interactive)
-  (+kagi/assistant-custom "localize"))
-
-(defvar-keymap embark-kagi-map
-  "s" #'+kagi/search
+(defvar-keymap kagi-assistant-keymap
   "r" #'+kagi/assistant-research
-  "c" #'+kagi/assistant-code
-  "h" #'+kagi/assistant-chat
-  "a" #'+kagi/assistant-custom
-  "L" #'+kagi/assistant-custom-localize
-  "T" #'+kagi/assistant-custom-translate)
+  "d" #'+kagi/assistant-code
+  "c" #'+kagi/assistant-chat
+  "a" #'+kagi/assistant-custom)
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "K" embark-kagi-map))
+(bind-key "C-c a" kagi-assistant-keymap)
 
 (provide 'lisp-kagi)
