@@ -141,6 +141,13 @@
   (dictionary-use-single-buffer t)
   :bind ("C-c d" . dictionary-search))
 
+(use-package browse-url
+  :ensure nil
+  :init
+  (setq browse-url-firefox-program "/opt/homebrew/bin/firefox")
+  :custom
+  (browse-url-browser-function #'browse-url-firefox))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
