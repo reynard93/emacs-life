@@ -7,9 +7,9 @@
   :config
   (message "magit is loaded")
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  (magit-define-global-key-bindings nil)
   (magit-bury-buffer-function #'quit-window)
-  (magit-show-long-lines-warning nil))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 (use-package browse-at-remote
   :pin melpa
