@@ -55,12 +55,11 @@
       (error nil))))
 
 (defun +gh--pr-number ()
-  (if-let* ((pr-list (+gh--pr-list))
-            (target (completing-read "Select pull request: " pr-list nil t)))
-      (progn
-        (string-match "^#\\([0-9]+\\)" target)
-        (match-string 1 target))
-    (user-error "PR list is empty or not a GitHub repo")))
+  (let* ((collection (+gh--pr-list))
+         (history (list (magit-get-current-branch)))
+         (target (completing-read "Select pull request: " collection nil t nil 'history)))
+    (when (string-match "^#\\([0-9]+\\)" target)
+      (match-string 1 target))))
 
 (defun +gh/pr-browse (&optional pr-number)
   "Browse a pull request by PR-NUMBER."
