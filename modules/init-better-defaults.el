@@ -132,15 +132,6 @@
   (message "winner is loaded")
   (winner-mode 1))
 
-(use-package dictionary
-  :ensure nil
-  :custom
-  (dictionary-server "dict.org")
-  (dictionary-default-popup-strategy "lev")
-  (dictionary-create-buttons nil)
-  (dictionary-use-single-buffer t)
-  :bind ("C-c d" . dictionary-search))
-
 (use-package browse-url
   :ensure nil
   :init
