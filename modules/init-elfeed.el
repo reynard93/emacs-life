@@ -65,6 +65,7 @@
              ("trash" . "@6-months-ago -inbox")
              ("unread" . "@6-months-ago +inbox +unread")
              ("read" . "@6-months-ago +inbox -unread")
+             ("summarized" . "@6-months-ago +summarized")
              ("news" . "@6-months-ago +inbox +unread +news")
              ("videos" . "@6-months-ago +inbox +unread +video")
              ("engineering" . "@6-months-ago +inbox +unread +engineering")
