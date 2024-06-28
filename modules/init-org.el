@@ -90,10 +90,7 @@
   :pin melpa
   :after ox
   :config
-  (message "ox-hugo is loaded")
-  :custom
-  (org-hugo-delete-trailing-ws nil)
-  (org-hugo-auto-set-lastmod t))
+  (message "ox-hugo is loaded"))
 
 (use-package org-pandoc-import
   :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
