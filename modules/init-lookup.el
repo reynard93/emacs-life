@@ -11,4 +11,12 @@
   :bind (("M-s k" . dash-at-point)
          ("M-s K" . dash-at-point-with-docset)))
 
+(use-package browser-hist
+  :pin melpa
+  :defer t
+  :config
+  (message "browser-hist is loaded")
+  :custom
+  (browser-hist-default-browser 'firefox))
+
 (provide 'init-lookup)
