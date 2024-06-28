@@ -133,6 +133,7 @@
     "ss"  #'+buffer/search
     "sS"  #'+buffer/search-for-symbol-at-point
     "st"  #'osx-dictionary-search-word-at-point
+    "su"  #'browser-hist-search
 
     ;; toggle
     "tf"  #'flymake-mode
