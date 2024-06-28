@@ -59,6 +59,7 @@
              ("summarized" . "@6-months-ago +summarized")
              ("news" . "@6-months-ago +inbox +unread +news")
              ("videos" . "@6-months-ago +inbox +unread +video")
+             ("podcasts" . "@6-months-ago +inbox +unread +podcast")
              ("engineering" . "@6-months-ago +inbox +unread +engineering")
              ("web" . "@6-months-ago +inbox +unread +web"))))
       (if-let* ((category (completing-read "Select category: " categories))
