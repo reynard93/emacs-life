@@ -2,13 +2,19 @@
   :ensure nil
   :init
   (setq org-directory "~/src/org/"
-        org-agenda-files (list "todo.org"))
+        org-agenda-files (list "tasks.org"))
 
   :config
   (message "org is loaded")
 
   (defun my-org-mode-hook ()
     (setq-local evil-auto-indent nil))
+
+  ;; Hooks
+  (with-eval-after-load 'pulsar
+    (dolist (hook '(org-agenda-after-show-hook org-follow-link-hook))
+      (add-hook hook #'pulsar-recenter-center)
+      (add-hook hook #'pulsar-reveal-entry)))
 
   ;; Advices
   (defun move-to-eol-advice (&rest args) (end-of-line))
@@ -33,7 +39,7 @@
   (org-tags-column 0)
 
   ;; Appearance
-  (org-ellipsis "▾")
+  (org-ellipsis " ▾")
   (org-hide-emphasis-markers nil)
   (org-cycle-separator-lines 0)
 
@@ -49,10 +55,44 @@
 
   ;; Capture
   (org-capture-templates
-   '(("t" "Task" entry (file "todo.org") "* TODO %?\n%i\n%l" :prepend t)
-     ("j" "Journal" entry (file+olp+datetree "journal.org") "* %U %?\n%i")
-     ("n" "Note" entry (file "notes.org") "* %?\n%i\n%l")
-     ("a" "Anki" entry (file "anki.org") "* %?\n%i")))
+   `(("t" "Time-sensitive task" entry
+      (file+headline "tasks.org" "Tasks with a date")
+      ,(concat "* TODO %^{Title} %^g\n"
+               "%^{How time sensitive it is|SCHEDULED|DEADLINE}: %^t\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%?")
+      :empty-lines-after 1)
+     ("c" "Clock in and do immediately" entry
+      (file+headline "tasks.org" "Clocked tasks")
+      ,(concat "* TODO %^{Title}\n"
+               ":PROPERTIES:\n"
+               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
+               ":END:\n\n"
+               "%a\n")
+      :prepend t
+      :clock-in t
+      :clock-keep t
+      :immediate-finish t
+      :empty-lines-after 1)
+     ("e" "Email note (unprocessed)" entry
+      (file+headline "tasks.org" "Unprocessed")
+      ,(concat "* TODO %:subject :mail:\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%a\n%i%?")
+      :empty-lines-after 1)
+     ("a" "Anki card" entry
+      (file "anki.org")
+      ,(concat "* %^{Title}\n")
+      :empty-lines-after 1)))
+
+  (org-capture-templates-contexts
+   '(("e" ((in-mode . "notmuch-search-mode")
+           (in-mode . "notmuch-show-mode")
+           (in-mode . "notmuch-tree-mode")))))
 
   ;; Refile
   (org-outline-path-complete-in-steps nil)
