@@ -87,4 +87,11 @@ when using summarize models."
          :map embark-url-map
          ("=" . +gptel/kagi-summarize-url)))
 
+(use-package gptel-quick
+  :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
+  :config
+  (message "gptel-quick is loaded")
+  :bind ( :map embark-general-map
+          ("?" . gptel-quick)))
+
 (provide 'init-gpt)
