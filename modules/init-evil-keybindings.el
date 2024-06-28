@@ -110,10 +110,7 @@
     "nn"  #'denote
     "ns"  #'consult-denote-grep
     "nr"  #'denote-rename-file
-    "nR"  #'denote-rename-file-using-front-matter
-    "nt"  #'tmr-tabulated-view
-    "nT"  #'org-todo-list
-    "nz"  #'denote-signature
+    "nt"  #'org-todo-list
 
     ;; open
     "oA"  #'org-agenda
