@@ -124,8 +124,6 @@
     ;; search
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
-    "sk"  #'dash-at-point
-    "sK"  #'dash-at-point-with-docset
     "sl"  #'ffap-menu
     "so"  #'+kagi/search
     "sr"  #'+buffer/search-multi
