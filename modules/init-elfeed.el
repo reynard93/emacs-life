@@ -1,15 +1,6 @@
 (use-package elfeed
   :pin melpa
   :defer t
-  :init
-  (defvar elfeed-browse-url-handlers
-    '(("https:\\/\\/www\\.youtu\\.*be." . mpv-browse-url)
-      ("." . eww-browse-url)))
-
-  (defun mpv-browse-url (url &rest args)
-    (message "Streaming in mpv: %s" url)
-    (start-process "mpv" nil "mpv" url))
-
   :config
   (message "elfeed is loaded")
 
@@ -49,9 +40,9 @@
         (switch-to-buffer buf)
       (wombag)))
 
-  (defun +elfeed/browse ()
+  (defun +elfeed/eww ()
     (interactive)
-    (let ((browse-url-handlers elfeed-browse-url-handlers))
+    (let ((browse-url-browser-function #'eww))
       (pcase major-mode
         ('elfeed-search-mode (elfeed-search-browse-url))
         ('elfeed-show-mode (elfeed-show-visit)))))
@@ -78,7 +69,7 @@
   (when (featurep 'evil)
     (evil-define-key 'normal elfeed-search-mode-map
       "=" #'+elfeed/summarize
-      "B" #'+elfeed/browse
+      "B" #'+elfeed/eww
       "D" #'+elfeed/delete
       "R" #'+elfeed/send-to-wombag
       "S" #'+elfeed/set-filter
@@ -86,7 +77,7 @@
 
     (evil-define-key 'normal elfeed-show-mode-map
       "=" #'+elfeed/summarize
-      "B" #'+elfeed/browse
+      "B" #'+elfeed/eww
       "D" #'+elfeed/delete
       "R" #'+elfeed/send-to-wombag))
 
@@ -103,5 +94,29 @@
   :config
   (message "elfeed-org is loaded")
   (elfeed-org))
+
+(use-package elfeed-tube
+  :pin melpa
+  :after elfeed
+  :demand t
+  :config
+  (message "elfeed-tube is loaded")
+  (elfeed-tube-setup)
+  :bind (:map elfeed-show-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)
+         :map elfeed-search-mode-map
+         ("F" . elfeed-tube-fetch)
+         ([remap save-buffer] . elfeed-tube-save)))
+
+(use-package elfeed-tube-mpv
+  :pin melpa
+  :after elfeed
+  :demand t
+  :config
+  (message "elfeed-tube-mpv is loaded")
+  :bind (:map elfeed-show-mode-map
+              ("C-c C-f" . elfeed-tube-mpv-follow-mode)
+              ("C-c C-w" . elfeed-tube-mpv-where)))
 
 (provide 'init-elfeed)
