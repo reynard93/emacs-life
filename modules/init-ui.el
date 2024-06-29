@@ -1,13 +1,7 @@
 (use-package modus-themes
-  :demand t
+  :defer t
   :config
   (message "modus-themes is loaded")
-  (modus-themes-load-theme
-   (if (display-graphic-p)
-       (if (+macos/dark-mode-p)
-           'modus-vivendi
-         'modus-operandi)
-     'modus-vivendi))
   :custom
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t))
@@ -21,9 +15,7 @@
   (ef-themes-variable-pitch-ui t))
 
 (use-package theme-buffet
-  :if (display-graphic-p)
-  :after (:any modus-themes ef-themes)
-  :defer 1
+  :demand t
   :init
   (defun +theme-buffet/toggle ()
     (interactive)
@@ -32,7 +24,11 @@
       (theme-buffet-timer-hours 1)))
   :config
   (message "theme-buffet is loaded")
-  (theme-buffet-timer-hours 1)
+  (if (display-graphic-p)
+      (progn
+        (theme-buffet-a-la-carte)
+        (theme-buffet-timer-hours 1))
+    (modus-themes-select 'modus-vivendi))
   :custom
   (theme-buffet-menu 'end-user)
   (theme-buffet-end-user
