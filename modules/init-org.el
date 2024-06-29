@@ -35,10 +35,8 @@
   (org-M-RET-may-split-line '((default . nil)))
 
   ;; Appearance
-  (org-hide-emphasis-markers t)
-  (org-pretty-entities t)
   (org-ellipsis "…")
-  (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+  (org-hide-emphasis-markers t)
 
   ;; Editing
   (org-auto-align-tags nil)
@@ -54,8 +52,10 @@
   (org-todo-keywords
    '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
   (org-todo-keyword-faces
-   '(("CANCELLED" . (:inherit (org-archived)))
-     ("HOLD" . (:inherit (org-warning)))))
+   '(("TODO" . (:foreground "red" :weight bold))
+     ("HOLD" . (:foreground "yellow" :weight bold))
+     ("DONE" . (:foreground "green" :weight bold))
+     ("CANCELLED" . (:foreground "gray" :weight bold :strike-through t))))
 
   ;; Capture
   (org-capture-templates
@@ -80,6 +80,14 @@
       :clock-keep t
       :immediate-finish t
       :empty-lines-after 1)
+     ("w" "Add to the wishlist (may do some day)" entry
+      (file+headline "tasks.org" "Wishlist")
+      ,(concat "* %^{Title}\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%?")
+      :empty-lines-after 1)
      ("e" "Email note (unprocessed)" entry
       (file+headline "tasks.org" "Unprocessed")
       ,(concat "* TODO %:subject :mail:\n"
@@ -87,10 +95,6 @@
                ":CAPTURED: %U\n"
                ":END:\n\n"
                "%a\n%i%?")
-      :empty-lines-after 1)
-     ("a" "Anki card" entry
-      (file "anki.org")
-      ,(concat "* %^{Title}\n")
       :empty-lines-after 1)))
 
   (org-capture-templates-contexts
