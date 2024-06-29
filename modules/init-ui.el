@@ -1,4 +1,5 @@
 (use-package modus-themes
+  :demand t
   :config
   (message "modus-themes is loaded")
   (modus-themes-load-theme
@@ -8,26 +9,14 @@
          'modus-operandi)
      'modus-vivendi))
   :custom
-  (modus-themes-custom-auto-reload nil)
   (modus-themes-mixed-fonts t)
-  (modus-themes-variable-pitch-ui t)
-  (modus-themes-italic-constructs t)
-  (modus-themes-bold-constructs nil)
-  (modus-themes-completions
-   '((matches . (underline))
-     (selection . (extrabold))))
-  (modus-themes-prompts '(extrabold))
-  (modus-themes-headings
-   '((agenda-structure . (variable-pitch light 1.8))
-     (agenda-date . (1.3))
-     (t . (regular 1.0)))))
+  (modus-themes-variable-pitch-ui t))
 
 (use-package ef-themes
   :defer t
   :config
   (message "ef-themes is loaded")
   :custom
-  (ef-themes-to-toggle '(ef-summer ef-winter))
   (ef-themes-mixed-fonts t)
   (ef-themes-variable-pitch-ui t))
 
