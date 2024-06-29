@@ -7,9 +7,6 @@
   :config
   (message "org is loaded")
 
-  (defun my-org-mode-hook ()
-    (setq-local evil-auto-indent nil))
-
   ;; Hooks
   (with-eval-after-load 'pulsar
     (dolist (hook '(org-agenda-after-show-hook org-follow-link-hook))
@@ -36,12 +33,19 @@
   (org-use-sub-superscripts '{})
   (org-read-date-prefer-future 'time)
   (org-M-RET-may-split-line '((default . nil)))
-  (org-tags-column 0)
 
   ;; Appearance
-  (org-ellipsis " ▾")
-  (org-hide-emphasis-markers nil)
-  (org-cycle-separator-lines 0)
+  (org-hide-emphasis-markers t)
+  (org-pretty-entities t)
+  (org-ellipsis "…")
+  (set-face-attribute 'org-ellipsis nil :inherit 'default :box nil)
+
+  ;; Editing
+  (org-auto-align-tags nil)
+  (org-tags-column 0)
+  (org-catch-invisible-edits 'show-and-error)
+  (org-special-ctrl-a/e t)
+  (org-insert-heading-respect-content t)
 
   ;; Task
   (org-log-done 'time)
@@ -119,7 +123,6 @@
   (org-export-with-section-numbers nil)
   (org-export-dispatch-use-expert-ui t)
 
-  :hook (org-mode . my-org-mode-hook)
   :bind (("C-c l" . org-store-link)
          :map org-mode-map
          ("C-u C-c C-l" . org-toggle-link-display)
