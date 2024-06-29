@@ -41,7 +41,10 @@
   (shell-command "gh pr create -w"))
 
 (defun +gh--pr-list ()
-  (let ((command (concat "gh pr list --json number,title,headRefName,author")))
+  (let* ((initial-command "gh pr list --json number,title,headRefName,author")
+         (command (if current-prefix-arg
+                      initial-command
+                    (concat initial-command " --author \"@me\""))))
     (condition-case nil
         (let ((json (json-read-from-string (shell-command-to-string command))))
           (mapcar (lambda (pr)
