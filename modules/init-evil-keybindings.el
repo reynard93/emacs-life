@@ -53,6 +53,7 @@
     "bb"  #'switch-to-buffer
     "bd"  #'dired-jump
     "bm"  #'bookmark-set
+    "br"  #'revert-buffer
     "bz"  #'bury-buffer
 
     ;; code
