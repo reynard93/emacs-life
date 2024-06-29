@@ -48,10 +48,10 @@
   (org-log-into-drawer t)
   (org-use-fast-todo-selection 'expert)
   (org-todo-keywords
-   '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "KILL(k@)")))
+   '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
   (org-todo-keyword-faces
-   '(("KILL" . (:inherit (italic org-warning)))
-     ("HOLD" . (:inherit (italic org-warning)))))
+   '(("CANCELLED" . (:inherit (org-archived)))
+     ("HOLD" . (:inherit (org-warning)))))
 
   ;; Capture
   (org-capture-templates
