@@ -111,6 +111,7 @@
     "nn"  #'denote
     "ns"  #'consult-denote-grep
     "nr"  #'denote-rename-file
+    "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'org-todo-list
 
     ;; open
