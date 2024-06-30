@@ -58,7 +58,7 @@ when using summarize models."
 
   (defun +gptel/kagi-summarize-url (url)
     "Summarize URL using Kagi's Universal Summarizer."
-    (interactive "sSummerize URL: ")
+    (interactive "sEnter URL: ")
     (let ((gptel-backend gptel--kagi)
           (gptel-model "summarize:agnes"))
       (gptel-request url
