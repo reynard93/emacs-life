@@ -41,12 +41,13 @@
                        "!custom")))
     (+kagi/search search-type)))
 
-(defvar-keymap kagi-assistant-keymap
+(defvar-keymap kagi-keymap
+  "k" #'+kagi/search
   "r" #'+kagi/assistant-research
   "d" #'+kagi/assistant-code
   "c" #'+kagi/assistant-chat
   "a" #'+kagi/assistant-custom)
 
-(bind-key "C-c a" kagi-assistant-keymap)
+(bind-key "C-c k" kagi-keymap)
 
 (provide 'lisp-kagi)

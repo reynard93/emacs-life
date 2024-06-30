@@ -90,17 +90,13 @@
          :map goto-map
          ("e" . consult-compile-error)
          ("f" . consult-flymake)
-         ("h" . consult-org-heading)
-         ("i" . consult-imenu)
-         ("I" . consult-imenu-multi)
          ("m" . consult-mark)
          ("M" . consult-global-mark)
          :map search-map
-         ("l" . ffap-menu)
-         ("r" . +buffer/search-multi)
-         ("R" . +buffer/search-multi-for-symbol-at-point)
-         ("s" . +buffer/search)
-         ("S" . +buffer/search-for-symbol-at-point)))
+         ("i" . consult-imenu)
+         ("I" . consult-imenu-multi)
+         ("l" . consult-line)
+         ("L" . consult-line-multi)))
 
 (use-package consult-dir
   :pin melpa

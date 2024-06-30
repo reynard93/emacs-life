@@ -45,13 +45,9 @@
 
     "SPC" #'project-switch-to-buffer
     "RET" #'bookmark-jump
-    "a"   #'embark-act
-    "x"   #'gptel
-    "X"   #'org-capture
 
     ;; buffer/bookmark
     "bb"  #'switch-to-buffer
-    "bd"  #'dired-jump
     "bm"  #'bookmark-set
     "br"  #'revert-buffer
     "bz"  #'bury-buffer
@@ -115,20 +111,15 @@
     "nt"  #'org-todo-list
 
     ;; open
-    "oA"  #'org-agenda
-    "oe"  #'elfeed
     "oo"  #'+macos/reveal-in-finder
     "oO"  #'+macos/reveal-project-in-finder
 
     ;; search
+    "sf"  #'ffap-menu
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
-    "sl"  #'ffap-menu
-    "so"  #'+kagi/search
-    "sr"  #'+buffer/search-multi
-    "sR"  #'+buffer/search-multi-for-symbol-at-point
-    "ss"  #'+buffer/search
-    "sS"  #'+buffer/search-for-symbol-at-point
+    "sl"  #'consult-line
+    "sL"  #'consult-line-multi
     "st"  #'osx-dictionary-search-word-at-point
     "su"  #'browser-hist-search
 

@@ -127,7 +127,9 @@
   (org-export-with-section-numbers nil)
   (org-export-dispatch-use-expert-ui t)
 
-  :bind (("C-c l" . org-store-link)
+  :bind (("C-c a" . org-agenda)
+         ("C-c c" . org-capture)
+         ("C-c l" . org-store-link)
          :map org-mode-map
          ("C-u C-c C-l" . org-toggle-link-display)
          ("C-M-S-h" . org-babel-mark-block)

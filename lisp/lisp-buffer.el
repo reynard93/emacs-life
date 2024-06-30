@@ -1,19 +1,3 @@
-(defun +buffer/search (&optional thing)
-  (interactive)
-  (consult-line (when thing (thing-at-point thing))))
-
-(defun +buffer/search-for-symbol-at-point ()
-  (interactive)
-  (+buffer/search 'symbol))
-
-(defun +buffer/search-multi (&optional thing)
-  (interactive)
-  (consult-line-multi nil (when thing (thing-at-point thing))))
-
-(defun +buffer/search-multi-for-symbol-at-point ()
-  (interactive)
-  (+buffer/search-multi 'symbol))
-
 (defun +buffer/yank-path (&optional buffer dir)
   "Save the buffer path into the kill-ring.
 If BUFFER is not nil, find filename of BUFFER, otherwise, find
