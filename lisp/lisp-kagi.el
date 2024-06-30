@@ -21,6 +21,16 @@
          (formatted-query (if bang (format "%s %s" bang query) query)))
     (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
 
+;; https://help.kagi.com/kagi/features/bangs.html#ai-related-bangs
+(defun +kagi/summarize-url (url)
+  "Summerize URL using Kagi's Universal Summarizer."
+  (interactive "sEnter URL: ")
+  (let ((token (+kagi-token)))
+    (browse-url (format "https://kagi.com/search?token=%s&q=!sum %s" token (url-hexify-string url)))))
+
+(with-eval-after-load 'embark
+  (keymap-set embark-url-map "K" #'+kagi/summarize-url))
+
 ;; https://help.kagi.com/kagi/features/bangs.html#kagi-assistant-bangs
 (defun +kagi/assistant-research ()
   (interactive)
