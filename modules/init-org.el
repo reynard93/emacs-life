@@ -57,7 +57,7 @@
 
   ;; Capture
   (org-capture-templates
-   `(("t" "Clock in and do immediately" entry
+   `(("c" "Clock in and do immediately" entry
       (file+headline "tasks.org" "Clocked tasks")
       ,(concat "* TODO %^{Title}\n"
                ":PROPERTIES:\n"
