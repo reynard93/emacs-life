@@ -97,10 +97,7 @@
    '((project-find-file "Find file")
      (project-find-dir "Find directory")
      (project-dired "Root dired")
-     (project-eshell "Eshell")
-     (magit-project-status "Git" "g")
-     (+project/search "Search project" "s")
-     (+project/search-for-symbol-at-point "Search project with symbol" "S"))))
+     (project-eshell "Eshell"))))
 
 (use-package time
   :ensure nil
