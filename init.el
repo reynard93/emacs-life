@@ -54,7 +54,6 @@
 (require 'init-mail)
 (require 'init-irc)
 (require 'init-gpt)
-(require 'init-timer)
 (require 'init-lookup)
 (require 'init-restclient)
 (require 'init-network-tools)
