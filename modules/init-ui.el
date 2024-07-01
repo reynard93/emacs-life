@@ -68,7 +68,7 @@
       :variable-pitch-height 1.0)
      ))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
-  :bind ("C-c f" . fontaine-set-preset))
+  :bind ("C-c F" . fontaine-set-preset))
 
 (use-package logos
   :if (display-graphic-p)

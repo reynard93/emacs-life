@@ -1,5 +1,6 @@
 (use-package magit
   :pin melpa
+  :demand t
   :init
   (setq magit-repository-directories
         '(("~/src" . 1)
@@ -7,9 +8,11 @@
   :config
   (message "magit is loaded")
   :custom
-  (magit-define-global-key-bindings nil)
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
   (magit-bury-buffer-function #'quit-window)
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+  (magit-define-global-key-bindings nil)
+  :bind (("C-c g" . magit-dispatch)
+         ("C-c f" . magit-file-dispatch)))
 
 (use-package browse-at-remote
   :pin melpa
