@@ -1,6 +1,5 @@
 (use-package osx-dictionary
   :pin melpa
-  :defer t
   :config
   (message "osx-dictionary is loaded")
   :bind ( :map search-map
@@ -8,7 +7,6 @@
 
 (use-package browser-hist
   :pin melpa
-  :defer t
   :config
   (message "browser-hist is loaded")
   (setf (alist-get 'firefox browser-hist-db-paths)
@@ -18,5 +16,13 @@
   (browser-hist-default-browser 'firefox)
   :bind ( :map search-map
           ("u" . browser-hist-search)))
+
+(use-package deadgrep
+  :pin melpa
+  :config
+  (message "deadgrep is loaded")
+  (evil-set-initial-state 'deadgrep-mode 'emacs)
+  :bind ( :map search-map
+          ("d". deadgrep)))
 
 (provide 'init-lookup)
