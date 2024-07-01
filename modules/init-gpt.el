@@ -65,13 +65,14 @@ when using summarize models."
         :callback
         (lambda (response info)
           (if response
-              (with-current-buffer (get-buffer-create "*Kagi Summary*")
-                (let ((inhibit-read-only t))
-                  (erase-buffer)
-                  (visual-line-mode 1)
-                  (insert response)
-                  (display-buffer (current-buffer)))
-                (special-mode))
+              (let ((output-name (format "*Kagi Summary: %s*" (plist-get (plist-get info :data) :url))))
+                (with-current-buffer (get-buffer-create output-name)
+                  (let ((inhibit-read-only t))
+                    (erase-buffer)
+                    (visual-line-mode 1)
+                    (insert response)
+                    (display-buffer (current-buffer))
+                    (special-mode))))
             (message "gptel-request failed with message: %s"
                      (plist-get info :status)))))))
 

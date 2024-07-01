@@ -64,7 +64,7 @@
      ("*Org Select*" :align below)
      ("^CAPTURE-.+$" :regexp t :align below)
      ("*Capture*" :align below)
-     ("*Kagi Summary*" :align below)
+     ("^*Kagi Summary:.+$" :regexp t :align below)
      ((:custom
        ,(lambda (buffer)
           (with-current-buffer buffer
