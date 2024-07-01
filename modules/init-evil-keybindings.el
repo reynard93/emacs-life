@@ -120,8 +120,6 @@
     "sI"  #'consult-imenu-multi
     "ss"  #'consult-line
     "sS"  #'consult-line-multi
-    "st"  #'osx-dictionary-search-word-at-point
-    "su"  #'browser-hist-search
 
     ;; toggle
     "tf"  #'flymake-mode
