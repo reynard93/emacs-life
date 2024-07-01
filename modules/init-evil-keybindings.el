@@ -94,8 +94,7 @@
     "goo" #'browse-at-remote
     "gop" #'+gh/pr-browse-at-remote
 
-    ;; notes/agenda/timer
-    "na"  #'consult-org-agenda
+    ;; notes/agenda
     "nb"  #'citar-open
     "nB"  #'citar-create-note
     "nc"  #'+org/toggle-last-clock
@@ -109,6 +108,7 @@
     "nr"  #'denote-rename-file
     "nR"  #'denote-rename-file-using-front-matter
     "nt"  #'org-todo-list
+    "nz"  #'denote-signature
 
     ;; open
     "oo"  #'+macos/reveal-in-finder
