@@ -52,10 +52,8 @@
   (org-todo-keywords
    '((sequence "TODO(t)" "HOLD(h@/!)" "|" "DONE(d!)" "CANCELLED(c@)")))
   (org-todo-keyword-faces
-   '(("TODO" . (:foreground "red" :weight bold))
-     ("HOLD" . (:foreground "yellow" :weight bold))
-     ("DONE" . (:foreground "green" :weight bold))
-     ("CANCELLED" . (:foreground "gray" :weight bold :strike-through t))))
+   '(("HOLD" . (org-warning))
+     ("CANCELLED" . (:strike-through t))))
 
   ;; Capture
   (org-capture-templates
