@@ -38,7 +38,6 @@
   :config
   (message "frame is loaded")
   :bind (("C-s-f" . toggle-frame-fullscreen)
-         ("s-F" . select-frame-by-name)
          ("s-N" . make-frame)
          ("s-W" . delete-frame)))
 
