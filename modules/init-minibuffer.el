@@ -95,8 +95,8 @@
          :map search-map
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
-         ("l" . consult-line)
-         ("L" . consult-line-multi)))
+         ("s" . consult-line)
+         ("S" . consult-line-multi)))
 
 (use-package consult-dir
   :pin melpa

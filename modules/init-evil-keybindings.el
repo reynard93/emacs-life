@@ -118,8 +118,8 @@
     "sf"  #'ffap-menu
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
-    "sl"  #'consult-line
-    "sL"  #'consult-line-multi
+    "ss"  #'consult-line
+    "sS"  #'consult-line-multi
     "st"  #'osx-dictionary-search-word-at-point
     "su"  #'browser-hist-search
 
