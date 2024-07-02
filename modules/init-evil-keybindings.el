@@ -124,6 +124,7 @@
     ;; toggle
     "tf"  #'flymake-mode
     "ts"  #'flyspell-mode
+    "tt"  #'+theme-buffet/toggle
     "tv"  #'visible-mode
     "tw"  #'visual-line-mode
     "tz"  #'logos-focus-mode

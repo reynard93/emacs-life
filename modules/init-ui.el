@@ -16,12 +16,7 @@
 
 (use-package theme-buffet
   :demand t
-  :init
-  (defun +theme-buffet/toggle ()
-    (interactive)
-    (if theme-buffet-timer-hours
-        (theme-buffet--free-timer 'theme-buffet-timer-hours)
-      (theme-buffet-timer-hours 1)))
+  :commands (+theme-buffet/toggle)
   :config
   (message "theme-buffet is loaded")
   (if (display-graphic-p)
@@ -29,6 +24,12 @@
         (theme-buffet-a-la-carte)
         (theme-buffet-timer-hours 1))
     (modus-themes-select 'modus-vivendi))
+
+  (defun +theme-buffet/toggle ()
+    (interactive)
+    (if theme-buffet-timer-hours
+        (theme-buffet--free-timer 'theme-buffet-timer-hours)
+      (theme-buffet-timer-hours 1)))
   :custom
   (theme-buffet-menu 'end-user)
   (theme-buffet-end-user
