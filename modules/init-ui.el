@@ -1,7 +1,10 @@
 (use-package modus-themes
-  :defer t
+  :demand t
   :config
   (message "modus-themes is loaded")
+  (if (display-graphic-p)
+      (modus-themes-load-theme 'modus-operandi)
+    (modus-themes-select 'modus-vivendi))
   :custom
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t))
@@ -15,16 +18,12 @@
   (ef-themes-variable-pitch-ui t))
 
 (use-package theme-buffet
+  :if (display-graphic-p)
+  :after (:any modus-themes ef-themes)
   :demand t
-  :commands (+theme-buffet/toggle)
   :config
   (message "theme-buffet is loaded")
-  (if (display-graphic-p)
-      (progn
-        (theme-buffet-a-la-carte)
-        (theme-buffet-timer-hours 1))
-    (modus-themes-select 'modus-vivendi))
-
+  (theme-buffet-timer-hours 1)
   (defun +theme-buffet/toggle ()
     (interactive)
     (if theme-buffet-timer-hours
