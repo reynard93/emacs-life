@@ -57,7 +57,16 @@
 
   ;; Capture
   (org-capture-templates
-   `(("c" "Clock in and do immediately" entry
+   `(("t" "Time-sensitive task" entry
+      (file+headline "tasks.org" "Tasks with a date")
+      ,(concat "* TODO %^{Title} %^g\n"
+               "%^{How time sensitive it is|SCHEDULED|DEADLINE}: %^t\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%?")
+      :empty-lines-after 1)
+     ("c" "Clock in and do immediately" entry
       (file+headline "tasks.org" "Clocked tasks")
       ,(concat "* TODO %^{Title}\n"
                ":PROPERTIES:\n"
@@ -68,6 +77,14 @@
       :clock-in t
       :clock-keep t
       :immediate-finish t
+      :empty-lines-after 1)
+     ("w" "Add to the wishlist (may do some day)" entry
+      (file+headline "tasks.org" "Wishlist")
+      ,(concat "* %^{Title}\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%?")
       :empty-lines-after 1)
      ("e" "Email note (unprocessed)" entry
       (file+headline "tasks.org" "Unprocessed")
