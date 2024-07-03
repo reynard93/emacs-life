@@ -2,9 +2,12 @@
   :demand t
   :config
   (message "modus-themes is loaded")
-  (if (display-graphic-p)
-      (modus-themes-load-theme 'modus-operandi)
-    (modus-themes-select 'modus-vivendi))
+  (modus-themes-load-theme
+   (if (display-graphic-p)
+       (if (+macos/dark-mode-p)
+           'modus-vivendi
+         'modus-operandi)
+     'modus-vivendi))
   :custom
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t))
