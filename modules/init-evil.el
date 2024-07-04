@@ -62,16 +62,6 @@
   (message "evil-collection is loaded")
   (evil-collection-init))
 
-(use-package evil-nerd-commenter
-  :pin nongnu
-  :after evil
-  :config
-  (message "evil-nerd-commenter is loaded")
-  (evil-define-key 'normal 'global
-    "gcc" #'evilnc-comment-or-uncomment-lines
-    "gcp" #'evilnc-comment-or-uncomment-paragraphs
-    "gcy" #'evilnc-copy-and-comment-lines))
-
 (use-package evil-snipe
   :pin melpa
   :after evil

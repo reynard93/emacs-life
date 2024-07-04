@@ -8,19 +8,17 @@
   :config
   (message "magit is loaded")
   :custom
-  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
+  (magit-define-global-key-bindings 'recommended)
   (magit-bury-buffer-function #'quit-window)
-  (magit-define-global-key-bindings nil)
-  :bind (("C-c g" . magit-dispatch)
-         ("C-c f" . magit-file-dispatch)))
+  (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
 
 (use-package browse-at-remote
   :pin melpa
-  :defer t
   :config
   (message "browse-at-remote is loaded")
   :custom
-  (browse-at-remote-add-line-number-if-no-region-selected nil))
+  (browse-at-remote-add-line-number-if-no-region-selected nil)
+  :bind ("C-c o o" . browse-at-remote))
 
 (use-package git-gutter
   :pin melpa
@@ -44,8 +42,8 @@
 
 (use-package git-link
   :pin melpa
-  :defer t
   :config
-  (message "git-link is loaded"))
+  (message "git-link is loaded")
+  :bind ("C-c y g" . git-link))
 
 (provide 'init-git)

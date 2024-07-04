@@ -113,7 +113,9 @@
          :map org-mode-map
          ("C-u C-c C-l" . org-toggle-link-display)
          ("C-M-S-h" . org-babel-mark-block)
-         ("C-c i" . org-cite-insert)))
+         ("C-c i" . org-cite-insert)
+         :map search-map
+         ("F" . yejun/browse-org-directory)))
 
 (use-package ox-hugo
   :pin melpa

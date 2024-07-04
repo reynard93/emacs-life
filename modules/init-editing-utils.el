@@ -61,4 +61,11 @@
   (message "substitute is loaded")
   :bind-keymap ("C-c s" . substitute-prefix-map))
 
+(use-package evil-nerd-commenter
+  :pin nongnu
+  :defer t
+  :config
+  (message "evil-nerd-commenter is loaded")
+  :bind ("M-;" . evilnc-comment-or-uncomment-lines))
+
 (provide 'init-editing-utils)

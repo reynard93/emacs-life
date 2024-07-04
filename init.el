@@ -21,14 +21,15 @@
 (require 'init-mode-line)
 
 ;; Common
+(require 'init-emacs-keybindings)
 (require 'init-better-defaults)
 (require 'init-editing-utils)
 (require 'init-gui-frames)
 (require 'init-windows)
 
 ;; Evil
-(require 'init-evil)
-(require 'init-evil-keybindings)
+;; (require 'init-evil)
+;; (require 'init-evil-keybindings)
 
 ;; GTD/PKM
 (require 'init-org)

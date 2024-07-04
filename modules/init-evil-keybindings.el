@@ -1,23 +1,6 @@
 (use-package general
   :pin melpa
   :after evil
-  :preface
-  (defun yejun/browse-emacs-config ()
-    (interactive)
-    (+project/browse-files user-emacs-directory))
-
-  (defun yejun/browse-nix-config ()
-    (interactive)
-    (+project/browse-files "~/.config/nix-config/"))
-
-  (defun yejun/browse-blog ()
-    (interactive)
-    (+project/browse-files "~/src/yejun.dev/"))
-
-  (defun yejun/browse-org-directory ()
-    (interactive)
-    (+project/browse-files org-directory))
-
   :config
   (message "general is loaded")
 
@@ -118,8 +101,8 @@
     "sf"  #'ffap-menu
     "si"  #'consult-imenu
     "sI"  #'consult-imenu-multi
-    "ss"  #'consult-line
-    "sS"  #'consult-line-multi
+    "sl"  #'consult-line
+    "sL"  #'consult-line-multi
 
     ;; toggle
     "tf"  #'flymake-mode

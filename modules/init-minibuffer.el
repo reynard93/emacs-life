@@ -22,9 +22,14 @@
   :custom
   (vertico-cycle t)
   :hook (minibuffer-setup . vertico-repeat-save)
-  :bind ( :map vertico-map
-          ("C-j" . vertico-next)
-          ("C-k" . vertico-previous)))
+  :bind ("C-x ." . vertico-repeat))
+
+(use-package vertico-suspend
+  :ensure nil
+  :after vertico
+  :config
+  (message "vertico-suspend is loaded")
+  :bind ("M-z" . vertico-suspend))
 
 (use-package vertico-directory
   :ensure nil
@@ -90,13 +95,14 @@
          :map goto-map
          ("e" . consult-compile-error)
          ("f" . consult-flymake)
+         ("l" . ffap-menu)
          ("m" . consult-mark)
          ("M" . consult-global-mark)
          :map search-map
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
-         ("s" . consult-line)
-         ("S" . consult-line-multi)))
+         ("l" . consult-line)
+         ("L" . consult-line-multi)))
 
 (use-package consult-dir
   :pin melpa

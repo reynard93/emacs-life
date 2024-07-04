@@ -50,6 +50,9 @@
          ("C-c n j" . denote-journal-extras-new-entry)
          ("C-c n J" . denote-journal-extras-new-or-existing-entry)
 
+         :map search-map
+         ("f" . denote-open-or-create)
+
          :map text-mode-map
          ("C-c n i" . denote-link)
          ("C-c n I" . denote-add-links)
@@ -70,7 +73,9 @@
   (message "consult-denote is loaded")
   (consult-denote-mode 1)
   :custom
-  (consult-denote-grep-command #'consult-ripgrep))
+  (consult-denote-grep-command #'consult-ripgrep)
+  :bind ( :map search-map
+          ("n" . consult-denote-grep)))
 
 (use-package citar
   :pin melpa
@@ -82,7 +87,9 @@
   :config
   (message "citar is loaded")
   :custom
-  (citar-bibliography org-cite-global-bibliography))
+  (citar-bibliography org-cite-global-bibliography)
+  :bind (("C-c n b" . citar-open)
+         ("C-c n B" . citar-create-note)))
 
 (use-package citar-embark
   :pin melpa
