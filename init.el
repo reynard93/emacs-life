@@ -27,10 +27,6 @@
 (require 'init-gui-frames)
 (require 'init-windows)
 
-;; Evil
-;; (require 'init-evil)
-;; (require 'init-evil-keybindings)
-
 ;; GTD/PKM
 (require 'init-org)
 (require 'init-denote)
