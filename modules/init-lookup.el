@@ -3,7 +3,8 @@
   :config
   (message "osx-dictionary is loaded")
   :bind ( :map search-map
-          ("t" . osx-dictionary-search-word-at-point)))
+          ("t" . osx-dictionary-search-word-at-point)
+          ("T" . osx-dictionary-search-input)))
 
 (use-package dash-at-point
   :pin melpa
