@@ -5,6 +5,14 @@
   :bind ( :map search-map
           ("t" . osx-dictionary-search-word-at-point)))
 
+(use-package dash-at-point
+  :pin melpa
+  :config
+  (message "dash-at-point is loaded")
+  :bind ( :map search-map
+          ("k" . dash-at-point)
+          ("K" . dash-at-point-with-docset)))
+
 (use-package browser-hist
   :pin melpa
   :config
