@@ -68,4 +68,11 @@
   (message "evil-nerd-commenter is loaded")
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
+(use-package multiple-cursors
+  :pin nongnu
+  :config
+  (message "multiple-cursors is loaded")
+  :bind (("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)))
+
 (provide 'init-editing-utils)
