@@ -24,10 +24,6 @@
   :pin melpa
   :config
   (message "git-gutter is loaded")
-  (with-eval-after-load 'evil
-    (evil-define-key 'motion 'global
-      "]d" #'git-gutter:next-hunk
-      "[d" #'git-gutter:previous-hunk))
   :custom
   (git-gutter:added-sign " ")
   (git-gutter:deleted-sign " ")

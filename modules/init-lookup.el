@@ -30,7 +30,6 @@
   :pin melpa
   :config
   (message "deadgrep is loaded")
-  (evil-set-initial-state 'deadgrep-mode 'emacs)
   :bind ( :map search-map
           ("d". deadgrep)))
 

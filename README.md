@@ -31,8 +31,6 @@ The configuration is based on these packages:
 - [corfu](https://github.com/minad/corfu)
 - [cape](https://github.com/minad/cape)
 - [tempel](https://github.com/minad/tempel)
-- [evil](https://github.com/emacs-evil/evil)
-- [general](https://github.com/noctuid/general.el)
 - [denote](https://github.com/protesilaos/denote)
 
 ## Thanks

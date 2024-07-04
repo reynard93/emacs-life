@@ -20,7 +20,6 @@
 (bind-key "C-x f p"  #'+tempel/find-private-template)
 (bind-key "C-x f D"  #'+file/delete-this-file)
 (bind-key "C-x f R"  #'+file/move-this-file)
-(bind-key "C-x f f"  #'apheleia-format-buffer)
 (bind-key "C-x f w"  #'delete-trailing-whitespace)
 
 (with-eval-after-load 'rspec-mode-map

@@ -2,9 +2,6 @@
   :pin nongnu
   :defer t
   :config
-  (message "markdown-mode is loaded")
-  (with-eval-after-load 'evil
-    (evil-define-key 'insert markdown-mode-map
-      (kbd "<tab>") #'completion-at-point)))
+  (message "markdown-mode is loaded"))
 
 (provide 'init-markdown)

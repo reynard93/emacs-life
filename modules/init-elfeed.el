@@ -67,21 +67,18 @@
           (elfeed-search-set-filter filter)
         (elfeed-search-set-filter category))))
 
-  (when (featurep 'evil)
-    (evil-define-key 'normal elfeed-search-mode-map
-      "=" #'+elfeed/summarize
-      "B" #'+elfeed/eww
-      "D" #'+elfeed/delete
-      "R" #'+elfeed/send-to-wombag
-      "S" #'+elfeed/set-filter
-      "W" #'+elfeed/switch-to-wombag)
+  (bind-key "=" #'+elfeed/summarize 'elfeed-search-mode-map)
+  (bind-key "B" #'+elfeed/eww 'elfeed-search-mode-map)
+  (bind-key "D" #'+elfeed/delete 'elfeed-search-mode-map)
+  (bind-key "R" #'+elfeed/send-to-wombag 'elfeed-search-mode-map)
+  (bind-key "S" #'+elfeed/set-filter 'elfeed-search-mode-map)
+  (bind-key "W" #'+elfeed/switch-to-wombag 'elfeed-search-mode-map)
 
-    (evil-define-key 'normal elfeed-show-mode-map
-      "=" #'+elfeed/summarize
-      "B" #'+elfeed/eww
-      "D" #'+elfeed/delete
-      "R" #'+elfeed/send-to-wombag))
-
+  (bind-key "=" #'+elfeed/summarize 'elfeed-show-mode-map)
+  (bind-key "B" #'+elfeed/eww 'elfeed-show-mode-map)
+  (bind-key "D" #'+elfeed/delete 'elfeed-show-mode-map)
+  (bind-key "R" #'+elfeed/send-to-wombag   'elfeed-show-mode-map)
+  
   :custom
   (elfeed-initial-tags '(unread inbox))
   (elfeed-search-remain-on-entry t)
@@ -104,11 +101,11 @@
   (message "elfeed-tube is loaded")
   (elfeed-tube-setup)
   :bind (:map elfeed-show-mode-map
-         ("F" . elfeed-tube-fetch)
-         ([remap save-buffer] . elfeed-tube-save)
-         :map elfeed-search-mode-map
-         ("F" . elfeed-tube-fetch)
-         ([remap save-buffer] . elfeed-tube-save)))
+              ("F" . elfeed-tube-fetch)
+              ([remap save-buffer] . elfeed-tube-save)
+              :map elfeed-search-mode-map
+              ("F" . elfeed-tube-fetch)
+              ([remap save-buffer] . elfeed-tube-save)))
 
 (use-package elfeed-tube-mpv
   :pin melpa

@@ -44,30 +44,8 @@
                  (url (format "%s/view/%s" wombag-host id)))
        (browse-url url))))
 
-  (when (and
-         (featurep 'evil)
-         (featurep 'evil-collection))
-    (evil-collection-set-readonly-bindings 'wombag-search-mode-map)
-    (evil-define-key 'normal wombag-search-mode-map
-      (kbd "<return>") #'wombag-search-show-entry
-      (kbd "S-<return>") 'wombag-search-browse-url
-      "A"  #'wombag-search-archive-entry
-      "B"  #'wombag-search-eww-open
-      "D"  #'wombag-search-delete-entry
-      "E"  #'+wombag/switch-to-elfeed
-      "F"  #'wombag-search-starred-entry
-      "s"  #'wombag-search-live-filter
-      "y"  #'wombag-search-copy
-      "go" #'wombag-search-browse-url
-      "gO" #'+wombag/search-browse-host
-      "gr" #'wombag-search-update--force
-      "gR" #'wombag-sync)
-
-    (evil-collection-set-readonly-bindings 'wombag-show-mode-map)
-    (evil-define-key 'normal wombag-show-mode-map
-      "B"  #'+wombag/show-eww-open
-      "go" #'+wombag/show-browse-url
-      "gO" #'+wombag/show-browse-host))
+  (bind-key "E" #'+wombag/switch-to-elfeed 'wombag-search-mode-map)
+  (bind-key "B" #'+wombag/show-eww-open 'wombag-show-mode-map)
 
   :custom
   (wombag-host "https://app.wallabag.it")

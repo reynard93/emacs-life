@@ -9,14 +9,14 @@
   :pin melpa
   :defer t
   :config
-  (message "apheleia is loaded"))
+  (message "apheleia is loaded")
+  :bind ("C-x f f" . apheleia-format-buffer))
 
 (use-package avy
   :config
   (message "avy is loaded")
-  (with-eval-after-load 'evil
-    (evil-define-key 'motion 'global
-      "gss" #'evil-avy-goto-char-2)))
+  :bind ( :map goto-map
+          ("s" . avy-goto-char-2)))
 
 (use-package rainbow-delimiters
   :pin nongnu

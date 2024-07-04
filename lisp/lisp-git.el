@@ -87,8 +87,7 @@
               (buffer-name (format "*gh-pr-view %s*" pr-number)))
     (with-output-to-temp-buffer buffer-name
       (with-current-buffer buffer-name
-        (gfm-mode)
-        (evil-local-set-key 'normal (kbd "q") 'quit-window))
+        (gfm-mode))
       (princ formatted-output))))
 
 (defun +gh/pr-link (pr-number)
