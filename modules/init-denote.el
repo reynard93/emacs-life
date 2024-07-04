@@ -88,8 +88,8 @@
   (message "citar is loaded")
   :custom
   (citar-bibliography org-cite-global-bibliography)
-  :bind (("C-c n b" . citar-open)
-         ("C-c n B" . citar-create-note)))
+  :bind (("C-c n c" . citar-open)
+         ("C-c n C" . citar-create-note)))
 
 (use-package citar-embark
   :pin melpa
