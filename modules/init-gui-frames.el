@@ -41,14 +41,6 @@
          ("s-N" . make-frame)
          ("s-W" . delete-frame)))
 
-(use-package beframe
-  :if (display-graphic-p)
-  :demand t
-  :config
-  (message "beframe is loaded")
-  (beframe-mode 1)
-  :bind-keymap ("C-c b" . beframe-prefix-map))
-
 (use-package server
   :if (display-graphic-p)
   :ensure nil
