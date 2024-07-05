@@ -32,7 +32,10 @@
   (notmuch-hello-recent-searches-max 20)
   (notmuch-hello-thousands-separator "")
   (notmuch-show-all-tags-list t)
-  (notmuch-hello-sections '(notmuch-hello-insert-saved-searches))
+  (notmuch-hello-sections
+   '(notmuch-hello-insert-saved-searches
+     notmuch-hello-insert-recent-searches
+     notmuch-hello-insert-tags-section))
   ;; Search
   (notmuch-search-oldest-first nil)
   (notmuch-search-result-format
