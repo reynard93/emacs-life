@@ -54,6 +54,5 @@
 (require 'init-gpt)
 (require 'init-pdf)
 (require 'init-lookup)
-(require 'init-restclient)
 (require 'init-network-tools)
 (require 'init-spell-checker)

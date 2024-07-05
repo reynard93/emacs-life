@@ -25,7 +25,6 @@
      (sql . t)
      (ruby . t)
      (shell . t)
-     (restclient . t)
      (racket . t)))
 
   :custom
