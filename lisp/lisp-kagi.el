@@ -1,6 +1,3 @@
-(defun +kagi-token ()
-  (auth-source-pass-get 'secret "kagi.com/token"))
-
 (defun +kagi-query ()
   (let ((selected-text (if (use-region-p)
                            (buffer-substring-no-properties (region-beginning) (region-end))
@@ -15,18 +12,16 @@
 
 (defun +kagi/search (&optional bang)
   (interactive)
-  (let* ((token (+kagi-token))
-         (query (+kagi-query))
+  (let* ((query (+kagi-query))
          (query (+kagi-query-prompt query bang))
          (formatted-query (if bang (format "%s %s" bang query) query)))
-    (browse-url (format "https://kagi.com/search?token=%s&q=%s" token (url-hexify-string formatted-query)))))
+    (browse-url (format "https://kagi.com/search?q=%s" (url-hexify-string formatted-query)))))
 
 ;; https://help.kagi.com/kagi/features/bangs.html#ai-related-bangs
 (defun +kagi/summarize-url (url)
   "Summerize URL using Kagi's Universal Summarizer."
   (interactive "sEnter URL: ")
-  (let ((token (+kagi-token)))
-    (browse-url (format "https://kagi.com/search?token=%s&q=!sum %s" token (url-hexify-string url)))))
+  (browse-url (format "https://kagi.com/search?q=!sum %s" (url-hexify-string url))))
 
 (with-eval-after-load 'embark
   (keymap-set embark-url-map "K" #'+kagi/summarize-url))
