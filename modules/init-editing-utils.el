@@ -10,7 +10,7 @@
   :defer t
   :config
   (message "apheleia is loaded")
-  :bind ("C-c f f" . apheleia-format-buffer))
+  :bind ("C-c f" . apheleia-format-buffer))
 
 (use-package avy
   :config

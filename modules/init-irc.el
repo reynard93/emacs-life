@@ -35,8 +35,7 @@
       (when target
         (switch-to-buffer target))))
 
-  :bind (("s-k" . +irc/jump-to-channel)
-         :map circe-channel-mode-map
-         ("C-c C-p" . +irc/pull-chat-history)))
+  :bind ( :map circe-channel-mode-map
+          ("C-c C-p" . +irc/pull-chat-history)))
 
 (provide 'init-irc)

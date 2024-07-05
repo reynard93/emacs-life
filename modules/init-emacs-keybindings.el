@@ -13,15 +13,8 @@
 (bind-key "C-c g c b" #'+git/create-backup-commit)
 (bind-key "C-c g c p" #'+gh/pr-create)
 
-(bind-key "C-c f b"  #'yejun/browse-blog)
-(bind-key "C-c f e"  #'yejun/browse-emacs-config)
-(bind-key "C-c f n"  #'yejun/browse-nix-config)
-(bind-key "C-c f p"  #'+tempel/find-private-template)
-(bind-key "C-c f D"  #'+file/delete-this-file)
-(bind-key "C-c f R"  #'+file/move-this-file)
-(bind-key "C-c f w"  #'delete-trailing-whitespace)
-(bind-key "C-c f y"  #'+buffer/yank-path)
-(bind-key "C-c f Y"  #'+buffer/yank-path-relative-to-project)
+(bind-key "C-c y"  #'+buffer/yank-path)
+(bind-key "C-c Y"  #'+buffer/yank-path-relative-to-project)
 
 (with-eval-after-load 'rspec-mode-map
   (bind-key "C-c C-t a" #'rspec-verify-all 'rspec-mode-map)

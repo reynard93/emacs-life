@@ -14,7 +14,7 @@ file path, otherwise, get a full file path with
       (progn
         (kill-new path)
         (message "Copied path: %s" path))
-    (user-error "Buffer is not visiting any file")))
+    (user-error "Buffer is not visiting a file")))
 
 (defun +buffer/yank-path-relative-to-project ()
   "Save the relative buffer path into the kill-ring.

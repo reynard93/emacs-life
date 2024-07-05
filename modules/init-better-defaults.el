@@ -129,6 +129,23 @@
   (message "winner is loaded")
   (winner-mode 1))
 
+(use-package crux
+  :pin melpa
+  :config
+  (message "crux is loaded")
+  :bind (("C-c I" . crux-find-user-init-file)
+         ("C-c d" . crux-duplicate-current-line-or-region)
+         ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
+         ("C-c D" . crux-delete-file-and-buffer)
+         ("C-c R" . crux-rename-file-and-buffer)
+         ("S-s-<return>". crux-smart-open-line-above)
+         ("s-<return>" . crux-smart-open-line)
+         ("s-k" . crux-smart-kill-line)
+         ("s-j" . crux-top-join-line)
+         ("M-o" . crux-other-window-or-switch-buffer)
+         ("C-c r" . crux-cleanup-buffer-or-region)
+         ([remap move-beginning-of-line] . crux-move-beginning-of-line)))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
@@ -144,16 +161,5 @@
 
 (add-to-list 'default-frame-alist '(height . 24))
 (add-to-list 'default-frame-alist '(width . 80))
-
-;; Advices
-(defun move-beginning-of-line-advice (orig-fun &rest args)
-  "Advice to toggle point movement between first non-whitespace
-character and beginning of line."
-  (let ((orig-point (point)))
-    (beginning-of-line-text)
-    (when (= orig-point (point))
-      (apply orig-fun args))))
-
-(advice-add 'move-beginning-of-line :around #'move-beginning-of-line-advice)
 
 (provide 'init-better-defaults)
