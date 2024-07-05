@@ -19,20 +19,4 @@
         (initial (thing-at-point 'symbol t)))
     (funcall-interactively #'consult-ripgrep dir initial)))
 
-(defun yejun/browse-emacs-config ()
-  (interactive)
-  (+project/browse-files user-emacs-directory))
-
-(defun yejun/browse-nix-config ()
-  (interactive)
-  (+project/browse-files "~/.config/nix-config/"))
-
-(defun yejun/browse-blog ()
-  (interactive)
-  (+project/browse-files "~/src/yejun.dev/"))
-
-(defun yejun/browse-org-directory ()
-  (interactive)
-  (+project/browse-files org-directory))
-
 (provide 'lisp-project)
