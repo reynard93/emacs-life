@@ -67,22 +67,23 @@
           (elfeed-search-set-filter filter)
         (elfeed-search-set-filter category))))
 
-  (bind-key "=" #'+elfeed/summarize 'elfeed-search-mode-map)
-  (bind-key "B" #'+elfeed/eww 'elfeed-search-mode-map)
-  (bind-key "D" #'+elfeed/delete 'elfeed-search-mode-map)
-  (bind-key "R" #'+elfeed/send-to-wombag 'elfeed-search-mode-map)
-  (bind-key "S" #'+elfeed/set-filter 'elfeed-search-mode-map)
-  (bind-key "W" #'+elfeed/switch-to-wombag 'elfeed-search-mode-map)
-
-  (bind-key "=" #'+elfeed/summarize 'elfeed-show-mode-map)
-  (bind-key "B" #'+elfeed/eww 'elfeed-show-mode-map)
-  (bind-key "D" #'+elfeed/delete 'elfeed-show-mode-map)
-  (bind-key "R" #'+elfeed/send-to-wombag   'elfeed-show-mode-map)
-  
   :custom
   (elfeed-initial-tags '(unread inbox))
   (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@6-months-ago +inbox +unread"))
+  (elfeed-search-filter "@6-months-ago +inbox +unread")
+  :bind (("C-c e" . elfeed)
+         :map elfeed-search-mode-map
+         ("=" . +elfeed/summarize)
+         ("B" . +elfeed/eww)
+         ("D" . +elfeed/delete)
+         ("R" . +elfeed/send-to-wombag)
+         ("S" . +elfeed/set-filter)
+         ("W" . +elfeed/switch-to-wombag)
+         :map elfeed-show-mode-map
+         ("=" . +elfeed/summarize)
+         ("B" . +elfeed/eww)
+         ("D" . +elfeed/delete)
+         ("R" . +elfeed/send-to-wombag)))
 
 (use-package elfeed-org
   :pin melpa

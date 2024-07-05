@@ -103,7 +103,7 @@
 (use-package citar-denote
   :pin melpa
   :demand t
-  :after (citar denote)
+  :after (:any citar denote)
   :config
   (message "citar-denote is loaded")
   (citar-denote-mode 1)
