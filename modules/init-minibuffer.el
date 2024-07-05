@@ -95,6 +95,7 @@
          :map goto-map
          ("e" . consult-compile-error)
          ("f" . consult-flymake)
+         ("b" . consult-bookmark)
          ("l" . ffap-menu)
          ("m" . consult-mark)
          ("M" . consult-global-mark)
