@@ -144,7 +144,8 @@
          ("s-j" . crux-top-join-line)
          ("M-o" . crux-other-window-or-switch-buffer)
          ("C-c r" . crux-cleanup-buffer-or-region)
-         ([remap move-beginning-of-line] . crux-move-beginning-of-line)))
+         ([remap move-beginning-of-line] . crux-move-beginning-of-line)
+         ([remap kill-whole-line] . crux-kill-whole-line)))
 
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
