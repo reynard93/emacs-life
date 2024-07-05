@@ -40,6 +40,14 @@
   (message "frame is loaded")
   :bind ("C-s-f" . toggle-frame-fullscreen))
 
+(use-package beframe
+  :if (display-graphic-p)
+  :demand t
+  :config
+  (message "beframe is loaded")
+  (beframe-mode 1)
+  :bind-keymap ("C-c b" . beframe-prefix-map))
+
 (use-package server
   :if (display-graphic-p)
   :ensure nil
