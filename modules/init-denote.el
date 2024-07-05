@@ -67,7 +67,7 @@
          ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)))
 
 (use-package consult-denote
-  :vc (consult-denote :url "https://github.com/protesilaos/consult-denote.git")
+  :demand t
   :after denote
   :config
   (message "consult-denote is loaded")
