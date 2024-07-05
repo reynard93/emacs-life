@@ -8,19 +8,20 @@
 (bind-key "s" #'+project/search 'search-map)
 (bind-key "S" #'+project/search-for-symbol-at-point 'search-map)
 
-(bind-key "C-c y f"  #'+buffer/yank-path)
-(bind-key "C-c y F"  #'+buffer/yank-path-relative-to-project)
+(bind-key "C-c g p"   #'+gh/pr-view)
+(bind-key "C-c g o p" #'+gh/pr-browse-at-remote)
+(bind-key "C-c g c b" #'+git/create-backup-commit)
+(bind-key "C-c g c p" #'+gh/pr-create)
 
-(bind-key "C-c o p" #'+gh/pr-browse-at-remote)
-
-(unbind-key "C-x f")
-(bind-key "C-x f b"  #'yejun/browse-blog)
-(bind-key "C-x f e"  #'yejun/browse-emacs-config)
-(bind-key "C-x f n"  #'yejun/browse-nix-config)
-(bind-key "C-x f p"  #'+tempel/find-private-template)
-(bind-key "C-x f D"  #'+file/delete-this-file)
-(bind-key "C-x f R"  #'+file/move-this-file)
-(bind-key "C-x f w"  #'delete-trailing-whitespace)
+(bind-key "C-c f b"  #'yejun/browse-blog)
+(bind-key "C-c f e"  #'yejun/browse-emacs-config)
+(bind-key "C-c f n"  #'yejun/browse-nix-config)
+(bind-key "C-c f p"  #'+tempel/find-private-template)
+(bind-key "C-c f D"  #'+file/delete-this-file)
+(bind-key "C-c f R"  #'+file/move-this-file)
+(bind-key "C-c f w"  #'delete-trailing-whitespace)
+(bind-key "C-c f y"  #'+buffer/yank-path)
+(bind-key "C-c f Y"  #'+buffer/yank-path-relative-to-project)
 
 (with-eval-after-load 'rspec-mode-map
   (bind-key "C-c C-t a" #'rspec-verify-all 'rspec-mode-map)
