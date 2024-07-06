@@ -119,9 +119,7 @@
          ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
          :map minibuffer-local-map
          ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
-         :map org-mode-map
-         ("M-g o" . consult-org-heading)))
+         ("M-r" . consult-history)))               ;; orig. previous-matching-history-element
 
 (use-package consult-dir
   :pin melpa

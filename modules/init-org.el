@@ -112,7 +112,8 @@
          :map org-mode-map
          ("C-u C-c C-l" . org-toggle-link-display)
          ("C-M-S-h" . org-babel-mark-block)
-         ("C-c i" . org-cite-insert)))
+         ("C-c i" . org-cite-insert)
+         ("M-g o" . consult-org-heading)))
 
 (use-package ox-hugo
   :pin melpa
