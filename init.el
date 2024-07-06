@@ -17,6 +17,7 @@
 
 ;; Visualization
 (require 'init-ui)
+(require 'init-ux)
 (require 'init-pulse)
 (require 'init-mode-line)
 

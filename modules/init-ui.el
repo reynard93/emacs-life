@@ -40,14 +40,6 @@
       :afternoon (modus-operandi-tinted ef-arbutus ef-day ef-kassio ef-summer ef-elea-light ef-maris-light ef-melissa-light ef-trio-light ef-reverie)
       :evening   (modus-vivendi-tinted ef-rosa ef-elea-dark ef-maris-dark ef-melissa-dark ef-trio-dark ef-dream))))
 
-(use-package spacious-padding
-  :if (display-graphic-p)
-  :config
-  (message "spacious-padding is loaded")
-  (spacious-padding-mode 1)
-  :custom
-  (spacious-padding-subtle-mode-line t))
-
 (use-package fontaine
   :if (display-graphic-p)
   :demand t
@@ -72,37 +64,5 @@
      ))
   :hook (modus-themes-after-load-theme . fontaine-apply-current-preset)
   :bind ("C-c F" . fontaine-set-preset))
-
-(use-package logos
-  :if (display-graphic-p)
-  :init
-  (setq-default logos-hide-cursor nil
-                logos-hide-mode-line t
-                logos-hide-buffer-boundaries t
-                logos-hide-fringe t
-                logos-variable-pitch nil
-                logos-buffer-read-only nil
-                logos-scroll-lock nil
-                logos-olivetti t)
-  :config
-  (message "logos is loaded")
-  :custom
-  (logos-outlines-are-pages t)
-  :bind (([remap narrow-to-region] . logos-narrow-dwim)
-         ([remap forward-page]     . logos-forward-page-dwim)
-         ([remap backward-page]    . logos-backward-page-dwim)
-         ("M-]" . logos-forward-page-dwim)
-         ("M-[" . logos-backward-page-dwim)
-         ("<f9>" . logos-focus-mode)))
-
-(use-package olivetti
-  :pin melpa
-  :defer t
-  :config
-  (message "olivetti is loaded")
-  :custom
-  (olivetti-body-width 0.7)
-  (olivetti-minimum-body-width 80)
-  (olivetti-recall-visual-line-mode-entry-state t))
 
 (provide 'init-ui)
