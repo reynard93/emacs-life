@@ -126,6 +126,7 @@
          ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
          ("C-c D" . crux-delete-file-and-buffer)
          ("C-c R" . crux-rename-file-and-buffer)
+         ("C-c z" . crux-cleanup-buffer-or-region)
          ("s-o". crux-smart-open-line-above)
          ("M-o" . crux-smart-open-line)
          ("s-k" . crux-smart-kill-line)

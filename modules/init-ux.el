@@ -9,8 +9,7 @@
   :ensure nil
   :config
   (message "whitespace is loaded")
-  :bind (("<f6>" . whitespace-mode)
-         ("C-c z" . delete-trailing-whitespace)))
+  :bind ("<f6>" . whitespace-mode))
 
 (use-package display-line-numbers
   :ensure nil
