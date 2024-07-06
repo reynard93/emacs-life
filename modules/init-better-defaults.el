@@ -111,6 +111,16 @@
      ("Europe/Kyiv" "Kyiv")
      ("Asia/Shanghai" "Shanghai"))))
 
+(use-package display-line-numbers
+  :ensure nil
+  :config
+  (setq-default display-line-numbers-type t)
+  (setq-default display-line-numbers-widen t)
+  :custom
+  (display-line-numbers-major-tick 0)
+  (display-line-numbers-minor-tick 0)
+  :bind ("<f7>" . display-line-numbers-mode))
+
 (use-package visual-line-mode
   :ensure nil
   :config
