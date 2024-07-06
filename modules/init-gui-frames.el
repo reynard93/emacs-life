@@ -1,7 +1,6 @@
 (when (display-graphic-p)
   (bind-key "s-s" #'save-buffer)               ; File -> Save
   (bind-key "s-S" #'write-file)                ; File -> Save As
-  (bind-key "s-o" #'find-file)                 ; File -> Open File
   (bind-key "s-a" #'mark-whole-buffer)         ; File -> Select All
   (bind-key "s-c" #'kill-ring-save)            ; Edit -> Copy
   (bind-key "s-v" #'yank)                      ; Edit -> Paste
