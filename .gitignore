@@ -24,3 +24,4 @@
 /templates/private.eld
 /.emacs.desktop
 /.emacs.desktop.lock
+/.mc-lists.el
