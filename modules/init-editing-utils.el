@@ -66,7 +66,7 @@
   :defer t
   :config
   (message "evil-nerd-commenter is loaded")
-  :bind ("M-;" . evilnc-comment-or-uncomment-lines))
+  :bind ("s-;" . evilnc-comment-or-uncomment-lines))
 
 (use-package multiple-cursors
   :pin nongnu
