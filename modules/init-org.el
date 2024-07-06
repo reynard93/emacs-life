@@ -2,7 +2,7 @@
   :ensure nil
   :init
   (setq org-directory "~/src/org/"
-        org-agenda-files (list "tasks.org"))
+        org-agenda-files (list org-directory))
 
   :config
   (message "org is loaded")
@@ -112,9 +112,7 @@
          :map org-mode-map
          ("C-u C-c C-l" . org-toggle-link-display)
          ("C-M-S-h" . org-babel-mark-block)
-         ("C-c i" . org-cite-insert)
-         :map search-map
-         ("F" . yejun/browse-org-directory)))
+         ("C-c i" . org-cite-insert)))
 
 (use-package ox-hugo
   :pin melpa

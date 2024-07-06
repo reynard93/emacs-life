@@ -111,6 +111,7 @@
          ("u" . consult-focus-lines)
          ("e" . consult-isearch-history)
          ("m" . consult-kmacro)
+         ("a" . consult-org-agenda)
          :map isearch-mode-map
          ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
          ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
@@ -118,7 +119,9 @@
          ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
          :map minibuffer-local-map
          ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history)))                ;; orig. previous-matching-history-element
+         ("M-r" . consult-history)                 ;; orig. previous-matching-history-element
+         :map org-mode-map
+         ("M-g o" . consult-org-heading)))
 
 (use-package consult-dir
   :pin melpa
