@@ -21,7 +21,6 @@
 (require 'init-mode-line)
 
 ;; Common
-(require 'init-emacs-keybindings)
 (require 'init-better-defaults)
 (require 'init-editing-utils)
 (require 'init-gui-frames)

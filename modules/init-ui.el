@@ -92,7 +92,8 @@
          ([remap forward-page]     . logos-forward-page-dwim)
          ([remap backward-page]    . logos-backward-page-dwim)
          ("M-]" . logos-forward-page-dwim)
-         ("M-[" . logos-backward-page-dwim)))
+         ("M-[" . logos-backward-page-dwim)
+         ("<f9>" . logos-focus-mode)))
 
 (use-package olivetti
   :pin melpa

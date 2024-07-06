@@ -69,11 +69,6 @@
   (interactive (list (+gh--pr-number)))
   (shell-command (concat "gh pr view -w " pr-number)))
 
-(defun +gh/pr-browse-at-remote ()
-  "Browse pull request for current branch at remote."
-  (interactive)
-  (+gh/pr-browse))
-
 (defun +gh/pr-checkout (pr-number)
   "Checkout a pull request by PR-NUMBER."
   (interactive (list (+gh--pr-number)))
@@ -108,5 +103,8 @@
   (add-to-list 'embark-keymap-alist '(github-pull-request . embark-gh-pr-map)))
 (with-eval-after-load 'marginalia
   (add-to-list 'marginalia-prompt-categories '("Select pull request" . github-pull-request)))
+
+(bind-key "C-c g p" #'+gh/pr-view)
+(bind-key "C-c g P" #'+gh/pr-create)
 
 (provide 'lisp-git)

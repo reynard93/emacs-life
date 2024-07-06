@@ -19,4 +19,7 @@
         (initial (thing-at-point 'symbol t)))
     (funcall-interactively #'consult-ripgrep dir initial)))
 
+(bind-key "s" #'+project/search 'search-map)
+(bind-key "S" #'+project/search-for-symbol-at-point 'search-map)
+
 (provide 'lisp-project)

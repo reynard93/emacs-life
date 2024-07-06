@@ -34,6 +34,14 @@
   :pin melpa
   :defer t
   :config
-  (message "rspec-mode is loaded"))
+  (message "rspec-mode is loaded")
+  :bind ( :map rspec-mode-map
+          ("C-c C-t a" . rspec-verify-all)
+          ("C-c C-t s" . rspec-verify-single)
+          ("C-c C-t v" . rspec-verify)
+          ("C-c C-t r" . rspec-rerun)
+          ("C-c C-t l" . rspec-run-last-failed)
+          ("C-c C-t e" . rspec-toggle-example-pendingness)
+          ("C-c C-t t" . rspec-toggle-spec-and-target)))
 
 (provide 'init-ruby)

@@ -23,7 +23,7 @@
   (message "browse-at-remote is loaded")
   :custom
   (browse-at-remote-add-line-number-if-no-region-selected nil)
-  :bind ("C-c g o o" . browse-at-remote))
+  :bind ("C-c g o" . browse-at-remote))
 
 (use-package git-gutter
   :pin melpa
