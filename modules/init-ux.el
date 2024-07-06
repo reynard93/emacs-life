@@ -65,4 +65,16 @@
   (olivetti-minimum-body-width 80)
   (olivetti-recall-visual-line-mode-entry-state t))
 
+(use-package outline
+  :ensure nil
+  :config
+  (message "outline is loaded")
+  :custom
+  (outline-minor-mode-highlight nil)
+  (outline-minor-mode-cycle t)
+  (outline-minor-mode-use-buttons nil)
+  (outline-minor-mode-use-margins nil)
+  :bind
+  ("<f10>" . outline-minor-mode))
+
 (provide 'init-ux)
