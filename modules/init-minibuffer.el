@@ -80,6 +80,9 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
+  :demand t
+  :config
+  (message "consult is loaded")
   :bind (("M-X" . consult-mode-command)
          ("M-y" . consult-yank-pop)
          :map ctl-x-map
