@@ -24,13 +24,13 @@
   (browser-hist-cache-timeout (* 24 60 60))
   (browser-hist-default-browser 'firefox)
   :bind ( :map search-map
-          ("u" . browser-hist-search)))
+          ("U" . browser-hist-search)))
 
 (use-package deadgrep
   :pin melpa
   :config
   (message "deadgrep is loaded")
   :bind ( :map search-map
-          ("d". deadgrep)))
+          ("D". deadgrep)))
 
 (provide 'init-lookup)

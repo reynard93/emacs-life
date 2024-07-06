@@ -80,29 +80,42 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
-  :after vertico
-  :config
-  (message "consult is loaded")
-  :bind (([remap switch-to-buffer] . consult-buffer)
-         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
-         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
-         ([remap bookmark-jump] . consult-bookmark)
-         ([remap project-switch-to-buffer] . consult-project-buffer)
-         ([remap goto-line] . consult-goto-line)
-         ([remap recentf-open-files] . consult-recent-file)
-         ([remap imenu] . consult-imenu)
+  :bind (("M-X" . consult-mode-command)
          ("M-y" . consult-yank-pop)
+         :map ctl-x-map
+         ("M-:" . consult-complex-command)     ;; orig. repeat-complex-command
+         ("b"   . consult-buffer)              ;; orig. switch-to-buffer
+         ("4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
+         ("5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
+         ("t b" . consult-buffer-other-tab)    ;; orig. switch-to-buffer-other-tab
+         ("r b" . consult-bookmark)            ;; orig. bookmark-jump
+         ("p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
          :map goto-map
          ("e" . consult-compile-error)
-         ("f" . consult-flymake)
-         ("l" . ffap-menu)
+         ("f" . consult-flymake)               ;; Alternative: consult-flycheck
+         ("g" . consult-goto-line)             ;; orig. goto-line
+         ("M-g" . consult-goto-line)           ;; orig. goto-line
+         ("o" . consult-outline)               ;; Alternative: consult-org-heading
          ("m" . consult-mark)
-         ("M" . consult-global-mark)
-         :map search-map
+         ("k" . consult-global-mark)
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
+         :map search-map
+         ("d" . consult-fd)
+         ("r" . consult-ripgrep)
          ("l" . consult-line)
-         ("L" . consult-line-multi)))
+         ("L" . consult-line-multi)
+         ("u" . consult-focus-lines)
+         ("e" . consult-isearch-history)
+         ("m" . consult-kmacro)
+         :map isearch-mode-map
+         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
+         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
+         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
+         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
+         :map minibuffer-local-map
+         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
+         ("M-r" . consult-history)))                ;; orig. previous-matching-history-element
 
 (use-package consult-dir
   :pin melpa
