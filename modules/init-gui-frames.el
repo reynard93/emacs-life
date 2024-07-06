@@ -37,7 +37,9 @@
   :if (display-graphic-p)
   :config
   (message "frame is loaded")
-  :bind ("C-s-f" . toggle-frame-fullscreen))
+  :bind (("C-s-f" . toggle-frame-fullscreen)
+         ("s-N" . make-frame)
+         ("s-W" . delete-frame)))
 
 (use-package beframe
   :if (display-graphic-p)
