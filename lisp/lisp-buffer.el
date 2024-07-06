@@ -22,7 +22,7 @@ The path is relative to `project-current'."
   (interactive)
   (+buffer/yank-path nil (+project/root-dir)))
 
-(bind-key "C-c y"  #'+buffer/yank-path)
-(bind-key "C-c Y"  #'+buffer/yank-path-relative-to-project)
+(bind-key "s-y"  #'+buffer/yank-path)
+(bind-key "s-Y"  #'+buffer/yank-path-relative-to-project)
 
 (provide 'lisp-buffer)
