@@ -111,6 +111,10 @@
      ("Europe/Kyiv" "Kyiv")
      ("Asia/Shanghai" "Shanghai"))))
 
+(use-package whitespace
+  :ensure nil
+  :bind ("<f6>" . whitespace-mode))
+
 (use-package display-line-numbers
   :ensure nil
   :config
