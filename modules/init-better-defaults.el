@@ -111,12 +111,6 @@
      ("Europe/Kyiv" "Kyiv")
      ("Asia/Shanghai" "Shanghai"))))
 
-(use-package window
-  :ensure nil
-  :config
-  (message "window is loaded")
-  :bind ("C-x !" . delete-other-windows-vertically))
-
 (use-package winner
   :ensure nil
   :config
