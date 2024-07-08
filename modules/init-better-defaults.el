@@ -127,8 +127,6 @@
          ("C-c D" . crux-delete-file-and-buffer)
          ("C-c R" . crux-rename-file-and-buffer)
          ("C-c z" . crux-cleanup-buffer-or-region)
-         ("s-o". crux-smart-open-line-above)
-         ("M-o" . crux-smart-open-line)
          ("s-k" . crux-smart-kill-line)
          ("s-j" . crux-top-join-line)
          ([remap move-beginning-of-line] . crux-move-beginning-of-line)
