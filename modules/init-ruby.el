@@ -14,7 +14,10 @@
       (inf-ruby-console-rails dir)))
 
   :custom
-  (inf-ruby-console-environment "development"))
+  (inf-ruby-console-environment "development")
+
+  :bind ( :map ruby-ts-mode-map
+          ("C-c C-r" . +inf-ruby/console-rails-in-root-dir)))
 
 (use-package bundler
   :pin melpa
