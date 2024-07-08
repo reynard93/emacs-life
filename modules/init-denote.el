@@ -1,5 +1,4 @@
 (use-package denote
-  :vc (denote :url "https://github.com/protesilaos/denote.git")
   :demand t
   :init
   (setq denote-directory "~/src/notes/")
@@ -93,25 +92,6 @@
   (citar-embark-mode 1)
   :custom
   (citar-at-point-function #'embark-act))
-
-(use-package citar-denote
-  :pin melpa
-  :demand t
-  :after (:any citar denote)
-  :config
-  (message "citar-denote is loaded")
-  (citar-denote-mode 1)
-  :bind (("C-c w d" . citar-denote-dwim)
-         ("C-c w n" . citar-denote-open-note)
-         ("C-c w e" . citar-denote-open-reference-entry)
-         ("C-c w a" . citar-denote-add-citekey)
-         ("C-c w k" . citar-denote-remove-citekey)
-         ("C-c w r" . citar-denote-find-reference)
-         ("C-c w l" . citar-denote-link-reference)
-         ("C-c w f" . citar-denote-find-citation)
-         ("C-c w x" . citar-denote-nocite)
-         ("C-c w y" . citar-denote-cite-nocite)
-         ("C-c w z" . citar-denote-nobib)))
 
 (use-package org-download
   :pin melpa
