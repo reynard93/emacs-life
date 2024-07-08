@@ -27,10 +27,8 @@
   :bind (("s-t" . tab-new)
          ("s-T" . tab-undo)
          ("s-w" . tab-close)
-         ("s-g" . tab-switch)
          ("s-{" . tab-previous)
-         ("s-}" . tab-next)
-         ("C-<tab>" . tab-recent)))
+         ("s-}" . tab-next)))
 
 (use-package frame
   :ensure nil
