@@ -61,7 +61,7 @@
 
 (use-package consult-denote
   :demand t
-  :after denote
+  :after (consult denote)
   :config
   (message "consult-denote is loaded")
   (consult-denote-mode 1)
