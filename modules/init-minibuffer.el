@@ -85,6 +85,8 @@
   (message "consult is loaded")
   :bind (("M-X" . consult-mode-command)
          ("M-y" . consult-yank-pop)
+         ("s-g" . consult-buffer)
+         ("s-G" . consult-project-buffer)
          :map ctl-x-map
          ("M-:" . consult-complex-command)     ;; orig. repeat-complex-command
          ("b"   . consult-buffer)              ;; orig. switch-to-buffer
