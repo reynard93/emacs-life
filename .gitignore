@@ -25,3 +25,4 @@
 /.emacs.desktop
 /.emacs.desktop.lock
 /.mc-lists.el
+/rake.cache
