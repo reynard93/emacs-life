@@ -30,7 +30,7 @@
 
   :custom
   (denote-history-completion-in-prompts nil)
-  (denote-known-keywords '("emacs" "booknote"))
+  (denote-known-keywords '("emacs" "programming" "parenting"))
   (denote-rename-buffer-format "[D] %t")
   (denote-journal-extras-title-format nil)
 
