@@ -43,6 +43,32 @@
   :config
   (message "beframe is loaded")
   (beframe-mode 1)
+
+  (defvar consult-buffer-sources)
+  (declare-function consult--buffer-state "consult")
+
+  (with-eval-after-load 'consult
+    (defface beframe-buffer
+      '((t :inherit font-lock-string-face))
+      "Face for `consult' framed buffers.")
+
+    (defun +beframe--buffer-names-sorted (&optional frame)
+      "Return the list of buffers from `beframe-buffer-names' sorted by visibility.
+With optional argument FRAME, return the list of buffers of FRAME."
+      (beframe-buffer-names frame :sort #'beframe-buffer-sort-visibility))
+
+    (defvar beframe-consult-source
+      `( :name     "Frame-specific buffers (current frame)"
+         :narrow   ?F
+         :category buffer
+         :face     beframe-buffer
+         :history  beframe-history
+         :items    ,#'+beframe--buffer-names-sorted
+         :action   ,#'switch-to-buffer
+         :state    ,#'consult--buffer-state))
+
+    (add-to-list 'consult-buffer-sources 'beframe-consult-source :append))
+
   :bind-keymap ("C-c b" . beframe-prefix-map))
 
 (use-package server
