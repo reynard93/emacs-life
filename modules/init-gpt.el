@@ -81,7 +81,6 @@ when using summarize models."
   (gptel-default-mode 'org-mode)
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
-         ("C-c C-g" . gptel-abort)
          :map gptel-mode-map
          ("C-c C-x t" . gptel-set-topic)
          ("M-n" . gptel-end-of-response)
