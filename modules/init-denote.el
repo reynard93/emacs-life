@@ -29,7 +29,7 @@
 
   :custom
   (denote-history-completion-in-prompts nil)
-  (denote-known-keywords '("emacs" "programming" "parenting"))
+  (denote-known-keywords '("emacs" "programming" "engineering" "parenting"))
   (denote-rename-buffer-format "[D] %t")
   (denote-journal-extras-title-format nil)
 
