@@ -1,0 +1,34 @@
+* root :elfeed:
+
+** News :news:
+*** [[https://sachachua.com/blog/category/emacs-news/feed][Emacs]] :emacs:
+*** [[https://www.ruby-lang.org/en/feeds/news.rss][Ruby]] :ruby:
+*** [[https://world.hey.com/this.week.in.rails/feed.atom][Rails]] :rails:
+*** [[https://elixir-lang.org/atom.xml][Elixir]] :elixir:
+*** [[https://www.erlang.org/blog.xml][Erlang]] :erlang:
+*** [[https://blog.kagi.com/rss.xml][Kagi]] :search:
+
+** Engineering :engineering:
+*** [[https://dev.37signals.com/feed/posts.xml][37signals]] :rails:
+*** [[https://dashbit.co/feed][Dashbit]] :elixir:
+
+** People :people:
+*** [[https://blog.cloud-mes.com/atom.xml][Eric Guo]] :friend:
+*** [[https://tonyhan.dev/feed][Tony Han]] :friend:
+*** [[https://yiming.dev/rss.xml][Yiming Chen]] :friend:
+*** [[https://world.hey.com/jason/feed.atom][Jason Fried]]
+*** [[https://www.feltpresence.com/rss/][Ryan Singer]]
+*** [[https://world.hey.com/dhh/feed.atom][David Heinemeier Hansson]]
+*** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
+*** [[https://protesilaos.com/codelog.xml][Protesilaos Stavrou]] :emacs:
+*** [[https://karthinks.com/tags/emacs/index.xml][Karthik Chikmagalur]] :emacs:
+*** [[https://sive.rs/en.atom][Derek Sivers]]
+*** [[https://irreal.org/blog/?feed=rss2][Irreal]] :emacs:
+
+** Videos :video:
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g][@protesilaos]]
+*** [[https://www.youtube.com/feeds/videos.xml?channel_id=UCAiiOTio8Yu69c3XnR7nQBQ][@SystemCrafters]]
+
+** Podcasts :podcast:
+*** [[https://www.youtube.com/feeds/videos.xml?playlist_id=PLwo5Hcps5IkBBAv1-_HPOMvC4Rn1p8lsQ][REWORK]]
+*** [[https://www.youtube.com/feeds/videos.xml?playlist_id=PLrAXtmErZgOdP_8GztsuKi9nrraNbKKp4][Lex Fridman Podcast]]
