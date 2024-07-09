@@ -3,6 +3,7 @@
 (require 'lisp-alfred)
 (require 'lisp-buffer)
 (require 'lisp-exercism)
+(require 'lisp-file)
 (require 'lisp-git)
 (require 'lisp-kagi)
 (require 'lisp-macos)

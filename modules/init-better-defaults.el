@@ -123,8 +123,6 @@
   (message "crux is loaded")
   :bind (("C-c d" . crux-duplicate-current-line-or-region)
          ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
-         ("C-c D" . crux-delete-file-and-buffer)
-         ("C-c R" . crux-rename-file-and-buffer)
          ("s-k" . crux-smart-kill-line)
          ("s-j" . crux-top-join-line)
          ([remap move-beginning-of-line] . crux-move-beginning-of-line)

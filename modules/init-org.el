@@ -2,7 +2,7 @@
   :ensure nil
   :init
   (setq org-directory "~/src/org/"
-        org-agenda-files (list "tasks.org" "notes.org"))
+        org-agenda-files (list org-directory))
 
   :config
   (message "org is loaded")
