@@ -126,7 +126,7 @@
          ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
          ("C-c D" . crux-delete-file-and-buffer)
          ("C-c R" . crux-rename-file-and-buffer)
-         ("C-c z" . crux-cleanup-buffer-or-region)
+         ("C-c r" . crux-cleanup-buffer-or-region)
          ("s-k" . crux-smart-kill-line)
          ("s-j" . crux-top-join-line)
          ([remap move-beginning-of-line] . crux-move-beginning-of-line)
