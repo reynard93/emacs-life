@@ -100,7 +100,13 @@
                ":CAPTURED: %U\n"
                ":END:\n\n"
                "%?")
-      :empty-lines-after 1)))
+      :empty-lines-after 1)
+     ("f" "Fleeting note" entry
+      (file "notes.org")
+      "* %?\n")
+     ("j" "Journal" entry
+      (file+olp+datetree "journal.org")
+      "* %U %?\n")))
 
   (org-capture-templates-contexts
    '(("e" ((in-mode . "notmuch-search-mode")
