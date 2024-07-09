@@ -56,23 +56,14 @@
 
   ;; Capture
   (org-capture-templates
-   `(("c" "Clock in and do immediately" entry
-      (file "tasks.org")
-      ,(concat "* TODO %^{Title}\n"
+   `(("u" "Unprocessed" entry
+      (file+headline "tasks.org" "Unprocessed")
+      ,(concat "* %^{Title}\n"
                ":PROPERTIES:\n"
-               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
-               ":END:\n\n")
-      :prepend t
-      :clock-in t
-      :clock-keep t
-      :immediate-finish t
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%a\n%i%?")
       :empty-lines-after 1)
-     ("a" "Clocked entry note" entry
-      (clock)
-      "* %?\n")
-     ("f" "Fleeting note" entry
-      (file "notes.org")
-      "* %?\n")
      ("e" "Email note (unprocessed)" entry
       (file+headline "tasks.org" "Unprocessed")
       ,(concat "* TODO %:subject :mail:\n"
@@ -80,6 +71,35 @@
                ":CAPTURED: %U\n"
                ":END:\n\n"
                "%a\n%i%?")
+      :empty-lines-after 1)
+     ("w" "Add to the wishlist (may do some day)" entry
+      (file+headline "tasks.org" "Wishlist")
+      ,(concat "* %^{Title}\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%?")
+      :empty-lines-after 1)
+     ("c" "Clock in and do immediately" entry
+      (file+headline "tasks.org" "Clocked tasks")
+      ,(concat "* TODO %^{Title}\n"
+               ":PROPERTIES:\n"
+               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
+               ":END:\n\n"
+               "%a\n")
+      :prepend t
+      :clock-in t
+      :clock-keep t
+      :immediate-finish t
+      :empty-lines-after 1)
+     ("t" "Time-sensitive task" entry
+      (file+headline "tasks.org" "Tasks with a date")
+      ,(concat "* TODO %^{Title} %^g\n"
+               "%^{How time sensitive it is|SCHEDULED|DEADLINE}: %^t\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%?")
       :empty-lines-after 1)))
 
   (org-capture-templates-contexts
