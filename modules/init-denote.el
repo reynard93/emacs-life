@@ -21,7 +21,7 @@
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
   (with-eval-after-load 'org-capture
-    (setq denote-org-capture-specifiers "%l\n%i\n%?")
+    (setq denote-org-capture-specifiers "%i\n%?")
     (add-to-list 'org-capture-templates
                  '("n" "New note (with denote.el)" plain
                    (file denote-last-path)
