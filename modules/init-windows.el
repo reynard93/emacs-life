@@ -26,6 +26,23 @@
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ([remap other-window] . ace-window))
 
+(use-package transpose-frame
+  :pin melpa
+  :config
+  (message "transpose-frame is loaded")
+  :bind ( :map window-prefix-map
+          ("w" . transpose-frame)
+          ("r" . rotate-frame-clockwise)
+          ("R" . rotate-frame-anticlockwise)))
+
+(use-package windmove
+  :ensure nil
+  :config
+  (message "windmove is loaded")
+  (windmove-default-keybindings)
+  (windmove-delete-default-keybindings)
+  (windmove-swap-states-default-keybindings))
+
 (use-package popper
   :defer t
   :config
