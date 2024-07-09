@@ -75,4 +75,11 @@
   :bind (("C->" . mc/mark-next-like-this)
          ("C-<" . mc/mark-previous-like-this)))
 
+(use-package move-text
+  :pin melpa
+  :config
+  (message "move-text is loaded")
+  :bind (("s-<up>" . move-text-up)
+         ("s-<down>" . move-text-down)))
+
 (provide 'init-editing-utils)
