@@ -21,12 +21,6 @@
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
 
-  (defun +denote/scratch ()
-    (interactive)
-    (let ((denote-prompts nil)
-          (denote-file-type 'text))
-      (call-interactively #'denote)))
-
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-known-keywords '("emacs" "programming" "engineering" "parenting"))
@@ -41,7 +35,6 @@
          ("C-c n o" . denote-sort-dired) ; "order" mnemonic
          ("C-c n j" . denote-journal-extras-new-entry)
          ("C-c n J" . denote-journal-extras-new-or-existing-entry)
-         ("s-n"     . +denote/scratch)
 
          :map search-map
          ("f" . denote-open-or-create)

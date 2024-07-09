@@ -2,7 +2,7 @@
   :ensure nil
   :init
   (setq org-directory "~/src/org/"
-        org-agenda-files (list org-directory))
+        org-agenda-files (list "tasks.org" "notes.org"))
 
   :config
   (message "org is loaded")
@@ -67,6 +67,12 @@
       :clock-keep t
       :immediate-finish t
       :empty-lines-after 1)
+     ("a" "Clocked entry note" entry
+      (clock)
+      "* %?\n")
+     ("f" "Fleeting note" entry
+      (file "notes.org")
+      "* %?\n")
      ("e" "Email note (unprocessed)" entry
       (file+headline "tasks.org" "Unprocessed")
       ,(concat "* TODO %:subject :mail:\n"
