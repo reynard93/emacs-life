@@ -73,7 +73,7 @@
 (use-package citar
   :pin melpa
   :init
-  (setq org-cite-global-bibliography '("~/src/notes/reference.bib"))
+  (setq org-cite-global-bibliography (list (expand-file-name "reference.bib" denote-directory)))
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
