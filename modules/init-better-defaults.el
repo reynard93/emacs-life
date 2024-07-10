@@ -125,6 +125,8 @@
          ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
          ("s-k" . crux-smart-kill-line)
          ("s-j" . crux-top-join-line)
+         ("s-o" . crux-smart-open-line-above)
+         ("M-o" . crux-smart-open-line)
          ([remap move-beginning-of-line] . crux-move-beginning-of-line)
          ([remap kill-whole-line] . crux-kill-whole-line)))
 
