@@ -26,7 +26,6 @@
 
   :bind (("s-t" . tab-new)
          ("s-T" . tab-undo)
-         ("s-w" . tab-close)
          ("s-{" . tab-previous)
          ("s-}" . tab-next)))
 
@@ -35,7 +34,15 @@
   :if (display-graphic-p)
   :config
   (message "frame is loaded")
-  :bind ("C-s-f" . toggle-frame-fullscreen))
+  (defun tab-close-or-delete-frame ()
+    "Close the current tab if there are multiple tabs, otherwise delete the frame."
+    (interactive)
+    (if (and (bound-and-true-p tab-bar-mode)
+             (> (length (tab-bar-tabs)) 1))
+        (tab-close)
+      (delete-frame)))
+  :bind (("C-s-f" . toggle-frame-fullscreen)
+         ("s-w" . tab-close-or-delete-frame)))
 
 (use-package beframe
   :if (display-graphic-p)
