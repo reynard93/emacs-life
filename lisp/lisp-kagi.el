@@ -17,6 +17,8 @@
          (formatted-query (if bang (format "%s %s" bang query) query)))
     (browse-url (format "https://kagi.com/search?q=%s" (url-hexify-string formatted-query)))))
 
+(bind-key "s" #'+kagi/search search-map)
+
 ;; https://help.kagi.com/kagi/features/bangs.html#ai-related-bangs
 (defun +kagi/summarize-url (url)
   "Summerize URL using Kagi's Universal Summarizer."
@@ -46,13 +48,12 @@
                        "!custom")))
     (+kagi/search search-type)))
 
-(defvar-keymap kagi-keymap
-  "k" #'+kagi/search
+(defvar-keymap kagi-assistant-keymap
   "r" #'+kagi/assistant-research
   "d" #'+kagi/assistant-code
   "c" #'+kagi/assistant-chat
   "a" #'+kagi/assistant-custom)
 
-(bind-key "C-c k" kagi-keymap)
+(bind-key "C-c k" kagi-assistant-keymap)
 
 (provide 'lisp-kagi)
