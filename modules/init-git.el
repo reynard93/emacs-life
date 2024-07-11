@@ -19,11 +19,17 @@
 
 (use-package browse-at-remote
   :pin melpa
+  :preface
+  (defun browse-pull-request-at-remote ()
+    "Browse the current branch with `+gh/pr-browse'."
+    (interactive)
+    (+gh/pr-browse))
   :config
   (message "browse-at-remote is loaded")
   :custom
   (browse-at-remote-add-line-number-if-no-region-selected nil)
-  :bind ("C-c g o" . browse-at-remote))
+  :bind (("C-c g o" . browse-at-remote)
+         ("C-c g O" . browse-pull-request-at-remote)))
 
 (use-package git-gutter
   :pin melpa
@@ -37,7 +43,6 @@
 
 (use-package git-timemachine
   :pin melpa
-  :defer t
   :config
   (message "git-timemachine is loaded")
   :bind ("C-c g t" . git-timemachine-toggle))

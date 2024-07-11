@@ -59,20 +59,14 @@
 
 (defun +gh--pr-number ()
   (let* ((collection (+gh--pr-list))
-         (history (list (magit-get-current-branch)))
-         (target (completing-read "Select pull request: " collection nil t nil 'history)))
+         (target (completing-read "Select pull request: " collection nil t)))
     (when (string-match "^#\\([0-9]+\\)" target)
       (match-string 1 target))))
 
-(defun +gh/pr-browse-at-remote (&optional pr-number)
+(defun +gh/pr-browse (&optional pr-number)
   "Browse a pull request by PR-NUMBER."
   (interactive (list (+gh--pr-number)))
   (shell-command (concat "gh pr view -w " pr-number)))
-
-(defun +gh/pr-browse-at-remote-this ()
-  "Browse the pull request of current branch."
-  (interactive)
-  (+gh/pr-browse))
 
 (defun +gh/pr-checkout (pr-number)
   "Checkout a pull request by PR-NUMBER."
@@ -100,7 +94,7 @@
 
 (defvar-keymap embark-gh-pr-map
   "c" #'+gh/pr-checkout
-  "o" #'+gh/pr-browse-at-remote
+  "o" #'+gh/pr-browse
   "v" #'+gh/pr-view
   "y" #'+gh/pr-link)
 
@@ -109,8 +103,7 @@
 (with-eval-after-load 'marginalia
   (add-to-list 'marginalia-prompt-categories '("Select pull request" . github-pull-request)))
 
-(bind-key "C-c g p v" #'+gh/pr-view)
-(bind-key "C-c g p c" #'+gh/pr-create)
-(bind-key "C-c g p o" #'+gh/pr-browse-at-remote-this)
+(bind-key "C-c g v" #'+gh/pr-view)
+(bind-key "C-c g c" #'+gh/pr-create)
 
 (provide 'lisp-git)
