@@ -83,6 +83,8 @@
 (use-package elfeed-org
   :pin melpa
   :after elfeed
+  :init
+  (setq rmh-elfeed-org-files (list "elfeed.org"))
   :config
   (message "elfeed-org is loaded")
   (elfeed-org))
