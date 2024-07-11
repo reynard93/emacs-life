@@ -1,25 +1,3 @@
-(defun +git/create-backup-commit ()
-  (interactive)
-  (when-let ((default-directory (+project/root-dir)))
-    (let ((commit-message (format-time-string "Auto-backup on %Y-%m-%d at %H:%M:%S")))
-      (shell-command (format "git add --all && git commit -m \"%s\"" commit-message)))))
-
-(defun +hut/paste-create (&optional arg)
-  (interactive "P")
-  (let ((filename (read-string "Enter filename: " (buffer-name)))
-        (output-buffer "*paste-output*")
-        (public (if arg " --visibility public" "")))
-    (shell-command-on-region
-     (if (use-region-p) (region-beginning) (point-min))
-     (if (use-region-p) (region-end) (point-max))
-     (concat "hut paste create --name \"" filename "\"" public)
-     output-buffer)
-    (with-current-buffer output-buffer
-      (goto-char (point-max))
-      (forward-line -1)
-      (kill-new (thing-at-point 'url)))
-    (kill-buffer output-buffer)))
-
 (defun +gh/gist-create (&optional arg)
   (interactive "P")
   (let ((filename (buffer-name))
@@ -35,6 +13,9 @@
       (forward-line -1)
       (kill-new (thing-at-point 'url)))
     (kill-buffer output-buffer)))
+
+(with-eval-after-load 'embark
+  (keymap-set embark-region-map "G" #'+gh/gist-create))
 
 (defun +gh/pr-create ()
   (interactive)
@@ -106,4 +87,4 @@
 (bind-key "C-c g v" #'+gh/pr-view)
 (bind-key "C-c g c" #'+gh/pr-create)
 
-(provide 'lisp-git)
+(provide 'lisp-gh)
