@@ -20,29 +20,6 @@
 
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
-  (with-eval-after-load 'org-capture
-    (setq denote-org-capture-specifiers "%i\n%?")
-    (add-to-list 'org-capture-templates
-                 '("n" "New note (with denote.el)" plain
-                   (file denote-last-path)
-                   #'denote-org-capture
-                   :no-save t
-                   :immediate-finish nil
-                   :kill-buffer t
-                   :jump-to-captured t))
-
-    ;; This prompts for TITLE, KEYWORDS, and SUBDIRECTORY
-    (add-to-list 'org-capture-templates
-                 '("N" "New note with prompts (with denote.el)" plain
-                   (file denote-last-path)
-                   (function
-                    (lambda ()
-                      (denote-org-capture-with-prompts :title :keywords :signature)))
-                   :no-save t
-                   :immediate-finish nil
-                   :kill-buffer t
-                   :jump-to-captured t)))
-
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-known-keywords '("emacs" "programming" "engineering" "parenting"))
