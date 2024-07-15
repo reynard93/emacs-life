@@ -94,8 +94,8 @@
   :custom
   (gnus-alias-default-identity "home")
   (gnus-alias-identity-alist
-   '(("home" nil "Yejun Su <goofan.su@gmail.com>" nil nil nil nil)
-     ("work" nil "James Su <james.su@managebac.com>" nil nil nil nil)))
+   '(("home" nil "Yejun Su <goofan.su@gmail.com>" nil nil nil "~/.signature")
+     ("work" nil "James Su <james.su@managebac.com>" nil nil nil "~/.signature.work")))
   (gnus-alias-identity-rules
    '(("work account" ("any" "managebac.com" both) "work")))
   :hook (message-setup . gnus-alias-determine-identity))
