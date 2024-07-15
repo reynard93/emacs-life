@@ -87,4 +87,17 @@
   :config
   (message "ol-notmuch is loaded"))
 
+(use-package gnus-alias
+  :pin melpa
+  :config
+  (message "gnus-alias is loaded")
+  :custom
+  (gnus-alias-default-identity "home")
+  (gnus-alias-identity-alist
+   '(("home" nil "Yejun Su <goofan.su@gmail.com>" nil nil nil nil)
+     ("work" nil "James Su <james.su@managebac.com>" nil nil nil nil)))
+  (gnus-alias-identity-rules
+   '(("work account" ("any" "managebac.com" both) "work")))
+  :hook (message-setup . gnus-alias-determine-identity))
+
 (provide 'init-mail)
