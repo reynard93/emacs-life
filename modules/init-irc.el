@@ -18,24 +18,25 @@
   (circe-set-display-handler "353" 'circe-display-ignore)
   (circe-set-display-handler "366" 'circe-display-ignore)
 
-  (defun +irc/pull-chat-history ()
-    (interactive)
-    (circe-command-QUOTE
-     (format "CHATHISTORY LATEST %s * 50" circe-chat-target)))
+  (defun +irc--channels ()
+    (delq nil
+          (mapcar (lambda (buf)
+                    (with-current-buffer buf
+                      (when (eq major-mode 'circe-channel-mode)
+                        (buffer-name buf))))
+                  (buffer-list))))
 
   (defun +irc/jump-to-channel ()
     (interactive)
-    (let* ((channel-buffers (delq nil
-                                  (mapcar (lambda (buf)
-                                            (with-current-buffer buf
-                                              (when (eq major-mode 'circe-channel-mode)
-                                                (buffer-name buf))))
-                                          (buffer-list))))
+    (let* ((channel-buffers (+irc--channels))
            (target (completing-read "Jump to channel: " channel-buffers nil t)))
       (when target
         (switch-to-buffer target))))
 
-  :bind ( :map circe-channel-mode-map
-          ("C-c C-p" . +irc/pull-chat-history)))
+  (defun +irc/kill-all-channels ()
+    (interactive)
+    (mapc 'kill-buffer (+irc--channels)))
+
+  :bind (("C-c I" . +irc/jump-to-channel)))
 
 (provide 'init-irc)
