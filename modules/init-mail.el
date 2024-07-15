@@ -60,9 +60,18 @@
        :query "tag:unread and tag:inbox"
        :sort-order newest-first
        :key ,(kbd "u"))
+     ( :name "personal"
+       :query "to:goofan.su@gmail.com"
+       :sort-order newest-first
+       :key ,(kbd "p"))
+     ( :name "work"
+       :query "to:james.su@managebac.com"
+       :sort-order newest-first
+       :key ,(kbd "w"))
      ))
   ;; Compose
   (notmuch-always-prompt-for-sender t)
+  (notmuch-fcc-dirs "sent +sent -unread")
   ;; Reading
   (notmuch-show-indent-messages-width 0)
   (notmuch-show-part-button-default-action 'notmuch-show-view-part)
