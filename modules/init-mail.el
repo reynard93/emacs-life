@@ -60,17 +60,9 @@
        :query "tag:unread and tag:inbox"
        :sort-order newest-first
        :key ,(kbd "u"))
-     ( :name "home"
-       :query "to:goofan.su@gmail.com"
-       :sort-order newest-first
-       :key ,(kbd "h"))
-     ( :name "work"
-       :query "to:james.su@managebac.com"
-       :sort-order newest-first
-       :key ,(kbd "w"))
      ))
   ;; Compose
-  (notmuch-always-prompt-for-sender t)
+  (notmuch-always-prompt-for-sender nil)
   (notmuch-fcc-dirs "sent +sent -unread")
   ;; Reading
   (notmuch-show-indent-messages-width 0)
@@ -86,18 +78,5 @@
   :after notmuch
   :config
   (message "ol-notmuch is loaded"))
-
-(use-package gnus-alias
-  :pin melpa
-  :config
-  (message "gnus-alias is loaded")
-  :custom
-  (gnus-alias-default-identity "home")
-  (gnus-alias-identity-alist
-   '(("home" nil "Yejun Su <goofan.su@gmail.com>" nil nil nil "~/.signature")
-     ("work" nil "James Su <james.su@managebac.com>" nil nil nil "~/.signature.work")))
-  (gnus-alias-identity-rules
-   '(("work account" ("any" "managebac.com" both) "work")))
-  :hook (message-setup . gnus-alias-determine-identity))
 
 (provide 'init-mail)
