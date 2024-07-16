@@ -5,6 +5,7 @@
   (message "ruby-ts-mode is loaded"))
 
 (use-package inf-ruby
+  :pin nongnu
   :defer t
   :config
   (message "inf-ruby is loaded")

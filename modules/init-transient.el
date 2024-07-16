@@ -1,5 +1,5 @@
 (use-package transient
-  :ensure nil
+  :pin melpa
   :config
   (message "transient is loaded")
 
