@@ -39,6 +39,8 @@
   :custom
   (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
   :hook
-  ((prog-mode text-mode) . +tempel--setup-capf))
+  ((prog-mode text-mode) . +tempel--setup-capf)
+  :bind (("M-+" . tempel-complete)
+         ("M-*" . tempel-insert)))
 
 (provide 'init-completion)
