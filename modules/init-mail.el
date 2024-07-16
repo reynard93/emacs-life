@@ -73,10 +73,4 @@
   :bind (("C-c m" . notmuch)
          ("C-x m" . notmuch-mua-new-mail)))
 
-(use-package ol-notmuch
-  :pin melpa
-  :after notmuch
-  :config
-  (message "ol-notmuch is loaded"))
-
 (provide 'init-mail)

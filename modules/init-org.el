@@ -64,22 +64,6 @@
                ":END:\n\n"
                "%a\n%i%?")
       :empty-lines-after 1)
-     ("e" "Email note (unprocessed)" entry
-      (file+headline "tasks.org" "Unprocessed")
-      ,(concat "* TODO %:subject :mail:\n"
-               ":PROPERTIES:\n"
-               ":CAPTURED: %U\n"
-               ":END:\n\n"
-               "%a\n%i%?")
-      :empty-lines-after 1)
-     ("w" "Add to the wishlist (may do some day)" entry
-      (file+headline "tasks.org" "Wishlist")
-      ,(concat "* %^{Title}\n"
-               ":PROPERTIES:\n"
-               ":CAPTURED: %U\n"
-               ":END:\n\n"
-               "%?")
-      :empty-lines-after 1)
      ("c" "Clock in and do immediately" entry
       (file+headline "tasks.org" "Clocked tasks")
       ,(concat "* TODO %^{Title}\n"
@@ -107,12 +91,6 @@
      ("j" "Journal" entry
       (file+olp+datetree "journal.org")
       "* %U %?\n")))
-
-  (org-capture-templates-contexts
-   '(("e" ((in-mode . "notmuch-search-mode")
-           (in-mode . "notmuch-show-mode")
-           (in-mode . "notmuch-tree-mode")))))
-
   ;; Refile
   (org-outline-path-complete-in-steps nil)
   (org-refile-use-outline-path 'file)
