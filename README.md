@@ -7,9 +7,6 @@
 
 ```shell
 git clone git@git.sr.ht:~goofansu/emacs-config ~/.config/emacs
-cd ~/.config/emacs
-git submodule init
-git submodule update --recursive
 ```
 
 ## Packages
