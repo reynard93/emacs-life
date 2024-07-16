@@ -21,7 +21,7 @@
     "I" #'password-store-generate
     "r" #'password-store-rename
     "e" #'password-store-edit
-    "k" #'password-store-remove
+    "d" #'password-store-remove
     "U" #'password-store-url)
 
   (with-eval-after-load 'embark
