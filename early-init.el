@@ -11,6 +11,4 @@
             (setq gc-cons-threshold (* 1000 1000 8)
                   gc-cons-percentage 0.1)))
 
-(setq package-enable-at-startup t)
-
 (provide 'early-init)

@@ -1,7 +1,5 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-
-(setq package-enable-at-startup nil)
 (package-initialize)
 
 (require 'use-package-ensure)
