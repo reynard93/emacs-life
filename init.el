@@ -5,9 +5,11 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
 ;; Bootstrap
-(require 'init-lisp)
 (require 'init-elpa)
-(require 'init-env)
+(require 'init-exec-path)
+
+;; Lisp
+(require 'init-lisp)
 
 ;; Interaction
 (require 'init-minibuffer)
@@ -37,6 +39,7 @@
 (require 'init-tree-sitter)
 (require 'init-eglot)
 (require 'init-data)
+(require 'init-direnv)
 (require 'init-docker)
 (require 'init-elixir)
 (require 'init-markdown)
