@@ -17,6 +17,6 @@
          (formatted-query (if bang (format "%s %s" bang query) query)))
     (browse-url (format "https://kagi.com/search?q=%s" (url-hexify-string formatted-query)))))
 
-(bind-key "s" #'+kagi/search search-map)
+(bind-key "O" #'+kagi/search search-map)
 
 (provide 'lisp-kagi)
