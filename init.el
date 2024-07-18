@@ -53,7 +53,6 @@
 (require 'init-git)
 (require 'init-pass)
 (require 'init-mail)
-(require 'init-irc)
 (require 'init-gpt)
 (require 'init-pdf)
 (require 'init-lookup)
