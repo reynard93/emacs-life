@@ -19,32 +19,4 @@
 
 (bind-key "s" #'+kagi/search search-map)
 
-;; https://help.kagi.com/kagi/features/bangs.html#kagi-assistant-bangs
-(defun +kagi/assistant-research ()
-  (interactive)
-  (+kagi/search "!expert"))
-
-(defun +kagi/assistant-code ()
-  (interactive)
-  (+kagi/search "!code"))
-
-(defun +kagi/assistant-chat ()
-  (interactive)
-  (+kagi/search "!chat"))
-
-(defun +kagi/assistant-custom (&optional instruction)
-  (interactive)
-  (let ((search-type (if instruction
-                         (concat "!custom" instruction)
-                       "!custom")))
-    (+kagi/search search-type)))
-
-(defvar-keymap kagi-assistant-keymap
-  "r" #'+kagi/assistant-research
-  "d" #'+kagi/assistant-code
-  "c" #'+kagi/assistant-chat
-  "a" #'+kagi/assistant-custom)
-
-(bind-key "C-c k" kagi-assistant-keymap)
-
 (provide 'lisp-kagi)
