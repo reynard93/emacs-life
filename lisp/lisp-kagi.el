@@ -19,15 +19,6 @@
 
 (bind-key "s" #'+kagi/search search-map)
 
-;; https://help.kagi.com/kagi/features/bangs.html#ai-related-bangs
-(defun +kagi/summarize-url (url)
-  "Summerize URL using Kagi's Universal Summarizer."
-  (interactive "sEnter URL: ")
-  (browse-url (format "https://kagi.com/search?q=!sum %s" (url-hexify-string url))))
-
-(with-eval-after-load 'embark
-  (keymap-set embark-url-map "K" #'+kagi/summarize-url))
-
 ;; https://help.kagi.com/kagi/features/bangs.html#kagi-assistant-bangs
 (defun +kagi/assistant-research ()
   (interactive)
