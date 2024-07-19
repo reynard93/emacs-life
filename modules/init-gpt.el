@@ -51,14 +51,14 @@ when using summarize models."
 
   (defun +gptel/kagi-summarize-url (url)
     "Summarize URL using Kagi's Universal Summarizer."
-    (interactive "sEnter URL: ")
+    (interactive "sSummarize URL: ")
     (let ((gptel-backend gptel--kagi)
           (gptel-model "summarize:agnes"))
       (gptel-request url
         :callback
         (lambda (response info)
           (if response
-              (let ((output-name (format "*Kagi Summary: %s*" (plist-get (plist-get info :data) :url))))
+              (let ((output-name (format "%s (summary)" (plist-get (plist-get info :data) :url))))
                 (with-current-buffer (get-buffer-create output-name)
                   (let ((inhibit-read-only t))
                     (erase-buffer)
@@ -67,7 +67,8 @@ when using summarize models."
                     (display-buffer (current-buffer))
                     (special-mode))))
             (message "gptel-request failed with message: %s"
-                     (plist-get info :status)))))))
+                     (plist-get info :status)))))
+      (message "Generating summary for: %s" url)))
 
   :custom
   (gptel-max-tokens 700)
@@ -78,7 +79,7 @@ when using summarize models."
          ("C-c C-x t" . gptel-set-topic)
          ("M-n" . gptel-end-of-response)
          :map embark-url-map
-         ("=" . +gptel/kagi-summarize-url)))
+         ("?" . +gptel/kagi-summarize-url)))
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
