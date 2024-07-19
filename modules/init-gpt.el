@@ -2,7 +2,7 @@
   :pin melpa
   :init
   (defvar gptel--openai
-    (gptel-make-azure "OpenAI"
+    (gptel-make-azure "Azure"
       :host "beepboop.openai.azure.com"
       :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-06-01"
       :key (lambda () (auth-source-pass-get 'secret "openai.azure.com/api-key/beepboop"))
@@ -37,8 +37,8 @@
      (gptel-mode (gptel-send arg))
      ((use-region-p) (gptel-send arg))
      ((< (point) 2000) (gptel-send arg))
-     ((y-or-n-p "[gptel] Prompt has more than 2000 chars, really send?") (gptel-send arg))
-     (t (message "[gptel] Request cancelled"))))
+     ((y-or-n-p "Prompt has more than 2000 chars, really send?") (gptel-send arg))
+     (t (message "Request cancelled"))))
 
   (cl-defmethod gptel--request-data ((_backend gptel-kagi) prompts)
     "Override `gptel-kagi's `gptel--request-data'. Set summary_type to takeaway
@@ -71,7 +71,7 @@ when using summarize models."
       (message "Generating summary for: %s" url)))
 
   :custom
-  (gptel-max-tokens 700)
+  (gptel-max-tokens 1000)
   (gptel-default-mode 'org-mode)
   :bind (("C-c C-<return>" . gptel-menu)
          ("C-c <return>" . +gptel/send)
