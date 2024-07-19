@@ -69,23 +69,12 @@
   (shackle-mode 1)
   :custom
   (shackle-inhibit-window-quit-on-same-windows t)
-  (shackle-default-size 0.4)
   (shackle-rules
    `((calendar-mode :align below)
-     (help-mode :select t)
-     (magit-status-mode :same t)
-     (magit-log-mode :popup t)
-     (magit-log-select-mode :same t)
-     (magit-revision-mode :popup t)
      (osx-dictionary-mode :align below :size 0.3)
+     ;; Org capture windows
      ("*Org Select*" :align below)
-     ("^CAPTURE-.+$" :regexp t :align below)
      ("*Capture*" :align below)
-     ("^*Kagi Summary:.+$" :regexp t :align below)
-     ((:custom
-       ,(lambda (buffer)
-          (with-current-buffer buffer
-            (bound-and-true-p gptel-mode))))
-      :select t :align below :size 0.5))))
+     ("^CAPTURE-.+$" :regexp t :align below))))
 
 (provide 'init-windows)
