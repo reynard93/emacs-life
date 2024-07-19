@@ -12,7 +12,7 @@
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
       :key (lambda () (auth-source-pass-get 'secret "kagi.com/api-key"))
-      :models '("summarize:agnes")))
+      :models '("fastgpt" "summarize:agnes")))
   
   (setq-default gptel-backend gptel--openai
                 gptel-model "gpt-4o")
