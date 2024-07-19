@@ -144,6 +144,8 @@
   :config
   (message "org-anki is loaded")
   :custom
+  (org-anki-default-deck "Default")
+  (org-anki-default-match "@anki&todo<>\"TODO\"")
   (org-anki-inherit-tags nil))
 
 (provide 'init-org)
