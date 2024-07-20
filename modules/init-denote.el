@@ -20,6 +20,13 @@
 
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
+  (require 'denote-silo-extras)
+
+  (require 'denote-org-extras)
+  (setq denote-silo-extras-directories
+        (list denote-directory
+              "~/work/notes/"
+              "~/work/openapply/notes/"))
   :custom
   (denote-history-completion-in-prompts nil)
   (denote-known-keywords '("emacs" "programming" "engineering" "parenting"))
@@ -34,9 +41,11 @@
          ("C-c n o" . denote-sort-dired) ; "order" mnemonic
          ("C-c n j" . denote-journal-extras-new-entry)
          ("C-c n J" . denote-journal-extras-new-or-existing-entry)
+         ("C-c n S" . denote-silo-extras-select-silo-then-command)
 
          :map search-map
-         ("f" . denote-open-or-create)
+         ("n" . denote-open-or-create)
+         ("N" . denote-silo-extras-open-or-create)
 
          :map text-mode-map
          ("C-c n i" . denote-link)
@@ -60,7 +69,7 @@
   :custom
   (consult-denote-grep-command #'consult-ripgrep)
   :bind ( :map search-map
-          ("n" . consult-denote-grep)))
+          ("s" . consult-denote-grep)))
 
 (use-package citar
   :pin melpa
