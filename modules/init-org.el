@@ -91,6 +91,7 @@
      ("j" "Journal" entry
       (file+olp+datetree "journal.org")
       "* %U %?\n")))
+
   ;; Refile
   (org-outline-path-complete-in-steps nil)
   (org-refile-use-outline-path 'file)
@@ -115,6 +116,7 @@
   (org-export-with-sub-superscripts nil)
   (org-export-with-section-numbers nil)
   (org-export-dispatch-use-expert-ui t)
+  (org-export-allow-bind-keywords t)
 
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)
