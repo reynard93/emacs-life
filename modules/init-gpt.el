@@ -12,7 +12,13 @@
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
       :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models '("fastgpt")))
+      :models nil))
+
+  (setq-default gptel-backend gptel--openai
+                gptel-model "gpt-4o")
+
+  :config
+  (message "gptel is loaded")
 
   (gptel-make-openai "Groq"
     :host "api.groq.com"
@@ -25,17 +31,18 @@
               "llama3-8b-8192"
               "mixtral-8x7b-32768"))
 
-  (gptel-make-gemini "Google"
+  (gptel-make-openai "OpenRouter"
+    :host "openrouter.ai"
+    :endpoint "/api/v1/chat/completions"
     :stream t
-    :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
-    :models '("gemini-1.5-flash"
-              "gemini-1.5-pro"))
-
-  (setq-default gptel-backend gptel--openai
-                gptel-model "gpt-4o")
-
-  :config
-  (message "gptel is loaded")
+    :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
+    :models '("anthropic/claude-3.5-sonnet"
+              "anthropic/claude-3-haiku"
+              "anthropic/claude-3-opus"
+              "google/gemini-flash-1.5"
+              "google/gemini-pro-1.5"
+              "openai/gpt-4o-mini"
+              "openai/gpt-4o"))
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
