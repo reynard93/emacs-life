@@ -29,11 +29,10 @@
 (require 'init-gui-frames)
 (require 'init-windows)
 
-;; GTD/PKM
+;; Agenda/Notes/Feeds
 (require 'init-org)
 (require 'init-denote)
 (require 'init-elfeed)
-(require 'init-wombag)
 
 ;; Programming
 (require 'init-tree-sitter)
