@@ -6,25 +6,30 @@
       :host "beepboop.openai.azure.com"
       :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-06-01"
       :stream t
-      :key (lambda () (auth-source-pass-get 'secret "openai.azure.com/api-key/beepboop"))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
       :models '("gpt-4o")))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "kagi.com/api-key"))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
       :models '("fastgpt")))
 
-  (defvar gptel--groq
-    (gptel-make-openai "Groq"
-      :host "api.groq.com"
-      :endpoint "/openai/v1/chat/completions"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "groq.com/api-key"))
-      :models '("gemma-7b-it"
-                "gemma2-9b-it"
-                "llama3-70b-8192"
-                "llama3-8b-8192"
-                "mixtral-8x7b-32768")))
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
+    :models '("gemma-7b-it"
+              "gemma2-9b-it"
+              "llama3-70b-8192"
+              "llama3-8b-8192"
+              "mixtral-8x7b-32768"))
+
+  (gptel-make-gemini "Google"
+    :stream t
+    :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
+    :models '("gemini-1.5-flash"
+              "gemini-1.5-pro"))
 
   (setq-default gptel-backend gptel--openai
                 gptel-model "gpt-4o")
