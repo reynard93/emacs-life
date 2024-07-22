@@ -1,8 +1,8 @@
 (use-package pdf-tools
-  :if (display-graphic-p)
   :pin melpa
+  :magic ("%PDF" . pdf-view-mode)
   :config
   (message "pdf-tools is loaded")
-  (pdf-loader-install))
+  (pdf-loader-install :no-query))
 
 (provide 'init-pdf)
