@@ -9,16 +9,11 @@
   :defer t
   :config
   (message "inf-ruby is loaded")
-  (defun +inf-ruby/console-rails-in-root-dir ()
-    (interactive)
-    (when-let ((dir (+project/root-dir)))
-      (inf-ruby-console-rails dir)))
-
   :custom
   (inf-ruby-console-environment "development")
-
-  :bind ( :map ruby-ts-mode-map
-          ("C-c C-r" . +inf-ruby/console-rails-in-root-dir)))
+  :hook (ruby-ts-mode . inf-ruby-minor-mode)
+  :bind ( :map inf-ruby-minor-mode-map
+          ("C-c C-s" . inf-ruby-console-auto)))
 
 (use-package bundler
   :pin melpa
