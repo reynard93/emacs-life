@@ -75,6 +75,8 @@
      ;; Org capture windows
      ("*Org Select*" :align below)
      ("*Capture*" :align below)
-     ("^CAPTURE-.+$" :regexp t :align below))))
+     ("^CAPTURE-.+$" :regexp t :align below)
+     ;; Summary
+     (".+ (summary)" :regexp t :align below))))
 
 (provide 'init-windows)

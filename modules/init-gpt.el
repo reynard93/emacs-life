@@ -52,15 +52,6 @@
      ((y-or-n-p "Prompt has more than 2000 chars, really send?") (gptel-send arg))
      (t (message "Request cancelled"))))
 
-  (cl-defmethod gptel--request-data ((_backend gptel-kagi) prompts)
-    "Override `gptel-kagi's `gptel--request-data'. Set summary_type to takeaway
-when using summarize models."
-    (pcase-exhaustive gptel-model
-      ("fastgpt"
-       `(,@prompts :web_search t :cache t))
-      ((and model (guard (string-prefix-p "summarize" model)))
-       `(,@prompts :engine ,(substring model 10) :summary_type "takeaway"))))
-
   (defun +gptel/kagi-summarize-url (url)
     "Summarize URL using Kagi's Universal Summarizer."
     (interactive "sSummarize URL: ")
