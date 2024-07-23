@@ -10,10 +10,4 @@
   :config
   (message "ob-racket is loaded"))
 
-(use-package sicp
-  :pin melpa
-  :defer t
-  :config
-  (message "sicp is loaded"))
-
 (provide 'init-racket)
