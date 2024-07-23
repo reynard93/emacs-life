@@ -9,6 +9,32 @@
       :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
       :models '("gpt-4o")))
 
+  (defvar gptel--openrouter
+    (gptel-make-openai "OpenRouter"
+      :host "openrouter.ai"
+      :endpoint "/api/v1/chat/completions"
+      :stream t
+      :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
+      :models '("anthropic/claude-3.5-sonnet"
+                "anthropic/claude-3-haiku"
+                "anthropic/claude-3-opus"
+                "google/gemini-flash-1.5"
+                "google/gemini-pro-1.5"
+                "openai/gpt-4o-mini"
+                "openai/gpt-4o")))
+
+  (defvar gptel--groq
+    (gptel-make-openai "Groq"
+      :host "api.groq.com"
+      :endpoint "/openai/v1/chat/completions"
+      :stream t
+      :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
+      :models '("mixtral-8x7b-32768"
+                "llama3-70b-8192"
+                "llama3-8b-8192"
+                "gemma2-9b-it"
+                "gemma-7b-it")))
+
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
       :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
@@ -19,30 +45,6 @@
 
   :config
   (message "gptel is loaded")
-
-  (gptel-make-openai "Groq"
-    :host "api.groq.com"
-    :endpoint "/openai/v1/chat/completions"
-    :stream t
-    :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
-    :models '("gemma-7b-it"
-              "gemma2-9b-it"
-              "llama3-70b-8192"
-              "llama3-8b-8192"
-              "mixtral-8x7b-32768"))
-
-  (gptel-make-openai "OpenRouter"
-    :host "openrouter.ai"
-    :endpoint "/api/v1/chat/completions"
-    :stream t
-    :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
-    :models '("anthropic/claude-3.5-sonnet"
-              "anthropic/claude-3-haiku"
-              "anthropic/claude-3-opus"
-              "google/gemini-flash-1.5"
-              "google/gemini-pro-1.5"
-              "openai/gpt-4o-mini"
-              "openai/gpt-4o"))
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
