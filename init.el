@@ -54,6 +54,7 @@
 (require 'init-mail)
 (require 'init-gpt)
 (require 'init-pdf)
+(require 'init-epub)
 (require 'init-lookup)
 (require 'init-network-tools)
 (require 'init-spell-checker)
