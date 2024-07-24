@@ -40,6 +40,12 @@
       :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
       :models nil))
 
+  (defvar gptel--ollama
+    (gptel-make-ollama "Ollama"
+      :host "localhost:11434"
+      :stream t
+      :models '("llama3:latest")))
+
   (setq-default gptel-backend gptel--openai
                 gptel-model "gpt-4o")
 
