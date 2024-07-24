@@ -88,7 +88,6 @@
       (message "Generating summary for: %s" url)))
 
   :custom
-  (gptel-log-level 'info)
   (gptel-max-tokens 1000)
   (gptel-default-mode 'org-mode)
   :bind (("C-c C-<return>" . gptel-menu)
