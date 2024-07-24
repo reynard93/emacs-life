@@ -18,6 +18,14 @@
         (elfeed-search-update--force)
       (elfeed-show-refresh)))
 
+  (defun +elfeed/send-to-wombag (entry)
+    (interactive (list (+elfeed--selected-entry)))
+    (+wombag/url (elfeed-entry-link entry))
+    (elfeed-tag entry 'sent)
+    (if (eq major-mode 'elfeed-search-mode)
+        (elfeed-search-update--force)
+      (elfeed-show-refresh)))
+
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
     (+gptel/kagi-summarize-url (elfeed-entry-link entry))
@@ -25,6 +33,12 @@
     (if (eq major-mode 'elfeed-search-mode)
         (elfeed-search-update--force)
       (elfeed-show-refresh)))
+
+  (defun +elfeed/switch-to-wombag ()
+    (interactive)
+    (if-let ((buf (get-buffer "*wallabag-search*")))
+        (switch-to-buffer buf)
+      (wombag)))
 
   (defun +elfeed/eww ()
     (interactive)
@@ -57,11 +71,14 @@
          ("?" . +elfeed/summarize)
          ("B" . +elfeed/eww)
          ("D" . +elfeed/delete)
+         ("R" . +elfeed/send-to-wombag)
          ("S" . +elfeed/set-filter)
+         ("W" . +elfeed/switch-to-wombag)
          :map elfeed-show-mode-map
          ("?" . +elfeed/summarize)
          ("B" . +elfeed/eww)
-         ("D" . +elfeed/delete)))
+         ("D" . +elfeed/delete)
+         ("R" . +elfeed/send-to-wombag)))
 
 (use-package elfeed-org
   :pin melpa

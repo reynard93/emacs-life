@@ -29,10 +29,9 @@
 (require 'init-gui-frames)
 (require 'init-windows)
 
-;; Agenda/Notes/Feeds
+;; Agenda/Notes
 (require 'init-org)
 (require 'init-denote)
-(require 'init-elfeed)
 
 ;; Programming
 (require 'init-tree-sitter)
@@ -48,13 +47,17 @@
 (require 'init-web)
 (require 'init-yaml)
 
+;; Reading
+(require 'init-elfeed)
+(require 'init-wombag)
+(require 'init-pdf)
+(require 'init-epub)
+
 ;; Tools
 (require 'init-git)
 (require 'init-pass)
 (require 'init-mail)
 (require 'init-gpt)
-(require 'init-pdf)
-(require 'init-epub)
 (require 'init-lookup)
 (require 'init-network-tools)
 (require 'init-spell-checker)
