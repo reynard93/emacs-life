@@ -127,6 +127,7 @@
          ("s-j" . crux-top-join-line)
          ("s-o" . crux-smart-open-line-above)
          ("M-o" . crux-smart-open-line)
+         ("C-^" . crux-switch-to-previous-buffer)
          ([remap move-beginning-of-line] . crux-move-beginning-of-line)
          ([remap kill-whole-line] . crux-kill-whole-line)))
 
