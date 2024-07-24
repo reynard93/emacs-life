@@ -103,6 +103,8 @@
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
   :config
   (message "gptel-quick is loaded")
+  (setq gptel-quick-backend gptel--openrouter
+        gptel-quick-model "openai/gpt-4o-mini")
   :bind ( :map embark-general-map
           ("?" . gptel-quick)))
 
