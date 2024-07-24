@@ -68,14 +68,14 @@
   (elfeed-search-filter "@6-months-ago +inbox +unread")
   :bind (("C-c e" . elfeed)
          :map elfeed-search-mode-map
-         ("?" . +elfeed/summarize)
+         ("=" . +elfeed/summarize)
          ("B" . +elfeed/eww)
          ("D" . +elfeed/delete)
          ("R" . +elfeed/send-to-wombag)
          ("S" . +elfeed/set-filter)
          ("W" . +elfeed/switch-to-wombag)
          :map elfeed-show-mode-map
-         ("?" . +elfeed/summarize)
+         ("=" . +elfeed/summarize)
          ("B" . +elfeed/eww)
          ("D" . +elfeed/delete)
          ("R" . +elfeed/send-to-wombag)))
