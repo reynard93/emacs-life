@@ -21,27 +21,37 @@
   (interactive)
   (shell-command "gh pr create -w"))
 
-(defvar +gh--search-conditions
-  '(("Require my review" . "state:open review-requested:@me")
-    ))
+(defvar +gh--search-queries
+  '(("Created" . "author:@me")
+    ("Assigned" . "assignee:@me")
+    ("Mentioned" . "mentions:@me")
+    ("Review requests" . "review-requested:@me")))
 
 (defun +gh--pr-list ()
-  (let* ((search (if current-prefix-arg
-                     (completing-read "Search: " +gh--search-conditions)
-                   "@me"))
-         (options (if current-prefix-arg
-                      (if-let ((selection (cdr (assoc search +gh--search-conditions))))
-                          (format "--search \"%s\"" selection)
-                        (format "--search \"%s\"" search))
-                    (format "--author \"%s\"" search)))
-         (command (format "gh pr list --json number,title,headRefName,author %s" options)))
-    (condition-case nil
-        (let ((json (json-read-from-string (shell-command-to-string command))))
-          (mapcar (lambda (pr)
-                    (let-alist pr
-                      (format "#%-10.10s %-80.80s %s:%s" .number .title .author.login .headRefName)))
-                  json))
-      (error nil))))
+  (if current-prefix-arg
+      (let* ((selection (completing-read "Select query: " +gh--search-queries))
+             (query (cdr (assoc selection +gh--search-queries))))
+        (if query
+            (+gh--pr-list-search query)
+          (+gh--pr-list-search selection)))
+    (+gh--pr-list-default)))
+
+(defun +gh--pr-list-request (command)
+  (condition-case nil
+      (let ((json (json-read-from-string (shell-command-to-string command))))
+        (mapcar (lambda (pr)
+                  (let-alist pr
+                    (format "#%-10.10s %-80.80s %s:%s" .number .title .author.login .headRefName)))
+                json))
+    (error nil)))
+
+(defun +gh--pr-list-search (query)
+  (let* ((command (format "gh pr list --json number,title,headRefName,author --search \"%s\"" query)))
+    (+gh--pr-list-request command)))
+
+(defun +gh--pr-list-default ()
+  (let ((command "gh pr list --json number,title,headRefName,author"))
+    (+gh--pr-list-request command)))
 
 (defun +gh--pr-number ()
   (let* ((collection (+gh--pr-list))
