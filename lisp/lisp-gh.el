@@ -81,7 +81,6 @@
 (defvar-keymap embark-gh-pr-map
   "c" #'+gh/pr-checkout
   "o" #'+gh/pr-browse
-  "v" #'+gh/pr-view
   "y" #'+gh/pr-link)
 
 (with-eval-after-load 'embark
