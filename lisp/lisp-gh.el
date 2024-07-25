@@ -21,20 +21,25 @@
   (interactive)
   (shell-command "gh pr create -w"))
 
+(defvar +gh--search-conditions
+  '(("Require my review" . "state:open review-requested:@me")
+    ))
+
 (defun +gh--pr-list ()
-  (let* ((initial-command "gh pr list --json number,title,headRefName,author")
-         (command (if current-prefix-arg
-                      initial-command
-                    (concat initial-command " --author \"@me\""))))
+  (let* ((search (if current-prefix-arg
+                     (completing-read "Search: " +gh--search-conditions)
+                   "@me"))
+         (options (if current-prefix-arg
+                      (if-let ((selection (cdr (assoc search +gh--search-conditions))))
+                          (format "--search \"%s\"" selection)
+                        (format "--search \"%s\"" search))
+                    (format "--author \"%s\"" search)))
+         (command (format "gh pr list --json number,title,headRefName,author %s" options)))
     (condition-case nil
         (let ((json (json-read-from-string (shell-command-to-string command))))
           (mapcar (lambda (pr)
-                    (let* ((number (alist-get 'number pr))
-                           (title (alist-get 'title pr))
-                           (branch (alist-get 'headRefName pr))
-                           (author (alist-get 'author pr))
-                           (login (alist-get 'login author)))
-                      (format "#%-10.10s %-80.80s %s:%s" number title login branch)))
+                    (let-alist pr
+                      (format "#%-10.10s %-80.80s %s:%s" .number .title .author.login .headRefName)))
                   json))
       (error nil))))
 
