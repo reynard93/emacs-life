@@ -48,6 +48,8 @@
 (use-package beframe
   :if (display-graphic-p)
   :demand t
+  :custom
+  (beframe-create-frame-scratch-buffer nil)
   :config
   (message "beframe is loaded")
   (beframe-mode 1)
