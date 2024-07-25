@@ -42,7 +42,8 @@
         (tab-close)
       (delete-frame)))
   :bind (("C-s-f" . toggle-frame-fullscreen)
-         ("s-w" . tab-close-or-delete-frame)))
+         ("s-w" . tab-close-or-delete-frame)
+         ("s-N" . make-frame)))
 
 (use-package beframe
   :if (display-graphic-p)
