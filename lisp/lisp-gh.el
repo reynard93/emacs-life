@@ -76,7 +76,10 @@
               (output-formatted (replace-regexp-in-string "\r" "" output))
               (output-buffer (format "*%s (pull request)*" pr-number)))
     (with-output-to-temp-buffer output-buffer
-      (princ output-formatted))))
+      (princ output-formatted)
+      (with-current-buffer output-buffer
+        (gfm-view-mode)
+        (keymap-local-set "q" #'quit-window)))))
 
 (defun +gh/pr-link (pr-number)
   "Copy a pull request's URL by PR-NUMBER."
