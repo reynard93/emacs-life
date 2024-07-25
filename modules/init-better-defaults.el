@@ -131,6 +131,12 @@
          ([remap move-beginning-of-line] . crux-move-beginning-of-line)
          ([remap kill-whole-line] . crux-kill-whole-line)))
 
+(use-package ffap
+  :ensure nil
+  :config
+  (message "ffap is loaded")
+  :bind ("M-m" . ffap-menu))
+
 ;; https://tecosaur.github.io/emacs-config/config.html#better-defaults
 (setq-default delete-by-moving-to-trash t         ; Delete files to trash
               window-combination-resize t         ; take new window space from all other windows (not just current)
