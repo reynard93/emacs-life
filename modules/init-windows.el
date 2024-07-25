@@ -77,6 +77,6 @@
      ("*Capture*" :align below)
      ("^CAPTURE-.+$" :regexp t :align below)
      ;; Summary
-     (".+ (summary)" :regexp t :align below))))
+     (".+ (summary)" :regexp t :align below :size 0.3))))
 
 (provide 'init-windows)
