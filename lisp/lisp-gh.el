@@ -73,12 +73,10 @@
   "View a pull request by PR-NUMBER."
   (interactive (list (+gh--pr-number)))
   (when-let* ((output (shell-command-to-string (concat "gh pr view " pr-number)))
-              (formatted-output (replace-regexp-in-string "\r" "" output))
-              (buffer-name (format "*gh-pr-view %s*" pr-number)))
-    (with-output-to-temp-buffer buffer-name
-      (with-current-buffer buffer-name
-        (gfm-mode))
-      (princ formatted-output))))
+              (output-formatted (replace-regexp-in-string "\r" "" output))
+              (output-buffer (format "*%s (pull request)*" pr-number)))
+    (with-output-to-temp-buffer output-buffer
+      (princ output-formatted))))
 
 (defun +gh/pr-link (pr-number)
   "Copy a pull request's URL by PR-NUMBER."

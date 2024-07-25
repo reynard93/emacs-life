@@ -76,7 +76,8 @@
      ("*Org Select*" :align below)
      ("*Capture*" :align below)
      ("^CAPTURE-.+$" :regexp t :align below)
-     ;; Summary
-     (".+ (summary)" :regexp t :align below :size 0.3))))
+     ;; Outputs
+     (".+ (summary)" :regexp t :align below :size 0.3)
+     (".+ (pull request)" :regexp t :align right :select t))))
 
 (provide 'init-windows)
