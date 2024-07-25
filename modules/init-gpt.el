@@ -9,6 +9,9 @@
       :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
       :models '("gpt-4o")))
 
+  (setq-default gptel-backend gptel--openai
+                gptel-model "gpt-4o")
+
   (defvar gptel--openrouter
     (gptel-make-openai "OpenRouter"
       :host "openrouter.ai"
@@ -29,25 +32,23 @@
       :endpoint "/openai/v1/chat/completions"
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
-      :models '("mixtral-8x7b-32768"
-                "llama3-70b-8192"
+      :models '("gemma2-9b-it"
+                "gemma-7b-it"
+                "llama-3.1-70b-versatile"
+                "llama-3.1-8b-instant"
+                "llama-3-70b-8192"
                 "llama3-8b-8192"
-                "gemma2-9b-it"
-                "gemma-7b-it")))
+                "mixtral-8x7b-32768")))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models nil))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))))
 
   (defvar gptel--ollama
     (gptel-make-ollama "Ollama"
       :host "localhost:11434"
       :stream t
       :models '("llama3:latest")))
-
-  (setq-default gptel-backend gptel--openai
-                gptel-model "gpt-4o")
 
   :config
   (message "gptel is loaded")
