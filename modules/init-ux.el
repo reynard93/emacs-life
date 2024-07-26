@@ -44,4 +44,14 @@
   (olivetti-minimum-body-width 80)
   (olivetti-recall-visual-line-mode-entry-state t))
 
+(use-package pulsar
+  :config
+  (pulsar-global-mode 1))
+
+(use-package goggles
+  :pin melpa
+  :config
+  (setq-default goggles-pulse t)
+  :hook (prog-mode text-mode))
+
 (provide 'init-ux)

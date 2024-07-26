@@ -6,15 +6,14 @@
 (require 'init-bootstrap)
 (require 'init-lisp)
 
-;; Interaction
+;; Components
 (require 'init-minibuffer)
 (require 'init-completion)
+(require 'init-mode-line)
 
 ;; Visualization
 (require 'init-ui)
 (require 'init-ux)
-(require 'init-pulse)
-(require 'init-mode-line)
 
 ;; Common
 (require 'init-better-defaults)
