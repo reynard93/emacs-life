@@ -1,14 +1,9 @@
-;; Making custom-file disposable
-(setq custom-file (make-temp-file "emacs-custom-"))
-
-;; Loading modules
+;; Adding directories to `load-path'
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Bootstrap
-(require 'init-elpa)
-(require 'init-exec-path)
-
-;; Lisp
+(require 'init-bootstrap)
 (require 'init-lisp)
 
 ;; Interaction
