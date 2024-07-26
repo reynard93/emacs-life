@@ -9,7 +9,6 @@
 ;; Interaction
 (require 'init-minibuffer)
 (require 'init-completion)
-(require 'init-transient)
 
 ;; Visualization
 (require 'init-ui)

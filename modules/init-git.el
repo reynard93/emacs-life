@@ -1,12 +1,23 @@
 (use-package magit
   :pin melpa
-  :demand t
   :init
   (setq magit-repository-directories
         '(("~/src" . 1)
           ("~/work" . 1)))
   :config
-  (message "magit is loaded")
+  (with-eval-after-load 'transient
+    ;; git push with skip-ci option
+    (transient-append-suffix 'magit-push "-n"
+      '("-s" "Skip CI" "--push-option=skip-ci"))
+
+    ;; git push to all remotes
+    (defun +magit/push-all (&optional args)
+      (interactive (list (magit-push-arguments)))
+      (dolist (remote (magit-list-remotes))
+        (magit-push-to-remote remote args)))
+    (transient-append-suffix 'magit-push "e"
+      '("E" "everywhere" +magit/push-all)))
+
   :custom
   (magit-bury-buffer-function #'quit-window)
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
@@ -16,41 +27,5 @@
          ("C-c g F" . magit-pull)
          ("C-c g l" . magit-log-current)
          ("C-c g L" . magit-log-buffer-file)))
-
-(use-package browse-at-remote
-  :pin melpa
-  :preface
-  (defun browse-pull-request-at-remote ()
-    "Browse the current branch with `+gh/pr-browse'."
-    (interactive)
-    (+gh/pr-browse))
-  :config
-  (message "browse-at-remote is loaded")
-  :custom
-  (browse-at-remote-add-line-number-if-no-region-selected nil)
-  :bind (("C-c g o" . browse-at-remote)
-         ("C-c g O" . browse-pull-request-at-remote)))
-
-(use-package git-gutter
-  :pin melpa
-  :config
-  (message "git-gutter is loaded")
-  :custom
-  (git-gutter:added-sign " ")
-  (git-gutter:deleted-sign " ")
-  (git-gutter:modified-sign " ")
-  :hook (prog-mode text-mode))
-
-(use-package git-timemachine
-  :pin melpa
-  :config
-  (message "git-timemachine is loaded")
-  :bind ("C-c g t" . git-timemachine-toggle))
-
-(use-package git-link
-  :pin melpa
-  :config
-  (message "git-link is loaded")
-  :bind ("C-c g y" . git-link))
 
 (provide 'init-git)
