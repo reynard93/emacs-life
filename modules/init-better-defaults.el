@@ -55,6 +55,21 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . compilation-filter-colorize))
 
+(use-package undo-fu
+  :pin melpa
+  :init
+  (setq undo-limit 67108864             ; 64mb
+        undo-strong-limit 100663296     ; 96mb
+        undo-outer-limit 1006632960))   ; 960mb
+
+(use-package undo-fu-session
+  :pin melpa
+  :after undo-fu
+  :init
+  (undo-fu-session-global-mode 1)
+  :custom
+  (undo-fu-session-compression 'zst))
+
 (use-package helpful
   :pin melpa
   :bind (("C-h f" . helpful-callable)
