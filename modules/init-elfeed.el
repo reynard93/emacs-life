@@ -96,12 +96,12 @@
   :config
   (message "elfeed-tube is loaded")
   (elfeed-tube-setup)
-  :bind (:map elfeed-show-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)
-              :map elfeed-search-mode-map
-              ("F" . elfeed-tube-fetch)
-              ([remap save-buffer] . elfeed-tube-save)))
+  :bind ( :map elfeed-show-mode-map
+          ([remap save-buffer] . elfeed-tube-save)
+          ("F" . elfeed-tube-fetch)
+          :map elfeed-search-mode-map
+          ([remap save-buffer] . elfeed-tube-save)
+          ("F" . elfeed-tube-fetch)))
 
 (use-package elfeed-tube-mpv
   :pin melpa
