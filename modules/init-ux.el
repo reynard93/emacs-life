@@ -14,6 +14,8 @@
   :bind ("<f7>" . display-line-numbers-mode))
 
 (use-package spacious-padding
+  :init
+  (spacious-padding-mode 1)
   :custom
   (spacious-padding-subtle-mode-line t)
   :bind ("<f8>" . spacious-padding-mode))
