@@ -30,7 +30,6 @@
 (require 'init-tree-sitter)
 (require 'init-eglot)
 (require 'init-data)
-(require 'init-direnv)
 (require 'init-docker)
 (require 'init-elixir)
 (require 'init-markdown)

@@ -21,4 +21,9 @@
   :config
   (exec-path-from-shell-initialize))
 
+;; Enabling `envrc-global-mode' after initializing Emacs
+(use-package envrc
+  :pin melpa
+  :hook (after-init . envrc-global-mode))
+
 (provide 'init-bootstrap)
