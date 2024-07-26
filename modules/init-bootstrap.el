@@ -21,9 +21,20 @@
   :config
   (exec-path-from-shell-initialize))
 
-;; Enabling `envrc-global-mode' after initializing Emacs
+;; Enabling `envrc-global-mode'
 (use-package envrc
   :pin melpa
   :hook (after-init . envrc-global-mode))
+
+;; Enabling Emacs server
+(use-package server
+  :if (display-graphic-p)
+  :ensure nil
+  :defer 20
+  :init
+  (setq server-name "gui")
+  :config
+  (unless (server-running-p)
+    (server-start)))
 
 (provide 'init-bootstrap)

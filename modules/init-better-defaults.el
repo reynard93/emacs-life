@@ -55,6 +55,37 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . compilation-filter-colorize))
 
+(use-package tab-bar
+  :ensure nil
+  :init
+  ;; bind s-1 through s-9 to switch tabs
+  (dolist (i (number-sequence 1 9))
+    (bind-key (format "s-%d" i)
+              `(lambda ()
+                 (interactive)
+                 (when (<= ,i (length (tab-bar-tabs)))
+                   (tab-bar-select-tab ,i)))))
+  :custom
+  (tab-bar-show 1)
+  :bind (("s-t" . tab-new)
+         ("s-T" . tab-undo)
+         ("s-{" . tab-previous)
+         ("s-}" . tab-next)))
+
+(use-package frame
+  :ensure nil
+  :init
+  (defun tab-close-or-delete-frame ()
+    "Close the current tab if there are multiple tabs, otherwise delete the frame."
+    (interactive)
+    (if (and (bound-and-true-p tab-bar-mode)
+             (> (length (tab-bar-tabs)) 1))
+        (tab-close)
+      (delete-frame)))
+  :bind (("C-s-f" . toggle-frame-fullscreen)
+         ("s-w" . tab-close-or-delete-frame)
+         ("s-N" . make-frame)))
+
 (use-package undo-fu
   :pin melpa
   :init

@@ -18,7 +18,6 @@
 ;; Common
 (require 'init-better-defaults)
 (require 'init-editing-utils)
-(require 'init-gui-frames)
 (require 'init-windows)
 
 ;; Agenda/Notes
