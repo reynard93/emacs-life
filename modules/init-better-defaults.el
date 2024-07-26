@@ -29,6 +29,7 @@
       initial-major-mode 'fundamental-mode)
 
 (use-package savehist
+  :ensure nil
   :init
   (savehist-mode 1)
   :custom
@@ -36,15 +37,18 @@
   (history-delete-duplicates t))
 
 (use-package ibuffer
+  :ensure nil
   :hook (ibuffer-mode . ibuffer-auto-mode)
   :bind ([remap list-buffers] . ibuffer))
 
 (use-package ediff
+  :ensure nil
   :custom
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
 (use-package compile
+  :ensure nil
   :init
   (defun compilation-filter-colorize ()
     (let ((inhibit-read-only t))
