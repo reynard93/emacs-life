@@ -1,3 +1,21 @@
+(use-package winner
+  :config
+  (winner-mode 1))
+
+(use-package windmove
+  :config
+  (windmove-default-keybindings)
+  (windmove-delete-default-keybindings)
+  (windmove-swap-states-default-keybindings))
+
+(use-package transpose-frame
+  :pin melpa
+  :config
+  :bind ( :map window-prefix-map
+          ("w" . transpose-frame)
+          ("r" . rotate-frame-clockwise)
+          ("R" . rotate-frame-anticlockwise)))
+
 (use-package ace-window
   :pin melpa
   :init
@@ -19,37 +37,15 @@
     (keymap-set embark-buffer-map   "o" (+embark--aw-action switch-to-buffer))
     (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump)))
 
-  :config
-  (message "ace-window is loaded")
   :custom
   (aw-scope 'global)
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :bind ([remap other-window] . ace-window))
 
-(use-package transpose-frame
-  :pin melpa
-  :config
-  (message "transpose-frame is loaded")
-  :bind ( :map window-prefix-map
-          ("w" . transpose-frame)
-          ("r" . rotate-frame-clockwise)
-          ("R" . rotate-frame-anticlockwise)))
-
-(use-package windmove
-  :ensure nil
-  :config
-  (message "windmove is loaded")
-  (windmove-default-keybindings)
-  (windmove-delete-default-keybindings)
-  (windmove-swap-states-default-keybindings))
-
 (use-package popper
-  :defer t
   :config
-  (message "popper is loaded")
   (popper-mode 1)
   (popper-echo-mode 1)
-
   :custom
   (popper-group-function #'popper-group-by-project)
   (popper-display-control nil)
@@ -57,7 +53,6 @@
    '(compilation-mode
      rspec-compilation-mode
      inf-ruby-mode))
-
   :bind (("C-`"   . popper-toggle)
          ("M-`"   . popper-cycle)
          ("C-M-`" . popper-toggle-type)))
@@ -65,7 +60,6 @@
 (use-package shackle
   :pin melpa
   :config
-  (message "shackle is loaded")
   (shackle-mode 1)
   :custom
   (shackle-inhibit-window-quit-on-same-windows t)

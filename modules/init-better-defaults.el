@@ -111,12 +111,6 @@
      ("Europe/Kyiv" "Kyiv")
      ("Asia/Shanghai" "Shanghai"))))
 
-(use-package winner
-  :ensure nil
-  :config
-  (message "winner is loaded")
-  (winner-mode 1))
-
 (use-package crux
   :pin melpa
   :config
