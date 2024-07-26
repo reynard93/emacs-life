@@ -1,41 +1,44 @@
 (use-package vertico
-  :demand t
-  :preface
-  (setq enable-recursive-minibuffers t) ; M-x in M-x
+  :init
+  (vertico-mode 1)
+  :custom
+  (vertico-cycle t))
 
-  ;; Ensure minibuffer prompt is read-only and cannot be modified
-  (setq minibuffer-prompt-properties
-        '(read-only t cursor-intangible t face minibuffer-prompt))
+(use-package emacs
+  :init
+  ;; Do not allow the cursor in the minibuffer prompt.
+  (setq minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  :custom
+  ;; Support opening new minibuffers from inside existing minibuffers.
+  (enable-recursive-minibuffers t)
+  ;; Hide commands in M-x which do not work in the current mode.
+  (read-extended-command-predicate #'command-completion-default-include-p))
 
-  ;; Disable `ffap-menu's completion buffer
+(use-package ffap
+  :bind ("M-m" . ffap-menu)
+  :config
+  ;; Disable `ffap-menu's *Completions* buffer* because it's uncessary with vertico.
   (advice-add 'ffap-menu-ask :around
               (lambda (&rest args)
                 (cl-letf (((symbol-function #'minibuffer-completion-help)
                            #'ignore))
-                  (apply args))))
+                  (apply args)))))
 
-  :config
-  (message "vertico is loaded")
-  (vertico-mode 1)
-
-  :custom
-  (vertico-cycle t)
-  :hook (minibuffer-setup . vertico-repeat-save)
-  :bind ("C-x ." . vertico-repeat))
+(use-package vertico-repeat
+  :ensure nil
+  :after vertico
+  :bind ("C-x ." . vertico-repeat)
+  :hook (minibuffer-setup . vertico-repeat-save))
 
 (use-package vertico-suspend
   :ensure nil
   :after vertico
-  :config
-  (message "vertico-suspend is loaded")
   :bind ("M-z" . vertico-suspend))
 
 (use-package vertico-directory
   :ensure nil
   :after vertico
-  :config
-  (message "vertico-directory is loaded")
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   :bind ( :map vertico-map
           ("RET" . vertico-directory-enter)
@@ -45,8 +48,6 @@
 (use-package vertico-quick
   :ensure nil
   :after vertico
-  :config
-  (message "vertico-quick is loaded")
   :bind ( :map vertico-map
           ("M-q" . vertico-quick-insert)
           ("C-q" . vertico-quick-exit)))
@@ -55,77 +56,67 @@
   :ensure nil
   :after vertico
   :config
-  (message "vertico-multiform is loaded")
   (vertico-multiform-mode 1)
   :custom
   (vertico-multiform-categories
    '((embark-keybinding grid))))
 
 (use-package marginalia
-  :after vertico
-  :config
-  (message "marginalia is loaded")
+  :init
   (marginalia-mode 1))
 
 (use-package orderless
-  :after vertico
-  :config
-  (message "orderless is loaded")
-  (setq read-file-name-completion-ignore-case t
-        read-buffer-completion-ignore-case t
-        completion-ignore-case t)
   :custom
-  (orderless-smart-case nil)
   (completion-styles '(orderless basic))
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
-  :demand t
-  :config
-  (message "consult is loaded")
-  :bind (("M-X" . consult-mode-command)
+  :bind (([remap goto-line] . consult-goto-line)
+         ([remap bookmark-jump] . consult-bookmark)
+         ([remap switch-to-buffer] . consult-buffer)
+         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+         ([remap switch-to-buffer-other-tab] . consult-buffer-other-tab)
+         ([remap project-switch-to-buffer] . consult-project-buffer)
+         ("M-X" . consult-mode-command)
          ("M-y" . consult-yank-pop)
-         :map ctl-x-map
-         ("M-:" . consult-complex-command)     ;; orig. repeat-complex-command
-         ("b"   . consult-buffer)              ;; orig. switch-to-buffer
-         ("4 b" . consult-buffer-other-window) ;; orig. switch-to-buffer-other-window
-         ("5 b" . consult-buffer-other-frame)  ;; orig. switch-to-buffer-other-frame
-         ("t b" . consult-buffer-other-tab)    ;; orig. switch-to-buffer-other-tab
-         ("r b" . consult-bookmark)            ;; orig. bookmark-jump
-         ("p b" . consult-project-buffer)      ;; orig. project-switch-to-buffer
          :map goto-map
-         ("e" . consult-compile-error)
-         ("f" . consult-flymake)               ;; Alternative: consult-flycheck
-         ("g" . consult-goto-line)             ;; orig. goto-line
-         ("M-g" . consult-goto-line)           ;; orig. goto-line
-         ("o" . consult-outline)               ;; Alternative: consult-org-heading
-         ("m" . consult-mark)
-         ("k" . consult-global-mark)
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
          :map search-map
-         ("d" . consult-fd)
          ("r" . consult-ripgrep)
          ("l" . consult-line)
-         ("L" . consult-line-multi)
-         ("u" . consult-focus-lines)
-         ("e" . consult-isearch-history)
-         ("m" . consult-kmacro)
-         ("a" . consult-org-agenda)
-         :map isearch-mode-map
-         ("M-e" . consult-isearch-history)         ;; orig. isearch-edit-string
-         ("M-s e" . consult-isearch-history)       ;; orig. isearch-edit-string
-         ("M-s l" . consult-line)                  ;; needed by consult-line to detect isearch
-         ("M-s L" . consult-line-multi)            ;; needed by consult-line to detect isearch
-         :map minibuffer-local-map
-         ("M-s" . consult-history)                 ;; orig. next-matching-history-element
-         ("M-r" . consult-history)))               ;; orig. previous-matching-history-element
+         ("L" . consult-line-multi)))
 
 (use-package consult-dir
   :pin melpa
-  :defer t
-  :after consult
-  :config
-  (message "consult-dir is loaded"))
+  :after (consult vertico)
+  :bind (("C-x C-d" . consult-dir)
+         :map vertico-map
+         ("C-x C-d" . consult-dir)
+         ("C-x C-j" . consult-dir-jump-file)))
+
+(use-package embark
+  :after vertico
+  :demand t
+  :init
+  (setq prefix-help-command #'embark-prefix-help-command)
+  (unbind-key "C-h C-h")
+  :custom
+  (embark-indicators
+   '(embark-minimal-indicator
+     embark-highlight-indicator
+     embark-isearch-highlight-indicator))
+  :bind (([remap describe-bindings] . embark-bindings)
+         ("C-;" . embark-act)
+         ("M-." . embark-dwim)
+         :map vertico-map
+         ("C-;" . embark-act)
+         ("C-c C-;" . embark-export)
+         ("C-c C-l" . embark-collect)))
+
+(use-package embark-consult
+  :after (embark consult)
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (provide 'init-minibuffer)
