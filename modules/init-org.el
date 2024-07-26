@@ -5,8 +5,6 @@
         org-agenda-files (list org-directory))
 
   :config
-  (message "org is loaded")
-
   ;; Hooks
   (with-eval-after-load 'pulsar
     (dolist (hook '(org-agenda-after-show-hook org-follow-link-hook))
@@ -129,22 +127,16 @@
 
 (use-package ox-hugo
   :pin melpa
-  :after ox
-  :config
-  (message "ox-hugo is loaded"))
+  :after ox)
 
 (use-package org-pandoc-import
   :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
-  :after org
-  :config
-  (message "org-pandoc-import is loaded"))
+  :after org)
 
 (use-package org-anki
   :pin melpa
   :after org
   :defer t
-  :config
-  (message "org-anki is loaded")
   :custom
   (org-anki-default-deck "Default")
   (org-anki-default-match "@anki&todo<>\"TODO\"")

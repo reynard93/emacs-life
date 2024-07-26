@@ -16,9 +16,6 @@
     (mapc #'treesit-install-language-grammar
           (mapcar #'car treesit-language-source-alist)))
 
-  :config
-  (message "treesit is loaded")
-
   :custom
   (major-mode-remap-alist
    '((ruby-mode . ruby-ts-mode)

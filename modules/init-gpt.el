@@ -51,8 +51,6 @@
       :models '("llama3:latest")))
 
   :config
-  (message "gptel is loaded")
-
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
     (interactive "sEnter text: ")
@@ -108,7 +106,6 @@
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
   :config
-  (message "gptel-quick is loaded")
   (setq gptel-quick-backend gptel--openrouter
         gptel-quick-model "openai/gpt-4o-mini")
   :bind ( :map embark-general-map

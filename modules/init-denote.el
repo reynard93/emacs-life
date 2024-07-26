@@ -15,14 +15,11 @@
         `((jira-ticket . ,(denote-template-content "jira-ticket.org"))))
 
   :config
-  (message "denote is loaded")
   (denote-rename-buffer-mode 1)
-
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
-  (require 'denote-silo-extras)
 
-  (require 'denote-org-extras)
+  (require 'denote-silo-extras)
   (setq denote-silo-extras-directories
         (list denote-directory
               "~/work/notes/"
@@ -64,7 +61,6 @@
   :demand t
   :after (consult denote)
   :config
-  (message "consult-denote is loaded")
   (consult-denote-mode 1)
   :custom
   (consult-denote-grep-command #'consult-ripgrep)
@@ -78,8 +74,6 @@
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
-  :config
-  (message "citar is loaded")
   :custom
   (citar-bibliography org-cite-global-bibliography)
   :bind (("C-c n c" . citar-open)
@@ -89,7 +83,6 @@
   :pin melpa
   :after (citar embark)
   :config
-  (message "citar-embark is loaded")
   (citar-embark-mode 1)
   :custom
   (citar-at-point-function #'embark-act))
@@ -99,7 +92,6 @@
   :demand t
   :after (:any citar denote)
   :config
-  (message "citar-denote is loaded")
   (citar-denote-mode 1)
   :bind (("C-c w d" . citar-denote-dwim)
          ("C-c w n" . citar-denote-open-note)
@@ -117,8 +109,6 @@
   :pin melpa
   :defer t
   :init
-  (setq-default org-download-image-dir (expand-file-name "attachments/" denote-directory))
-  :config
-  (message "org-download is loaded"))
+  (setq-default org-download-image-dir (expand-file-name "attachments/" denote-directory)))
 
 (provide 'init-denote)

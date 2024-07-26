@@ -4,8 +4,6 @@
 (use-package message
   :ensure nil
   :defer t
-  :config
-  (message "message is loaded")
   :custom
   (message-sendmail-f-is-evil t)
   (message-sendmail-extra-arguments '("--read-envelope-from"))
@@ -14,16 +12,12 @@
 (use-package sendmail
   :ensure nil
   :after message
-  :config
-  (message "sendmail is loaded")
   :custom
   (sendmail-program (executable-find "msmtp"))
   (send-mail-function #'smtpmail-send-it))
 
 (use-package notmuch
   :pin melpa
-  :config
-  (message "notmuch is loaded")
   :custom
   ;; General UI
   (notmuch-show-logo nil)

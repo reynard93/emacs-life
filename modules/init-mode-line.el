@@ -38,7 +38,6 @@
 (use-package anzu
   :pin melpa
   :config
-  (message "anzu is loaded")
   (global-anzu-mode 1))
 
 (provide 'init-mode-line)

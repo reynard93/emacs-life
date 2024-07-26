@@ -2,8 +2,6 @@
   :pin melpa
   :demand t
   :config
-  (message "elfeed is loaded")
-
   (defun +elfeed--selected-entry ()
     (pcase major-mode
       ('elfeed-search-mode
@@ -86,7 +84,6 @@
   :init
   (setq rmh-elfeed-org-files (list "elfeed.org"))
   :config
-  (message "elfeed-org is loaded")
   (elfeed-org))
 
 (use-package elfeed-tube
@@ -94,7 +91,6 @@
   :after elfeed
   :demand t
   :config
-  (message "elfeed-tube is loaded")
   (elfeed-tube-setup)
   :bind ( :map elfeed-show-mode-map
           ([remap save-buffer] . elfeed-tube-save)
@@ -107,8 +103,6 @@
   :pin melpa
   :after elfeed
   :demand t
-  :config
-  (message "elfeed-tube-mpv is loaded")
   :bind (:map elfeed-show-mode-map
               ("C-c C-f" . elfeed-tube-mpv-follow-mode)
               ("C-c C-w" . elfeed-tube-mpv-where)))
