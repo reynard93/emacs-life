@@ -28,4 +28,10 @@
          ("C-c g l" . magit-log-current)
          ("C-c g L" . magit-log-buffer-file)))
 
+(use-package browse-at-remote
+  :pin melpa
+  :custom
+  (browse-at-remote-add-line-number-if-no-region-selected nil)
+  :bind ("C-c g o" . browse-at-remote))
+
 (provide 'init-git)
