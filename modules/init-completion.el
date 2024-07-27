@@ -29,7 +29,7 @@
     (setq-local completion-at-point-functions
                 (cons #'tempel-expand
                       completion-at-point-functions)))
-  :hook ((prog-mode text-mode) . tempel-setup-capf)
+  :hook ((prog-mode text-mode conf-mode) . tempel-setup-capf)
   :bind (("M-+" . tempel-complete)
          ("M-*" . tempel-insert)))
 

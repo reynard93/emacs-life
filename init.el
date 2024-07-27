@@ -6,19 +6,18 @@
 (require 'init-bootstrap)
 (require 'init-lisp)
 
-;; Components
+;; Core
 (require 'init-minibuffer)
 (require 'init-completion)
 (require 'init-mode-line)
 
+;; Utils
+(require 'init-movement-utils)
+(require 'init-editing-utils)
+
 ;; Visualization
 (require 'init-ui)
 (require 'init-ux)
-
-;; Common
-(require 'init-better-defaults)
-(require 'init-editing-utils)
-(require 'init-windows)
 
 ;; Agenda/Notes
 (require 'init-org)

@@ -28,6 +28,10 @@
       native-comp-async-report-warnings-errors 'silent
       initial-major-mode 'fundamental-mode)
 
+(use-package emacs
+  :ensure nil
+  :bind-keymap ("M-r" . ctl-x-r-map))
+
 (use-package savehist
   :ensure nil
   :init
@@ -61,37 +65,6 @@
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
   :hook (compilation-filter . compilation-filter-colorize))
 
-(use-package tab-bar
-  :ensure nil
-  :init
-  ;; bind s-1 through s-9 to switch tabs
-  (dolist (i (number-sequence 1 9))
-    (bind-key (format "s-%d" i)
-              `(lambda ()
-                 (interactive)
-                 (when (<= ,i (length (tab-bar-tabs)))
-                   (tab-bar-select-tab ,i)))))
-  :custom
-  (tab-bar-show 1)
-  :bind (("s-t" . tab-new)
-         ("s-T" . tab-undo)
-         ("s-{" . tab-previous)
-         ("s-}" . tab-next)))
-
-(use-package frame
-  :ensure nil
-  :init
-  (defun tab-close-or-delete-frame ()
-    "Close the current tab if there are multiple tabs, otherwise delete the frame."
-    (interactive)
-    (if (and (bound-and-true-p tab-bar-mode)
-             (> (length (tab-bar-tabs)) 1))
-        (tab-close)
-      (delete-frame)))
-  :bind (("C-s-f" . toggle-frame-fullscreen)
-         ("s-w" . tab-close-or-delete-frame)
-         ("s-N" . make-frame)))
-
 (use-package undo-fu-session
   :pin melpa
   :preface
@@ -115,8 +88,6 @@
          ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
          ("s-k" . crux-smart-kill-line)
          ("s-j" . crux-top-join-line)
-         ("s-o" . crux-smart-open-line-above)
-         ("M-o" . crux-smart-open-line)
          ("C-^" . crux-switch-to-previous-buffer)
          ("s-n" . crux-create-scratch-buffer)))
 
