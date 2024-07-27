@@ -3,6 +3,7 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Bootstrap
+(require 'init-better-defaults)
 (require 'init-bootstrap)
 (require 'init-lisp)
 
@@ -12,6 +13,7 @@
 (require 'init-mode-line)
 
 ;; Utils
+(require 'init-better-utils)
 (require 'init-movement-utils)
 (require 'init-editing-utils)
 
