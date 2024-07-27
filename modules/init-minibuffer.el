@@ -71,6 +71,7 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
+  :demand t
   :bind (([remap goto-line] . consult-goto-line)
          ([remap bookmark-jump] . consult-bookmark)
          ([remap switch-to-buffer] . consult-buffer)
