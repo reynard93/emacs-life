@@ -18,9 +18,10 @@
 
 (use-package wgrep
   :pin nongnu
-  :defer t
+  :after grep
   :custom
-  (wgrep-auto-save-buffer t))
+  (wgrep-auto-save-buffer t)
+  (wgrep-change-readonly-file t))
 
 (use-package substitute
   :bind-keymap ("C-c s" . substitute-prefix-map))
