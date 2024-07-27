@@ -92,20 +92,13 @@
          ("s-w" . tab-close-or-delete-frame)
          ("s-N" . make-frame)))
 
-(use-package undo-fu
-  :pin melpa
-  :init
-  (setq undo-limit 67108864             ; 64mb
-        undo-strong-limit 100663296     ; 96mb
-        undo-outer-limit 1006632960))   ; 960mb
-
 (use-package undo-fu-session
   :pin melpa
-  :after undo-fu
-  :init
-  (undo-fu-session-global-mode 1)
-  :custom
-  (undo-fu-session-compression 'zst))
+  :preface
+  (setq undo-limit (* 64 1024 1024)
+        undo-strong-limit (* 96 1024 1024)
+        undo-outer-limit (* 960 1024 1024))
+  :hook (prog-mode text-mode conf-mode))
 
 (use-package helpful
   :pin melpa
