@@ -58,8 +58,8 @@
          ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)))
 
 (use-package consult-denote
-  :demand t
   :after (consult denote)
+  :demand t
   :config
   (consult-denote-mode 1)
   :custom
@@ -89,8 +89,8 @@
 
 (use-package citar-denote
   :pin melpa
-  :demand t
   :after (:any citar denote)
+  :demand t
   :config
   (citar-denote-mode 1)
   :bind (("C-c w d" . citar-denote-dwim)
