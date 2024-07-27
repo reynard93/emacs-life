@@ -1,11 +1,12 @@
-;; Adding directories to `load-path'
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; Bootstrap
 (require 'init-better-defaults)
 (require 'init-bootstrap)
-(require 'init-lisp)
+
+;; Visualization
+(require 'init-ui)
+(require 'init-ux)
 
 ;; Core
 (require 'init-minibuffer)
@@ -16,10 +17,6 @@
 (require 'init-better-utils)
 (require 'init-movement-utils)
 (require 'init-editing-utils)
-
-;; Visualization
-(require 'init-ui)
-(require 'init-ux)
 
 ;; Agenda/Notes
 (require 'init-org)
