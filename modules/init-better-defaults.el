@@ -36,6 +36,12 @@
   (history-length 500)
   (history-delete-duplicates t))
 
+(use-package isearch
+  :ensure nil
+  :custom
+  (isearch-lazy-count t)
+  (isearch-repeat-on-direction-change t))
+
 (use-package ibuffer
   :ensure nil
   :hook (ibuffer-mode . ibuffer-auto-mode)

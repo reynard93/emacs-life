@@ -35,9 +35,4 @@
   :custom
   (prot-modeline-string-truncate-length 50))
 
-(use-package anzu
-  :pin melpa
-  :config
-  (global-anzu-mode 1))
-
 (provide 'init-mode-line)
