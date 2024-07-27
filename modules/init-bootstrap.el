@@ -1,5 +1,3 @@
-(require 'init-lisp)
-
 ;; Making custom-file disposable
 (setq custom-file (make-temp-file "emacs-custom-"))
 

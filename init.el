@@ -1,22 +1,9 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
 ;; Bootstrap
-(require 'init-better-defaults)
 (require 'init-bootstrap)
-
-;; Visualization
-(require 'init-ui)
-(require 'init-ux)
-
-;; Core
-(require 'init-minibuffer)
-(require 'init-completion)
-(require 'init-mode-line)
-
-;; Utils
-(require 'init-better-utils)
-(require 'init-movement-utils)
-(require 'init-editing-utils)
+(require 'init-emacs)
+(require 'init-lisp)
 
 ;; Agenda/Notes
 (require 'init-org)
