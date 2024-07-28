@@ -1,40 +1,44 @@
-(recentf-mode 1)
-(save-place-mode 1)
-(blink-cursor-mode -1)
-(global-subword-mode 1)
-
-(setq-default delete-by-moving-to-trash t         ; Delete files to trash
-              window-combination-resize t         ; take new window space from all other windows (not just current)
-              x-stretch-cursor t                  ; Stretch cursor to the glyph width
-              indent-tabs-mode nil
-              fill-column 80)
-
-(setq auto-save-default t                         ; Nobody likes to loose work, I certainly don't
-      truncate-string-ellipsis "…"               ; Unicode ellispis are nicer than "...", and also save /precious/ space
-      password-cache-expiry nil                   ; I can trust my computers ... can't I?
-      scroll-margin 2                             ; It's nice to maintain a little margin
-      display-time-default-load-average nil       ; I don't think I've ever found this useful
-      use-short-answers t                         ; Prefer short anwsers
-      require-final-newline t                     ; Save file with a trailing newline
-      inhibit-startup-screen t                    ; Skip the startup screen
-      initial-scratch-message nil                 ; Blank the *scratch* buffer
-      use-dialog-box nil                          ; Disable dialog windows
-      confirm-kill-emacs 'y-or-n-p                ; Confirm when leaving Emacs
-      ring-bell-function 'ignore                  ; Disable ring bell
-      create-lockfiles nil                        ; Avoid creating ".#filename"
-      make-backup-files nil)                      ; Avoid creating "filename~"
-
-(setq ns-use-native-fullscreen nil
-      native-comp-async-report-warnings-errors 'silent
-      initial-major-mode 'fundamental-mode)
-
 (use-package emacs
   :ensure nil
-  :bind-keymap ("M-r" . ctl-x-r-map))
+  :bind-keymap ("M-r" . ctl-x-r-map)
+  :init
+  (setq-default indent-tabs-mode nil                ; Indent using spaces
+                fill-column 80)                     ; Wrap lines at 80 characters
+  :config
+  (save-place-mode 1)
+  (blink-cursor-mode -1)
+  (global-subword-mode 1)
+  :custom
+  (delete-by-moving-to-trash t)
+  (window-combination-resize t)
+  (x-stretch-cursor t)
+  (auto-save-default t)
+  (confirm-kill-emacs 'y-or-n-p)
+  (create-lockfiles nil)
+  (display-time-default-load-average nil)
+  (inhibit-startup-screen t)
+  (initial-major-mode 'text-mode)
+  (initial-scratch-message nil)
+  (make-backup-files nil)
+  (password-cache-expiry nil)
+  (require-final-newline t)
+  (ring-bell-function 'ignore)
+  (scroll-margin 2)
+  (truncate-string-ellipsis "…")
+  (use-dialog-box nil)
+  (use-short-answers t)
+  (vc-follow-symlinks t))
+
+(use-package recentf
+  :ensure nil
+  :config
+  (recentf-mode 1)
+  :custom
+  (recentf-max-saved-items 200))
 
 (use-package savehist
   :ensure nil
-  :init
+  :config
   (savehist-mode 1)
   :custom
   (history-length 500)
@@ -59,7 +63,7 @@
 
 (use-package compile
   :ensure nil
-  :init
+  :config
   (defun compilation-filter-colorize ()
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region compilation-filter-start (point-max))))

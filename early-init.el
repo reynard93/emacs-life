@@ -2,6 +2,9 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+(setq ns-use-native-fullscreen nil)
+
+;; Boost startup performance
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.5)
 
