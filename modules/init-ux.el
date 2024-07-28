@@ -54,7 +54,7 @@
   :pin melpa
   :config
   (setq-default goggles-pulse t)
-  :hook (prog-mode text-mode))
+  :hook (prog-mode text-mode conf-mode))
 
 (use-package rainbow-delimiters
   :pin nongnu
