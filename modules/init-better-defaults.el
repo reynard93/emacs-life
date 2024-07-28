@@ -71,6 +71,8 @@
   (setq undo-limit (* 64 1024 1024)
         undo-strong-limit (* 96 1024 1024)
         undo-outer-limit (* 960 1024 1024))
+  :custom
+  (undo-fu-session-compression 'zst)
   :hook (prog-mode text-mode conf-mode))
 
 (use-package helpful
