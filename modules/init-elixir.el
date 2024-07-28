@@ -1,14 +1,11 @@
 (use-package heex-ts-mode
   :pin melpa
-  :defer t
-  :config
-  (message "heex-ts-mode is loaded"))
+  :defer t)
 
 (use-package elixir-ts-mode
   :pin melpa
   :defer t
   :config
-  (message "elixir-ts-mode is loaded")
   (defun elixir-format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
       (eglot-format-buffer)))

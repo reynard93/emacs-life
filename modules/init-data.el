@@ -1,16 +1,11 @@
 (use-package csv-mode
-  :defer t
-  :config
-  (message "csv-mode is loaded"))
+  :defer t)
 
 (use-package json-mode
-  :defer t
-  :config
-  (message "json-mode is loaded"))
+  :defer t)
 
 (use-package sqlite-mode
-  :defer t
-  :config
-  (message "sqlite-mode is loaded"))
+  :ensure nil
+  :defer t)
 
 (provide 'init-data)

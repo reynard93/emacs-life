@@ -22,7 +22,6 @@
     (message (concat "Switched nix-nixfmt-bin to " nix-nixfmt-bin)))
 
   :config
-  (message "nix-mode is loaded")
   (defun +nix--formatter-mode-line-display ()
     (add-to-list 'mode-line-process '(:eval (concat " (" nix-nixfmt-bin ")"))))
 
@@ -33,8 +32,6 @@
 (use-package org-nix-shell
   :pin melpa
   :after org
-  :config
-  (message "org-nix-shell is loaded")
   :hook org-mode)
 
 (provide 'init-nix)

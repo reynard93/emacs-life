@@ -1,7 +1,5 @@
 (use-package dockerfile-mode
   :pin nongnu
-  :defer t
-  :config
-  (message "dockerfile-mode is loaded"))
+  :defer t)
 
 (provide 'init-docker)

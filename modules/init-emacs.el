@@ -13,4 +13,8 @@
 (require 'init-movement-utils)
 (require 'init-editing-utils)
 
+;; Programming
+(require 'init-tree-sitter)
+(require 'init-eglot)
+
 (provide 'init-emacs)
