@@ -26,4 +26,4 @@
   :bind ( :map search-map
           ("D". deadgrep)))
 
-(provide 'init-lookup)
+(provide 'init-search)
