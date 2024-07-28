@@ -1,7 +1,6 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
 ;; built-in functions
-(require 'lisp-project)
 (require 'lisp-buffer)
 (require 'lisp-file)
 (require 'lisp-org)

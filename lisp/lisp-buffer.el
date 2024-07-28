@@ -20,7 +20,11 @@ file path, otherwise, get a full file path with
   "Save the relative buffer path into the kill-ring.
 The path is relative to `project-current'."
   (interactive)
-  (+buffer/yank-path nil (+project/root-dir)))
+  (let ((project-root-dir
+         (condition-case nil
+             (project-root (project-current))
+           (error nil))))
+    (+buffer/yank-path nil project-root-dir)))
 
 (bind-key "s-y"  #'+buffer/yank-path)
 (bind-key "s-Y"  #'+buffer/yank-path-relative-to-project)

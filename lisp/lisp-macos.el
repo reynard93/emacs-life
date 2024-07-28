@@ -6,8 +6,11 @@
 
 (defun +macos/reveal-project-in-finder ()
   (interactive)
-  (when-let* ((project-root (+project/root-dir))
-              (filename (expand-file-name project-root)))
+  (when-let* ((project-root-dir
+               (condition-case nil
+                   (project-root (project-current))
+                 (error nil)))
+              (filename (expand-file-name project-root-dir)))
     (start-process "finder" nil "open" "-R" filename)))
 
 (defun +macos/notify (title body &optional sound-name)
