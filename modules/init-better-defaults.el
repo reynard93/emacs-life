@@ -2,8 +2,10 @@
   :ensure nil
   :bind-keymap ("M-r" . ctl-x-r-map)
   :init
-  (setq-default indent-tabs-mode nil                ; Indent using spaces
-                fill-column 80)                     ; Wrap lines at 80 characters
+  (setq-default
+   indent-tabs-mode nil
+   tab-width 4
+   fill-column 80)
   :config
   (save-place-mode 1)
   (blink-cursor-mode -1)
