@@ -3,7 +3,6 @@
 ;; Bootstrap
 (require 'init-bootstrap)
 (require 'init-emacs)
-(require 'init-pass)
 
 ;; Agenda/Note-taking
 (require 'init-org)
@@ -24,6 +23,7 @@
 (require 'init-git)
 (require 'init-gpt)
 (require 'init-mail)
+(require 'init-pass)
 (require 'init-search)
 (require 'init-social)
 (require 'init-spell-checker)
