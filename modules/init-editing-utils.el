@@ -15,7 +15,7 @@
   :pin melpa
   :config
   (require 'smartparens-config)
-  :hook (prog-mode text-mode conf-mode))
+  :hook (prog-mode text-mode))
 
 (use-package substitute
   :bind-keymap ("C-c s" . substitute-prefix-map))
