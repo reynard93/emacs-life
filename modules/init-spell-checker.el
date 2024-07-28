@@ -1,7 +1,6 @@
-(use-package flyspell-correct
-  :pin melpa
-  :after flyspell
-  :bind ( :map flyspell-mode-map
-          ("C-M-i" . flyspell-correct-wrapper)))
+(use-package jinx
+  :ensure nil
+  :hook text-mode
+  :bind ([remap ispell-word] . jinx-correct))
 
 (provide 'init-spell-checker)

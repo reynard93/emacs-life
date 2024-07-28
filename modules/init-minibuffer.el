@@ -59,7 +59,8 @@
   (vertico-multiform-mode 1)
   :custom
   (vertico-multiform-categories
-   '((embark-keybinding grid))))
+   '((embark-keybinding grid)
+     (jinx grid (vertico-grid-annotate . 20)))))
 
 (use-package marginalia
   :init
