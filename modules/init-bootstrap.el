@@ -17,7 +17,7 @@
 ;; Loading environment variables
 (use-package exec-path-from-shell
   :pin nongnu
-  :if (memq window-system '(mac ns))
+  :if (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize))
 
