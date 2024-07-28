@@ -3,36 +3,30 @@
 ;; Bootstrap
 (require 'init-bootstrap)
 (require 'init-emacs)
-(require 'init-lisp)
+(require 'init-pass)
 
-;; Agenda/Notes
+;; Agenda/Note-taking
 (require 'init-org)
 (require 'init-denote)
 
 ;; Programming
 (require 'init-tree-sitter)
 (require 'init-eglot)
-(require 'init-data)
-(require 'init-docker)
-(require 'init-elixir)
-(require 'init-markdown)
-(require 'init-nix)
-(require 'init-racket)
-(require 'init-ruby)
-(require 'init-web)
-(require 'init-yaml)
+(require 'init-langs)
 
 ;; Reading
 (require 'init-elfeed)
 (require 'init-wombag)
-(require 'init-pdf)
 (require 'init-epub)
+(require 'init-pdf)
 
 ;; Tools
 (require 'init-git)
-(require 'init-pass)
-(require 'init-mail)
 (require 'init-gpt)
-(require 'init-lookup)
-(require 'init-network-tools)
+(require 'init-mail)
+(require 'init-search)
+(require 'init-social)
 (require 'init-spell-checker)
+
+;; Lisp
+(require 'init-lisp)
