@@ -1,5 +1,4 @@
 (use-package denote
-  :demand t
   :init
   (setq denote-directory "~/src/notes/")
 
@@ -59,7 +58,6 @@
 
 (use-package consult-denote
   :after (consult denote)
-  :demand t
   :config
   (consult-denote-mode 1)
   :custom
@@ -90,7 +88,6 @@
 (use-package citar-denote
   :pin melpa
   :after (:any citar denote)
-  :demand t
   :config
   (citar-denote-mode 1)
   :bind (("C-c w d" . citar-denote-dwim)

@@ -1,6 +1,5 @@
 (use-package elfeed
   :pin melpa
-  :demand t
   :config
   (defun +elfeed--selected-entry ()
     (pcase major-mode
@@ -89,7 +88,6 @@
 (use-package elfeed-tube
   :pin melpa
   :after elfeed
-  :demand t
   :config
   (elfeed-tube-setup)
   :bind ( :map elfeed-show-mode-map
@@ -102,7 +100,6 @@
 (use-package elfeed-tube-mpv
   :pin melpa
   :after elfeed
-  :demand t
   :bind (:map elfeed-show-mode-map
               ("C-c C-f" . elfeed-tube-mpv-follow-mode)
               ("C-c C-w" . elfeed-tube-mpv-where)))
