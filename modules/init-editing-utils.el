@@ -2,10 +2,6 @@
   :pin melpa
   :bind ("C-c f" . apheleia-format-buffer))
 
-(use-package evil-nerd-commenter
-  :pin nongnu
-  :bind ("s-;" . evilnc-comment-or-uncomment-lines))
-
 (use-package multiple-cursors
   :pin nongnu
   :bind (("C->" . mc/mark-next-like-this)
