@@ -1,7 +1,9 @@
 (use-package modus-themes
   :demand t
   :config
-  (load-theme 'modus-vivendi :no-confirm)
+  (if (display-graphic-p)
+      (load-theme 'modus-operandi :no-confirm)
+    (load-theme 'modus-vivendi :no-confirm))
   :custom
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t)
