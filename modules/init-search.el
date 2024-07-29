@@ -12,12 +12,9 @@
 
 (use-package browser-hist
   :pin melpa
-  :config
-  (setf (alist-get 'firefox browser-hist-db-paths)
-        "$HOME/Library/Application Support/Firefox/Profiles/*/places.sqlite")
   :custom
+  (browser-hist-default-browser 'chrome)
   (browser-hist-cache-timeout (* 24 60 60))
-  (browser-hist-default-browser 'firefox)
   :bind ( :map search-map
           ("U" . browser-hist-search)))
 
