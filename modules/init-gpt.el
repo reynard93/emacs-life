@@ -32,17 +32,19 @@
       :endpoint "/openai/v1/chat/completions"
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
-      :models '("gemma2-9b-it"
-                "gemma-7b-it"
+      :models '("llama-3.1-405b-reasoning"
                 "llama-3.1-70b-versatile"
                 "llama-3.1-8b-instant"
-                "llama-3-70b-8192"
+                "llama3-70b-8192"
                 "llama3-8b-8192"
+                "gemma2-9b-it"
+                "gemma-7b-it"
                 "mixtral-8x7b-32768")))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
+      :models nil))
 
   (defvar gptel--ollama
     (gptel-make-ollama "Ollama"
