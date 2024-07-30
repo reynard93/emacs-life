@@ -23,4 +23,10 @@
   (wgrep-auto-save-buffer t)
   (wgrep-change-readonly-file t))
 
+(use-package ws-butler
+  :pin melpa
+  :hook prog-mode
+  :custom
+  (ws-butler-keep-whitespace-before-point nil))
+
 (provide 'init-editing-utils)
