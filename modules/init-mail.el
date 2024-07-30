@@ -3,7 +3,6 @@
 
 (use-package message
   :ensure nil
-  :defer t
   :custom
   (message-sendmail-f-is-evil t)
   (message-sendmail-extra-arguments '("--read-envelope-from"))
@@ -11,7 +10,6 @@
 
 (use-package sendmail
   :ensure nil
-  :after message
   :custom
   (sendmail-program (executable-find "msmtp"))
   (send-mail-function #'smtpmail-send-it))
