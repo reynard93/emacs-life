@@ -3,7 +3,6 @@
 ;; built-in functions
 (require 'lisp-buffer)
 (require 'lisp-file)
-(require 'lisp-org)
 
 ;; macOS
 (require 'lisp-alfred)
