@@ -1,71 +1,65 @@
 (use-package gptel
   :pin melpa
   :init
-  (defvar gptel--openai
-    (gptel-make-azure "Azure"
-      :host "beepboop.openai.azure.com"
-      :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-06-01"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
-      :models '("gpt-4o")))
-
-  (setq-default gptel-backend gptel--openai
-                gptel-model "gpt-4o")
-
-  (defvar gptel--openrouter
-    (gptel-make-openai "OpenRouter"
-      :host "openrouter.ai"
-      :endpoint "/api/v1/chat/completions"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
-      :models '("anthropic/claude-3.5-sonnet"
-                "anthropic/claude-3-haiku"
-                "anthropic/claude-3-opus"
-                "google/gemini-flash-1.5"
-                "google/gemini-pro-1.5"
-                "openai/gpt-4o-mini"
-                "openai/gpt-4o")))
-
-  (defvar gptel--groq
-    (gptel-make-openai "Groq"
-      :host "api.groq.com"
-      :endpoint "/openai/v1/chat/completions"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
-      :models '("llama-3.1-405b-reasoning"
-                "llama-3.1-70b-versatile"
-                "llama-3.1-8b-instant"
-                "llama3-70b-8192"
-                "llama3-8b-8192"
-                "gemma2-9b-it"
-                "gemma-7b-it"
-                "mixtral-8x7b-32768")))
-
-  (defvar gptel--kagi
-    (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models nil))
-
-  (defvar gptel--ollama
-    (gptel-make-ollama "Ollama"
-      :host "localhost:11434"
-      :stream t
-      :models '("llama3:latest")))
+  (defvar gptel--openai nil
+    "Override the variable to hide ChatGPT models")
 
   :bind
   (("C-c C-<return>" . gptel-menu)
    ("C-c <return>" . +gptel/send)
    :map gptel-mode-map
    ("C-c C-x t" . gptel-set-topic)
-   ("M-n" . gptel-end-of-response)
-   :map embark-url-map
-   ("?" . +gptel/kagi-summarize-url))
+   ("M-n" . gptel-end-of-response))
 
   :custom
   (gptel-max-tokens 1000)
   (gptel-default-mode 'org-mode)
+  (gptel-model "gpt-4o")
 
   :config
+  (setq gptel-backend (gptel-make-azure "Azure"
+                        :host "beepboop.openai.azure.com"
+                        :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-06-01"
+                        :stream t
+                        :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
+                        :models '("gpt-4o")))
+
+  (gptel-make-openai "OpenRouter"
+    :host "openrouter.ai"
+    :endpoint "/api/v1/chat/completions"
+    :stream t
+    :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
+    :models '("anthropic/claude-3.5-sonnet"
+              "anthropic/claude-3-haiku"
+              "anthropic/claude-3-opus"
+              "google/gemini-flash-1.5"
+              "google/gemini-pro-1.5"
+              "openai/gpt-4o-mini"
+              "openai/gpt-4o"))
+
+  (gptel-make-openai "Groq"
+    :host "api.groq.com"
+    :endpoint "/openai/v1/chat/completions"
+    :stream t
+    :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
+    :models '("llama-3.1-405b-reasoning"
+              "llama-3.1-70b-versatile"
+              "llama-3.1-8b-instant"
+              "llama3-70b-8192"
+              "llama3-8b-8192"
+              "gemma2-9b-it"
+              "gemma-7b-it"
+              "mixtral-8x7b-32768"))
+
+  (gptel-make-kagi "Kagi"
+    :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
+    :models nil)
+
+  (gptel-make-ollama "Ollama"
+    :host "localhost:11434"
+    :stream t
+    :models '("llama3:latest"))
+
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
     (interactive "sEnter text: ")
@@ -105,15 +99,16 @@
                     (special-mode))))
             (message "gptel-request failed with message: %s"
                      (plist-get info :status)))))
-      (message "Generating summary for: %s" url))))
+      (message "Generating summary for: %s" url)))
+
+  (with-eval-after-load 'embark
+    (keymap-set embark-url-map "?" #'+gptel/kagi-summarize-url)))
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
-  :bind
-  ( :map embark-general-map
-    ("?" . gptel-quick))
+  :defer t
   :config
-  (setq gptel-quick-backend gptel--openrouter
-        gptel-quick-model "openai/gpt-4o-mini"))
+  (with-eval-after-load 'embark
+    (keymap-set embark-general-map "?" #'gptel-quick)))
 
 (provide 'init-gpt)
