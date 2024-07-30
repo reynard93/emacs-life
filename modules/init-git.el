@@ -9,7 +9,6 @@
    ("C-c g L" . magit-log-buffer-file))
 
   :custom
-  (magit-repository-directories '(("~/src" . 1) ("~/work" . 1)))
   (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1)
 
   :config
