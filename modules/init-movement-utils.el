@@ -17,11 +17,11 @@
 
 (use-package transpose-frame
   :pin melpa
-  :config
-  :bind ( :map window-prefix-map
-          ("w" . transpose-frame)
-          ("r" . rotate-frame-clockwise)
-          ("R" . rotate-frame-anticlockwise)))
+  :bind
+  ( :map window-prefix-map
+    ("w" . transpose-frame)
+    ("r" . rotate-frame-clockwise)
+    ("R" . rotate-frame-anticlockwise)))
 
 (use-package ace-window
   :pin melpa
@@ -45,9 +45,10 @@
     (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump))))
 
 (use-package popper
-  :config
-  (popper-mode 1)
-  (popper-echo-mode 1)
+  :bind
+  (("C-`"   . popper-toggle)
+   ("M-`"   . popper-cycle)
+   ("C-M-`" . popper-toggle-type))
   :custom
   (popper-group-function #'popper-group-by-project)
   (popper-display-control nil)
@@ -55,14 +56,12 @@
    '(compilation-mode
      rspec-compilation-mode
      inf-ruby-mode))
-  :bind (("C-`"   . popper-toggle)
-         ("M-`"   . popper-cycle)
-         ("C-M-`" . popper-toggle-type)))
+  :config
+  (popper-mode 1)
+  (popper-echo-mode 1))
 
 (use-package shackle
   :pin melpa
-  :config
-  (shackle-mode 1)
   :custom
   (shackle-inhibit-window-quit-on-same-windows t)
   (shackle-rules
@@ -74,11 +73,17 @@
      ("^CAPTURE-.+$" :regexp t :align below)
      ;; Outputs
      (".+ (summary)" :regexp t :align below :size 0.3)
-     (".+ (pull request)" :regexp t :align right :select t))))
+     (".+ (pull request)" :regexp t :align right :select t)))
+  :config
+  (shackle-mode 1))
 
 ;; Frame
 (use-package frame
   :ensure nil
+  :bind
+  (("C-s-f" . toggle-frame-fullscreen)
+   ("s-w" . tab-close-or-delete-frame)
+   ("s-N" . make-frame))
   :config
   (defun tab-close-or-delete-frame ()
     "Close the current tab if there are multiple tabs, otherwise delete the frame."
@@ -86,14 +91,18 @@
     (if (and (bound-and-true-p tab-bar-mode)
              (> (length (tab-bar-tabs)) 1))
         (tab-close)
-      (delete-frame)))
-  :bind (("C-s-f" . toggle-frame-fullscreen)
-         ("s-w" . tab-close-or-delete-frame)
-         ("s-N" . make-frame)))
+      (delete-frame))))
 
 ;; Tab bar
 (use-package tab-bar
   :ensure nil
+  :bind
+  (("s-t" . tab-new)
+   ("s-T" . tab-undo)
+   ("s-{" . tab-previous)
+   ("s-}" . tab-next))
+  :custom
+  (tab-bar-show 1)
   :config
   ;; bind s-1 through s-9 to switch tabs
   (dolist (i (number-sequence 1 9))
@@ -101,22 +110,16 @@
               `(lambda ()
                  (interactive)
                  (when (<= ,i (length (tab-bar-tabs)))
-                   (tab-bar-select-tab ,i)))))
-  :custom
-  (tab-bar-show 1)
-  :bind (("s-t" . tab-new)
-         ("s-T" . tab-undo)
-         ("s-{" . tab-previous)
-         ("s-}" . tab-next)))
+                   (tab-bar-select-tab ,i))))))
 
 ;; Buffer
 (use-package avy
-  :bind ( :map goto-map
-          ("s" . avy-goto-char-2)))
+  :bind (:map goto-map ("s" . avy-goto-char-2)))
 
 (use-package move-text
   :pin melpa
-  :bind (("s-<up>" . move-text-up)
-         ("s-<down>" . move-text-down)))
+  :bind
+  (("s-<up>" . move-text-up)
+   ("s-<down>" . move-text-down)))
 
 (provide 'init-movement-utils)

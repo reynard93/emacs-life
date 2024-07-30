@@ -1,5 +1,25 @@
 (use-package elfeed
   :pin melpa
+  :bind
+  (("C-c e" . elfeed)
+   :map elfeed-search-mode-map
+   ("=" . +elfeed/summarize)
+   ("B" . +elfeed/eww)
+   ("D" . +elfeed/delete)
+   ("R" . +elfeed/send-to-wombag)
+   ("S" . +elfeed/set-filter)
+   ("W" . +elfeed/switch-to-wombag)
+   :map elfeed-show-mode-map
+   ("=" . +elfeed/summarize)
+   ("B" . +elfeed/eww)
+   ("D" . +elfeed/delete)
+   ("R" . +elfeed/send-to-wombag))
+
+  :custom
+  (elfeed-initial-tags '(unread inbox))
+  (elfeed-search-remain-on-entry t)
+  (elfeed-search-filter "@6-months-ago +inbox +unread")
+
   :config
   (defun +elfeed--selected-entry ()
     (pcase major-mode
@@ -57,51 +77,35 @@
       (if-let* ((category (completing-read "Select category: " categories))
                 (filter (cdr (assoc category categories))))
           (elfeed-search-set-filter filter)
-        (elfeed-search-set-filter category))))
-
-  :custom
-  (elfeed-initial-tags '(unread inbox))
-  (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@6-months-ago +inbox +unread")
-  :bind (("C-c e" . elfeed)
-         :map elfeed-search-mode-map
-         ("=" . +elfeed/summarize)
-         ("B" . +elfeed/eww)
-         ("D" . +elfeed/delete)
-         ("R" . +elfeed/send-to-wombag)
-         ("S" . +elfeed/set-filter)
-         ("W" . +elfeed/switch-to-wombag)
-         :map elfeed-show-mode-map
-         ("=" . +elfeed/summarize)
-         ("B" . +elfeed/eww)
-         ("D" . +elfeed/delete)
-         ("R" . +elfeed/send-to-wombag)))
+        (elfeed-search-set-filter category)))))
 
 (use-package elfeed-org
   :pin melpa
   :after elfeed
-  :init
-  (setq rmh-elfeed-org-files (list "elfeed.org"))
+  :custom
+  (rmh-elfeed-org-files (list "elfeed.org"))
   :config
   (elfeed-org))
 
 (use-package elfeed-tube
   :pin melpa
   :after elfeed
+  :bind
+  ( :map elfeed-show-mode-map
+    ([remap save-buffer] . elfeed-tube-save)
+    ("F" . elfeed-tube-fetch)
+    :map elfeed-search-mode-map
+    ([remap save-buffer] . elfeed-tube-save)
+    ("F" . elfeed-tube-fetch))
   :config
-  (elfeed-tube-setup)
-  :bind ( :map elfeed-show-mode-map
-          ([remap save-buffer] . elfeed-tube-save)
-          ("F" . elfeed-tube-fetch)
-          :map elfeed-search-mode-map
-          ([remap save-buffer] . elfeed-tube-save)
-          ("F" . elfeed-tube-fetch)))
+  (elfeed-tube-setup))
 
 (use-package elfeed-tube-mpv
   :pin melpa
   :after elfeed
-  :bind (:map elfeed-show-mode-map
-              ("C-c C-f" . elfeed-tube-mpv-follow-mode)
-              ("C-c C-w" . elfeed-tube-mpv-where)))
+  :bind
+  ( :map elfeed-show-mode-map
+    ("C-c C-f" . elfeed-tube-mpv-follow-mode)
+    ("C-c C-w" . elfeed-tube-mpv-where)))
 
 (provide 'init-elfeed)

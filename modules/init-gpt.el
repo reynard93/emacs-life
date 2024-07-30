@@ -52,6 +52,19 @@
       :stream t
       :models '("llama3:latest")))
 
+  :bind
+  (("C-c C-<return>" . gptel-menu)
+   ("C-c <return>" . +gptel/send)
+   :map gptel-mode-map
+   ("C-c C-x t" . gptel-set-topic)
+   ("M-n" . gptel-end-of-response)
+   :map embark-url-map
+   ("?" . +gptel/kagi-summarize-url))
+
+  :custom
+  (gptel-max-tokens 1000)
+  (gptel-default-mode 'org-mode)
+
   :config
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -92,25 +105,15 @@
                     (special-mode))))
             (message "gptel-request failed with message: %s"
                      (plist-get info :status)))))
-      (message "Generating summary for: %s" url)))
-
-  :custom
-  (gptel-max-tokens 1000)
-  (gptel-default-mode 'org-mode)
-  :bind (("C-c C-<return>" . gptel-menu)
-         ("C-c <return>" . +gptel/send)
-         :map gptel-mode-map
-         ("C-c C-x t" . gptel-set-topic)
-         ("M-n" . gptel-end-of-response)
-         :map embark-url-map
-         ("?" . +gptel/kagi-summarize-url)))
+      (message "Generating summary for: %s" url))))
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
+  :bind
+  ( :map embark-general-map
+    ("?" . gptel-quick))
   :config
   (setq gptel-quick-backend gptel--openrouter
-        gptel-quick-model "openai/gpt-4o-mini")
-  :bind ( :map embark-general-map
-          ("?" . gptel-quick)))
+        gptel-quick-model "openai/gpt-4o-mini"))
 
 (provide 'init-gpt)

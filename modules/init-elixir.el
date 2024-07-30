@@ -4,8 +4,7 @@
 
 (use-package elixir-ts-mode
   :pin melpa
-  :defer t
-  :config
+  :init
   (defun elixir-format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
       (apheleia-format-buffer 'mix-format)))

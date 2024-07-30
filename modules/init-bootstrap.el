@@ -28,11 +28,11 @@
 
 ;; Enabling Emacs server
 (use-package server
-  :if (display-graphic-p)
   :ensure nil
+  :if (display-graphic-p)
   :defer 20
-  :init
-  (setq server-name "gui")
+  :custom
+  (server-name "gui")
   :config
   (unless (server-running-p)
     (server-start)))

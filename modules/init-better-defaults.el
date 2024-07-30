@@ -2,14 +2,9 @@
   :ensure nil
   :bind-keymap ("M-r" . ctl-x-r-map)
   :init
-  (setq-default
-   indent-tabs-mode nil
-   tab-width 4
-   fill-column 80)
-  :config
-  (save-place-mode 1)
-  (blink-cursor-mode -1)
-  (global-subword-mode 1)
+  (setq-default indent-tabs-mode nil
+                tab-width 4
+                fill-column 80)
   :custom
   (delete-by-moving-to-trash t)
   (window-combination-resize t)
@@ -29,22 +24,26 @@
   (truncate-string-ellipsis "…")
   (use-dialog-box nil)
   (use-short-answers t)
-  (vc-follow-symlinks t))
+  (vc-follow-symlinks t)
+  :config
+  (save-place-mode 1)
+  (blink-cursor-mode -1)
+  (global-subword-mode 1))
 
 (use-package recentf
   :ensure nil
-  :config
-  (recentf-mode 1)
   :custom
-  (recentf-max-saved-items 200))
+  (recentf-max-saved-items 200)
+  :config
+  (recentf-mode 1))
 
 (use-package savehist
   :ensure nil
-  :config
-  (savehist-mode 1)
   :custom
   (history-length 500)
-  (history-delete-duplicates t))
+  (history-delete-duplicates t)
+  :config
+  (savehist-mode 1))
 
 (use-package isearch
   :ensure nil
@@ -65,7 +64,7 @@
 
 (use-package compile
   :ensure nil
-  :config
+  :init
   (defun compilation-filter-colorize ()
     (let ((inhibit-read-only t))
       (ansi-color-apply-on-region compilation-filter-start (point-max))))
@@ -83,20 +82,22 @@
 
 (use-package helpful
   :pin melpa
-  :bind (("C-h f" . helpful-callable)
-         ("C-h v" . helpful-variable)
-         ("C-h k" . helpful-key)
-         ("C-h x" . helpful-command)))
+  :bind
+  (("C-h f" . helpful-callable)
+   ("C-h v" . helpful-variable)
+   ("C-h k" . helpful-key)
+   ("C-h x" . helpful-command)))
 
 (use-package crux
   :pin melpa
-  :bind (([remap move-beginning-of-line] . crux-move-beginning-of-line)
-         ([remap kill-whole-line] . crux-kill-whole-line)
-         ("C-c d" . crux-duplicate-current-line-or-region)
-         ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
-         ("s-k" . crux-smart-kill-line)
-         ("s-j" . crux-top-join-line)
-         ("C-^" . crux-switch-to-previous-buffer)
-         ("s-n" . crux-create-scratch-buffer)))
+  :bind
+  (([remap move-beginning-of-line] . crux-move-beginning-of-line)
+   ([remap kill-whole-line] . crux-kill-whole-line)
+   ("C-c d" . crux-duplicate-current-line-or-region)
+   ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
+   ("s-k" . crux-smart-kill-line)
+   ("s-j" . crux-top-join-line)
+   ("C-^" . crux-switch-to-previous-buffer)
+   ("s-n" . crux-create-scratch-buffer)))
 
 (provide 'init-better-defaults)

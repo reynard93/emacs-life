@@ -28,7 +28,8 @@
                 (cons #'tempel-expand
                       completion-at-point-functions)))
   :hook ((prog-mode text-mode conf-mode) . tempel-setup-capf)
-  :bind (("M-+" . tempel-complete)
-         ("M-*" . tempel-insert)))
+  :bind
+  (("M-+" . tempel-complete)
+   ("M-*" . tempel-insert)))
 
 (provide 'init-completion)

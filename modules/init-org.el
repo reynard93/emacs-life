@@ -4,6 +4,16 @@
   (setq org-directory "~/src/org/"
         org-agenda-files (list org-directory))
 
+  :bind
+  (("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
+   ("C-c l" . org-store-link)
+   :map org-mode-map
+   ("C-u C-c C-l" . org-toggle-link-display)
+   ("C-M-S-h" . org-babel-mark-block)
+   ("C-c i" . org-cite-insert)
+   ("M-g o" . consult-org-heading))
+
   :config
   ;; Hooks
   (with-eval-after-load 'pulsar
@@ -114,16 +124,7 @@
   (org-export-with-sub-superscripts nil)
   (org-export-with-section-numbers nil)
   (org-export-dispatch-use-expert-ui t)
-  (org-export-allow-bind-keywords t)
-
-  :bind (("C-c a" . org-agenda)
-         ("C-c c" . org-capture)
-         ("C-c l" . org-store-link)
-         :map org-mode-map
-         ("C-u C-c C-l" . org-toggle-link-display)
-         ("C-M-S-h" . org-babel-mark-block)
-         ("C-c i" . org-cite-insert)
-         ("M-g o" . consult-org-heading)))
+  (org-export-allow-bind-keywords t))
 
 (use-package ox-hugo
   :pin melpa
@@ -136,7 +137,6 @@
 (use-package org-anki
   :pin melpa
   :after org
-  :defer t
   :custom
   (org-anki-default-deck "Default")
   (org-anki-default-match "@anki&todo<>\"TODO\"")

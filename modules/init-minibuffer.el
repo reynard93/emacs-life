@@ -25,8 +25,8 @@
 (use-package vertico-repeat
   :ensure nil
   :after vertico
-  :bind ("C-x ." . vertico-repeat)
-  :hook (minibuffer-setup . vertico-repeat-save))
+  :hook (minibuffer-setup . vertico-repeat-save)
+  :bind ("C-x ." . vertico-repeat))
 
 (use-package vertico-suspend
   :ensure nil
@@ -37,27 +37,29 @@
   :ensure nil
   :after vertico
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
-  :bind ( :map vertico-map
-          ("RET" . vertico-directory-enter)
-          ("DEL" . vertico-directory-delete-char)
-          ("M-DEL" . vertico-directory-delete-word)))
+  :bind
+  ( :map vertico-map
+    ("RET" . vertico-directory-enter)
+    ("DEL" . vertico-directory-delete-char)
+    ("M-DEL" . vertico-directory-delete-word)))
 
 (use-package vertico-quick
   :ensure nil
   :after vertico
-  :bind ( :map vertico-map
-          ("M-q" . vertico-quick-insert)
-          ("C-q" . vertico-quick-exit)))
+  :bind
+  ( :map vertico-map
+    ("M-q" . vertico-quick-insert)
+    ("C-q" . vertico-quick-exit)))
 
 (use-package vertico-multiform
   :ensure nil
   :after vertico
-  :config
-  (vertico-multiform-mode 1)
   :custom
   (vertico-multiform-categories
    '((embark-keybinding grid)
-     (jinx grid (vertico-grid-annotate . 20)))))
+     (jinx grid (vertico-grid-annotate . 20))))
+  :config
+  (vertico-multiform-mode 1))
 
 (use-package marginalia
   :init
@@ -69,32 +71,33 @@
   (completion-category-overrides '((file (styles basic partial-completion)))))
 
 (use-package consult
-  :demand t
-  :bind (([remap goto-line] . consult-goto-line)
-         ([remap bookmark-jump] . consult-bookmark)
-         ([remap switch-to-buffer] . consult-buffer)
-         ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
-         ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
-         ([remap switch-to-buffer-other-tab] . consult-buffer-other-tab)
-         ([remap project-switch-to-buffer] . consult-project-buffer)
-         ("M-X" . consult-mode-command)
-         ("M-y" . consult-yank-pop)
-         :map goto-map
-         ("i" . consult-imenu)
-         ("I" . consult-imenu-multi)
-         :map search-map
-         ("a" . consult-org-agenda)
-         ("r" . consult-ripgrep)
-         ("l" . consult-line)
-         ("L" . consult-line-multi)))
+  :bind
+  (([remap goto-line] . consult-goto-line)
+   ([remap bookmark-jump] . consult-bookmark)
+   ([remap switch-to-buffer] . consult-buffer)
+   ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+   ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
+   ([remap switch-to-buffer-other-tab] . consult-buffer-other-tab)
+   ([remap project-switch-to-buffer] . consult-project-buffer)
+   ("M-X" . consult-mode-command)
+   ("M-y" . consult-yank-pop)
+   :map goto-map
+   ("i" . consult-imenu)
+   ("I" . consult-imenu-multi)
+   :map search-map
+   ("a" . consult-org-agenda)
+   ("r" . consult-ripgrep)
+   ("l" . consult-line)
+   ("L" . consult-line-multi)))
 
 (use-package consult-dir
   :pin melpa
-  :after (consult vertico)
-  :bind (("C-x C-d" . consult-dir)
-         :map vertico-map
-         ("C-x C-d" . consult-dir)
-         ("C-x C-j" . consult-dir-jump-file)))
+  :after vertico
+  :bind
+  (("C-x C-d" . consult-dir)
+   :map vertico-map
+   ("C-x C-d" . consult-dir)
+   ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package embark
   :after vertico
@@ -102,18 +105,19 @@
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
   (unbind-key "C-h C-h")
+  :bind
+  (([remap describe-bindings] . embark-bindings)
+   ("C-;" . embark-act)
+   ("M-." . embark-dwim)
+   :map vertico-map
+   ("C-;" . embark-act)
+   ("C-c C-;" . embark-export)
+   ("C-c C-l" . embark-collect))
   :custom
   (embark-indicators
    '(embark-minimal-indicator
      embark-highlight-indicator
-     embark-isearch-highlight-indicator))
-  :bind (([remap describe-bindings] . embark-bindings)
-         ("C-;" . embark-act)
-         ("M-." . embark-dwim)
-         :map vertico-map
-         ("C-;" . embark-act)
-         ("C-c C-;" . embark-export)
-         ("C-c C-l" . embark-collect)))
+     embark-isearch-highlight-indicator)))
 
 (use-package embark-consult
   :after (embark consult)

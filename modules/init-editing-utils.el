@@ -4,14 +4,15 @@
 
 (use-package multiple-cursors
   :pin nongnu
-  :bind (("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)))
+  :bind
+  (("C->" . mc/mark-next-like-this)
+   ("C-<" . mc/mark-previous-like-this)))
 
 (use-package smartparens
   :pin melpa
+  :hook (prog-mode text-mode)
   :config
-  (require 'smartparens-config)
-  :hook (prog-mode text-mode))
+  (require 'smartparens-config))
 
 (use-package substitute
   :bind-keymap ("C-c s" . substitute-prefix-map))

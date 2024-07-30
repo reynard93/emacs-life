@@ -1,18 +1,17 @@
 (use-package modus-themes
   :demand t
-  :config
-  (if (display-graphic-p)
-      (load-theme 'modus-operandi :no-confirm)
-    (load-theme 'modus-vivendi :no-confirm))
+  :bind ("<f5>" . modus-themes-toggle)
   :custom
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t)
-  :bind ("<f5>" . modus-themes-toggle))
+  :config
+  (if (display-graphic-p)
+      (load-theme 'modus-operandi :no-confirm)
+    (load-theme 'modus-vivendi :no-confirm)))
 
 (use-package fontaine
   :demand t
-  :config
-  (fontaine-set-preset 'regular)
+  :bind ("C-c F" . fontaine-set-preset)
   :custom
   (fontaine-presets
    '((regular)
@@ -29,19 +28,14 @@
       :variable-pitch-weight nil
       :variable-pitch-height 1.0)
      ))
-  :bind ("C-c F" . fontaine-set-preset))
+  :config
+  (fontaine-set-preset 'regular))
 
 (use-package prot-modeline
   :ensure nil
   :load-path "vendor/prot-lisp"
-  :init
-  (defvar-local yejun-modeline-position
-      '(:eval
-        (when (mode-line-window-selected-p)
-          (list
-           (propertize "%l" 'face 'font-lock-number-face) ":"
-           (propertize "%c" 'face 'font-lock-number-face)))))
-  (put 'yejun-modeline-position 'risky-local-variable t)
+  :custom
+  (prot-modeline-string-truncate-length 50)
   :config
   (setq-default mode-line-format
                 '("%e"
@@ -58,14 +52,10 @@
                   "  "
                   prot-modeline-vc-branch
                   "  "
-                  yejun-modeline-position
-                  "  "
                   prot-modeline-eglot
                   "  "
                   prot-modeline-flymake
                   "  "
-                  prot-modeline-misc-info))
-  :custom
-  (prot-modeline-string-truncate-length 50))
+                  prot-modeline-misc-info)))
 
 (provide 'init-ui)

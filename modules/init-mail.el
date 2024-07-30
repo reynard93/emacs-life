@@ -18,6 +18,10 @@
 
 (use-package notmuch
   :pin melpa
+  :hook (notmuch-mua-send . notmuch-mua-attachment-check)
+  :bind
+  (("C-c m" . notmuch)
+   ("C-x m" . notmuch-mua-new-mail))
   :custom
   ;; General UI
   (notmuch-show-logo nil)
@@ -62,9 +66,6 @@
   (notmuch-show-indent-messages-width 0)
   (notmuch-show-part-button-default-action 'notmuch-show-view-part)
   (notmuch-wash-wrap-lines-length 120)
-  (notmuch-unthreaded-show-out nil)
-  :hook (notmuch-mua-send . notmuch-mua-attachment-check)
-  :bind (("C-c m" . notmuch)
-         ("C-x m" . notmuch-mua-new-mail)))
+  (notmuch-unthreaded-show-out nil))
 
 (provide 'init-mail)
