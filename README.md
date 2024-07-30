@@ -5,13 +5,14 @@
 
 ## Installation
 
-Clone the repo and start Emacs.
+Clone the repository and start Emacs.
 
 ```shell
 git clone git@git.sr.ht:~goofansu/emacs-config ~/.config/emacs
 ```
 
-Sidenote: If you can not install [ELPA](https://elpa.gnu.org/) packages due to "Failed to verify signature" error, you may need to import the `package-keyring.gpg`:
+If you can not install [ELPA](https://elpa.gnu.org/) packages due to "Failed to verify signature" error, you may need to import the `package-keyring.gpg`:
+
 ```
 mkdir -p ~/.config/emacs/elpa/gnupg
 gpg --homedir ~/.config/emacs/elpa/gnupg --import /nix/store/15q4wzvn0ganspgpa2icvj59nr65jhx0-emacs-29.3/share/emacs/29.3/etc/package-keyring.gpg
