@@ -5,26 +5,37 @@
                 tab-width 4
                 fill-column 80)
   :custom
-  (delete-by-moving-to-trash t)
-  (window-combination-resize t)
-  (x-stretch-cursor t)
-  (auto-save-default t)
-  (confirm-kill-emacs 'y-or-n-p)
-  (create-lockfiles nil)
-  (display-time-default-load-average nil)
-  (inhibit-startup-screen t)
-  (initial-major-mode 'text-mode)
-  (initial-scratch-message nil)
-  (make-backup-files nil)
-  (password-cache-expiry nil)
-  (require-final-newline t)
-  (ring-bell-function 'ignore)
   (scroll-margin 2)
-  (truncate-string-ellipsis "…")
   (use-dialog-box nil)
   (use-short-answers t)
-  (vc-follow-symlinks t)
+  (ring-bell-function 'ignore)
+  (confirm-kill-emacs 'y-or-n-p)
+  (truncate-string-ellipsis "…")
+
+  ;; File
+  (auto-save-default t)
+  (create-lockfiles nil)
+  (make-backup-files nil)
+  (require-final-newline t)
+  (delete-by-moving-to-trash t)
+
+  ;; Keyboard
   (echo-keystrokes 0.25)
+
+  ;; Password
+  (password-cache-expiry nil)
+
+  ;; Startup
+  (inhibit-startup-screen t)
+  (initial-scratch-message nil)
+  (initial-major-mode 'text-mode)
+
+  ;; Version control
+  (vc-follow-symlinks t)
+
+  ;; Window
+  (window-combination-resize t)
+
   :config
   (save-place-mode 1)
   (blink-cursor-mode -1)
