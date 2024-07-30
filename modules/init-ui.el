@@ -33,7 +33,7 @@
 
 (use-package prot-modeline
   :ensure nil
-  :load-path "vendor/prot-lisp/"
+  :load-path "vendor/"
   :custom
   (prot-modeline-string-truncate-length 50)
   :config
