@@ -9,7 +9,4 @@
 (require 'lisp-alfred)
 (require 'lisp-macos)
 
-;; Web services
-(require 'lisp-exercism)
-
 (provide 'init-lisp)
