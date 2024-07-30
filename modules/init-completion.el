@@ -1,18 +1,16 @@
 (use-package corfu
   :init
-  (global-corfu-mode 1)
+  ;; Enable indentation+completion using the TAB key.
+  (setq tab-always-indent 'complete)
+  ;; TAB cycle if there are only few candidates
+  (setq completion-cycle-threshold 3)
   :custom
   (corfu-cycle t)
   (corfu-auto t)
   (corfu-quit-no-match t)
-  (corfu-scroll-margin 5))
-
-(use-package emacs
-  :custom
-  ;; Enable indentation+completion using the TAB key.
-  (tab-always-indent 'complete)
-  ;; TAB cycle if there are only few candidates
-  (completion-cycle-threshold 3))
+  (corfu-scroll-margin 5)
+  :config
+  (global-corfu-mode 1))
 
 (use-package cape
   :init

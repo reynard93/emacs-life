@@ -73,13 +73,13 @@
 
 (use-package undo-fu-session
   :pin melpa
-  :preface
+  :init
   (setq undo-limit (* 64 1024 1024)
         undo-strong-limit (* 96 1024 1024)
         undo-outer-limit (* 960 1024 1024))
+  :hook (prog-mode text-mode conf-mode)
   :custom
-  (undo-fu-session-compression 'zst)
-  :hook (prog-mode text-mode conf-mode))
+  (undo-fu-session-compression 'zst))
 
 (use-package helpful
   :pin melpa

@@ -14,11 +14,13 @@
   :bind ("<f7>" . display-line-numbers-mode))
 
 (use-package spacious-padding
-  :init
-  (spacious-padding-mode 1)
+  :if (display-graphic-p)
+  :bind ("<f8>" . spacious-padding-mode)
+  :demand t
   :custom
   (spacious-padding-subtle-mode-line t)
-  :bind ("<f8>" . spacious-padding-mode))
+  :config
+  (spacious-padding-mode 1))
 
 (use-package logos
   :init
