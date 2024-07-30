@@ -2,28 +2,6 @@
   :init
   (setq denote-directory "~/src/notes/")
 
-  ;; Setup denote-templates
-  (defun denote-template-content (filename)
-    "Read the contents of FILE and return as a string."
-    (let ((denote-templates-directory (expand-file-name "templates" denote-directory)))
-      (with-temp-buffer
-        (insert-file-contents (expand-file-name filename denote-templates-directory))
-        (buffer-string))))
-
-  (setq denote-templates
-        `((jira-ticket . ,(denote-template-content "jira-ticket.org"))))
-
-  :config
-  (denote-rename-buffer-mode 1)
-  (require 'denote-org-extras)
-  (require 'denote-journal-extras)
-
-  (require 'denote-silo-extras)
-  (setq denote-silo-extras-directories
-        (list denote-directory
-              "~/work/notes/"
-              "~/work/openapply/notes/"))
-
   :bind
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
@@ -50,10 +28,17 @@
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
 
   :custom
-  (denote-history-completion-in-prompts nil)
-  (denote-known-keywords '("emacs" "programming" "engineering" "parenting"))
-  (denote-rename-buffer-format "[D] %t")
-  (denote-journal-extras-title-format nil))
+  (denote-journal-extras-title-format nil)
+  (denote-silo-extras-directories
+   (list denote-directory
+         "~/work/notes/"
+         "~/work/openapply/notes/"))
+
+  :config
+  (require 'denote-journal-extras)
+  (require 'denote-org-extras)
+  (require 'denote-silo-extras)
+  (denote-rename-buffer-mode 1))
 
 (use-package consult-denote
   :after consult
@@ -74,13 +59,12 @@
   (("C-c n c" . citar-open)
    ("C-c n C" . citar-create-note))
   :custom
-  (citar-bibliography org-cite-global-bibliography))
+  (citar-bibliography org-cite-global-bibliography)
+  (citar-at-point-function #'embark-act))
 
 (use-package citar-embark
   :pin melpa
-  :after citar
-  :custom
-  (citar-at-point-function #'embark-act)
+  :after (citar embark)
   :config
   (citar-embark-mode 1))
 
