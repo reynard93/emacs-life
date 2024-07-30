@@ -1,6 +1,5 @@
 (use-package emacs
   :ensure nil
-  :bind-keymap ("M-r" . ctl-x-r-map)
   :init
   (setq-default indent-tabs-mode nil
                 tab-width 4
@@ -29,6 +28,66 @@
   (save-place-mode 1)
   (blink-cursor-mode -1)
   (global-subword-mode 1))
+
+(use-package emacs
+  :ensure nil
+  :init
+  (defun +buffer/yank-path (&optional buffer dir)
+    "Save the buffer path into the kill-ring.
+If BUFFER is not nil, find filename of BUFFER, otherwise, find
+filename of `current-buffer'. If DIR is not nil, get a relative
+file path, otherwise, get a full file path with
+`abbreviate-file-name'."
+    (interactive)
+    (if-let* ((filename (if buffer
+                            (buffer-filename buffer)
+                          (buffer-file-name)))
+              (path (if dir
+                        (file-relative-name filename dir)
+                      (abbreviate-file-name filename))))
+        (progn
+          (kill-new path)
+          (message "Copied path: %s" path))
+      (user-error "Buffer is not visiting any file")))
+
+  (defun +buffer/yank-path-relative-to-project ()
+    "Save the relative buffer path into the kill-ring.
+The path is relative to `project-current'."
+    (interactive)
+    (let ((project-root-dir
+           (condition-case nil
+               (project-root (project-current))
+             (error nil))))
+      (+buffer/yank-path nil project-root-dir)))
+
+  (defun +file/delete-this-file ()
+    (interactive)
+    (when-let* ((buffer (current-buffer))
+                (filename (buffer-file-name buffer))
+                (path (abbreviate-file-name filename)))
+      (when (y-or-n-p (format "Really delete %s? " path))
+        (move-file-to-trash path)
+        (kill-buffer buffer)
+        (message "Deleted %s" path))))
+
+  (defun +file/move-this-file (new-path)
+    (interactive (list (read-file-name "Move file to: ")))
+    (unless (and buffer-file-name (file-exists-p buffer-file-name))
+      (user-error "Buffer is not visiting any file"))
+    (let ((old-path (buffer-file-name (buffer-base-buffer)))
+          (new-path (expand-file-name new-path)))
+      (when (directory-name-p new-path)
+        (setq new-path (concat new-path (file-name-nondirectory old-path))))
+      (make-directory (file-name-directory new-path) 't)
+      (rename-file old-path new-path)
+      (set-visited-file-name new-path t t)
+      (message "File moved to %S" (abbreviate-file-name new-path))))
+
+  :bind
+  (("C-c y" . +buffer/yank-path)
+   ("C-c Y" . +buffer/yank-path-relative-to-project)
+   ("C-c D" . +file/delete-this-file)
+   ("C-c R" . +file/move-this-file)))
 
 (use-package recentf
   :ensure nil
