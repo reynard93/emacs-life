@@ -43,6 +43,7 @@
   (history-length 500)
   (history-delete-duplicates t)
   :config
+  (add-to-list 'savehist-additional-variables 'log-edit-comment-ring)
   (savehist-mode 1))
 
 (use-package isearch
