@@ -6,7 +6,6 @@
    ("C-c l" . org-store-link)
    ("C-c o" . +org/toggle-last-clock)
    :map org-mode-map
-   ("C-u C-c C-l" . org-toggle-link-display)
    ("C-c C-." . +org/refile-to-current-file)
    ("C-c C-'" . +org/refile-to-file)
    ("M-g o" . consult-org-heading))
