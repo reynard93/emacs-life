@@ -1,4 +1,4 @@
-(defun +gh/gist-create (&optional arg)
+(defun gh-gist-create (&optional arg)
   (interactive "P")
   (let ((filename (buffer-name))
         (output-buffer "*gist-output*")
@@ -14,17 +14,14 @@
       (kill-new (thing-at-point 'url)))
     (kill-buffer output-buffer)))
 
-(with-eval-after-load 'embark
-  (keymap-set embark-region-map "G" #'+gh/gist-create))
-
-(defun +gh/pr-create ()
+(defun gh-pr-create ()
   (interactive)
   (shell-command "gh pr create -w"))
 
-(defvar +gh--pr-list-command
+(defvar gh--pr-list-command
   "gh pr list --json number,title,headRefName,author")
 
-(defvar +gh--search-queries
+(defvar gh--pr-search-queries
   '("author:@me"
     "assignee:@me"
     "mentions:@me"
@@ -33,14 +30,14 @@
     "head:hotfix"
     "is:merged"))
 
-(defun +gh--pr-list ()
+(defun gh--pr-list ()
   (if current-prefix-arg
-      (let* ((query (completing-read "Select query: " +gh--search-queries))
-             (command (format "%s --search \"%s\"" +gh--pr-list-command query)))
-        (+gh--pr-list-request command))
-    (+gh--pr-list-request +gh--pr-list-command)))
+      (let* ((query (completing-read "Select query: " gh--pr-search-queries))
+             (command (format "%s --search \"%s\"" gh--pr-list-command query)))
+        (gh--pr-list-request command))
+    (gh--pr-list-request gh--pr-list-command)))
 
-(defun +gh--pr-list-request (command)
+(defun gh--pr-list-request (command)
   (condition-case nil
       (let ((json (json-read-from-string (shell-command-to-string command))))
         (mapcar (lambda (pr)
@@ -49,25 +46,25 @@
                 json))
     (error nil)))
 
-(defun +gh--pr-number ()
-  (let* ((collection (+gh--pr-list))
+(defun gh--pr-number ()
+  (let* ((collection (gh--pr-list))
          (target (completing-read "Select pull request: " collection nil t)))
     (when (string-match "^#\\([0-9]+\\)" target)
       (match-string 1 target))))
 
-(defun +gh/pr-browse (&optional pr-number)
+(defun gh-pr-browse (&optional pr-number)
   "Browse a pull request by PR-NUMBER."
-  (interactive (list (+gh--pr-number)))
+  (interactive (list (gh--pr-number)))
   (shell-command (concat "gh pr view -w " pr-number)))
 
-(defun +gh/pr-checkout (pr-number)
+(defun gh-pr-checkout (pr-number)
   "Checkout a pull request by PR-NUMBER."
-  (interactive (list (+gh--pr-number)))
+  (interactive (list (gh--pr-number)))
   (shell-command (concat "gh pr checkout " pr-number)))
 
-(defun +gh/pr-view (pr-number)
+(defun gh-pr-view (pr-number)
   "View a pull request by PR-NUMBER."
-  (interactive (list (+gh--pr-number)))
+  (interactive (list (gh--pr-number)))
   (when-let* ((output (shell-command-to-string (concat "gh pr view " pr-number)))
               (output-formatted (replace-regexp-in-string "\r" "" output))
               (output-buffer (format "*%s (pull request)*" pr-number)))
@@ -77,25 +74,23 @@
         (gfm-view-mode)
         (keymap-local-set "q" #'quit-window)))))
 
-(defun +gh/pr-link (pr-number)
+(defun gh-pr-link (pr-number)
   "Copy a pull request's URL by PR-NUMBER."
-  (interactive (list (+gh--pr-number)))
+  (interactive (list (gh--pr-number)))
   (let* ((command (format "gh pr view %s --json url --template '{{.url}}'" pr-number))
          (output (shell-command-to-string command)))
     (kill-new output)
     (message "Copied URL: %s" output)))
 
 (defvar-keymap embark-gh-pr-map
-  "c" #'+gh/pr-checkout
-  "o" #'+gh/pr-browse
-  "y" #'+gh/pr-link)
+  "c" #'gh-pr-checkout
+  "o" #'gh-pr-browse
+  "v" #'gh-pr-view
+  "y" #'gh-pr-link)
 
 (with-eval-after-load 'embark
   (add-to-list 'embark-keymap-alist '(github-pull-request . embark-gh-pr-map)))
 (with-eval-after-load 'marginalia
   (add-to-list 'marginalia-prompt-categories '("Select pull request" . github-pull-request)))
 
-(bind-key "C-c g v" #'+gh/pr-view)
-(bind-key "C-c g c" #'+gh/pr-create)
-
-(provide 'lisp-gh)
+(provide 'gh)

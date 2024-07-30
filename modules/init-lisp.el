@@ -10,7 +10,6 @@
 (require 'lisp-macos)
 
 ;; Web services
-(require 'lisp-gh)
 (require 'lisp-exercism)
 
 (provide 'init-lisp)

@@ -31,4 +31,12 @@
   :custom
   (browse-at-remote-add-line-number-if-no-region-selected nil))
 
+(use-package gh
+  :ensure nil
+  :load-path "vendors/site-lisp/"
+  :bind ("C-c g v" . gh-pr-view)
+  :config
+  (with-eval-after-load 'embark
+    (keymap-set embark-region-map "G" #'gh-gist-create)))
+
 (provide 'init-git)
