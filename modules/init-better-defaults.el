@@ -43,7 +43,12 @@
 
 (use-package emacs
   :ensure nil
-  :init
+  :bind
+  (("C-c y" . +buffer/yank-path)
+   ("C-c Y" . +buffer/yank-path-relative-to-project)
+   ("C-c D" . +file/delete-this-file)
+   ("C-c R" . +file/rename-this-file))
+  :config
   (defun +buffer/yank-path (&optional buffer dir)
     "Save the buffer path into the kill-ring.
 If BUFFER is not nil, find filename of BUFFER, otherwise, find
@@ -73,7 +78,10 @@ The path is relative to `project-current'."
       (+buffer/yank-path nil project-root-dir)))
 
   (defun +file/delete-this-file ()
+    "Kill the current buffer and deletes the file it is visiting."
     (interactive)
+    (unless (and buffer-file-name (file-exists-p buffer-file-name))
+      (user-error "Buffer is not visiting any file"))
     (when-let* ((buffer (current-buffer))
                 (filename (buffer-file-name buffer))
                 (path (abbreviate-file-name filename)))
@@ -82,8 +90,9 @@ The path is relative to `project-current'."
         (kill-buffer buffer)
         (message "Deleted %s" path))))
 
-  (defun +file/move-this-file (new-path)
-    (interactive (list (read-file-name "Move file to: ")))
+  (defun +file/rename-this-file (new-path)
+    "Rename the current file to NEW-PATH."
+    (interactive (list (read-file-name "Rename file to: ")))
     (unless (and buffer-file-name (file-exists-p buffer-file-name))
       (user-error "Buffer is not visiting any file"))
     (let ((old-path (buffer-file-name (buffer-base-buffer)))
@@ -93,13 +102,7 @@ The path is relative to `project-current'."
       (make-directory (file-name-directory new-path) 't)
       (rename-file old-path new-path)
       (set-visited-file-name new-path t t)
-      (message "File moved to %S" (abbreviate-file-name new-path))))
-
-  :bind
-  (("C-c y" . +buffer/yank-path)
-   ("C-c Y" . +buffer/yank-path-relative-to-project)
-   ("C-c D" . +file/delete-this-file)
-   ("C-c R" . +file/move-this-file)))
+      (message "Renamed to %s" (abbreviate-file-name new-path)))))
 
 (use-package recentf
   :ensure nil
@@ -136,11 +139,11 @@ The path is relative to `project-current'."
 
 (use-package compile
   :ensure nil
-  :init
+  :hook (compilation-filter . compilation-filter-colorize)
+  :config
   (defun compilation-filter-colorize ()
     (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region compilation-filter-start (point-max))))
-  :hook (compilation-filter . compilation-filter-colorize))
+      (ansi-color-apply-on-region compilation-filter-start (point-max)))))
 
 (use-package undo-fu-session
   :pin melpa

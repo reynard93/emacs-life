@@ -37,7 +37,7 @@
 
   (defun +elfeed/send-to-wombag (entry)
     (interactive (list (+elfeed--selected-entry)))
-    (+wombag/url (elfeed-entry-link entry))
+    (wombag-add-entry (elfeed-entry-link entry))
     (elfeed-tag entry 'sent)
     (if (eq major-mode 'elfeed-search-mode)
         (elfeed-search-update--force)

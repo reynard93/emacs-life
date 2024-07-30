@@ -1,12 +1,12 @@
 (use-package wombag
   :vc (wombag :url "https://github.com/karthink/wombag.git")
+  :defer t
   :commands (wombag-add-entry)
+
   :init
-  (defsubst +wombag/url (url)
-    "Add URL to Wombag."
-    (message "Sending to Wombag: %s" url)
-    (wombag-add-entry url ""))
-  :bind (:map embark-url-map ("R" . +wombag/url))
+  (with-eval-after-load 'embark
+    (keymap-set embark-url-map "R" #'wombag-add-entry))
+
   :custom
   (wombag-host "https://app.wallabag.it")
   (wombag-username "goofansu")

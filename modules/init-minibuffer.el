@@ -57,7 +57,7 @@
   (vertico-multiform-mode 1))
 
 (use-package marginalia
-  :init
+  :config
   (marginalia-mode 1))
 
 (use-package orderless

@@ -10,18 +10,19 @@
           (json "https://github.com/tree-sitter/tree-sitter-json")
           (toml "https://github.com/tree-sitter/tree-sitter-toml")))
 
-  (defun +treesit/install-language-grammars ()
-    "Build and install all tree-sitter language grammar libraries."
-    (interactive)
-    (mapc #'treesit-install-language-grammar
-          (mapcar #'car treesit-language-source-alist)))
-
   :custom
   (major-mode-remap-alist
    '((ruby-mode . ruby-ts-mode)
      (css-mode . css-ts-mode)
      (javascript-mode . js-ts-mode)
      (json-mode . json-ts-mode)
-     (conf-toml-mode . toml-ts-mode))))
+     (conf-toml-mode . toml-ts-mode)))
+
+  :config
+  (defun +treesit/install-language-grammars ()
+    "Build and install all tree-sitter language grammar libraries."
+    (interactive)
+    (mapc #'treesit-install-language-grammar
+          (mapcar #'car treesit-language-source-alist))))
 
 (provide 'init-tree-sitter)

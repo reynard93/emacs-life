@@ -4,10 +4,11 @@
 
 (use-package elixir-ts-mode
   :pin melpa
-  :init
+  :hook (before-save . elixir-format-before-save)
+  :config
+  (message "load")
   (defun elixir-format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
-      (apheleia-format-buffer 'mix-format)))
-  :hook (before-save . elixir-format-before-save))
+      (apheleia-format-buffer 'mix-format))))
 
 (provide 'init-elixir)

@@ -21,15 +21,16 @@
   (add-to-list 'completion-at-point-functions #'cape-keyword))
 
 (use-package tempel
-  :init
-  (setq tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
-  (defun tempel-setup-capf ()
-    (setq-local completion-at-point-functions
-                (cons #'tempel-expand
-                      completion-at-point-functions)))
   :hook ((prog-mode text-mode conf-mode) . tempel-setup-capf)
   :bind
   (("M-+" . tempel-complete)
-   ("M-*" . tempel-insert)))
+   ("M-*" . tempel-insert))
+  :custom
+  (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
+  :config
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions))))
 
 (provide 'init-completion)
