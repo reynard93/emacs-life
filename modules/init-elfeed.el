@@ -73,6 +73,7 @@
              ("people" . "@6-months-ago +inbox +unread +people")
              ("videos" . "@6-months-ago +inbox +unread +video")
              ("podcasts" . "@6-months-ago +inbox +unread +podcast")
+             ("newsletters" . "@6-months-ago +inbox +unread +newsletter")
              ("emacs" . "@6-months-ago +inbox +unread +emacs"))))
       (if-let* ((category (completing-read "Select category: " categories))
                 (filter (cdr (assoc category categories))))
