@@ -24,6 +24,7 @@
   (use-dialog-box nil)
   (use-short-answers t)
   (vc-follow-symlinks t)
+  (echo-keystrokes 0.25)
   :config
   (save-place-mode 1)
   (blink-cursor-mode -1)
