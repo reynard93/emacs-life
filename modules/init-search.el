@@ -25,7 +25,7 @@
 
 (use-package kagi-search
   :ensure nil
-  :load-path "vendor/site-lisp/"
+  :load-path "site-lisp/"
   :bind (:map search-map ("O" . kagi-search)))
 
 (provide 'init-search)
