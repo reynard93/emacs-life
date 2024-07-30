@@ -23,4 +23,9 @@
   :pin melpa
   :bind (:map search-map ("D". deadgrep)))
 
+(use-package kagi-search
+  :ensure nil
+  :load-path "vendor/site-lisp/"
+  :bind (:map search-map ("O" . kagi-search)))
+
 (provide 'init-search)

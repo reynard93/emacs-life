@@ -11,7 +11,6 @@
 
 ;; Web services
 (require 'lisp-gh)
-(require 'lisp-kagi)
 (require 'lisp-exercism)
 
 (provide 'init-lisp)
