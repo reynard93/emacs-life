@@ -4,6 +4,7 @@
   (("C-c a" . org-agenda)
    ("C-c c" . org-capture)
    ("C-c l" . org-store-link)
+   ("C-c o" . +org/toggle-last-clock)
    :map org-mode-map
    ("M-g o" . consult-org-heading)
    ("C-M-S-h" . org-babel-mark-block)
