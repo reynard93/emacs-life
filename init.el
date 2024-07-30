@@ -3,6 +3,7 @@
 ;; Bootstrap
 (require 'init-bootstrap)
 (require 'init-emacs)
+(require 'init-macos)
 
 ;; Agenda/Note-taking
 (require 'init-org)
@@ -27,6 +28,3 @@
 (require 'init-search)
 (require 'init-social)
 (require 'init-spell-checker)
-
-;; Lisp
-(require 'init-lisp)
