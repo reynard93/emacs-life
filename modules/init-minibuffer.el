@@ -81,9 +81,15 @@
    ([remap project-switch-to-buffer] . consult-project-buffer)
    ("M-X" . consult-mode-command)
    ("M-y" . consult-yank-pop)
+   ("M-#" . consult-register-load)
+   ("M-'" . consult-register-store)
+   ("C-M-#" . consult-register)
    :map goto-map
    ("i" . consult-imenu)
    ("I" . consult-imenu-multi)
+   ("m" . consult-mark)
+   ("k" . consult-global-mark)
+   ("o" . consult-outline)
    :map search-map
    ("a" . consult-org-agenda)
    ("r" . consult-ripgrep)
