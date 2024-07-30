@@ -1,7 +1,10 @@
 (use-package nix-mode
   :pin melpa
-  :init
-  (setq nix-nixfmt-bin "nixfmt")
+  :hook
+  (nix-mode . +nix--formatter-mode-line-display)
+  (before-save . nix-format-before-save)
+
+  :config
   (defun +nix--formatter-mode-line-display ()
     (add-to-list 'mode-line-process '(:eval (concat " (" nix-nixfmt-bin ")"))))
 
@@ -16,11 +19,6 @@
        t)
       (buffer-string)))
 
-  :hook
-  (nix-mode . +nix--formatter-mode-line-display)
-  (before-save . nix-format-before-save)
-
-  :config
   (defun +nix/formatter-toggle ()
     (interactive)
     (if (string-match "nixfmt" nix-nixfmt-bin)
@@ -30,7 +28,6 @@
 
 (use-package org-nix-shell
   :pin melpa
-  :after org
   :hook org-mode)
 
 (provide 'init-nix)
