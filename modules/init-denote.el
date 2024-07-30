@@ -80,7 +80,7 @@
 
 (use-package citar-embark
   :pin melpa
-  :after (citar embark)
+  :after citar
   :custom
   (citar-at-point-function #'embark-act)
   :config
@@ -88,7 +88,6 @@
 
 (use-package citar-denote
   :pin melpa
-  :after (:any citar denote)
   :bind
   (("C-c w d" . citar-denote-dwim)
    ("C-c w n" . citar-denote-open-note)

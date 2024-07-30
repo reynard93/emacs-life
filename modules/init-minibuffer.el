@@ -24,18 +24,15 @@
 
 (use-package vertico-repeat
   :ensure nil
-  :after vertico
   :hook (minibuffer-setup . vertico-repeat-save)
   :bind ("C-x ." . vertico-repeat))
 
 (use-package vertico-suspend
   :ensure nil
-  :after vertico
   :bind ("M-z" . vertico-suspend))
 
 (use-package vertico-directory
   :ensure nil
-  :after vertico
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   :bind
   ( :map vertico-map
@@ -45,7 +42,6 @@
 
 (use-package vertico-quick
   :ensure nil
-  :after vertico
   :bind
   ( :map vertico-map
     ("M-q" . vertico-quick-insert)
@@ -53,7 +49,6 @@
 
 (use-package vertico-multiform
   :ensure nil
-  :after vertico
   :custom
   (vertico-multiform-categories
    '((embark-keybinding grid)
@@ -98,16 +93,13 @@
 
 (use-package consult-dir
   :pin melpa
-  :after vertico
   :bind
   (("C-x C-d" . consult-dir)
-   :map vertico-map
+   :map minibuffer-mode-map
    ("C-x C-d" . consult-dir)
    ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package embark
-  :after vertico
-  :demand t
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
   (unbind-key "C-h C-h")
@@ -115,7 +107,7 @@
   (([remap describe-bindings] . embark-bindings)
    ("C-;" . embark-act)
    ("M-." . embark-dwim)
-   :map vertico-map
+   :map minibuffer-mode-map
    ("C-;" . embark-act)
    ("C-c C-;" . embark-export)
    ("C-c C-l" . embark-collect))
