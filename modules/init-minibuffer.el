@@ -83,6 +83,7 @@
          ("i" . consult-imenu)
          ("I" . consult-imenu-multi)
          :map search-map
+         ("a" . consult-org-agenda)
          ("r" . consult-ripgrep)
          ("l" . consult-line)
          ("L" . consult-line-multi)))
