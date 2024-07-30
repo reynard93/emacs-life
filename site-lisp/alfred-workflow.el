@@ -25,8 +25,8 @@ in markdown format."
   (alfred-workflow--run-trigger "link-title" alfred-workflow-browser))
 
 (defvar-keymap alfred-workflow-keymap
-  "b l" #'alfred-workflow-browser-link
-  "b t" #'alfred-workflow-browser-link-title
-  "b u" #'alfred-workflow-browser-link-url)
+  "l" #'alfred-workflow-browser-link
+  "t" #'alfred-workflow-browser-link-title
+  "u" #'alfred-workflow-browser-link-url)
 
 (provide 'alfred-workflow)

@@ -5,10 +5,9 @@
    ("C-c c" . org-capture)
    ("C-c l" . org-store-link)
    :map org-mode-map
-   ("C-u C-c C-l" . org-toggle-link-display)
-   ("C-M-S-h" . org-babel-mark-block)
-   ("C-c i" . org-cite-insert)
    ("M-g o" . consult-org-heading)
+   ("C-M-S-h" . org-babel-mark-block)
+   ("C-u C-c C-l" . org-toggle-link-display)
    ("C-c C-." . +org/refile-to-current-file)
    ("C-c C-'" . +org/refile-to-file))
 
