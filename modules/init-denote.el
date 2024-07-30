@@ -56,14 +56,12 @@
   (denote-journal-extras-title-format nil))
 
 (use-package consult-denote
-  :after (consult denote)
-  :bind
-  ( :map search-map
-    ("s" . consult-denote-grep))
+  :after consult
+  :init
+  (consult-denote-mode 1)
+  :bind (:map search-map ("s" . consult-denote-grep))
   :custom
-  (consult-denote-grep-command #'consult-ripgrep)
-  :config
-  (consult-denote-mode 1))
+  (consult-denote-grep-command #'consult-ripgrep))
 
 (use-package citar
   :pin melpa
