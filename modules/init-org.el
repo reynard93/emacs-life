@@ -162,11 +162,10 @@ see how ARG affects this command."
 
 (use-package ox-hugo
   :pin melpa
-  :after ox)
+  :after org)
 
 (use-package org-pandoc-import
-  :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git")
-  :after org)
+  :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git"))
 
 (use-package org-anki
   :pin melpa
