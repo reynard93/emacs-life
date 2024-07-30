@@ -4,6 +4,8 @@
 ;;
 ;; https://help.kagi.com/kagi/features/bangs.html#kagi-assistant-bangs
 
+;;; Code:
+
 (require 'kagi-search)
 
 (defun kagi-search--research ()

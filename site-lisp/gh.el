@@ -1,3 +1,11 @@
+;;; gh.el -- Code for GitHub CLI -*- lexical-binding: t -*-
+
+;;; Commentary:
+;;
+;; https://cli.github.com/manual/
+
+;;; Code:
+
 (defun gh-gist-create (&optional arg)
   (interactive "P")
   (let ((filename (buffer-name))
