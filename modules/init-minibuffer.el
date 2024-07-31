@@ -96,7 +96,7 @@
   :pin melpa
   :bind
   (("C-x C-d" . consult-dir)
-   :map minibuffer-mode-map
+   :map minibuffer-local-completion-map
    ("C-x C-d" . consult-dir)
    ("C-x C-j" . consult-dir-jump-file)))
 
@@ -108,7 +108,7 @@
   (([remap describe-bindings] . embark-bindings)
    ("C-;" . embark-act)
    ("M-." . embark-dwim)
-   :map minibuffer-mode-map
+   :map minibuffer-local-map
    ("C-;" . embark-act)
    ("C-c C-;" . embark-export)
    ("C-c C-l" . embark-collect))
