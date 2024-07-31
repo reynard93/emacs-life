@@ -34,7 +34,9 @@
 (use-package gh
   :ensure nil
   :load-path "site-lisp/"
-  :bind ("C-c g v" . gh-pr-view)
+  :bind
+  (("C-c g v" . gh-pr-view)
+   ("C-c g c" . gh-pr-create))
   :config
   (with-eval-after-load 'embark
     (keymap-set embark-region-map "G" #'gh-gist-create)))
