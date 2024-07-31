@@ -78,7 +78,6 @@
    ("M-y" . consult-yank-pop)
    ("M-#" . consult-register-load)
    ("M-'" . consult-register-store)
-   ("C-M-#" . consult-register)
    :map goto-map
    ("i" . consult-imenu)
    ("I" . consult-imenu-multi)
@@ -87,9 +86,11 @@
    ("o" . consult-outline)
    :map search-map
    ("a" . consult-org-agenda)
-   ("r" . consult-ripgrep)
    ("l" . consult-line)
-   ("L" . consult-line-multi)))
+   ("L" . consult-line-multi)
+   ("r" . consult-ripgrep)
+   ("s" . consult-register)
+   ("M-s" . consult-register)))
 
 (use-package consult-dir
   :pin melpa
