@@ -31,6 +31,13 @@
   :config
   (fontaine-set-preset 'regular))
 
+(use-package spacious-padding
+  :if (display-graphic-p)
+  :custom
+  (spacious-padding-subtle-mode-line t)
+  :config
+  (spacious-padding-mode 1))
+
 (use-package prot-modeline
   :ensure nil
   :load-path "vendor/"

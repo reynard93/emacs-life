@@ -8,14 +8,10 @@
   :custom
   (display-line-numbers-widen t))
 
-(use-package spacious-padding
-  :if (display-graphic-p)
-  :demand t
-  :bind ("<f8>" . spacious-padding-mode)
-  :custom
-  (spacious-padding-subtle-mode-line t)
-  :config
-  (spacious-padding-mode 1))
+(use-package visual-line-mode
+  :ensure nil
+  :hook text-mode
+  :bind ("<f8>" . visual-line-mode))
 
 (use-package logos
   :init
