@@ -6,8 +6,15 @@
   (modus-themes-variable-pitch-ui t)
   :config
   (if (display-graphic-p)
-      (load-theme 'modus-operandi :no-confirm)
-    (load-theme 'modus-vivendi :no-confirm)))
+      (modus-themes-load-theme 'modus-operandi)
+    (modus-themes-load-theme 'modus-vivendi)))
+
+(use-package ef-themes
+  :bind ("C-<f5>" . ef-themes-toggle)
+  :custom
+  (ef-themes-mixed-fonts t)
+  (ef-themes-variable-pitch-ui t)
+  (ef-themes-to-toggle '(ef-summer ef-winter)))
 
 (use-package fontaine
   :if (display-graphic-p)
