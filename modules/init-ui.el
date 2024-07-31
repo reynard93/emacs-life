@@ -10,6 +10,7 @@
     (load-theme 'modus-vivendi :no-confirm)))
 
 (use-package fontaine
+  :if (display-graphic-p)
   :demand t
   :bind ("C-c F" . fontaine-set-preset)
   :custom
