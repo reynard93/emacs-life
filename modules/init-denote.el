@@ -28,8 +28,7 @@
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
 
   :custom
-  (denote-history-completion-in-prompts nil)
-  (denote-journal-extras-title-format nil)
+  (denote-known-keywords '("emacs" "programming" "education"))
   (denote-silo-extras-directories
    (list denote-directory
          "~/work/notes/"
