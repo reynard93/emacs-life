@@ -163,9 +163,6 @@ see how ARG affects this command."
   :pin melpa
   :after org)
 
-(use-package org-pandoc-import
-  :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git"))
-
 (use-package org-anki
   :pin melpa
   :after org
@@ -173,5 +170,15 @@ see how ARG affects this command."
   (org-anki-default-deck "Default")
   (org-anki-default-match "@anki&todo<>\"TODO\"")
   (org-anki-inherit-tags nil))
+
+(use-package org-download
+  :pin melpa
+  :bind (:map org-mode-map ("C-c M-y" . org-download-yank))
+  :custom
+  (org-download-image-dir "./attachments")
+  (org-download-display-inline-images nil))
+
+(use-package org-pandoc-import
+  :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git"))
 
 (provide 'init-org)
