@@ -2,8 +2,6 @@
   :pin melpa
   :init
   (auth-source-pass-enable)
-  :bind ("C-c p" . password-store-copy)
-  :config
   (defvar-keymap embark-password-store-map
     "c" #'password-store-copy
     "C" #'password-store-otp-token-copy
@@ -17,6 +15,7 @@
   (with-eval-after-load 'embark
     (add-to-list 'embark-keymap-alist '(password-store . embark-password-store-map)))
   (with-eval-after-load 'marginalia
-    (add-to-list 'marginalia-prompt-categories '("Password entry" . password-store))))
+    (add-to-list 'marginalia-prompt-categories '("Password entry" . password-store)))
+  :bind ("C-c p" . password-store-copy))
 
 (provide 'init-pass)
