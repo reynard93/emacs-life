@@ -25,6 +25,8 @@
 
 (use-package ace-window
   :pin melpa
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
   :config
   ;; Open any buffer by splitting any window
   ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window
