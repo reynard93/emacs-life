@@ -52,7 +52,7 @@
 
   (gptel-make-kagi "Kagi"
     :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-    :models nil)
+    :models '("fastgpt"))
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
