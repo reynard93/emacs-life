@@ -51,7 +51,7 @@
   :after consult
   :init
   (consult-denote-mode 1)
-  :bind ("C-c n r" . consult-denote-grep)
+  :bind (:map search-map ("m" . consult-denote-grep))
   :custom
   (consult-denote-grep-command #'consult-ripgrep))
 
