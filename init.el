@@ -16,7 +16,6 @@
 
 ;; Reading
 (require 'init-elfeed)
-(require 'init-wombag)
 (require 'init-epub)
 (require 'init-pdf)
 
