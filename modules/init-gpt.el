@@ -54,11 +54,6 @@
     :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
     :models nil)
 
-  (gptel-make-ollama "Ollama"
-    :host "localhost:11434"
-    :stream t
-    :models '("llama3:latest"))
-
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
     (interactive "sEnter text: ")
