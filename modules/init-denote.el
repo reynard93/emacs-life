@@ -48,12 +48,11 @@
   (denote-rename-buffer-mode 1))
 
 (use-package consult-denote
-  :after consult
-  :init
-  (consult-denote-mode 1)
   :bind (:map search-map ("m" . consult-denote-grep))
   :custom
-  (consult-denote-grep-command #'consult-ripgrep))
+  (consult-denote-grep-command #'consult-ripgrep)
+  :config
+  (consult-denote-mode 1))
 
 (use-package citar
   :pin melpa
