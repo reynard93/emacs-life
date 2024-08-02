@@ -71,9 +71,6 @@
                ":END:\n\n"
                "%?")
       :empty-lines-after 1)
-     ("f" "Fleeting note" entry
-      (file "notes.org")
-      "* %?\n")
      ("j" "Journal" entry
       (file+olp+datetree "journal.org")
       "* %U %?\n")))

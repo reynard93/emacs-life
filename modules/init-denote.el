@@ -1,6 +1,19 @@
 (use-package denote
   :init
   (setq denote-directory "~/src/notes/")
+  (with-eval-after-load 'org-capture
+    (add-to-list 'org-capture-templates
+                 '("f" "Fleeting note" plain
+                   (file denote-last-path)
+                   (function
+                    (lambda ()
+                      (let ((denote-org-capture-specifiers "%i\n%?")
+                            (denote-directory (concat denote-directory "fleeting/")))
+                        (denote-org-capture-with-prompts))))
+                   :no-save t
+                   :immediate-finish nil
+                   :kill-buffer t
+                   :jump-to-captured t)))
 
   :bind
   (("C-c n n" . denote)
@@ -11,6 +24,7 @@
    ("C-c n o" . denote-sort-dired) ; "order" mnemonic
    ("C-c n j" . denote-journal-extras-new-entry)
    ("C-c n J" . denote-journal-extras-new-or-existing-entry)
+   ("C-c x"   . (lambda () (interactive) (org-capture nil "f")))
    :map search-map
    ("n" . denote-open-or-create)
    :map text-mode-map
