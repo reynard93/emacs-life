@@ -11,10 +11,8 @@
    ("C-c n o" . denote-sort-dired) ; "order" mnemonic
    ("C-c n j" . denote-journal-extras-new-entry)
    ("C-c n J" . denote-journal-extras-new-or-existing-entry)
-   ("C-c n S" . denote-silo-extras-select-silo-then-command)
    :map search-map
    ("n" . denote-open-or-create)
-   ("N" . denote-silo-extras-open-or-create)
    :map text-mode-map
    ("C-c n i" . denote-link)
    ("C-c n I" . denote-add-links)
@@ -29,15 +27,10 @@
 
   :custom
   (denote-known-keywords '("emacs" "programming" "education"))
-  (denote-silo-extras-directories
-   (list denote-directory
-         "~/work/notes/"
-         "~/work/openapply/notes/"))
 
   :config
   (require 'denote-journal-extras)
   (require 'denote-org-extras)
-  (require 'denote-silo-extras)
   (denote-rename-buffer-mode 1))
 
 (use-package consult-denote
