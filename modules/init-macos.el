@@ -14,10 +14,10 @@
   :load-path "site-lisp/"
   :if (eq system-type 'darwin))
 
-(use-package alfred-workflow
+(use-package alfred-browser
   :ensure nil
   :load-path "site-lisp/"
   :if (eq system-type 'darwin)
-  :bind-keymap ("C-c z" . alfred-workflow-keymap))
+  :bind-keymap ("C-c b" . alfred-browser-keymap))
 
 (provide 'init-macos)
