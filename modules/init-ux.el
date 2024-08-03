@@ -54,4 +54,10 @@
   :pin nongnu
   :hook prog-mode)
 
+(use-package header-line
+  :ensure nil
+  :load-path "site-lisp/"
+  :hook (prog-mode text-mode conf-mode)
+  :bind ("<f10>" . header-line-mode))
+
 (provide 'init-ux)
