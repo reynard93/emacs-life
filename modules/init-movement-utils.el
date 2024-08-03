@@ -29,8 +29,8 @@
   ;; Open any buffer by splitting any window
   ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window
   (eval-when-compile
-    (defmacro +embark--aw-action (fn)
-      `(defun ,(intern (concat "+embark/aw-" (symbol-name fn))) ()
+    (defmacro embark-aw-action (fn)
+      `(defun ,(intern (concat "embark-aw-" (symbol-name fn))) ()
          ,(format "Open %s buffer selected with ace-window." (symbol-name fn))
          (interactive)
          (with-demoted-errors "%s"
@@ -39,10 +39,18 @@
              (aw-switch-to-window (aw-select nil))
              (call-interactively (symbol-function ',fn)))))))
 
-  (with-eval-after-load 'embark
-    (keymap-set embark-file-map     "o" (+embark--aw-action find-file))
-    (keymap-set embark-buffer-map   "o" (+embark--aw-action switch-to-buffer))
-    (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump)))
+  (defvar embark-aw-find-file (embark-aw-action find-file))
+  (defvar embark-aw-switch-to-buffer (embark-aw-action switch-to-buffer))
+  (defvar embark-aw-bookmark-jump (embark-aw-action bookmark-jump))
+
+  :bind
+  (("C-x o" . ace-window)
+   :map embark-file-map
+   ("o" . embark-aw-find-file)
+   :map embark-buffer-map
+   ("o" . embark-aw-switch-to-buffer)
+   :map embark-bookmark-map
+   ("o" . embark-aw-bookmark-jump))
 
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))

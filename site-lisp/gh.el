@@ -90,15 +90,4 @@
     (kill-new output)
     (message "Copied URL: %s" output)))
 
-(defvar-keymap embark-gh-pr-map
-  "c" #'gh-pr-checkout
-  "o" #'gh-pr-browse
-  "v" #'gh-pr-view
-  "y" #'gh-pr-link)
-
-(with-eval-after-load 'embark
-  (add-to-list 'embark-keymap-alist '(github-pull-request . embark-gh-pr-map)))
-(with-eval-after-load 'marginalia
-  (add-to-list 'marginalia-prompt-categories '("Select pull request" . github-pull-request)))
-
 (provide 'gh)

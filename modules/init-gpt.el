@@ -1,18 +1,17 @@
 (use-package gptel
   :pin melpa
-  :commands (+gptel/kagi-summarize-url)
   :init
   (defvar gptel--openai nil
     "Override the variable to hide ChatGPT models")
-  (with-eval-after-load 'embark
-    (keymap-set embark-url-map "?" #'+gptel/kagi-summarize-url))
 
   :bind
   (("C-c C-<return>" . gptel-menu)
    ("C-c <return>" . +gptel/send)
    :map gptel-mode-map
    ("C-c C-x t" . gptel-set-topic)
-   ("M-n" . gptel-end-of-response))
+   ("M-n" . gptel-end-of-response)
+   :map embark-url-map
+   ("?" . +gptel/kagi-summarize-url))
 
   :custom
   (gptel-max-tokens 1000)

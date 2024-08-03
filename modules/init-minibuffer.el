@@ -101,6 +101,7 @@
    ("C-x C-j" . consult-dir-jump-file)))
 
 (use-package embark
+  :demand t
   :init
   (setq prefix-help-command #'embark-prefix-help-command)
   (unbind-key "C-h C-h")
