@@ -7,8 +7,7 @@
                    (file denote-last-path)
                    (function
                     (lambda ()
-                      (let ((denote-org-capture-specifiers "%i\n%?")
-                            (denote-directory (concat denote-directory "fleeting/")))
+                      (let ((denote-directory (concat denote-directory "fleeting/")))
                         (denote-org-capture-with-prompts))))
                    :no-save t
                    :immediate-finish nil
