@@ -34,11 +34,11 @@
 (use-package gh
   :ensure nil
   :load-path "site-lisp/"
+  :init
+  (with-eval-after-load 'embark
+    (keymap-set embark-region-map "G" #'gh-gist-create))
   :bind
   (("C-c g v" . gh-pr-view)
-   ("C-c g c" . gh-pr-create))
-  :config
-  (with-eval-after-load 'embark
-    (keymap-set embark-region-map "G" #'gh-gist-create)))
+   ("C-c g c" . gh-pr-create)))
 
 (provide 'init-git)

@@ -25,9 +25,7 @@
 
 (use-package ace-window
   :pin melpa
-  :custom
-  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-  :config
+  :init
   ;; Open any buffer by splitting any window
   ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window
   (eval-when-compile
@@ -44,7 +42,10 @@
   (with-eval-after-load 'embark
     (keymap-set embark-file-map     "o" (+embark--aw-action find-file))
     (keymap-set embark-buffer-map   "o" (+embark--aw-action switch-to-buffer))
-    (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump))))
+    (keymap-set embark-bookmark-map "o" (+embark--aw-action bookmark-jump)))
+
+  :custom
+  (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package popper
   :bind

@@ -1,8 +1,11 @@
 (use-package gptel
   :pin melpa
+  :commands (+gptel/kagi-summarize-url)
   :init
   (defvar gptel--openai nil
     "Override the variable to hide ChatGPT models")
+  (with-eval-after-load 'embark
+    (keymap-set embark-url-map "?" #'+gptel/kagi-summarize-url))
 
   :bind
   (("C-c C-<return>" . gptel-menu)
@@ -50,9 +53,10 @@
               "llama3-8b-8192"
               "mixtral-8x7b-32768"))
 
-  (gptel-make-kagi "Kagi"
-    :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-    :models '("fastgpt"))
+  (defvar gptel--kagi
+    (gptel-make-kagi "Kagi"
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
+      :models '("fastgpt")))
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -93,16 +97,11 @@
                     (special-mode))))
             (message "gptel-request failed with message: %s"
                      (plist-get info :status)))))
-      (message "Generating summary for: %s" url)))
-
-  (with-eval-after-load 'embark
-    (keymap-set embark-url-map "?" #'+gptel/kagi-summarize-url)))
+      (message "Generating summary for: %s" url))))
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
-  :defer t
-  :config
-  (with-eval-after-load 'embark
-    (keymap-set embark-general-map "?" #'gptel-quick)))
+  :after embark
+  :bind (:map embark-general-map ("?" . gptel-quick)))
 
 (provide 'init-gpt)
