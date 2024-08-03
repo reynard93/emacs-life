@@ -9,4 +9,4 @@
   :pin melpa
   :bind (:map embark-region-map ("U" . 0x0-dwim)))
 
-(provide 'init-network-tools)
+(provide 'init-service)
