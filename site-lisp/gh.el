@@ -6,15 +6,14 @@
 
 ;;; Code:
 
-(defun gh-gist-create (&optional arg)
-  (interactive "P")
+(defun gh-gist-create ()
+  (interactive)
   (let ((filename (buffer-name))
-        (output-buffer "*gist-output*")
-        (public (if arg " --public" "")))
+        (output-buffer "*gist-output*"))
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))
      (if (use-region-p) (region-end) (point-max))
-     (concat "gh gist create --filename " filename public " -")
+     (format "gh gist create --filename %s -" filename)
      output-buffer)
     (with-current-buffer output-buffer
       (goto-char (point-max))
