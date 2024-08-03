@@ -1,3 +1,6 @@
+(defun exercism--exercise-root-dir ()
+  (locate-dominating-file default-directory ".exercism"))
+
 (defun exercism-download (track exercise)
   (interactive
    (list (completing-read "Select track: " '(elixir ruby))
@@ -23,8 +26,5 @@
       (let ((default-directory dir))
         (compile "exercism test"))
     (user-error "Cannot locate exercise root directory")))
-
-(defun exercism--exercise-root-dir ()
-  (locate-dominating-file default-directory ".exercism"))
 
 (provide 'exercism)
