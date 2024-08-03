@@ -27,4 +27,3 @@
 (require 'init-pass)
 (require 'init-search)
 (require 'init-network-tools)
-(require 'init-spell-checker)

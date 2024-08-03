@@ -30,4 +30,10 @@
   :custom
   (ws-butler-keep-whitespace-before-point nil))
 
+(use-package jinx
+  :ensure nil
+  :hook text-mode
+  :bind (([remap ispell-word] . jinx-correct)
+         ("<f12>" . jinx-mode)))
+
 (provide 'init-editing-utils)
