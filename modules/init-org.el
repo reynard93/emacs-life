@@ -8,7 +8,8 @@
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
    ("C-c C-." . +org/refile-to-current-file)
-   ("C-c C-'" . +org/refile-to-file)
+   ("C-c C-/" . +org/refile-to-file)
+   ("C-c M-t" . +org/mastodon-toot-subtree)
    ("M-g o" . consult-org-heading))
 
   :custom
