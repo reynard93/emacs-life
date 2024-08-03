@@ -22,8 +22,9 @@
 ;; Tools
 (require 'init-git)
 (require 'init-gpt)
+(require 'init-irc)
 (require 'init-mail)
 (require 'init-pass)
 (require 'init-search)
-(require 'init-social)
 (require 'init-spell-checker)
+(require 'init-network-tools)

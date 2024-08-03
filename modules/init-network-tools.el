@@ -9,4 +9,4 @@
   :ensure nil
   :load-path "site-lisp/")
 
-(provide 'init-social)
+(provide 'init-network-tools)

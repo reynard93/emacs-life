@@ -82,7 +82,7 @@
    ("i" . consult-imenu)
    ("I" . consult-imenu-multi)
    ("m" . consult-mark)
-   ("k" . consult-global-mark)
+   ("M" . consult-global-mark)
    ("o" . consult-outline)
    :map search-map
    ("a" . consult-org-agenda)
