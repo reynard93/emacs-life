@@ -5,10 +5,6 @@
   (mastodon-instance-url "https://hachyderm.io")
   (mastodon-active-user "goofansu"))
 
-(use-package exercism
-  :ensure nil
-  :load-path "site-lisp/")
-
 (use-package 0x0
   :pin melpa
   :bind (:map embark-region-map ("U" . 0x0-dwim)))

@@ -26,5 +26,5 @@
 (require 'init-mail)
 (require 'init-pass)
 (require 'init-search)
-(require 'init-spell-checker)
 (require 'init-network-tools)
+(require 'init-spell-checker)
