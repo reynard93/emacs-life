@@ -56,19 +56,34 @@
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
 (use-package popper
+  :init
+  (setq popper-reference-buffers
+        (append '(compilation-mode
+                  help-mode
+                  helpful-mode
+                  rspec-compilation-mode
+                  inf-ruby-mode)
+                '(("^\\*Warnings\\*$" . hide)
+                  ("\\*Async Shell Command\\*" . hide)
+                  "\\*Shell Command Output\\*")
+                '("\(summary\)$"
+                  "^\\*Azure\\*"
+                  "^\\*Groq\\*"
+                  "^\\*Kagi\\*"
+                  "^\\*OpenRouter\\*")))
+  :hook emacs-startup
   :bind
   (("C-`"   . popper-toggle)
    ("M-`"   . popper-cycle)
    ("C-M-`" . popper-toggle-type))
   :custom
-  (popper-group-function #'popper-group-by-project)
-  (popper-display-control nil)
-  (popper-reference-buffers
-   '(compilation-mode
-     rspec-compilation-mode
-     inf-ruby-mode))
+  (popper-group-function #'selected-frame)
+  (popper-display-control 'user))
+
+(use-package popper-echo
+  :ensure nil
+  :after popper
   :config
-  (popper-mode 1)
   (popper-echo-mode 1))
 
 (use-package shackle
