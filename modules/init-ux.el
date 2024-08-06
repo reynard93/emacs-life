@@ -1,6 +1,8 @@
 (use-package whitespace
   :ensure nil
-  :bind ("<f6>" . whitespace-mode))
+  :bind
+  (("<f6>" . whitespace-mode)
+   ("C-c z" . whitespace-cleanup)))
 
 (use-package display-line-numbers
   :ensure nil
