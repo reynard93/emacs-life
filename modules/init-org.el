@@ -74,7 +74,10 @@
       :empty-lines-after 1)
      ("j" "Journal" entry
       (file+olp+datetree "journal.org")
-      "* %U %?\n")))
+      "* %U %?\n")
+     ("a" "Anki" entry
+      (file "anki.org")
+      "* TODO %^{Front} :@anki:\n%^{Back}")))
 
   ;; Refile
   (org-outline-path-complete-in-steps nil)
