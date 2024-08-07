@@ -1,6 +1,6 @@
 (use-package mastodon
   :pin nongnu
-  :bind ("C-c t" . mastodon-toot)
+  :defer t
   :custom
   (mastodon-instance-url "https://hachyderm.io")
   (mastodon-active-user "goofansu"))
