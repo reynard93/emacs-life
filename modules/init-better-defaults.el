@@ -13,7 +13,8 @@
   (truncate-string-ellipsis "…")
 
   ;; File
-  (auto-save-default t)
+  (auto-save-interval 2400)
+  (auto-save-timeout 300)
   (create-lockfiles nil)
   (make-backup-files nil)
   (require-final-newline t)
