@@ -27,9 +27,9 @@
 
 (use-package browse-at-remote
   :pin melpa
-  :bind ("C-c g o" . browse-at-remote)
-  :custom
-  (browse-at-remote-add-line-number-if-no-region-selected nil))
+  :bind
+  (("C-c g o" . browse-at-remote)
+   ("C-c g y" . browse-at-remote-kill)))
 
 (use-package gh
   :ensure nil
