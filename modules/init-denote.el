@@ -1,19 +1,4 @@
 (use-package denote
-  :init
-  (setq denote-directory "~/src/notes/")
-  (with-eval-after-load 'org-capture
-    (add-to-list 'org-capture-templates
-                 '("f" "Fleeting note" plain
-                   (file denote-last-path)
-                   (function
-                    (lambda ()
-                      (let ((denote-directory (concat denote-directory "fleeting/")))
-                        (denote-org-capture-with-prompts))))
-                   :no-save t
-                   :immediate-finish nil
-                   :kill-buffer t
-                   :jump-to-captured t)))
-
   :bind
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
@@ -39,6 +24,7 @@
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
 
   :custom
+  (denote-directory "~/src/notes/")
   (denote-known-keywords '("emacs" "programming" "education"))
 
   :config
@@ -56,7 +42,7 @@
 (use-package citar
   :pin melpa
   :init
-  (setq org-cite-global-bibliography (list (expand-file-name "reference.bib" denote-directory)))
+  (setq org-cite-global-bibliography '("~/Zotero/zotero.bib"))
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
