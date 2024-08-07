@@ -22,7 +22,7 @@
 
   ;; Appearance
   (org-ellipsis "…")
-  (org-hide-emphasis-markers t)
+  (org-hide-emphasis-markers nil)
 
   ;; Editing
   (org-auto-align-tags nil)
