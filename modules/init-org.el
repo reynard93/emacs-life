@@ -14,7 +14,7 @@
 
   :custom
   (org-directory "~/src/org/")
-  (org-agenda-files (list org-directory))
+  (org-agenda-files '("tasks.org"))
   ;; General
   (org-use-sub-superscripts '{})
   (org-read-date-prefer-future 'time)
