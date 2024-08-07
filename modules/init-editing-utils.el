@@ -26,7 +26,7 @@
 
 (use-package ws-butler
   :pin melpa
-  :hook (prog-mode conf-mode)
+  :hook (prog-mode text-mode conf-mode)
   :custom
   (ws-butler-keep-whitespace-before-point nil))
 
