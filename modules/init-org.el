@@ -18,10 +18,26 @@
 
   ;; Capture
   (org-capture-templates
-   '(("t" "Task" entry
+   `(("t" "General task" entry
       (file "tasks.org")
       "* TODO %?"
       :prepend t)
+     ("s" "Scheduled task" entry
+      (file "tasks.org")
+      ,(concat "* TODO %^{Title} %^g\n"
+               "%^{How time sensitive it is|SCHEDULED|DEADLINE}: %^t\n")
+      :prepend t
+      :immediate-finish t)
+     ("c" "Clocked task" entry
+      (file "tasks.org")
+      ,(concat "* TODO %^{Title} %^g\n"
+               ":PROPERTIES:\n"
+               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
+               ":END:\n\n")
+      :prepend t
+      :clock-in t
+      :clock-keep t
+      :immediate-finish t)
      ("n" "Note" entry
       (file "notes.org")
       "* %?")
@@ -31,7 +47,7 @@
 
   ;; Todo
   (org-use-fast-todo-selection 'expert)
-  (org-todo-keywords '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE")))
+  (org-todo-keywords '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
 
   ;; Logging
   (org-log-into-drawer t)
