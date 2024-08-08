@@ -55,6 +55,11 @@
   :custom
   (aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l)))
 
+(use-package beframe
+  :if (display-graphic-p)
+  :hook emacs-startup
+  :bind-keymap ("C-c b" . beframe-prefix-map))
+
 (use-package popper
   :init
   (setq popper-reference-buffers
