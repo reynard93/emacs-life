@@ -1,5 +1,6 @@
 (use-package org
   :ensure nil
+
   :bind
   (("C-c a" . org-agenda)
    ("C-c c" . org-capture)
@@ -7,57 +8,47 @@
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
    ("M-g o" . consult-org-heading))
+
   :custom
   (org-directory "~/src/org/")
   (org-agenda-files '("tasks.org"))
 
-  ;; Appearance
+  ;; Display
   (org-ellipsis "…")
+  (org-use-sub-superscripts '{})
+
+  ;; Tagging
   (org-tags-column 0)
   (org-auto-align-tags nil)
 
-  ;; Capture
-  (org-capture-templates
-   `(("t" "General task" entry
-      (file "tasks.org")
-      "* TODO %?"
-      :prepend t)
-     ("s" "Scheduled task" entry
-      (file "tasks.org")
-      ,(concat "* TODO %^{Title} %^g\n"
-               "%^{How time sensitive it is|SCHEDULED|DEADLINE}: %^t\n")
-      :prepend t
-      :immediate-finish t)
-     ("c" "Clocked task" entry
-      (file "tasks.org")
-      ,(concat "* TODO %^{Title} %^g\n"
-               ":PROPERTIES:\n"
-               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
-               ":END:\n\n")
-      :prepend t
-      :clock-in t
-      :clock-keep t
-      :immediate-finish t)
-     ("n" "Note" entry
-      (file "notes.org")
-      "* %?")
-     ("j" "Journal" entry
-      (file+olp+datetree "journal.org")
-      "* %?")))
-
-  ;; Todo
-  (org-use-fast-todo-selection 'expert)
-  (org-todo-keywords '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
-
   ;; Logging
+  (org-log-done 'time)
   (org-log-into-drawer t)
-  (org-log-done t)
 
   ;; Code block
   (org-src-preserve-indentation t)
 
   ;; Export
-  (org-export-dispatch-use-expert-ui t))
+  (org-export-dispatch-use-expert-ui t)
+  (org-export-with-sub-superscripts '{})
+
+  ;; Todo
+  (org-use-fast-todo-selection 'expert)
+  (org-todo-keywords
+   '((sequence "TODO(t)" "WAIT(w@/!)" "|" "DONE(d!)" "CANCELED(c@)")))
+
+  ;; Capture
+  (org-capture-templates
+   '(("t" "Task" entry
+      (file "tasks.org")
+      "* TODO %?"
+      :prepend t)
+     ("n" "Note" entry
+      (file "notes.org")
+      "* %?")
+     ("j" "Journal" entry
+      (file+olp+datetree "journal.org")
+      "* %?"))))
 
 (use-package ox-hugo
   :pin melpa
