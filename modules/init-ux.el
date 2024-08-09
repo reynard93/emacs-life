@@ -62,4 +62,8 @@
   :hook (prog-mode text-mode conf-mode)
   :bind ("<f10>" . header-line-mode))
 
+(use-package which-func
+  :ensure nil
+  :bind ("<f11>" . which-function-mode))
+
 (provide 'init-ux)
