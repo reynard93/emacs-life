@@ -82,15 +82,17 @@
    ("i" . consult-imenu)
    ("I" . consult-imenu-multi)
    ("m" . consult-mark)
-   ("M" . consult-global-mark)
+   ("k" . consult-global-mark)
    ("o" . consult-outline)
    :map search-map
    ("a" . consult-org-agenda)
    ("l" . consult-line)
    ("L" . consult-line-multi)
    ("r" . consult-ripgrep)
-   ("s" . consult-register)
-   ("M-s" . consult-register)))
+   ("e" . consult-isearch-history)
+   :map minibuffer-local-map
+   ("M-s" . consult-history)
+   ("M-r" . consult-history)))
 
 (use-package consult-dir
   :pin melpa
