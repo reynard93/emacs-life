@@ -8,6 +8,10 @@
   (("C->" . mc/mark-next-like-this)
    ("C-<" . mc/mark-previous-like-this)))
 
+(use-package rainbow-delimiters
+  :pin nongnu
+  :hook prog-mode)
+
 (use-package smartparens
   :pin melpa
   :hook (prog-mode text-mode)
@@ -29,11 +33,5 @@
   :hook (prog-mode text-mode conf-mode)
   :custom
   (ws-butler-keep-whitespace-before-point nil))
-
-(use-package jinx
-  :ensure nil
-  :hook text-mode
-  :bind (([remap ispell-word] . jinx-correct)
-         ("<f12>" . jinx-mode)))
 
 (provide 'init-editing-utils)

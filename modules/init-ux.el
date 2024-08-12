@@ -42,20 +42,6 @@
   (olivetti-minimum-body-width 80)
   (olivetti-recall-visual-line-mode-entry-state t))
 
-(use-package pulsar
-  :config
-  (pulsar-global-mode 1))
-
-(use-package goggles
-  :pin melpa
-  :hook (prog-mode text-mode conf-mode)
-  :config
-  (setq-default goggles-pulse t))
-
-(use-package rainbow-delimiters
-  :pin nongnu
-  :hook prog-mode)
-
 (use-package header-line
   :ensure nil
   :load-path "site-lisp/"
@@ -65,5 +51,19 @@
 (use-package which-func
   :ensure nil
   :bind ("<f11>" . which-function-mode))
+
+(use-package lin
+  :config
+  (lin-global-mode 1))
+
+(use-package pulsar
+  :config
+  (pulsar-global-mode 1))
+
+(use-package goggles
+  :pin melpa
+  :hook (prog-mode text-mode conf-mode)
+  :config
+  (setq-default goggles-pulse t))
 
 (provide 'init-ux)

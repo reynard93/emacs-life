@@ -5,25 +5,20 @@
 (require 'init-emacs)
 (require 'init-macos)
 
-;; Agenda/Note-taking
-(require 'init-org)
-(require 'init-denote)
-
-;; Programming
-(require 'init-tree-sitter)
-(require 'init-eglot)
-(require 'init-langs)
-
-;; Reading
-(require 'init-elfeed)
-(require 'init-epub)
-(require 'init-pdf)
-
-;; Tools
+;; Features
+(require 'init-dict)
 (require 'init-git)
 (require 'init-gpt)
 (require 'init-irc)
 (require 'init-mail)
+(require 'init-org)
 (require 'init-pass)
-(require 'init-search)
-(require 'init-service)
+
+;; Contexts
+(require 'init-programming)
+(require 'init-reading)
+(require 'init-writing)
+
+;; Services
+(require 'init-github)
+(require 'init-mastodon)

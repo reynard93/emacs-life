@@ -64,6 +64,7 @@
 
 (use-package org-download
   :pin melpa
+  :after org
   :bind (:map org-mode-map ("C-c M-y" . org-download-yank))
   :custom
   (org-download-image-dir "./attachments")
