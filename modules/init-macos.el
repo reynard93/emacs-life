@@ -18,6 +18,6 @@
   :ensure nil
   :load-path "site-lisp/"
   :if (eq system-type 'darwin)
-  :bind-keymap ("C-c A" . alfred-browser-keymap))
+  :bind-keymap ("C-c i b" . alfred-browser-keymap))
 
 (provide 'init-macos)
