@@ -19,7 +19,7 @@
   (interactive)
   (alfred-workflow-run-trigger "link-title" alfred-workflow-browser))
 
-(defvar-keymap alfred-browser-keymap
+(defvar-keymap alfred-browser-prefix-map
   "m" #'alfred-browser-link-in-markdown-format
   "o" #'alfred-browser-link-in-org-format
   "t" #'alfred-browser-link-title
