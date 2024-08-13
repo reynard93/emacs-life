@@ -13,6 +13,7 @@
 (require 'init-mail)
 (require 'init-org)
 (require 'init-pass)
+(require 'init-spell-checker)
 
 ;; Contexts
 (require 'init-programming)
