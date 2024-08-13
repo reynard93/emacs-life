@@ -85,7 +85,6 @@
    ("k" . consult-global-mark)
    ("o" . consult-outline)
    :map search-map
-   ("a" . consult-org-agenda)
    ("l" . consult-line)
    ("L" . consult-line-multi)
    ("r" . consult-ripgrep)

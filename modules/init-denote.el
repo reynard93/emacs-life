@@ -21,7 +21,6 @@
    ("C-c n o" . denote-sort-dired) ; "order" mnemonic
    ("C-c n j" . denote-journal-extras-new-entry)
    ("C-c n J" . denote-journal-extras-new-or-existing-entry)
-   ("C-c x"   . (lambda () (interactive) (org-capture nil "f")))
    :map search-map
    ("n" . denote-open-or-create)
    :map text-mode-map
