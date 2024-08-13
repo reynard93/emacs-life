@@ -11,7 +11,7 @@
 
   :custom
   (org-directory "~/src/org/")
-  (org-agenda-files '("tasks.org"))
+  (org-agenda-files (list org-directory))
 
   ;; Display
   (org-ellipsis "…")
@@ -39,16 +39,12 @@
 
   ;; Capture
   (org-capture-templates
-   '(("t" "Task" entry
-      (file "tasks.org")
-      "* TODO %?"
-      :prepend t)
-     ("n" "Note" entry
-      (file "notes.org")
-      "* %?")
-     ("j" "Journal" entry
+   '(("j" "Journal" entry
       (file+olp+datetree "journal.org")
-      "* %?"))))
+      "* TODO %^{Title} %^g"
+      :clock-in t
+      :clock-keep t
+      :immediate-finish t))))
 
 (use-package ox-hugo
   :pin melpa
