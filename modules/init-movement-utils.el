@@ -145,7 +145,7 @@
 
 ;; Buffer
 (use-package avy
-  :bind (:map goto-map ("s" . avy-goto-char-2)))
+  :bind (:map goto-map ("c" . avy-goto-char-2)))
 
 (use-package move-text
   :pin melpa

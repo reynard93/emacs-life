@@ -13,7 +13,7 @@
            :nickserv-password (lambda (&rest _) (auth-source-pass-get 'secret "irc.libera.chat")))))
 
   :bind ( :map goto-map
-          ("k" . +circe/jump-to-channel)
+          ("K" . +circe/jump-to-channel)
           :map circe-channel-mode-map
           ("C-c C-p" . +circe/pull-chat-history))
 
