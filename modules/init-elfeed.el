@@ -66,8 +66,6 @@
 (use-package elfeed-org
   :pin melpa
   :after elfeed
-  :custom
-  (rmh-elfeed-org-files (list "elfeed.org"))
   :config
   (elfeed-org))
 
