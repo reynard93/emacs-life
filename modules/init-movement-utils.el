@@ -62,7 +62,9 @@
                   help-mode
                   helpful-mode
                   rspec-compilation-mode
-                  inf-ruby-mode)
+                  inf-ruby-mode
+                  dictionary-mode
+                  osx-dictionary-mode)
                 '(("^\\*Warnings\\*$" . hide)
                   ("\\*Async Shell Command\\*" . hide)
                   "\\*Shell Command Output\\*")
@@ -92,7 +94,6 @@
   (shackle-inhibit-window-quit-on-same-windows t)
   (shackle-rules
    `((calendar-mode :align below)
-     (osx-dictionary-mode :align below :size 0.3)
      ;; Org capture windows
      ("*Org Select*" :align below)
      ("*Capture*" :align below)
