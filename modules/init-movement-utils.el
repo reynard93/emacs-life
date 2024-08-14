@@ -64,7 +64,8 @@
                   rspec-compilation-mode
                   inf-ruby-mode
                   dictionary-mode
-                  osx-dictionary-mode)
+                  osx-dictionary-mode
+                  devdocs-mode)
                 '(("^\\*Warnings\\*$" . hide)
                   ("\\*Async Shell Command\\*" . hide)
                   "\\*Shell Command Output\\*")
