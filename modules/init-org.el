@@ -42,7 +42,7 @@
   (org-capture-templates
    '(("j" "Journal" entry
       (file+olp+datetree "journal.org")
-      "* TODO %U %^{Title} %^g"
+      "* TODO %^{Title} %^g"
       :clock-in t
       :clock-keep t
       :immediate-finish t))))
