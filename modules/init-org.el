@@ -5,6 +5,7 @@
   (("C-c a" . org-agenda)
    ("C-c c" . org-capture)
    ("C-c l" . org-store-link)
+   ("C-c o" . org-clock-goto)
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
    ("M-g o" . consult-org-heading))
@@ -41,7 +42,7 @@
   (org-capture-templates
    '(("j" "Journal" entry
       (file+olp+datetree "journal.org")
-      "* TODO %^{Title} %^g"
+      "* TODO %U %^{Title} %^g"
       :clock-in t
       :clock-keep t
       :immediate-finish t))))
