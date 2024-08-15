@@ -40,9 +40,19 @@
 
   ;; Capture
   (org-capture-templates
-   '(("j" "Journal" entry
+   `(("j" "Journal" entry
       (file+olp+datetree "journal.org")
-      "* TODO %^{Title} %^g"
+      ,(concat "* %^{Title} %^g\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:")
+      :immediate-finish t)
+     ("c" "Clocked task" entry
+      (file+olp+datetree "journal.org")
+      ,(concat "* TODO %^{Title} %^g\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:")
       :clock-in t
       :clock-keep t
       :immediate-finish t))))
