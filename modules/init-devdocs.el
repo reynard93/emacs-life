@@ -1,10 +1,8 @@
 (use-package devdocs
   :hook
-  (ruby-ts-mode   . (lambda () (setq-local devdocs-current-docs '("ruby~3.3" "rails~7.0"))))
+  (ruby-ts-mode . (lambda () (setq-local devdocs-current-docs '("ruby~3.3" "rails~7.0"))))
   (elixir-ts-mode . (lambda () (setq-local devdocs-current-docs '("elixir~1.17" "phoenix"))))
-  (web-mode       . (lambda () (setq-local devdocs-current-docs '("html" "css" "javascript"))))
-  (haml-mode      . (lambda () (setq-local devdocs-current-docs '("html" "css" "javascript"))))
-  (coffee-mode    . (lambda () (setq-local devdocs-current-docs '("coffeescript~2" "javascript"))))
+  ((web-mode haml-mode heex-ts-mode) . (lambda () (setq-local devdocs-current-docs '("html" "css" "javascript"))))
   :bind (:map search-map ("k" . devdocs-lookup))
   :config
   (defun +devdocs/install ()
