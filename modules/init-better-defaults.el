@@ -44,6 +44,7 @@
 
 (use-package emacs
   :ensure nil
+  :bind-keymap ("M-r" . ctl-x-r-map)
   :bind
   (("C-c y" . +buffer/yank-path)
    ("C-c Y" . +buffer/yank-path-relative-to-project)
