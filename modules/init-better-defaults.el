@@ -37,6 +37,9 @@
   ;; Window
   (window-combination-resize t)
 
+  ;; Xref
+  (xref-search-program 'ripgrep)
+
   :config
   (save-place-mode 1)
   (blink-cursor-mode -1)
