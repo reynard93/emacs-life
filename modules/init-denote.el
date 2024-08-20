@@ -1,4 +1,5 @@
 (use-package denote
+  :vc (denote :url "https://github.com/protesilaos/denote.git")
   :bind
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
