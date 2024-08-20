@@ -5,7 +5,6 @@
   (("C-c a" . org-agenda)
    ("C-c l" . org-store-link)
    ("C-c x" . org-capture)
-   ("C-c c c" . org-capture-fleeting-note)
    ("C-c c o" . org-clock-out)
    ("C-c c i" . org-clock-in-last)
    ("C-c c g" . org-clock-goto)
@@ -58,25 +57,7 @@
                ":END:")
       :clock-in t
       :clock-keep t
-      :immediate-finish t)))
-
-  :config
-  (with-eval-after-load 'denote
-    (add-to-list 'org-capture-templates
-                 '("n" "Fleeting note" plain
-                   (file denote-last-path)
-                   (function
-                    (lambda ()
-                      (let ((denote-directory (concat denote-directory "fleeting/")))
-                        (denote-org-capture-with-prompts :title :keywords))))
-                   :no-save t
-                   :immediate-finish nil
-                   :kill-buffer t
-                   :jump-to-captured t)))
-
-  (defun org-capture-fleeting-note ()
-    (interactive)
-    (org-capture nil "n")))
+      :immediate-finish t))))
 
 (use-package ox-hugo
   :pin melpa

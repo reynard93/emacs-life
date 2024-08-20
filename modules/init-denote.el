@@ -1,5 +1,15 @@
 (use-package denote
   :vc (denote :url "https://github.com/protesilaos/denote.git")
+  :init
+  (with-eval-after-load 'org-capture
+    (add-to-list 'org-capture-templates
+                 '("n" "New note (with Denote)" plain
+                   (file denote-last-path)
+                   #'denote-org-capture
+                   :no-save t
+                   :immediate-finish nil
+                   :kill-buffer t
+                   :jump-to-captured t)))
   :bind
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
@@ -9,6 +19,7 @@
    ("C-c n o" . denote-sort-dired) ; "order" mnemonic
    ("C-c n j" . denote-journal-extras-new-entry)
    ("C-c n J" . denote-journal-extras-new-or-existing-entry)
+   ("C-c c c" . (lambda () (interactive) (org-capture nil "n")))
    :map search-map
    ("n" . denote-open-or-create)
    :map text-mode-map
