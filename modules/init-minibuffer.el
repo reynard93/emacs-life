@@ -84,6 +84,7 @@
    ("m" . consult-mark)
    ("k" . consult-global-mark)
    ("o" . consult-outline)
+   ("r" . consult-register)
    :map search-map
    ("l" . consult-line)
    ("L" . consult-line-multi)
