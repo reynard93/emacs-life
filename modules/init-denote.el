@@ -42,7 +42,7 @@
   (denote-rename-buffer-mode 1))
 
 (use-package consult-denote
-  :bind (:map search-map ("/" . consult-denote-grep))
+  :bind (:map search-map ("M-s" . consult-denote-grep))
   :custom
   (consult-denote-grep-command #'consult-ripgrep)
   :config
