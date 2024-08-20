@@ -1,6 +1,6 @@
 (use-package org
   :ensure nil
-
+  :hook (before-save . org-update-all-dblocks)
   :bind
   (("C-c a" . org-agenda)
    ("C-c l" . org-store-link)
