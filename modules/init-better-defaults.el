@@ -180,4 +180,9 @@ The path is relative to `project-current'."
    ("C-^" . crux-switch-to-previous-buffer)
    ("s-n" . crux-create-scratch-buffer)))
 
+(use-package xclip
+  :unless (display-graphic-p)
+  :config
+  (xclip-mode 1))
+
 (provide 'init-better-defaults)
