@@ -4,10 +4,10 @@
   :bind
   (("C-c a" . org-agenda)
    ("C-c l" . org-store-link)
-   ("C-c x" . org-capture)
-   ("C-c c o" . org-clock-out)
-   ("C-c c i" . org-clock-in-last)
-   ("C-c c g" . org-clock-goto)
+   ("C-c c" . org-capture)
+   ("C-c o g" . org-clock-goto)
+   ("C-c o i" . org-clock-in-last)
+   ("C-c o o" . org-clock-out)
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
    ("M-g o" . consult-org-heading))
