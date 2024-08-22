@@ -57,7 +57,15 @@
                ":END:")
       :clock-in t
       :clock-keep t
-      :immediate-finish t))))
+      :immediate-finish t)))
+
+  :config
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((emacs-lisp . t)
+     (racket . t)
+     (shell . t)
+     (ruby . t))))
 
 (use-package ox-hugo
   :pin melpa
