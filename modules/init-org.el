@@ -20,6 +20,10 @@
   (org-ellipsis "…")
   (org-use-sub-superscripts '{})
 
+  ;; Movement
+  (org-special-ctrl-a/e t)
+  (org-special-ctrl-k t)
+
   ;; Tagging
   (org-tags-column 0)
   (org-auto-align-tags nil)
