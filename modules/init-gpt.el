@@ -34,8 +34,6 @@
     :models '("anthropic/claude-3.5-sonnet"
               "anthropic/claude-3-haiku"
               "anthropic/claude-3-opus"
-              "google/gemini-flash-1.5"
-              "google/gemini-pro-1.5"
               "openai/gpt-4o-mini"
               "openai/gpt-4o"))
 
@@ -51,6 +49,12 @@
               "llama3-70b-8192"
               "llama3-8b-8192"
               "mixtral-8x7b-32768"))
+
+  (gptel-make-gemini "Google"
+    :stream t
+    :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
+    :models '("gemini-1.5-pro"
+              "gemini-1.5-flash"))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
