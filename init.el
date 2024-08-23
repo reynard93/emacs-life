@@ -6,6 +6,7 @@
 (require 'init-macos)
 
 ;; Features
+(require 'init-browser)
 (require 'init-dict)
 (require 'init-git)
 (require 'init-gpt)
