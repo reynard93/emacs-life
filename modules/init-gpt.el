@@ -56,6 +56,10 @@
     :models '("gemini-1.5-pro"
               "gemini-1.5-flash"))
 
+  (gptel-make-ollama "Ollama"
+    :stream t
+    :models '("llama3:latest"))
+
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
       :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
