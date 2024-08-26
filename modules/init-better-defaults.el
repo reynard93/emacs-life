@@ -142,14 +142,6 @@ The path is relative to `project-current'."
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
-(use-package compile
-  :ensure nil
-  :hook (compilation-filter . compilation-filter-colorize)
-  :config
-  (defun compilation-filter-colorize ()
-    (let ((inhibit-read-only t))
-      (ansi-color-apply-on-region compilation-filter-start (point-max)))))
-
 (use-package undo-fu-session
   :pin melpa
   :init

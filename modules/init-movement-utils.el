@@ -62,6 +62,7 @@
                   help-mode
                   helpful-mode
                   rspec-compilation-mode
+                  exunit-compilation-mode
                   inf-ruby-mode
                   dictionary-mode
                   osx-dictionary-mode
