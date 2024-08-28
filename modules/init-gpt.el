@@ -14,7 +14,6 @@
    ("?" . +gptel/kagi-summarize-url))
 
   :custom
-  (gptel-max-tokens 1000)
   (gptel-default-mode 'org-mode)
   (gptel-model "gpt-4o")
 
