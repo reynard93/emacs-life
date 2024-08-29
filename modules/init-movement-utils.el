@@ -24,7 +24,6 @@
     ("R" . rotate-frame-anticlockwise)))
 
 (use-package ace-window
-  :pin melpa
   :init
   ;; Open any buffer by splitting any window
   ;; https://karthinks.com/software/fifteen-ways-to-use-embark/#open-any-buffer-by-splitting-any-window
