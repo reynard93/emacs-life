@@ -21,11 +21,11 @@
   (js-indent-level 2))
 
 (use-package haml-mode
-  :pin melpa
+  :pin nongnu
   :defer t)
 
 (use-package coffee-mode
-  :pin melpa
+  :pin nongnu
   :defer t
   :custom
   (coffee-tab-width 2))

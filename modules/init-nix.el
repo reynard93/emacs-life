@@ -1,5 +1,5 @@
 (use-package nix-mode
-  :pin melpa
+  :pin nongnu
   :hook
   (nix-mode . +nix--formatter-mode-line-display)
   (before-save . nix-format-before-save)

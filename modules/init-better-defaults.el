@@ -143,7 +143,7 @@ The path is relative to `project-current'."
   (ediff-split-window-function #'split-window-horizontally))
 
 (use-package undo-fu-session
-  :pin melpa
+  :pin nongnu
   :init
   (setq undo-limit (* 64 1024 1024)
         undo-strong-limit (* 96 1024 1024)
@@ -161,7 +161,7 @@ The path is relative to `project-current'."
    ("C-h x" . helpful-command)))
 
 (use-package crux
-  :pin melpa
+  :pin nongnu
   :bind
   (([remap move-beginning-of-line] . crux-move-beginning-of-line)
    ([remap kill-whole-line] . crux-kill-whole-line)

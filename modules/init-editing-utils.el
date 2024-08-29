@@ -13,7 +13,7 @@
   :hook prog-mode)
 
 (use-package smartparens
-  :pin melpa
+  :pin nongnu
   :hook (prog-mode text-mode)
   :config
   (require 'smartparens-config))
@@ -29,7 +29,7 @@
   (wgrep-change-readonly-file t))
 
 (use-package ws-butler
-  :pin melpa
+  :pin nongnu
   :hook (prog-mode text-mode conf-mode)
   :custom
   (ws-butler-keep-whitespace-before-point nil))
