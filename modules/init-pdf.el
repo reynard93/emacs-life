@@ -1,5 +1,5 @@
 (use-package pdf-tools
-  :pin melpa
+  :pin nongnu
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-loader-install :no-query))
