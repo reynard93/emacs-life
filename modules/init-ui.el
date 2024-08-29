@@ -1,22 +1,31 @@
 (use-package modus-themes
-  :demand t
-  :bind ("<f5>" . modus-themes-toggle)
   :custom
   (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
   (modus-themes-mixed-fonts t)
-  (modus-themes-variable-pitch-ui t)
-  :config
-  (if (display-graphic-p)
-      (modus-themes-load-theme 'modus-operandi)
-    (modus-themes-load-theme 'modus-vivendi)))
+  (modus-themes-variable-pitch-ui t))
 
 (use-package ef-themes
-  :bind ("C-<f5>" . ef-themes-toggle)
   :custom
   (ef-themes-mixed-fonts t)
   (ef-themes-variable-pitch-ui t)
   (ef-themes-to-toggle '(ef-summer ef-winter)))
+
+(use-package theme-buffet
+  :after (modus-themes ef-themes)
+  :custom
+  (theme-buffet-menu 'end-user)
+  (theme-buffet-end-user
+   '( :night (modus-vivendi ef-owl)
+      :morning (modus-operandi ef-eagle)
+      :afternoon (modus-operandi-tinted ef-summer)
+      :evening (modus-vivendi-tinted ef-winter)))
+  :config
+  (if (display-graphic-p)
+      (progn
+        (theme-buffet-a-la-carte)
+        (theme-buffet-timer-hours 2))
+    (load-theme 'modus-vivendi :no-confirm)))
 
 (use-package fontaine
   :if (display-graphic-p)
