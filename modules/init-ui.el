@@ -1,6 +1,4 @@
 (use-package modus-themes
-  :demand t
-  :bind ("<f5>" . modus-themes-toggle)
   :custom
   (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
@@ -12,11 +10,19 @@
     (modus-themes-load-theme 'modus-vivendi)))
 
 (use-package ef-themes
-  :bind ("C-<f5>" . ef-themes-toggle)
   :custom
   (ef-themes-mixed-fonts t)
-  (ef-themes-variable-pitch-ui t)
-  (ef-themes-to-toggle '(ef-summer ef-winter)))
+  (ef-themes-variable-pitch-ui t))
+
+(use-package theme-buffet
+  :after (modus-themes ef-themes)
+  :bind
+  (("<f5>" . (lambda () (interactive) (theme-buffet-a-la-carte)))
+   ("C-<f5>" . theme-buffet-a-la-carte))
+  :custom
+  (theme-buffet-menu 'modus-ef)
+  :config
+  (theme-buffet-timer-hours 1))
 
 (use-package fontaine
   :if (display-graphic-p)
