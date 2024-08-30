@@ -39,8 +39,9 @@
 
 (defun gh--pr-list ()
   (if current-prefix-arg
-      (let* ((query (completing-read "Select query: " gh--pr-search-queries))
-             (command (format "%s --search \"%s\"" gh--pr-list-command query)))
+      (let* ((query (completing-read-multiple "Select query: " gh--pr-search-queries))
+             (query-string (string-join query " "))
+             (command (format "%s --search \"%s\"" gh--pr-list-command query-string)))
         (gh--pr-list-request command))
     (gh--pr-list-request gh--pr-list-command)))
 
