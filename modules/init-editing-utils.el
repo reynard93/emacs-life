@@ -13,7 +13,7 @@
   :hook prog-mode)
 
 (use-package smartparens
-  :pin nongnu
+  :pin melpa
   :hook (prog-mode text-mode)
   :config
   (require 'smartparens-config))
