@@ -22,7 +22,7 @@
 (use-package rspec-mode
   :pin melpa
   :bind
-  ( :map rspec-mode-map
+  ( :map ruby-ts-mode-map
     ("C-c C-t a" . rspec-verify-all)
     ("C-c C-t s" . rspec-verify-single)
     ("C-c C-t v" . rspec-verify)
