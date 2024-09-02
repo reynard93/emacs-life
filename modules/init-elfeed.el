@@ -48,10 +48,11 @@
 
   ;; Org export uses Elfeed entry's original link
   ;; https://takeonrules.com/2024/08/11/exporting-org-mode-elfeed-links/
-  (org-link-set-parameters "elfeed"
-                           :follow #'elfeed-link-open
-                           :store #'elfeed-link-store-link
-                           :export #'elfeed-link-export-link)
+  (with-eval-after-load 'org
+    (org-link-set-parameters "elfeed"
+                             :follow #'elfeed-link-open
+                             :store #'elfeed-link-store-link
+                             :export #'elfeed-link-export-link))
 
   (defun elfeed-link-export-link (link desc format _protocol)
     "Export `org-mode' `elfeed' LINK with DESC for FORMAT."
