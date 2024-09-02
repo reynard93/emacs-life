@@ -6,7 +6,6 @@
    ("=" . +elfeed/summarize)
    ("B" . +elfeed/eww)
    ("D" . +elfeed/delete)
-   ("S" . +elfeed/set-filter)
    :map elfeed-show-mode-map
    ("=" . +elfeed/summarize)
    ("B" . +elfeed/eww)
@@ -46,19 +45,6 @@
       (pcase major-mode
         ('elfeed-search-mode (elfeed-search-browse-url))
         ('elfeed-show-mode (elfeed-show-visit)))))
-
-  (defun +elfeed/set-filter ()
-    (interactive)
-    (let ((categories
-           '(("unread" . "@6-months-ago +inbox +unread")
-             ("news" . "@6-months-ago +inbox +unread +news")
-             ("engineering" . "@6-months-ago +inbox +unread +engineering")
-             ("people" . "@6-months-ago +inbox +unread +people")
-             ("emacs" . "@6-months-ago +inbox +unread +emacs"))))
-      (if-let* ((category (completing-read "Select category: " categories))
-                (filter (cdr (assoc category categories))))
-          (elfeed-search-set-filter filter)
-        (elfeed-search-set-filter category))))
 
   ;; Org export uses Elfeed entry's original link
   ;; https://takeonrules.com/2024/08/11/exporting-org-mode-elfeed-links/
