@@ -1,28 +1,10 @@
 * root :elfeed:
 
-** News :news:
-*** [[https://sachachua.com/blog/category/emacs-news/feed][Emacs]] :emacs:
-*** [[https://www.ruby-lang.org/en/feeds/news.rss][Ruby]] :ruby:
-*** [[https://elixir-lang.org/atom.xml][Elixir]] :elixir:
-*** [[https://www.erlang.org/blog.xml][Erlang]] :erlang:
-
-** Engineering :engineering:
-*** [[https://dev.37signals.com/feed/posts.xml][37signals]] :rails:
-*** [[https://dashbit.co/feed][Dashbit]] :elixir:
-*** [[https://railsatscale.com/feed.xml][Rails at Scale]] :rails:
-
-** People :people:
-*** [[https://blog.cloud-mes.com/atom.xml][Eric Guo]] :friend:
-*** [[https://tonyhan.dev/feed][Tony Han]] :friend:
-*** [[https://yiming.dev/rss.xml][Yiming Chen]] :friend:
-*** [[https://world.hey.com/jason/feed.atom][Jason Fried]]
-*** [[https://www.feltpresence.com/rss/][Ryan Singer]]
-*** [[https://world.hey.com/dhh/feed.atom][David Heinemeier Hansson]]
-*** [[https://world.hey.com/jorge/feed.atom][Jorge Manrubia]]
-*** [[https://protesilaos.com/codelog.xml][Protesilaos Stavrou]] :emacs:
-*** [[https://karthinks.com/tags/emacs/index.xml][Karthik Chikmagalur]] :emacs:
-*** [[https://sive.rs/en.atom][Derek Sivers]]
-*** [[https://irreal.org/blog/?feed=rss2][Irreal]] :emacs:
-*** [[https://jvns.ca/atom.xml][Julia Evans]]
-*** [[https://drewdevault.com/blog/index.xml][Drew DeVault]]
-*** [[https://emersion.fr/blog/atom.xml][Simon Ser]]
+** [[https://sachachua.com/blog/category/emacs-news/feed][Emacs]] :emacs:
+** [[https://www.ruby-lang.org/en/feeds/news.rss][Ruby]] :ruby:
+** [[https://elixir-lang.org/atom.xml][Elixir]] :elixir:
+** [[https://www.erlang.org/blog.xml][Erlang]] :erlang:
+** [[https://dev.37signals.com/feed/posts.xml][37signals]] :rails:
+** [[https://railsatscale.com/feed.xml][Rails at Scale]] :rails:
+** [[https://dashbit.co/feed][Dashbit]] :elixir:
+** [[https://fly.io/phoenix-files/feed.xml][Fly.io]] :elixir:
