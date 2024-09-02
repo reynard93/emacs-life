@@ -20,8 +20,6 @@
 
 (use-package exunit
   :pin melpa
-  :hook elixir-ts-mode
-  :custom
-  (exunit-key-command-prefix (kbd "C-c C-t")))
+  :hook elixir-ts-mode)
 
 (provide 'init-elixir)

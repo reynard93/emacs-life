@@ -7,7 +7,10 @@
   :hook (ruby-ts-mode . inf-ruby-minor-mode)
   :bind (:map inf-ruby-minor-mode-map ("C-c C-s" . inf-ruby-console-auto))
   :custom
-  (inf-ruby-console-environment "development"))
+  (inf-ruby-console-environment "development")
+  :config
+  ;; Reserve "C-c C-r" for `rubocop-mode-map'.
+  (unbind-key "C-c C-r" inf-ruby-minor-mode-map))
 
 (use-package bundler
   :pin melpa
@@ -21,14 +24,10 @@
 
 (use-package rspec-mode
   :pin melpa
-  :bind
-  ( :map ruby-ts-mode-map
-    ("C-c C-t a" . rspec-verify-all)
-    ("C-c C-t s" . rspec-verify-single)
-    ("C-c C-t v" . rspec-verify)
-    ("C-c C-t r" . rspec-rerun)
-    ("C-c C-t l" . rspec-run-last-failed)
-    ("C-c C-t e" . rspec-toggle-example-pendingness)
-    ("C-c C-t t" . rspec-toggle-spec-and-target)))
+  :hook ruby-ts-mode)
+
+(use-package rubocop
+  :pin nongnu
+  :hook ruby-ts-mode)
 
 (provide 'init-ruby)
