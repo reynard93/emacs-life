@@ -67,7 +67,6 @@
                   osx-dictionary-mode
                   devdocs-mode)
                 '("^\\*Messages\\*$"
-                  ("^\\*Warnings\\*$" . hide)
                   ("^\\*Async Shell Command\\*$" . hide)
                   "^\\*Shell Command Output\\*$")
                 '("\(summary\)$"
