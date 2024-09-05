@@ -1,5 +1,4 @@
 (use-package denote
-  :vc (denote :url "https://github.com/protesilaos/denote.git")
   :init
   (with-eval-after-load 'org-capture
     (add-to-list 'org-capture-templates
