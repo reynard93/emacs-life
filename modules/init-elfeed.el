@@ -1,5 +1,29 @@
 (use-package elfeed
   :pin melpa
+  :init
+  (setq elfeed-feeds
+        '("https://sive.rs/en.atom"
+          "https://jvns.ca/atom.xml"
+          "https://world.hey.com/dhh/feed.atom"
+          "https://world.hey.com/jorge/feed.atom"
+          "https://world.hey.com/jason/feed.atom"
+          "https://www.feltpresence.com/rss/"
+          ("https://sachachua.com/blog/category/emacs-news/feed" emacs weekly)
+          ("https://www.ruby-lang.org/en/feeds/news.rss" ruby)
+          ("https://railsatscale.com/feed.xml" rails)
+          ("https://world.hey.com/this.week.in.rails/feed.atom" rails)
+          ("https://elixir-lang.org/atom.xml" elixir)
+          ("https://www.erlang.org/blog.xml" erlang)
+          ("https://dashbit.co/feed" elixir)
+          ("https://elixirstatus.com/rss" elixir news)
+          ("https://fly.io/phoenix-files/feed.xml" elixir)
+          ("https://dev.37signals.com/feed/posts.xml" rails)
+          ("https://protesilaos.com/codelog.xml" emacs)
+          ("https://karthinks.com/tags/emacs/index.xml" emacs)
+          ("https://irreal.org/blog/?feed=rss2" emacs)
+          ("https://andrealeopardi.com/feed.xml" elixir)
+          ("https://underjord.io/feed.xml" elixir)))
+
   :bind
   (("C-c e" . elfeed)
    :map elfeed-search-mode-map
@@ -73,32 +97,5 @@
               (_ (format "%s (%s)" desc url)))
           (format "%s (%s)" desc url))
       (format "%s (%s)" desc link))))
-
-(use-package elfeed-org
-  :pin melpa
-  :after elfeed
-  :config
-  (elfeed-org))
-
-(use-package elfeed-tube
-  :pin melpa
-  :after elfeed
-  :bind
-  ( :map elfeed-show-mode-map
-    ([remap save-buffer] . elfeed-tube-save)
-    ("F" . elfeed-tube-fetch)
-    :map elfeed-search-mode-map
-    ([remap save-buffer] . elfeed-tube-save)
-    ("F" . elfeed-tube-fetch))
-  :config
-  (elfeed-tube-setup))
-
-(use-package elfeed-tube-mpv
-  :pin melpa
-  :after elfeed
-  :bind
-  ( :map elfeed-show-mode-map
-    ("C-c C-f" . elfeed-tube-mpv-follow-mode)
-    ("C-c C-w" . elfeed-tube-mpv-where)))
 
 (provide 'init-elfeed)
