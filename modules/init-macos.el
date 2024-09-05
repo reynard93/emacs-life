@@ -12,6 +12,7 @@
 (use-package macos
   :ensure nil
   :load-path "site-lisp/"
-  :if (eq system-type 'darwin))
+  :if (eq system-type 'darwin)
+  :bind ("s-*" . vscode-goto-file-at-point))
 
 (provide 'init-macos)
