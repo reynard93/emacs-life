@@ -19,7 +19,9 @@
   :pin nongnu
   :if (memq window-system '(mac ns x))
   :config
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (when (file-directory-p "/opt/homebrew/bin")
+    (setenv "PATH" (concat (getenv "PATH") ":/opt/homebrew/bin"))))
 
 ;; Enabling `envrc-global-mode'
 (use-package envrc
