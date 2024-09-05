@@ -62,7 +62,7 @@ file path, otherwise, get a full file path with
 `abbreviate-file-name'."
     (interactive)
     (if-let* ((filename (if buffer
-                            (buffer-filename buffer)
+                            (buffer-file-name buffer)
                           (buffer-file-name)))
               (path (if dir
                         (file-relative-name filename dir)
