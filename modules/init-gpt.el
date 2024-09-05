@@ -34,7 +34,10 @@
               "anthropic/claude-3-haiku"
               "anthropic/claude-3-opus"
               "openai/gpt-4o-mini"
-              "openai/gpt-4o"))
+              "openai/gpt-4o"
+              "google/gemini-flash-1.5"
+              "google/gemini-pro-1.5"
+              "deepseek/deepseek-chat"))
 
   (gptel-make-openai "Groq"
     :host "api.groq.com"
@@ -48,12 +51,6 @@
               "llama3-70b-8192"
               "llama3-8b-8192"
               "mixtral-8x7b-32768"))
-
-  (gptel-make-gemini "Google"
-    :stream t
-    :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
-    :models '("gemini-1.5-pro"
-              "gemini-1.5-flash"))
 
   (gptel-make-ollama "Ollama"
     :stream t
