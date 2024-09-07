@@ -1,18 +1,28 @@
-(when (eq system-type 'darwin)
-  (bind-key "s-o" #'find-file)          ; File -> Open
-  (bind-key "s-s" #'save-buffer)        ; File -> Save
-  (bind-key "s-S" #'write-file)         ; File -> Save As
-  (bind-key "s-a" #'mark-whole-buffer)  ; File -> Select All
-  (bind-key "s-c" #'kill-ring-save)     ; Edit -> Copy
-  (bind-key "s-v" #'yank)               ; Edit -> Paste
-  (bind-key "s-x" #'kill-region)        ; Edit -> Cut
-  (bind-key "s-z" #'undo)               ; Edit -> Undo
-  (bind-key "s-Z" #'undo-redo))         ; Edit -> Redo
-
 (use-package macos
   :ensure nil
   :load-path "site-lisp/"
   :if (eq system-type 'darwin)
-  :bind ("s-*" . vscode-goto-file-at-point))
+  :demand t
+  :bind
+  (("s-o" . find-file)
+   ("s-s" . save-buffer)
+   ("s-S" . write-file)
+   ("s-a" . mark-whole-buffer)
+   ("s-c" . kill-ring-save)
+   ("s-v" . yank)
+   ("s-x" . kill-region)
+   ("s-z" . undo)
+   ("s-Z" . undo-redo)))
+
+(use-package exec-path-from-shell
+  :pin nongnu
+  :if (memq window-system '(mac ns x))
+  :config
+  (exec-path-from-shell-initialize)
+  ;; Add Homebrew's executable files to PATH.
+  (let ((homebrew-bin-dir "/opt/homebrew/bin"))
+    (when (and (file-directory-p homebrew-bin-dir)
+               (not (string-match-p homebrew-bin-dir (getenv "PATH"))))
+      (setenv "PATH" (concat (getenv "PATH") ":" homebrew-bin-dir)))))
 
 (provide 'init-macos)
