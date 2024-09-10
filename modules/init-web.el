@@ -30,4 +30,8 @@
   :custom
   (coffee-tab-width 2))
 
+(use-package emmet-mode
+  :pin melpa
+  :hook (web-mode heex-ts-mode))
+
 (provide 'init-web)
