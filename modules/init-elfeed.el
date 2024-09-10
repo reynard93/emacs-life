@@ -22,7 +22,8 @@
           ("https://karthinks.com/tags/emacs/index.xml" emacs)
           ("https://irreal.org/blog/?feed=rss2" emacs)
           ("https://andrealeopardi.com/feed.xml" elixir)
-          ("https://underjord.io/feed.xml" elixir)))
+          ("https://underjord.io/feed.xml" elixir)
+          ("https://ferd.ca/feed.rss" erlang)))
 
   :bind
   (("C-c e" . elfeed)
