@@ -47,4 +47,16 @@
                                (+ column 1))))
     (start-process-shell-command "vscode" nil command)))
 
+(defun rubymine-goto-file-at-point ()
+  "Open the file at point using rubymine at the current line and column."
+  (interactive)
+  (when-let* ((filename (buffer-file-name))
+              (line (line-number-at-pos))
+              (column (current-column))
+              (command (format "rubymine --line %d --column %d %s"
+                               line
+                               (+ column 1)
+                               filename)))
+    (start-process-shell-command "rubymine" nil command)))
+
 (provide 'macos)
