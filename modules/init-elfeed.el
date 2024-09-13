@@ -8,6 +8,9 @@
           "https://world.hey.com/jorge/feed.atom"
           "https://world.hey.com/jason/feed.atom"
           "https://www.feltpresence.com/rss/"
+          "https://evilmartians.com/chronicles.atom"
+          "https://emersion.fr/blog/atom.xml"
+          "https://drewdevault.com/blog/index.xml"
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs weekly)
           ("https://www.ruby-lang.org/en/feeds/news.rss" ruby)
           ("https://railsatscale.com/feed.xml" rails)
