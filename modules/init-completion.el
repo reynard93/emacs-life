@@ -16,7 +16,8 @@
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
   (add-to-list 'completion-at-point-functions #'cape-history)
-  (add-to-list 'completion-at-point-functions #'cape-keyword))
+  (add-to-list 'completion-at-point-functions #'cape-keyword)
+  :bind ("C-c p" . cape-prefix-map))
 
 (use-package tempel
   :hook ((prog-mode text-mode conf-mode) . tempel-setup-capf)
