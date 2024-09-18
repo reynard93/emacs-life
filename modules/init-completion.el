@@ -25,7 +25,8 @@
   (("M-+" . tempel-complete)
    ("M-*" . tempel-insert))
   :custom
-  (tempel-path (expand-file-name "templates/*.eld" user-emacs-directory))
+  (tempel-path (list (expand-file-name "templates/*.eld" user-emacs-directory)
+                     "~/Library/CloudStorage/Dropbox/Emacs/private.eld"))
   :config
   (defun tempel-setup-capf ()
     (setq-local completion-at-point-functions
