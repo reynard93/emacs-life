@@ -15,16 +15,17 @@
   :bind ( :map goto-map
           ("K" . +circe/jump-to-channel)
           :map circe-channel-mode-map
-          ("C-c C-p" . +circe/pull-chat-history))
+          ("C-c C-p" . +circe/pull-recent-messages))
 
   :config
   (circe-set-display-handler "353" 'circe-display-ignore)
   (circe-set-display-handler "366" 'circe-display-ignore)
 
-  (defun +circe/pull-chat-history ()
-    (interactive)
+  (defun +circe/pull-recent-messages (limit)
+    "Request up to LIMIT number of the most recent messages that have been sent."
+    (interactive "sEnter the number of the most recent messages to request: ")
     (circe-command-QUOTE
-     (format "CHATHISTORY LATEST %s * 50" circe-chat-target)))
+     (format "CHATHISTORY LATEST %s * %s" circe-chat-target limit)))
 
   (defun +circe/jump-to-channel ()
     (interactive)
