@@ -2,31 +2,33 @@
   :pin melpa
   :init
   (setq elfeed-feeds
-        '("https://sive.rs/en.atom"
+        '("https://ferd.ca/feed.rss"
           "https://jvns.ca/atom.xml"
+          "https://sive.rs/en.atom"
           "https://world.hey.com/dhh/feed.atom"
-          "https://world.hey.com/jorge/feed.atom"
           "https://world.hey.com/jason/feed.atom"
+          "https://world.hey.com/jorge/feed.atom"
           "https://www.feltpresence.com/rss/"
-          "https://evilmartians.com/chronicles.atom"
-          "https://emersion.fr/blog/atom.xml"
           "https://drewdevault.com/blog/index.xml"
-          ("https://sachachua.com/blog/category/emacs-news/feed" emacs weekly)
-          ("https://www.ruby-lang.org/en/feeds/news.rss" ruby)
-          ("https://railsatscale.com/feed.xml" rails)
-          ("https://world.hey.com/this.week.in.rails/feed.atom" rails)
-          ("https://elixir-lang.org/atom.xml" elixir)
-          ("https://www.erlang.org/blog.xml" erlang)
-          ("https://dashbit.co/feed" elixir)
-          ("https://elixirstatus.com/rss" elixir news)
-          ("https://fly.io/phoenix-files/feed.xml" elixir)
-          ("https://dev.37signals.com/feed/posts.xml" rails)
+          "https://emersion.fr/blog/atom.xml"
+          ;; Newsletter
+          ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
+          ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
+          ("https://postgresweekly.com/rss/" postgresql weekly newsletter)
+          ("https://rubyweekly.com/rss/" ruby newsletter)
+          ;; Topics
+          ("https://irreal.org/blog/?feed=rss2" emacs)
           ("https://protesilaos.com/codelog.xml" emacs)
           ("https://karthinks.com/tags/emacs/index.xml" emacs)
-          ("https://irreal.org/blog/?feed=rss2" emacs)
+          ("https://www.ruby-lang.org/en/feeds/news.rss" ruby)
+          ("https://dev.37signals.com/feed/posts.xml" rails)
+          ("https://railsatscale.com/feed.xml" rails)
+          ("https://dashbit.co/feed" elixir)
+          ("https://news.livebook.dev/rss.xml" elixir)
+          ("https://elixirstatus.com/rss" elixir)
+          ("https://fly.io/phoenix-files/feed.xml" elixir)
           ("https://andrealeopardi.com/feed.xml" elixir)
-          ("https://underjord.io/feed.xml" elixir)
-          ("https://ferd.ca/feed.rss" erlang)))
+          ("https://underjord.io/feed.xml" elixir)))
 
   :bind
   (("C-c e" . elfeed)
