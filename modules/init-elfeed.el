@@ -11,6 +11,7 @@
           "https://www.feltpresence.com/rss/"
           "https://drewdevault.com/blog/index.xml"
           "https://emersion.fr/blog/atom.xml"
+          "https://martinfowler.com/feed.atom"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
