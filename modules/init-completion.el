@@ -20,17 +20,31 @@
   :bind ("C-c p" . cape-prefix-map))
 
 (use-package tempel
+  :init
+  (defun +tempel/find-template-file ()
+    "List template files and open the selected one."
+    (interactive)
+    (when-let* ((template-files
+                 (delete-dups
+                  (mapcan (lambda (path)
+                            (if (file-directory-p path)
+                                (directory-files path t "\\.eld\\'")
+                              (file-expand-wildcards path t)))
+                          tempel-path)))
+                (selected-file (completing-read "Open file: " template-files nil t)))
+      (find-file selected-file)))
+
+  (defun tempel-setup-capf ()
+    (setq-local completion-at-point-functions
+                (cons #'tempel-expand
+                      completion-at-point-functions)))
+
   :hook ((prog-mode text-mode conf-mode) . tempel-setup-capf)
   :bind
   (("M-+" . tempel-complete)
    ("M-*" . tempel-insert))
   :custom
   (tempel-path (list (expand-file-name "templates/*.eld" user-emacs-directory)
-                     "~/Library/CloudStorage/Dropbox/Emacs/private.eld"))
-  :config
-  (defun tempel-setup-capf ()
-    (setq-local completion-at-point-functions
-                (cons #'tempel-expand
-                      completion-at-point-functions))))
+                     "~/Library/CloudStorage/Dropbox/Emacs/private.eld")))
 
 (provide 'init-completion)
