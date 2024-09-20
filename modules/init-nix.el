@@ -1,13 +1,8 @@
 (use-package nix-mode
   :pin nongnu
   :hook
-  (nix-mode . +nix--formatter-mode-line-display)
   (before-save . nix-format-before-save)
-
   :config
-  (defun +nix--formatter-mode-line-display ()
-    (add-to-list 'mode-line-process '(:eval (concat " (" nix-nixfmt-bin ")"))))
-
   (defun org-babel-execute:nix (body params)
     (setq strict-option (if (assoc :strict params) "--strict" ""))
     (with-temp-buffer
@@ -17,14 +12,7 @@
        (concat "nix-instantiate --eval " strict-option " - <<EOF\n$(cat)\nEOF")
        (current-buffer)
        t)
-      (buffer-string)))
-
-  (defun +nix/formatter-toggle ()
-    (interactive)
-    (if (string-match "nixfmt" nix-nixfmt-bin)
-        (setq nix-nixfmt-bin "nixpkgs-fmt")
-      (setq nix-nixfmt-bin "nixfmt"))
-    (message (concat "Switched nix-nixfmt-bin to " nix-nixfmt-bin))))
+      (buffer-string))))
 
 (use-package org-nix-shell
   :pin melpa
