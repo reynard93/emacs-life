@@ -1,8 +1,10 @@
 (use-package circe
   :pin melpa
   :init
-  (setq circe-network-options
-        '(("Libera Chat"
+  (setq circe-network-defaults
+        '(("Libera.Chat"
+           :host "irc.libera.chat"
+           :port 6697
            :use-tls t
            :nick "goofansu"
            :realname "Yejun Su"
