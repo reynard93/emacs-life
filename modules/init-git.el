@@ -1,6 +1,6 @@
 (use-package magit
   :pin nongnu
-  :demand t
+  :defer 1
   :bind
   (("C-c g b" . magit-checkout)
    ("C-c g B" . magit-blame-addition)
