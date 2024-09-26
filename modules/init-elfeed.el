@@ -1,6 +1,7 @@
 (use-package elfeed
   :pin melpa
   :init
+  (run-at-time t (* 8 60 60) #'elfeed-update) ; Update feeds every 8 hours
   (setq elfeed-feeds
         '("https://ferd.ca/feed.rss"
           "https://jvns.ca/atom.xml"
