@@ -12,6 +12,7 @@
           "https://drewdevault.com/blog/index.xml"
           "https://emersion.fr/blog/atom.xml"
           "https://martinfowler.com/feed.atom"
+          "https://jesseduffield.com/feed.xml"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
@@ -29,7 +30,8 @@
           ("https://elixirstatus.com/rss" elixir)
           ("https://fly.io/phoenix-files/feed.xml" elixir)
           ("https://andrealeopardi.com/feed.xml" elixir)
-          ("https://underjord.io/feed.xml" elixir)))
+          ("https://underjord.io/feed.xml" elixir)
+          ("https://devenv.sh/feed_rss_created.xml" nix)))
 
   :bind
   (("C-c e" . elfeed)
