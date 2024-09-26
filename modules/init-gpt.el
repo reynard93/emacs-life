@@ -39,6 +39,10 @@
               "google/gemini-pro-1.5"
               "deepseek/deepseek-chat"))
 
+  (gptel-make-gemini "Google"
+    :stream t
+    :key (lambda () (auth-source-pass-get 'secret "api-key/gemini")))
+
   (gptel-make-openai "Groq"
     :host "api.groq.com"
     :endpoint "/openai/v1/chat/completions"
