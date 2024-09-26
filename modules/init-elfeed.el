@@ -47,8 +47,7 @@
 
   :custom
   (elfeed-initial-tags '(unread inbox))
-  (elfeed-search-remain-on-entry t)
-  (elfeed-search-filter "@6-months-ago +inbox +unread")
+  (elfeed-search-filter "#50 +unread ")
 
   :config
   (defun +elfeed--selected-entry ()
