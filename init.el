@@ -14,6 +14,7 @@
 (require 'init-mail)
 (require 'init-org)
 (require 'init-pass)
+(require 'init-shell-command)
 (require 'init-spell-checker)
 
 ;; Contexts
