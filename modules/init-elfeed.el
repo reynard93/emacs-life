@@ -14,6 +14,9 @@
           "https://emersion.fr/blog/atom.xml"
           "https://martinfowler.com/feed.atom"
           "https://jesseduffield.com/feed.xml"
+          "https://andrealeopardi.com/feed.xml"
+          "https://underjord.io/feed.xml"
+          "https://xenodium.com/rss.xml"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
@@ -30,8 +33,6 @@
           ("https://news.livebook.dev/rss.xml" elixir)
           ("https://elixirstatus.com/rss" elixir)
           ("https://fly.io/phoenix-files/feed.xml" elixir)
-          ("https://andrealeopardi.com/feed.xml" elixir)
-          ("https://underjord.io/feed.xml" elixir)
           ("https://devenv.sh/feed_rss_created.xml" nix)))
 
   :bind
