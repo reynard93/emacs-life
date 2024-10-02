@@ -1,6 +1,9 @@
 ;; Better defaults
 (require 'init-better-defaults)
 
+;; Keymaps
+(require 'init-keymaps)
+
 ;; Visualization
 (require 'init-ui)
 (require 'init-ux)

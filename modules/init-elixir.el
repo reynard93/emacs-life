@@ -12,7 +12,7 @@
            (result (shell-command-to-string command)))
       (insert result)))
   :hook (before-save . elixir-format-before-save)
-  :bind ("C-c i e e" . +elixir/package-config)
+  :bind (:map my-insert-map ("e e" . +elixir/package-config))
   :config
   (defun elixir-format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
