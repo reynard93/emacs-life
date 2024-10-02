@@ -1,20 +1,25 @@
 (use-package gh
   :ensure nil
   :load-path "site-lisp/"
-  :init
-  (defvar-keymap embark-gh-pr-map
-    "c" #'gh-pr-checkout
-    "o" #'gh-pr-browse
-    "v" #'gh-pr-view
-    "y" #'gh-pr-link)
-  (with-eval-after-load 'embark
-    (add-to-list 'embark-keymap-alist '(github-pull-request . embark-gh-pr-map)))
-  (with-eval-after-load 'marginalia
-    (add-to-list 'marginalia-prompt-categories '("Select pull request" . github-pull-request)))
   :bind
-  (("C-c g v" . gh-pr-view)
-   ("C-c g c" . gh-pr-create)
+  (("C-c g c" . gh-pr-create)
    :map embark-region-map
    ("G" . gh-gist-create)))
+
+(use-package consult-gh
+  :pin melpa
+  :after consult
+  :bind
+  (("C-c g p" . consult-gh-pr-list)
+   ("C-c g i" . consult-gh-issue-list))
+  :custom
+  (consult-gh-show-preview t)
+  (consult-gh-preview-key "C-o"))
+
+(use-package consult-gh-embark
+  :pin melpa
+  :after (consult-gh embark)
+  :config
+  (consult-gh-embark-mode 1))
 
 (provide 'init-github)
