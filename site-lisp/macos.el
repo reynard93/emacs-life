@@ -31,17 +31,13 @@
                  end tell"))
     (string-equal "true" (do-applescript script))))
 
-(defcustom vscode-program "code"
-  "The default vscode program.")
-
 (defun vscode-goto-file-at-point ()
-  "Open the file at point using `vscode-program' at the current line and column."
+  "Open the file at point using code at the current line and column."
   (interactive)
   (when-let* ((filename (buffer-file-name))
               (line (line-number-at-pos))
               (column (current-column))
-              (command (format "%s --goto %s:%d:%d"
-                               vscode-program
+              (command (format "code --goto %s:%d:%d"
                                filename
                                line
                                (+ column 1))))
