@@ -31,7 +31,7 @@
    ([remap backward-page]    . logos-backward-page-dwim)
    ("M-]" . logos-forward-page-dwim)
    ("M-[" . logos-backward-page-dwim)
-   ("<f9>" . logos-focus-mode))
+   ("<f5>" . logos-focus-mode))
   :custom
   (logos-outlines-are-pages t))
 
@@ -45,12 +45,7 @@
 (use-package header-line
   :ensure nil
   :load-path "site-lisp/"
-  :hook (prog-mode text-mode conf-mode)
-  :bind ("<f10>" . header-line-mode))
-
-(use-package which-func
-  :ensure nil
-  :bind ("<f11>" . which-function-mode))
+  :hook (prog-mode text-mode conf-mode))
 
 (use-package lin
   :config

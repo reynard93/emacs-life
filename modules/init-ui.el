@@ -9,26 +9,6 @@
       (modus-themes-load-theme 'modus-operandi)
     (modus-themes-load-theme 'modus-vivendi)))
 
-(use-package ef-themes
-  :custom
-  (ef-themes-mixed-fonts t)
-  (ef-themes-variable-pitch-ui t))
-
-(use-package theme-buffet
-  :after (modus-themes ef-themes)
-  :bind
-  (("<f5>" . (lambda () (interactive) (theme-buffet-a-la-carte)))
-   ("C-<f5>" . theme-buffet-a-la-carte))
-  :custom
-  (theme-buffet-menu 'end-user)
-  (theme-buffet-end-user
-   '( :night     (modus-vivendi ef-dark ef-winter ef-autumn ef-night ef-duo-dark ef-symbiosis ef-owl)
-      :morning   (modus-operandi ef-light ef-cyprus ef-spring ef-frost ef-duo-light ef-eagle)
-      :afternoon (modus-operandi-tinted ef-arbutus ef-day ef-kassio ef-summer ef-elea-light ef-maris-light ef-melissa-light ef-trio-light ef-reverie)
-      :evening   (modus-vivendi-tinted ef-rosa ef-elea-dark ef-maris-dark ef-melissa-dark ef-trio-dark ef-dream)))
-  :config
-  (theme-buffet-timer-hours 1))
-
 (use-package fontaine
   :if (display-graphic-p)
   :demand t
