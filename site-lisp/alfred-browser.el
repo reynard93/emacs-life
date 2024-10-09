@@ -3,20 +3,20 @@
 (defvar alfred-workflow-browser "dev.yejun.browser"
   "The bundle id of Alfred Workflow - Browser.")
 
-(defun alfred-browser-link-in-org-format ()
+(defun alfred-browser-md-link ()
+  (interactive)
+  (alfred-workflow-run-trigger "md-link" alfred-workflow-browser))
+
+(defun alfred-browser-org-link ()
   (interactive)
   (alfred-workflow-run-trigger "org-link" alfred-workflow-browser))
 
-(defun alfred-browser-link-in-markdown-format ()
+(defun alfred-browser-title ()
   (interactive)
-  (alfred-workflow-run-trigger "markdown-link" alfred-workflow-browser))
+  (alfred-workflow-run-trigger "title" alfred-workflow-browser))
 
-(defun alfred-browser-link-url ()
+(defun alfred-browser-url ()
   (interactive)
-  (alfred-workflow-run-trigger "link-url" alfred-workflow-browser))
-
-(defun alfred-browser-link-title ()
-  (interactive)
-  (alfred-workflow-run-trigger "link-title" alfred-workflow-browser))
+  (alfred-workflow-run-trigger "url" alfred-workflow-browser))
 
 (provide 'alfred-browser)

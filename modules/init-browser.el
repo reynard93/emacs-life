@@ -4,10 +4,10 @@
   :if (eq system-type 'darwin)
   :bind
   ( :map my-insert-map
-    ("b m" . alfred-browser-link-in-markdown-format)
-    ("b o" . alfred-browser-link-in-org-format)
-    ("b t" . alfred-browser-link-title)
-    ("b u" . alfred-browser-link-url)))
+    ("b m" . alfred-browser-md-link)
+    ("b o" . alfred-browser-org-link)
+    ("b t" . alfred-browser-title)
+    ("b u" . alfred-browser-url)))
 
 (use-package browser-hist
   :pin melpa
