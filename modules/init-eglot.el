@@ -8,16 +8,16 @@
                   (nix-mode . ("nixd"))
                   ((elixir-ts-mode heex-ts-mode) . ("nextls" "--stdio=true"))
                   (c-ts-mode . ("clangd"
-                             ;; feature options
-                             "--background-index"
-                             "--clang-tidy"
-                             "--completion-style=detailed"
-                             ;; misc options
-                             "-j=8"
-                             "--pch-storage=memory"
-                             ;; logging options
-                             "--log=error"
-                             ))))
+                                ;; feature options
+                                "--background-index"
+                                "--clang-tidy"
+                                "--completion-style=detailed"
+                                ;; misc options
+                                "-j=8"
+                                "--pch-storage=memory"
+                                ;; logging options
+                                "--log=error"
+                                ))))
     (add-to-list 'eglot-server-programs mode)))
 
 (provide 'init-eglot)
