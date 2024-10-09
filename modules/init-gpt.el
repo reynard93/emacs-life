@@ -4,6 +4,27 @@
   (defvar gptel--openai nil
     "Override the variable to hide ChatGPT models")
 
+  (defvar gptel--azure
+    (gptel-make-azure "Azure"
+      :host "beepboop.openai.azure.com"
+      :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-06-01"
+      :stream t
+      :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
+      :models '("gpt-4o")))
+
+  (defvar gptel--openrouter
+    (gptel-make-openai "OpenRouter"
+      :host "openrouter.ai"
+      :endpoint "/api/v1/chat/completions"
+      :stream t
+      :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
+      :models '("anthropic/claude-3.5-sonnet"
+                "anthropic/claude-3-haiku"
+                "anthropic/claude-3-opus"
+                "openai/gpt-4o-mini"
+                "openai/gpt-4o"
+                "deepseek/deepseek-chat")))
+
   :bind
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
@@ -14,24 +35,7 @@
   (gptel-model "gpt-4o")
 
   :config
-  (setq gptel-backend (gptel-make-azure "Azure"
-                        :host "beepboop.openai.azure.com"
-                        :endpoint "/openai/deployments/gpt-4o/chat/completions?api-version=2024-06-01"
-                        :stream t
-                        :key (lambda () (auth-source-pass-get 'secret "api-key/beepboop"))
-                        :models '("gpt-4o")))
-
-  (gptel-make-openai "OpenRouter"
-    :host "openrouter.ai"
-    :endpoint "/api/v1/chat/completions"
-    :stream t
-    :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
-    :models '("anthropic/claude-3.5-sonnet"
-              "anthropic/claude-3-haiku"
-              "anthropic/claude-3-opus"
-              "openai/gpt-4o-mini"
-              "openai/gpt-4o"
-              "deepseek/deepseek-chat"))
+  (setq gptel-backend gptel--azure)
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -47,6 +51,9 @@
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
   :after embark
+  :config
+  (setq gptel-quick-backend gptel--openrouter
+        gptel-quick-model "anthropic/claude-3-haiku")
   :bind (:map embark-general-map ("?" . gptel-quick)))
 
 (provide 'init-gpt)
