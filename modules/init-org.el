@@ -88,7 +88,7 @@
   :after org
   :bind (:map org-mode-map ("C-c M-y" . org-download-yank))
   :custom
-  (org-download-image-dir "./attachments")
+  (org-download-image-dir "~/Library/CloudStorage/Dropbox/Emacs/attachments")
   (org-download-display-inline-images nil))
 
 (use-package org-pandoc-import
