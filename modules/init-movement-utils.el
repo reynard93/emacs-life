@@ -71,8 +71,6 @@
                   "^\\*Shell Command Output\\*$")
                 '("\(summary\)$"
                   "^\\*Azure\\*"
-                  "^\\*Groq\\*"
-                  "^\\*Kagi\\*"
                   "^\\*OpenRouter\\*")))
   :hook emacs-startup
   :bind

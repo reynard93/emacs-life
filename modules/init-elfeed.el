@@ -65,14 +65,6 @@
         (elfeed-search-update--force)
       (elfeed-show-refresh)))
 
-  (defun +elfeed/summarize (entry)
-    (interactive (list (+elfeed--selected-entry)))
-    (+gptel/kagi-summarize-url (elfeed-entry-link entry))
-    (elfeed-tag entry 'summarized)
-    (if (eq major-mode 'elfeed-search-mode)
-        (elfeed-search-update--force)
-      (elfeed-show-refresh)))
-
   (defun +elfeed/eww ()
     (interactive)
     (let ((browse-url-browser-function #'eww))
