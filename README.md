@@ -8,7 +8,7 @@
 Clone the repository and start Emacs.
 
 ```shell
-git clone git@github.com:goofansu/emacs-config.git ~/.config/emacs
+git clone git@git.sr.ht:~goofansu/emacs-config ~/.config/emacs
 ```
 
 If you can not install [ELPA](https://elpa.gnu.org/) packages due to "Failed to verify signature" error, you may need to import the `package-keyring.gpg`:
