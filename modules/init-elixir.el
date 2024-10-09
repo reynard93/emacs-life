@@ -1,13 +1,13 @@
 (use-package elixir-ts-mode
   :pin melpa
   :hook (before-save . elixir-format-before-save)
-  :bind (:map my-insert-map ("e e" . +elixir/package-config))
+  :bind (:map my-insert-map ("e e" . +elixir/package-config-insert))
   :config
   (defun elixir-format-before-save ()
     (when (derived-mode-p 'elixir-ts-mode)
       (eglot-format-buffer)))
 
-  (defun +elixir/package-config (package)
+  (defun +elixir/package-config-insert (package)
     "Fetch PACKAGE's mix.exs config and insert at point."
     (interactive "sPackage: ")
     (let* ((command (format "mix hex.info %s | grep 'Config:' | sed 's/Config: //g'" package))
