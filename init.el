@@ -26,3 +26,4 @@
 (require 'init-devdocs)
 (require 'init-github)
 (require 'init-mastodon)
+(require 'init-sourcehut)
