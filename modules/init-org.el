@@ -47,12 +47,20 @@
 
   ;; Capture
   (org-capture-templates
-   `(("j" "Journal" entry
+   `(("u" "Unprocessed" entry
+      (file+headline "tasks.org" "Unprocessed")
+      ,(concat "* %^{Title}\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:\n\n"
+               "%a\n%i%?"))
+     ("j" "Journal" entry
       (file+olp+datetree "journal.org")
       ,(concat "* %^{Title} %^g\n"
                ":PROPERTIES:\n"
                ":CAPTURED: %U\n"
-               ":END:\n%?"))
+               ":END:\n\n"
+               "%?"))
      ("c" "Clocked task" entry
       (file+olp+datetree "journal.org")
       ,(concat "* TODO %^{Title} %^g\n"
