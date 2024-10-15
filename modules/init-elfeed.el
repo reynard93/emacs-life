@@ -3,20 +3,24 @@
   :init
   (run-at-time t (* 8 60 60) #'elfeed-update) ; Update feeds every 8 hours
   (setq elfeed-feeds
-        '("https://ferd.ca/feed.rss"
+        '(
+          "https://andrealeopardi.com/feed.xml"
+          "https://batsov.com/atom.xml"
+          "https://blog.cloud-mes.com/atom.xml"
+          "https://drewdevault.com/blog/index.xml"
+          "https://emersion.fr/blog/atom.xml"
+          "https://jesseduffield.com/feed.xml"
           "https://jvns.ca/atom.xml"
+          "https://martinfowler.com/feed.atom"
           "https://sive.rs/en.atom"
+          "https://underjord.io/feed.xml"
           "https://world.hey.com/dhh/feed.atom"
           "https://world.hey.com/jason/feed.atom"
           "https://world.hey.com/jorge/feed.atom"
           "https://www.feltpresence.com/rss/"
-          "https://drewdevault.com/blog/index.xml"
-          "https://emersion.fr/blog/atom.xml"
-          "https://martinfowler.com/feed.atom"
-          "https://jesseduffield.com/feed.xml"
-          "https://andrealeopardi.com/feed.xml"
-          "https://underjord.io/feed.xml"
           "https://xenodium.com/rss.xml"
+          "https://yiming.dev/rss.xml"
+          "https://ferd.ca/feed.rss"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
