@@ -38,8 +38,7 @@
 (use-package olivetti
   :pin melpa
   :custom
-  (olivetti-body-width 0.7)
-  (olivetti-minimum-body-width 80)
+  (olivetti-minimum-body-width 120)
   (olivetti-recall-visual-line-mode-entry-state t))
 
 (use-package header-line
