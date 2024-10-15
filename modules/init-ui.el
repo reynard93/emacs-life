@@ -1,13 +1,14 @@
 (use-package modus-themes
+  :init
+  (if (display-graphic-p)
+      (load-theme 'modus-operandi :no-confirm)
+    (load-theme 'modus-vivendi :no-confirm))
+  :bind ("<f9>" . modus-themes-toggle)
   :custom
   (modus-themes-bold-constructs t)
   (modus-themes-italic-constructs t)
   (modus-themes-mixed-fonts t)
-  (modus-themes-variable-pitch-ui t)
-  :config
-  (if (display-graphic-p)
-      (modus-themes-load-theme 'modus-operandi)
-    (modus-themes-load-theme 'modus-vivendi)))
+  (modus-themes-variable-pitch-ui t))
 
 (use-package fontaine
   :if (display-graphic-p)
