@@ -13,15 +13,18 @@
       :models '("anthropic/claude-3-haiku"
                 "anthropic/claude-3-opus"
                 "anthropic/claude-3.5-sonnet"
-                "google/gemini-flash-1.5"
-                "google/gemini-pro-1.5"
                 "openai/gpt-4o"
                 "openai/gpt-4o-mini")))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
       :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models nil))
+      :models '(fastgpt)))
+
+  (defvar gptel--google
+    (gptel-make-gemini "Google"
+      :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
+      :stream t))
 
   :bind
   (("C-c <return>" . gptel-send)
@@ -49,29 +52,29 @@
     "Summarize URL using Kagi's Universal Summarizer."
     (interactive "sSummarize URL: ")
     (let ((gptel-backend gptel--kagi)
-          (gptel-model "summarize:agnes"))
+          (gptel-model 'summarize:agnes))
       (gptel-request url
-                     :callback
-                     (lambda (response info)
-                       (if response
-                           (let ((output-name (format "%s (summary)" (plist-get (plist-get info :data) :url))))
-                             (with-current-buffer (get-buffer-create output-name)
-                               (let ((inhibit-read-only t))
-                                 (erase-buffer)
-                                 (visual-line-mode 1)
-                                 (insert response)
-                                 (display-buffer (current-buffer))
-                                 (special-mode))))
-                         (message "gptel-request failed with message: %s"
-                                  (plist-get info :status)))))
+        :callback
+        (lambda (response info)
+          (if response
+              (let ((output-name (format "%s (summary)" (plist-get (plist-get info :data) :url))))
+                (with-current-buffer (get-buffer-create output-name)
+                  (let ((inhibit-read-only t))
+                    (erase-buffer)
+                    (visual-line-mode 1)
+                    (insert response)
+                    (display-buffer (current-buffer))
+                    (special-mode))))
+            (message "gptel-request failed with message: %s"
+                     (plist-get info :status)))))
       (message "Generating summary for: %s" url))))
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
   :after embark
   :config
-  (setq gptel-quick-backend gptel--openrouter
-        gptel-quick-model "google/gemini-flash-1.5")
+  (setq gptel-quick-backend gptel--google
+        gptel-quick-model 'gemini-1.5-flash)
   :bind (:map embark-general-map ("?" . gptel-quick)))
 
 (provide 'init-gpt)
