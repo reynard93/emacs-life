@@ -4,18 +4,6 @@
   (defvar gptel--openai nil
     "Override the variable to hide ChatGPT models")
 
-  (defvar gptel--openrouter
-    (gptel-make-openai "OpenRouter"
-      :host "openrouter.ai"
-      :endpoint "/api/v1/chat/completions"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
-      :models '("anthropic/claude-3-haiku"
-                "anthropic/claude-3-opus"
-                "anthropic/claude-3.5-sonnet"
-                "openai/gpt-4o"
-                "openai/gpt-4o-mini")))
-
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
       :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
@@ -33,10 +21,21 @@
 
   :custom
   (gptel-default-mode 'org-mode)
-  (gptel-backend gptel--openrouter)
-  (gptel-model "anthropic/claude-3.5-sonnet")
 
   :config
+  (setq gptel-model 'openai/gpt-4o-mini
+        gptel-backend (gptel-make-openai "OpenRouter"
+                        :host "openrouter.ai"
+                        :endpoint "/api/v1/chat/completions"
+                        :stream t
+                        :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
+                        :models '(anthropic/claude-3-haiku
+                                  anthropic/claude-3-opus
+                                  anthropic/claude-3.5-sonnet
+                                  openai/gpt-4o
+                                  openai/gpt-4o-mini
+                                  deepseek/deepseek-chat)))
+
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
     (interactive "sEnter text: ")
