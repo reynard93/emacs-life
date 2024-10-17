@@ -20,6 +20,9 @@
   (require-final-newline t)
   (delete-by-moving-to-trash t)
 
+  ;; Input method
+  (default-input-method "chinese-py")
+
   ;; Keyboard
   (echo-keystrokes 0.25)
 
