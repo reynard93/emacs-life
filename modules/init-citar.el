@@ -1,7 +1,7 @@
 (use-package citar
   :pin melpa
   :init
-  (setq org-cite-global-bibliography '("~/Zotero/zotero.bib"))
+  (setq org-cite-global-bibliography '("~/Library/CloudStorage/Dropbox/Emacs/zotero.bib"))
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
