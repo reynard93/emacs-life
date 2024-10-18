@@ -29,7 +29,8 @@
   :hook ((prog-mode text-mode conf-mode) . tempel-setup-capf)
   :bind
   (("M-+" . tempel-complete)
-   ("M-*" . tempel-insert))
+   ("M-*" . tempel-insert)
+   ("C-c t" . +tempel/find-template-file))
   :custom
   (tempel-path (list (expand-file-name "templates/*.eld" user-emacs-directory)
                      "~/Library/CloudStorage/Dropbox/Emacs/private.eld"))
