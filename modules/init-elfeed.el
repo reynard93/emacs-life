@@ -21,6 +21,7 @@
           "https://xenodium.com/rss.xml"
           "https://yiming.dev/rss.xml"
           "https://ferd.ca/feed.rss"
+          "https://herman.bearblog.dev/feed/"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
