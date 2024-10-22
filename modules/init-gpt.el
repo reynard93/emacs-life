@@ -23,7 +23,7 @@
   (gptel-default-mode 'org-mode)
 
   :config
-  (setq gptel-model 'openai/gpt-4o-mini
+  (setq gptel-model 'anthropic/claude-3.5-sonnet
         gptel-backend (gptel-make-openai "OpenRouter"
                         :host "openrouter.ai"
                         :endpoint "/api/v1/chat/completions"
