@@ -9,14 +9,14 @@
 (require 'init-macos)
 
 ;; Features
-(require 'init-browser)
-(require 'init-dict)
+(require 'init-alfred)
 (require 'init-git)
 (require 'init-gpt)
 (require 'init-irc)
 (require 'init-mail)
 (require 'init-org)
 (require 'init-pass)
+(require 'init-search)
 (require 'init-shell-command)
 (require 'init-spell-checker)
 
@@ -26,6 +26,5 @@
 (require 'init-writing)
 
 ;; Services
-(require 'init-devdocs)
 (require 'init-github)
 (require 'init-sourcehut)

@@ -9,8 +9,4 @@
     ("b t" . alfred-browser-title)
     ("b u" . alfred-browser-url)))
 
-(use-package browser-hist
-  :pin melpa
-  :bind (:map search-map ("U" . browser-hist-search)))
-
-(provide 'init-browser)
+(provide 'init-alfred)
