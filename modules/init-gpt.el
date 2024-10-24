@@ -4,11 +4,6 @@
   (defvar gptel--openai nil
     "Override the variable to hide ChatGPT models")
 
-  (defvar gptel--kagi
-    (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models '(fastgpt)))
-
   (defvar gptel--google
     (gptel-make-gemini "Google"
       :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
@@ -45,28 +40,7 @@
           (save-excursion
             (goto-char (point-max))
             (insert text)
-            (gptel-send))))))
-
-  (defun +gptel/kagi-summarize-url (url)
-    "Summarize URL using Kagi's Universal Summarizer."
-    (interactive "sSummarize URL: ")
-    (let ((gptel-backend gptel--kagi)
-          (gptel-model 'summarize:agnes))
-      (gptel-request url
-        :callback
-        (lambda (response info)
-          (if response
-              (let ((output-name (format "%s (summary)" (plist-get (plist-get info :data) :url))))
-                (with-current-buffer (get-buffer-create output-name)
-                  (let ((inhibit-read-only t))
-                    (erase-buffer)
-                    (visual-line-mode 1)
-                    (insert response)
-                    (display-buffer (current-buffer))
-                    (special-mode))))
-            (message "gptel-request failed with message: %s"
-                     (plist-get info :status)))))
-      (message "Generating summary for: %s" url))))
+            (gptel-send)))))))
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")

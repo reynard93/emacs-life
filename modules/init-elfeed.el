@@ -43,11 +43,9 @@
   :bind
   (("C-c e" . elfeed)
    :map elfeed-search-mode-map
-   ("=" . +elfeed/summarize)
    ("B" . +elfeed/eww)
    ("D" . +elfeed/delete)
    :map elfeed-show-mode-map
-   ("=" . +elfeed/summarize)
    ("B" . +elfeed/eww)
    ("D" . +elfeed/delete))
 
@@ -66,14 +64,6 @@
   (defun +elfeed/delete (entry)
     (interactive (list (+elfeed--selected-entry)))
     (elfeed-untag entry 'inbox)
-    (if (eq major-mode 'elfeed-search-mode)
-        (elfeed-search-update--force)
-      (elfeed-show-refresh)))
-
-  (defun +elfeed/summarize (entry)
-    (interactive (list (+elfeed--selected-entry)))
-    (+gptel/kagi-summarize-url (elfeed-entry-link entry))
-    (elfeed-tag entry 'summarized)
     (if (eq major-mode 'elfeed-search-mode)
         (elfeed-search-update--force)
       (elfeed-show-refresh)))

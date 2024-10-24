@@ -68,10 +68,7 @@
                   devdocs-mode)
                 '("^\\*Messages\\*$"
                   ("^\\*Async Shell Command\\*$" . hide)
-                  "^\\*Shell Command Output\\*$")
-                '("\(summary\)$"
-                  "^\\*Azure\\*"
-                  "^\\*OpenRouter\\*")))
+                  "^\\*Shell Command Output\\*$")))
   :hook emacs-startup
   :bind
   (("C-`"   . popper-toggle)
