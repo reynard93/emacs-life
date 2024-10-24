@@ -97,9 +97,8 @@
      ("*Org Select*" :align below)
      ("*Capture*" :align below)
      ("^CAPTURE-.+$" :regexp t :align below)
-     ;; Outputs
-     (".+ (summary)" :regexp t :align below :size 0.3)
-     (".+ (pull request)" :regexp t :align right :select t)))
+     ;; Modes
+     (calibre-library-mode :select t :same t)))
   :config
   (shackle-mode 1))
 
