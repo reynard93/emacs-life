@@ -1,11 +1,11 @@
-(use-package pdf-tools
-  :pin nongnu
-  :magic ("%PDF" . pdf-view-mode)
-  :config
-  (pdf-loader-install :no-query))
+(use-package doc-view
+  :ensure nil
+  :custom
+  (doc-view-resolution 300)
+  (doc-view-mupdf-use-svg t))
 
 (use-package saveplace-pdf-view
   :pin melpa
-  :after pdf-tools)
+  :after doc-view)
 
 (provide 'init-pdf)
