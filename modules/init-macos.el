@@ -12,7 +12,9 @@
    ("s-v" . yank)
    ("s-x" . kill-region)
    ("s-z" . undo)
-   ("s-Z" . undo-redo)))
+   ("s-Z" . undo-redo)
+   :map embark-url-map
+   ("U" . macos-read-it-later)))
 
 (use-package exec-path-from-shell
   :pin nongnu

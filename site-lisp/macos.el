@@ -31,6 +31,11 @@
                  end tell"))
     (string-equal "true" (do-applescript script))))
 
+(defun macos-read-it-later (url)
+  (interactive "sURL: ")
+  (let ((result (do-applescript (format "tell application \"Safari\" to add reading list item \"%s\"" url))))
+    (unless result (message "Added to Reading List: %s" url))))
+
 (defun vscode-goto-file-at-point ()
   "Open the file at point using code at the current line and column."
   (interactive)
