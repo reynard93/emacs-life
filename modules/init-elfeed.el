@@ -12,6 +12,7 @@
           "https://herman.bearblog.dev/feed/"
           "https://jesseduffield.com/feed.xml"
           "https://jvns.ca/atom.xml"
+          "https://lucidmanager.org/index.xml"
           "https://martinfowler.com/feed.atom"
           "https://sive.rs/en.atom"
           "https://underjord.io/feed.xml"
