@@ -50,4 +50,11 @@
         gptel-quick-model 'gemini-1.5-flash)
   :bind (:map embark-general-map ("?" . gptel-quick)))
 
+(use-package fabric-ai
+  :ensure nil
+  :load-path "site-lisp/"
+  :bind
+  ( :map embark-url-map
+    ("=" . fabric-ai-summarize-url)))
+
 (provide 'init-gpt)
