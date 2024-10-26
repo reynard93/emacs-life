@@ -1,7 +1,7 @@
 (use-package citar
   :pin melpa
   :init
-  (setq org-cite-global-bibliography (list (expand-file-name "zotero.bib" my-sync-directory)))
+  (setq org-cite-global-bibliography '("~/Zotero/references.bib"))
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
