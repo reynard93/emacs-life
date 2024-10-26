@@ -22,3 +22,4 @@
     (kill-buffer output-buffer)))
 
 (provide 'hut)
+;;; hut.el ends here

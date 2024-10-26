@@ -1,3 +1,12 @@
+;;; fabric-ai.el -- Code for fabric -*- lexical-binding: t -*-
+
+;;; Commentary:
+;;
+;; fabric is an open-source framework for augmenting humans using AI.
+;; https://github.com/danielmiessler/fabric
+
+;;; Code:
+
 (defun fabric-ai-summarize-url (url)
   "Summarize URL using fabric."
   (interactive "sURL: ")
@@ -15,3 +24,4 @@
         (display-buffer buffer)))))
 
 (provide 'fabric-ai)
+;;; fabric-ai.el ends here

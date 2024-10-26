@@ -26,3 +26,4 @@
   (shell-command "gh pr create -w"))
 
 (provide 'gh)
+;;; gh.el ends here
