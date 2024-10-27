@@ -73,7 +73,7 @@
 
   (defun +elfeed/summarize (entry)
     (interactive (list (+elfeed--selected-entry)))
-    (fabric-ai-summarize-url (elfeed-entry-link entry))
+    (+gptel/summarize-url (elfeed-entry-link entry))
     (elfeed-tag entry 'summarized)
     (if (eq major-mode 'elfeed-search-mode)
         (elfeed-search-update--force)
