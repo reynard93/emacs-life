@@ -11,8 +11,7 @@
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models '(fastgpt)))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))))
 
   (defvar gptel--openrouter
     (gptel-make-openai "OpenRouter"
@@ -21,13 +20,18 @@
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :models '(anthropic/claude-3.5-sonnet
+                openai/gpt-4o
                 openai/gpt-4o-mini
-                openai/gpt-4o)))
+                deepseek/deepseek-chat)))
 
   :bind
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
-   ("C-c M-<return>" . +gptel/send-all-buffers))
+   ("C-c M-<return>" . +gptel/send-all-buffers)
+   :map embark-url-map
+   ("g u" . +gptel/summarize-url)
+   :map embark-region-map
+   ("g t" . +gptel/translate))
 
   :custom
   (gptel-default-mode 'org-mode)
@@ -75,8 +79,8 @@ Display the result in a side window."
 If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."
     (interactive "sText: ")
-    (let ((gptel-backend gptel--google)
-          (gptel-model 'gemini-1.5-flash))
+    (let ((gptel-backend gptel--openrouter)
+          (gptel-model 'deepseek/deepseek-chat))
       (gptel-request text
         :system "You're a language translator. Translate text into English, response concisely."
         :callback
@@ -99,10 +103,9 @@ Display the result in a side window with the content selected."
 
 (use-package gptel-quick
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
-  :after embark
+  :bind (:map embark-general-map ("?" . gptel-quick))
   :config
   (setq gptel-quick-backend gptel--google
-        gptel-quick-model 'gemini-1.5-flash)
-  :bind (:map embark-general-map ("?" . gptel-quick)))
+        gptel-quick-model 'gemini-1.5-flash))
 
 (provide 'init-gpt)
