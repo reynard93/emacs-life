@@ -23,7 +23,7 @@
 
   (defun +circe/pull-recent-messages (limit)
     "Request up to LIMIT number of the most recent messages that have been sent."
-    (interactive "sEnter the number of the most recent messages to request: ")
+    (interactive "sLimit: ")
     (circe-command-QUOTE
      (format "CHATHISTORY LATEST %s * %s" circe-chat-target limit)))
 

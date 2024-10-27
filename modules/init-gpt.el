@@ -40,7 +40,7 @@
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
-    (interactive "sEnter text: ")
+    (interactive "sText: ")
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
         (when (bound-and-true-p gptel-mode)
@@ -76,10 +76,7 @@ Display the result in a side window."
     "Translate TEXT into English using LLM.
 If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."
-    (interactive
-     (list (if (use-region-p)
-               (buffer-substring-no-properties (region-beginning) (region-end))
-             (read-string "Text: "))))
+    (interactive "sText: ")
     (let ((gptel-backend gptel--openrouter)
           (gptel-model 'deepseek/deepseek-chat))
       (gptel-request text
