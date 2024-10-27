@@ -20,8 +20,12 @@
         (erase-buffer)
         (visual-line-mode 1)
         (insert response)
-        (special-mode)
-        (display-buffer buffer)))))
+        (display-buffer
+         (current-buffer)
+         '((display-buffer-in-side-window)
+           (side . right)
+           (window-width . 0.5)))
+        (special-mode)))))
 
 (provide 'fabric-ai)
 ;;; fabric-ai.el ends here
