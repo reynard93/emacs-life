@@ -20,9 +20,7 @@
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :models '(anthropic/claude-3.5-sonnet
-                openai/gpt-4o
-                openai/gpt-4o-mini
-                deepseek/deepseek-chat)))
+                openai/gpt-4o-mini)))
 
   :bind
   (("C-c <return>" . gptel-send)
@@ -79,10 +77,10 @@ Display the result in a side window."
 If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."
     (interactive "sText: ")
-    (let ((gptel-backend gptel--openrouter)
-          (gptel-model 'deepseek/deepseek-chat))
+    (let ((gptel-backend gptel--google)
+          (gptel-model 'gemini-1.5-flash))
       (gptel-request text
-        :system "You're a language translator. Translate text into English, response concisely."
+        :system "You're a language translator. Translate text into English, keep the original format and meaning."
         :callback
         (lambda (response info)
           (if response
