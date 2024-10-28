@@ -96,14 +96,6 @@
   (org-anki-default-match "@anki&todo<>\"TODO\"")
   (org-anki-inherit-tags nil))
 
-(use-package org-download
-  :pin melpa
-  :after org
-  :bind (:map org-mode-map ("C-c M-y" . org-download-yank))
-  :custom
-  (org-download-image-dir (expand-file-name "attachments/" my-sync-directory))
-  (org-download-display-inline-images nil))
-
 (use-package org-pandoc-import
   :vc (org-pandoc-import :url "https://github.com/tecosaur/org-pandoc-import.git"))
 
