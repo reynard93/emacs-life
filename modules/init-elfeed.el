@@ -20,8 +20,10 @@
           "https://world.hey.com/jason/feed.atom"
           "https://world.hey.com/jorge/feed.atom"
           "https://www.feltpresence.com/rss/"
+          "https://www.mikeperham.com/index.xml"
           "https://xenodium.com/rss.xml"
           "https://yiming.dev/rss.xml"
+          "https://zettelkasten.de/feed.atom"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
