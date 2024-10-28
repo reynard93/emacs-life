@@ -90,9 +90,7 @@ Display the result in a side window with the content selected."
               (with-current-buffer (get-buffer-create "*gptel-translate*")
                 (let ((inhibit-read-only t))
                   (erase-buffer)
-                  (insert response)
-                  (push-mark (point-min) t t)
-                  (goto-char (point-max)))
+                  (insert response))
                 (special-mode)
                 (display-buffer
                  (current-buffer)
