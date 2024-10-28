@@ -9,10 +9,6 @@
       :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
       :stream t))
 
-  (defvar gptel--kagi
-    (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))))
-
   (defvar gptel--openrouter
     (gptel-make-openai "OpenRouter"
       :host "openrouter.ai"
@@ -27,10 +23,7 @@
    ("C-c C-<return>" . gptel-menu)
    ("C-c M-<return>" . +gptel/send-all-buffers)
    :map my-helper-map
-   ("u" . +gptel/summarize-url)
    ("t" . +gptel/translate)
-   :map embark-url-map
-   ("g u" . +gptel/summarize-url)
    :map embark-region-map
    ("g t" . +gptel/translate))
 
@@ -51,29 +44,6 @@
             (goto-char (point-max))
             (insert text)
             (gptel-send))))))
-
-  (defun +gptel/summarize-url (url)
-    "Summarize URL using Kagi.
-Display the result in a side window."
-    (interactive "sURL: ")
-    (let ((gptel-backend gptel--kagi)
-          (gptel-model 'summarize:agnes))
-      (gptel-request url
-        :callback
-        (lambda (response info)
-          (if response
-              (with-current-buffer (get-buffer-create "*gptel-summary*")
-                (let ((inhibit-read-only t))
-                  (erase-buffer)
-                  (insert response)
-                  (display-buffer
-                   (current-buffer)
-                   `((display-buffer-in-side-window)
-                     (side . bottom)
-                     (window-height . ,#'fit-window-to-buffer))))
-                (special-mode))
-            (message "gptel-request failed with message: %s"
-                     (plist-get info :status)))))))
 
   (defun +gptel/translate (text)
     "Translate TEXT into English using LLM.
