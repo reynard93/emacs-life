@@ -35,7 +35,7 @@
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
   (denote-directory (expand-file-name "notes/" my-src-directory))
-  (denote-known-keywords '("emacs" "ruby" "elixir"))
+  (denote-known-keywords '("emacs"))
   :config
   (require 'denote-journal-extras)
   (require 'denote-org-extras)
