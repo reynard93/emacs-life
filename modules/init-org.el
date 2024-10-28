@@ -22,8 +22,6 @@
   ;; Export
   (org-export-dispatch-use-expert-ui t)
   (org-export-with-sub-superscripts '{})
-  (org-export-with-section-numbers nil)
-  (org-export-with-toc nil)
 
   :config
   (org-babel-do-load-languages
