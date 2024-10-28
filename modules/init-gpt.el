@@ -26,6 +26,9 @@
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
    ("C-c M-<return>" . +gptel/send-all-buffers)
+   :map my-helper-map
+   ("u" . +gptel/summarize-url)
+   ("t" . +gptel/translate)
    :map embark-url-map
    ("g u" . +gptel/summarize-url)
    :map embark-region-map
