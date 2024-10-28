@@ -3,9 +3,9 @@
 
 (define-key global-map (kbd "C-c i") my-insert-map)
 
-(defvar my-helper-map (make-sparse-keymap)
-  "Keymap for helper commands")
+(defvar my-assistant-map (make-sparse-keymap)
+  "Keymap for assistant commands")
 
-(define-key global-map (kbd "C-c h") my-helper-map)
+(define-key global-map (kbd "C-c a") my-assistant-map)
 
 (provide 'init-keymaps)
