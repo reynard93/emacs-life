@@ -13,7 +13,7 @@
    ("M-g o" . consult-org-heading))
 
   :custom
-  (org-directory "~/src/org/")
+  (org-directory (expand-file-name "org/" my-src-directory))
   (org-agenda-files (list org-directory))
 
   ;; Display

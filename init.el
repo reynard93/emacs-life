@@ -1,7 +1,7 @@
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
-(defvar my-sync-directory "~/Library/CloudStorage/Dropbox/Emacs/"
-  "Directory for Emacs sync files.")
+(defvar my-src-directory "~/src/"
+  "Directory for source code repos.")
 
 ;; Bootstrap
 (require 'init-bootstrap)
