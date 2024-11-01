@@ -23,7 +23,8 @@
    ("C-c n r k" . denote-rename-file-keywords)
    ("C-c n r z" . denote-rename-file-signature)
    :map search-map
-   ("n" . denote-open-or-create)
+   ("s" . denote-open-or-create)
+   ("M-s" . denote-open-or-create)
    :map text-mode-map
    ("C-c n i" . denote-link)
    ("C-c n I" . denote-add-links)
@@ -47,7 +48,7 @@
   :init
   (with-eval-after-load 'denote
     (consult-denote-mode 1))
-  :bind (:map search-map ("/" . consult-denote-grep))
+  :bind (:map search-map ("n" . consult-denote-grep))
   :custom
   (consult-denote-grep-command #'consult-ripgrep))
 
