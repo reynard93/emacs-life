@@ -44,10 +44,11 @@
   (denote-rename-buffer-mode 1))
 
 (use-package consult-denote
+  :init
+  (with-eval-after-load 'denote
+    (consult-denote-mode 1))
   :bind (:map search-map ("/" . consult-denote-grep))
   :custom
-  (consult-denote-grep-command #'consult-ripgrep)
-  :config
-  (consult-denote-mode 1))
+  (consult-denote-grep-command #'consult-ripgrep))
 
 (provide 'init-denote)
