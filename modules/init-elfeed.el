@@ -50,11 +50,17 @@
    :map elfeed-show-mode-map
    ("B" . +elfeed/eww))
 
+  :hook
+  (elfeed-show-mode . +elfeed--turn-on-logos-focus-mode)
+
   :custom
   (elfeed-initial-tags '(unread inbox))
   (elfeed-search-filter "#50 +unread ")
 
   :config
+  (defun +elfeed--turn-on-logos-focus-mode ()
+    (logos-focus-mode 1))
+
   (defun +elfeed--selected-entry ()
     (pcase major-mode
       ('elfeed-search-mode
