@@ -23,6 +23,10 @@
   (org-export-dispatch-use-expert-ui t)
   (org-export-with-sub-superscripts '{})
 
+  ;; Logging
+  (org-log-done 'time)
+  (org-log-into-drawer t)
+
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
