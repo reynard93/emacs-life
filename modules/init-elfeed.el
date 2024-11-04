@@ -38,7 +38,6 @@
           ("https://railsatscale.com/feed.xml" rails)
           ("https://dashbit.co/feed" elixir)
           ("https://news.livebook.dev/rss.xml" elixir)
-          ("https://elixirstatus.com/rss" elixir)
           ("https://fly.io/phoenix-files/feed.xml" elixir)
           ("https://devenv.sh/feed_rss_created.xml" nix)
           ("https://simonwillison.net/tags/llms.atom" llm)))
