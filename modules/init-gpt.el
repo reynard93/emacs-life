@@ -7,7 +7,10 @@
   (defvar gptel--google
     (gptel-make-gemini "Google"
       :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
-      :stream t))
+      :stream t
+      :models '(gemini-1.5-flash
+                gemini-1.5-flash-8b
+                gemini-1.5-pro)))
 
   (defvar gptel--openrouter
     (gptel-make-openai "OpenRouter"
@@ -16,7 +19,7 @@
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :models '(anthropic/claude-3.5-sonnet
-                openai/gpt-4o-mini)))
+                anthropic/claude-3-5-haiku)))
 
   :bind
   (("C-c <return>" . gptel-send)
@@ -31,7 +34,7 @@
   (gptel-default-mode 'org-mode)
 
   :config
-  (setq gptel-model 'anthropic/claude-3.5-sonnet
+  (setq gptel-model 'anthropic/claude-3-5-haiku
         gptel-backend gptel--openrouter)
 
   (defun +gptel/send-all-buffers (text)
@@ -75,6 +78,6 @@ Display the result in a side window with the content selected."
   :bind (:map embark-general-map ("?" . gptel-quick))
   :config
   (setq gptel-quick-backend gptel--google
-        gptel-quick-model 'gemini-1.5-flash))
+        gptel-quick-model 'gemini-1.5-flash-8b))
 
 (provide 'init-gpt)
