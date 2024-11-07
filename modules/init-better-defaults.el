@@ -52,7 +52,8 @@
   :ensure nil
   :bind-keymap ("M-r" . ctl-x-r-map)
   :bind
-  (("C-c y" . +buffer/yank-path)
+  (("s-n" . +buffer/create-scratch-buffer)
+   ("C-c y" . +buffer/yank-path)
    ("C-c Y" . +buffer/yank-path-relative-to-project)
    ("C-c D" . +file/delete-this-file)
    ("C-c R" . +file/rename-this-file))
@@ -84,6 +85,12 @@ The path is relative to `project-current'."
                (project-root (project-current))
              (error nil))))
       (+buffer/yank-path nil project-root-dir)))
+
+  (defun +buffer/create-scratch-buffer ()
+    "Create *scratch* buffer and open in a new tab."
+    (interactive)
+    (let ((buf (generate-new-buffer "*scratch*")))
+      (switch-to-buffer-other-tab buf)))
 
   (defun +file/delete-this-file ()
     "Kill the current buffer and deletes the file it is visiting."
@@ -172,8 +179,7 @@ The path is relative to `project-current'."
    ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
    ("s-k" . crux-smart-kill-line)
    ("s-j" . crux-top-join-line)
-   ("C-^" . crux-switch-to-previous-buffer)
-   ("s-n" . crux-create-scratch-buffer)))
+   ("C-^" . crux-switch-to-previous-buffer)))
 
 (use-package xclip
   :unless (display-graphic-p)
