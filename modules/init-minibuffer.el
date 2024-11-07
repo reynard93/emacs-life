@@ -129,7 +129,10 @@
    :map minibuffer-local-map
    ("C-;" . embark-act)
    ("C-c C-;" . embark-export)
-   ("C-c C-l" . embark-collect))
+   ("C-c C-l" . embark-collect)
+   :map embark-file-map
+   ("t" . find-file-other-tab)
+   ("T" . find-file-other-frame))
   :custom
   (embark-indicators
    '(embark-minimal-indicator
