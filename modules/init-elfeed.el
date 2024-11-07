@@ -26,9 +26,6 @@
           "https://zettelkasten.de/feed.atom"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
-          ("https://world.hey.com/this.week.in.rails/feed.atom" rails newsletter)
-          ("https://postgresweekly.com/rss/" postgresql weekly newsletter)
-          ("https://rubyweekly.com/rss/" ruby newsletter)
           ;; Topics
           ("https://irreal.org/blog/?feed=rss2" emacs)
           ("https://protesilaos.com/codelog.xml" emacs)
