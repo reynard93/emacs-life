@@ -2,10 +2,6 @@
   :pin melpa
   :bind (:map search-map ("U" . browser-hist-search)))
 
-(use-package deadgrep
-  :pin melpa
-  :bind (:map search-map ("g". deadgrep)))
-
 (use-package devdocs
   :hook
   (ruby-ts-mode . (lambda () (setq-local devdocs-current-docs '("ruby~3.3" "rails~7.0"))))
