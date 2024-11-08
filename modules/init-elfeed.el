@@ -24,6 +24,9 @@
           "https://xenodium.com/rss.xml"
           "https://yiming.dev/rss.xml"
           "https://zettelkasten.de/feed.atom"
+          "https://blog.peterzhu.ca/feed.xml"
+          "https://maggieappleton.com/rss.xml"
+          "https://feeds.feedburner.com/pgrs"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ;; Topics
