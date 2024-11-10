@@ -24,7 +24,6 @@
    ("C-c n r z" . denote-rename-file-signature)
    :map search-map
    ("n" . denote-open-or-create)
-   ("j" . denote-journal-extras-new-or-existing-entry)
    :map text-mode-map
    ("C-c n i" . denote-link)
    ("C-c n I" . denote-add-links)
@@ -38,8 +37,8 @@
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
   (denote-directory (expand-file-name "notes/" my-src-directory))
-  (denote-prompts '(title keywords signature))
-  (denote-known-keywords '("emacs"))
+  (denote-journal-extras-title-format 'day-date-month-year)
+  (denote-known-keywords nil)
   :config
   (require 'denote-journal-extras)
   (require 'denote-org-extras)
