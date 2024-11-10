@@ -20,6 +20,9 @@
 
 (use-package citar-denote
   :pin melpa
+  :init
+  (with-eval-after-load 'citar
+    (citar-denote-mode 1))
   :bind
   (("C-c w d" . citar-denote-dwim)
    ("C-c w n" . citar-denote-open-note)
@@ -33,8 +36,6 @@
    ("C-c w y" . citar-denote-cite-nocite)
    ("C-c w z" . citar-denote-nobib))
   :custom
-  (citar-denote-subdir "literature")
-  :config
-  (citar-denote-mode 1))
+  (citar-denote-subdir "literature"))
 
 (provide 'init-citar)
