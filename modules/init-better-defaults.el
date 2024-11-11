@@ -12,13 +12,17 @@
   (confirm-kill-emacs 'y-or-n-p)
   (truncate-string-ellipsis "…")
 
+  ;; Editing
+  (require-final-newline t)
+
   ;; File
-  (auto-save-interval 2400)
-  (auto-save-timeout 300)
+  (delete-by-moving-to-trash t)
   (create-lockfiles nil)
   (make-backup-files nil)
-  (require-final-newline t)
-  (delete-by-moving-to-trash t)
+  (auto-save-interval 2400)
+  (auto-save-timeout 300)
+  (auto-save-file-name-transforms
+   `((".*" ,temporary-file-directory t)))
 
   ;; Input method
   (default-input-method "chinese-py")
