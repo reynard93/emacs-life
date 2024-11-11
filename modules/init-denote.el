@@ -16,14 +16,13 @@
    ("C-c n z" . denote-signature) ; "zettelkasten" mnemonic
    ("C-c n s" . denote-subdirectory)
    ("C-c n o" . denote-sort-dired) ; "order" mnemonic
-   ("C-c n j" . denote-journal-extras-new-entry)
-   ("C-c n J" . denote-journal-extras-new-or-existing-entry)
    ("C-c n r r" . denote-rename-file-using-front-matter)
    ("C-c n r t" . denote-rename-file-title)
    ("C-c n r k" . denote-rename-file-keywords)
    ("C-c n r z" . denote-rename-file-signature)
    :map search-map
    ("n" . denote-open-or-create)
+   ("j" . denote-journal-extras-new-or-existing-entry)
    :map text-mode-map
    ("C-c n i" . denote-link)
    ("C-c n I" . denote-add-links)

@@ -36,6 +36,6 @@
    ("C-c w y" . citar-denote-cite-nocite)
    ("C-c w z" . citar-denote-nobib))
   :custom
-  (citar-denote-subdir "literature"))
+  (citar-denote-subdir "reference"))
 
 (provide 'init-citar)
