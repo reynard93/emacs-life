@@ -2,12 +2,9 @@
   :init
   (with-eval-after-load 'org-capture
     (add-to-list 'org-capture-templates
-                 '("c" "Fleeting note" plain
+                 '("n" "Note" plain
                    (file denote-last-path)
-                   (function
-                    (lambda ()
-                      (let ((denote-directory (concat denote-directory "fleeting/")))
-                        (denote-org-capture-with-prompts :title :keywords))))
+                   #'denote-org-capture
                    :no-save t
                    :immediate-finish nil
                    :kill-buffer t
