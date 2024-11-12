@@ -24,9 +24,11 @@
    ("n" . denote-open-or-create)
    ("j" . denote-journal-extras-new-or-existing-entry)
    :map text-mode-map
-   ("C-c n i" . denote-link)
-   ("C-c n I" . denote-add-links)
+   ("C-c n i" . denote-link-or-create)
+   ("C-c n I" . denote-org-extras-link-to-heading)
    ("C-c n b" . denote-backlinks)
+   ("C-c n B" . denote-org-extras-backlinks-for-heading)
+   ("C-c n l" . denote-add-links)
    ("C-c n f f" . denote-find-link)
    ("C-c n f b" . denote-find-backlink)
    :map dired-mode-map
