@@ -39,4 +39,8 @@
   :pin melpa
   :after org)
 
+(use-package ox-gfm
+  :pin melpa
+  :after org)
+
 (provide 'init-org)
