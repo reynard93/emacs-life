@@ -24,8 +24,6 @@
   :custom
   (fontaine-presets
    '((regular)
-     (large
-      :default-height 220)
      (presentation
       :default-height 240)
      (t
