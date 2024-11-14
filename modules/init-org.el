@@ -20,11 +20,13 @@
   (org-capture-templates
    `(("t" "Task" entry
       (file "tasks.org")
-      ,(concat "* TODO %?\n"
+      ,(concat "* TODO %^{Title}\n"
                ":PROPERTIES:\n"
                ":CAPTURED: %U\n"
                ":END:\n\n"
-               "%a\n%i")
+               "%a\n")
+      :prepend t
+      :immediate-finish t
       :empty-lines-after 1)))
 
   ;; Code block
