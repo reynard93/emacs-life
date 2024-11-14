@@ -10,6 +10,7 @@
 
 ;; Features
 (require 'init-alfred)
+(require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
 (require 'init-irc)
@@ -22,7 +23,6 @@
 
 ;; Contexts
 (require 'init-programming)
-(require 'init-reading)
 (require 'init-writing)
 
 ;; Services
