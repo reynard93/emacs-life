@@ -68,6 +68,21 @@
   :config
   (citar-embark-mode 1))
 
+(use-package citar-denote
+  :pin melpa
+  :init
+  (with-eval-after-load 'denote
+    (citar-denote-mode 1))
+  :bind
+  (("C-c w b n" . citar-denote-open-note)
+   :map org-mode-map
+   ("C-c w b d" . citar-denote-dwim)
+   ("C-c w b e" . citar-denote-open-reference-entry)
+   ("C-c w b k" . citar-denote-add-citekey)
+   ("C-c w b K" . citar-denote-remove-citekey))
+  :custom
+  (citar-denote-subdir "reference"))
+
 (use-package denote
   :hook (dired-mode . denote-dired-mode)
   :bind
@@ -109,21 +124,6 @@
    ("C-c n g" . consult-denote-grep))
   :custom
   (consult-denote-grep-command #'consult-ripgrep))
-
-(use-package citar-denote
-  :pin melpa
-  :init
-  (with-eval-after-load 'denote
-    (citar-denote-mode 1))
-  :bind
-  (("C-c w b n" . citar-denote-open-note)
-   :map org-mode-map
-   ("C-c w b d" . citar-denote-dwim)
-   ("C-c w b e" . citar-denote-open-reference-entry)
-   ("C-c w b k" . citar-denote-add-citekey)
-   ("C-c w b K" . citar-denote-remove-citekey))
-  :custom
-  (citar-denote-subdir "reference"))
 
 (use-package denote-explore
   :pin melpa
