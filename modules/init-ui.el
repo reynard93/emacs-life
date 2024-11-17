@@ -11,7 +11,7 @@
   (modus-themes-variable-pitch-ui t))
 
 (use-package ef-themes
-  :defer t
+  :bind ("M-<f9>" . ef-themes-toggle)
   :custom
   (ef-themes-mixed-fonts t)
   (ef-themes-variable-pitch-ui t)
