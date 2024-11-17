@@ -56,8 +56,8 @@
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
   :bind
-  (("C-c w b o" . citar-open)
-   ("C-c w b c" . citar-create-note))
+  (("C-c w c o" . citar-open)
+   ("C-c w c c" . citar-create-note))
   :custom
   (citar-bibliography org-cite-global-bibliography)
   (citar-at-point-function #'embark-act))
@@ -71,15 +71,15 @@
 (use-package citar-denote
   :pin melpa
   :init
-  (with-eval-after-load 'denote
+  (with-eval-after-load 'citar
     (citar-denote-mode 1))
   :bind
-  (("C-c w b n" . citar-denote-open-note)
-   :map org-mode-map
-   ("C-c w b d" . citar-denote-dwim)
-   ("C-c w b e" . citar-denote-open-reference-entry)
-   ("C-c w b k" . citar-denote-add-citekey)
-   ("C-c w b K" . citar-denote-remove-citekey))
+  (("C-c w c n" . citar-denote-open-note)
+   :map text-mode-map
+   ("C-c w c d" . citar-denote-dwim)
+   ("C-c w c e" . citar-denote-open-reference-entry)
+   ("C-c w c k" . citar-denote-add-citekey)
+   ("C-c w c K" . citar-denote-remove-citekey))
   :custom
   (citar-denote-subdir "reference"))
 
