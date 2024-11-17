@@ -1,4 +1,5 @@
 (use-package denote
+  :defer 1
   :init
   (with-eval-after-load 'org-capture
     (add-to-list 'org-capture-templates
