@@ -149,6 +149,12 @@ The path is relative to `project-current'."
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
+(use-package doc-view
+  :ensure nil
+  :custom
+  (doc-view-resolution 300)
+  (large-file-warning-threshold (* 50 (expt 2 20))))
+
 (use-package undo-fu-session
   :pin nongnu
   :init
