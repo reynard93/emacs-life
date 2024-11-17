@@ -56,8 +56,8 @@
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
   :bind
-  (("C-c n c o" . citar-open)
-   ("C-c n c c" . citar-create-note))
+  (("C-c w b o" . citar-open)
+   ("C-c w b c" . citar-create-note))
   :custom
   (citar-bibliography org-cite-global-bibliography)
   (citar-at-point-function #'embark-act))
@@ -80,8 +80,6 @@
    ("C-c n b" . denote-backlinks)
    ("C-c n r" . denote-rename-file)
    ("C-c n R" . denote-rename-file-using-front-matter)
-   ("C-c n f f" . denote-find-link)
-   ("C-c n f b" . denote-find-backlink)
    :map org-mode-map
    ("C-c n d l" . denote-org-extras-dblock-insert-links)
    ("C-c n d b" . denote-org-extras-dblock-insert-backlinks)
@@ -106,7 +104,9 @@
   :init
   (with-eval-after-load 'denote
     (consult-denote-mode 1))
-  :bind ("C-c n g" . consult-denote-grep)
+  :bind
+  (("C-c n f" . consult-denote-find)
+   ("C-c n g" . consult-denote-grep))
   :custom
   (consult-denote-grep-command #'consult-ripgrep))
 
@@ -116,12 +116,12 @@
   (with-eval-after-load 'denote
     (citar-denote-mode 1))
   :bind
-  (("C-c n c n" . citar-denote-open-note)
+  (("C-c w b n" . citar-denote-open-note)
    :map org-mode-map
-   ("C-c n c d" . citar-denote-dwim)
-   ("C-c n c e" . citar-denote-open-reference-entry)
-   ("C-c n c k" . citar-denote-add-citekey)
-   ("C-c n c K" . citar-denote-remove-citekey))
+   ("C-c w b d" . citar-denote-dwim)
+   ("C-c w b e" . citar-denote-open-reference-entry)
+   ("C-c w b k" . citar-denote-add-citekey)
+   ("C-c w b K" . citar-denote-remove-citekey))
   :custom
   (citar-denote-subdir "reference"))
 
@@ -129,24 +129,24 @@
   :pin melpa
   :bind
   (;; Statistics
-   ("C-c n x c" . denote-explore-count-notes)
-   ("C-c n x C" . denote-explore-count-keywords)
-   ("C-c n x b" . denote-explore-barchart-keywords)
-   ("C-c n x e" . denote-explore-barchart-filetypes)
+   ("C-c w x c" . denote-explore-count-notes)
+   ("C-c w x C" . denote-explore-count-keywords)
+   ("C-c w x b" . denote-explore-barchart-keywords)
+   ("C-c w x e" . denote-explore-barchart-filetypes)
    ;; Random walks
-   ("C-c n x r" . denote-explore-random-note)
-   ("C-c n x l" . denote-explore-random-link)
-   ("C-c n x k" . denote-explore-random-keyword)
-   ("C-c n x x" . denote-explore-random-regex)
+   ("C-c w x r" . denote-explore-random-note)
+   ("C-c w x l" . denote-explore-random-link)
+   ("C-c w x k" . denote-explore-random-keyword)
+   ("C-c w x x" . denote-explore-random-regex)
    ;; Denote Janitor
-   ("C-c n x d" . denote-explore-identify-duplicate-notes)
-   ("C-c n x z" . denote-explore-zero-keywords)
-   ("C-c n x s" . denote-explore-single-keywords)
-   ("C-c n x o" . denote-explore-sort-keywords)
-   ("C-c n x w" . denote-explore-rename-keyword)
+   ("C-c w x d" . denote-explore-identify-duplicate-notes)
+   ("C-c w x z" . denote-explore-zero-keywords)
+   ("C-c w x s" . denote-explore-single-keywords)
+   ("C-c w x o" . denote-explore-sort-keywords)
+   ("C-c w x w" . denote-explore-rename-keyword)
    ;; Visualise denote
-   ("C-c n x n" . denote-explore-network)
-   ("C-c n x v" . denote-explore-network-regenerate)
-   ("C-c n x D" . denote-explore-degree-barchart)))
+   ("C-c w x n" . denote-explore-network)
+   ("C-c w x v" . denote-explore-network-regenerate)
+   ("C-c w x D" . denote-explore-degree-barchart)))
 
 (provide 'init-writing)
