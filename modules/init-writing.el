@@ -89,7 +89,6 @@
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
    ("C-c n o" . denote-sort-dired)
-   ("C-c n j" . denote-journal-extras-new-entry)
    :map text-mode-map
    ("C-c n i" . denote-link-or-create)
    ("C-c n I" . denote-add-links)
@@ -103,16 +102,11 @@
    ("C-c C-d C-i" . denote-link-dired-marked-notes)
    ("C-c C-d C-r" . denote-dired-rename-marked-files)
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
-   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)
-   :map search-map
-   ("n" . denote-open-or-create)
-   ("j" . denote-journal-extras-new-or-existing-entry))
+   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
   (denote-directory (expand-file-name "notes/" my-src-directory))
-  (denote-journal-extras-title-format 'day-date-month-year)
   (denote-known-keywords nil)
   :config
-  (require 'denote-journal-extras)
   (require 'denote-org-extras)
   (denote-rename-buffer-mode 1))
 
