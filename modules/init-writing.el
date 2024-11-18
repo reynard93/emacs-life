@@ -55,9 +55,6 @@
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
-  :bind
-  (("C-c w c o" . citar-open)
-   ("C-c w c c" . citar-create-note))
   :custom
   (citar-bibliography org-cite-global-bibliography)
   (citar-at-point-function #'embark-act))
@@ -74,7 +71,8 @@
   (with-eval-after-load 'citar
     (citar-denote-mode 1))
   :bind
-  (("C-c w c n" . citar-denote-open-note)
+  (("C-c w c c" . citar-create-note)
+   ("C-c w c n" . citar-denote-open-note)
    :map text-mode-map
    ("C-c w c d" . citar-denote-dwim)
    ("C-c w c e" . citar-denote-open-reference-entry)
