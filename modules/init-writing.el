@@ -1,3 +1,6 @@
+(setq my-notes-directory (expand-file-name "notes/" my-src-directory))
+(setq my-reference-file (expand-file-name "reference.bib" my-notes-directory))
+
 (use-package org
   :ensure nil
   :bind
@@ -51,7 +54,7 @@
 (use-package citar
   :pin melpa
   :init
-  (setq org-cite-global-bibliography '("~/Zotero/references.bib"))
+  (setq org-cite-global-bibliography `(,my-reference-file))
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
@@ -102,7 +105,7 @@
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
-  (denote-directory (expand-file-name "notes/" my-src-directory))
+  (denote-directory my-notes-directory)
   (denote-known-keywords nil)
   :config
   (require 'denote-org-extras)
