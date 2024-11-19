@@ -27,12 +27,14 @@
           "https://blog.peterzhu.ca/feed.xml"
           "https://maggieappleton.com/rss.xml"
           "https://feeds.feedburner.com/pgrs"
+          "https://dylancastillo.co/index.xml"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ;; Topics
           ("https://irreal.org/blog/?feed=rss2" emacs)
           ("https://protesilaos.com/codelog.xml" emacs)
           ("https://karthinks.com/tags/emacs/index.xml" emacs)
+          ("https://www.masteringemacs.org/feed" emacs)
           ("https://www.ruby-lang.org/en/feeds/news.rss" ruby)
           ("https://dev.37signals.com/feed/posts.xml" rails)
           ("https://railsatscale.com/feed.xml" rails)
