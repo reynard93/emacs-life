@@ -112,6 +112,8 @@
    ("C-c n b" . denote-backlinks)
    ("C-c n r" . denote-rename-file)
    ("C-c n R" . denote-rename-file-using-front-matter)
+   ("C-c n l l" . denote-find-link)
+   ("C-c n l b" . denote-find-backlink)
    :map org-mode-map
    ("C-c n d l" . denote-org-extras-dblock-insert-links)
    ("C-c n d b" . denote-org-extras-dblock-insert-backlinks)
