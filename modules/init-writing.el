@@ -4,7 +4,8 @@
 (use-package org
   :ensure nil
   :bind
-  (("C-c c" . org-capture)
+  (("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
    ("C-c l" . org-store-link)
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
@@ -12,12 +13,18 @@
 
   :custom
   (org-ellipsis "…")
+  (org-use-sub-superscripts '{})
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+
+  ;; Agenda
+  (org-agenda-files `(,org-directory))
+  (org-agenda-window-setup 'current-window)
 
   ;; Capture
   (org-capture-templates
-   '(("c" "New note (with Org)" item (file "notes.org") "- %?")
-     ("d" "New note (with Denote)" plain
+   '(("t" "New task" entry (file "tasks.org") "* TODO %?")
+     ("f" "New note (with Org)" item (file "notes.org") "- %?")
+     ("n" "New note (with Denote)" plain
       (file denote-last-path)
       #'denote-org-capture
       :no-save t
@@ -30,6 +37,15 @@
   (org-edit-src-persistent-message nil)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'current-window)
+
+  ;; Export
+  (org-export-with-sub-superscripts '{})
+
+  ;; Log
+  (setq org-log-done 'time)
+  (setq org-log-into-drawer t)
+  (setq org-log-redeadline 'time)
+  (setq org-log-reschedule 'time)
 
   ;; Tag
   (org-auto-align-tags nil)
