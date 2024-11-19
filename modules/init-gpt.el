@@ -54,7 +54,7 @@ Display the result in a side window with the content selected."
     (let ((gptel-backend gptel--google)
           (gptel-model 'gemini-1.5-flash))
       (gptel-request text
-        :system "You're a language translator. Translate text into English, keep the original format and meaning."
+        :system "You're a en-zh language translator. Keep the original format and meaning."
         :callback
         (lambda (response info)
           (if response
