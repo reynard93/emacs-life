@@ -28,6 +28,9 @@
           "https://maggieappleton.com/rss.xml"
           "https://feeds.feedburner.com/pgrs"
           "https://dylancastillo.co/index.xml"
+          "https://ismailefe.org/feed.xml"
+          "https://evilmartians.com/chronicles.atom"
+          "https://thoughtbot.com/blog/web/feed"
           ;; Newsletter
           ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ;; Topics
