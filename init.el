@@ -15,7 +15,6 @@
 (require 'init-gpt)
 (require 'init-irc)
 (require 'init-mail)
-(require 'init-org)
 (require 'init-pass)
 (require 'init-search)
 (require 'init-shell-command)
