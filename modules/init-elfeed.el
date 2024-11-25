@@ -45,7 +45,9 @@
           ("https://news.livebook.dev/rss.xml" elixir)
           ("https://fly.io/phoenix-files/feed.xml" elixir)
           ("https://devenv.sh/feed_rss_created.xml" nix)
-          ("https://simonwillison.net/tags/llms.atom" llm)))
+          ("https://simonwillison.net/tags/llms.atom" llm)
+          ("https://www.recomendo.com/feed")
+          ("https://duckdb.org/feed.xml" duckdb)))
 
   :bind
   (("C-c e" . elfeed)
