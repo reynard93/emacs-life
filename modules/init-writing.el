@@ -4,8 +4,7 @@
 (use-package org
   :ensure nil
   :bind
-  (("C-c a" . org-agenda)
-   ("C-c c" . org-capture)
+  (("C-c c" . org-capture)
    ("C-c l" . org-store-link)
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
@@ -16,14 +15,18 @@
   (org-use-sub-superscripts '{})
   (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
 
-  ;; Agenda
-  (org-agenda-files `(,org-directory))
-  (org-agenda-window-setup 'current-window)
-
   ;; Capture
   (org-capture-templates
-   '(("j" "Interstitial journal" item (file+olp+datetree "journal.org") "%<%H:%M> %?")
-     ("f" "Fleeting note" item (file "notes.org") "- %?")
+   '(("f" "Fleeting note" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-directory (concat denote-directory "fleeting/")))
+           (denote-org-capture-with-prompts :title))))
+      :no-save t
+      :immediate-finish nil
+      :kill-buffer t
+      :jump-to-captured t)
      ("n" "Permanent note" plain
       (file denote-last-path)
       (function
@@ -109,7 +112,6 @@
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
    ("C-c n o" . denote-sort-dired)
-   ("C-c n j" . denote-journal-extras-new-entry)
    :map text-mode-map
    ("C-c n i" . denote-link-or-create)
    ("C-c n I" . denote-add-links)
@@ -125,16 +127,12 @@
    ("C-c C-d C-i" . denote-link-dired-marked-notes)
    ("C-c C-d C-r" . denote-dired-rename-marked-files)
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
-   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)
-   :map search-map
-   ("n" . denote-open-or-create)
-   ("j" . denote-journal-extras-new-or-existing-entry))
+   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
   (denote-directory my-notes-directory)
   (denote-known-keywords nil)
   :config
   (require 'denote-org-extras)
-  (require 'denote-journal-extras)
   (denote-rename-buffer-mode 1))
 
 (use-package consult-denote
