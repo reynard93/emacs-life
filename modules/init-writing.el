@@ -125,7 +125,10 @@
    ("C-c C-d C-i" . denote-link-dired-marked-notes)
    ("C-c C-d C-r" . denote-dired-rename-marked-files)
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
-   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
+   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)
+   :map search-map
+   ("n" . denote-open-or-create)
+   ("j" . denote-journal-extras-new-or-existing-entry))
   :custom
   (denote-directory my-notes-directory)
   (denote-known-keywords nil)
