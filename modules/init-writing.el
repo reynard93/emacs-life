@@ -109,13 +109,15 @@
   :bind
   (("C-c n n" . denote)
    ("C-c n N" . denote-type)
+   ("C-c n z" . denote-signature)
    ("C-c n o" . denote-sort-dired)
+   ("C-c n r" . denote-rename-file)
    ("C-c n j" . denote-journal-extras-new-entry)
+   ("C-c n J" . denote-journal-extras-new-or-existing-entry)
    :map text-mode-map
    ("C-c n i" . denote-link-or-create)
    ("C-c n I" . denote-add-links)
    ("C-c n b" . denote-backlinks)
-   ("C-c n r" . denote-rename-file)
    ("C-c n R" . denote-rename-file-using-front-matter)
    ("C-c n l l" . denote-find-link)
    ("C-c n l b" . denote-find-backlink)
@@ -128,11 +130,11 @@
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)
    :map search-map
-   ("n" . denote-open-or-create)
-   ("j" . denote-journal-extras-new-or-existing-entry))
+   ("n" . denote-open-or-create))
   :custom
   (denote-known-keywords nil)
   (denote-journal-extras-title-format 'day-date-month-year)
+  (denote-journal-extras-hook (lambda () (tmr "10" "Journal")))
   :config
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
@@ -171,5 +173,8 @@
    ("C-c w x n" . denote-explore-network)
    ("C-c w x v" . denote-explore-network-regenerate)
    ("C-c w x D" . denote-explore-degree-barchart)))
+
+(use-package tmr
+  :bind ("C-c T" . tmr-edit-description))
 
 (provide 'init-writing)
