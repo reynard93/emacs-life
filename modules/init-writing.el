@@ -21,7 +21,8 @@
       (file denote-last-path)
       (function
        (lambda ()
-         (denote-org-capture-with-prompts :title)))
+         (let ((denote-directory (concat denote-directory "fleeting/")))
+           (denote-org-capture-with-prompts :title))))
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
