@@ -17,17 +17,7 @@
 
   ;; Capture
   (org-capture-templates
-   '(("f" "Fleeting note" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-directory (concat denote-directory "fleeting/")))
-           (denote-org-capture-with-prompts :title))))
-      :no-save nil
-      :immediate-finish nil
-      :kill-buffer t
-      :jump-to-captured nil)
-     ("n" "Permanent note" plain
+   '(("c" "New note (with Denote)" plain
       (file denote-last-path)
       #'denote-org-capture
       :no-save t
