@@ -3,51 +3,35 @@
   :init
   (run-at-time t (* 8 60 60) #'elfeed-update) ; Update feeds every 8 hours
   (setq elfeed-feeds
-        '("https://andrealeopardi.com/feed.xml"
-          "https://batsov.com/atom.xml"
-          "https://blog.cloud-mes.com/atom.xml"
-          "https://drewdevault.com/blog/index.xml"
-          "https://emersion.fr/blog/atom.xml"
-          "https://ferd.ca/feed.rss"
-          "https://herman.bearblog.dev/feed/"
-          "https://jesseduffield.com/feed.xml"
-          "https://jvns.ca/atom.xml"
-          "https://lucidmanager.org/index.xml"
-          "https://martinfowler.com/feed.atom"
+        '("https://jvns.ca/atom.xml"
           "https://sive.rs/en.atom"
-          "https://underjord.io/feed.xml"
           "https://world.hey.com/dhh/feed.atom"
           "https://world.hey.com/jason/feed.atom"
           "https://world.hey.com/jorge/feed.atom"
-          "https://www.feltpresence.com/rss/"
-          "https://www.mikeperham.com/index.xml"
-          "https://xenodium.com/rss.xml"
-          "https://yiming.dev/rss.xml"
-          "https://zettelkasten.de/feed.atom"
-          "https://blog.peterzhu.ca/feed.xml"
-          "https://maggieappleton.com/rss.xml"
-          "https://feeds.feedburner.com/pgrs"
-          "https://dylancastillo.co/index.xml"
-          "https://ismailefe.org/feed.xml"
-          "https://evilmartians.com/chronicles.atom"
-          "https://thoughtbot.com/blog/web/feed"
-          ;; Newsletter
-          ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
-          ;; Topics
-          ("https://irreal.org/blog/?feed=rss2" emacs)
-          ("https://protesilaos.com/codelog.xml" emacs)
-          ("https://karthinks.com/tags/emacs/index.xml" emacs)
-          ("https://www.masteringemacs.org/feed" emacs)
-          ("https://www.ruby-lang.org/en/feeds/news.rss" ruby)
-          ("https://dev.37signals.com/feed/posts.xml" rails)
-          ("https://railsatscale.com/feed.xml" rails)
+          ("https://andrealeopardi.com/feed.xml" elixir)
+          ("https://batsov.com/atom.xml" emacs)
+          ("https://blog.cloud-mes.com/atom.xml" friend)
           ("https://dashbit.co/feed" elixir)
-          ("https://news.livebook.dev/rss.xml" elixir)
-          ("https://fly.io/phoenix-files/feed.xml" elixir)
-          ("https://devenv.sh/feed_rss_created.xml" nix)
+          ("https://dev.37signals.com/feed/posts.xml" ruby rails webdev)
+          ("https://devenv.sh/feed_rss_created.xml" nix dev)
+          ("https://duckdb.org/feed.xml" duckdb database news)
+          ("https://elixir-lang.org/atom.xml" elixir news)
+          ("https://ferd.ca/feed.rss" erlang elixir)
+          ("https://fly.io/phoenix-files/feed.xml" elixir phoenix webdev)
+          ("https://irreal.org/blog/?feed=rss2" emacs)
+          ("https://karthinks.com/tags/emacs/index.xml" emacs)
+          ("https://news.livebook.dev/rss.xml" elixir news)
+          ("https://protesilaos.com/codelog.xml" emacs)
+          ("https://railsatscale.com/feed.xml" ruby news)
+          ("https://sachachua.com/blog/category/emacs-news/feed" emacs newsletter)
           ("https://simonwillison.net/tags/llms.atom" llm)
-          ("https://www.recomendo.com/feed")
-          ("https://duckdb.org/feed.xml" duckdb)))
+          ("https://underjord.io/feed.xml" elixir)
+          ("https://www.feltpresence.com/rss/" shapeup)
+          ("https://www.masteringemacs.org/feed" emacs)
+          ("https://www.mikeperham.com/index.xml" ruby sidekiq)
+          ("https://www.ruby-lang.org/en/feeds/news.rss" ruby news)
+          ("https://xenodium.com/rss.xml" emacs)
+          ("https://yiming.dev/rss.xml" friend)))
 
   :bind
   (("C-c e" . elfeed)
