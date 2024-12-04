@@ -10,13 +10,6 @@
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t))
 
-(use-package ef-themes
-  :bind ("M-<f9>" . ef-themes-toggle)
-  :custom
-  (ef-themes-mixed-fonts t)
-  (ef-themes-variable-pitch-ui t)
-  (ef-themes-to-toggle '(ef-frost ef-bio)))
-
 (use-package fontaine
   :if (display-graphic-p)
   :demand t
