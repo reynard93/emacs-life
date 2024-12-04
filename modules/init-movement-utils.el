@@ -58,13 +58,9 @@
   :init
   (setq popper-reference-buffers
         (append '(compilation-mode
-                  help-mode
-                  helpful-mode
                   rspec-compilation-mode
                   exunit-compilation-mode
                   inf-ruby-mode
-                  dictionary-mode
-                  osx-dictionary-mode
                   devdocs-mode)
                 '("^\\*Messages\\*$"
                   ("^\\*Async Shell Command\\*$" . hide)
