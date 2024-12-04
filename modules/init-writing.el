@@ -125,6 +125,7 @@
    ("n" . denote-open-or-create))
   :custom
   (denote-known-keywords nil)
+  (denote-journal-extras-title-format 'day-date-month-year)
   :config
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
