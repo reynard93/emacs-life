@@ -17,9 +17,12 @@
 
   ;; Capture
   (org-capture-templates
-   '(("c" "New note (with Denote)" plain
+   '(("p" "Project note" plain
       (file denote-last-path)
-      #'denote-org-capture
+      (function
+       (lambda ()
+         (let ((denote-directory (concat denote-directory "project/")))
+           (denote-org-capture-with-prompts :title :keywords))))
       :no-save t
       :immediate-finish nil
       :kill-buffer t
