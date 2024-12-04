@@ -164,7 +164,4 @@
    ("C-c w x v" . denote-explore-network-regenerate)
    ("C-c w x D" . denote-explore-degree-barchart)))
 
-(use-package tmr
-  :bind ("C-c T" . tmr-edit-description))
-
 (provide 'init-writing)
