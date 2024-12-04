@@ -149,12 +149,6 @@ The path is relative to `project-current'."
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
-(use-package doc-view
-  :ensure nil
-  :custom
-  (doc-view-mupdf-use-svg t)
-  (doc-view-resolution 300))
-
 (use-package undo-fu-session
   :pin nongnu
   :init
@@ -185,9 +179,14 @@ The path is relative to `project-current'."
    ("C-^" . crux-switch-to-previous-buffer)
    ("s-n" . crux-create-scratch-buffer)))
 
-(use-package xclip
-  :unless (display-graphic-p)
+(use-package doc-view
+  :ensure nil
+  :custom
+  (doc-view-mupdf-use-svg t)
+  (doc-view-resolution 300))
+
+(use-package dired-preview
   :config
-  (xclip-mode 1))
+  (dired-preview-global-mode 1))
 
 (provide 'init-better-defaults)
