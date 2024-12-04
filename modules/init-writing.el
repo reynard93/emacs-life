@@ -126,7 +126,6 @@
   :custom
   (denote-known-keywords nil)
   (denote-journal-extras-title-format 'day-date-month-year)
-  (denote-journal-extras-hook (lambda () (tmr "10" "Journal")))
   :config
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
