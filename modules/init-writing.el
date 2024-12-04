@@ -50,7 +50,8 @@
    '((emacs-lisp . t)
      (racket . t)
      (shell . t)
-     (ruby . t))))
+     (ruby . t)
+     (python . t))))
 
 (use-package ox-hugo
   :pin melpa
