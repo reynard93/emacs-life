@@ -1,4 +1,4 @@
-(use-package python-mode
+(use-package python
   :ensure nil
   :custom
   (python-indent-offset 2))
