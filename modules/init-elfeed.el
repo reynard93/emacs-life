@@ -1,27 +1,11 @@
 (use-package elfeed
   :pin melpa
   :init
-  (run-at-time t (* 8 60 60) #'elfeed-update) ; Update feeds every 8 hours
   (setq elfeed-feeds
-        '("https://jvns.ca/atom.xml"
-          "https://sive.rs/en.atom"
-          "https://world.hey.com/dhh/feed.atom"
-          "https://world.hey.com/jason/feed.atom"
-          "https://world.hey.com/jorge/feed.atom"
-          "https://jesseduffield.com/feed.xml"
-          ("https://blog.cloud-mes.com/atom.xml" friend)
-          ("https://yiming.dev/rss.xml" friend)
+        '(("https://world.hey.com/dhh/feed.atom" webdev)
+          ("https://world.hey.com/jorge/feed.atom" webdev)
           ("https://protesilaos.com/codelog.xml" emacs)
           ("https://karthinks.com/tags/emacs/index.xml" emacs)
-          ("https://batsov.com/atom.xml" emacs)
-          ("https://xenodium.com/rss.xml" emacs)
-          ("https://dev.37signals.com/feed/posts.xml" ruby rails webdev)
-          ("https://fly.io/phoenix-files/feed.xml" elixir phoenix webdev)
-          ("https://dashbit.co/feed" elixir)
-          ("https://ferd.ca/feed.rss" elixir erlang)
-          ("https://andrealeopardi.com/feed.xml" elixir)
-          ("https://underjord.io/feed.xml" elixir)
-          ("https://feeds.feedburner.com/pgrs" duckdb)
           ("https://simonwillison.net/tags/llms.atom" llm)))
 
   :bind
@@ -32,7 +16,6 @@
    ("B" . +elfeed/eww))
 
   :custom
-  (elfeed-initial-tags '(unread inbox))
   (elfeed-search-filter "#50 +unread ")
 
   :config
