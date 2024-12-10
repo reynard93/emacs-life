@@ -2,10 +2,7 @@
   :pin melpa
   :init
   (setq elfeed-feeds
-        '(("https://world.hey.com/dhh/feed.atom" webdev)
-          ("https://world.hey.com/jorge/feed.atom" webdev)
-          ("https://protesilaos.com/codelog.xml" emacs)
-          ("https://karthinks.com/tags/emacs/index.xml" emacs)
+        '(("https://protesilaos.com/codelog.xml" emacs)
           ("https://simonwillison.net/tags/llms.atom" llm)))
 
   :bind
