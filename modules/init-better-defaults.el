@@ -185,8 +185,17 @@ The path is relative to `project-current'."
   (doc-view-mupdf-use-svg t)
   (doc-view-resolution 300))
 
-(use-package dired-preview
+(use-package dired
+  :ensure nil
+  :hook (dired-mode . dired-hide-details-mode)
+  :custom
+  (dired-recursive-copies 'always)
+  (dired-recursive-deletes 'always)
+  (dired-dwim-target t))
+
+(use-package delsel
+  :ensure nil
   :config
-  (dired-preview-global-mode 1))
+  (delete-selection-mode 1))
 
 (provide 'init-better-defaults)
