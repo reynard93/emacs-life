@@ -87,13 +87,8 @@
   (with-eval-after-load 'citar
     (citar-denote-mode 1))
   :bind
-  (("C-c w c c" . citar-create-note)
-   ("C-c w c n" . citar-denote-open-note)
-   :map text-mode-map
-   ("C-c w c d" . citar-denote-dwim)
-   ("C-c w c e" . citar-denote-open-reference-entry)
-   ("C-c w c k" . citar-denote-add-citekey)
-   ("C-c w c K" . citar-denote-remove-citekey))
+  (("C-c n c" . citar-create-note)
+   ("C-c n o" . citar-denote-open-note))
   :custom
   (citar-denote-subdir "reference"))
 
@@ -102,32 +97,24 @@
   (setq denote-directory my-notes-directory)
   :hook (dired-mode . denote-dired-mode)
   :bind
-  (("C-c n n" . denote)
-   ("C-c n N" . denote-type)
-   ("C-c n o" . denote-sort-dired)
+  (("C-c n n" . denote-open-or-create-with-command)
+   ("C-c n d" . denote-sort-dired)
    ("C-c n r" . denote-rename-file)
    ("C-c n j" . denote-journal-extras-new-entry)
-   :map text-mode-map
+   :map org-mode-map
    ("C-c n i" . denote-link-or-create)
-   ("C-c n I" . denote-add-links)
+   ("C-c n I" . denote-org-extras-link-to-heading)
    ("C-c n b" . denote-backlinks)
    ("C-c n R" . denote-rename-file-using-front-matter)
-   ("C-c n l l" . denote-find-link)
-   ("C-c n l b" . denote-find-backlink)
-   :map org-mode-map
-   ("C-c n d l" . denote-org-extras-dblock-insert-links)
-   ("C-c n d b" . denote-org-extras-dblock-insert-backlinks)
+   ("M-g l" . denote-find-link)
+   ("M-g L" . denote-find-backlink)
    :map dired-mode-map
    ("C-c C-d C-i" . denote-link-dired-marked-notes)
    ("C-c C-d C-r" . denote-dired-rename-marked-files)
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
-   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter)
-   :map search-map
-   ("n" . denote-open-or-create-with-command)
-   ("j" . denote-journal-extras-new-or-existing-entry))
+   ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
   (denote-known-keywords nil)
-  (denote-journal-extras-title-format 'day-date-month-year)
   :config
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
@@ -145,26 +132,6 @@
 
 (use-package denote-explore
   :pin melpa
-  :bind
-  (;; Statistics
-   ("C-c w x c" . denote-explore-count-notes)
-   ("C-c w x C" . denote-explore-count-keywords)
-   ("C-c w x b" . denote-explore-barchart-keywords)
-   ("C-c w x e" . denote-explore-barchart-filetypes)
-   ;; Random walks
-   ("C-c w x r" . denote-explore-random-note)
-   ("C-c w x l" . denote-explore-random-link)
-   ("C-c w x k" . denote-explore-random-keyword)
-   ("C-c w x x" . denote-explore-random-regex)
-   ;; Denote Janitor
-   ("C-c w x d" . denote-explore-identify-duplicate-notes)
-   ("C-c w x z" . denote-explore-zero-keywords)
-   ("C-c w x s" . denote-explore-single-keywords)
-   ("C-c w x o" . denote-explore-sort-keywords)
-   ("C-c w x w" . denote-explore-rename-keyword)
-   ;; Visualise denote
-   ("C-c w x n" . denote-explore-network)
-   ("C-c w x v" . denote-explore-network-regenerate)
-   ("C-c w x D" . denote-explore-degree-barchart)))
+  :bind ("C-c n s" . denote-explore-sync-metadata))
 
 (provide 'init-writing)
