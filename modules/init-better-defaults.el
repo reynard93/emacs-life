@@ -193,6 +193,9 @@ The path is relative to `project-current'."
   (dired-recursive-deletes 'always)
   (dired-dwim-target t))
 
+(use-package dired-preview
+  :bind (:map dired-mode-map ("<f8>" . dired-preview-mode)))
+
 (use-package delsel
   :ensure nil
   :config
