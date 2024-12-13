@@ -17,16 +17,9 @@
 
   ;; Capture
   (org-capture-templates
-   '(("p" "Project note" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-directory (concat denote-directory "project/")))
-           (denote-org-capture-with-prompts :title :keywords))))
-      :no-save t
-      :immediate-finish nil
-      :kill-buffer t
-      :jump-to-captured t)))
+   '(("c" "Fleeting note" item
+      (file "notes.org")
+      "- %?")))
 
   ;; Code block
   (org-edit-src-content-indentation 0)
@@ -88,7 +81,8 @@
     (citar-denote-mode 1))
   :bind
   (("C-c n c" . citar-create-note)
-   ("C-c n o" . citar-denote-open-note))
+   ("C-c n o" . citar-denote-open-note)
+   ("C-c n ." . citar-denote-dwim))
   :custom
   (citar-denote-subdir "reference"))
 
@@ -100,6 +94,7 @@
   (("C-c n n" . denote-open-or-create-with-command)
    ("C-c n d" . denote-sort-dired)
    ("C-c n r" . denote-rename-file)
+   ("C-c n z" . denote-rename-file-signature)
    ("C-c n j" . denote-journal-extras-new-entry)
    :map org-mode-map
    ("C-c n i" . denote-link-or-create)
