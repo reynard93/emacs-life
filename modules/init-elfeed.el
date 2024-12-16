@@ -2,8 +2,34 @@
   :pin melpa
   :init
   (setq elfeed-feeds
-        '(("https://protesilaos.com/codelog.xml" emacs)
-          ("https://simonwillison.net/tags/llms.atom" llm)))
+        '("https://andrealeopardi.com/feed.xml"
+          "https://blog.cloud-mes.com/atom.xml"
+          "https://dashbit.co/feed"
+          "https://dev.37signals.com/feed/posts.xml"
+          "https://devenv.sh/feed_rss_created.xml"
+          "https://duckdb.org/feed.xml"
+          "https://elixir-lang.org/atom.xml"
+          "https://evilmartians.com/chronicles.atom"
+          "https://feeds.feedburner.com/pgrs"
+          "https://ferd.ca/feed.rss"
+          "https://fly.io/phoenix-files/feed.xml"
+          "https://herman.bearblog.dev/feed/"
+          "https://jvns.ca/atom.xml"
+          "https://karthinks.com/index.xml"
+          "https://maggieappleton.com/rss.xml"
+          "https://martinfowler.com/feed.atom"
+          "https://mitchellh.com/feed.xml"
+          "https://news.livebook.dev/rss.xml"
+          "https://protesilaos.com/master.xml"
+          "https://railsatscale.com/feed.xml"
+          "https://sachachua.com/blog/category/emacs-news/feed/"
+          "https://simonwillison.net/atom/everything/"
+          "https://underjord.io/feed.xml"
+          "https://world.hey.com/this.week.in.rails/feed.atom"
+          "https://www.ruby-lang.org/en/feeds/news.rss"
+          "https://xenodium.com/rss.xml"
+          "https://yiming.dev/rss.xml"
+          ))
 
   :bind
   (("C-c e" . elfeed)
