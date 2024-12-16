@@ -21,6 +21,12 @@
       :models '(anthropic/claude-3.5-sonnet
                 anthropic/claude-3-5-haiku)))
 
+  (defvar gptel--ollama
+    (gptel-make-ollama "Ollama"
+      :host "localhost:11434"
+      :stream t
+      :models '("llama3.2:latest")))
+
   :bind
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
