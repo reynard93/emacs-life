@@ -27,6 +27,11 @@
       :stream t
       :models '("llama3.2:latest")))
 
+  (defvar gptel--kagi
+    (gptel-make-kagi "Kagi"
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
+      :models '("fastgpt")))
+
   :bind
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
