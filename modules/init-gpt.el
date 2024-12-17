@@ -43,7 +43,7 @@
   (gptel-default-mode 'org-mode)
 
   :config
-  (setq gptel-model 'anthropic/claude-3-5-haiku
+  (setq gptel-model 'anthropic/claude-3.5-sonnet
         gptel-backend gptel--openrouter)
 
   (defun +gptel/send-all-buffers (text)
