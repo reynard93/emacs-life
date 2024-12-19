@@ -6,6 +6,6 @@
    ("C-c J" . jinx-languages)
    ("<f12>" . jinx-mode))
   :custom
-  (jinx-languages "en_US"))
+  (jinx-languages "en_US en_GB"))
 
 (provide 'init-spell-checker)
