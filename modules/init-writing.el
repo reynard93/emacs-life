@@ -17,9 +17,27 @@
 
   ;; Capture
   (org-capture-templates
-   '(("c" "Fleeting note" item
-      (file "notes.org")
-      "- %?")))
+   '(("f" "Fleeting note" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-keywords '("fleeting")))
+           (denote-org-capture))))
+      :no-save nil
+      :immediate-finish nil
+      :kill-buffer t
+      :jump-to-captured nil)
+     ("o" "OA ticket" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-title (alfred-browser-title))
+               (denote-use-keywords '("jira" "openapply")))
+           (denote-org-capture))))
+      :no-save nil
+      :immediate-finish nil
+      :kill-buffer t
+      :jump-to-captured t)))
 
   ;; Code block
   (org-edit-src-content-indentation 0)
@@ -110,6 +128,7 @@
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
   (denote-known-keywords nil)
+  (denote-org-capture-specifiers "%i\n%?")
   :config
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
