@@ -15,25 +15,7 @@
 
   ;; Capture
   (org-capture-templates
-   `(("u" "Unprocessed" entry
-      (file+headline "tasks.org" "Unprocessed")
-      ,(concat "* %^{Title}\n"
-               ":PROPERTIES:\n"
-               ":CAPTURED: %U\n"
-               ":CUSTOM_ID: h:%(format-time-string \"%Y%m%dT%H%M%S\")\n"
-               ":END:\n\n"
-               "%a\n%i%?")
-      :empty-lines-after 1)
-     ("w" "Wishlist" entry
-      (file+olp "tasks.org" "All tasks" "Wishlist")
-      ,(concat "* %^{Title} %^g\n"
-               ":PROPERTIES:\n"
-               ":CAPTURED: %U\n"
-               ":CUSTOM_ID: h:%(format-time-string \"%Y%m%dT%H%M%S\")\n"
-               ":END:\n\n"
-               "%a\n%?")
-      :empty-lines-after 1)
-     ("t" "Task to do" entry
+   `(("t" "Task to do" entry
       (file+headline "tasks.org" "All tasks")
       ,(concat "* TODO %^{Title} %^g\n"
                ":PROPERTIES:\n"
@@ -41,18 +23,6 @@
                ":CUSTOM_ID: h:%(format-time-string \"%Y%m%dT%H%M%S\")\n"
                ":END:\n\n"
                "%a\n%?")
-      :empty-lines-after 1)
-     ("c" "Clock in and do immediately" entry
-      (file+headline "tasks.org" "Clocked tasks")
-      ,(concat "* TODO %^{Title}\n"
-               ":PROPERTIES:\n"
-               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
-               ":END:\n\n"
-               "%a\n")
-      :prepend t
-      :clock-in t
-      :clock-keep t
-      :immediate-finish t
       :empty-lines-after 1)
      ("s" "Select file and heading to add to" entry
       (function prot-org-select-heading-in-file)
