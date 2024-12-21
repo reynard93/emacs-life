@@ -24,13 +24,17 @@
                ":END:\n\n"
                "%a\n%?")
       :empty-lines-after 1)
-     ("s" "Select file and heading to add to" entry
-      (function prot-org-select-heading-in-file)
-      ,(concat "* TODO %^{Title}%?\n"
+     ("c" "Clock in and do immediately" entry
+      (file+headline "tasks.org" "Clocked tasks")
+      ,(concat "* TODO %^{Title}\n"
                ":PROPERTIES:\n"
-               ":CAPTURED: %U\n"
-               ":CUSTOM_ID: h:%(format-time-string \"%Y%m%dT%H%M%S\")\n"
-               ":END:\n\n")
+               ":EFFORT: %^{Effort estimate in minutes|5|10|15|30|45|60|90|120}\n"
+               ":END:\n\n"
+               "%a\n")
+      :prepend t
+      :clock-in t
+      :clock-keep t
+      :immediate-finish t
       :empty-lines-after 1)
      ("f" "Fleeting note" plain
       (file denote-last-path)
@@ -74,7 +78,6 @@
   (org-tags-column 0)
 
   :config
-  (require 'prot-org)
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
