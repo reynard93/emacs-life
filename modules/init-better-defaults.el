@@ -187,14 +187,10 @@ The path is relative to `project-current'."
 
 (use-package dired
   :ensure nil
-  :hook (dired-mode . dired-hide-details-mode)
   :custom
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'always)
   (dired-dwim-target t))
-
-(use-package dired-preview
-  :bind (:map dired-mode-map ("<f8>" . dired-preview-mode)))
 
 (use-package delsel
   :ensure nil

@@ -13,12 +13,10 @@
 (require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
-(require 'init-irc)
 (require 'init-mail)
 (require 'init-org)
 (require 'init-pass)
 (require 'init-search)
-(require 'init-shell-command)
 (require 'init-spell-checker)
 
 ;; Contexts
@@ -27,4 +25,3 @@
 
 ;; Services
 (require 'init-github)
-(require 'init-sourcehut)
