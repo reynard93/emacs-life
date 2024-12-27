@@ -9,7 +9,6 @@
       :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
       :stream t
       :models '(gemini-1.5-flash
-                gemini-1.5-flash-8b
                 gemini-1.5-pro)))
 
   (defvar gptel--openrouter
@@ -18,19 +17,15 @@
       :endpoint "/api/v1/chat/completions"
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
-      :models '(anthropic/claude-3.5-sonnet
-                anthropic/claude-3-5-haiku)))
+      :models '(anthropic/claude-3.5-sonnet)))
 
-  (defvar gptel--ollama
-    (gptel-make-ollama "Ollama"
-      :host "localhost:11434"
+  (defvar gptel--deepseek
+    (gptel-make-openai "DeepSeek"
+      :host "api.deepseek.com"
+      :endpoint "/chat/completions"
       :stream t
-      :models '("llama3.2:latest")))
-
-  (defvar gptel--kagi
-    (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models '("fastgpt")))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/deepseek"))
+      :models '(deepseek-chat)))
 
   :bind
   (("C-c <return>" . gptel-send)
@@ -43,8 +38,8 @@
   (gptel-default-mode 'org-mode)
 
   :config
-  (setq gptel-model 'anthropic/claude-3.5-sonnet
-        gptel-backend gptel--openrouter)
+  (setq gptel-backend gptel--deepseek
+        gptel-model 'deepseek-chat)
 
   (defun +gptel/send-all-buffers (text)
     "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
@@ -86,7 +81,7 @@ Display the result in a side window with the content selected."
   :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
   :bind (:map embark-general-map ("?" . gptel-quick))
   :config
-  (setq gptel-quick-backend gptel--google
-        gptel-quick-model 'gemini-1.5-flash-8b))
+  (setq gptel-quick-backend gptel--deepseek
+        gptel-quick-model 'deepseek-chat))
 
 (provide 'init-gpt)
