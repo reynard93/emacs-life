@@ -57,8 +57,8 @@
 If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."
     (interactive "sText: ")
-    (let ((gptel-backend gptel--google)
-          (gptel-model 'gemini-1.5-flash))
+    (let ((gptel-backend gptel--deepseek)
+          (gptel-model 'deepseek-chat))
       (gptel-request text
         :system "You're a en-zh language translator. Keep the original format and meaning."
         :callback
