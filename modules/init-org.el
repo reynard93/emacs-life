@@ -14,7 +14,7 @@
 
   ;; Capture
   (org-capture-templates
-   `(("f" "Fleeting note" plain
+   `(("c" "Fleeting note" plain
       (file denote-last-path)
       (function
        (lambda ()
