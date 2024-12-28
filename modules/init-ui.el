@@ -1,8 +1,6 @@
 (use-package modus-themes
   :init
-  (if (display-graphic-p)
-      (load-theme 'modus-operandi :no-confirm)
-    (load-theme 'modus-vivendi :no-confirm))
+  (load-theme 'modus-operandi :no-confirm)
   :bind ("<f9>" . modus-themes-toggle)
   :custom
   (modus-themes-bold-constructs t)
