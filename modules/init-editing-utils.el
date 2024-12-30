@@ -15,6 +15,16 @@
 (use-package smartparens
   :pin melpa
   :hook (prog-mode text-mode)
+  :bind
+  (:map smartparens-mode-map
+        ("C-M-a" . sp-beginning-of-sexp)
+        ("C-M-e" . sp-end-of-sexp)
+        ("C-M-f" . sp-forward-sexp)
+        ("C-M-b" . sp-backward-sexp)
+        ("C-M-d" . sp-down-sexp)
+        ("C-M-u" . sp-backward-up-sexp)
+        ("C-M-k" . sp-kill-sexp)
+        ("C-M-w" . sp-copy-sexp))
   :config
   (require 'smartparens-config))
 
