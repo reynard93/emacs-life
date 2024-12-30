@@ -17,6 +17,7 @@
 (require 'init-org)
 (require 'init-pass)
 (require 'init-search)
+(require 'init-shell-command)
 (require 'init-spell-checker)
 
 ;; Contexts
