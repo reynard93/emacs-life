@@ -35,17 +35,17 @@
   :ensure nil
   :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
   :bind
-  ( :map vertico-map
-    ("RET" . vertico-directory-enter)
-    ("DEL" . vertico-directory-delete-char)
-    ("M-DEL" . vertico-directory-delete-word)))
+  (:map vertico-map
+        ("RET" . vertico-directory-enter)
+        ("DEL" . vertico-directory-delete-char)
+        ("M-DEL" . vertico-directory-delete-word)))
 
 (use-package vertico-quick
   :ensure nil
   :bind
-  ( :map vertico-map
-    ("M-q" . vertico-quick-insert)
-    ("C-q" . vertico-quick-exit)))
+  (:map vertico-map
+        ("M-q" . vertico-quick-insert)
+        ("C-q" . vertico-quick-exit)))
 
 (use-package vertico-multiform
   :ensure nil

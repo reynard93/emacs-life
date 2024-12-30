@@ -8,9 +8,9 @@
   (elixir-ts-mode . (lambda () (setq-local devdocs-current-docs '("elixir~1.17" "phoenix"))))
   ((web-mode haml-mode heex-ts-mode) . (lambda () (setq-local devdocs-current-docs '("html" "css" "javascript"))))
   :bind
-  ( :map search-map
-    ("k" . devdocs-lookup)
-    ("K" . devdocs-search))
+  (:map search-map
+        ("k" . devdocs-lookup)
+        ("K" . devdocs-search))
   :config
   (defun +devdocs/install ()
     "Download and install multiple DevDocs documentations."
@@ -24,9 +24,9 @@
 (use-package dictionary
   :ensure nil
   :bind
-  ( :map search-map
-    ("d" . dictionary-lookup-definition)
-    ("D" . dictionary-search))
+  (:map search-map
+        ("d" . dictionary-lookup-definition)
+        ("D" . dictionary-search))
   :custom
   (dictionary-server "dict.org")
   (dictionary-default-popup-strategy "lev")
@@ -37,8 +37,8 @@
   :pin melpa
   :if (eq system-type 'darwin)
   :bind
-  ( :map search-map
-    ("t" . osx-dictionary-search-word-at-point)
-    ("T" . osx-dictionary-search-input)))
+  (:map search-map
+        ("t" . osx-dictionary-search-word-at-point)
+        ("T" . osx-dictionary-search-input)))
 
 (provide 'init-search)
