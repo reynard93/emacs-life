@@ -61,6 +61,7 @@
    ("C-c C-d C-k" . denote-dired-rename-marked-files-with-keywords)
    ("C-c C-d C-f" . denote-dired-rename-marked-files-using-front-matter))
   :custom
+  (denote-save-buffers t)
   (denote-known-keywords nil)
   (denote-org-capture-specifiers "%i\n%?")
   :config
