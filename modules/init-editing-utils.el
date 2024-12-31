@@ -23,8 +23,9 @@
         ("C-M-b" . sp-backward-sexp)
         ("C-M-d" . sp-down-sexp)
         ("C-M-u" . sp-backward-up-sexp)
+        ("C-M-w" . sp-copy-sexp)
         ("C-M-k" . sp-kill-sexp)
-        ("C-M-w" . sp-copy-sexp))
+        ("C-M-<backspace>" . sp-backward-kill-sexp))
   :config
   (require 'smartparens-config))
 
