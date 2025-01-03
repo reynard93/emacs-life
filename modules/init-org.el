@@ -64,4 +64,12 @@
      (ruby . t)
      (python . t))))
 
+(use-package ox-hugo
+  :pin melpa
+  :after org)
+
+(use-package ox-gfm
+  :pin melpa
+  :after org)
+
 (provide 'init-org)

@@ -1,14 +1,6 @@
 (setq my-notes-directory (expand-file-name "notes/" my-src-directory))
 (setq my-reference-file (expand-file-name "reference.bib" my-notes-directory))
 
-(use-package ox-hugo
-  :pin melpa
-  :after org)
-
-(use-package ox-gfm
-  :pin melpa
-  :after org)
-
 (use-package citar
   :pin melpa
   :init
