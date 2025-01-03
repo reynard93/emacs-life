@@ -77,6 +77,7 @@
   (("C-c n f" . consult-denote-find)
    ("C-c n g" . consult-denote-grep))
   :custom
+  (consult-denote-find-command #'consult-fd)
   (consult-denote-grep-command #'consult-ripgrep))
 
 (use-package denote-explore
