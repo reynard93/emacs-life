@@ -48,4 +48,9 @@
                 (selected-file (completing-read "Open file: " template-files nil t)))
       (find-file selected-file))))
 
+(use-package org-block-capf
+  :ensure nil
+  :load-path "site-lisp/"
+  :hook (org-mode . org-block-capf-add-to-completion-at-point-functions))
+
 (provide 'init-completion)
