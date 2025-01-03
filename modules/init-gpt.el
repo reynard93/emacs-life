@@ -7,9 +7,7 @@
   (defvar gptel--google
     (gptel-make-gemini "Google"
       :key (lambda () (auth-source-pass-get 'secret "api-key/gemini"))
-      :stream t
-      :models '(gemini-1.5-flash
-                gemini-1.5-pro)))
+      :stream t))
 
   (defvar gptel--openrouter
     (gptel-make-openai "OpenRouter"
