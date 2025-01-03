@@ -100,6 +100,7 @@
    ("k" . consult-global-mark)
    ("o" . consult-outline)
    ("r" . consult-register)
+   ("f" . consult-flycheck)
    :map search-map
    ("l" . consult-line)
    ("L" . consult-line-multi)

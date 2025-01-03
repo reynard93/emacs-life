@@ -20,6 +20,7 @@
 (require 'init-search)
 (require 'init-shell-command)
 (require 'init-spell-checker)
+(require 'init-syntax-checker)
 
 ;; Contexts
 (require 'init-programming)
