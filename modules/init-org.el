@@ -19,7 +19,7 @@
       (function
        (lambda ()
          (let ((denote-use-keywords '("fleeting")))
-           (denote-org-capture))))
+           (denote-org-capture-with-prompts nil))))
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
