@@ -13,6 +13,7 @@
 (require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
+(require 'init-irc)
 (require 'init-mail)
 (require 'init-org)
 (require 'init-pass)
