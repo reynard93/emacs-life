@@ -27,3 +27,4 @@
 
 ;; Services
 (require 'init-github)
+(require 'init-0x0)
