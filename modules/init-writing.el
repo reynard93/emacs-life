@@ -71,8 +71,18 @@
 (use-package org-download
   :pin melpa
   :after org
+  :bind ("C-c M-y" . org-download-yank)
   :custom
-  (org-download-image-dir my-notes-attachments-directory))
+  (org-download-image-dir my-notes-attachments-directory)
+  (org-download-link-format-function #'my-org-download-link-format-function)
+  (org-download-heading-lvl nil)
+  :config
+  (defun my-org-download-link-format-function (filename)
+    "Create denote-style link for org-download files.
+Renames the file and links to it using denote's identifier format."
+    (let* ((file (denote-rename-file filename))
+           (identifier (denote-retrieve-filename-identifier file)))
+      (format "[[denote:%s]]" identifier))))
 
 (use-package ox-hugo
   :pin melpa
