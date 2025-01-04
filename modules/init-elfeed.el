@@ -4,6 +4,7 @@
   (setq elfeed-feeds
         '("https://andrealeopardi.com/feed.xml"
           "https://blog.cloud-mes.com/atom.xml"
+          "https://daniel.haxx.se/blog/feed/"
           "https://dashbit.co/feed"
           "https://dev.37signals.com/feed/posts.xml"
           "https://devenv.sh/feed_rss_created.xml"
@@ -27,6 +28,7 @@
           "https://underjord.io/feed.xml"
           "https://world.hey.com/this.week.in.rails/feed.atom"
           "https://www.ruby-lang.org/en/feeds/news.rss"
+          "https://www.zachleat.com/web/feed/"
           "https://xenodium.com/rss.xml"
           "https://yiming.dev/rss.xml"
           ))
