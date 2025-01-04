@@ -1,5 +1,6 @@
 (setq my-notes-directory (expand-file-name "notes/" my-src-directory))
-(setq my-reference-file (expand-file-name "reference.bib" my-notes-directory))
+(setq my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory))
+(setq my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))
 
 (use-package org
   :ensure nil
@@ -67,6 +68,12 @@
      (ruby . t)
      (python . t))))
 
+(use-package org-download
+  :pin melpa
+  :after org
+  :custom
+  (org-download-image-dir my-notes-attachments-directory))
+
 (use-package ox-hugo
   :pin melpa
   :after org)
@@ -78,7 +85,7 @@
 (use-package citar
   :pin melpa
   :init
-  (setq org-cite-global-bibliography `(,my-reference-file))
+  (setq org-cite-global-bibliography `(,my-notes-reference-file))
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
