@@ -1,7 +1,6 @@
 (use-package nix-mode
   :pin nongnu
-  :hook
-  (before-save . nix-format-before-save)
+  :hook (before-save . nix-format-before-save)
   :config
   (defun org-babel-execute:nix (body params)
     (setq strict-option (if (assoc :strict params) "--strict" ""))

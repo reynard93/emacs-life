@@ -1,7 +1,11 @@
 (use-package c-ts-mode
   :ensure nil
-  :defer t
+  :hook (c-ts-mode . c-format-before-save)
   :custom
-  (c-ts-mode-indent-offset 4))
+  (c-ts-mode-indent-offset 4)
+  :config
+  (defun c-format-before-save ()
+    (when (derived-mode-p 'c-ts-mode)
+      (add-hook 'before-save-hook #'eglot-format-buffer nil t))))
 
 (provide 'init-c)

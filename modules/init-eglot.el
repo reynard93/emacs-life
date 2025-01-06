@@ -1,12 +1,18 @@
 (use-package eglot
   :ensure nil
-  :hook ((ruby-ts-mode nix-mode elixir-ts-mode heex-ts-mode c-ts-mode) . eglot-ensure)
+  :hook
+  ((ruby-mode ruby-ts-mode) . eglot-ensure)
+  ((python-mode python-ts-mode) . eglot-ensure)
+  ((elixir-ts-mode heex-ts-mode) . eglot-ensure)
+  (nix-mode . eglot-ensure)
+  (c-ts-mode . eglot-ensure)
   :custom
   (eglot-ignored-server-capabilities '(:completionProvider))
   :config
-  (dolist (mode '((ruby-ts-mode . ("ruby-lsp"))
-                  (nix-mode . ("nixd"))
+  (dolist (mode '(((ruby-mode ruby-ts-mode) . ("ruby-lsp"))
+                  ((python-mode python-ts-mode) . ("ruff-lsp"))
                   ((elixir-ts-mode heex-ts-mode) . ("nextls" "--stdio=true"))
+                  (nix-mode . ("nixd"))
                   (c-ts-mode . ("clangd"
                                 ;; feature options
                                 "--background-index"
