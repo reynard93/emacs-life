@@ -7,9 +7,6 @@
           "https://daniel.haxx.se/blog/feed/"
           "https://dashbit.co/feed"
           "https://dev.37signals.com/feed/posts.xml"
-          "https://devenv.sh/feed_rss_created.xml"
-          "https://duckdb.org/feed.xml"
-          "https://elixir-lang.org/atom.xml"
           "https://evilmartians.com/chronicles.atom"
           "https://feeds.feedburner.com/pgrs"
           "https://ferd.ca/feed.rss"
@@ -20,18 +17,20 @@
           "https://maggieappleton.com/rss.xml"
           "https://martinfowler.com/feed.atom"
           "https://mitchellh.com/feed.xml"
-          "https://news.livebook.dev/rss.xml"
           "https://protesilaos.com/master.xml"
           "https://railsatscale.com/feed.xml"
-          "https://sachachua.com/blog/category/emacs-news/feed/"
           "https://simonwillison.net/atom/everything/"
           "https://underjord.io/feed.xml"
-          "https://world.hey.com/this.week.in.rails/feed.atom"
-          "https://www.ruby-lang.org/en/feeds/news.rss"
           "https://www.zachleat.com/web/feed/"
           "https://xenodium.com/rss.xml"
           "https://yiming.dev/rss.xml"
-          ))
+          ("https://devenv.sh/feed_rss_created.xml" news)
+          ("https://duckdb.org/feed.xml" news)
+          ("https://elixir-lang.org/atom.xml" news)
+          ("https://news.livebook.dev/rss.xml" news)
+          ("https://sachachua.com/blog/category/emacs-news/feed/" news)
+          ("https://world.hey.com/this.week.in.rails/feed.atom" news)
+          ("https://www.ruby-lang.org/en/feeds/news.rss" news)))
 
   :bind
   (("C-c e" . elfeed)
