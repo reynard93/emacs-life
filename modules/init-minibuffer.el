@@ -108,7 +108,10 @@
    ("e" . consult-isearch-history)
    :map minibuffer-local-map
    ("M-s" . consult-history)
-   ("M-r" . consult-history)))
+   ("M-r" . consult-history))
+
+  :custom
+  (consult-fd-args "fd --ignore-case --full-path --color=never"))
 
 (use-package consult-dir
   :pin melpa
