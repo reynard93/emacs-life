@@ -30,7 +30,7 @@
   :bind
   (("M-+" . tempel-complete)
    ("M-*" . tempel-insert)
-   ("C-c t" . +tempel/find-template-file))
+   ("C-c T" . +tempel/find-template-file))
   :custom
   (tempel-path (list (expand-file-name "templates/*.eld" user-emacs-directory)
                      (expand-file-name "tempel-templates/*.eld" my-src-directory)))
