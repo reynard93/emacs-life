@@ -30,7 +30,9 @@
    ("C-c C-<return>" . gptel-menu)
    ("C-c M-<return>" . +gptel/send-all-buffers)
    :map embark-region-map
-   ("g t" . +gptel/translate))
+   ("T" . +gptel/translate)
+   :map my-assistant-map
+   ("t" . +gptel/translate))
 
   :custom
   (gptel-default-mode 'org-mode)
