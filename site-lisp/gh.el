@@ -21,9 +21,5 @@
       (kill-new (thing-at-point 'url)))
     (kill-buffer output-buffer)))
 
-(defun gh-pr-create ()
-  (interactive)
-  (shell-command "gh pr create -w"))
-
 (provide 'gh)
 ;;; gh.el ends here
