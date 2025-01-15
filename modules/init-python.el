@@ -1,8 +1,6 @@
 (use-package python
   :ensure nil
   :hook ((python-mode python-ts-mode) . python-format-before-save)
-  :custom
-  (python-indent-offset 2)
   :config
   (defun python-format-before-save ()
     (when (derived-mode-p 'python-base-mode)
