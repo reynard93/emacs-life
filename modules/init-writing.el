@@ -48,6 +48,7 @@
 
   ;; Export
   (org-export-with-sub-superscripts '{})
+  (org-export-dispatch-use-expert-ui t)
 
   ;; Log
   (setq org-log-done 'time)
