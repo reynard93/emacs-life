@@ -25,5 +25,9 @@
   (interactive)
   (shell-command "gh pr create -w"))
 
+(defun gh-pr-view ()
+  (interactive)
+  (shell-command "gh pr view -w"))
+
 (provide 'gh)
 ;;; gh.el ends here
