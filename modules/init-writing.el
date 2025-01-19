@@ -5,20 +5,30 @@
 (use-package org
   :ensure nil
   :bind
-  (("C-c c" . org-capture)
+  (("C-c a" . org-agenda)
+   ("C-c c" . org-capture)
    ("C-c l" . org-store-link)
    :map org-mode-map
    ([remap mark-defun] . org-babel-mark-block)
    ("M-g o" . consult-org-heading))
 
   :custom
-  (org-ellipsis "…")
-  (org-use-sub-superscripts '{})
-  (org-id-link-to-org-use-id 'create-if-interactive-and-no-custom-id)
+  (org-use-sub-superqscripts '{})
+  (org-M-RET-may-split-line '((default . nil)))
+  (org-insert-heading-respect-content t)
+
+  ;; Agenda
+  (org-agenda-files (list org-directory))
+  (org-use-fast-todo-selection 'expert)
+  (org-todo-keywords
+   '((sequence "TODO(t)" "WAIT(w!)" "|" "CANCEL(c!)" "DONE(d!)")))
 
   ;; Capture
   (org-capture-templates
-   `(("c" "Fleeting note" plain
+   `(("t" "Task" entry
+      (file "tasks.org")
+      "* TODO %?")
+     ("c" "Fleeting note" plain
       (file denote-last-path)
       (function
        (lambda ()
@@ -51,10 +61,10 @@
   (org-export-dispatch-use-expert-ui t)
 
   ;; Log
-  (setq org-log-done 'time)
-  (setq org-log-into-drawer t)
-  (setq org-log-redeadline 'time)
-  (setq org-log-reschedule 'time)
+  (org-log-into-drawer t)
+  (org-log-done 'time)
+  (org-log-redeadline 'note)
+  (org-log-reschedule 'note)
 
   ;; Tag
   (org-auto-align-tags nil)
