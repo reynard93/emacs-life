@@ -14,6 +14,8 @@
    ("s-z" . undo)
    ("s-Z" . undo-redo)
    :map embark-url-map
-   ("U" . macos-read-it-later)))
+   ("U" . macos-read-it-later))
+  :custom
+  (vscode-program "cursor"))
 
 (provide 'init-macos)

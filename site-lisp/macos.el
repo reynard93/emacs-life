@@ -31,18 +31,17 @@
                  end tell"))
     (string-equal "true" (do-applescript script))))
 
-(defun macos-read-it-later (url)
-  (interactive "sURL: ")
-  (let ((result (do-applescript (format "tell application \"Safari\" to add reading list item \"%s\"" url))))
-    (unless result (message "Added to Reading List: %s" url))))
+(defcustom vscode-program "code"
+  "Name of vscode executable.")
 
 (defun vscode-goto-file-at-point ()
-  "Open the file at point using code at the current line and column."
+  "Open the file at point using `vscode-program' at the current line and column."
   (interactive)
   (when-let* ((filename (buffer-file-name))
               (line (line-number-at-pos))
               (column (current-column))
-              (command (format "code --goto %s:%d:%d"
+              (command (format "%s --goto %s:%d:%d"
+                               vscode-program
                                filename
                                line
                                (+ column 1))))
