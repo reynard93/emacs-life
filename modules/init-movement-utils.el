@@ -114,7 +114,9 @@
 (use-package beframe
   :if (display-graphic-p)
   :hook emacs-startup
-  :bind-keymap ("C-c b" . beframe-prefix-map))
+  :bind-keymap ("C-c b" . beframe-prefix-map)
+  :custom
+  (beframe-functions-in-frames '(project-prompt-project-dir)))
 
 ;; Tab bar
 (use-package tab-bar
