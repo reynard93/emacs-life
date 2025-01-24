@@ -30,12 +30,12 @@
   :bind
   (("M-+" . tempel-complete)
    ("M-*" . tempel-insert)
-   ("C-c T" . +tempel/find-template-file))
+   ("C-c T" . my/tempel-find-template-file))
   :custom
   (tempel-path (list (expand-file-name "templates/*.eld" user-emacs-directory)
                      (expand-file-name "tempel-templates/*.eld" my-src-directory)))
   :config
-  (defun +tempel/find-template-file ()
+  (defun my/tempel-find-template-file ()
     "List template files and open the selected one."
     (interactive)
     (when-let* ((template-files

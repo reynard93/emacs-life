@@ -28,9 +28,9 @@
   :bind
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
-   ("C-c M-<return>" . +gptel/send-all-buffers)
+   ("C-c M-<return>" . my/gptel-send-all-buffers)
    :map embark-region-map
-   ("T" . +gptel/translate))
+   ("T" . my/gptel-translate))
 
   :custom
   (gptel-default-mode 'org-mode)
@@ -39,9 +39,9 @@
   (setq gptel-backend gptel--deepseek
         gptel-model 'deepseek-chat)
 
-  (defun +gptel/send-all-buffers (text)
-    "Send TEXT to all buffers where gptel-mode is active and execute `gpt-send'."
-    (interactive "sText: ")
+  (defun my/gptel-send-all-buffers (prompt)
+    "Send PROMPT to all buffers where gptel-mode is active and execute `gpt-send'."
+    (interactive "sPrompt: ")
     (dolist (buffer (buffer-list))
       (with-current-buffer buffer
         (when (bound-and-true-p gptel-mode)
@@ -50,7 +50,7 @@
             (insert text)
             (gptel-send))))))
 
-  (defun +gptel/translate (text)
+  (defun my/gptel-translate (text)
     "Translate TEXT into English using LLM.
 If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."

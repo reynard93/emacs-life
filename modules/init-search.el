@@ -12,8 +12,8 @@
         ("k" . devdocs-lookup)
         ("K" . devdocs-search))
   :config
-  (defun +devdocs/install ()
-    "Download and install multiple DevDocs documentations."
+  (defun my/devdocs-install ()
+    "Download and install selected DevDocs documentations."
     (interactive)
     (let* ((available-docs (mapcar (lambda (doc) (alist-get 'slug doc))
                                    (devdocs--available-docs)))

@@ -19,12 +19,12 @@
       '("-s" "Skip CI" "--push-option=skip-ci"))
 
     ;; git push to all remotes
-    (defun +magit/push-all (&optional args)
+    (defun my/magit-push-all (&optional args)
       (interactive (list (magit-push-arguments)))
       (dolist (remote (magit-list-remotes))
         (magit-push-to-remote remote args)))
     (transient-append-suffix 'magit-push "e"
-      '("E" "everywhere" +magit/push-all))))
+      '("E" "everywhere" my/magit-push-all))))
 
 (use-package browse-at-remote
   :pin melpa

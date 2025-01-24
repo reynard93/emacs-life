@@ -23,8 +23,9 @@
      (c-mode . c-ts-mode)))
 
   :config
-  (defun +treesit/install-language-grammars ()
-    "Build and install all tree-sitter language grammar libraries."
+  (defun my/treesit-install-language-grammars ()
+    "Build and install all the tree-sitter language grammar
+ libraries defined in `treesit-language-source-alist'."
     (interactive)
     (mapc #'treesit-install-language-grammar
           (mapcar #'car treesit-language-source-alist))))

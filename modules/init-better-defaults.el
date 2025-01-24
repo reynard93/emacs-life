@@ -56,12 +56,12 @@
   :ensure nil
   :bind-keymap ("M-r" . ctl-x-r-map)
   :bind
-  (("C-c y" . +buffer/yank-path)
-   ("C-c Y" . +buffer/yank-path-relative-to-project)
-   ("C-c D" . +file/delete-this-file)
-   ("C-c R" . +file/rename-this-file))
+  (("C-c y" . my/yank-file-path)
+   ("C-c Y" . my/yank-file-path-relative-to-project)
+   ("C-c D" . my/delete-this-file)
+   ("C-c R" . my/rename-this-file))
   :config
-  (defun +buffer/yank-path (&optional buffer dir)
+  (defun my/yank-file-path (&optional buffer dir)
     "Save the buffer path into the kill-ring.
 If BUFFER is not nil, find filename of BUFFER, otherwise, find
 filename of `current-buffer'. If DIR is not nil, get a relative
@@ -79,7 +79,7 @@ file path, otherwise, get a full file path with
           (message "Copied path: %s" path))
       (user-error "Buffer is not visiting any file")))
 
-  (defun +buffer/yank-path-relative-to-project ()
+  (defun my/yank-file-path-relative-to-project ()
     "Save the relative buffer path into the kill-ring.
 The path is relative to `project-current'."
     (interactive)
@@ -87,9 +87,9 @@ The path is relative to `project-current'."
            (condition-case nil
                (project-root (project-current))
              (error nil))))
-      (+buffer/yank-path nil project-root-dir)))
+      (my/yank-file-path nil project-root-dir)))
 
-  (defun +file/delete-this-file ()
+  (defun my/delete-this-file ()
     "Kill the current buffer and deletes the file it is visiting."
     (interactive)
     (unless (and buffer-file-name (file-exists-p buffer-file-name))
@@ -102,7 +102,7 @@ The path is relative to `project-current'."
         (kill-buffer buffer)
         (message "Deleted %s" path))))
 
-  (defun +file/rename-this-file (new-path)
+  (defun my/rename-this-file (new-path)
     "Rename the current file to NEW-PATH."
     (interactive (list (read-file-name "Rename file to: ")))
     (unless (and buffer-file-name (file-exists-p buffer-file-name))
