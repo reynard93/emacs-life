@@ -9,7 +9,6 @@
 (require 'init-macos)
 
 ;; Features
-(require 'init-alfred)
 (require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
