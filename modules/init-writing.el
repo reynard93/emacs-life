@@ -95,6 +95,14 @@ Renames the file and links to it using denote's identifier format."
            (identifier (denote-retrieve-filename-identifier file)))
       (format "[[denote:%s]]" identifier))))
 
+(use-package org-anki
+  :pin melpa
+  :after org
+  :custom
+  (org-anki-default-deck "Default")
+  (org-anki-default-match "@anki&todo<>\"TODO\"")
+  (org-anki-inherit-tags nil))
+
 (use-package ox-hugo
   :pin melpa
   :after org)
