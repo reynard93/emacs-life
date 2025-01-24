@@ -9,17 +9,14 @@
 (require 'init-macos)
 
 ;; Features
-(require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
-(require 'init-irc)
 (require 'init-mail)
 (require 'init-pass)
 (require 'init-search)
 (require 'init-shell-command)
 (require 'init-spell-checker)
 (require 'init-syntax-checker)
-(require 'init-timer)
 
 ;; Contexts
 (require 'init-programming)
@@ -27,4 +24,3 @@
 
 ;; Services
 (require 'init-github)
-(require 'init-0x0)
