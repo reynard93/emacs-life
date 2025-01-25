@@ -169,7 +169,17 @@ Renames the file and links to it using denote's identifier format."
   :config
   (require 'denote-org-extras)
   (require 'denote-journal-extras)
-  (denote-rename-buffer-mode 1))
+  (denote-rename-buffer-mode 1)
+  (advice-add 'denote-link-ol-export :around
+              (lambda (orig-fun link description format)
+                (if (and (eq format 'md)
+                         (eq org-export-current-backend 'hugo))
+                    (let ((path (denote-get-path-by-id link)))
+                      (format "[%s]({{< relref \"%s\" >}})"
+                              description
+                              (denote-sluggify-title
+                               (denote-retrieve-filename-title path))))
+                  (funcall orig-fun link description format)))))
 
 (use-package consult-denote
   :init
