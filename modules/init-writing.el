@@ -105,7 +105,9 @@ Renames the file and links to it using denote's identifier format."
 
 (use-package ox-hugo
   :pin melpa
-  :after org)
+  :after org
+  :custom
+  (org-hugo-default-static-subdirectory-for-externals "attachments"))
 
 (use-package ox-gfm
   :pin melpa
