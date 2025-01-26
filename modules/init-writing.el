@@ -101,7 +101,17 @@
   :pin melpa
   :after org
   :custom
-  (org-hugo-default-static-subdirectory-for-externals "attachments"))
+  (org-hugo-default-static-subdirectory-for-externals "attachments")
+  (org-hugo-front-matter-format "yaml")
+  :config
+  (defun my/org-hugo-export-notes ()
+    "Export notes to Hugo-compatible Markdown files."
+    (interactive)
+    (let ((default-directory (denote-directory)))
+      (dolist (file (process-lines "rg" "--files" "--glob" "*.org" "-l" "^#\\+export_file_name:"))
+        (with-current-buffer (find-file-noselect file)
+          (org-hugo-export-to-md)))
+      (message "Org hugo export notes completed"))))
 
 (use-package ox-gfm
   :pin melpa
