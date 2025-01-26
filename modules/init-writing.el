@@ -1,6 +1,5 @@
-(setq my-notes-directory (expand-file-name "notes/" my-src-directory))
-(setq my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory))
-(setq my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))
+(defvar my-notes-directory (expand-file-name "notes/" my-src-directory))
+(defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory))
 
 (use-package org
   :ensure nil
@@ -78,22 +77,17 @@
 (use-package org-download
   :pin melpa
   :after org
-  :init
-  (setq org-download-image-dir my-notes-attachments-directory)
   :custom
-  (org-download-link-format-function #'my-org-download-link-format-function)
+  (org-download-image-dir "attachments")
   (org-download-display-inline-images nil)
   (org-download-heading-lvl nil)
   :config
-  (defun my-org-download-link-format-function (filename)
-    "Format FILENAME to be used in denote notes.
-The file will be downloaded into `my-notes-attachments-directory'
-and renamed using `denote-rename-file' without confirmation."
-    (let ((denote-rename-confirmations nil))
-      (format "[[file:%s]]\n"
-              (file-relative-name
-               (denote-rename-file filename)
-               (org-attach-dir))))))
+  (setq org-download-file-format-function #'my/org-download-file-format-default)
+  (defun my/org-download-file-format-default (filename)
+    (let ((identifier (denote-create-unique-file-identifier filename))
+          (title (denote-sluggify-title (file-name-base filename)))
+          (extension (file-name-extension filename)))
+      (concat identifier "--" title "." extension))))
 
 (use-package org-anki
   :pin melpa
