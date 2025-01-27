@@ -41,8 +41,8 @@
   (gptel-default-mode 'org-mode)
 
   :config
-  (setq gptel-backend gptel--deepseek
-        gptel-model 'deepseek-chat)
+  (setq gptel-backend gptel--openrouter
+        gptel-model 'anthropic/claude-3.5-sonnet)
 
   (defun my/gptel-send-all-buffers (prompt)
     "Send PROMPT in all buffers where gptel-mode is active."
