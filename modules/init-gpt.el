@@ -35,7 +35,13 @@
    ("C-c C-<return>" . gptel-menu)
    ("C-c M-<return>" . my/gptel-send-all-buffers)
    :map embark-region-map
-   ("T" . my/gptel-translate))
+   ("g T" . my/gptel-translate)
+   ("g U" . my/gptel-summarize-text)
+   :map embark-prose-map
+   ("g T" . my/gptel-translate)
+   ("g U" . my/gptel-summarize-text)
+   :map embark-url-map
+   ("g U" . my/gptel-summarize-url))
 
   :custom
   (gptel-default-mode 'org-mode)
@@ -56,8 +62,10 @@
             (gptel-send))))))
 
   (defun my/gptel--callback-display-bottom (response info)
-    (if response
-        (with-current-buffer (get-buffer-create "*gptel-translate*")
+    (if (not (stringp response))
+        (message "Response failed with error: %S" response)
+      (pcase-let ((`(,pattern) (plist-get info :context)))
+        (with-current-buffer (generate-new-buffer (format "*gptel-%s*" pattern))
           (let ((inhibit-read-only t))
             (erase-buffer)
             (insert response)
@@ -66,27 +74,45 @@
              `((display-buffer-in-side-window)
                (side . bottom)
                (window-height . ,#'fit-window-to-buffer))))
-          (special-mode))
-      (message "gptel-request failed with message: %s"
-               (plist-get info :status))))
+          (markdown-view-mode)))))
 
   (defun my/gptel-translate (text)
     "Translate TEXT into English using LLM.
 If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."
     (interactive "sText: ")
-    (let ((gptel-backend gptel--deepseek)
-          (gptel-model 'deepseek-chat))
+    (let ((gptel-backend gptel--google)
+          (gptel-model 'gemini-2.0-flash-exp))
       (gptel-request text
-        :system "You're an en-zh language translator. Keep the original format and meaning."
+        :system "You translate text between English and Chinese (Mandarin),
+preserving both the original formatting and intended
+meaning. Whether translating from English to Chinese or Chinese
+to English, you maintain elements like paragraph breaks,
+emphasis, and tone while ensuring the translation captures the
+nuances of the source text."
+        :context (list "translate")
         :callback #'my/gptel--callback-display-bottom)))
 
-  (defun my/gptel-summarize (text)
-    "Summarize TEXT using Kagi."
+  (defun my/gptel-summarize-text (text)
+    "Summarize TEXT into takeaways."
     (interactive "sText: ")
-    (let ((gptel-backend gptel--kagi)
-          (gptel-model 'summerize:agnes))
+    (let ((gptel-backend gptel--openrouter)
+          (gptel-model 'openai/gpt-4o-mini))
       (gptel-request text
+        :system "You help users distill key points from
+text passages. When given a piece of text, you will identify and
+explain at least 3 important takeaways that capture the main
+ideas, themes, and insights from the content."
+        :context (list "summarize-text")
+        :callback #'my/gptel--callback-display-bottom)))
+
+  (defun my/gptel-summarize-url (url)
+    "Summarize URL using Kagi."
+    (interactive "sURL: ")
+    (let ((gptel-backend gptel--kagi)
+          (gptel-model 'summarize:agnes))
+      (gptel-request url
+        :context (list "summarize-url")
         :callback #'my/gptel--callback-display-bottom))))
 
 (use-package gptel-quick
