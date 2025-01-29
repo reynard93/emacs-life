@@ -13,8 +13,8 @@
     (gptel-make-openai "OpenRouter"
       :host "openrouter.ai"
       :endpoint "/api/v1/chat/completions"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :stream t
+      :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :models '(anthropic/claude-3.5-sonnet
                 openai/gpt-4o-mini)))
 
@@ -22,9 +22,19 @@
     (gptel-make-openai "DeepSeek"
       :host "api.deepseek.com"
       :endpoint "/chat/completions"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/deepseek"))
       :stream t
-      :models '(deepseek-chat)))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/deepseek"))
+      :models '(deepseek-chat
+                deepseek-reasoner)))
+
+  (defvar gptel--groq
+    (gptel-make-openai "Groq"
+      :host "api.groq.com"
+      :endpoint "/openai/v1/chat/completions"
+      :stream t
+      :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
+      :models '(deepseek-r1-distill-llama-70b
+                llama-3.3-70b-versatile)))
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
