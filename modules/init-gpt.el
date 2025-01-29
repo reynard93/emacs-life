@@ -2,7 +2,7 @@
   :pin melpa
   :init
   (defvar gptel--openai nil
-    "Override the variable to hide ChatGPT models")
+    "Override the variable to hide OpenAI models")
 
   (defvar gptel--google
     (gptel-make-gemini "Google"
@@ -38,7 +38,8 @@
 
   (defvar gptel--kagi
     (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))))
+      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
+      :models '(fastgpt)))
 
   :bind
   (("C-c <return>" . gptel-send)
