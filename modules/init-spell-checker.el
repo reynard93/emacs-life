@@ -1,6 +1,6 @@
 (use-package jinx
   :ensure nil
-  :hook text-mode
+  :hook org-mode
   :bind
   (([remap ispell-word] . jinx-correct)
    ("C-c J" . jinx-languages)
