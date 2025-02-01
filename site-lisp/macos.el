@@ -1,8 +1,10 @@
 (defun macos-reveal-in-finder ()
   (interactive)
-  (if-let ((filename (buffer-file-name)))
-      (start-process "finder" nil "open" "-R" filename)
-    (user-error "Buffer is not visiting any file")))
+  (if-let ((path (or (buffer-file-name)
+                     (and (derived-mode-p 'dired-mode)
+                          (expand-file-name default-directory)))))
+      (start-process "finder" nil "open" "-R" path)
+    (user-error "Buffer is not visiting a file or directory")))
 
 (defun macos-reveal-project-in-finder ()
   (interactive)
