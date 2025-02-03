@@ -108,7 +108,7 @@
     "Export notes to Hugo-compatible Markdown files."
     (interactive)
     (let ((default-directory (denote-directory)))
-      (dolist (file (process-lines "rg" "--files" "--glob" "*.org" "-l" "^#\\+export_file_name:"))
+      (dolist (file (process-lines "rg" "-l" "^#\\+(export_file_name|hugo_section):" "--glob" "*.org"))
         (with-current-buffer (find-file-noselect file)
           (org-hugo-export-to-md)))
       (message "Org hugo export notes completed"))))
