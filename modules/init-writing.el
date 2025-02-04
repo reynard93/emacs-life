@@ -100,18 +100,31 @@
 (use-package ox-hugo
   :pin melpa
   :after org
+  :hook (after-save . my/org-hugo-export)
   :custom
   (org-hugo-default-static-subdirectory-for-externals "attachments")
   (org-hugo-front-matter-format "yaml")
   :config
-  (defun my/org-hugo-export-notes ()
-    "Export notes to Hugo-compatible Markdown files."
+  (defun my/org-hugo-export ()
+    "Export current note to Hugo-compatible Markdown file.
+Only exports if either #+export_file_name: or #+hugo_section: is present."
     (interactive)
-    (let ((default-directory (denote-directory)))
+    (when (and (derived-mode-p 'org-mode)
+               (save-excursion
+                 (goto-char (point-min))
+                 (or (re-search-forward "^#\\+export_file_name:" nil t)
+                     (re-search-forward "^#\\+hugo_section:" nil t))))
+      (org-hugo-export-to-md)))
+
+  (defun my/org-hugo-export-all ()
+    "Export all notes to Hugo-compatible Markdown files.
+Only exports if either #+export_file_name: or #+hugo_section: is present."
+    (interactive)
+    (let ((default-directory (denote-directory))
+          (org-export-use-babel nil))
       (dolist (file (process-lines "rg" "-l" "^#\\+(export_file_name|hugo_section):" "--glob" "*.org"))
         (with-current-buffer (find-file-noselect file)
-          (org-hugo-export-to-md)))
-      (message "Org hugo export notes completed"))))
+          (org-hugo-export-to-md))))))
 
 (use-package ox-gfm
   :pin melpa
