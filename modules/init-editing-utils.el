@@ -8,6 +8,9 @@
   (("C->" . mc/mark-next-like-this)
    ("C-<" . mc/mark-previous-like-this)))
 
+(use-package rainbow-mode
+  :hook (js-ts-mode mhtml-mode))
+
 (use-package rainbow-delimiters
   :pin nongnu
   :hook prog-mode)
