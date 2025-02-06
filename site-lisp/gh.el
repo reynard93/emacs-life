@@ -8,7 +8,9 @@
 
 (defun gh-gist-create ()
   (interactive)
-  (let ((filename (buffer-name))
+  (let ((filename (if buffer-file-name
+                      (file-relative-name buffer-file-name)
+                    (buffer-name)))
         (output-buffer "*gist-output*"))
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))
