@@ -153,9 +153,18 @@ Only exports if either #+export_file_name: or #+hugo_section: is present."
   (with-eval-after-load 'citar
     (citar-denote-mode 1))
   :bind
-  (("C-c n c" . citar-create-note)
-   ("C-c n o" . citar-denote-open-note)
-   ("C-c n ." . citar-denote-dwim))
+  (("C-c w n" . citar-create-note)
+   ("C-c w o" . citar-denote-open-note)
+   ("C-c w d" . citar-denote-dwim)
+   ("C-c w e" . citar-denote-open-reference-entry)
+   ("C-c w a" . citar-denote-add-citekey)
+   ("C-c w k" . citar-denote-remove-citekey)
+   ("C-c w r" . citar-denote-find-reference)
+   ("C-c w l" . citar-denote-link-reference)
+   ("C-c w f" . citar-denote-find-citation)
+   ("C-c w x" . citar-denote-nocite)
+   ("C-c w y" . citar-denote-cite-nocite)
+   ("C-c w z" . citar-denote-nobib))
   :custom
   (citar-denote-subdir "reference"))
 
@@ -165,7 +174,7 @@ Only exports if either #+export_file_name: or #+hugo_section: is present."
   :hook (dired-mode . denote-dired-mode)
   :bind
   (("C-c n n" . denote-open-or-create-with-command)
-   ("C-c n d" . denote-sort-dired)
+   ("C-c n o" . denote-sort-dired)
    ("C-c n r" . denote-rename-file)
    ("C-c n z" . denote-rename-file-signature)
    ("C-c n j" . denote-journal-extras-new-entry)
