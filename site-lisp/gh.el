@@ -15,7 +15,7 @@
     (shell-command-on-region
      (if (use-region-p) (region-beginning) (point-min))
      (if (use-region-p) (region-end) (point-max))
-     (format "gh gist create --filename %s -" filename)
+     (format "gh gist create --filename \"%s\" -" filename)
      output-buffer)
     (with-current-buffer output-buffer
       (goto-char (point-max))
