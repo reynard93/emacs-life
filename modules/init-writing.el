@@ -206,10 +206,20 @@ Only exports if either #+export_file_name: or #+hugo_section: is present."
     (consult-denote-mode 1))
   :bind
   (("C-c n f" . consult-denote-find)
+   ("C-c n F" . my/consult-denote-find-today)
    ("C-c n g" . consult-denote-grep))
   :custom
   (consult-denote-find-command #'consult-fd)
-  (consult-denote-grep-command #'consult-ripgrep))
+  (consult-denote-grep-command #'consult-ripgrep)
+  :config
+  (defun my/consult-denote-find-today ()
+    "Search for today's notes in `denote-directory' using `consult-denote-find-command'."
+    (declare (interactive-only t))
+    (interactive)
+    (let ((today (format-time-string "%Y%m%d")))
+      (funcall-interactively consult-denote-find-command
+                             (denote-directory)
+                             today))))
 
 (use-package denote-explore
   :pin melpa
