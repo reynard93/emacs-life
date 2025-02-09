@@ -21,19 +21,28 @@
   :bind ("C-c F" . fontaine-set-preset)
   :custom
   (fontaine-presets
-   '((regular)
-     (presentation
-      :default-height 240)
-     (t
-      :default-family "Iosevka Comfy"
-      :default-weight regular
+   '((small
+      :default-height 120)
+     (regular
+      :default-height 160)
+     (large
+      :default-family "Aporetic Serif Mono"
+      :default-weight semilight
       :default-height 180
-      :fixed-pitch-family "Iosevka Comfy"
-      :fixed-pitch-weight nil
-      :fixed-pitch-height 1.0
-      :variable-pitch-family "Iosevka Comfy Motion Duo"
-      :variable-pitch-weight nil
-      :variable-pitch-height 1.0)
+      :fixed-pitch-family "Aporetic Serif Mono"
+      :variable-pitch-family "Aporetic Sans"
+      :bold-weight extrabold)
+     (presentation
+      :inherit large
+      :default-height 260)
+     (t
+      :default-family "Aporetic Sans Mono"
+      :default-weight regular
+      :default-slant normal
+      :default-width normal
+      :default-height 100
+      :fixed-pitch-family "Aporetic Sans Mono"
+      :variable-pitch-family "Aporetic Serif")
      ))
   :config
   (fontaine-set-preset 'regular))
