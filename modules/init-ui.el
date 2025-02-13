@@ -3,17 +3,16 @@
   (load-theme 'modus-operandi :no-confirm)
   :bind ("<f9>" . modus-themes-toggle)
   :custom
-  (modus-themes-bold-constructs t)
-  (modus-themes-italic-constructs t)
   (modus-themes-mixed-fonts t)
-  (modus-themes-variable-pitch-ui t))
-
-(use-package ef-themes
-  :bind ("M-<f9>" . ef-themes-toggle)
-  :custom
-  (ef-themes-mixed-fonts t)
-  (ef-themes-variable-pitch-ui t)
-  (ef-themes-to-toggle '(ef-frost ef-bio)))
+  (modus-themes-variable-pitch-ui t)
+  (modus-themes-italic-constructs t)
+  (modus-themes-bold-constructs t)
+  (modus-themes-completions '((t . (extrabold))))
+  (modus-themes-prompts '(extrabold))
+  (modus-themes-headings
+   '((agenda-structure . (variable-pitch light 2.2))
+     (agenda-date . (variable-pitch regular 1.3))
+     (t . (regular 1.15)))))
 
 (use-package fontaine
   :if (display-graphic-p)
