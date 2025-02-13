@@ -106,18 +106,25 @@
   (org-hugo-front-matter-format "yaml")
   :config
   (defun my/org-hugo-denote-files ()
+    "Return a list of Hugo-compatible files in `denote-directory'."
     (let ((default-directory (denote-directory)))
-      (mapcar (lambda (file)
-                (expand-file-name file default-directory))
-              (process-lines "rg" "-l" "^#\\+hugo_base_dir" "--glob" "*.org"))))
+      (process-lines "rg" "-l" "^#\\+hugo_base_dir" "--glob" "*.org")))
 
   (defun my/org-hugo-denote-files-find-file ()
+    "Search Hugo-compatible files in `denote-directory' and visit the result."
     (interactive)
-    (let ((files (my/org-hugo-denote-files)))
-      (let ((selected-file (completing-read "Select file: " files nil :require-match)))
-        (find-file selected-file))))
+    (let* ((default-directory (denote-directory))
+           (prompt (format "Select FILE in %s: "  default-directory))
+           (selected-file (consult--read
+                           (my/org-hugo-denote-files)
+                           :state (consult--file-preview)
+                           :history 'denote-file-history
+                           :require-match t
+                           :prompt prompt)))
+      (find-file selected-file)))
 
-  (defun my/org-hugo-export-all ()
+  (defun my/org-hugo-export-all-denote-files ()
+    "Export all Hugo-compatible files in `denote-directory'."
     (interactive)
     (let ((org-export-use-babel nil))
       (dolist (file (my/org-hugo-denote-files))
@@ -220,13 +227,13 @@
   (consult-denote-grep-command #'consult-ripgrep)
   :config
   (defun my/consult-denote-find-today ()
-    "Search for today's notes in `denote-directory' using `consult-denote-find-command'."
+    "Call `consult-denote-find-command' in `denote-directory' using the current date."
     (declare (interactive-only t))
     (interactive)
-    (let ((today (format-time-string "%Y%m%d")))
+    (let ((initial (format-time-string "%Y%m%d")))
       (funcall-interactively consult-denote-find-command
                              (denote-directory)
-                             today))))
+                             initial))))
 
 (use-package denote-explore
   :pin melpa
