@@ -45,7 +45,7 @@
                                 (directory-files path t "\\.eld\\'")
                               (file-expand-wildcards path t)))
                           tempel-path)))
-                (selected-file (completing-read "Open file: " template-files nil t)))
+                (selected-file (completing-read "Select file: " template-files nil t)))
       (find-file selected-file))))
 
 (use-package org-block-capf
