@@ -100,17 +100,27 @@
 (use-package ox-hugo
   :pin melpa
   :after org
+  :bind ("C-c n h" . my/org-hugo-denote-files-find-file)
   :custom
   (org-hugo-default-static-subdirectory-for-externals "attachments")
   (org-hugo-front-matter-format "yaml")
   :config
-  (defun my/org-hugo-export-all ()
-    "Export all notes to Hugo-compatible Markdown files.
-Only exports if either #+export_file_name: or #+hugo_section: is present."
+  (defun my/org-hugo-denote-files ()
+    (let ((default-directory (denote-directory)))
+      (mapcar (lambda (file)
+                (expand-file-name file default-directory))
+              (process-lines "rg" "-l" "^#\\+hugo_base_dir" "--glob" "*.org"))))
+
+  (defun my/org-hugo-denote-files-find-file ()
     (interactive)
-    (let ((default-directory (denote-directory))
-          (org-export-use-babel nil))
-      (dolist (file (process-lines "rg" "-l" "^#\\+(hugo_base_dir):" "--glob" "*.org"))
+    (let ((files (my/org-hugo-denote-files)))
+      (let ((selected-file (completing-read "Select file: " files nil :require-match)))
+        (find-file selected-file))))
+
+  (defun my/org-hugo-export-all ()
+    (interactive)
+    (let ((org-export-use-babel nil))
+      (dolist (file (my/org-hugo-denote-files))
         (with-current-buffer (find-file-noselect file)
           (org-hugo-export-to-md))))))
 
