@@ -101,6 +101,7 @@
    ("o" . consult-outline)
    ("r" . consult-register)
    ("f" . consult-flycheck)
+   ("a" . consult-org-agenda)
    :map search-map
    ("l" . consult-line)
    ("L" . consult-line-multi)
