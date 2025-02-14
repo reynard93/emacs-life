@@ -16,46 +16,19 @@
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :models '(anthropic/claude-3.5-sonnet
-                anthropic/claude-3.5-haiku
-                openai/gpt-4o
                 openai/gpt-4o-mini
-                openai/o1-mini)))
-
-  (defvar gptel--deepseek
-    (gptel-make-openai "DeepSeek"
-      :host "api.deepseek.com"
-      :endpoint "/chat/completions"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "api-key/deepseek"))
-      :models '(deepseek-chat
-                deepseek-reasoner)))
-
-  (defvar gptel--groq
-    (gptel-make-openai "Groq"
-      :host "api.groq.com"
-      :endpoint "/openai/v1/chat/completions"
-      :stream t
-      :key (lambda () (auth-source-pass-get 'secret "api-key/groq"))
-      :models '(deepseek-r1-distill-llama-70b
-                llama-3.3-70b-versatile)))
-
-  (defvar gptel--kagi
-    (gptel-make-kagi "Kagi"
-      :key (lambda () (auth-source-pass-get 'secret "api-key/kagi"))
-      :models '(fastgpt)))
+                openai/o3-mini-high)))
 
   :bind
   (("C-c <return>" . gptel-send)
    ("C-c C-<return>" . gptel-menu)
    ("C-c M-<return>" . my/gptel-send-all-buffers)
    :map embark-region-map
-   ("g T" . my/gptel-translate)
-   ("g U" . my/gptel-summarize-text)
+   ("g t" . my/gptel-translate)
+   ("g u" . my/gptel-summarize-text)
    :map embark-prose-map
-   ("g T" . my/gptel-translate)
-   ("g U" . my/gptel-summarize-text)
-   :map embark-url-map
-   ("g U" . my/gptel-summarize-url))
+   ("g t" . my/gptel-translate)
+   ("g u" . my/gptel-summarize-text))
 
   :custom
   (gptel-default-mode 'org-mode)
@@ -96,7 +69,7 @@ If region is active, use it as TEXT; otherwise prompt for input.
 Display the result in a side window with the content selected."
     (interactive "sText: ")
     (let ((gptel-backend gptel--google)
-          (gptel-model 'gemini-2.0-flash-exp))
+          (gptel-model 'gemini-2.0-flash))
       (gptel-request text
         :system "You translate text between English and Chinese (Mandarin),
 preserving both the original formatting and intended
@@ -118,15 +91,6 @@ text passages. When given a piece of text, you will identify and
 explain at least 3 important takeaways that capture the main
 ideas, themes, and insights from the content."
         :context (list "summarize-text")
-        :callback #'my/gptel--callback-display-bottom)))
-
-  (defun my/gptel-summarize-url (url)
-    "Summarize URL using Kagi."
-    (interactive "sURL: ")
-    (let ((gptel-backend gptel--kagi)
-          (gptel-model 'summarize:agnes))
-      (gptel-request url
-        :context (list "summarize-url")
         :callback #'my/gptel--callback-display-bottom))))
 
 (use-package gptel-quick
