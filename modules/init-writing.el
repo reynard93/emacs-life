@@ -27,23 +27,32 @@
    `(("t" "Task" entry
       (file "tasks.org")
       "* TODO %?")
-     ("c" "Fleeting note" plain
+     ("c" "Note" plain
       (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-use-keywords '("fleeting")))
-           (denote-org-capture-with-prompts nil))))
+      #'denote-org-capture
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured nil)
-     ("o" "OA ticket" plain
+     ("o" "OA" plain
       (file denote-last-path)
       (function
        (lambda ()
          (let ((denote-use-title (alfred-browser-title))
                (denote-use-keywords '("jira" "openapply")))
            (denote-org-capture))))
+      :no-save nil
+      :immediate-finish nil
+      :kill-buffer t
+      :jump-to-captured t)
+     ("l" "TIL" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-template (concat
+                                     "#+hugo_base_dir: ~/src/yejun.dev\n"
+                                     "#+hugo_section: til")))
+           (denote-org-capture-with-prompts :title :keywords))))
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
