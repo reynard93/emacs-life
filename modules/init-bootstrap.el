@@ -19,12 +19,7 @@
   :pin nongnu
   :if (memq window-system '(mac ns x))
   :config
-  (exec-path-from-shell-initialize)
-  ;; Add Homebrew's executable files to PATH.
-  (let ((homebrew-bin-dir "/opt/homebrew/bin"))
-    (when (and (file-directory-p homebrew-bin-dir)
-               (not (string-match-p homebrew-bin-dir (getenv "PATH"))))
-      (setenv "PATH" (concat (getenv "PATH") ":" homebrew-bin-dir)))))
+  (exec-path-from-shell-initialize))
 
 ;; Enabling `envrc-global-mode'
 (use-package envrc
