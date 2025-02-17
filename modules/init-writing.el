@@ -45,13 +45,14 @@
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured t)
-     ("l" "TIL" plain
+     ("l" "Link" plain
       (file denote-last-path)
       (function
        (lambda ()
-         (let ((denote-use-template (concat
+         (let ((denote-use-title (alfred-browser-title))
+               (denote-use-template (concat
                                      "#+hugo_base_dir: ~/src/yejun.dev\n"
-                                     "#+hugo_section: til")))
+                                     "#+hugo_section: links")))
            (denote-org-capture-with-prompts :title :keywords))))
       :no-save nil
       :immediate-finish nil
@@ -178,9 +179,7 @@
    ("C-c w f" . citar-denote-find-citation)
    ("C-c w x" . citar-denote-nocite)
    ("C-c w y" . citar-denote-cite-nocite)
-   ("C-c w z" . citar-denote-nobib))
-  :custom
-  (citar-denote-subdir "reference"))
+   ("C-c w z" . citar-denote-nobib)))
 
 (use-package denote
   :init
