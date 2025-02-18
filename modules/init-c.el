@@ -5,7 +5,6 @@
   (c-ts-mode-indent-offset 4)
   :config
   (defun c-format-before-save ()
-    (when (derived-mode-p 'c-ts-mode)
-      (add-hook 'before-save-hook #'eglot-format-buffer nil t))))
+    (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
 
 (provide 'init-c)

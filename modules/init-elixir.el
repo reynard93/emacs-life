@@ -4,8 +4,7 @@
   :bind (:map my-insert-map ("e e" . my/elixir-package-insert))
   :config
   (defun elixir-format-before-save ()
-    (when (derived-mode-p 'elixir-ts-mode)
-      (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
+    (add-hook 'before-save-hook #'eglot-format-buffer nil t))
 
   (defun my/elixir-package-insert (package)
     "Insert Hex PACKAGE config at point."
