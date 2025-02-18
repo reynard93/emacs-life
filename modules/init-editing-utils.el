@@ -9,7 +9,7 @@
    ("C-<" . mc/mark-previous-like-this)))
 
 (use-package rainbow-mode
-  :hook (js-ts-mode mhtml-mode))
+  :hook (mhtml-mode))
 
 (use-package rainbow-delimiters
   :pin nongnu
