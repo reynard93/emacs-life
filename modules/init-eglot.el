@@ -10,7 +10,7 @@
   (eglot-ignored-server-capabilities '(:completionProvider))
   :config
   (dolist (mode '(((ruby-mode ruby-ts-mode) . ("ruby-lsp"))
-                  ((python-mode python-ts-mode) . ("ruff-lsp"))
+                  ((python-mode python-ts-mode) . ("ruff" "server"))
                   ((elixir-ts-mode heex-ts-mode) . ("nextls" "--stdio=true"))
                   (nix-mode . ("nixd"))
                   (c-ts-mode . ("clangd"
