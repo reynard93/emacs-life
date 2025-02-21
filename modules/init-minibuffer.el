@@ -137,7 +137,10 @@
    ("C-c C-l" . embark-collect)
    :map embark-file-map
    ("t" . find-file-other-tab)
-   ("T" . find-file-other-frame))
+   ("T" . find-file-other-frame)
+   :map embark-buffer-map
+   ("t" . switch-to-buffer-other-tab)
+   ("T" . switch-to-buffer-other-frame))
   :custom
   (embark-indicators
    '(embark-minimal-indicator
