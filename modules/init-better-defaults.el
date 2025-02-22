@@ -11,6 +11,7 @@
   (ring-bell-function 'ignore)
   (confirm-kill-emacs 'y-or-n-p)
   (truncate-string-ellipsis "…")
+  (select-enable-clipboard t)
 
   ;; Editing
   (require-final-newline t)
