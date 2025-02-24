@@ -19,43 +19,54 @@
   ;; Agenda
   (org-agenda-files (list org-directory))
   (org-use-fast-todo-selection 'expert)
-  (org-todo-keywords
-   '((sequence "TODO(t)" "WAIT(w!)" "|" "CANCEL(c!)" "DONE(d!)")))
 
   ;; Capture
   (org-capture-templates
-   `(("t" "Task" entry
-      (file "tasks.org")
-      "* TODO %?")
-     ("c" "Note" plain
+   `(("c" "Fleeting note - thoughts on the fly" plain
       (file denote-last-path)
-      #'denote-org-capture
+      (function
+       (lambda()
+         (let ((denote-use-keywords '("fleeting")))
+           (denote-org-capture-with-prompts nil :keywords))))
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured nil)
-     ("o" "OA" plain
+     ("l" "Link mark - comments on the link" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-keywords '("link"))
+               (denote-use-template (concat
+                                     "#+hugo_base_dir: ~/src/yejun.dev\n"
+                                     "#+hugo_section: link\n"
+                                     (alfred-browser-org-link))))
+           (denote-org-capture-with-prompts nil :keywords))))
+      :no-save nil
+      :immediate-finish nil
+      :kill-buffer t
+      :jump-to-captured nil)
+     ("w" "Web note - note-taking while reading the web page" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-title (alfred-browser-title)))
+           (denote-org-capture-with-prompts :title :keywords))))
+      :no-save nil
+      :immediate-finish t
+      :kill-buffer t
+      :jump-to-captured t)
+     ("o" "OA ticket - records on processing Jira tickets" plain
       (file denote-last-path)
       (function
        (lambda ()
          (let ((denote-use-title (alfred-browser-title))
                (denote-use-keywords '("jira" "openapply")))
-           (denote-org-capture))))
+           (denote-org-capture-with-prompts :title :keywords))))
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
-      :jump-to-captured t)
-     ("l" "Link" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-use-keywords '("link"))
-               (denote-use-template (alfred-browser-org-link)))
-           (denote-org-capture-with-prompts))))
-      :no-save nil
-      :immediate-finish nil
-      :kill-buffer t
-      :jump-to-captured nil)))
+      :jump-to-captured t)))
 
   ;; Code block
   (org-edit-src-content-indentation 0)
