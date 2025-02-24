@@ -243,6 +243,16 @@
 
 (use-package denote-explore
   :pin melpa
-  :bind ("C-c n s" . denote-explore-sync-metadata))
+  :hook (org-capture-after-finalize . my/denote-explore-sync-metadata)
+  :bind ("C-c n s" . denote-explore-sync-metadata)
+  :config
+  (defun my/denote-explore-sync-metadata ()
+    "Sync denote filenames when org-capture's target is a denote file.
+It means the target is (file denote-last-path)."
+    (let ((target-file (org-capture-get :target)))
+      (when (and (listp target-file)
+                 (eq (car target-file) 'file)
+                 (eq (cadr target-file) 'denote-last-path))
+        (denote-explore-sync-metadata)))))
 
 (provide 'init-writing)
