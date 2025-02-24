@@ -22,13 +22,23 @@
 
   ;; Capture
   (org-capture-templates
-   `(("c" "Fleeting notes - thoughts on the fly" entry
+   `(("c" "Fleeting note" entry
       (file "notes.org")
       ,(concat "* %?\n"
                ":PROPERTIES:\n"
                ":CAPTURED: %U\n"
                ":END:"))
-     ("l" "Link mark - comments on the link" plain
+     ("r" "Reference note" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-title (alfred-browser-title)))
+           (denote-org-capture-with-prompts :title :keywords))))
+      :no-save nil
+      :immediate-finish t
+      :kill-buffer t
+      :jump-to-captured t)
+     ("l" "Link note" plain
       (file denote-last-path)
       (function
        (lambda ()
@@ -42,17 +52,7 @@
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured nil)
-     ("w" "Web note - note-taking while reading the web page" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-use-title (alfred-browser-title)))
-           (denote-org-capture-with-prompts :title :keywords))))
-      :no-save nil
-      :immediate-finish t
-      :kill-buffer t
-      :jump-to-captured t)
-     ("o" "OA ticket - records on processing Jira tickets" plain
+     ("o" "OA ticket" plain
       (file denote-last-path)
       (function
        (lambda ()
