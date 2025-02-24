@@ -22,16 +22,12 @@
 
   ;; Capture
   (org-capture-templates
-   `(("c" "Fleeting note - thoughts on the fly" plain
-      (file denote-last-path)
-      (function
-       (lambda()
-         (let ((denote-use-keywords '("fleeting")))
-           (denote-org-capture-with-prompts nil :keywords))))
-      :no-save nil
-      :immediate-finish nil
-      :kill-buffer t
-      :jump-to-captured nil)
+   `(("c" "Fleeting notes - thoughts on the fly" entry
+      (file "notes.org")
+      ,(concat "* %?\n"
+               ":PROPERTIES:\n"
+               ":CAPTURED: %U\n"
+               ":END:"))
      ("l" "Link mark - comments on the link" plain
       (file denote-last-path)
       (function
