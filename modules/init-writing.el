@@ -49,15 +49,13 @@
       (file denote-last-path)
       (function
        (lambda ()
-         (let ((denote-use-title (alfred-browser-title))
-               (denote-use-template (concat
-                                     "#+hugo_base_dir: ~/src/yejun.dev\n"
-                                     "#+hugo_section: links")))
-           (denote-org-capture-with-prompts :title :keywords))))
+         (let ((denote-use-keywords '("link"))
+               (denote-use-template (alfred-browser-org-link)))
+           (denote-org-capture-with-prompts))))
       :no-save nil
       :immediate-finish nil
       :kill-buffer t
-      :jump-to-captured t)))
+      :jump-to-captured nil)))
 
   ;; Code block
   (org-edit-src-content-indentation 0)
