@@ -1,5 +1,6 @@
 (defvar my-notes-directory (expand-file-name "notes/" my-src-directory))
 (defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory))
+(defvar my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))
 
 (use-package org
   :ensure nil
@@ -88,21 +89,6 @@
      (shell . t)
      (ruby . t)
      (python . t))))
-
-(use-package org-download
-  :pin melpa
-  :after org
-  :custom
-  (org-download-image-dir "attachments")
-  (org-download-display-inline-images nil)
-  (org-download-heading-lvl nil)
-  :config
-  (setq org-download-file-format-function #'my/org-download-file-format-default)
-  (defun my/org-download-file-format-default (filename)
-    (let ((identifier (denote-create-unique-file-identifier filename))
-          (title (denote-sluggify-title (file-name-base filename)))
-          (extension (file-name-extension filename)))
-      (concat identifier "--" title "." extension))))
 
 (use-package org-anki
   :pin melpa
@@ -198,9 +184,10 @@
    ("C-c n z" . denote-rename-file-signature)
    ("C-c n j" . denote-journal-extras-new-entry)
    :map org-mode-map
+   ("C-c n a" . my/denote-insert-attachment)
+   ("C-c n b" . denote-backlinks)
    ("C-c n i" . denote-link-or-create)
    ("C-c n I" . denote-org-extras-link-to-heading)
-   ("C-c n b" . denote-backlinks)
    ("C-c n R" . denote-rename-file-using-front-matter)
    ("M-g l" . denote-find-link)
    ("M-g L" . denote-find-backlink)
@@ -226,7 +213,38 @@
                               description
                               (denote-sluggify-title
                                (denote-retrieve-filename-title path))))
-                  (funcall orig-fun link description format)))))
+                  (funcall orig-fun link description format))))
+
+  (defun my/denote-insert-attachment (file)
+  "Process FILE to use as an attachment in the current buffer.
+
+If FILE is already in the attachments directory, simply insert a link to it.
+Otherwise, rename it using `denote-rename-file' with a title derived from
+the filename, move it to the attachments directory, and insert a link.
+
+The link format used is '[[file:attachments/filename]]', following Org syntax.
+This function is ideal for managing referenced files in note-taking workflows."
+  (interactive (list (read-file-name "File: " my-notes-attachments-directory)))
+  (let* ((orig-buffer (current-buffer))
+         (attachments-dir my-notes-attachments-directory))
+
+    ;; Check if the file is already in the attachments directory
+    (if (string-prefix-p
+         (file-name-as-directory attachments-dir)
+         (expand-file-name file))
+
+        ;; If already in attachments, just insert the link
+        (with-current-buffer orig-buffer
+          (insert (format "[[file:attachments/%s]]" (file-name-nondirectory file))))
+
+      ;; Otherwise, rename and move the file
+      (let ((title (denote-sluggify-title (file-name-base file))))
+        (when-let* ((renamed-file (denote-rename-file file title))
+                    (renamed-name (file-name-nondirectory renamed-file))
+                    (final-path (expand-file-name renamed-name attachments-dir)))
+            (rename-file renamed-file final-path t)
+            (with-current-buffer orig-buffer
+              (insert (format "[[file:attachments/%s]]" renamed-name)))))))))
 
 (use-package consult-denote
   :init
