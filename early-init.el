@@ -3,7 +3,7 @@
 (tool-bar-mode -1)
 
 (setq ns-use-native-fullscreen nil)
-(setq native-comp-jit-compilation nil)
+;; (setq native-comp-jit-compilation nil)
 (setq native-comp-async-report-warnings-errors 'silent)
 
 ;; Boost startup performance
