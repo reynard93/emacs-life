@@ -191,7 +191,8 @@
   (setq denote-directory my-notes-directory)
   :hook (dired-mode . denote-dired-mode)
   :bind
-  (("C-c n n" . denote-open-or-create-with-command)
+  (("C-c n n" . denote)
+   ("C-c n c" . denote-open-or-create-with-command)
    ("C-c n o" . denote-sort-dired)
    ("C-c n r" . denote-rename-file)
    ("C-c n z" . denote-rename-file-signature)
