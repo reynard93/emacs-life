@@ -81,6 +81,10 @@
   (org-log-redeadline 'note)
   (org-log-reschedule 'note)
 
+  ;; Tag
+  (org-auto-align-tags nil)
+  (org-tags-column 0)
+
   :config
   (org-babel-do-load-languages
    'org-babel-load-languages
