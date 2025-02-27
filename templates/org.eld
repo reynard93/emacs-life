@@ -1,5 +1,6 @@
 org-mode
 
+;; Hugo
 (fn "* Footnotes
 * COMMENT Local Variables :ARCHIVE:
 # Local Variables:
