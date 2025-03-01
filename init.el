@@ -25,4 +25,3 @@
 
 ;; Services
 (require 'init-github)
-(require 'init-kagi)
