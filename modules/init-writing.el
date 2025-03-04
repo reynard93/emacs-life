@@ -46,8 +46,21 @@
          (let ((denote-use-keywords '("link"))
                (denote-use-template (concat
                                      "#+hugo_base_dir: ~/src/yejun.dev\n"
-                                     "#+hugo_section: link\n"
+                                     "#+hugo_section: links\n"
                                      (alfred-browser-org-link))))
+           (denote-org-capture-with-prompts nil :keywords))))
+      :no-save nil
+      :immediate-finish nil
+      :kill-buffer t
+      :jump-to-captured nil)
+     ("t" "TIL note" plain
+      (file denote-last-path)
+      (function
+       (lambda ()
+         (let ((denote-use-keywords '("til"))
+               (denote-use-template (concat
+                                     "#+hugo_base_dir: ~/src/yejun.dev\n"
+                                     "#+hugo_section: til\n")))
            (denote-org-capture-with-prompts nil :keywords))))
       :no-save nil
       :immediate-finish nil
@@ -219,7 +232,7 @@
                   (funcall orig-fun link description format))))
 
   (defun my/denote-org-extras-insert-attachment (file)
-  "Process FILE to use as an attachment in the current buffer.
+    "Process FILE to use as an attachment in the current buffer.
 
 If FILE is already in the attachments directory, simply insert a link to it.
 Otherwise, rename it using `denote-rename-file' with a title derived from
@@ -227,24 +240,24 @@ the filename, move it to the attachments directory, and insert a link.
 
 The link format used is '[[file:attachments/filename]]', following Org syntax.
 This function is ideal for managing referenced files in note-taking workflows."
-  (interactive (list (read-file-name "File: " my-notes-attachments-directory)))
-  (let* ((orig-buffer (current-buffer))
-         (attachments-dir my-notes-attachments-directory))
+    (interactive (list (read-file-name "File: " my-notes-attachments-directory)))
+    (let* ((orig-buffer (current-buffer))
+           (attachments-dir my-notes-attachments-directory))
 
-    ;; Check if the file is already in the attachments directory
-    (if (string-prefix-p
-         (file-name-as-directory attachments-dir)
-         (expand-file-name file))
+      ;; Check if the file is already in the attachments directory
+      (if (string-prefix-p
+           (file-name-as-directory attachments-dir)
+           (expand-file-name file))
 
-        ;; If already in attachments, just insert the link
-        (with-current-buffer orig-buffer
-          (insert (format "[[file:attachments/%s]]" (file-name-nondirectory file))))
+          ;; If already in attachments, just insert the link
+          (with-current-buffer orig-buffer
+            (insert (format "[[file:attachments/%s]]" (file-name-nondirectory file))))
 
-      ;; Otherwise, rename and move the file
-      (let ((title (denote-sluggify-title (file-name-base file))))
-        (when-let* ((renamed-file (denote-rename-file file title))
-                    (renamed-name (file-name-nondirectory renamed-file))
-                    (final-path (expand-file-name renamed-name attachments-dir)))
+        ;; Otherwise, rename and move the file
+        (let ((title (denote-sluggify-title (file-name-base file))))
+          (when-let* ((renamed-file (denote-rename-file file title))
+                      (renamed-name (file-name-nondirectory renamed-file))
+                      (final-path (expand-file-name renamed-name attachments-dir)))
             (rename-file renamed-file final-path t)
             (with-current-buffer orig-buffer
               (insert (format "[[file:attachments/%s]]" renamed-name)))))))))
