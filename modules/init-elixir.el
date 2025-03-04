@@ -1,5 +1,5 @@
 (use-package elixir-ts-mode
-  :pin melpa
+  :ensure nil
   :hook (elixir-ts-mode . elixir-format-before-save)
   :bind (:map my-insert-map ("e e" . my/elixir-package-insert))
   :config
@@ -14,7 +14,7 @@
       (insert result))))
 
 (use-package heex-ts-mode
-  :pin melpa
+  :ensure nil
   :defer t)
 
 (use-package exunit
