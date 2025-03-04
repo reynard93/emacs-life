@@ -186,7 +186,6 @@
    ("C-c n o" . denote-sort-dired)
    ("C-c n r" . denote-rename-file)
    ("C-c n z" . denote-rename-file-signature)
-   ("C-c n j" . denote-journal-extras-new-entry)
    :map org-mode-map
    ("C-c n a" . my/denote-insert-attachment)
    ("C-c n b" . denote-backlinks)
@@ -206,7 +205,6 @@
   (denote-org-capture-specifiers "%i\n%?")
   :config
   (require 'denote-org-extras)
-  (require 'denote-journal-extras)
   (denote-rename-buffer-mode 1)
   (advice-add 'denote-link-ol-export :around
               (lambda (orig-fun link description format)
