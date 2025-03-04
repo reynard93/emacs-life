@@ -16,7 +16,9 @@
       :stream t
       :key (lambda () (auth-source-pass-get 'secret "api-key/openrouter"))
       :models '(anthropic/claude-3.7-sonnet
-                openai/gpt-4o-mini)))
+                openai/o3-mini-high
+                openai/gpt-4o-mini
+                openai/gpt-4o)))
 
   :bind
   (("C-c <return>" . gptel-send)
@@ -34,7 +36,7 @@
 
   :config
   (setq gptel-backend gptel--openrouter
-        gptel-model 'anthropic/claude-3.5-sonnet)
+        gptel-model 'anthropic/claude-3.7-sonnet)
 
   (defun my/gptel-send-all-buffers (prompt)
     "Send PROMPT in all buffers where gptel-mode is active."
