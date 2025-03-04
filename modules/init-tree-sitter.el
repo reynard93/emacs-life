@@ -21,8 +21,7 @@
      (javascript-mode . js-ts-mode)
      (json-mode . json-ts-mode)
      (conf-toml-mode . toml-ts-mode)
-     (c-mode . c-ts-mode)
-     (mhtml-mode . html-ts-mode)))
+     (c-mode . c-ts-mode)))
 
   :config
   (defun my/treesit-install-language-grammars ()
