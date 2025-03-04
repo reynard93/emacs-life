@@ -182,18 +182,19 @@
   :hook (dired-mode . denote-dired-mode)
   :bind
   (("C-c n n" . denote)
-   ("C-c n c" . denote-open-or-create-with-command)
    ("C-c n o" . denote-sort-dired)
    ("C-c n r" . denote-rename-file)
-   ("C-c n z" . denote-rename-file-signature)
-   :map org-mode-map
-   ("C-c n a" . my/denote-insert-attachment)
-   ("C-c n b" . denote-backlinks)
+   :map text-mode-map
    ("C-c n i" . denote-link-or-create)
-   ("C-c n I" . denote-org-extras-link-to-heading)
+   ("C-c n I" . denote-add-links)
+   ("C-c n b" . denote-backlinks)
    ("C-c n R" . denote-rename-file-using-front-matter)
    ("M-g l" . denote-find-link)
    ("M-g L" . denote-find-backlink)
+   :map org-mode-map
+   ("C-c n a" . my/denote-org-extras-insert-attachment)
+   ("C-c n d l" . denote-org-extras-dblock-insert-links)
+   ("C-c n d b" . denote-org-extras-dblock-insert-backlinks)
    :map dired-mode-map
    ("C-c C-d C-i" . denote-link-dired-marked-notes)
    ("C-c C-d C-r" . denote-dired-rename-marked-files)
@@ -217,7 +218,7 @@
                                (denote-retrieve-filename-title path))))
                   (funcall orig-fun link description format))))
 
-  (defun my/denote-insert-attachment (file)
+  (defun my/denote-org-extras-insert-attachment (file)
   "Process FILE to use as an attachment in the current buffer.
 
 If FILE is already in the attachments directory, simply insert a link to it.
