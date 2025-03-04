@@ -11,6 +11,7 @@
 ;; Interaction
 (require 'init-minibuffer)
 (require 'init-completion)
+(require 'init-modeline)
 
 ;; Operation
 (require 'init-movement-utils)
