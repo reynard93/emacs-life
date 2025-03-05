@@ -224,11 +224,21 @@
               (lambda (orig-fun link description format)
                 (if (and (eq format 'md)
                          (eq org-export-current-backend 'hugo))
-                    (let ((path (denote-get-path-by-id link)))
+                    (let* ((path (denote-get-path-by-id link))
+                           (export-file-name
+                            (or
+                             ;; Use export_file_name if it exists
+                             (when (file-exists-p path)
+                               (with-temp-buffer
+                                 (insert-file-contents path)
+                                 (goto-char (point-min))
+                                 (when (re-search-forward "^#\\+export_file_name: \\(.+\\)" nil t)
+                                   (match-string 1))))
+                             ;; Otherwise, use the original file's base name
+                             (file-name-nondirectory path))))
                       (format "[%s]({{< relref \"%s\" >}})"
                               description
-                              (denote-sluggify-title
-                               (denote-retrieve-filename-title path))))
+                              export-file-name))
                   (funcall orig-fun link description format))))
 
   (defun my/denote-org-extras-insert-attachment (file)
