@@ -49,7 +49,7 @@
                                      "#+hugo_section: links\n"
                                      (alfred-browser-org-link))))
            (denote-org-capture-with-prompts nil :keywords))))
-      :no-save nil
+      :no-save t
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured nil)
@@ -62,7 +62,7 @@
                                      "#+hugo_base_dir: ~/src/yejun.dev\n"
                                      "#+hugo_section: til\n")))
            (denote-org-capture-with-prompts nil :keywords))))
-      :no-save nil
+      :no-save t
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured nil)
