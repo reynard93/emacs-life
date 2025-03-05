@@ -25,3 +25,4 @@
 
 ;; Services
 (require 'init-github)
+(require 'init-reynard)
