@@ -5,7 +5,7 @@
 (use-package auto-hide
   :vc (auto-hide :url "https://github.com/ultronozm/auto-hide.el")
   :config
-   ;; Override the body extraction function specifically for Ruby also has to be called manually
+  ;; Override the body extraction function specifically for Ruby also has to be called manually
   (defun my-auto-hide-ruby-methods ()
     "Hide all Ruby methods in the current buffer."
     (interactive)
@@ -21,8 +21,8 @@
           (let* ((node (cdr capture))
                  (children (treesit-node-children node))
                  (body-node (seq-find (lambda (n)
-                                      (equal (treesit-node-type n) "body_statement"))
-                                     children)))
+                                        (equal (treesit-node-type n) "body_statement"))
+                                      children)))
 
             (when body-node
               (let ((start (1- (treesit-node-start body-node)))
@@ -134,5 +134,13 @@
                  :localfs t))) ;; on yr project run 'bundle exec rdbg --port 5678 -O -n -c -- rspec <path-to-spec>'
 ;; i.e. Run adapter: rdbg-attach-rspec prefix-local "/app/spec" for the bob project
 ;; example: bundle exec rdbg --port -n -c -- rspec ./spec/models/submission_spec.rb
+
+;; https://github.com/jdtsmith/eglot-booster (i installed with M-x package-vc-installl
+;; both lsp-mode and eglot uses this -> https://github.com/blahgeek/emacs-lsp-booster
+(use-package eglot-booster
+  :ensure t
+  :vc (eglot-booster :url "https://github.com/jdtsmith/eglot-booster")
+  :after eglot
+  :config	(eglot-booster-mode))
 
 (provide 'init-reynard)
