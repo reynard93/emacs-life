@@ -143,4 +143,14 @@
   :after eglot
   :config	(eglot-booster-mode))
 
+;; terminates buffer automatically after inactivity of 30mins
+(use-package buffer-terminator
+  :ensure t
+  :vc (buffer-terminator :url "https://github.com/jamescherti/buffer-terminator.el")
+  :custom
+  (buffer-terminator-verbose nil)
+  :config
+  (buffer-terminator-mode 1))
+
+
 (provide 'init-reynard)
