@@ -150,6 +150,7 @@
 (use-package embark-consult
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
+;; to remove / change to new company
 (use-package embark-jira
   :ensure nil
   :load-path "site-lisp/"
