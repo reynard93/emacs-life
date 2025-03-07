@@ -108,7 +108,7 @@
      (python . t))))
 
 (use-package org-anki
-  :pin melpa
+  
   :after org
   :custom
   (org-anki-default-deck "Default")
@@ -116,7 +116,7 @@
   (org-anki-inherit-tags nil))
 
 (use-package ox-hugo
-  :pin melpa
+  
   :after org
   :bind ("C-c n h" . my/org-hugo-denote-files-find-file)
   :custom
@@ -150,11 +150,11 @@
           (org-hugo-export-to-md))))))
 
 (use-package ox-gfm
-  :pin melpa
+  
   :after org)
 
 (use-package citar
-  :pin melpa
+  
   :init
   (setq org-cite-global-bibliography `(,my-notes-reference-file))
   (setq org-cite-insert-processor 'citar)
@@ -165,13 +165,13 @@
   (citar-at-point-function #'embark-act))
 
 (use-package citar-embark
-  :pin melpa
+  
   :after (citar embark)
   :config
   (citar-embark-mode 1))
 
 (use-package citar-denote
-  :pin melpa
+  
   :init
   (with-eval-after-load 'citar
     (citar-denote-mode 1))
@@ -294,7 +294,7 @@ This function is ideal for managing referenced files in note-taking workflows."
                              initial))))
 
 (use-package denote-explore
-  :pin melpa
+  
   :hook (org-capture-after-finalize . my/denote-explore-sync-metadata)
   :bind ("C-c n s" . denote-explore-sync-metadata)
   :config

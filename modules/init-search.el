@@ -21,7 +21,7 @@
         (devdocs-install doc)))))
 
 (use-package dictionary
-  :elpaca nil
+  :ensure nil
   :bind
   (:map search-map
         ("d" . dictionary-lookup-definition)

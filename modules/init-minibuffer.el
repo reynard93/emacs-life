@@ -115,7 +115,7 @@
   (consult-fd-args "fd --ignore-case --full-path --color=never"))
 
 (use-package consult-dir
-  :pin melpa
+  
   :bind
   (("C-x C-d" . consult-dir)
    :map minibuffer-local-completion-map

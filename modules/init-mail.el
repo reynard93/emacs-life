@@ -15,7 +15,7 @@
   (send-mail-function #'smtpmail-send-it))
 
 (use-package notmuch
-  :pin melpa
+  
   :hook (notmuch-mua-send . notmuch-mua-attachment-check)
   :bind
   (("C-c m" . notmuch)

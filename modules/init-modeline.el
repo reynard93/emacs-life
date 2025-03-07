@@ -1,5 +1,5 @@
 (use-package prot-modeline
-  :elpaca nil
+  :ensure nil
   :load-path "vendor/"
   :custom
   (prot-modeline-string-truncate-length 50)

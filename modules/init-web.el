@@ -8,13 +8,13 @@
   (web-mode-code-indent-offset 2))
 
 (use-package css-mode
-  :elpaca nil
+  :ensure nil
   :defer t
   :custom
   (css-indent-offset 2))
 
 (use-package js-mode
-  :elpaca nil
+  :ensure nil
   :defer t
   :custom
   (js-indent-level 2))

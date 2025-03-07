@@ -1,17 +1,17 @@
 ;; Window
 (use-package window
-  :elpaca nil
+  :ensure nil
   :bind ("M-o" . other-window))
 
 (use-package windmove
-  :elpaca nil
+  :ensure nil
   :config
   (windmove-default-keybindings)
   (windmove-delete-default-keybindings)
   (windmove-swap-states-default-keybindings))
 
 (use-package winner
-  :elpaca nil
+  :ensure nil
   :config
   (winner-mode 1))
 
@@ -95,7 +95,7 @@
 
 ;; Frame
 (use-package frame
-  :elpaca nil
+  :ensure nil
   :bind
   (("C-s-f" . toggle-frame-fullscreen)
    ("s-w" . tab-close-or-delete-frame)
@@ -118,7 +118,7 @@
 
 ;; Tab bar
 (use-package tab-bar
-  :elpaca nil
+  :ensure nil
   :bind
   (("s-t" . tab-new)
    ("s-T" . tab-undo)

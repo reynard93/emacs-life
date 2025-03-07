@@ -1,5 +1,5 @@
 (use-package emacs
-  :elpaca nil
+  :ensure nil
   :init
   (setq-default indent-tabs-mode nil
                 tab-width 4
@@ -54,7 +54,7 @@
   (global-subword-mode 1))
 
 (use-package emacs
-  :elpaca nil
+  :ensure nil
   :bind-keymap ("M-r" . ctl-x-r-map)
   :bind
   (("C-c y" . my/yank-file-path)
@@ -118,14 +118,14 @@ The path is relative to `project-current'."
       (message "Renamed to %s" (abbreviate-file-name new-path)))))
 
 (use-package recentf
-  :elpaca nil
+  :ensure nil
   :custom
   (recentf-max-saved-items 200)
   :config
   (recentf-mode 1))
 
 (use-package savehist
-  :elpaca nil
+  :ensure nil
   :custom
   (history-length 500)
   (history-delete-duplicates t)
@@ -134,18 +134,18 @@ The path is relative to `project-current'."
   (savehist-mode 1))
 
 (use-package isearch
-  :elpaca nil
+  :ensure nil
   :custom
   (isearch-lazy-count t)
   (isearch-repeat-on-direction-change t))
 
 (use-package ibuffer
-  :elpaca nil
+  :ensure nil
   :hook (ibuffer-mode . ibuffer-auto-mode)
   :bind ([remap list-buffers] . ibuffer))
 
 (use-package ediff
-  :elpaca nil
+  :ensure nil
   :custom
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
@@ -178,20 +178,20 @@ The path is relative to `project-current'."
    ("s-n" . crux-create-scratch-buffer)))
 
 (use-package doc-view
-  :elpaca nil
+  :ensure nil
   :custom
   (doc-view-mupdf-use-svg t)
   (doc-view-resolution 300))
 
 (use-package dired
-  :elpaca nil
+  :ensure nil
   :custom
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'always)
   (dired-dwim-target t))
 
 (use-package delsel
-  :elpaca nil
+  :ensure nil
   :config
   (delete-selection-mode 1))
 
