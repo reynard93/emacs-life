@@ -1,4 +1,16 @@
 (use-package apheleia
+  :config
+  (setq apheleia-formatters
+      '((prettier . ("prettier"
+                     "--stdin-filepath" filepath
+                     "--single-quote"
+                     "--trailing-comma" "all"))))
+
+(setq apheleia-mode-alist
+      '((js-mode . prettier)
+        (typescript-mode . prettier)
+        (typescript-tsx-mode . prettier)
+        (web-mode . prettier)))
   :bind ("C-c f" . apheleia-format-buffer))
 
 (use-package multiple-cursors

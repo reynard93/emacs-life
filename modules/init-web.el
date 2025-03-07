@@ -7,6 +7,12 @@
   (web-mode-css-indent-offset 2)
   (web-mode-code-indent-offset 2))
 
+;; use inbuit mode
+(use-package typescript-ts-mode
+  :ensure nil
+  :mode "\\.ts\\'"
+  :mode "\\.tsx\\'")
+
 (use-package css-mode
   :ensure nil
   :defer t
@@ -31,27 +37,28 @@
   :hook (web-mode heex-ts-mode))
 
 ;; typescript related stuff stolen from https://github.com/rasendubi/dotfiles?tab=readme-ov-file#typescript
-(use-package typescript-mode
-  :commands (typescript-mode)
-  :hook ((typescript-mode . rasen/setup-tide-mode)
-         (typescript-mode . abbrev-mode))
+;; don't use typecript-mode no longer supported, refer to https://github.com/emacs-typescript/typescript.el
+;; Essentially all major development of typescript-mode has come to a halt. use inbuilt typescript-ts-mode
+(use-package tide
+  :commands (tide-setup
+             tide-hl-identifier-mode
+             tide-format-before-save)
+  :hook
+  (typescript-ts-mode . rasen/setup-tide-mode)
   :init
-  (el-patch-feature typescript-mode)
-  (add-hook 'web-mode-hook
-            (defun rasen/enable-typescript ()
-              (when (member (file-name-extension buffer-file-name)
-                            '("ts" "tsx" "js" "jsx"))
-                (typescript-mode))))
-  (add-hook 'rjsx-mode-hook #'rasen/enable-typescript)
+  (defun rasen/setup-tide-mode ()
+    (interactive)
+    (with-demoted-errors "tide-setup: %S"
+      (tide-setup))
+    (flycheck-mode +1)
+    (setq flycheck-check-syntax-automatically '(save mode-enabled))
+    (eldoc-mode +1)
+    (tide-hl-identifier-mode +1)
+    )
   :config
-  (setq-default typescript-indent-level 2)
+  (define-key tide-mode-map (kbd "K") nil))
 
-  ;; Key bindings
-  (define-key typescript-mode-map (kbd "M-j") #'c-indent-new-comment-line)
-  (define-key typescript-mode-map (kbd "C-M-j") #'c-indent-new-comment-line)
-
-  ;; Add more jsdoc tags? nope
-  )
-
+(use-package flycheck-jest
+  :after flycheck)
 
 (provide 'init-web)

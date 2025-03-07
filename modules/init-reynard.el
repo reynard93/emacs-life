@@ -165,6 +165,7 @@ Point must be at the beginning of balanced expression (sexp)."
   :config
   (pinentry-start))
 
+;; tedious to install, use this https://tdlib.github.io/td/build.html?language=C
 (use-package telega
   :ensure (telega
            :host github
@@ -172,5 +173,4 @@ Point must be at the beginning of balanced expression (sexp)."
            :branch "master"
            :files (:defaults "contrib" "etc" "server" "Makefile"))
   :defer t)
-
 (provide 'init-reynard)
