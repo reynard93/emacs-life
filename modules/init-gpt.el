@@ -1,3 +1,12 @@
+(defun set-openrouter-api-key ()
+  (interactive)
+  (let ((api-key (auth-source-pass-get 'secret "api-key/openrouter")))
+    (if api-key
+        (progn
+          (setenv "OPENROUTER_API_KEY" api-key)
+          (message "Successfully set OPENROUTER_API_KEY"))
+      (message "Failed to retrieve API key"))))
+
 (use-package gptel
   :init
   (defvar gptel--openai nil
