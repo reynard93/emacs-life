@@ -1,5 +1,5 @@
 (use-package emacs
-  :ensure nil
+  :elpaca nil
   :init
   (setq-default indent-tabs-mode nil
                 tab-width 4
@@ -54,7 +54,7 @@
   (global-subword-mode 1))
 
 (use-package emacs
-  :ensure nil
+  :elpaca nil
   :bind-keymap ("M-r" . ctl-x-r-map)
   :bind
   (("C-c y" . my/yank-file-path)
@@ -118,14 +118,14 @@ The path is relative to `project-current'."
       (message "Renamed to %s" (abbreviate-file-name new-path)))))
 
 (use-package recentf
-  :ensure nil
+  :elpaca nil
   :custom
   (recentf-max-saved-items 200)
   :config
   (recentf-mode 1))
 
 (use-package savehist
-  :ensure nil
+  :elpaca nil
   :custom
   (history-length 500)
   (history-delete-duplicates t)
@@ -134,24 +134,23 @@ The path is relative to `project-current'."
   (savehist-mode 1))
 
 (use-package isearch
-  :ensure nil
+  :elpaca nil
   :custom
   (isearch-lazy-count t)
   (isearch-repeat-on-direction-change t))
 
 (use-package ibuffer
-  :ensure nil
+  :elpaca nil
   :hook (ibuffer-mode . ibuffer-auto-mode)
   :bind ([remap list-buffers] . ibuffer))
 
 (use-package ediff
-  :ensure nil
+  :elpaca nil
   :custom
   (ediff-window-setup-function #'ediff-setup-windows-plain)
   (ediff-split-window-function #'split-window-horizontally))
 
 (use-package undo-fu-session
-  :pin nongnu
   :init
   (setq undo-limit (* 64 1024 1024)
         undo-strong-limit (* 96 1024 1024)
@@ -161,7 +160,6 @@ The path is relative to `project-current'."
   (undo-fu-session-compression 'zst))
 
 (use-package helpful
-  :pin melpa
   :bind
   (("C-h f" . helpful-callable)
    ("C-h v" . helpful-variable)
@@ -169,7 +167,6 @@ The path is relative to `project-current'."
    ("C-h x" . helpful-command)))
 
 (use-package crux
-  :pin nongnu
   :bind
   (([remap move-beginning-of-line] . crux-move-beginning-of-line)
    ([remap kill-whole-line] . crux-kill-whole-line)
@@ -181,20 +178,20 @@ The path is relative to `project-current'."
    ("s-n" . crux-create-scratch-buffer)))
 
 (use-package doc-view
-  :ensure nil
+  :elpaca nil
   :custom
   (doc-view-mupdf-use-svg t)
   (doc-view-resolution 300))
 
 (use-package dired
-  :ensure nil
+  :elpaca nil
   :custom
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'always)
   (dired-dwim-target t))
 
 (use-package delsel
-  :ensure nil
+  :elpaca nil
   :config
   (delete-selection-mode 1))
 

@@ -1,5 +1,4 @@
 (use-package magit
-  :pin nongnu
   :defer 1
   :bind
   (("C-c g b" . magit-checkout)
@@ -27,7 +26,6 @@
       '("E" "everywhere" my/magit-push-all))))
 
 (use-package browse-at-remote
-  :pin melpa
   :bind
   (("C-c g o" . browse-at-remote)
    ("C-c g y" . browse-at-remote-kill)))

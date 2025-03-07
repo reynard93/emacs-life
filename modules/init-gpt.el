@@ -1,5 +1,4 @@
 (use-package gptel
-  :pin melpa
   :init
   (defvar gptel--openai nil
     "Override the variable to hide OpenAI models")

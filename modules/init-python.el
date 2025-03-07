@@ -1,5 +1,5 @@
 (use-package python
-  :ensure nil
+  :elpaca nil
   :hook ((python-mode python-ts-mode) . python-format-before-save)
   :config
   (defun python-format-before-save ()

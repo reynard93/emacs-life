@@ -18,7 +18,6 @@
   :defer t)
 
 (use-package exunit
-  :pin melpa
   :hook elixir-ts-mode)
 
 (provide 'init-elixir)

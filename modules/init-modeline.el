@@ -1,5 +1,5 @@
 (use-package prot-modeline
-  :ensure nil
+  :elpaca nil
   :load-path "vendor/"
   :custom
   (prot-modeline-string-truncate-length 50)
@@ -28,7 +28,6 @@
                   prot-modeline-misc-info)))
 
 (use-package keycast
-  :pin melpa
   :after prot-modeline
   :custom
   (keycast-mode-line-format "%2s%k%c%R")

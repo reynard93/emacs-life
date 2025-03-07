@@ -1,22 +1,21 @@
 ;; Window
 (use-package window
-  :ensure nil
+  :elpaca nil
   :bind ("M-o" . other-window))
 
 (use-package windmove
-  :ensure nil
+  :elpaca nil
   :config
   (windmove-default-keybindings)
   (windmove-delete-default-keybindings)
   (windmove-swap-states-default-keybindings))
 
 (use-package winner
-  :ensure nil
+  :elpaca nil
   :config
   (winner-mode 1))
 
 (use-package transpose-frame
-  :pin melpa
   :bind
   (:map window-prefix-map
         ("w" . transpose-frame)
@@ -81,7 +80,6 @@
   (popper-echo-mode 1))
 
 (use-package shackle
-  :pin melpa
   :custom
   (shackle-inhibit-window-quit-on-same-windows t)
   (shackle-rules
@@ -97,7 +95,7 @@
 
 ;; Frame
 (use-package frame
-  :ensure nil
+  :elpaca nil
   :bind
   (("C-s-f" . toggle-frame-fullscreen)
    ("s-w" . tab-close-or-delete-frame)
@@ -120,7 +118,7 @@
 
 ;; Tab bar
 (use-package tab-bar
-  :ensure nil
+  :elpaca nil
   :bind
   (("s-t" . tab-new)
    ("s-T" . tab-undo)
@@ -142,7 +140,6 @@
   :bind (:map goto-map ("c" . avy-goto-char-2)))
 
 (use-package move-text
-  :pin melpa
   :bind
   (("s-<up>" . move-text-up)
    ("s-<down>" . move-text-down)))

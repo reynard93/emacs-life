@@ -1,5 +1,4 @@
 (use-package nix-mode
-  :pin nongnu
   :hook (before-save . nix-format-before-save)
   :bind (:map my-insert-map ("n n" . my/homebrew-casks-insert))
   :config
@@ -22,7 +21,6 @@
       (insert result))))
 
 (use-package org-nix-shell
-  :pin melpa
   :hook org-mode)
 
 (provide 'init-nix)

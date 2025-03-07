@@ -5,7 +5,7 @@
   :defer t)
 
 (use-package sqlite-mode
-  :ensure nil
+  :elpaca nil
   :defer t)
 
 (provide 'init-data)

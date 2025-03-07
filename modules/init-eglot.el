@@ -1,5 +1,5 @@
 (use-package eglot
-  :ensure nil
+  :elpaca nil
   :hook
   ((ruby-mode ruby-ts-mode) . eglot-ensure)
   ((python-mode python-ts-mode) . eglot-ensure)

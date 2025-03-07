@@ -1,5 +1,4 @@
 (use-package racket-mode
-  :pin nongnu
   :defer t)
 
 (use-package ob-racket
@@ -9,7 +8,6 @@
   (ob-racket-default-lang "sicp"))
 
 (use-package sicp
-  :pin melpa
   :defer t)
 
 (provide 'init-racket)

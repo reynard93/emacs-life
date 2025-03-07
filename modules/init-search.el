@@ -1,5 +1,4 @@
 (use-package browser-hist
-  :pin melpa
   :bind (:map search-map ("U" . browser-hist-search)))
 
 (use-package devdocs
@@ -22,7 +21,7 @@
         (devdocs-install doc)))))
 
 (use-package dictionary
-  :ensure nil
+  :elpaca nil
   :bind
   (:map search-map
         ("d" . dictionary-lookup-definition)
@@ -34,7 +33,6 @@
   (dictionary-use-single-buffer t))
 
 (use-package osx-dictionary
-  :pin melpa
   :if (eq system-type 'darwin)
   :bind
   (:map search-map

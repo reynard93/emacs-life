@@ -3,7 +3,6 @@
   :defer t)
 
 (use-package inf-ruby
-  :pin nongnu
   :hook (ruby-ts-mode . inf-ruby-minor-mode)
   :bind (:map inf-ruby-minor-mode-map ("C-c C-s" . inf-ruby-console-auto))
   :custom
@@ -13,27 +12,23 @@
   (unbind-key "C-c C-r" inf-ruby-minor-mode-map))
 
 (use-package bundler
-  :pin melpa
   :defer t)
 
 (use-package rake
-  :pin melpa
   :defer t
   :custom
   (rake-completion-system 'default))
 
 (use-package rspec-mode
-  :pin melpa
   :hook ruby-ts-mode)
 
 (use-package rubocop
-  :pin nongnu
   :hook ruby-ts-mode)
 
 ;; https://matklad.github.io/2024/10/14/missing-ide-feature.html
 ;; uses tree-sitter, supported langs: rust, c++, js, python
 (use-package auto-hide
-  :vc (auto-hide :url "https://github.com/ultronozm/auto-hide.el")
+  :elpaca (:host github :repo "ultronozm/auto-hide")
   :config
   ;; Override the body extraction function specifically for Ruby also has to be called manually
   (defun my-auto-hide-ruby-methods ()

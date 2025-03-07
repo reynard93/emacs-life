@@ -1,5 +1,4 @@
 (use-package pass
-  :pin melpa
   :init
   (auth-source-pass-enable)
   (defvar-keymap embark-password-store-map

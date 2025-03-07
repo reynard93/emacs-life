@@ -9,20 +9,20 @@
 (require 'init-macos)
 
 ;; Features
-(require 'init-elfeed)
-(require 'init-git)
-(require 'init-gpt)
-(require 'init-mail)
-(require 'init-pass)
-(require 'init-search)
-(require 'init-shell-command)
-(require 'init-spell-checker)
-(require 'init-syntax-checker)
+;; (require 'init-elfeed)
+;; (require 'init-git)
+;; (require 'init-gpt)
+;; (require 'init-mail)
+;; (require 'init-pass)
+;; (require 'init-search)
+;; (require 'init-shell-command)
+;; (require 'init-spell-checker)
+;; (require 'init-syntax-checker)
 
 ;; Contexts
-(require 'init-programming)
-(require 'init-writing)
+;; (require 'init-programming)
+;; (require 'init-writing)
 
 ;; Services
-(require 'init-github)
-(require 'init-reynard)
+;; (require 'init-github)
+;; (require 'init-reynard)
