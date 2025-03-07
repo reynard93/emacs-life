@@ -43,8 +43,6 @@
   (define-key embark-file-map (kbd "V") #'split-and-follow-vertically-and-open))
 ;; end Embark new splitting ways
 
-;; Add undo-tree
-
 (use-package dape
   :ensure
   :config
@@ -162,5 +160,17 @@ Point must be at the beginning of balanced expression (sexp)."
   (forward-sexp 1)
   (transpose-sexps 1)
   (forward-sexp -1))
+
+(use-package pinentry
+  :config
+  (pinentry-start))
+
+(use-package telega
+  :ensure (telega
+           :host github
+           :repo "zevlg/telega.el"
+           :branch "master"
+           :files (:defaults "contrib" "etc" "server" "Makefile"))
+  :defer t)
 
 (provide 'init-reynard)
