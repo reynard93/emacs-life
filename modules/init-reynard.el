@@ -1,45 +1,4 @@
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
-;; https://matklad.github.io/2024/10/14/missing-ide-feature.html
-;; uses tree-sitter, supported langs: rust, c++, js, python
-
-(use-package auto-hide
-  :vc (auto-hide :url "https://github.com/ultronozm/auto-hide.el")
-  :config
-  ;; Override the body extraction function specifically for Ruby also has to be called manually
-  (defun my-auto-hide-ruby-methods ()
-    "Hide all Ruby methods in the current buffer."
-    (interactive)
-    (when (and (eq major-mode 'ruby-ts-mode) (not hs-minor-mode))
-      (hs-minor-mode 1))
-
-    (when (eq major-mode 'ruby-ts-mode)
-      (let* ((root-node (treesit-buffer-root-node))
-             (query-string "(method) @method")
-             (captures (treesit-query-capture root-node query-string)))
-
-        (dolist (capture captures)
-          (let* ((node (cdr capture))
-                 (children (treesit-node-children node))
-                 (body-node (seq-find (lambda (n)
-                                        (equal (treesit-node-type n) "body_statement"))
-                                      children)))
-
-            (when body-node
-              (let ((start (1- (treesit-node-start body-node)))
-                    (end (treesit-node-end body-node)))
-                (save-excursion
-                  (goto-char start)
-                  (hs-hide-block-at-point nil (list start end))))))))))
-
-  ;; Replace auto-hide-hide-all for Ruby
-  (advice-add 'auto-hide-hide-all :around
-              (lambda (orig-fun)
-                (if (eq major-mode 'ruby-ts-mode)
-                    (my-auto-hide-ruby-methods)
-                  (funcall orig-fun))))
-  (global-auto-hide-mode))
-
-(add-hook 'ruby-ts-mode-hook 'my-auto-hide-ruby-methods)
 
 ;; https://github.com/novoid/dot-emacs/blob/master/config.org (THIS config, refer to winow management)
 ;; the new spliting way the utility when I split the screen with C-x 2 or C-x 3, it opens the previous buffer instead of giving me two panes with the same buffer:
@@ -134,14 +93,6 @@
                  :localfs t))) ;; on yr project run 'bundle exec rdbg --port 5678 -O -n -c -- rspec <path-to-spec>'
 ;; i.e. Run adapter: rdbg-attach-rspec prefix-local "/app/spec" for the bob project
 ;; example: bundle exec rdbg --port -n -c -- rspec ./spec/models/submission_spec.rb
-
-;; https://github.com/jdtsmith/eglot-booster (i installed with M-x package-vc-installl
-;; both lsp-mode and eglot uses this -> https://github.com/blahgeek/emacs-lsp-booster
-(use-package eglot-booster
-  :ensure t
-  :vc (eglot-booster :url "https://github.com/jdtsmith/eglot-booster")
-  :after eglot
-  :config	(eglot-booster-mode))
 
 ;; terminates buffer automatically after inactivity of 30mins
 (use-package buffer-terminator

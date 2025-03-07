@@ -26,4 +26,12 @@
                                 ))))
     (add-to-list 'eglot-server-programs mode)))
 
+;; https://github.com/jdtsmith/eglot-booster (i installed with M-x package-vc-installl
+;; both lsp-mode and eglot uses this -> https://github.com/blahgeek/emacs-lsp-booster
+(use-package eglot-booster
+  :ensure t
+  :vc (eglot-booster :url "https://github.com/jdtsmith/eglot-booster")
+  :after eglot
+  :config	(eglot-booster-mode))
+
 (provide 'init-eglot)
