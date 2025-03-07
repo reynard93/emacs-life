@@ -171,7 +171,7 @@
   (citar-embark-mode 1))
 
 (use-package citar-denote
-  
+  :after denote
   :init
   (with-eval-after-load 'citar
     (citar-denote-mode 1))

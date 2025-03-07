@@ -94,7 +94,8 @@ ideas, themes, and insights from the content."
         :callback #'my/gptel--callback-display-bottom))))
 
 (use-package gptel-quick
-  :vc (gptel-quick :url "https://github.com/karthink/gptel-quick.git")
+  :ensure (gptel-quick :host github :repo "karthink/gptel-quick")
+  :after gptel
   :bind (:map embark-general-map ("?" . gptel-quick))
   :config
   (setq gptel-quick-backend gptel--openrouter

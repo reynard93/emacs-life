@@ -46,29 +46,7 @@
 ;; Add undo-tree
 
 (use-package dape
-  :ensure t
-  :preface
-  (setq dape-key-prefix "\C-c\C-a")
-  :hook
-  ;; Save breakpoints on quit
-  (kill-emacs . dape-breakpoint-save)
-  ;; Load breakpoints on startup
-  (after-init . dape-breakpoint-load)
-  ;; Pulse source line (performance hit)
-  (dape-display-source . pulse-momentary-highlight-one-line)
-  :custom
-  (dape-buffer-window-arrangement 'right)
-  (dape-adapter-dir (expand-file-name "debug-adapters" user-emacs-directory))
-  (dape-inlay-hints t)
-  :config
-  (defun jjh/dape-buffer-matches-suffix (suffix)
-    "Only include the buffer in the dape command if the buffer matches SUFFIX."
-    (when (string-suffix-p suffix (dape-buffer-default))
-      (dape-buffer-default))))
-
-;; Dape config for RSpec over docker
-;; before i struggled mightily with the files not being detected and unable to hook into it
-(use-package dape
+  :ensure
   :config
   (add-to-list 'dape-configs
                `(rdbg-attach-rails
@@ -90,14 +68,31 @@
                  prefix-local (lambda () (project-root (project-current))) ;; add /spec (i.e. entry of your spec)
                  port 5679
                  :request "attach"
-                 :localfs t))) ;; on yr project run 'bundle exec rdbg --port 5678 -O -n -c -- rspec <path-to-spec>'
+                 :localfs t)) ;; on yr project run 'bundle exec rdbg --port 5678 -O -n -c -- rspec <path-to-spec>'
 ;; i.e. Run adapter: rdbg-attach-rspec prefix-local "/app/spec" for the bob project
 ;; example: bundle exec rdbg --port -n -c -- rspec ./spec/models/submission_spec.rb
+  :preface
+  (setq dape-key-prefix "\C-c\C-a")
+  :hook
+  ;; Save breakpoints on quit
+  (kill-emacs . dape-breakpoint-save)
+  ;; Load breakpoints on startup
+  (after-init . dape-breakpoint-load)
+  ;; Pulse source line (performance hit)
+  (dape-display-source . pulse-momentary-highlight-one-line)
+  :custom
+  (dape-buffer-window-arrangement 'right)
+  (dape-adapter-dir (expand-file-name "debug-adapters" user-emacs-directory))
+  (dape-inlay-hints t)
+  :config
+  (defun jjh/dape-buffer-matches-suffix (suffix)
+    "Only include the buffer in the dape command if the buffer matches SUFFIX."
+    (when (string-suffix-p suffix (dape-buffer-default))
+      (dape-buffer-default))))
 
 ;; terminates buffer automatically after inactivity of 30mins
 (use-package buffer-terminator
-  :ensure t
-  :vc (buffer-terminator :url "https://github.com/jamescherti/buffer-terminator.el")
+  :ensure (:host github :url "https://github.com/jamescherti/buffer-terminator.el")
   :custom
   (buffer-terminator-verbose nil)
   :config

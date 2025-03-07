@@ -28,7 +28,7 @@
 ;; https://matklad.github.io/2024/10/14/missing-ide-feature.html
 ;; uses tree-sitter, supported langs: rust, c++, js, python
 (use-package auto-hide
-  :elpaca (:host github :repo "ultronozm/auto-hide")
+  :ensure (:host github :repo "ultronozm/auto-hide.el" :depth nil)
   :config
   ;; Override the body extraction function specifically for Ruby also has to be called manually
   (defun my-auto-hide-ruby-methods ()

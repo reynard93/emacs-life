@@ -1,4 +1,9 @@
+(use-package transient
+  :ensure)
+
 (use-package magit
+  :ensure
+  :after transient
   :defer 1
   :bind
   (("C-c g b" . magit-checkout)
