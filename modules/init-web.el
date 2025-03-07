@@ -30,4 +30,28 @@
 (use-package emmet-mode
   :hook (web-mode heex-ts-mode))
 
+;; typescript related stuff stolen from https://github.com/rasendubi/dotfiles?tab=readme-ov-file#typescript
+(use-package typescript-mode
+  :commands (typescript-mode)
+  :hook ((typescript-mode . rasen/setup-tide-mode)
+         (typescript-mode . abbrev-mode))
+  :init
+  (el-patch-feature typescript-mode)
+  (add-hook 'web-mode-hook
+            (defun rasen/enable-typescript ()
+              (when (member (file-name-extension buffer-file-name)
+                            '("ts" "tsx" "js" "jsx"))
+                (typescript-mode))))
+  (add-hook 'rjsx-mode-hook #'rasen/enable-typescript)
+  :config
+  (setq-default typescript-indent-level 2)
+
+  ;; Key bindings
+  (define-key typescript-mode-map (kbd "M-j") #'c-indent-new-comment-line)
+  (define-key typescript-mode-map (kbd "C-M-j") #'c-indent-new-comment-line)
+
+  ;; Add more jsdoc tags? nope
+  )
+
+
 (provide 'init-web)

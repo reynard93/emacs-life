@@ -1,3 +1,4 @@
+;; ref here if need update https://evan.carlin.com/typescript-tsx-mode-for-emacs
 (use-package treesit
   :ensure nil
   :init
@@ -12,7 +13,13 @@
           (python "https://github.com/tree-sitter/tree-sitter-python")
           (toml "https://github.com/tree-sitter/tree-sitter-toml")
           (ruby "https://github.com/tree-sitter/tree-sitter-ruby")
-          (html "https://github.com/tree-sitter/tree-sitter-html")))
+          (html "https://github.com/tree-sitter/tree-sitter-html")
+          (markdown "https://github.com/ikatyang/tree-sitter-markdown")
+          (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
+          (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+          )
+
+        )
 
   :custom
   (major-mode-remap-alist
@@ -21,7 +28,8 @@
      (javascript-mode . js-ts-mode)
      (json-mode . json-ts-mode)
      (conf-toml-mode . toml-ts-mode)
-     (c-mode . c-ts-mode)))
+     (c-mode . c-ts-mode)
+     ("\\.[jt]s[x]?\\'" . tsx-mode)))
 
   :config
   (defun my/treesit-install-language-grammars ()
