@@ -1,17 +1,17 @@
 (use-package whitespace
-  :ensure nil
+  :elpaca nil
   :bind
   (("<f6>" . whitespace-mode)
    ("C-c z" . whitespace-cleanup)))
 
 (use-package display-line-numbers
-  :ensure nil
+  :elpaca nil
   :bind ("<f7>" . display-line-numbers-mode)
   :custom
   (display-line-numbers-widen t))
 
 (use-package visual-line-mode
-  :ensure nil
+  :elpaca nil
   :hook text-mode
   :bind ("<f8>" . visual-line-mode))
 
@@ -37,13 +37,12 @@
   (logos-outlines-are-pages t))
 
 (use-package olivetti
-  :pin melpa
   :custom
   (olivetti-minimum-body-width 120)
   (olivetti-recall-visual-line-mode-entry-state t))
 
 (use-package header-line
-  :ensure nil
+  :elpaca nil
   :load-path "site-lisp/"
   :hook (prog-mode text-mode conf-mode))
 
