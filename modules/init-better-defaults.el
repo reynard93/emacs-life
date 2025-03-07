@@ -195,6 +195,8 @@ The path is relative to `project-current'."
   :config
   (delete-selection-mode 1))
 
-
+;; Unbind C-z and C-x C-z from suspend-frame
+(global-unset-key (kbd "C-z"))
+(global-unset-key (kbd "C-x C-z"))
 
 (provide 'init-better-defaults)

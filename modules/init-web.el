@@ -25,27 +25,20 @@
   :custom
   (js-indent-level 2))
 
-(use-package haml-mode
-  :defer t)
-
-(use-package coffee-mode
-  :defer t
-  :custom
-  (coffee-tab-width 2))
-
 (use-package emmet-mode
-  :hook (web-mode heex-ts-mode))
+  :hook (web-mode))
 
 ;; typescript related stuff stolen from https://github.com/rasendubi/dotfiles?tab=readme-ov-file#typescript
 ;; don't use typecript-mode no longer supported, refer to https://github.com/emacs-typescript/typescript.el
 ;; Essentially all major development of typescript-mode has come to a halt. use inbuilt typescript-ts-mode
+;; tide is still not working
 (use-package tide
   :commands (tide-setup
              tide-hl-identifier-mode
              tide-format-before-save)
   :hook
   (typescript-ts-mode . rasen/setup-tide-mode)
-  :init
+  :config
   (defun rasen/setup-tide-mode ()
     (interactive)
     (with-demoted-errors "tide-setup: %S"
@@ -55,8 +48,7 @@
     (eldoc-mode +1)
     (tide-hl-identifier-mode +1)
     )
-  :config
-  (define-key tide-mode-map (kbd "K") nil))
+   (define-key tide-mode-map (kbd "K") nil))
 
 (use-package flycheck-jest
   :after flycheck)

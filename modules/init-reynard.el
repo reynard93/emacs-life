@@ -173,4 +173,24 @@ Point must be at the beginning of balanced expression (sexp)."
            :branch "master"
            :files (:defaults "contrib" "etc" "server" "Makefile"))
   :defer t)
+
+(use-package aidermacs
+  :if (executable-find "aider")
+  :ensure (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+  :custom
+  (aidermacs-backend 'vterm)
+  (aidermacs-auto-commits nil)
+  (aidermacs-default-model "openrouter/anthropic/claude-3.7-sonnet")
+  :config
+  (add-to-list 'display-buffer-alist
+               `("\\*aidermacs.*\\*"
+                 (display-buffer-pop-up-window)))
+  (setq aidermacs-vterm-multiline-newline-key "S-<return>")
+  :bind
+  (("C-z a" . aidermacs-transient-menu)))
+;; -AidermacsPac
+
+;; requires installation of cmake
+(use-package vterm :defer t)
+
 (provide 'init-reynard)
