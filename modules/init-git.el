@@ -1,6 +1,8 @@
 (use-package transient
   :ensure)
 
+;; if performance issues
+;; refer to https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
 (use-package magit
   :ensure
   :after transient
