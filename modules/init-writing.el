@@ -1,6 +1,14 @@
 (defvar my-notes-directory (expand-file-name "notes/" my-src-directory))
 (defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory))
 (defvar my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))
+(require 'org-tempo)
+
+(add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list 'org-structure-template-alist '("p" . "src python"))
+(add-to-list 'org-structure-template-alist '("j" . "src java"))
+(add-to-list 'org-structure-template-alist '("k" . "src kotlin"))
+(add-to-list 'org-structure-template-alist '("sh" . "src sh"))
+(add-to-list 'org-structure-template-alist '("rb" . "src ruby"))
 
 (use-package org
   :ensure nil
@@ -306,5 +314,11 @@ It means the target is (file denote-last-path)."
                  (eq (car target-file) 'file)
                  (eq (cadr target-file) 'denote-last-path))
         (denote-explore-sync-metadata)))))
+
+(use-package org-modern
+  :config
+  (setq org-modern-star '("◉" "○" "◈" "◇" "*")))
+
+(add-hook 'org-mode-hook 'org-modern-mode)
 
 (provide 'init-writing)

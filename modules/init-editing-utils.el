@@ -16,6 +16,12 @@
   (("C->" . mc/mark-next-like-this)
    ("C-<" . mc/mark-previous-like-this)))
 
+(use-package visual-replace
+   :defer t
+   :bind (("C-c r" . visual-replace)
+          :map isearch-mode-map
+          ("C-c r" . visual-replace-from-isearch)))
+
 ;; (use-package rainbow-mode
 ;;   :hook (mhtml-mode))
 
