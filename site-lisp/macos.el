@@ -1,6 +1,6 @@
 (defun macos-reveal-in-finder ()
   (interactive)
-  (if-let ((path (or (buffer-file-name)
+  (if-let* ((path (or (buffer-file-name)
                      (and (derived-mode-p 'dired-mode)
                           (expand-file-name default-directory)))))
       (start-process "finder" nil "open" "-R" path)
