@@ -1,5 +1,6 @@
 (use-package vertico
   :init
+  (vertico-mode 1)
   ;; Support opening new minibuffers from inside existing minibuffers.
   (setq enable-recursive-minibuffers t)
   ;; Hide commands in M-x which do not work in the current mode.
@@ -7,12 +8,28 @@
   ;; Do not allow the cursor in the minibuffer prompt.
   (setq minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
   (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
+  :bind (:map vertico-map
+              ("C-x ." . vertico-repeat)
+              ("M-z" . vertico-suspend)
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("M-DEL" . vertico-directory-delete-word)
+              ("M-q" . vertico-quick-insert)
+              ("C-q" . vertico-quick-exit))
+
+  :hook
+  (minibuffer-setup . vertico-repeat-save)
+  (rfn-eshadow-update-overlay . vertico-directory-tidy)
   :custom
   (vertico-cycle t)
+  (vertico-multiform-categories
+  '((embark-keybinding grid)
+    (jinx grid (vertico-grid-annotate . 20))))
   :config
-  (vertico-mode 1))
+  (vertico-multiform-mode 1))
 
 (use-package ffap
+  :ensure nil
   :bind ("M-m" . ffap-menu)
   :config
   ;; Disable `ffap-menu's *Completions* buffer* because it's uncessary with vertico.
@@ -21,40 +38,6 @@
                 (cl-letf (((symbol-function #'minibuffer-completion-help)
                            #'ignore))
                   (apply args)))))
-
-(use-package vertico-repeat
-  :ensure nil
-  :hook (minibuffer-setup . vertico-repeat-save)
-  :bind ("C-x ." . vertico-repeat))
-
-(use-package vertico-suspend
-  :ensure nil
-  :bind ("M-z" . vertico-suspend))
-
-(use-package vertico-directory
-  :ensure nil
-  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
-  :bind
-  (:map vertico-map
-        ("RET" . vertico-directory-enter)
-        ("DEL" . vertico-directory-delete-char)
-        ("M-DEL" . vertico-directory-delete-word)))
-
-(use-package vertico-quick
-  :ensure nil
-  :bind
-  (:map vertico-map
-        ("M-q" . vertico-quick-insert)
-        ("C-q" . vertico-quick-exit)))
-
-(use-package vertico-multiform
-  :ensure nil
-  :custom
-  (vertico-multiform-categories
-   '((embark-keybinding grid)
-     (jinx grid (vertico-grid-annotate . 20))))
-  :config
-  (vertico-multiform-mode 1))
 
 (use-package marginalia
   :config
