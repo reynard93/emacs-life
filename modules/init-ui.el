@@ -1,6 +1,7 @@
 (use-package modus-themes
+  :ensure nil
   :init
-  (load-theme 'modus-operandi :no-confirm)
+  (load-theme 'modus-vivendi :no-confirm)
   :bind ("<f9>" . modus-themes-toggle)
   :custom
   (modus-themes-mixed-fonts t)
@@ -52,5 +53,27 @@
   (spacious-padding-subtle-mode-line t)
   :config
   (spacious-padding-mode 1))
+
+;; Remember to do M-x and run `nerd-icons-install-fonts' to get the
+;; font files.  Then restart Emacs to see the effect.
+(use-package nerd-icons
+  :ensure t)
+
+(use-package nerd-icons-completion
+  :ensure t
+  :after marginalia
+  :config
+  (add-hook 'marginalia-mode-hook #'nerd-icons-completion-marginalia-setup))
+
+(use-package nerd-icons-corfu
+  :ensure t
+  :after corfu
+  :config
+  (add-to-list 'corfu-margin-formatters #'nerd-icons-corfu-formatter))
+
+(use-package nerd-icons-dired
+  :ensure t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
 
 (provide 'init-ui)
