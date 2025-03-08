@@ -110,4 +110,19 @@ ideas, themes, and insights from the content."
   (setq gptel-quick-backend gptel--openrouter
         gptel-quick-model 'openai/gpt-4o-mini))
 
+(use-package aidermacs
+  :if (executable-find "aider")
+  :ensure (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))
+  :custom
+  (aidermacs-backend 'vterm)
+  (aidermacs-auto-commits nil)
+  (aidermacs-default-model "openrouter/anthropic/claude-3.7-sonnet")
+  :config
+  (add-to-list 'display-buffer-alist
+               `("\\*aidermacs.*\\*"
+                 (display-buffer-pop-up-window)))
+  (setq aidermacs-vterm-multiline-newline-key "S-<return>")
+  :bind
+  (("C-z a" . aidermacs-transient-menu)))
+
 (provide 'init-gpt)

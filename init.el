@@ -17,6 +17,7 @@
 (require 'init-shell-command)
 (require 'init-spell-checker)
 (require 'init-syntax-checker)
+(require 'init-social)
 
 ;; Contexts
 (require 'init-programming)

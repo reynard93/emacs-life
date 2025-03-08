@@ -553,6 +553,23 @@ Specific to the current window's mode line.")
 (with-eval-after-load 'eglot
   (setq mode-line-misc-info
         (delete '(eglot--managed-mode (" [" eglot--mode-line-format "] ")) mode-line-misc-info)))
+(with-eval-after-load 'eglot
+	;; NOTE
+	;; install markdown-mode to rich the doc
+  ;; performance improvemence:
+  ;; https://www.reddit.com/r/emacs/comments/16vixg6/how_to_make_lsp_and_eglot_way_faster_like_neovim/
+
+  (fset #'jsonrpc--log-event #'ignore) ;; remove laggy typing it probably reduces chatty json from lsp to eglot i guess
+  (setq-default eglot-events-buffer-config '(:size 0 :format full))
+
+  ;; list of things that eglot won't change
+	(customize-set-variable 'eglot-stay-out-of '(imenu))
+  (customize-set-variable 'eglot-extend-to-xref t)
+	(customize-set-variable 'eglot-autoshutdown t) ;; automatically shutdown
+  (add-hook 'eglot-managed-mode-hook
+            (lambda () (eglot-inlay-hints-mode -1)))
+  (setq-default eglot-send-changes-idle-time 0.25)
+)
 
 (defvar-local prot-modeline-eglot
     `(:eval

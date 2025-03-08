@@ -10,7 +10,7 @@
 (use-package consult-gh
   :after consult
   :custom
-  (consult-gh-default-clone-directory "~/src/")
+  (consult-gh-default-clone-directory "~/Workspace/")
   (consult-gh-repo-action #'consult-gh--repo-browse-files-action)
   (consult-gh-issue-action #'consult-gh--issue-view-action)
   (consult-gh-pr-action #'consult-gh--pr-view-action)
