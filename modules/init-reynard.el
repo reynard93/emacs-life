@@ -121,6 +121,6 @@
   (pinentry-start))
 
 ;; requires installation of cmake
-(use-package vterm :defer t)
+(use-package vterm)
 
 (provide 'init-reynard)
