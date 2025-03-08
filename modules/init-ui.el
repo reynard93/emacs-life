@@ -54,6 +54,11 @@
   :config
   (spacious-padding-mode 1))
 
+(use-package diminish
+  :ensure t
+  :config
+  (diminish 'whole-line-or-region-local-mode))
+
 ;; Remember to do M-x and run `nerd-icons-install-fonts' to get the
 ;; font files.  Then restart Emacs to see the effect.
 (use-package nerd-icons
