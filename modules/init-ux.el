@@ -36,7 +36,9 @@
   (pulsar-global-mode 1))
 
 (use-package uniquify
+  :ensure nil
   :defer t
   :custom
   (uniquify-buffer-name-style 'forward))
+
 (provide 'init-ux)

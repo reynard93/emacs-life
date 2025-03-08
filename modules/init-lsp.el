@@ -39,6 +39,7 @@
            go-ts-mode
            python-ts-mode
            prisma-ts-mode
+           ruby-ts-mode
            clojure-mode
            clojurec-mode
            clojurescript-mode
@@ -125,7 +126,8 @@
         ([remap xref-find-apropos] . consult-lsp-symbols)))
 
 (use-package lsp-completion
-  :no-require
+  :after lsp-mode
+  :ensure nil
   :hook ((lsp-mode . lsp-completion-mode)))
 
 (use-package lsp-ui
