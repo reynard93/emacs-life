@@ -40,7 +40,7 @@
         ("C-M-u" . sp-backward-up-sexp)
         ("C-M-w" . sp-copy-sexp)
         ("C-M-k" . sp-kill-sexp)
-        ("C-M-<backspace>" . sp-backward-kill-sexp))
+        ("C-M-<backspace>" . sp-backward-kill-sexp)) ; del whole word at cursor
   :config
   (require 'smartparens-config))
 

@@ -173,6 +173,7 @@ The path is relative to `project-current'."
    ("C-c d" . crux-duplicate-current-line-or-region)
    ("C-c M-d" . crux-duplicate-and-comment-current-line-or-region)
    ("s-k" . crux-smart-kill-line)
+   ("C-<return>" . crux-smart-open-line)
    ("s-j" . crux-top-join-line)
    ("C-^" . crux-switch-to-previous-buffer)
    ("s-n" . crux-create-scratch-buffer)))
@@ -185,6 +186,15 @@ The path is relative to `project-current'."
 
 (use-package dired
   :ensure nil
+  :config
+  (define-key dired-mode-map "z" (lambda () (interactive) (let ((files (dired-get-marked-files)))
+    (with-temp-buffer
+      (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+      (message
+       "Size of all marked files: %s"
+       (progn
+         (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
+         (match-string 1)))))))
   :custom
   (dired-recursive-copies 'always)
   (dired-recursive-deletes 'always)
