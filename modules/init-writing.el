@@ -110,21 +110,18 @@
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((emacs-lisp . t)
-     (racket . t)
      (shell . t)
      (ruby . t)
      (python . t))))
 
 (use-package org-anki
-  
   :after org
   :custom
   (org-anki-default-deck "Default")
   (org-anki-default-match "@anki&todo<>\"TODO\"")
   (org-anki-inherit-tags nil))
 
-(use-package ox-hugo
-  
+(use-package ox-hugo  
   :after org
   :bind ("C-c n h" . my/org-hugo-denote-files-find-file)
   :custom
