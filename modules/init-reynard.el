@@ -1,5 +1,21 @@
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
 
+;; Set both alpha parameters, affects text also, cannot get alpha-background o work
+(set-frame-parameter nil 'alpha '(88 . 80))
+
+;; wait to build with cairo use the above temporarily with the text caveat
+;; (defun kb/toggle-window-transparency ()
+;;   "Toggle transparency."
+;;   (interactive)
+;;   (let ((alpha-transparency 75))
+;;     (pcase (frame-parameter nil 'alpha-background)
+;;       (alpha-transparency (set-frame-parameter nil 'alpha-background 100))
+;;       (t (set-frame-parameter nil 'alpha-background alpha-transparency)))))
+
+;; (set-frame-parameter nil 'alpha-background 100) ; For current frame
+;; (add-to-list 'default-frame-alist '(alpha-background . 100)) ; For all new frames henceforth
+
+
 ;; https://github.com/novoid/dot-emacs/blob/master/config.org (THIS config, refer to winow management)
 ;; the new spliting way the utility when I split the screen with C-x 2 or C-x 3, it opens the previous buffer instead of giving me two panes with the same buffer:
 (defun my-vsplit-last-buffer ()
