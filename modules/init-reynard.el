@@ -1,7 +1,7 @@
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
 
 ;; Set both alpha parameters, affects text also, cannot get alpha-background o work
-(set-frame-parameter nil 'alpha '(88 . 80))
+(set-frame-parameter nil 'alpha '(87 . 80))
 
 ;; wait to build with cairo use the above temporarily with the text caveat
 ;; (defun kb/toggle-window-transparency ()
@@ -138,5 +138,14 @@
 
 ;; requires installation of cmake
 (use-package vterm)
+
+(use-package diff-hl
+  :after
+  magit
+  :config
+  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+  (global-diff-hl-mode))
+
 
 (provide 'init-reynard)
