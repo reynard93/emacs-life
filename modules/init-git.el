@@ -37,4 +37,10 @@
   (("C-c g o" . browse-at-remote)
    ("C-c g y" . browse-at-remote-kill)))
 
+(use-package sideline-blame
+  :init
+  (setq sideline-backends-left '((sideline-blame . down)))
+  :config
+  (global-sideline-mode))
+
 (provide 'init-git)

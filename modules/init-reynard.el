@@ -1,7 +1,10 @@
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
 
 ;; Set both alpha parameters, affects text also, cannot get alpha-background o work
-(set-frame-parameter nil 'alpha '(87 . 80))
+(set-frame-parameter nil 'alpha '(90 . 85))
+;; https://github.com/purcell/color-theme-sanityinc-tomorrow
+;; https://github.com/daut/miasma-theme.el
+
 
 ;; wait to build with cairo use the above temporarily with the text caveat
 ;; (defun kb/toggle-window-transparency ()
