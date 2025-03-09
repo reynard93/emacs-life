@@ -39,4 +39,11 @@
     (mapc #'treesit-install-language-grammar
           (mapcar #'car treesit-language-source-alist))))
 
+;; currently not working for ruby? idw the keybinds prefer to M-x if
+(use-package turbo-log 
+  :defer t
+  :config
+  (add-to-list 'turbo-log-loggers '(ruby-ts-mode (:loggers ("p %s;" "puts %s;") :comment-string "#" :argument-divider ",")))
+  :ensure (turbo-log :host github :repo "Artawower/turbo-log"))
+
 (provide 'init-tree-sitter)

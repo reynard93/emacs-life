@@ -150,5 +150,6 @@
   (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
   (global-diff-hl-mode))
 
+;; note to self: emacs goes freaking crazy when opening and resizing with aerospace
 
 (provide 'init-reynard)

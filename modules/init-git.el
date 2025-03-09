@@ -37,6 +37,7 @@
   (("C-c g o" . browse-at-remote)
    ("C-c g y" . browse-at-remote-kill)))
 
+;; sometimes this can go crazy, showing up everywhere
 (use-package sideline-blame
   :init
   (setq sideline-backends-left '((sideline-blame . down)))
