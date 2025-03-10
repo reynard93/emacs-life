@@ -248,4 +248,13 @@ The DWIM behaviour of this command is as follows:
 (global-unset-key (kbd "C-z"))
 (global-unset-key (kbd "C-x C-z"))
 
+;; I consider this a must and better default
+(use-package which-key
+  :ensure nil
+  :diminish
+  :functions
+  which-key-mode
+  :config
+  (which-key-mode))
+
 (provide 'init-better-defaults)

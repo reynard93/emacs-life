@@ -58,4 +58,14 @@
   :custom
   (ws-butler-keep-whitespace-before-point nil))
 
+;; this is so good, i missed this from neovim
+(use-package expand-region
+  :ensure t
+  :bind
+  (("C-=" . er/expand-region)
+   ("C-=" . er/expand-region)
+   ("C-<kp-equal>" . er/expand-region)
+   ("C--" . er/contract-region))
+  )
+
 (provide 'init-editing-utils)

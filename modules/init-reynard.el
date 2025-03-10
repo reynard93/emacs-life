@@ -132,6 +132,9 @@
 
 (use-package vundo
   :commands (vundo)
+  :custom
+  (vundo-roll-back-on-quit nil)
+  (vundo--window-max-height 10)
   :config
   (setq vundo-glyph-alist vundo-unicode-symbols))
 
