@@ -18,6 +18,7 @@
 (require 'init-spell-checker)
 (require 'init-syntax-checker)
 (require 'init-social)
+(require 'init-http)
 
 ;; Contexts
 (require 'init-programming)
