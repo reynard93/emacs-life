@@ -99,16 +99,12 @@
 
 ;; either use rinari or projectile-rails (note rinari is unmaintained, use projectile-rails now)
 ;; using this fork bcz https://github.com/asok/projectile-rails/pull/169 it fixes handle of filenames with multiple .'s
-;TODO am missing some config such as sql something and yasnippet for it
+;TODO am missing some config such as sql something and yasnippet for it idw use this anymore lol
 ;; (use-package projectile-rails
 ;;   :ensure
 ;;   :config
 ;;   ((projectile-rails-global-mode)
 ;; ))
-
-(use-package robe
-  :hook((ruby-mode . robe-mode)
-         (ruby-ts-mode . robe-mode)))
 
 ;; caveats to robe-mode
 ;; 1. only one project @/time with inf-ruby

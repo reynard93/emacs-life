@@ -53,4 +53,9 @@
   :load-path "site-lisp/"
   :hook (org-mode . org-block-capf-add-to-completion-at-point-functions))
 
+(use-package eglot-tempel
+  :ensure
+  :after (eglot tempel)
+  :hook (eglot-managed-mode . eglot-tempel-mode))
+
 (provide 'init-completion)

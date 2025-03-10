@@ -7,7 +7,7 @@
   (nix-mode . eglot-ensure)
   (c-ts-mode . eglot-ensure)
   :custom
-  (eglot-ignored-server-capabilities '(:completionProvider))
+  (eglot-ignored-server-capabilities '(:completionProvider)) ; using corfu,corfu-tempel
   :config
   (dolist (mode '(((ruby-mode ruby-ts-mode) . ("ruby-lsp"))
                   ((python-mode python-ts-mode) . ("ruff" "server"))

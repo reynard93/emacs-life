@@ -69,8 +69,10 @@
   )
 
 ;; Snippets
-(use-package yasnippet)
+;; use tempel instead
+;; (use-package yasnippet) ; this is known to add startup time significantly
 
+;; maybe KISS really SIMPLE? you might not even need all these
 
 ;; Robe (note that for robe M. does robe-jump currently it is embark-dwim) need to bind to soemthing else
 ;; advise here is from wikimacs it is awesome
