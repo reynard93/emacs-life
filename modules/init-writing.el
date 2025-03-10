@@ -21,6 +21,7 @@
    ("M-g o" . consult-org-heading))
 
   :custom
+  (org-use-speed-commands t)
   (org-use-sub-superqscripts '{})
   (org-M-RET-may-split-line '((default . nil)))
   (org-insert-heading-respect-content t)
