@@ -1,3 +1,4 @@
+;; good resource: https://wikemacs.org/wiki/Ruby
 ;; https://stackoverflow.com/questions/7989090/emacs-ruby-autocomplete-almost-working
 ;; the guy map7 rails config is godly?
 (use-package ruby-ts-mode
@@ -85,4 +86,31 @@
 
 (add-hook 'ruby-ts-mode-hook 'my-auto-hide-ruby-methods)
 
+;; chruby - activates a project's ruby versio nwithin Emacs
+;; make sure to install chruby with brew first
+;;  load auto.sh in ~/.bashrc or ~/.zshrc: (https://github.com/postmodern/chruby) for auto switch when u cd btwn projects (shell) i think chruby does it auto for u in ruby
+;; article that recommends using chruby instead of rbm or rbenv
+;; https://stevemarshall.com/journal/why-i-use-chruby/
+;; if using chruby also pair it with ruby-install
+;; dont care for now , also asdf etc
+
+
+;; enh-ruby-mode features that enhance the coding experience (sometimes indentatio doesn't do what you expect)
+
+;; either use rinari or projectile-rails (note rinari is unmaintained, use projectile-rails now)
+;; using this fork bcz https://github.com/asok/projectile-rails/pull/169 it fixes handle of filenames with multiple .'s
+;TODO am missing some config such as sql something and yasnippet for it
+;; (use-package projectile-rails
+;;   :ensure
+;;   :config
+;;   ((projectile-rails-global-mode)
+;; ))
+
+(use-package robe
+  :hook((ruby-mode . robe-mode)
+         (ruby-ts-mode . robe-mode)))
+
+;; caveats to robe-mode
+;; 1. only one project @/time with inf-ruby
+;; 2. 
 (provide 'init-ruby)

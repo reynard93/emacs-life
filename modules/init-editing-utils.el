@@ -18,9 +18,9 @@
 
 (use-package visual-replace
    :defer t
-   :bind (("C-c r" . visual-replace)
+   :bind (("C-c w r" . visual-replace)
           :map isearch-mode-map
-          ("C-c r" . visual-replace-from-isearch)))
+          ("C-c w r" . visual-replace-from-isearch)))
 
 ;; (use-package rainbow-mode
 ;;   :hook (mhtml-mode))
@@ -67,5 +67,17 @@
    ("C-<kp-equal>" . er/expand-region)
    ("C--" . er/contract-region))
   )
+
+;; Snippets
+(use-package yasnippet)
+
+
+;; Robe (note that for robe M. does robe-jump currently it is embark-dwim) need to bind to soemthing else
+;; advise here is from wikimacs it is awesome
+;; (require 'robe)
+;; (add-hook 'ruby-mode-hook 'robe-mode)
+;; If you are using rvm you may want to instruct robe to auto-trigger rvm-activate-corresponding-ruby:
+;; (defadvice inf-ruby-console-auto (before activate-rvm-for-robe activate)
+;;   (rvm-activate-corresponding-ruby))
 
 (provide 'init-editing-utils)
