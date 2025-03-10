@@ -155,4 +155,25 @@
 
 ;; note to self: emacs goes freaking crazy when opening and resizing with aerospace
 
+;; https://gist.github.com/pesterhazy/e8e445e6715f5d8bae3c62bc9db32469
+;; in a monorepo does not correctly identify project root
+(require 'cl-extra)
+
+(setq project-sentinels '("package.json" "Gemfile" "global.d.ts"))
+
+(defun find-enclosing-project (dir)
+  (locate-dominating-file
+   dir
+   (lambda (file)
+     (and (file-directory-p file)
+          (cl-some (lambda (sentinel)
+                     (file-exists-p (expand-file-name sentinel file)))
+                   project-sentinels)))))
+
+
+(add-hook 'project-find-functions
+          #'(lambda (d)
+              (let ((dir (find-enclosing-project d)))
+                (if dir (list 'vc 'Git  dir) nil))))
+
 (provide 'init-reynard)
