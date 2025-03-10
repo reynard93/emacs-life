@@ -47,63 +47,11 @@
   (scss-compile-at-save nil)
   (css-indent-offset 2))
 
-;; ESLint integration
-(use-package eslint-fix
-  :commands eslint-fix)
-
-;; Define the setup function before using it in hooks
-(defun rasen/setup-tide-mode ()
-  "Setup function for tide mode."
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-
-  ;; Format options
-  (setq tide-format-options
-        '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t
-          :placeOpenBraceOnNewLineForFunctions nil
-          :indentSize 2
-          :tabSize 2))
-
-  ;; Enable ESLint with Flycheck when available
-  (when (executable-find "eslint")
-    (flycheck-add-next-checker 'typescript-tide 'javascript-eslint 'append)))
-
-;; Prettier integration
-(use-package prettier-js
-  :hook ((typescript-ts-mode . prettier-js-mode)
-         (tsx-ts-mode . prettier-js-mode)
-         (js-mode . prettier-js-mode)
-         (web-mode . prettier-js-mode))
-  :config
-  (setq prettier-js-args '("--single-quote" "--trailing-comma" "all")))
-
-(use-package tide
-  :hook ((typescript-ts-mode . rasen/setup-tide-mode)
-         (tsx-ts-mode . rasen/setup-tide-mode)
-         (js-mode . rasen/setup-tide-mode)
-         (web-mode . (lambda ()
-                       (when (or (string-equal "tsx" (file-name-extension buffer-file-name))
-                                 (string-equal "ts" (file-name-extension buffer-file-name))
-                                 (string-equal "js" (file-name-extension buffer-file-name))
-                                 (string-equal "jsx" (file-name-extension buffer-file-name)))
-                         (rasen/setup-tide-mode)))))
-  :config
-  (define-key tide-mode-map (kbd "K") nil)
-
-  ;; Tide key bindings
-  (define-key tide-mode-map (kbd "C-c C-d") 'tide-documentation-at-point)
-  (define-key tide-mode-map (kbd "C-c C-r") 'tide-rename-symbol)
-  (define-key tide-mode-map (kbd "C-c C-f") 'tide-fix)
-  (define-key tide-mode-map (kbd "C-c C-o") 'tide-organize-imports)
-  (define-key tide-mode-map (kbd "C-c C-i") 'tide-format)
-  (define-key tide-mode-map (kbd "C-c C-e") 'tide-error-at-point)
-  (define-key tide-mode-map (kbd "C-c C-l") 'tide-references)
-  (define-key tide-mode-map (kbd "C-c C-j") 'tide-jump-to-definition)
-  (define-key tide-mode-map (kbd "C-c C-b") 'tide-jump-back))
+;; move it to where i have flycheck
+;; Enable ESLint with Flycheck when available
+;; does the following line work in isolation without an ysrrounding block?
+(when (executable-find "eslint")
+  (flycheck-add-next-checker 'javascript-eslint 'append))
 
 ;; Add Node.js modules to path
 (use-package add-node-modules-path

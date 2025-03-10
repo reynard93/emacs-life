@@ -1,3 +1,5 @@
+;; keeping it simple with eglot
+;; accidentally had this file toggled with init-eglot and server kept restarting itself and didnt work
 ;; https://www.ovistoica.com/blog/2024-7-05-modern-emacs-typescript-web-tsx-config
 ;; cargo install emacs-lsp-booster. Make sure to include the cargo bin folder in your $PATH.
 (use-package lsp-mode

@@ -559,6 +559,7 @@ Specific to the current window's mode line.")
   ;; performance improvemence:
   ;; https://www.reddit.com/r/emacs/comments/16vixg6/how_to_make_lsp_and_eglot_way_faster_like_neovim/
 
+  ;; IMPORTANT: remove these two lines in order to debug
   (fset #'jsonrpc--log-event #'ignore) ;; remove laggy typing it probably reduces chatty json from lsp to eglot i guess
   (setq-default eglot-events-buffer-config '(:size 0 :format full))
 
