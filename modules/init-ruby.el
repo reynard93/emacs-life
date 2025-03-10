@@ -1,3 +1,5 @@
+;; https://stackoverflow.com/questions/7989090/emacs-ruby-autocomplete-almost-working
+;; the guy map7 rails config is godly?
 (use-package ruby-ts-mode
   :ensure nil
   :defer t)
@@ -19,8 +21,25 @@
   :custom
   (rake-completion-system 'default))
 
+(use-package rvm.el
+  :defer t
+  :ensure (:host github :repo "senny/rvm.el" :files ("*.el")))
+
 (use-package rspec-mode
-  :hook ruby-ts-mode)
+  :config
+  (add-to-list 'auto-mode-alist '("\\.spec\\.rb\\'" . ruby-ts-mode))
+
+  (defun enable-rspec-for-spec-files ()
+    (when (and buffer-file-name
+               (string-match-p "\\.spec\\.rb\\'" buffer-file-name))
+      (rspec-mode)))
+
+  (add-hook 'ruby-mode-hook #'enable-rspec-for-spec-files)
+  (add-hook 'ruby-ts-mode-hook #'enable-rspec-for-spec-files)
+
+  :custom
+  (rspec-use-rvm t) ;; this requires rvm.el
+  (rspec-command-options "--fail-fast --color"))
 
 (use-package rubocop
   :hook ruby-ts-mode)
@@ -65,4 +84,5 @@
   (global-auto-hide-mode))
 
 (add-hook 'ruby-ts-mode-hook 'my-auto-hide-ruby-methods)
+
 (provide 'init-ruby)

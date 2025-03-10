@@ -39,14 +39,20 @@
            go-ts-mode
            python-ts-mode
            prisma-ts-mode
-           ruby-ts-mode
            clojure-mode
            clojurec-mode
            clojurescript-mode
            go-ts-mode) . lsp)
          (go-ts-mode . os/lsp-gopls-hook))
   :config
-
+  ;; heck it don't use ruby-lsp or lsp-mode with ruby
+  ;; note: should not run both ruby lsp and solargraph tgr due to potential conflicts
+  ;; ruby-lsp is faster but i want solargraph because it has integration with solargraph-rails
+  ;; but someone says that robe is superior to the lsps https://www.reddit.com/r/ruby/comments/18fyxhz/comment/kd1jfy7/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+  ;; there is also sorbet lsp for types (headache)
+  ;; but there is also ruby lsp rspec and ruby lsp rails, imo just use ruby-lsp https://github.com/st0012/ruby-lsp-rspec
+  ;; https://github.com/Shopify/ruby-lsp-rails (this is auto added from ruby-lsp whenever rails app is detected, no need to manually add)
+  ;; will try the ruby-lsps only just before trying robe
   (define-key lsp-command-map (kbd "d") #'lsp-ui-doc-glance)
   (setenv "PATH" (concat
                   "/usr/local/bin" path-separator
