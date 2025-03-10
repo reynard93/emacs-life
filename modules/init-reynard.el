@@ -170,12 +170,10 @@
                      (file-exists-p (expand-file-name sentinel file)))
                    project-sentinels)))))
 
-;; affecting the rest of my proj,  cannot rg, cannot magit etc
+;; affecting the rest of my shit for example eval (project-current)
 ;; (add-hook 'project-find-functions
 ;;           #'(lambda (d)
 ;;               (let ((dir (find-enclosing-project d)))
 ;;                 (if dir (list 'vc 'Git  dir) nil))))
-
-;; keep evalualting (project-current) to debug
 
 (provide 'init-reynard)
