@@ -17,9 +17,7 @@
           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
           (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
-          )
-
-        )
+          ))
 
   :custom
   (major-mode-remap-alist

@@ -3,10 +3,15 @@
   :ensure nil
   :bind ("M-o" . other-window))
 
+;; default-keybindings is S instead of s (interferes with calendar selection)
 (use-package windmove
   :ensure nil
+  :bind
+  (("s-<up>" . windmove-up)
+   ("s-<down>" . windmove-down)
+   ("s-<left>" . windmove-left)
+   ("s-<right>" . windmove-right))
   :config
-  (windmove-default-keybindings)
   (windmove-delete-default-keybindings)
   (windmove-swap-states-default-keybindings))
 
@@ -141,8 +146,8 @@
 
 (use-package move-text
   :bind
-  (("s-<up>" . move-text-up)
-   ("s-<down>" . move-text-down)))
+  (("M-<up>" . move-text-up)
+   ("M-<down>" . move-text-down)))
 
 (defun cc/move-word-backward ()
   "Move word to the right of point backward one word.
