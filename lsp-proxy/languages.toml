@@ -7,6 +7,7 @@ jdtls = { command = "jdtls" }
 dart = { command = "dart", args = ["language-server", "--client-id=emacs.lsp-proxy"] }
 clangd = { command = "clangd" }
 solargraph = { command = "solargraph", args = ["stdio"] }
+ruby-lsp = { command = "ruby-lsp" }
 
 [language-server.css-ls]
 command = "vscode-css-language-server"
