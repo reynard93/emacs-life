@@ -37,3 +37,4 @@ elpa-bakup
 .aider*
 /tramp
 /.lsp-session
+/debug-adapters/
