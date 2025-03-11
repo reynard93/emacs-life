@@ -348,4 +348,4 @@ file-types = [
   { glob = "Snapfile" },
   { glob = "Gymfile" },
 ]
-language-servers = [ "ruby-lsp" ]
+language-servers = [ "solargraph" ]

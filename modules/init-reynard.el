@@ -1,6 +1,7 @@
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
 ;; It WILL be even better if certain packages that depends on system binaries are conditionally activated and installed based on 'executable-find'
 
+;; wait to build with cairo use the above temporarily with the text caveat
 ;; Set both alpha parameters, affects text also, cannot get alpha-background o work
 (set-frame-parameter nil 'alpha '(90 . 85))
 ;; the one below is for new frames to inherit the same settings
@@ -9,14 +10,6 @@
 ;; https://github.com/purcell/color-theme-sanityinc-tomorrow
 ;; https://github.com/daut/miasma-theme.el
 
-;; wait to build with cairo use the above temporarily with the text caveat
-(defun kb/toggle-window-transparency ()
-  "Toggle transparency."
-  (interactive)
-  (let ((alpha-transparency 88))
-    (pcase (frame-parameter nil 'alpha)
-      (alpha-transparency (set-frame-parameter nil 'alpha 100))
-      (t (set-frame-parameter nil 'alpha alpha-transparency)))))
 
 ;; https://github.com/novoid/dot-emacs/blob/master/config.org (THIS config, refer to winow management)
 ;; the new spliting way the utility when I split the screen with C-x 2 or C-x 3, it opens the previous buffer instead of giving me two panes with the same buffer:
