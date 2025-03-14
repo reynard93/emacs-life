@@ -10,6 +10,7 @@
 
 ;; Features
 (require 'init-highlight)
+(require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
 (require 'init-mail)
