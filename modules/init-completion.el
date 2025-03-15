@@ -7,19 +7,26 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
-  (corfu-auto-delay 0)
-  :config
-  (global-corfu-mode 1))
+  (corfu-auto-delay 0.2)
+  (corfu-auto-prefix 2)
+  (corfu-popupinfo-delay '(0.4 . 0.2))
+  :custom-face
+  (corfu-border ((t (:inherit region :background unspecified))))
+  :hook ((after-init . global-corfu-mode)
+         (global-corfu-mode . corfu-popupinfo-mode)))
 
 (use-package cape
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
   (add-to-list 'completion-at-point-functions #'cape-elisp-block)
+  (add-to-list 'completion-at-point-functions #'cape-abbrev)
   (add-to-list 'completion-at-point-functions #'cape-history)
   (add-to-list 'completion-at-point-functions #'cape-keyword)
+  (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   :bind-keymap ("C-c p" . cape-prefix-map))
 
+;; this replaces yasnippet
 (use-package tempel
   :init
   (defun tempel-setup-capf ()

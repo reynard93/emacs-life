@@ -1,3 +1,7 @@
+;; not sure if i need these lines or not, was in init-dired of centaur emacs
+(eval-when-compile
+  (require 'init-const))
+
 (use-package emacs
   :ensure nil
   :init
@@ -13,6 +17,8 @@
   (truncate-string-ellipsis "…")
   (select-enable-clipboard t)
 
+  ;; Disable completion func, try 'cape-dict'
+  (text-mode-ispell-word-completion nil)
   ;; Editing
   (require-final-newline t)
 
@@ -184,21 +190,91 @@ The path is relative to `project-current'."
   (doc-view-mupdf-use-svg t)
   (doc-view-resolution 300))
 
+;; Directory operations
 (use-package dired
   :ensure nil
+  :bind (:map dired-mode-map
+         ("C-c C-p" . wdired-change-to-wdired-mode))
   :config
+  ;; Guess a default target directory
+  (setq dired-dwim-target t)
   (define-key dired-mode-map "z" (lambda () (interactive) (let ((files (dired-get-marked-files)))
-    (with-temp-buffer
-      (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
-      (message
-       "Size of all marked files: %s"
-       (progn
-         (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
-         (match-string 1)))))))
-  :custom
-  (dired-recursive-copies 'always)
-  (dired-recursive-deletes 'always)
-  (dired-dwim-target t))
+                                                       (with-temp-buffer
+                                                         (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+                                                         (message
+                                                          "Size of all marked files: %s"
+                                                          (progn
+                                                            (re-search-backward "\\(^[ 0-9.,]+[A-Za-z]+\\).*total$")
+                                                            (match-string 1)))))))
+
+  ;; Always delete and copy recursively
+  (setq dired-recursive-deletes 'always
+        dired-recursive-copies 'always)
+
+  ;; Show directory first
+  (setq dired-listing-switches "-alh --group-directories-first")
+
+  (when sys/macp
+    (if (executable-find "gls")
+        (progn
+          ;; Use GNU ls as `gls' from `coreutils' if available.
+          (setq insert-directory-program "gls")
+          ;; Using `insert-directory-program'
+          (setq ls-lisp-use-insert-directory-program t))
+      (progn
+        ;; Suppress the warning: `ls does not support --dired'.
+        (setq dired-use-ls-dired nil)
+        (setq dired-listing-switches "-alh"))))
+
+  ;; Quick sort dired buffers via hydra
+  (use-package dired-quick-sort
+    :bind (:map dired-mode-map
+           ("S" . hydra-dired-quick-sort/body)))
+
+  ;; Show git info in dired
+  (use-package dired-git-info
+    :bind (:map dired-mode-map
+           (")" . dired-git-info-mode)))
+
+  ;; Allow rsync from dired buffers
+  (use-package dired-rsync
+    :bind (:map dired-mode-map
+           ("C-c C-r" . dired-rsync)))
+
+  ;; Colorful dired
+  (use-package diredfl
+    :hook (dired-mode . diredfl-mode))
+
+  ;; Extra Dired functionality
+  (use-package dired-aux :ensure nil)
+  (use-package dired-x
+    :ensure nil
+    :demand t
+    :config
+    (let ((cmd (cond (sys/mac-x-p "open")
+                     (sys/linux-x-p "xdg-open")
+                     (sys/win32p "start")
+                     (t ""))))
+      (setq dired-guess-shell-alist-user
+            `(("\\.pdf\\'" ,cmd)
+              ("\\.docx\\'" ,cmd)
+              ("\\.\\(?:djvu\\|eps\\)\\'" ,cmd)
+              ("\\.\\(?:jpg\\|jpeg\\|png\\|gif\\|xpm\\)\\'" ,cmd)
+              ("\\.\\(?:xcf\\)\\'" ,cmd)
+              ("\\.csv\\'" ,cmd)
+              ("\\.tex\\'" ,cmd)
+              ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|rm\\|rmvb\\|ogv\\)\\(?:\\.part\\)?\\'" ,cmd)
+              ("\\.\\(?:mp3\\|flac\\)\\'" ,cmd)
+              ("\\.html?\\'" ,cmd)
+              ("\\.md\\'" ,cmd))))
+
+    (setq dired-omit-files
+          (concat dired-omit-files
+                  "\\|^.DS_Store$\\|^.projectile$\\|^.git*\\|^.svn$\\|^.vscode$\\|\\.js\\.meta$\\|\\.meta$\\|\\.elc$\\|^.emacs.*"))))
+
+;; `find-dired' alternative using `fd'
+(when (executable-find "fd")
+  (use-package fd-dired))
 
 (use-package dired-subtree
   :ensure t
