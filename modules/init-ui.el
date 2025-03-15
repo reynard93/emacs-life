@@ -1,3 +1,27 @@
+(eval-when-compile
+  (require 'init-const)
+  (require 'init-custom))
+
+;; Optimization
+(setq idle-update-delay 1.0)
+
+(setq-default cursor-in-non-selected-windows nil)
+(setq highlight-nonselected-windows nil)
+
+(setq fast-but-imprecise-scrolling t)
+(setq redisplay-skip-fontification-on-input t)
+
+;; Inhibit resizing frame
+(setq frame-inhibit-implied-resize t
+      frame-resize-pixelwise t)
+
+;; Initial frame
+(setq initial-frame-alist '((top . 0.5)
+                            (left . 0.5)
+                            (width . 0.628)
+                            (height . 0.8)
+                            (fullscreen)))
+
 (use-package modus-themes
   :ensure nil
   :init
@@ -80,5 +104,14 @@
   :ensure t
   :hook
   (dired-mode . nerd-icons-dired-mode))
+
+;; Show line numbers
+(use-package display-line-numbers
+  :ensure nil
+  :hook ((prog-mode
+          conf-mode toml-ts-mode
+          yaml-mode yaml-ts-mode)
+         . display-line-numbers-mode)
+  :init (setq display-line-numbers-width-start t))
 
 (provide 'init-ui)
