@@ -47,12 +47,6 @@
   (scss-compile-at-save nil)
   (css-indent-offset 2))
 
-;; move it to where i have flycheck
-;; Enable ESLint with Flycheck when available
-;; does the following line work in isolation without an ysrrounding block?
-(when (executable-find "eslint")
-  (flycheck-add-next-checker 'javascript-eslint 'append))
-
 ;; Add Node.js modules to path
 (use-package add-node-modules-path
   :hook ((typescript-ts-mode . add-node-modules-path)

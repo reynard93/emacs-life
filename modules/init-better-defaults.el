@@ -238,33 +238,6 @@ The path is relative to `project-current'."
     :bind (:map dired-mode-map
            ("C-c C-r" . dired-rsync)))
 
-  ;; Colorful dired
-  (use-package diredfl
-    :hook (dired-mode . diredfl-mode))
-
-  ;; Extra Dired functionality
-  (use-package dired-aux :ensure nil)
-  (use-package dired-x
-    :ensure nil
-    :demand t
-    :config
-    (let ((cmd (cond (sys/mac-x-p "open")
-                     (sys/linux-x-p "xdg-open")
-                     (sys/win32p "start")
-                     (t ""))))
-      (setq dired-guess-shell-alist-user
-            `(("\\.pdf\\'" ,cmd)
-              ("\\.docx\\'" ,cmd)
-              ("\\.\\(?:djvu\\|eps\\)\\'" ,cmd)
-              ("\\.\\(?:jpg\\|jpeg\\|png\\|gif\\|xpm\\)\\'" ,cmd)
-              ("\\.\\(?:xcf\\)\\'" ,cmd)
-              ("\\.csv\\'" ,cmd)
-              ("\\.tex\\'" ,cmd)
-              ("\\.\\(?:mp4\\|mkv\\|avi\\|flv\\|rm\\|rmvb\\|ogv\\)\\(?:\\.part\\)?\\'" ,cmd)
-              ("\\.\\(?:mp3\\|flac\\)\\'" ,cmd)
-              ("\\.html?\\'" ,cmd)
-              ("\\.md\\'" ,cmd))))
-
     (setq dired-omit-files
           (concat dired-omit-files
                   "\\|^.DS_Store$\\|^.projectile$\\|^.git*\\|^.svn$\\|^.vscode$\\|\\.js\\.meta$\\|\\.meta$\\|\\.elc$\\|^.emacs.*"))))

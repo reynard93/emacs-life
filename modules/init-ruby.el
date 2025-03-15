@@ -20,6 +20,9 @@
 ;; RSpec
 (use-package rspec-mode
   :diminish
+  :custom
+  (rspec-use-rvm t) ;; this requires rvm.el
+  (rspec-command-options "--fail-fast --color")
   :hook (dired-mode . rspec-dired-mode))
 
 ;; Run a Ruby process in a buffer
@@ -48,10 +51,6 @@
 
 (add-hook 'ruby-mode-hook #'enable-rspec-for-spec-files)
 (add-hook 'ruby-ts-mode-hook #'enable-rspec-for-spec-files)
-
-:custom
-(rspec-use-rvm t) ;; this requires rvm.el
-(rspec-command-options "--fail-fast --color"))
 
 (use-package rubocop
   :hook ruby-ts-mode)

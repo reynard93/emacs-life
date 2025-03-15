@@ -5,7 +5,6 @@
 
 ;; Bootstrap
 (require 'init-bootstrap)
-(require 'init-hydra)
 (require 'init-emacs)
 (require 'init-macos)
 

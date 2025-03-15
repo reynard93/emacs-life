@@ -29,15 +29,6 @@
   :config
   (vertico-multiform-mode 1))
 
-(when (childframe-completion-workable-p)
-  (use-package vertico-posframe
-    :hook (vertico-mode . vertico-posframe-mode)
-    :init (setq vertico-posframe-poshandler
-                #'posframe-poshandler-frame-center-near-bottom
-                vertico-posframe-parameters
-                '((left-fringe  . 8)
-                  (right-fringe . 8)))))
-
 (use-package ffap
   :ensure nil
   :bind ("M-m" . ffap-menu)

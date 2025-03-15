@@ -4,6 +4,10 @@
   :hook ((prog-mode ruby-ts-mode)
          . flycheck-mode)
   :config
+  ;; move it to where i have flycheck
+  ;; Enable ESLint with Flycheck when available
+  (when (executable-find "eslint")
+    (flycheck-add-next-checker 'javascript-eslint 'append))
   ;; Use ESLint from node_modules when available
   (defun my/use-eslint-from-node-modules ()
     (let* ((root (locate-dominating-file
