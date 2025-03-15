@@ -1,4 +1,22 @@
 (require 'init-tree-sitter)
+;; Cross-referencing commands
+(use-package xref
+  :bind (("M-g ." . xref-find-definitions)
+         ("M-g ," . xref-go-back))
+  :init
+  ;; Use faster search tool
+  (when (executable-find "rg")
+    (setq xref-search-program 'ripgrep))
+
+  ;; Select from xref candidates in minibuffer
+  (setq xref-show-definitions-function #'xref-show-definitions-completing-read
+        xref-show-xrefs-function #'xref-show-definitions-completing-read))
+
+;; Code styles
+(use-package editorconfig
+  :diminish
+  :hook (after-init . editorconfig-mode))
+
 ;; (require 'init-eglot)
 (require 'init-lsp-proxy)
 ;; (require 'init-lsp)

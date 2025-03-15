@@ -1,5 +1,8 @@
 (use-package flycheck
-  :hook ruby-ts-mode
+  ;; :bind
+  ;; ("C-c f" . flycheck-show-buffer-diagnostics) ;; dn think i using this keymap, show diagnostic also wh fn?
+  :hook ((prog-mode ruby-ts-mode)
+         . flycheck-mode)
   :config
   ;; Use ESLint from node_modules when available
   (defun my/use-eslint-from-node-modules ()
@@ -16,8 +19,7 @@
 
 (use-package flycheck-jest
   :after flycheck
- )
-
+  )
 
 (use-package consult-flycheck
   :after (consult flycheck))
