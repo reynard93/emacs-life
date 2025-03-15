@@ -137,14 +137,6 @@
 ;; requires installation of cmake
 (use-package vterm)
 
-(use-package diff-hl
-  :after
-  magit
-  :config
-  (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
-  (add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
-  (global-diff-hl-mode))
-
 ;; note to self: emacs goes freaking crazy when opening and resizing with aerospace
 
 (setq project-vc-extra-root-markers '("package.json" "Gemfile" "global.d.ts"))

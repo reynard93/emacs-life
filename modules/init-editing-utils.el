@@ -17,30 +17,27 @@
    ("C-<" . mc/mark-previous-like-this)))
 
 (use-package visual-replace
-   :defer t
-   :bind (("C-c w r" . visual-replace)
-          :map isearch-mode-map
-          ("C-c w r" . visual-replace-from-isearch)))
+  :defer t
+  :bind (("C-c w r" . visual-replace)
+         :map isearch-mode-map
+         ("C-c w r" . visual-replace-from-isearch)))
 
 ;; (use-package rainbow-mode
 ;;   :hook (mhtml-mode))
-
-(use-package rainbow-delimiters
-  :hook prog-mode)
 
 (use-package smartparens
   :hook (prog-mode text-mode)
   :bind
   (:map smartparens-mode-map
-        ("C-M-a" . sp-beginning-of-sexp)
-        ("C-M-e" . sp-end-of-sexp)
-        ("C-M-f" . sp-forward-sexp)
-        ("C-M-b" . sp-backward-sexp)
-        ("C-M-d" . sp-down-sexp)
-        ("C-M-u" . sp-backward-up-sexp)
-        ("C-M-w" . sp-copy-sexp)
-        ("C-M-k" . sp-kill-sexp)
-        ("C-M-<backspace>" . sp-backward-kill-sexp)) ; del whole word at cursor
+   ("C-M-a" . sp-beginning-of-sexp)
+   ("C-M-e" . sp-end-of-sexp)
+   ("C-M-f" . sp-forward-sexp)
+   ("C-M-b" . sp-backward-sexp)
+   ("C-M-d" . sp-down-sexp)
+   ("C-M-u" . sp-backward-up-sexp)
+   ("C-M-w" . sp-copy-sexp)
+   ("C-M-k" . sp-kill-sexp)
+   ("C-M-<backspace>" . sp-backward-kill-sexp)) ; del whole word at cursor
   :config
   (require 'smartparens-config))
 

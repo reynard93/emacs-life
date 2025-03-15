@@ -1,7 +1,4 @@
 ;; not sure if i need these lines or not, was in init-dired of centaur emacs
-(eval-when-compile
-  (require 'init-const))
-
 (use-package emacs
   :ensure nil
   :init
@@ -214,7 +211,7 @@ The path is relative to `project-current'."
   ;; Show directory first
   (setq dired-listing-switches "-alh --group-directories-first")
 
-  (when sys/macp
+  (when (eq system-type 'darwin)
     (if (executable-find "gls")
         (progn
           ;; Use GNU ls as `gls' from `coreutils' if available.
