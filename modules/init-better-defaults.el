@@ -196,8 +196,8 @@ The path is relative to `project-current'."
   ;; Guess a default target directory
   (setq dired-dwim-target t)
   (define-key dired-mode-map "z" (lambda () (interactive) (let ((files (dired-get-marked-files)))
-                                                       (with-temp-buffer
-                                                         (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
+                                                       (with-temp-buffer 
+                                                        (apply 'call-process "/usr/bin/du" nil t nil "-sch" files)
                                                          (message
                                                           "Size of all marked files: %s"
                                                           (progn
@@ -237,10 +237,7 @@ The path is relative to `project-current'."
   (use-package dired-rsync
     :bind (:map dired-mode-map
            ("C-c C-r" . dired-rsync)))
-
-    (setq dired-omit-files
-          (concat dired-omit-files
-                  "\\|^.DS_Store$\\|^.projectile$\\|^.git*\\|^.svn$\\|^.vscode$\\|\\.js\\.meta$\\|\\.meta$\\|\\.elc$\\|^.emacs.*"))))
+ )
 
 ;; `find-dired' alternative using `fd'
 (when (executable-find "fd")

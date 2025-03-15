@@ -71,8 +71,7 @@
 (use-package indent-bars
   :custom
   (indent-bars-color '(highlight :face-bg t :blend 0.225))
-  (indent-bars-treesit-support centaur-tree-sitter)
-  (indent-bars-no-descend-string t)
+    (indent-bars-no-descend-string t)
   (indent-bars-treesit-ignore-blank-lines-types '("module"))
   (indent-bars-prefer-character t)
   (indent-bars-treesit-scope '((python function_definition class_definition for_statement
