@@ -2,9 +2,7 @@
   ;; :bind
   ;; ("C-c f" . flycheck-show-buffer-diagnostics) ;; dn think i using this keymap, show diagnostic also wh fn?
   :hook ((prog-mode ruby-ts-mode)
-         . flycheck-mode)
-  :config
-  (add-hook 'flycheck-mode-hook #'my/use-eslint-from-node-modules))
+         . flycheck-mode))
 
 (use-package flycheck-jest
   :after flycheck
