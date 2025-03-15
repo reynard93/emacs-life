@@ -56,6 +56,36 @@
 
 (use-package dape
   :ensure
+  :bind (("<f5>" . dape)
+         ("M-<f5>" . dape-hydra/body))
+  :custom (dape-buffer-window-arrangment 'right)
+  :pretty-hydra
+  ((:title (pretty-hydra-title "Debug" 'codicon "nf-cod-debug")
+    :color pink :quit-key ("q" "C-g"))
+   ("Stepping"
+    (("n" dape-next "next")
+     ("s" dape-step-in "step in")
+     ("o" dape-step-out "step out")
+     ("c" dape-continue "continue")
+     ("p" dape-pause "pause")
+     ("k" dape-kill "kill")
+     ("r" dape-restart "restart")
+     ("D" dape-disconnect-quit "disconnect"))
+    "Switch"
+    (("m" dape-read-memory "memory")
+     ("t" dape-select-thread "thread")
+     ("w" dape-watch-dwim "watch")
+     ("S" dape-select-stack "stack")
+     ("i" dape-info "info")
+     ("R" dape-repl "repl"))
+    "Breakpoints"
+    (("b" dape-breakpoint-toggle "toggle")
+     ("l" dape-breakpoint-log "log")
+     ("e" dape-breakpoint-expression "expression")
+     ("B" dape-breakpoint-remove-all "clear"))
+    "Debug"
+    (("d" dape "dape")
+     ("Q" dape-quit "quit" :exit t))))
   :config
   (add-to-list 'dape-configs
                `(rdbg-attach-rails
@@ -78,8 +108,8 @@
                  port 5679
                  :request "attach"
                  :localfs t)) ;; on yr project run 'bundle exec rdbg --port 5678 -O -n -c -- rspec <path-to-spec>'
-;; i.e. Run adapter: rdbg-attach-rspec prefix-local "/app/spec" for the bob project
-;; example: bundle exec rdbg --port -n -c -- rspec ./spec/models/submission_spec.rb
+  ;; i.e. Run adapter: rdbg-attach-rspec prefix-local "/app/spec" for the bob project
+  ;; example: bundle exec rdbg --port -n -c -- rspec ./spec/models/submission_spec.rb
   :preface
   (setq dape-key-prefix "\C-c\C-a")
   :hook
@@ -97,7 +127,13 @@
   (defun jjh/dape-buffer-matches-suffix (suffix)
     "Only include the buffer in the dape command if the buffer matches SUFFIX."
     (when (string-suffix-p suffix (dape-buffer-default))
-      (dape-buffer-default))))
+      (dape-buffer-default)))
+  ;; Save buffers on startup, useful for interpreted languages
+  (add-hook 'dape-on-start-hooks
+            (defun dape--save-on-start ()
+              (save-some-buffers t t)))
+  ;; Display hydra on startup
+  (add-hook 'dape-on-start-hooks #'dape-hydra/body))
 
 ;; terminates buffer automatically after inactivity of 30mins
 (use-package buffer-terminator
@@ -140,5 +176,12 @@
 ;; note to self: emacs goes freaking crazy when opening and resizing with aerospace
 
 (setq project-vc-extra-root-markers '("package.json" "Gemfile" "global.d.ts"))
+
+(use-package restclient
+  :mode ("\\.http\\'" . restclient-mode)
+  :config
+  (use-package restclient-test
+    :diminish
+    :hook (restclient-mode . restclient-test-mode)))
 
 (provide 'init-reynard)

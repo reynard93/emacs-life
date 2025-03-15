@@ -5,15 +5,6 @@
   :ensure nil
   :defer t)
 
-(use-package inf-ruby
-  :hook (ruby-ts-mode . inf-ruby-minor-mode)
-  :bind (:map inf-ruby-minor-mode-map ("C-c C-s" . inf-ruby-console-auto))
-  :custom
-  (inf-ruby-console-environment "development")
-  :config
-  ;; Reserve "C-c C-r" for `rubocop-mode-map'.
-  (unbind-key "C-c C-r" inf-ruby-minor-mode-map))
-
 (use-package bundler
   :defer t)
 
@@ -26,21 +17,41 @@
   :defer t
   :ensure (:host github :repo "senny/rvm.el" :files ("*.el")))
 
+;; RSpec
 (use-package rspec-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.spec\\.rb\\'" . ruby-ts-mode))
+  :diminish
+  :hook (dired-mode . rspec-dired-mode))
 
-  (defun enable-rspec-for-spec-files ()
-    (when (and buffer-file-name
-               (string-match-p "\\.spec\\.rb\\'" buffer-file-name))
-      (rspec-mode)))
+;; Run a Ruby process in a buffer
+(use-package inf-ruby
+  :hook ((ruby-mode . inf-ruby-minor-mode)
+         (compilation-filter . inf-ruby-auto-enter)))
 
-  (add-hook 'ruby-mode-hook #'enable-rspec-for-spec-files)
-  (add-hook 'ruby-ts-mode-hook #'enable-rspec-for-spec-files)
+;; Ruby YARD comments
+(use-package yard-mode
+  :diminish
+  :hook (ruby-mode . yard-mode))
 
-  :custom
-  (rspec-use-rvm t) ;; this requires rvm.el
-  (rspec-command-options "--fail-fast --color"))
+;; Ruby refactoring helpers
+(use-package ruby-refactor
+  :diminish
+  :hook (ruby-mode . ruby-refactor-mode-launch))
+
+;; Yet Another RI interface for Emacs
+(use-package yari
+  :bind (:map ruby-mode-map ([f1] . yari)))
+
+(defun enable-rspec-for-spec-files ()
+  (when (and buffer-file-name
+             (string-match-p "\\.spec\\.rb\\'" buffer-file-name))
+    (rspec-mode)))
+
+(add-hook 'ruby-mode-hook #'enable-rspec-for-spec-files)
+(add-hook 'ruby-ts-mode-hook #'enable-rspec-for-spec-files)
+
+:custom
+(rspec-use-rvm t) ;; this requires rvm.el
+(rspec-command-options "--fail-fast --color"))
 
 (use-package rubocop
   :hook ruby-ts-mode)
@@ -105,8 +116,5 @@
 ;;   :config
 ;;   ((projectile-rails-global-mode)
 ;; ))
-
-;; caveats to robe-mode
-;; 1. only one project @/time with inf-ruby
 
 (provide 'init-ruby)
