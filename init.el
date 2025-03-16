@@ -23,6 +23,7 @@
 
 ;; Contexts
 (require 'init-programming)
+(require 'init-howm)
 (require 'init-writing)
 
 ;; Services
