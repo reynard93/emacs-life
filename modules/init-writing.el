@@ -1,5 +1,5 @@
 (defvar my-notes-directory (expand-file-name "notes/" my-src-directory))
-(defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory))
+;; (defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory)) ;; i am using the one configured by ews
 (defvar my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))
 (require 'org-tempo)
 
@@ -140,13 +140,26 @@
   :ensure
   :after org)
 
+(defcustom ews-bibtex-directory
+  (concat (file-name-as-directory (getenv "HOME")) "library")
+  "Location of BibTeX files and attachments."
+  :group 'ews
+  :type 'directory)
+;;; BIBLIOGRAPHY
+(defvar ews-bibtex-files
+  (when (file-exists-p ews-bibtex-directory)
+    (directory-files ews-bibtex-directory t "^[A-Z|a-z|0-9].+.bib$"))
+  "List of BibTeX files. Use `ews-bibtex-register' to configure.")
+
 (use-package citar
   :ensure
   :init
-  (setq org-cite-global-bibliography `(,my-notes-reference-file))
+  (setq org-cite-global-bibliography `(,@ews-bibtex-files)) ; takes in a list
   (setq org-cite-insert-processor 'citar)
   (setq org-cite-follow-processor 'citar)
   (setq org-cite-activate-processor 'citar)
+  :bind
+  ("C-c w b o" . citar-open)
   :custom
   (citar-bibliography org-cite-global-bibliography)
   (citar-at-point-function #'embark-act))
