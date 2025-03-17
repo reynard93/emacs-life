@@ -45,44 +45,6 @@
          (let ((denote-use-title (alfred-browser-title)))
            (denote-org-capture-with-prompts :title :keywords))))
       :no-save nil
-      :immediate-finish t
-      :kill-buffer t
-      :jump-to-captured t)
-     ("l" "Link note" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-use-keywords '("link"))
-               (denote-use-template (concat
-                                     "#+hugo_base_dir: ~/src/yejun.dev\n"
-                                     "#+hugo_section: links\n"
-                                     (alfred-browser-org-link))))
-           (denote-org-capture-with-prompts nil :keywords))))
-      :no-save t
-      :immediate-finish nil
-      :kill-buffer t
-      :jump-to-captured nil)
-     ("t" "TIL note" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-use-keywords '("til"))
-               (denote-use-template (concat
-                                     "#+hugo_base_dir: ~/src/yejun.dev\n"
-                                     "#+hugo_section: til\n")))
-           (denote-org-capture-with-prompts nil :keywords))))
-      :no-save t
-      :immediate-finish nil
-      :kill-buffer t
-      :jump-to-captured nil)
-     ("o" "OA ticket" plain
-      (file denote-last-path)
-      (function
-       (lambda ()
-         (let ((denote-use-title (alfred-browser-title))
-               (denote-use-keywords '("jira" "openapply")))
-           (denote-org-capture-with-prompts :title :keywords))))
-      :no-save nil
       :immediate-finish nil
       :kill-buffer t
       :jump-to-captured t)))
@@ -315,6 +277,12 @@ It means the target is (file denote-last-path)."
 (use-package org-modern
   :config
   (setq org-modern-star '("◉" "○" "◈" "◇" "*")))
+
+(use-package denote-journal
+  :ensure (:host github :repo "protesilaos/denote-journal")
+  :bind
+  (("C-c n j" . denote-journal-new-or-existing-entry)
+   ("C-c n J" . denote-journal-new-entry)))
 
 (add-hook 'org-mode-hook 'org-modern-mode)
 
