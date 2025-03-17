@@ -142,7 +142,8 @@
 
 ;; Buffer
 (use-package avy
-  :bind (:map goto-map ("c" . avy-goto-char-2)))
+  :config
+  (require 'init-avy))
 
 (use-package move-text
   :bind

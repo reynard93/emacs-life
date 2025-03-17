@@ -141,7 +141,7 @@
   (pinentry-start))
 
 ;; requires installation of cmake
-(use-package vterm)
+(use-package vterm :ensure)
 
 ;; note to self: emacs goes freaking crazy when opening and resizing with aerospace
 
@@ -153,5 +153,11 @@
   (use-package restclient-test
     :diminish
     :hook (restclient-mode . restclient-test-mode)))
+
+;; Setup the amazing Prodigy
+;; Add the lien below else requests will be very slow when Emacs naps
+;; $ defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
+
+
 
 (provide 'init-reynard)

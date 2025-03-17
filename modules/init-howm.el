@@ -105,3 +105,5 @@
     (riffle-summary-check t)
     (howm-view-summary-open t))
   (define-key howm-view-summary-mode-map [mouse-3] #'howm-view-summary-at-mouse))
+
+(provide 'init-howm)
