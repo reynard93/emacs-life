@@ -1,5 +1,6 @@
 (use-package corfu
   :init
+  (global-corfu-mode)
   ;; Enable indentation+completion using the TAB key.
   (setq tab-always-indent 'complete)
   ;; TAB cycle if there are only few candidates
@@ -10,10 +11,10 @@
   (corfu-auto-delay 0.2)
   (corfu-auto-prefix 2)
   (corfu-popupinfo-delay '(0.4 . 0.2))
+  (corfu-preview-current)
   :custom-face
   (corfu-border ((t (:inherit region :background unspecified))))
-  :hook ((after-init . global-corfu-mode)
-         (global-corfu-mode . corfu-popupinfo-mode)))
+  :hook ((global-corfu-mode . corfu-popupinfo-mode)))
 
 (use-package cape
   :init

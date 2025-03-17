@@ -156,11 +156,11 @@
           (org-hugo-export-to-md))))))
 
 (use-package ox-gfm
-  
+  :ensure
   :after org)
 
 (use-package citar
-  
+  :ensure
   :init
   (setq org-cite-global-bibliography `(,my-notes-reference-file))
   (setq org-cite-insert-processor 'citar)
@@ -224,7 +224,6 @@
   (denote-known-keywords nil)
   (denote-org-capture-specifiers "%i\n%?")
   :config
-  (require 'denote-org-extras)
   (denote-rename-buffer-mode 1)
   (advice-add 'denote-link-ol-export :around
               (lambda (orig-fun link description format)
