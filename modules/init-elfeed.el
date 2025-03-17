@@ -3,9 +3,7 @@
   :custom
   (elfeed-db-directory
    (expand-file-name "elfeed" user-emacs-directory))
-  (elfeed-show-entry-switch 'display-buffer)
-  (elfeed-feeds
-   '("https://protesilaos.com/codelog.xml")))
+  (elfeed-show-entry-switch 'display-buffer))
 
 (use-package elfeed-org
   :config
@@ -13,6 +11,7 @@
   :custom
   (rmh-elfeed-org-files
    (list (concat (file-name-as-directory (getenv "HOME"))
-		 "elfeed.org"))))
+		         "elfeed.org"))))
+;; this elfeed.org file should be saved somewhere
 
 (provide 'init-elfeed)
