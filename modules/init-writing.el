@@ -21,6 +21,8 @@
    ("M-g o" . consult-org-heading))
 
   :custom
+  (org-default-note-files "~/org")
+  (org-goto-interface 'outline-path-completion)
   (org-use-speed-commands t)
   (org-use-sub-superqscripts '{})
   (org-M-RET-may-split-line '((default . nil)))
@@ -45,6 +47,16 @@
                ":PROPERTIES:\n"
                ":CAPTURED: %U\n"
                ":END:"))
+      ("p" "Permanent note" plain
+       (file denote-last-path)
+       #'denote-org-capture
+       :no-save t
+       :immediate-finish nil
+       :kill-buffer t
+       :jump-to-captured t)
+      ("t" "New task" entry
+      (file+headline org-default-notes-file "Tasks")
+      "* TODO %i%?")
      ("r" "Reference note" plain
       (file denote-last-path)
       (function
@@ -325,7 +337,29 @@ there is no journal entry, create it."
 (use-package denote-explore
   
   :hook (org-capture-after-finalize . my/denote-explore-sync-metadata)
-  :bind ("C-c n s" . denote-explore-sync-metadata)
+  :bind
+  (
+   ("C-c n s" . denote-explore-sync-metadata)
+   ;; Statistics
+   ("C-c w x c" . denote-explore-count-notes)
+   ("C-c w x C" . denote-explore-count-keywords)
+   ("C-c w x b" . denote-explore-barchart-keywords)
+   ("C-c w x e" . denote-explore-barchart-filetypes)
+   ;; Random walks
+   ("C-c w x r" . denote-explore-random-note)
+   ("C-c w x l" . denote-explore-random-link)
+   ("C-c w x k" . denote-explore-random-keyword)
+   ("C-c w x x" . denote-explore-random-regex)
+   ;; Denote Janitor
+   ("C-c w x d" . denote-explore-identify-duplicate-notes)
+   ("C-c w x z" . denote-explore-zero-keywords)
+   ("C-c w x s" . denote-explore-single-keywords)
+   ("C-c w x o" . denote-explore-sort-keywords)
+   ("C-c w x w" . denote-explore-rename-keyword)
+   ;; Visualise denote
+   ("C-c w x n" . denote-explore-network)
+   ("C-c w x v" . denote-explore-network-regenerate)
+   ("C-c w x D" . denote-explore-barchart-degree))
   :config
   (defun my/denote-explore-sync-metadata ()
     "Sync denote filenames when org-capture's target is a denote file.
@@ -380,5 +414,6 @@ It means the target is (file denote-last-path)."
    (plist-put org-format-latex-options :scale 2)
    (plist-put org-format-latex-options :foreground 'auto)
    (plist-put org-format-latex-options :background 'auto)))
+
 
 (provide 'init-writing)

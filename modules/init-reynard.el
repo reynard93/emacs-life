@@ -130,6 +130,8 @@
 
 (use-package vundo
   :commands (vundo)
+  :bind
+  (("C-x u" . vundo))
   :custom
   (vundo-roll-back-on-quit nil)
   (vundo--window-max-height 10)
@@ -157,6 +159,7 @@
 ;; Setup the amazing Prodigy
 ;; Add the lien below else requests will be very slow when Emacs naps
 ;; $ defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
+
 
 (use-package org-download :ensure
   :hook((org-mode . org-download-enable)))

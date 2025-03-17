@@ -90,6 +90,7 @@
    ("r" . consult-register)
    ("f" . consult-flycheck)
    ("a" . consult-org-agenda)
+   ("h" . consult-org-heading)
    :map search-map
    ("l" . consult-line)
    ("L" . consult-line-multi)
@@ -108,6 +109,19 @@
    :map minibuffer-local-completion-map
    ("C-x C-d" . consult-dir)
    ("C-x C-j" . consult-dir-jump-file)))
+
+;; Consult-Notes for easy access to notes
+
+(use-package consult-notes
+  :custom
+  (consult-notes-denote-display-keywords-indicator "_")
+  :bind
+  (("C-c w g" . consult-notes)
+   ("C-c w s" . consult-notes-search-in-all-notes))
+  :init
+  (consult-notes-denote-mode))
+
+
 
 (use-package embark
   :demand t

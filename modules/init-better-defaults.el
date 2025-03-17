@@ -184,6 +184,7 @@ The path is relative to `project-current'."
 (use-package doc-view
   :ensure nil
   :custom
+  (large-file-warning-threshold (* 50 (expt 2 20)))
   (doc-view-mupdf-use-svg t)
   (doc-view-resolution 300))
 
