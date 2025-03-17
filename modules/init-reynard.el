@@ -159,5 +159,10 @@
 ;; $ defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
 
 
+(use-package org-download :ensure
+  :hook((org-mode . org-download-enable)))
+
+(use-package kubed
+  :bind-keymap ("C-c k" . kubed-prefix-map))
 
 (provide 'init-reynard)
