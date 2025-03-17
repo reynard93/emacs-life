@@ -1,19 +1,19 @@
 ;; copied over on 17 mar 2025 with commit hash
 
-(ews-missing-executables
- '(("gs" "mutool")
-   "pdftotext"
-   "soffice"
-   "zip"
-   "ddjvu"
-   "curl"
-   ("mpg321" "ogg123" "mplayer" "mpv" "vlc")
-   ("grep" "ripgrep")
-   ("convert" "gm")
-   "dvipng"
-   "latex"
-   "hunspell"
-   "git"))
+;; (ews-missing-executables
+;;  '(("gs" "mutool")
+;;    "pdftotext"
+;;    "soffice"
+;;    "zip"
+;;    "ddjvu"
+;;    "curl"
+;;    ("mpg321" "ogg123" "mplayer" "mpv" "vlc")
+;;    ("grep" "ripgrep")
+;;    ("convert" "gm")
+;;    "dvipng"
+;;    "latex"
+;;    "hunspell"
+;;    "git"))
 
 (use-package mixed-pitch
   :hook
@@ -36,6 +36,7 @@
 ;; Managing Bibliographies
 
 (use-package bibtex
+  :ensure nil
   :custom
   (bibtex-user-optional-fields
    '(("keywords" "Keywords to describe the entry" "")

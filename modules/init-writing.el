@@ -338,28 +338,28 @@ there is no journal entry, create it."
   
   :hook (org-capture-after-finalize . my/denote-explore-sync-metadata)
   :bind
-  (
+  (;; bite to h prefix standing for hitchhike?
    ("C-c n s" . denote-explore-sync-metadata)
    ;; Statistics
-   ("C-c w x c" . denote-explore-count-notes)
-   ("C-c w x C" . denote-explore-count-keywords)
-   ("C-c w x b" . denote-explore-barchart-keywords)
-   ("C-c w x e" . denote-explore-barchart-filetypes)
+   ("C-c h x c" . denote-explore-count-notes)
+   ("C-c h x C" . denote-explore-count-keywords)
+   ("C-c h x b" . denote-explore-barchart-keywords)
+   ("C-c h x e" . denote-explore-barchart-filetypes)
    ;; Random walks
-   ("C-c w x r" . denote-explore-random-note)
-   ("C-c w x l" . denote-explore-random-link)
-   ("C-c w x k" . denote-explore-random-keyword)
-   ("C-c w x x" . denote-explore-random-regex)
+   ("C-c h x r" . denote-explore-random-note)
+   ("C-c h x l" . denote-explore-random-link)
+   ("C-c h x k" . denote-explore-random-keyword)
+   ("C-c h x x" . denote-explore-random-regex)
    ;; Denote Janitor
-   ("C-c w x d" . denote-explore-identify-duplicate-notes)
-   ("C-c w x z" . denote-explore-zero-keywords)
-   ("C-c w x s" . denote-explore-single-keywords)
-   ("C-c w x o" . denote-explore-sort-keywords)
-   ("C-c w x w" . denote-explore-rename-keyword)
+   ("C-c h x d" . denote-explore-identify-duplicate-notes)
+   ("C-c h x z" . denote-explore-zero-keywords)
+   ("C-c h x s" . denote-explore-single-keywords)
+   ("C-c h x o" . denote-explore-sort-keywords)
+   ("C-c h x w" . denote-explore-rename-keyword)
    ;; Visualise denote
-   ("C-c w x n" . denote-explore-network)
-   ("C-c w x v" . denote-explore-network-regenerate)
-   ("C-c w x D" . denote-explore-barchart-degree))
+   ("C-c h x n" . denote-explore-network)
+   ("C-c h x v" . denote-explore-network-regenerate)
+   ("C-c h x D" . denote-explore-barchart-degree))
   :config
   (defun my/denote-explore-sync-metadata ()
     "Sync denote filenames when org-capture's target is a denote file.
