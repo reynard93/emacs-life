@@ -88,6 +88,11 @@
   ;; Export
   (org-export-with-sub-superscripts '{})
   (org-export-dispatch-use-expert-ui t)
+  (org-export-with-drawers nil)
+  (org-export-with-todo-keywords nil)
+  (org-export-with-toc nil)
+  (org-export-with-smart-quotes t)
+  (org-export-date-timestamp-format "%e %B %Y"))
 
   ;; Log
   (org-log-into-drawer t)
@@ -105,7 +110,10 @@
    '((emacs-lisp . t)
      (shell . t)
      (ruby . t)
+     (dot . t)
      (python . t))))
+;; Use GraphViz for flow diagrams
+;; requires GraphViz software
 
 (use-package org-anki
   :after org
