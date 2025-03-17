@@ -158,7 +158,6 @@
 ;; Add the lien below else requests will be very slow when Emacs naps
 ;; $ defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
 
-
 (use-package org-download :ensure
   :hook((org-mode . org-download-enable)))
 

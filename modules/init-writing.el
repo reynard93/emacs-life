@@ -25,6 +25,13 @@
   (org-use-sub-superqscripts '{})
   (org-M-RET-may-split-line '((default . nil)))
   (org-insert-heading-respect-content t)
+  (org-startup-indented t)
+  (org-hide-emphasis-markers t)
+  (org-startup-with-inline-images t)
+  (org-image-actual-width '(450))
+  (org-fold-catch-invisible-edits 'show)
+  (org-pretty-entities t)
+
 
   ;; Agenda
   (org-agenda-files (list org-directory))
@@ -316,9 +323,26 @@ It means the target is (file denote-last-path)."
                  (eq (cadr target-file) 'denote-last-path))
         (denote-explore-sync-metadata)))))
 
+;; Disable most features for beginners
 (use-package org-modern
+  :hook
+  (org-mode . org-modern-mode)
+  :custom
+  (org-modern-table nil)
+  (org-modern-keyword nil)
+  (org-modern-timestamp nil)
+  (org-modern-priority nil)
+  (org-modern-checkbox nil)
+  (org-modern-tag nil)
+  (org-modern-block-name nil)
+  (org-modern-keyword nil)
+  (org-modern-footnote nil)
+  (org-modern-internal-target nil)
+  (org-modern-radio-target nil)
+  (org-modern-statistics nil)
+  (org-modern-progress nil)
   :config
-  (setq org-modern-star '("◉" "○" "◈" "◇" "*")))
+  (setq org-modern-star '("◉" "○" "s◈" "◇" "*")))
 
 (use-package denote-journal
   :ensure (:host github :repo "protesilaos/denote-journal")
@@ -326,6 +350,22 @@ It means the target is (file denote-last-path)."
   (("C-c n j" . denote-journal-new-or-existing-entry)
    ("C-c n J" . denote-journal-new-entry)))
 
-(add-hook 'org-mode-hook 'org-modern-mode)
+;; show hidden emphasis markers
+(use-package org-appear
+  :hook
+  (org-mode . org-appear-mode))
+
+;; LaTeX previews
+
+(use-package org-fragtog
+  :after org
+  :hook
+  (org-mode . org-fragtog-mode)
+  :custom
+  (org-startup-with-latex-preview nil)
+  (org-format-latex-options
+   (plist-put org-format-latex-options :scale 2)
+   (plist-put org-format-latex-options :foreground 'auto)
+   (plist-put org-format-latex-options :background 'auto)))
 
 (provide 'init-writing)
