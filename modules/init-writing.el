@@ -92,7 +92,7 @@
   (org-export-with-todo-keywords nil)
   (org-export-with-toc nil)
   (org-export-with-smart-quotes t)
-  (org-export-date-timestamp-format "%e %B %Y"))
+  (org-export-date-timestamp-format "%e %B %Y")
 
   ;; Log
   (org-log-into-drawer t)
@@ -210,6 +210,7 @@
    ("C-c w z" . citar-denote-nobib)))
 
 (use-package denote
+  :ensure
   :init
   (setq denote-directory my-notes-directory)
   :hook (dired-mode . denote-dired-mode)

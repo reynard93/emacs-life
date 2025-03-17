@@ -15,6 +15,174 @@
 ;;    "hunspell"
 ;;    "git"))
 
+(defgroup ews ()
+  "Emacs Writing Studio."
+  :group 'files
+  :link '(url-link :tag "Homepage" "https://lucidmanager.org/tags/emacs/"))
+
+(defcustom ews-hunspell-dictionaries "en_US"
+  "Comma-separated list of Hunspell dictionaries."
+  :group 'ews
+  :type 'list)
+
+(defcustom ews-org-heading-level-capitalise nil
+  "Minimum level of Org headings to be capitalised
+Nil implies all levels are capitalised."
+  :group 'ews
+  :type  '(choice (const :tag "All headings" nil)
+		  (integer :tag "Highest level" 1)))
+
+;; Check for missing external software
+;;;###autoload
+(defun ews-missing-executables (prog-list)
+  "Identify missing executables in PROG-LIST.
+Sublists indicate that one of the entries is required."
+  (let ((missing '()))
+    (dolist (exec prog-list)
+      (if (listp exec)
+          (unless (cl-some #'executable-find exec)
+            (push (format "(%s)" (mapconcat 'identity exec " or ")) missing))
+        (unless (executable-find exec)
+          (push exec missing))))
+    (if missing
+        (message "Missing executable files(s): %s"
+                 (mapconcat 'identity missing ", "))
+      (message "No missing executable files."))))
+
+;;;###autoload
+(defun ews-bibtex-register ()
+  "Register the contents of the `ews-bibtex-directory' with `ews-bibtex-files`.
+Use when adding or removing a BibTeX file from or to `ews-bibtex-directory'."
+  (interactive)
+  (when (file-exists-p ews-bibtex-directory)
+    (let ((bib-files (directory-files ews-bibtex-directory t
+				      "^[A-Z|a-z|0-9].+.bib$")))
+      (setq ews-bibtex-files bib-files
+  	    org-cite-global-bibliography bib-files
+	    citar-bibliography bib-files)))
+  (message "Registered:\n%s" (mapconcat #'identity ews-bibtex-files "\n")))
+
+;;;###autoload
+(defun ews-bibtex-biblio-lookup ()
+  "Insert Biblio search results into current buffer or select BibTeX file."
+  (interactive)
+  (if-let ((current-mode major-mode)
+	   ews-bibtex-files
+	   (bibfiles (length ews-bibtex-files))
+	   (bibfile (cond ((eq bibfiles 1) (car ews-bibtex-files))
+			  ((equal major-mode 'bibtex-mode)
+			   (buffer-file-name))
+			  (t (completing-read
+			      "Select BibTeX file:" ews-bibtex-files)))))
+      (progn (find-file bibfile)
+	     (goto-char (point-max))
+	     (ews--bibtex-combined-biblio-lookup)
+	     (save-buffer))
+    (message "No BibTeX file(s) defined.")))
+
+;; Search for missing BibTeX attachments and filenames
+(defun ews--bibtex-extract-attachments ()
+  "Extract attachment file names from BibTeX files in `ews-bibtex-directory'."
+  (ews-bibtex-register)
+  (let ((attachments '()))
+    (dolist (bibtex-file ews-bibtex-files)
+      (with-temp-buffer
+        (insert-file-contents bibtex-file)
+        (goto-char (point-min))
+        (while (re-search-forward "file.*=.*{\\([^}]+\\)}" nil t)
+          (let ((file-paths (split-string (match-string 1)
+                                          "[[:space:]]*;[[:space:]]*")))
+            (dolist (file-path file-paths)
+              (push (expand-file-name (string-trim file-path)
+                                      ews-bibtex-directory)
+                    attachments))))))
+    attachments))
+
+(defun ews--bibtex-extract-files ()
+  "List files recursively in `ews-bibtex-directory', excluding `.bib' and `.csl'."
+  (seq-remove (lambda (file)
+                (or (string-suffix-p ".bib" file)
+                    (string-suffix-p ".csl" file)))
+              (mapcar 'expand-file-name
+                      (directory-files-recursively ews-bibtex-directory ""))))
+
+;;;###autoload
+(defun ews-bibtex-missing-files ()
+  "List BibTeX attachments not listed in a BibTeX file entry."
+  (interactive)
+  (let* ((files (ews--bibtex-extract-files))
+         (attachments (ews--bibtex-extract-attachments))
+         (missing (cl-remove-if
+                   (lambda (f) (member f attachments)) files)))
+    (message "%s files not registered in bibliography" (length missing))
+    (dolist (file missing)
+      (message file))))
+
+;;;###autoload
+(defun ews-bibtex-missing-attachments ()
+  "List BibTeX file entries with missing attachment(s)."
+  (interactive)
+  (let* ((files (ews--bibtex-extract-files))
+         (attachments (ews--bibtex-extract-attachments))
+         (missing (cl-remove-if
+                   (lambda (f) (member f files)) attachments)))
+    (message "%s BibTeX files without matching attachment." (length missing))
+    (dolist (file missing)
+      (message file))))
+
+;;;###autoload
+(defun ews-org-insert-notes-drawer ()
+  "Generate or open a NOTES drawer under the current heading.
+If a drawer exists for this section, a new line is created at the end of the
+current note."
+  (interactive)
+  (push-mark)
+  (org-previous-visible-heading 1)
+  (forward-line)
+  (if (looking-at-p "^[ \t]*:NOTES:")
+      (progn
+        (org-fold-hide-drawer-toggle 'off)
+        (re-search-forward "^[ \t]*:END:" nil t)
+        (forward-line -1)
+        (org-end-of-line)
+        (org-return))
+    (org-insert-drawer nil "NOTES"))
+  (org-unlogged-message "Press <C-u C-SPACE> to return to the previous position."))
+
+;;;###autoload
+(defun ews-org-count-words ()
+  "Add word count to each heading property drawer in an Org mode buffer."
+  (interactive)
+  (org-map-entries
+   (lambda ()
+     (let* ((start (point))
+            (end (save-excursion (org-end-of-subtree)))
+            (word-count (count-words start end)))
+       (org-set-property "WORDCOUNT" (number-to-string word-count))))))
+
+
+(defun ews-denote-link-description-title-case (file)
+  "Return link description for FILE.
+
+If the region is active, use it as the description.
+The title is formatted with the `titlecase' package.
+
+This function is useful as the value of `denote-link-description-function' to
+generate links in titlecase for attachments."
+  (require 'titlecase)
+  (let* ((file-type (denote-filetype-heuristics file))
+         (title (denote-retrieve-title-or-filename file file-type))
+	 (clean-title (if (string-match-p " " title)
+			  title
+			(replace-regexp-in-string "\\([a-zA-Z0-9]\\)-\\([a-zA-Z0-9]\\)" "\\1 \\2" title)))
+         (region-text (denote--get-active-region-content)))
+    (cond
+     (region-text region-text)
+     (title (format "%s" (titlecase--string clean-title titlecase-style)))
+     (t ""))))
+
+
+
 ;;;###autoload
 (defun ews-bibtex-register ()
   "Register the contents of the `ews-bibtex-directory' with `ews-bibtex-files`.
@@ -221,6 +389,7 @@ Customise `titlecase-style' for styling."
          ("C-<return>" . image-dired-dired-display-external))))
 
 (use-package image-dired
+  :ensure nil
   :bind
   (("C-c w I" . image-dired))
   (:map image-dired-thumbnail-mode-map
