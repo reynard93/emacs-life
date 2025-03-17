@@ -1,5 +1,4 @@
 (use-package elfeed
-  :pin melpa
   :bind ("C-c e" . elfeed)
   :custom
   (elfeed-feeds
