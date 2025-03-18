@@ -116,4 +116,26 @@
 ;;   ((projectile-rails-global-mode)
 ;; ))
 
+;; Ruby related
+(use-package enh-ruby-mode :ensure t :defer 5)
+(use-package goto-gem :ensure t :defer 5)         ; Goto the directory for a ruby gem package
+(use-package ruby-refactor :ensure t :defer 5)    ; Refactor shortcuts
+
+;; Common tasks to do in the background
+;; bpor is similar to aysnc-shell-cmd except:
+;; bpr spawns processes asynchronously without displaying output buffers.
+;; bpr shows progress messages for running processes in echo area.
+;; bpr can display buffer with process output in case of errors.
+;; bpr can use projectile for assigning process directory.
+;; bpr can format process output (understands ansi escape codes).
+;; it's possible to set different options for different processes.
+;; bpr is very handy for running tests/builds, but you can run any processes with it.
+
+;; Run tests on a rails project
+(defun rspec-tests ()
+  "Spawns test process"
+  (interactive)
+  (let* ((bpr-scroll-direction -1) ;; scroll to the top of the output window (which is being shown in case of error)
+         (bpr-close-after-success t)) ;; close error window after process ended successfully (if it's not already closed)
+    (bpr-spawn "bundle exec rake spec")))
 (provide 'init-ruby)
