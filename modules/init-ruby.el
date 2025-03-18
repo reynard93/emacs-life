@@ -116,10 +116,11 @@
 ;;   ((projectile-rails-global-mode)
 ;; ))
 
+
 ;; Ruby related
 (use-package enh-ruby-mode :ensure t :defer 5)
-(use-package goto-gem :ensure t :defer 5)         ; Goto the directory for a ruby gem package
-(use-package ruby-refactor :ensure t :defer 5)    ; Refactor shortcuts
+
+
 
 ;; Common tasks to do in the background
 ;; bpor is similar to aysnc-shell-cmd except:
@@ -130,12 +131,17 @@
 ;; bpr can format process output (understands ansi escape codes).
 ;; it's possible to set different options for different processes.
 ;; bpr is very handy for running tests/builds, but you can run any processes with it.
+(use-package bpr :ensure
+  :config
+  (setq bpr-colorize-output t)
+  (setq bpr-close-after-success t)
+  ;; Run tests on a rails project
+  (defun rspec-tests ()
+    "Spawns test process"
+    (interactive)
+    (let* ((bpr-scroll-direction -1) ;; scroll to the top of the output window (which is being shown in case of error)
+           (bpr-close-after-success t)) ;; close error window after process ended successfully (if it's not already closed)
+      (bpr-spawn "bundle exec rake spec")))
+  )
 
-;; Run tests on a rails project
-(defun rspec-tests ()
-  "Spawns test process"
-  (interactive)
-  (let* ((bpr-scroll-direction -1) ;; scroll to the top of the output window (which is being shown in case of error)
-         (bpr-close-after-success t)) ;; close error window after process ended successfully (if it's not already closed)
-    (bpr-spawn "bundle exec rake spec")))
 (provide 'init-ruby)
