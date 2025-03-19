@@ -115,12 +115,13 @@
 ;; Use GraphViz for flow diagrams
 ;; requires GraphViz software
 
-(use-package org-anki
-  :after org
-  :custom
-  (org-anki-default-deck "Default")
-  (org-anki-default-match "@anki&todo<>\"TODO\"")
-  (org-anki-inherit-tags nil))
+;; i am most likely using org-drill, haven't decided
+;; (use-package org-anki
+;;   :after org
+;;   :custom
+;;   (org-anki-default-deck "Default")
+;;   (org-anki-default-match "@anki&todo<>\"TODO\"")
+;;   (org-anki-inherit-tags nil))
 
 (use-package ox-hugo  
   :after org
