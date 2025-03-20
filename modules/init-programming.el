@@ -31,4 +31,13 @@
 (require 'init-web)
 (require 'init-yaml)
 
+;; move over envrc
+(use-package mise
+  :ensure
+  :init
+  (global-mise-mode))
+;; dependencies of mise as listed on https://github.com/eki3z/mise.el
+(use-package llama :ensure)
+(use-package inheritenv :ensure)
+
 (provide 'init-programming)

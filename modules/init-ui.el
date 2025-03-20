@@ -67,12 +67,12 @@
   :config
   (fontaine-set-preset 'regular))
 
-(use-package spacious-padding
-  :if (display-graphic-p)
-  :custom
-  (spacious-padding-subtle-mode-line t)
-  :config
-  (spacious-padding-mode 1))
+;; (use-package spacious-padding
+;;   :if (display-graphic-p)
+;;   :custom
+;;   (spacious-padding-subtle-mode-line t)
+;;   :config
+;;   (spacious-padding-mode 1)) ; this is causing text to appear weird
 
 (use-package diminish
   :ensure t

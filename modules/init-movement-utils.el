@@ -102,8 +102,7 @@
 (use-package frame
   :ensure nil
   :bind
-  (("C-s-f" . toggle-frame-fullscreen)
-   ("s-w" . tab-close-or-delete-frame)
+  (("s-w" . tab-close-or-delete-frame)
    ("s-N" . make-frame))
   :config
   (defun tab-close-or-delete-frame ()

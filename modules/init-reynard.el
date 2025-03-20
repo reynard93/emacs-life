@@ -1,12 +1,6 @@
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
 ;; It WILL be even better if certain packages that depends on system binaries are conditionally activated and installed based on 'executable-find'
 
-;; wait to build with cairo use the above temporarily with the text caveat
-;; Set both alpha parameters, affects text also, cannot get alpha-background o work
-(set-frame-parameter nil 'alpha '(90 . 85))
-;; the one below is for new frames to inherit the same settings
-(add-to-list 'default-frame-alist '(alpha . (90 85)))
-
 ;; https://github.com/purcell/color-theme-sanityinc-tomorrow
 ;; https://github.com/daut/miasma-theme.el
 
