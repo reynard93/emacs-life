@@ -129,7 +129,9 @@
   (pinentry-start))
 
 ;; requires installation of cmake
-(use-package vterm :ensure)
+(use-package vterm :ensure
+  :init
+  (setq vterm-shell "/opt/homebrew/bin/fish"))
 (use-package multi-vterm :ensure)
 
 (setq project-vc-extra-root-markers '("package.json" "Gemfile" "global.d.ts"))
@@ -158,4 +160,10 @@
   (mapcar (lambda (x) (kill-buffer x)) (buffer-list))
   (delete-other-windows))
 
+;; i love transparency but i cannot get alpha-background to work on the emacs i use
+(use-package emacs
+  :ensure nil
+  :config
+  (set-frame-parameter nil 'alpha '(92 . 85))
+  (add-to-list 'default-frame-alist '(alpha . (92 . 85))))
 (provide 'init-reynard)
