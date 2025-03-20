@@ -224,11 +224,9 @@ The path is relative to `project-current'."
         (setq dired-use-ls-dired nil)
         (setq dired-listing-switches "-alh"))))
 
-  ;; Quick sort dired buffers via hydra
-  (use-package dired-quick-sort
-    :bind (:map dired-mode-map
-           ("S" . hydra-dired-quick-sort/body)))
-
+  ;; very useful for finding what to delete st from dired
+  (use-package dired-preview
+    :hook (dired-mode . dired-preview-mode))
   ;; Show git info in dired
   (use-package dired-git-info
     :bind (:map dired-mode-map
