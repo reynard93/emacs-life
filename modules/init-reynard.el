@@ -113,14 +113,6 @@
   :config
   (buffer-terminator-mode 1))
 
-(defun jm/choose-font-size ()
-  "Choose between three different font sizes: 16, 18, and 20."
-  (interactive)
-  (set-face-attribute 'default nil :height
-                      (* 10 (string-to-number
-                             (completing-read "Choose font size: "
-                                              (mapcar #'number-to-string '(16 18 20)))))))
-
 ;; use this for now, maybe pair with https://codeberg.org/martianh/sentex
 (setq sentence-end-double-space nil)
 
@@ -144,8 +136,7 @@
 
 ;; requires installation of cmake
 (use-package vterm :ensure)
-
-;; note to self: emacs goes freaking crazy when opening and resizing with aerospace
+(use-package multi-vterm :ensure)
 
 (setq project-vc-extra-root-markers '("package.json" "Gemfile" "global.d.ts"))
 
