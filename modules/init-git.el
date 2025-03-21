@@ -38,7 +38,9 @@
    ("C-c g y" . browse-at-remote-kill)))
 
 ;; sometimes this can go crazy, showing up everywhere
+;; it looks wrong at times, keep showing up the other guy's name and i notice there is latency?
 (use-package sideline-blame
+  :defer
   :init
   (setq sideline-backends-left '((sideline-blame . down)))
   :config

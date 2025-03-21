@@ -166,4 +166,5 @@
   :config
   (set-frame-parameter nil 'alpha '(92 . 85))
   (add-to-list 'default-frame-alist '(alpha . (92 . 85))))
+
 (provide 'init-reynard)

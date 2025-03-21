@@ -1,4 +1,4 @@
-(defvar my-notes-directory (expand-file-name "notes/" my-src-directory))
+(defvar my-notes-directory (expand-file-name "Notes/" my-src-directory))
 ;; (defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory)) ;; i am using the one configured by ews
 (defvar my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))
 (require 'org-tempo)
@@ -21,7 +21,8 @@
    ("M-g o" . consult-org-heading))
 
   :custom
-  (org-default-note-files "~/org")
+  (org-directory "~/Notes")
+  (org-default-note-files "~/Notes")
   (org-goto-interface 'outline-path-completion)
   (org-use-speed-commands t)
   (org-use-sub-superqscripts '{})
