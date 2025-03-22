@@ -52,6 +52,7 @@
            prisma-ts-mode
            clojure-mode
            clojurec-mode
+           ruby-ts-mode
            clojurescript-mode
            go-ts-mode) . lsp)
          (go-ts-mode . os/lsp-gopls-hook))
