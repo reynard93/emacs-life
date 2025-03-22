@@ -101,6 +101,8 @@ ideas, themes, and insights from the content."
   (setq gptel-quick-backend gptel--openrouter
         gptel-quick-model 'openai/gpt-4o-mini))
 
+;; dk why i have to set this first to work
+(setenv "OPENROUTER_API_KEY" "")
 (use-package aidermacs
   :if (executable-find "aider")
   :ensure (:host github :repo "MatthewZMD/aidermacs" :files ("*.el"))

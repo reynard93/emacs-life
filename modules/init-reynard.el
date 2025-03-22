@@ -80,9 +80,9 @@
   (setq dape-key-prefix "\C-c\C-a")
   :hook
   ;; Save breakpoints on quit
-  (kill-emacs . dape-breakpoint-save)
+  ;; (kill-emacs . dape-breakpoint-save)
   ;; Load breakpoints on startup
-  (after-init . dape-breakpoint-load)
+  ;; (after-init . dape-breakpoint-load)
   ;; Pulse source line (performance hit)
   (dape-display-source . pulse-momentary-highlight-one-line)
   :custom
