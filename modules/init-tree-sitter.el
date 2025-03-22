@@ -17,6 +17,7 @@
           (markdown "https://github.com/ikatyang/tree-sitter-markdown")
           (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "master" "tsx/src")
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "master" "typescript/src")
+          (dockerfile "https://github.com/camdencheek/tree-sitter-dockerfile")
           ))
 
   :custom
@@ -27,6 +28,7 @@
      (json-mode . json-ts-mode)
      (conf-toml-mode . toml-ts-mode)
      (c-mode . c-ts-mode)
+     (docker-mode . docker-ts-mode)
      ("\\.[jt]s[x]?\\'" . tsx-mode)))
 
   :config

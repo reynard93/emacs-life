@@ -124,6 +124,11 @@
   :config
   (setq vundo-glyph-alist vundo-unicode-symbols))
 
+;; need brew packages pinentry and pass, allows enter pw-store in minibuffer
+;; add these two lines to your ~/.gnupg/gpg-agent.conf
+;; allow-emacs-pinentry
+;; allow-loopback-pinentry
+;; then run `gpgcong --reload gpg-agent'
 (use-package pinentry
   :config
   (pinentry-start))

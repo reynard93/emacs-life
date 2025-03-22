@@ -96,14 +96,6 @@
 
 (add-hook 'ruby-ts-mode-hook 'my-auto-hide-ruby-methods)
 
-;; chruby - activates a project's ruby versio nwithin Emacs
-;; make sure to install chruby with brew first
-;;  load auto.sh in ~/.bashrc or ~/.zshrc: (https://github.com/postmodern/chruby) for auto switch when u cd btwn projects (shell) i think chruby does it auto for u in ruby
-;; article that recommends using chruby instead of rbm or rbenv
-;; https://stevemarshall.com/journal/why-i-use-chruby/
-;; if using chruby also pair it with ruby-install
-;; dont care for now , also asdf etc
-
 
 ;; enh-ruby-mode features that enhance the coding experience (sometimes indentatio doesn't do what you expect)
 
