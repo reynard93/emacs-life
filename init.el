@@ -3,6 +3,9 @@
 (defvar my-src-directory "~/src/"
   "Directory for source code repos.")
 
+;; Performance optimizations should be loaded first
+(require 'init-performance)
+
 ;; Bootstrap
 (require 'init-bootstrap)
 (require 'init-emacs)

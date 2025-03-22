@@ -8,6 +8,10 @@
   (c-ts-mode . eglot-ensure)
   :custom
   (eglot-ignored-server-capabilities '(:completionProvider)) ; using corfu,corfu-tempel
+  (eglot-connect-timeout 10) ; Faster connection timeout
+  (eglot-sync-connect nil) ; Asynchronous connection for better startup
+  (eglot-autoshutdown t) ; Automatically shutdown server when not needed
+  (eglot-events-buffer-size 0) ; Disable events buffer for performance
   :config
   (dolist (mode '(((ruby-mode ruby-ts-mode) . ("ruby-lsp"))
                   ((python-mode python-ts-mode) . ("ruff" "server"))

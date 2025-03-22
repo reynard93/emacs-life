@@ -63,7 +63,8 @@
   (lsp-session-file (locate-user-emacs-file ".lsp-session"))
   (lsp-log-io nil) ; IMPORTANT! Use only for debugging! Drastically affects performance
   (lsp-keep-workspace-alive nil) ; Close LSP server if all project buffers are closed
-  (lsp-idle-delay 0.5)   ; Debounce timer for `after-change-function'
+  (lsp-idle-delay 0.2)   ; Reduce debounce timer for faster response
+  (lsp-response-timeout 2) ; Shorter timeout for faster perceived performance
   ;; core
   (lsp-enable-xref t)    ; Use xref to find references
   (lsp-auto-configure t) ; Used to decide between current active servers
@@ -73,6 +74,7 @@
                                         ; the branch, should LSP reload
                                         ; instantly - it's a big performance
                                         ; overhead
+  (lsp-file-watch-threshold 1000) ; Only watch up to 1000 files for changes
   (lsp-enable-folding nil)     ; I disable folding since I use origami
   (lsp-enable-imenu t)
   (lsp-progress-spinner-type 'progress-bar-filled)
@@ -146,5 +148,11 @@
   :ensure nil
   :hook ((lsp-mode . lsp-completion-mode)))
 
-;; dnid lsp-ui ba
+;; Optimize garbage collection during LSP operations
+(defun my/lsp-gc-optimize ()
+  "Optimize garbage collection settings for LSP mode."
+  (setq-local gc-cons-threshold (* 1024 1024 100))) ; 100MB
+
+(add-hook 'lsp-mode-hook #'my/lsp-gc-optimize)
+
 (provide 'init-lsp)

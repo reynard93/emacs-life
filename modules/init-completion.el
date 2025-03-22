@@ -8,10 +8,13 @@
   :custom
   (corfu-cycle t)
   (corfu-auto t)
-  (corfu-auto-delay 0.2)
+  (corfu-auto-delay 0.1) ; Faster popup
   (corfu-auto-prefix 2)
-  (corfu-popupinfo-delay '(0.4 . 0.2))
+  (corfu-popupinfo-delay '(0.2 . 0.1)) ; Faster documentation popup
   (corfu-preview-current)
+  (corfu-preselect 'prompt) ; Faster selection
+  (corfu-quit-at-boundary t) ; Quit completion when reaching boundary for better performance
+  (corfu-quit-no-match t) ; Quit when there's no match
   :custom-face
   (corfu-border ((t (:inherit region :background unspecified))))
   :hook ((global-corfu-mode . corfu-popupinfo-mode)))
