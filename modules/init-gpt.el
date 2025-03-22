@@ -1,12 +1,3 @@
-(defun set-openrouter-api-key ()
-  (interactive)
-  (let ((api-key (auth-source-pass-get 'secret "api-key/openrouter")))
-    (if api-key
-        (progn
-          (setenv "OPENROUTER_API_KEY" api-key)
-          (message "Successfully set OPENROUTER_API_KEY"))
-      (message "Failed to retrieve API key"))))
-
 (use-package gptel
   :init
   (defvar gptel--openai nil
@@ -118,6 +109,9 @@ ideas, themes, and insights from the content."
   (aidermacs-auto-commits nil)
   (aidermacs-default-model "openrouter/anthropic/claude-3.7-sonnet")
   :config
+  (add-hook 'aidermacs-before-run-backend-hook
+            (lambda ()
+              (setenv "OPENROUTER_API_KEY" (auth-source-pass-get 'secret "api-key/openrouter"))))
   (add-to-list 'display-buffer-alist
                `("\\*aidermacs.*\\*"
                  (display-buffer-pop-up-window)))
