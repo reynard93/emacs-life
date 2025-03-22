@@ -33,8 +33,7 @@
   (org-startup-with-inline-images t)
   (org-image-actual-width '(450))
   (org-fold-catch-invisible-edits 'show)
-  (org-pretty-entities t)
-
+  ;; (org-pretty-entities t) ; THIS IS HORRIBLE FINALLY FOUND THE CULPRIT!
 
   ;; Agenda
   (org-agenda-files (list org-directory))
