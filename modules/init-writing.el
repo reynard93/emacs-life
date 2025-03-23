@@ -22,10 +22,10 @@
 
   :custom
   (org-directory "~/Notes")
-  (org-default-note-files "~/Notes")
+  (org-default-notes-files "~/Notes/notes.org")
   (org-goto-interface 'outline-path-completion)
   (org-use-speed-commands t)
-  (org-use-sub-superqscripts '{})
+  (org-use-sub-superscripts '{})
   (org-M-RET-may-split-line '((default . nil)))
   (org-insert-heading-respect-content t)
   (org-startup-indented t)
