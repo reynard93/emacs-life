@@ -115,7 +115,7 @@
 ;; Use GraphViz for flow diagrams
 ;; requires GraphViz software
 
-(use-package ox-hugo  
+(use-package ox-hugo
   :after org
   :bind ("C-c n h" . my/org-hugo-denote-files-find-file)
   :custom
