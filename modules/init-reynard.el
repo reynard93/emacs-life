@@ -154,9 +154,11 @@
 
 
 (use-package org-download :ensure
+  :defer
   :hook((org-mode . org-download-enable)))
 
 (use-package kubed
+  :defer
   :bind-keymap ("C-c k" . kubed-prefix-map))
 
 (defun nuke-all-buffers ()
@@ -172,6 +174,6 @@
   (set-frame-parameter nil 'alpha '(92 . 85))
   (add-to-list 'default-frame-alist '(alpha . (92 . 85))))
 
-;; fontaine and font-lock-mode disable still shows the stupid subscript
+
 
 (provide 'init-reynard)
