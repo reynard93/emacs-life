@@ -1,7 +1,9 @@
 (use-package browser-hist
+  :defer t
   :bind (:map search-map ("U" . browser-hist-search)))
 
 (use-package devdocs
+  :defer t
   :hook
   (ruby-ts-mode . (lambda () (setq-local devdocs-current-docs '("ruby~3.3" "rails~7.0"))))
   (elixir-ts-mode . (lambda () (setq-local devdocs-current-docs '("elixir~1.17" "phoenix"))))
@@ -22,6 +24,7 @@
 
 (use-package dictionary
   :ensure nil
+  :defer t
   :bind
   (:map search-map
         ("d" . dictionary-lookup-definition)
@@ -34,6 +37,7 @@
 
 (use-package osx-dictionary
   :if (eq system-type 'darwin)
+  :defer t
   :bind
   (:map search-map
         ("t" . osx-dictionary-search-word-at-point)

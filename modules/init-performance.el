@@ -3,6 +3,9 @@
 ;; Increase garbage collection threshold for better overall performance
 (setq gc-cons-threshold (* 1024 1024 50)) ; 50MB (default is 800KB)
 
+(setq use-package-expand-minimally t)     ; Generate minimal code
+(setq use-package-minimum-reported-time 0.1) ; Report packages that take >0.1s to load
+
 ;; Only collect garbage when idle
 (defvar my/gc-timer nil
   "Timer for garbage collection.")

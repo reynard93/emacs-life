@@ -1,4 +1,5 @@
 (use-package corfu
+  :demand t  ; Ensure Corfu loads immediately as it's critical
   :init
   (global-corfu-mode)
   ;; Enable indentation+completion using the TAB key.
@@ -20,6 +21,8 @@
   :hook ((global-corfu-mode . corfu-popupinfo-mode)))
 
 (use-package cape
+  :defer 0.1  ; Very short defer time to ensure it's available quickly
+  :demand t   ; But still demand it to ensure it loads
   :init
   (add-to-list 'completion-at-point-functions #'cape-dabbrev)
   (add-to-list 'completion-at-point-functions #'cape-file)
@@ -32,6 +35,7 @@
 
 ;; this replaces yasnippet
 (use-package tempel
+  :defer t
   :init
   (defun tempel-setup-capf ()
     (setq-local completion-at-point-functions
@@ -62,11 +66,13 @@
 
 (use-package org-block-capf
   :ensure nil
+  :defer t
   :load-path "site-lisp/"
   :hook (org-mode . org-block-capf-add-to-completion-at-point-functions))
 
 (use-package eglot-tempel
   :ensure
+  :defer t
   :after (eglot tempel)
   :hook (eglot-managed-mode . eglot-tempel-mode))
 

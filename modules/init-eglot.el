@@ -34,6 +34,7 @@
 ;; both lsp-mode and eglot uses this -> https://github.com/blahgeek/emacs-lsp-booster
 (use-package eglot-booster
   :ensure (:host github :url "https://github.com/jdtsmith/eglot-booster")
+  :defer t
   :after eglot
   :config (eglot-booster-mode))
 
