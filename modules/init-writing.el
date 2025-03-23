@@ -22,7 +22,7 @@
 
   :custom
   (org-directory "~/Notes")
-  (org-default-notes-files "~/Notes/notes.org")
+  (org-default-notes-file "~/Notes/notes.org")
   (org-goto-interface 'outline-path-completion)
   (org-use-speed-commands t)
   (org-use-sub-superscripts '{})
