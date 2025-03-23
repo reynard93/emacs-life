@@ -9,10 +9,13 @@
       (with-current-buffer "Commitizen"
         (setq-local vterm-kill-buffer-on-exit t))
       (vterm-send-string "git cz commit && exit")
-      (vterm-send-return)))
+      (vterm-send-return))))
+
+;; Add commitizen to Magit's commit transient
+(with-eval-after-load 'magit
   ;; Add commitizen to Magit's commit transient
-   (transient-append-suffix 'magit-commit "c"
-     '("z" "Commitizen" magit-commit-with-commitizen)))
+  (transient-append-suffix 'magit-commit "c"
+    '("z" "Commitizen" magit-commit-with-commitizen)))
 
 ;; if performance issues
 ;; refer to https://jakemccrary.com/blog/2020/11/14/speeding-up-magit/
