@@ -33,7 +33,7 @@
   (advice-add 'eglot-completion-at-point :around #'cape-wrap-buster)
   :bind-keymap ("C-c p" . cape-prefix-map))
 
-;; this replaces yasnippet
+;; this replaces yasnippet which is known to add startup time significantly
 (use-package tempel
   :defer t
   :init

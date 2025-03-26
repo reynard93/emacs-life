@@ -23,11 +23,44 @@
          ("C-c w r" . visual-replace-from-isearch)))
 
 (use-package puni
+  :ensure
   ;; works better in web-mode also more performant compared to smart parens
   :init
   (puni-global-mode)
   (add-hook 'term-mode-hook #'puni-disable-puni-mode)
-  )
+  :bind ((:map puni-mode-map
+          ;; Navigation
+          ([remap forward-sexp] . puni-forward-sexp)
+          ([remap backward-sexp] . puni-backward-sexp)
+          ([remap transpose-sexps] . puni-transpose)
+
+          ;; Deletion
+          ([remap kill-word] . puni-forward-kill-word)
+          ([remap backward-kill-word] . puni-backward-kill-word)
+          ([remap kill-line] . puni-kill-line)
+          ("C-S-k" . puni-backward-kill-line)
+          ("C-w" . puni-kill-active-region)
+
+          ;; Wrapping
+          ("M-(" . puni-wrap-round)
+          ("M-[" . puni-wrap-square)
+          ("M-{" . puni-wrap-curly)
+          ("M-<" . puni-wrap-angle)
+
+          ;; Sexp manipulation
+          ("M-S" . puni-splice)
+          ("M-R" . puni-raise)
+          ("M-C" . puni-convolute)
+          ("M-D" . puni-squeeze)
+
+          ;; Expand region - similar to expand-region package
+          ("C-=" . puni-expand-region)
+          ("C-<kp-equal>" . puni-expand-region)
+          ("C--" . puni-contract-region))
+
+         ;; Force delete for emergencies
+         (nil . (("C-c DEL" . puni-force-delete))))
+)
 ; puni pairs with electric-mode with smartparens electric mode is not required
 ; handles auto-pairing, cons: single brac chars supported only, cant autoclose if...end or <p></p>
 ; although some major/minor modes come with their own tools for auto-pairing
@@ -50,15 +83,5 @@
   :hook (prog-mode text-mode conf-mode)
   :custom
   (ws-butler-keep-whitespace-before-point nil))
-
-;; Snippets
-;; use tempel instead
-;; (use-package yasnippet) ; this is known to add startup time significantly
-
-
-;; Robe (note that for robe M. does robe-jump currently it is embark-dwim) need to bind to soemthing else
-;; advise here is from wikimacs it is awesome
-;; (require 'robe)
-;; (add-hook 'ruby-mode-hook 'robe-mode)
 
 (provide 'init-editing-utils)
