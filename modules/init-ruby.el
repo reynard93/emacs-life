@@ -13,15 +13,10 @@
   :custom
   (rake-completion-system 'default))
 
-(use-package rvm.el
-  :defer t
-  :ensure (:host github :repo "senny/rvm.el" :files ("*.el")))
-
 ;; RSpec
 (use-package rspec-mode
   :diminish
   :custom
-  (rspec-use-rvm t) ;; this requires rvm.el
   (rspec-command-options "--fail-fast --color")
   :hook (dired-mode . rspec-dired-mode))
 

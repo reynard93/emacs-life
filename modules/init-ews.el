@@ -66,7 +66,7 @@ Use when adding or removing a BibTeX file from or to `ews-bibtex-directory'."
 (defun ews-bibtex-biblio-lookup ()
   "Insert Biblio search results into current buffer or select BibTeX file."
   (interactive)
-  (if-let ((current-mode major-mode)
+  (if-let* ((current-mode major-mode)
 	   ews-bibtex-files
 	   (bibfiles (length ews-bibtex-files))
 	   (bibfile (cond ((eq bibfiles 1) (car ews-bibtex-files))
@@ -240,31 +240,6 @@ Use when adding or removing a BibTeX file from or to `ews-bibtex-directory'."
 (use-package org-web-tools
   :bind
   (("C-c w w" . org-web-tools-insert-link-for-url)))
-
-;; Emacs Multimedia System
-
-;; (use-package emms
-;;   :config
-;;   (require 'emms-setup)
-;;   (require 'emms-mpris)
-;;   (emms-all)
-;;   (emms-default-players)
-;;   (emms-mpris-enable)
-;;   :custom
-;;   (emms-browser-covers #'emms-browser-cache-thumbnail-async)
-;;   :bind
-;;   (("C-c w m b" . emms-browser)
-;;    ("C-c w m e" . emms)
-;;    ("C-c w m p" . emms-play-playlist )
-;;    ("<XF86AudioPrev>" . emms-previous)
-;;    ("<XF86AudioNext>" . emms-next)
-;;    ("<XF86AudioPlay>" . emms-pause)))
-
-(use-package openwith
-  :config
-  (openwith-mode t)
-  :custom
-  (openwith-associations nil))
 
 ;; Export citations with Org Mode
 
