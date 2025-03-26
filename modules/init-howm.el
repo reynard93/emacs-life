@@ -16,6 +16,18 @@
   (setq howm-view-grep-fixed-option "-F")
   (setq howm-view-grep-expr-option nil)
   (setq howm-view-grep-file-stdin-option nil)
+  ;; Set forward links to use ++text++ format with no space after/before delimiters
+  (setq howm-ref-header "\\+\\+")
+  (setq howm-ref-regexp "\\+\\+\\([^+\n ][^+\n]*[^+\n ]\\)\\+\\+")  ; Matches ++text++ without spaces
+  (setq howm-ref-regexp-pos 1)
+
+  ;; Set back links to use --text-- format with no space after/before delimiters
+  (setq howm-keyword-header "--")
+  (setq howm-keyword-regexp "--\\([^-\n ][^-\n]*[^-\n ]\\)--")  ; Matches --text-- without spaces
+  (setq howm-keyword-regexp-pos 1)
+
+  ;; when create new file use new forward link
+  (setq howm-template-file-format "++%s++")
 
   ;; counsel-rg for howm
   (defun howm-list--counsel-rg (match)
