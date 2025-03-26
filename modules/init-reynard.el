@@ -174,6 +174,6 @@
   (set-frame-parameter nil 'alpha '(92 . 85))
   (add-to-list 'default-frame-alist '(alpha . (92 . 85))))
 
-
+;; was experiencing some issues creating .env when .env.example exists, keeps completing to .env.example
 
 (provide 'init-reynard)
