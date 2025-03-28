@@ -7,6 +7,8 @@
   (setq howm-keyword-file (expand-file-name ".howm-keys" howm-home-directory))
   (setq howm-history-file (expand-file-name ".howm-history" howm-home-directory))
   (setq howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.org") ; change the back .org to use orgmode default
+  (setq howm-view-title-header "*")
+  (setq howm-template "* %title%cursor\n%date %file\n\n")
 
   ;; Use ripgrep as grep
   (setq howm-view-use-grep t)
@@ -117,5 +119,57 @@
     (riffle-summary-check t)
     (howm-view-summary-open t))
   (define-key howm-view-summary-mode-map [mouse-3] #'howm-view-summary-at-mouse))
+
+;; https://github.com/artsi0m/posts/blob/master/2025-01-22-195006.org
+
+(use-package org-drill
+  :after howm
+  :ensure
+  :config
+  ;; just the next two func are enough to implement sys
+  (defun my-org-drill-file-names-in-howm ()
+    "Return list of absolute filenames of org-drill files in howm"
+    (delete-dups
+     (mapcar #'car (howm-grep "\:drill\:"
+			                  (howm-files-in-directory howm-directory)))))
+  (defun my-org-drill-set-scope ()
+    (interactive)
+	(let ((scope-var
+	       (completing-read "Choose scope for org-drill: " (list
+		                                                    "howm"
+		                                                    "file"
+		                                                    "tree"
+		                                                    "file-no-restriction"
+		                                                    "agenda"
+		                                                    "agenda-with-archives"
+		                                                    "directory"))))
+	  (if (equal scope-var "howm")
+          (setq org-drill-scope (my-org-drill-file-names-in-howm))
+        (setq org-drill-scope (intern scope-var)))))
+  (define-advice org-drill (:before (&rest _args))
+    (my-org-drill-set-scope))
+
+  (define-advice org-drill-cram (:before (&rest _args))
+    (my-org-drill-set-scope))
+  (defun howm-insert-prop-line (mode)
+    "Activate major mode and modify the file so that this mode is
+ activated automatically the next time it is opened"
+    (interactive (list (intern-soft
+			            (completing-read "Choose major mode: "
+					                     (mapcar #'cdr auto-mode-alist)))))
+	(howm-mode)
+	(unless (or (null mode)
+		        (eq mode major-mode))
+	  (funcall mode)
+	  (howm-mode)
+	  (add-file-local-variable-prop-line
+	   'mode (intern (string-trim-right (symbol-name mode) "-mode\\'")))))
+  (defun org-drill-time-to-inactive-org-timestamp (time)
+    "Convert TIME into org-mode timestamp."
+    (format-time-string
+     (concat "[" (cdr org-time-stamp-formats) "]")
+     time)))
+
+
 
 (provide 'init-howm)

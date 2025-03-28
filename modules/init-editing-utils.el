@@ -45,7 +45,7 @@
           ("M-(" . puni-wrap-round)
           ("M-[" . puni-wrap-square)
           ("M-{" . puni-wrap-curly)
-          ("M-<" . puni-wrap-angle)
+          ("M-<" . puni-wrap-angle) ;; now use M-g g 0 to go to top of buffer
 
           ;; Sexp manipulation
           ("M-S" . puni-splice)

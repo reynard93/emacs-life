@@ -161,12 +161,6 @@
   :defer
   :bind-keymap ("C-c k" . kubed-prefix-map))
 
-(defun nuke-all-buffers ()
-  "Kill all buffers, leaving *scratch* only."
-  (interactive)
-  (mapcar (lambda (x) (kill-buffer x)) (buffer-list))
-  (delete-other-windows))
-
 ;; i love transparency but i cannot get alpha-background to work on the emacs i use
 (use-package emacs
   :ensure nil
