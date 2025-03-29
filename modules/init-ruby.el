@@ -22,22 +22,22 @@
 
 ;; Run a Ruby process in a buffer
 (use-package inf-ruby
-  :hook ((ruby-mode . inf-ruby-minor-mode)
+  :hook ((ruby-ts-mode . inf-ruby-minor-mode)
          (compilation-filter . inf-ruby-auto-enter)))
 
 ;; Ruby YARD comments
 (use-package yard-mode
   :diminish
-  :hook (ruby-mode . yard-mode))
+  :hook (ruby-ts-mode . yard-mode))
 
 ;; Ruby refactoring helpers
 (use-package ruby-refactor
   :diminish
-  :hook (ruby-mode . ruby-refactor-mode-launch))
+  :hook (ruby-ts-mode . ruby-refactor-mode-launch))
 
 ;; Yet Another RI interface for Emacs
 (use-package yari
-  :bind (:map ruby-mode-map ([f1] . yari)))
+  :bind (:map ruby-ts-mode-map ([f1] . yari)))
 
 (defun enable-rspec-for-spec-files ()
   (when (and buffer-file-name
@@ -131,4 +131,11 @@
       (bpr-spawn "bundle exec rake spec")))
   )
 
+; auto supply parens and 'end' as appropriate
+;; https://github.com/ruby/elisp-ruby-electric/tree/master
+;; not compatible with ruby-ts-mode
+
+
+
+;; robe works with any ruby ver with smaller mem footprint, works in remote?
 (provide 'init-ruby)

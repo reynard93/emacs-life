@@ -168,6 +168,17 @@
   (set-frame-parameter nil 'alpha '(92 . 85))
   (add-to-list 'default-frame-alist '(alpha . (92 . 85))))
 
-;; was experiencing some issues creating .env when .env.example exists, keeps completing to .env.example
+;; TODO: was experiencing some issues creating .env when .env.example exists, keeps completing to .env.
+
+(use-package tramp
+  :ensure nil
+  :custom
+  (tramp-allow-unsafe-temporary-files t)
+  :config
+  ;; Make Tramp respect the remote server's PATH setting, so we can pick up
+  ;; things like rbenv shims for remote Ruby execution via bundler
+  (add-to-list 'tramp-remote-path 'tramp-own-remote-path))
+
+;; Consider https://github.com/copilot-emacs/copilot.el
 
 (provide 'init-reynard)
