@@ -52,7 +52,7 @@
            prisma-ts-mode
            clojure-mode
            clojurec-mode
-           ruby-ts-mode
+           ;; ruby-ts-mode ; just use robe for now till grain is modernized
            clojurescript-mode
            go-ts-mode) . lsp)
          (go-ts-mode . os/lsp-gopls-hook))

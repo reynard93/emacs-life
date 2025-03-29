@@ -181,4 +181,45 @@
 
 ;; Consider https://github.com/copilot-emacs/copilot.el
 
+(use-package mermaid-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.mermaid\\'" . mermaid-mode)))
+
+(use-package prodigy
+  :ensure t
+  :config
+  (defun prodigy-start-if-not-running (service-name)
+    "Start a service if it's not already running."
+    (let ((service (prodigy-find-service service-name)))
+      (unless (and service (prodigy-service-started-p service))
+        (prodigy-start-service service))))
+
+  (prodigy-define-service
+    :name "Spine Docker"
+    :command "ssh"
+    :args '("grain-spine@orb" "cd spine && docker-compose up")
+    :stop-signal 'sigkill
+    :kill-process-buffer-on-stop t
+    :tags '(docker spine))
+
+  (prodigy-define-service
+    :name "Spine Rails Server"
+    :command "ssh"
+    :args '("grain-spine@orb" "cd spine && rails s")
+    :stop-signal 'sigint  ; Use SIGINT for Rails to gracefully shutdown
+    :tags '(web spine))
+
+  (prodigy-define-service
+    :name "Papercut Foreman"
+    :command "ssh"
+    :args '("grain-spine@orb" "cd papercut && foreman start")
+    :stop-signal 'sigkill
+    :kill-process-buffer-on-stop t
+    :tags '(foreman papercut))
+
+  (global-set-key (kbd "C-c o s") (defun my/start-spine-docker () (interactive) (prodigy-start-if-not-running "Spine Docker")))
+  (global-set-key (kbd "C-c o r") (defun my/start-spine-rails () (interactive) (prodigy-start-if-not-running "Spine Rails Server")))
+  (global-set-key (kbd "C-c o p") (defun my/start-papercut () (interactive) (prodigy-start-if-not-running "Papercut Foreman")))
+)
+
 (provide 'init-reynard)

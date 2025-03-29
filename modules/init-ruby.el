@@ -104,7 +104,7 @@
 ;; ))
 
 
-;; Ruby related
+;; Ruby related haven't configure to use this yet
 (use-package enh-ruby-mode :ensure t :defer 5)
 
 
@@ -138,4 +138,7 @@
 
 
 ;; robe works with any ruby ver with smaller mem footprint, works in remote?
+(use-package robe)
+(add-hook 'ruby-mode-hook 'robe-mode)
+(add-hook 'ruby-ts-mode-hook 'robe-mode)
 (provide 'init-ruby)

@@ -13,12 +13,7 @@
 (when (executable-find "mmdc")
   ;; Set up mermaid configuration here
   (use-package ob-mermaid
-    :ensure
-    :config
-    (setq ob-mermaid-cli-path (executable-find "mmdc"))
-    (org-babel-do-load-languages
-     'org-babel-load-languages
-     (append org-babel-load-languages '((mermaid . t)))))
+    :init
   (defun my/insert-mermaid-with-attach ()
     "Insert a mermaid source block that saves to the current heading's attachment directory."
     (interactive)
@@ -27,7 +22,12 @@
            (file-path (expand-file-name (concat filename ".png") attach-dir)))
       (insert (format "#+begin_src mermaid :file %s\n\n#+end_src" file-path))
       (forward-line -1)))
-
+    :ensure
+    :config
+    (setq ob-mermaid-cli-path (executable-find "mmdc"))
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     (append org-babel-load-languages '((mermaid . t)))))
   (with-eval-after-load 'org
     (define-key org-mode-map (kbd "C-c i m") 'my/insert-mermaid-with-attach)))
 
@@ -107,6 +107,8 @@
   (org-edit-src-persistent-message nil)
   (org-src-preserve-indentation t)
   (org-src-window-setup 'current-window)
+  (org-confirm-babel-evaluate nil)
+
 
   ;; Export
   (org-export-with-sub-superscripts '{})
