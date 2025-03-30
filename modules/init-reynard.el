@@ -187,12 +187,29 @@
 
 (use-package prodigy
   :ensure t
+  :bind
+  ("C-c o o" . prodigy)
   :config
   (defun prodigy-start-if-not-running (service-name)
     "Start a service if it's not already running."
     (let ((service (prodigy-find-service service-name)))
       (unless (and service (prodigy-service-started-p service))
         (prodigy-start-service service))))
+
+(prodigy-define-tag
+  :name 'rails
+  :on-output (lambda (&rest args)
+               (let ((output (plist-get args :output))
+                     (service (plist-get args :service)))
+                 (when (or (s-matches? "Listening on 0\.0\.0\.0:[0-9]+, CTRL\\+C to stop" output)
+                           (s-matches? "Ctrl-C to shutdown server" output))
+                   (prodigy-set-status service 'ready)))))
+
+(prodigy-define-tag
+  :name 'foreman
+  :ready-message "worker\\.[0-9]+\\s+\\|\\s+\\[Worker"
+  :stop-signal 'sigkill
+  :kill-process-buffer-on-stop t)
 
   (prodigy-define-service
     :name "Spine Docker"
@@ -202,21 +219,19 @@
     :kill-process-buffer-on-stop t
     :tags '(docker spine))
 
-  (prodigy-define-service
-    :name "Spine Rails Server"
-    :command "ssh"
-    :args '("grain-spine@orb" "cd spine && rails s")
-    :stop-signal 'sigint  ; Use SIGINT for Rails to gracefully shutdown
-    :tags '(web spine))
+(prodigy-define-service
+  :name "Spine Rails Server"
+  :command "ssh"
+  :args '("-t" "grain-spine@orb" "./start_spine_rails.sh")
+  :stop-signal 'sigint
+  :tags '(rails spine))
 
-  (prodigy-define-service
-    :name "Papercut Foreman"
-    :command "ssh"
-    :args '("grain-spine@orb" "cd papercut && foreman start")
-    :stop-signal 'sigkill
-    :kill-process-buffer-on-stop t
-    :tags '(foreman papercut))
-
+(prodigy-define-service
+  :name "Papercut Foreman"
+  :command "ssh"
+  :args '("-t" "grain-spine@orb" "./papercut_foreman.sh")
+  :tags '(foreman papercut))
+  
   (global-set-key (kbd "C-c o s") (defun my/start-spine-docker () (interactive) (prodigy-start-if-not-running "Spine Docker")))
   (global-set-key (kbd "C-c o r") (defun my/start-spine-rails () (interactive) (prodigy-start-if-not-running "Spine Rails Server")))
   (global-set-key (kbd "C-c o p") (defun my/start-papercut () (interactive) (prodigy-start-if-not-running "Papercut Foreman")))
