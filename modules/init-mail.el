@@ -1,5 +1,5 @@
-(setq user-full-name "Yejun Su"
-      user-mail-address "goofan.su@gmail.com")
+(setq user-full-name "Reynard"
+      user-mail-address "reynard@grain.com.sg")
 
 (use-package message
   :ensure nil

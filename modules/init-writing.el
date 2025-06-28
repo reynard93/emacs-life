@@ -8,9 +8,8 @@
 (add-to-list 'org-structure-template-alist '("j" . "src java"))
 (add-to-list 'org-structure-template-alist '("k" . "src kotlin"))
 (add-to-list 'org-structure-template-alist '("sh" . "src sh"))
-(add-to-list 'org-structure-template-alist '("rb" . "src ruby"))
+(add-to-list 'org-structure-template-alist '("rb" . "src "))
 
-(when (executable-find "mmdc")
   ;; Set up mermaid configuration here
   (use-package ob-mermaid
     :init
@@ -29,7 +28,7 @@
      'org-babel-load-languages
      (append org-babel-load-languages '((mermaid . t)))))
   (with-eval-after-load 'org
-    (define-key org-mode-map (kbd "C-c i m") 'my/insert-mermaid-with-attach)))
+    (define-key org-mode-map (kbd "C-c i m") 'my/insert-mermaid-with-attach))
 
 (use-package org
   :ensure nil
@@ -112,7 +111,7 @@
 
   ;; Export
   (org-export-with-sub-superscripts '{})
-  (org-export-dispatch-use-expert-ui t)
+  ;; (org-export-dispatch-use-expert-ui t)
   (org-export-with-drawers nil)
   (org-export-with-todo-keywords nil)
   (org-export-with-toc nil)

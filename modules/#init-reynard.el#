@@ -242,21 +242,4 @@
 ; required for the experimental emacs build
 (setq mac-option-modifier 'meta)
 (setq mac-right-option-modifier 'meta)
-
-;; requires pandoc installation: brew install pandoc
-(defun markdown-to-org ()
-  "Convert the current markdown buffer to org format using pandoc."
-  (interactive)
-  (let* ((md-file (buffer-file-name))
-         (org-file (concat (file-name-sans-extension md-file) ".org")))
-    (shell-command
-     (format "pandoc -f markdown -t org \"%s\" -o \"%s\"" md-file org-file))
-    (find-file org-file)))
-
-;; Bind it to a key in markdown-mode
-(with-eval-after-load 'markdown-mode
-  (define-key markdown-mode-map (kbd "C-c C-e o") 'markdown-to-org))
-
-;; TODO: checkout polymode?
-
 (provide 'init-reynard)
