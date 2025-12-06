@@ -199,14 +199,4 @@ targets."
 (use-package embark-consult
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
-;; to remove / change to new company
-(use-package embark-jira
-  :ensure nil
-  :load-path "site-lisp/"
-  :custom
-  (embark-jira-host "https://fariaedu.atlassian.net")
-  :config
-  (with-eval-after-load 'embark
-    (add-to-list 'embark-target-finders (lambda () (embark-jira-target-link "OA")))))
-
 (provide 'init-minibuffer)

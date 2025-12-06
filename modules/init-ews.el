@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; copied over on 17 mar 2025 with commit hash
 
 ;; (ews-missing-executables
