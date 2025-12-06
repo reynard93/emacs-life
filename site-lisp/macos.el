@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (defun macos-reveal-in-finder ()
   (interactive)
   (if-let* ((path (or (buffer-file-name)

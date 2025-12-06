@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (define-minor-mode header-line-mode
   "Toggle header-line display in the current buffer."
   :init-value nil
