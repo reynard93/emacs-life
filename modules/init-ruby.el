@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; good resource: https://wikemacs.org/wiki/Ruby
 ;; https://stackoverflow.com/questions/7989090/emacs-ruby-autocomplete-almost-working
 ;; the guy map7 rails config is godly?

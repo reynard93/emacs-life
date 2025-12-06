@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package elixir-ts-mode
   :ensure nil
   :hook (elixir-ts-mode . elixir-format-before-save)

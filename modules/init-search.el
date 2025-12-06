@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package browser-hist
   :defer t
   :bind (:map search-map ("U" . browser-hist-search)))

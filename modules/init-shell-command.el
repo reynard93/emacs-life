@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package dwim-shell-command
   :bind (([remap shell-command] . dwim-shell-command)
          :map dired-mode-map

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; https://www.ovistoica.com/blog/2024-7-05-modern-emacs-typescript-web-tsx-config
 ;; cargo install emacs-lsp-booster. Make sure to include the cargo bin folder in your $PATH.
 

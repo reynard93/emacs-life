@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; You should only adopt Elisp code you need and understand to avoid Emacs Bankruptcy.
 ;; It WILL be even better if certain packages that depends on system binaries are conditionally activated and installed based on 'executable-find'
 

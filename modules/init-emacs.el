@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; Better defaults
 (require 'init-better-defaults)
 

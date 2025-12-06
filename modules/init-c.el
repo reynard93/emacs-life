@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package c-ts-mode
   :ensure nil
   :hook (c-ts-mode . c-format-before-save)

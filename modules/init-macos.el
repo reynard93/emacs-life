@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package macos
   :ensure nil
   :load-path "site-lisp/"

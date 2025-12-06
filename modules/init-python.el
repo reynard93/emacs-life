@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package python
   :ensure nil
   :hook ((python-mode python-ts-mode) . python-format-before-save)

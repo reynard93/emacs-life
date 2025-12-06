@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (require 'init-tree-sitter)
 ;; Cross-referencing commands
 (use-package xref
@@ -24,7 +26,6 @@
 ;; (require 'init-c)
 ;; (require 'init-elixir)
 (require 'init-markdown)
-(require 'init-nix)
 (require 'init-python)
 (require 'init-ruby)
 (require 'init-web)

@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; Performance optimizations for Emacs
 
 ;; Increase garbage collection threshold for better overall performance

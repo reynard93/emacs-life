@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; prb using this, bcz emacs-plus intel but its looking at arm
 ;; https://github.com/minad/jinx/issues/134
 (use-package jinx

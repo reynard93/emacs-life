@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (defvar my-notes-directory (expand-file-name "Notes/" my-src-directory))
 ;; (defvar my-notes-reference-file (expand-file-name "reference.bib" my-notes-directory)) ;; i am using the one configured by ews
 (defvar my-notes-attachments-directory (expand-file-name "attachments/" my-notes-directory))

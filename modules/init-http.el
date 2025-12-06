@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; latest and most maintained
 (use-package verb
   :ensure t

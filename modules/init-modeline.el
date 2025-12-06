@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package prot-modeline
   :ensure nil
   :load-path "vendor/"

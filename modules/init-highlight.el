@@ -1,4 +1,7 @@
-;; init-highlight.el --- Initialize highlighting configurations.	-*- lexical-binding: t -*-;;; Commentary:
+;;; -*- lexical-binding: t -*-
+
+;; init-highlight.el --- Initialize highlighting configurations.
+;;; Commentary:
 ;;
 ;; Highlighting configurations.
 ;;

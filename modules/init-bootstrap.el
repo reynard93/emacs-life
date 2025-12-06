@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; Making custom-file disposable
 (setq custom-file (make-temp-file "emacs-custom-"))
 

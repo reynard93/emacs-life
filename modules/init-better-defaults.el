@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; not sure if i need these lines or not, was in init-dired of centaur emacs
 (use-package emacs
   :ensure nil

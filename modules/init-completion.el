@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package corfu
   :demand t  ; Ensure Corfu loads immediately as it's critical
   :init

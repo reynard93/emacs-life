@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; multi notes per file with C-c , C  -> new note in current buffer (maybe good for dailies?)
 (use-package howm
   :ensure

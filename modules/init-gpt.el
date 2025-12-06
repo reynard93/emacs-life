@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package gptel
   :init
   (defvar gptel--openai nil

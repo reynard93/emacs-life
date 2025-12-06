@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; ref here if need update https://evan.carlin.com/typescript-tsx-mode-for-emacs
 (use-package treesit
   :ensure nil

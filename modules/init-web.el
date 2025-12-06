@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; TODO  clean up these modes, esp tide
 (use-package web-mode
   :defer t

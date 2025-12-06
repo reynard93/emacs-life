@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; tedious to install, use this https://tdlib.github.io/td/build.html?language=C
 (use-package telega
   :ensure (telega

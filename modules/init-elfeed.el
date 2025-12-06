@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (use-package elfeed
   :bind ("C-c e" . elfeed)
   :custom

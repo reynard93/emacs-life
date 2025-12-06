@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (defvar my-insert-map (make-sparse-keymap)
   "A keymap for insert commands.")
 

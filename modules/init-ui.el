@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 ;; Optimization
 (setq idle-update-delay 1.0)
 
