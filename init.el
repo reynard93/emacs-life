@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (add-to-list 'load-path (expand-file-name "modules" user-emacs-directory))
 
 (defvar my-src-directory "~/src/"

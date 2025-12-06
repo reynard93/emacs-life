@@ -137,10 +137,5 @@
 ;; https://github.com/ruby/elisp-ruby-electric/tree/master
 ;; not compatible with ruby-ts-mode
 
-
-
-;; robe works with any ruby ver with smaller mem footprint, works in remote?
-(use-package robe)
-(add-hook 'ruby-mode-hook 'robe-mode)
-(add-hook 'ruby-ts-mode-hook 'robe-mode)
+;; NOTE: robe removed as it's redundant with eglot+ruby-lsp which provides superior LSP features
 (provide 'init-ruby)

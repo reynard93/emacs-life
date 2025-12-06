@@ -54,7 +54,7 @@
            prisma-ts-mode
            clojure-mode
            clojurec-mode
-           ;; ruby-ts-mode ; just use robe for now till grain is modernized
+           ruby-ts-mode
            clojurescript-mode
            go-ts-mode) . lsp)
          (go-ts-mode . os/lsp-gopls-hook))
@@ -152,8 +152,8 @@
 
 ;; Optimize garbage collection during LSP operations
 (defun my/lsp-gc-optimize ()
-  "Optimize garbage collection settings for LSP mode."
-  (setq-local gc-cons-threshold (* 1024 1024 100))) ; 100MB
+  "Temporarily optimize garbage collection settings for LSP mode."
+  (setq-local gc-cons-threshold (* 1024 1024 100))) ; 100MB (temporarily during LSP operations)
 
 (add-hook 'lsp-mode-hook #'my/lsp-gc-optimize)
 
