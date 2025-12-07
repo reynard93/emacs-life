@@ -30,9 +30,6 @@
   (auto-save-file-name-transforms
    `((".*" ,temporary-file-directory t)))
 
-  ;; Input method
-  (default-input-method "chinese-py")
-
   ;; Keyboard
   (echo-keystrokes 0.25)
 
