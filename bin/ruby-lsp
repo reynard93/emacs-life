@@ -1,0 +1,5 @@
+#!/bin/bash
+# Wrapper script for ruby-lsp that uses Homebrew's Ruby with correct gem paths
+export GEM_HOME="/opt/homebrew/share/gems"
+export PATH="/opt/homebrew/share/gems/bin:$PATH"
+/opt/homebrew/Library/Homebrew/vendor/portable-ruby/3.4.7/bin/ruby /opt/homebrew/share/gems/bin/ruby-lsp "$@"

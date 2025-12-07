@@ -93,46 +93,5 @@
 
 (add-hook 'ruby-ts-mode-hook 'my-auto-hide-ruby-methods)
 
-
-;; enh-ruby-mode features that enhance the coding experience (sometimes indentatio doesn't do what you expect)
-;; NOTE: enh-ruby-mode removed - using ruby-ts-mode which is built-in, faster, and has better LSP integration
-
-;; either use rinari or projectile-rails (note rinari is unmaintained, use projectile-rails now)
-;; using this fork bcz https://github.com/asok/projectile-rails/pull/169 it fixes handle of filenames with multiple .'s
-                                        ;TODO am missing some config such as sql something and yasnippet for it idw use this anymore lol
-;; (use-package projectile-rails
-;;   :ensure
-;;   :config
-;;   ((projectile-rails-global-mode)
-;; ))
-
-
-
-;; Common tasks to do in the background
-;; bpor is similar to aysnc-shell-cmd except:
-;; bpr spawns processes asynchronously without displaying output buffers.
-;; bpr shows progress messages for running processes in echo area.
-;; bpr can display buffer with process output in case of errors.
-;; bpr can use projectile for assigning process directory.
-;; bpr can format process output (understands ansi escape codes).
-;; it's possible to set different options for different processes.
-;; bpr is very handy for running tests/builds, but you can run any processes with it.
-(use-package bpr :ensure
-  :config
-  (setq bpr-colorize-output t)
-  (setq bpr-close-after-success t)
-  ;; Run tests on a rails project
-  (defun rspec-tests ()
-    "Spawns test process"
-    (interactive)
-    (let* ((bpr-scroll-direction -1) ;; scroll to the top of the output window (which is being shown in case of error)
-           (bpr-close-after-success t)) ;; close error window after process ended successfully (if it's not already closed)
-      (bpr-spawn "bundle exec rake spec")))
-  )
-
-; auto supply parens and 'end' as appropriate
-;; https://github.com/ruby/elisp-ruby-electric/tree/master
-;; not compatible with ruby-ts-mode
-
 ;; NOTE: robe removed as it's redundant with eglot+ruby-lsp which provides superior LSP features
 (provide 'init-ruby)
