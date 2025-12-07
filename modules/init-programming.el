@@ -22,7 +22,6 @@
 (require 'init-eglot)
 (require 'init-data)
 (require 'init-docker)
-(require 'init-markdown)
 (require 'init-ruby)
 (require 'init-web)
 (require 'init-yaml)

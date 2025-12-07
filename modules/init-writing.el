@@ -32,6 +32,9 @@
   (with-eval-after-load 'org
     (define-key org-mode-map (kbd "C-c i m") 'my/insert-mermaid-with-attach))
 
+(use-package markdown-mode
+  :defer t)
+
 (use-package org
   :ensure nil
   :bind
