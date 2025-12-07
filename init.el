@@ -35,4 +35,3 @@
 ;; Services
 (require 'init-github)
 (require 'init-reynard)
-(require 'init-ews)

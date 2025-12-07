@@ -95,6 +95,7 @@
 
 
 ;; enh-ruby-mode features that enhance the coding experience (sometimes indentatio doesn't do what you expect)
+;; NOTE: enh-ruby-mode removed - using ruby-ts-mode which is built-in, faster, and has better LSP integration
 
 ;; either use rinari or projectile-rails (note rinari is unmaintained, use projectile-rails now)
 ;; using this fork bcz https://github.com/asok/projectile-rails/pull/169 it fixes handle of filenames with multiple .'s
@@ -104,10 +105,6 @@
 ;;   :config
 ;;   ((projectile-rails-global-mode)
 ;; ))
-
-
-;; Ruby related haven't configure to use this yet
-(use-package enh-ruby-mode :ensure t :defer 5)
 
 
 
