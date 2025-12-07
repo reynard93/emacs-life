@@ -107,9 +107,7 @@
          ("C-c t r" . hl-todo-rg-project)
          ("C-c t R" . hl-todo-rg))
   :hook ((after-init . global-hl-todo-mode)
-         (hl-todo-mode . (lambda ()
-                           (add-hook 'flymake-diagnostic-functions
-                                     #'hl-todo-flymake nil t))))
+         )
   :init (setq hl-todo-require-punctuation t
               hl-todo-highlight-punctuation ":")
   :config

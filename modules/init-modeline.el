@@ -23,8 +23,6 @@
                   "  "
                   prot-modeline-eglot
                   "  "
-                  prot-modeline-flymake
-                  "  "
                   mode-line-format-right-align
                   "  "
                   prot-modeline-misc-info)))
