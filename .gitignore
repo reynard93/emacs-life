@@ -40,3 +40,5 @@ elpa-bakup
 /debug-adapters/
 /elfeed/
 .cache/lsp
+.cache
+.idea
