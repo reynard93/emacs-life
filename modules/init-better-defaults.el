@@ -303,4 +303,18 @@ The DWIM behaviour of this command is as follows:
   :config
   (treemacs-project-follow-mode 1))
 
+;; replacing ispell
+(use-package jinx
+  :ensure t
+  :hook org-mode
+  :bind
+  (([remap ispell-word] . jinx-correct)
+   ("C-c J" . jinx-languages)
+   ("<f12>" . jinx-mode))
+  :custom
+  (jinx-languages "en_US en_GB"))
+
+(provide 'init-spell-checker)
+
+
 (provide 'init-better-defaults)
