@@ -13,6 +13,11 @@
 (use-package consult-flycheck
   :after (consult flycheck))
 
+(use-package flycheck-eglot
+  :ensure t
+  :after (flycheck eglot)
+  :config
+  (global-flycheck-eglot-mode 1))
 
 (use-package plantuml-mode
   :config
