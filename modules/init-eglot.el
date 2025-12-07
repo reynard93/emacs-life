@@ -21,7 +21,7 @@
     "Start eglot after mise-mode has updated the buffer environment."
     (when (and (bound-and-true-p mise-mode)
                (derived-mode-p 'ruby-mode 'ruby-ts-mode))
-      (eglot-ensure)))
+      (unless (derived-mode-p 'treemacs-mode) (eglot-ensure)))
 
   ;; Hook into mise-mode to start eglot after environment is set
   (add-hook 'mise-mode-hook #'my/eglot-ensure-after-mise)

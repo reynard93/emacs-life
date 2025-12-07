@@ -301,4 +301,12 @@ The DWIM behaviour of this command is as follows:
   :config
   (which-key-mode))
 
+(use-package treemacs
+  :bind
+  (("C-c t t" . treemacs))
+  :custom
+  (treemacs-no-png-images t)
+  :config
+  (treemacs-project-follow-mode 1))
+
 (provide 'init-better-defaults)
