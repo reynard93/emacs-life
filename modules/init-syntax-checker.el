@@ -1,8 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package flycheck
-  ;; :bind
-  ;; ("C-c f" . flycheck-show-buffer-diagnostics) ;; dn think i using this keymap, show diagnostic also wh fn?
   :hook ((prog-mode ruby-ts-mode)
          . flycheck-mode))
 
