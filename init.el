@@ -14,17 +14,13 @@
 
 ;; Features
 (require 'init-highlight)
-(require 'init-elfeed)
 (require 'init-git)
 (require 'init-gpt)
-(require 'init-mail)
 (require 'init-pass)
 (require 'init-search)
 (require 'init-shell-command)
 (require 'init-spell-checker)
 (require 'init-syntax-checker)
-; (require 'init-social)
-(require 'init-http)
 
 ;; Contexts
 (require 'init-programming)
