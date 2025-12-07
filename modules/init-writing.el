@@ -37,7 +37,7 @@
   :bind
   (("C-c a" . org-agenda)
    ("C-c c" . org-capture)
-   ("C-c l" . org-store-link)
+   ("C-c 0" . org-store-link)
    :map org-mode-map
    ("C-c ," . nil) ;; dnid org-priority
    ([remap mark-defun] . org-babel-mark-block)

@@ -43,6 +43,6 @@
   :bind (:map eglot-mode-map
             ("C-M-." . consult-eglot-symbol
             ("C-c l r" . consult-eglot-references)
-            ("C-c l a" . consult-eglot-code-actions)))
+            ("C-c l a" . consult-eglot-code-actions))))
 
 (provide 'init-eglot)
