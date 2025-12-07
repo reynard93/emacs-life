@@ -1,8 +1,14 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package flycheck
-  :hook ((prog-mode ruby-ts-mode)
-         . flycheck-mode))
+  :hook ((prog-mode ruby-ts-mode) . flycheck-mode)
+  :config
+  ;; Ensure flycheck re-verifies executables when buffer environment changes
+  ;; This is important for mise.el integration where exec-path is buffer-local
+  (add-hook 'mise-mode-hook
+            (lambda ()
+              (when (bound-and-true-p flycheck-mode)
+                (flycheck-buffer)))))
 
 (use-package flycheck-jest
   :after flycheck
