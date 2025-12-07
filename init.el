@@ -11,7 +11,6 @@
 ;; Bootstrap
 (require 'init-bootstrap)
 (require 'init-emacs)
-(require 'init-macos)
 
 ;; Features
 (require 'init-highlight)
