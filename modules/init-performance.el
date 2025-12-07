@@ -3,7 +3,8 @@
 ;; Performance optimizations for Emacs
 
 ;; Increase garbage collection threshold for better overall performance
-(setq gc-cons-threshold (* 1024 1024 50)) ; 50MB (default is 800KB)
+(setq gc-cons-threshold (* 1024 1024 50)
+                  gc-cons-percentage 0.2)
 
 (setq use-package-expand-minimally t)     ; Generate minimal code
 (setq use-package-minimum-reported-time 0.1) ; Report packages that take >0.1s to load
