@@ -6,12 +6,6 @@
   (("<f6>" . whitespace-mode)
    ("C-c z" . whitespace-cleanup)))
 
-(use-package display-line-numbers
-  :ensure nil
-  :bind ("<f7>" . display-line-numbers-mode)
-  :custom
-  (display-line-numbers-widen t))
-
 (use-package visual-line-mode
   :ensure nil
   :hook text-mode
