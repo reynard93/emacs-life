@@ -509,7 +509,7 @@ than `split-width-threshold'."
 
   ;; list of things that eglot won't change
 	(customize-set-variable 'eglot-stay-out-of '(imenu))
-  (customize-set-variable 'eglot-extend-to-xref t)
+  ; (customize-set-variable 'eglot-extend-to-xref t)
 	(customize-set-variable 'eglot-autoshutdown t) ;; automatically shutdown
   (add-hook 'eglot-managed-mode-hook
             (lambda () (eglot-inlay-hints-mode -1)))

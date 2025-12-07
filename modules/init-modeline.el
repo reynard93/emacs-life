@@ -27,19 +27,4 @@
                   "  "
                   prot-modeline-misc-info)))
 
-(use-package keycast
-  :after prot-modeline
-  :custom
-  (keycast-mode-line-format "%2s%k%c%R")
-  (keycast-mode-line-insert-after 'prot-modeline-vc-branch)
-  (keycast-mode-line-window-predicate 'mode-line-window-selected-p)
-  (keycast-mode-line-remove-tail-elements nil)
-  :config
-  (dolist (input '(self-insert-command org-self-insert-command))
-    (add-to-list 'keycast-substitute-alist `(,input "." "Typing…")))
-
-  (dolist (event '( mouse-event-p mouse-movement-p mwheel-scroll handle-select-window
-                    mouse-set-point mouse-drag-region))
-    (add-to-list 'keycast-substitute-alist `(,event nil))))
-
 (provide 'init-modeline)
