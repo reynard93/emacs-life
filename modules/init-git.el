@@ -55,26 +55,17 @@
   (("C-c g o" . browse-at-remote)
    ("C-c g y" . browse-at-remote-kill)))
 
-;; sometimes this can go crazy, showing up everywhere
-;; it looks wrong at times, keep showing up the other guy's name and i notice there is latency?
-(use-package sideline-blame
-  :defer
-  :init
-  (setq sideline-backends-left '((sideline-blame . down)))
-  :config
-  (global-sideline-mode))
-
-(use-package difftastic
-  :demand t
-  :ensure
-  :ensure-system-package (difft . difftastic)
-  :bind (:map magit-blame-read-only-mode-map
-         ("D" . difftastic-magit-show)
-         ("S" . difftastic-magit-show))
-  :config
-  (eval-after-load 'magit-diff
-    '(transient-append-suffix 'magit-diff '(-1 -1)
-       [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
-        ("S" "Difftastic show" difftastic-magit-show)])))
+; (use-package difftastic
+;   :demand t
+;   :ensure
+;   :ensure-system-package (difft . difftastic)
+;   :bind (:map magit-blame-read-only-mode-map
+;          ("D" . difftastic-magit-show)
+;          ("S" . difftastic-magit-show))
+;   :config
+;   (eval-after-load 'magit-diff
+;     '(transient-append-suffix 'magit-diff '(-1 -1)
+;        [("D" "Difftastic diff (dwim)" difftastic-magit-diff)
+;         ("S" "Difftastic show" difftastic-magit-show)])))
 
 (provide 'init-git)
