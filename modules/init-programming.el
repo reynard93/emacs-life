@@ -3,9 +3,11 @@
 (require 'init-tree-sitter)
 ;; Cross-referencing commands
 (use-package xref
+  :ensure nil  ; Built-in package
+  :defer t     ; Defer loading to prevent loading before Elpaca
   :bind (("M-g ." . xref-find-definitions)
          ("M-g ," . xref-go-back))
-  :init
+  :config
   ;; Use faster search tool
   (when (executable-find "rg")
     (setq xref-search-program 'ripgrep))
