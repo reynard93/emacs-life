@@ -5,7 +5,11 @@
 ;; the guy map7 rails config is godly?
 (use-package ruby-ts-mode
   :ensure nil
-  :defer t)
+  :defer t
+  :init
+  (setq ruby-indent-level 2
+        ruby-indent-tabs-mode nil
+        ruby-align-chained-calls t))
 
 (use-package bundler
   :defer t)
@@ -26,20 +30,6 @@
 (use-package inf-ruby
   :hook ((ruby-ts-mode . inf-ruby-minor-mode)
          (compilation-filter . inf-ruby-auto-enter)))
-
-;; Ruby YARD comments
-(use-package yard-mode
-  :diminish
-  :hook (ruby-ts-mode . yard-mode))
-
-;; Ruby refactoring helpers
-(use-package ruby-refactor
-  :diminish
-  :hook (ruby-ts-mode . ruby-refactor-mode-launch))
-
-;; Yet Another RI interface for Emacs
-(use-package yari
-  :bind (:map ruby-ts-mode-map ([f1] . yari)))
 
 (defun enable-rspec-for-spec-files ()
   (when (and buffer-file-name
