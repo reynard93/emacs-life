@@ -19,33 +19,28 @@
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
 
+  (defvar-local my/eglot-start-attempted nil
+    "Non-nil means we already tried (and maybe failed) to start Eglot in this buffer.")
+
   ;; Function to safely start Eglot after mise has set up the environment
   (defun my/eglot-ensure-safe ()
     "Safely start Eglot with proper checks and error handling.
 
-This function is designed to work with mise.el's buffer-local environment.
-It will only start Eglot when ALL conditions are met:
-- Buffer is visiting a file (not scratch/special buffers)
-- Buffer is alive (not killed)
-- mise-mode is active (mise.el has updated buffer environment)
-- We're in Ruby mode or ruby-ts-mode
-- Eglot is not already running in this buffer
-- Not in special buffers like treemacs
-
-The function can be safely called multiple times - it checks if Eglot
-is already running to prevent duplicate starts."
-    (when (and buffer-file-name                           ; Must be a file buffer
+Only attempt once per buffer to avoid restart loops/jammed minibuffer."
+    (when (and (not my/eglot-start-attempted)
+               buffer-file-name                           ; Must be a file buffer
                (buffer-live-p (current-buffer))           ; Buffer must be alive
                (bound-and-true-p mise-mode)               ; mise-mode is active
                (derived-mode-p 'ruby-mode 'ruby-ts-mode)  ; Must be Ruby mode
                (not (eglot-current-server))               ; Eglot not already running
                (not (derived-mode-p 'treemacs-mode)))     ; Not in treemacs
+      (setq my/eglot-start-attempted t)
       (condition-case err
           (progn
             (message "[Eglot] Starting LSP for %s" (buffer-name))
             (eglot-ensure))
         (error
-         (message "[Eglot] Failed to start: %s" (error-message-string err))))))
+         (message "[Eglot] Failed to start (won't retry automatically): %s" (error-message-string err)))) )
 
   ;; Disable automatic reconnection to prevent reconnection loops
   ;; Manual reconnection available via: M-x eglot
@@ -66,7 +61,7 @@ is already running to prevent duplicate starts."
 
   ;; Start Eglot only for Ruby buffers.
   (dolist (mode '(ruby-mode-hook ruby-ts-mode-hook))
-    (add-hook mode #'my/eglot-ensure-after-mise)))
+    (add-hook mode #'my/eglot-ensure-after-mise))))
 
 ;; https://github.com/jdtsmith/eglot-booster
 ;; Boosts eglot performance using emacs-lsp-booster
