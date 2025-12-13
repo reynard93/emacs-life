@@ -14,14 +14,12 @@
   ;; It will be found via PATH set by mise.el
   (setq completion-category-overrides '((eglot (styles orderless flex))))
 
-  ;; Configure Ruby LSP server explicitly.
-  ;; Prefer `bundle exec ruby-lsp' when a Gemfile exists to avoid version/gem mismatches.
+  ;; Configure Ruby LSP server to use ruby-lsp from mise's PATH.
+  ;; Since ruby-lsp is installed via mise (not in Gemfile), we use it directly
+  ;; rather than through bundle exec. mise.el ensures the correct PATH is set.
   (defun my/eglot-ruby-lsp-contact (&optional _interactive)
-    "Return the command to start ruby-lsp, using bundle exec if Gemfile exists."
-    (if (and (locate-dominating-file default-directory "Gemfile")
-             (executable-find "bundle"))
-        '("bundle" "exec" "ruby-lsp")
-      '("ruby-lsp")))
+    "Return the command to start ruby-lsp from mise's PATH."
+    '("ruby-lsp"))
 
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) . my/eglot-ruby-lsp-contact))
@@ -76,11 +74,6 @@
 (use-package eglot-booster
   :ensure (:host github :repo "jdtsmith/eglot-booster")
   :defer t  ; Defer loading to prevent xref from loading before Elpaca
-  :config
-  (defun my/eglot-booster-maybe ()
-    "Enable `eglot-booster-mode' except for Ruby (ruby-lsp is crash-prone with it)."
-    (unless (derived-mode-p 'ruby-mode 'ruby-ts-mode)
-      (eglot-booster-mode 1)))
-  :hook (eglot-managed-mode . my/eglot-booster-maybe))
+  :hook (eglot-managed-mode . eglot-booster-mode))
 
 (provide 'init-eglot)
