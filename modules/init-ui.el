@@ -18,10 +18,7 @@
                             (fullscreen)))
 
 (use-package modus-themes
-  :ensure nil
-  :init
-  (load-theme 'modus-vivendi :no-confirm)
-  :bind ("<f9>" . modus-themes-toggle)
+  :ensure t
   :custom
   (modus-themes-mixed-fonts t)
   (modus-themes-variable-pitch-ui t)
@@ -33,6 +30,14 @@
    '((agenda-structure . (variable-pitch light 2.2))
      (agenda-date . (variable-pitch regular 1.3))
      (t . (regular 1.15)))))
+
+(use-package ef-themes
+  :ensure t
+  :after modus-themes
+  :init
+  ;; Primary light theme
+  (load-theme 'ef-day :no-confirm)
+  :bind ("<f9>" . ef-themes-toggle))
 
 (use-package fontaine
   :if (display-graphic-p)

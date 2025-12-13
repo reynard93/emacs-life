@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+EMACSCLIENT="${EMACSCLIENT:-$(command -v emacsclient || true)}"
+if [[ -z "${EMACSCLIENT}" ]]; then
+  for p in /opt/homebrew/bin/emacsclient /usr/local/bin/emacsclient; do
+    [[ -x "$p" ]] && EMACSCLIENT="$p" && break
+  done
+fi
+
+if [[ -z "${EMACSCLIENT}" ]]; then
+  osascript -e 'display dialog "emacsclient not found. Install Emacs (or ensure emacsclient is on PATH)." buttons {"OK"} default button 1' >/dev/null 2>&1 || true
+  exit 127
+fi
+
+# If the server isn't reachable, try launching Emacs (assumes your config starts the server).
+if ! "$EMACSCLIENT" -e "(emacs-pid)" >/dev/null 2>&1; then
+  open -gj -b org.gnu.Emacs >/dev/null 2>&1 || open -gj -a "Emacs" >/dev/null 2>&1 || open -gj -a "Emacs Mac Port" >/dev/null 2>&1 || true
+  for _ in {1..50}; do
+    "$EMACSCLIENT" -e "(emacs-pid)" >/dev/null 2>&1 && break
+    sleep 0.1
+  done
+fi
+
+exec "$EMACSCLIENT" -n -c "$@"
