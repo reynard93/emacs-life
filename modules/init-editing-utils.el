@@ -7,6 +7,7 @@
   (setq apheleia-mode-alist
         '((js-mode . prettier)
           (typescript-ts-mode . prettier)
+          (ruby-mode . rubocop)
           (ruby-ts-mode . rubocop)
           (typescript-mode . prettier)
           (typescript-tsx-mode . prettier)
