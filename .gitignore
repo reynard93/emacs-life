@@ -39,6 +39,9 @@ elpa-bakup
 /.lsp-session
 /debug-adapters/
 /elfeed/
-.cache/lsp
-.cache
+/cache/lsp
+/cache
+/etc/
+/var/
 .idea
+.cache
