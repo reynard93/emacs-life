@@ -2,16 +2,31 @@
 
 (use-package apheleia
   :config
-  (add-to-list 'apheleia-formatters
-               '(prettier . ("prettier" "--stdin-filepath" filepath "--single-quote" "--trailing-comma" "all")))
+  ;; Use npx to run project-local prettier (respects project .prettierrc and plugins).
+  ;; This ensures prettier-plugin-tailwindcss works when installed in the project.
+  (setf (alist-get 'prettier apheleia-formatters)
+        '("npx" "prettier" "--stdin-filepath" filepath))
+
+  ;; Map modes to formatters.
+  ;; Tree-sitter modes (js-ts-mode, tsx-ts-mode, etc.) are the primary modes for JS/TS.
   (setq apheleia-mode-alist
         '((js-mode . prettier)
-          (typescript-ts-mode . prettier)
-          (ruby-mode . rubocop)
-          (ruby-ts-mode . rubocop)
+          (js-ts-mode . prettier)
           (typescript-mode . prettier)
-          (typescript-tsx-mode . prettier)
-          (web-mode . prettier)))
+          (typescript-ts-mode . prettier)
+          (tsx-ts-mode . prettier)
+          (web-mode . prettier)
+          (css-mode . prettier)
+          (css-ts-mode . prettier)
+          (json-mode . prettier)
+          (json-ts-mode . prettier)
+          (html-mode . prettier)
+          (ruby-mode . rubocop)
+          (ruby-ts-mode . rubocop)))
+
+  ;; Enable formatting-on-save globally for supported modes.
+  (apheleia-global-mode +1)
+
   :bind ("C-c f" . apheleia-format-buffer))
 
 (use-package multiple-cursors
