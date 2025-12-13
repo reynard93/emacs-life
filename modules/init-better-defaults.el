@@ -1,5 +1,14 @@
 ;;; -*- lexical-binding: t -*-
 
+;; Keep .config/emacs clean by organizing auto-saves, backups, and package data
+;; Must be loaded early so other packages benefit from organized directories
+(use-package no-littering
+  :ensure t
+  :demand t
+  :config
+  ;; Store auto-save files in no-littering's var directory
+  (no-littering-theme-backups))
+
 ;; not sure if i need these lines or not, was in init-dired of centaur emacs
 (use-package emacs
   :ensure nil
@@ -24,11 +33,9 @@
   ;; File
   (delete-by-moving-to-trash t)
   (create-lockfiles nil)
-  (make-backup-files nil)
+  ;; Backups and auto-saves are now managed by no-littering
   (auto-save-interval 2400)
   (auto-save-timeout 300)
-  (auto-save-file-name-transforms
-   `((".*" ,temporary-file-directory t)))
 
   ;; Keyboard
   (echo-keystrokes 0.25)
