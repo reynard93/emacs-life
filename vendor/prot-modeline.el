@@ -498,19 +498,44 @@ than `split-width-threshold'."
   (setq mode-line-misc-info
         (delete '(eglot--managed-mode (" [" eglot--mode-line-format "] ")) mode-line-misc-info)))
 (with-eval-after-load 'eglot
-	;; NOTE
-	;; install markdown-mode to rich the doc
-  ;; performance improvemence:
+  ;; NOTE
+  ;; install markdown-mode to rich the doc
+  ;; performance improvement:
   ;; https://www.reddit.com/r/emacs/comments/16vixg6/how_to_make_lsp_and_eglot_way_faster_like_neovim/
 
-  ;; IMPORTANT: remove these two lines in order to debug
-  (fset #'jsonrpc--log-event #'ignore) ;; remove laggy typing it probably reduces chatty json from lsp to eglot i guess
+  ;; jsonrpc logging is disabled by default (for perf); toggle when debugging.
+  (defvar my/jsonrpc--log-event-original (when (fboundp 'jsonrpc--log-event)
+                                          (symbol-function 'jsonrpc--log-event))
+    "Original `jsonrpc--log-event' function before it was disabled.")
+
+  (defun my/jsonrpc-toggle-logging ()
+    "Toggle jsonrpc event logging (used by Eglot).
+
+Also toggles Eglot's events buffer settings to make debugging practical."
+    (interactive)
+    (require 'jsonrpc)
+    (unless my/jsonrpc--log-event-original
+      (setq my/jsonrpc--log-event-original (symbol-function 'jsonrpc--log-event)))
+
+    (if (eq (symbol-function 'jsonrpc--log-event) #'ignore)
+        (progn
+          (fset 'jsonrpc--log-event my/jsonrpc--log-event-original)
+          (setq-default eglot-events-buffer-config '(:size 2000000 :format full))
+          (message "[jsonrpc] logging enabled; eglot events enabled"))
+      (fset 'jsonrpc--log-event #'ignore)
+      (setq-default eglot-events-buffer-config '(:size 0 :format full))
+      (message "[jsonrpc] logging disabled; eglot events disabled")))
+
+  ;; Unused keybind in this config.
+  (global-set-key (kbd "C-c t j") #'my/jsonrpc-toggle-logging)
+
+  (fset 'jsonrpc--log-event #'ignore)
   (setq-default eglot-events-buffer-config '(:size 0 :format full))
 
   ;; list of things that eglot won't change
-	(customize-set-variable 'eglot-stay-out-of '(imenu))
+  (customize-set-variable 'eglot-stay-out-of '(imenu))
   ; (customize-set-variable 'eglot-extend-to-xref t)
-	(customize-set-variable 'eglot-autoshutdown t) ;; automatically shutdown
+  (customize-set-variable 'eglot-autoshutdown t) ;; automatically shutdown
   (add-hook 'eglot-managed-mode-hook
             (lambda () (eglot-inlay-hints-mode -1)))
   (setq-default eglot-send-changes-idle-time 0.25)
