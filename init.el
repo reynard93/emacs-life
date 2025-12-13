@@ -12,6 +12,11 @@
 (require 'init-bootstrap)
 (require 'init-emacs)
 
+;; Start Emacs server
+(require 'server)
+(unless (server-running-p)
+  (server-start))
+
 ;; Features
 (require 'init-highlight)
 (require 'init-git)
