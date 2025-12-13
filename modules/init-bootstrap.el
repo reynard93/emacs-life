@@ -5,6 +5,21 @@
 
 (require 'init-elpaca)
 
+;; Initialize environment from shell
+;; This sets the baseline PATH and environment variables from your shell
+;; mise.el (below) will then override these per-buffer for project-specific versions
+(use-package exec-path-from-shell
+  :ensure t
+  :demand t
+  :custom
+  ;; Copy these specific variables from shell environment
+  (exec-path-from-shell-variables
+   '("PATH" "MANPATH" "GOPATH" "CARGO_HOME" "GEM_HOME" "GEM_PATH"))
+  ;; Use a faster shell invocation
+  (exec-path-from-shell-arguments '("-l"))
+  :config
+  (exec-path-from-shell-initialize))
+
 ;; Set $PATH correctly using mise.el for version manager integration
 ;; mise.el sets environment variables (PATH, GEM_HOME, etc.) per-buffer
 ;; based on mise configuration files (.mise.toml, .tool-versions)
