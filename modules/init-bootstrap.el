@@ -18,6 +18,8 @@
                             "/opt/homebrew/bin/mise"))
   ;; Enable debug mode temporarily to diagnose issues
   ;; (setq mise-debug t)
+  ;; Disable mise in org buffers
+  (add-hook 'org-mode-hook (lambda () (mise-mode -1)))
   ;; Enable global mode immediately after config
   (global-mise-mode 1))
 

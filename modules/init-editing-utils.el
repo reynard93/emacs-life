@@ -30,6 +30,7 @@
   :init
   (puni-global-mode)
   (add-hook 'term-mode-hook #'puni-disable-puni-mode)
+  (add-hook 'org-mode-hook #'puni-disable-puni-mode)
   :bind ((:map puni-mode-map
           ;; Navigation
           ([remap forward-sexp] . puni-forward-sexp)
