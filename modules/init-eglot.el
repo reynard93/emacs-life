@@ -51,28 +51,22 @@ is already running to prevent duplicate starts."
   ;; Manual reconnection available via: M-x eglot
   (setq eglot-autoreconnect nil)
 
-  ;; Hook architecture for mise.el integration:
+  ;; mise.el integration
   ;;
-  ;; STRATEGY: Use both mise-mode-hook AND Ruby mode hooks
-  ;;
-  ;; 1. mise-mode-hook (PRIMARY):
-  ;;    - Called when mise.el finishes updating buffer environment
-  ;;    - Ensures exec-path contains mise-managed Ruby bin directory
-  ;;    - Function has guards to only run in Ruby file buffers
-  ;;    - This is the CORRECT way to wait for mise
-  ;;
-  ;; 2. ruby-mode-hook / ruby-ts-mode-hook (FALLBACK):
-  ;;    - Handles case where mise-mode already finished before Ruby mode activated
-  ;;    - Function checks if Eglot is already running (no duplicates)
-  ;;
-  ;; This dual-hook approach handles all timing scenarios without race conditions.
+  ;; IMPORTANT: Do NOT use a global `mise-mode-hook' to start Eglot.
+  ;; `global-mise-mode' enables mise-mode in every buffer, so a global hook
+  ;; can fire during normal buffer creation/switching and accidentally start
+  ;; Eglot from the "wrong" buffer context.
+  (defun my/eglot-ensure-after-mise ()
+    "Start Eglot for Ruby after mise-mode has updated this buffer's environment."
+    (if (bound-and-true-p mise-mode)
+        (my/eglot-ensure-safe)
+      ;; If mise-mode isn't enabled yet, wait for it *in this buffer only*.
+      (add-hook 'mise-mode-hook #'my/eglot-ensure-safe nil t)))
 
-  ;; Primary: Start Eglot after mise updates environment
-  (add-hook 'mise-mode-hook #'my/eglot-ensure-safe)
-
-  ;; Fallback: Start Eglot when entering Ruby mode (if mise already done)
+  ;; Start Eglot only for Ruby buffers.
   (dolist (mode '(ruby-mode-hook ruby-ts-mode-hook))
-    (add-hook mode #'my/eglot-ensure-safe)))
+    (add-hook mode #'my/eglot-ensure-after-mise)))
 
 ;; https://github.com/jdtsmith/eglot-booster
 ;; Boosts eglot performance using emacs-lsp-booster
