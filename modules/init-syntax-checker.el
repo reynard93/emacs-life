@@ -21,7 +21,15 @@
   :ensure t
   :after (flycheck eglot)
   :config
-  (global-flycheck-eglot-mode 1))
+  (global-flycheck-eglot-mode 1)
+
+  ;; Disable Flymake in Eglot-managed buffers to avoid duplicate diagnostics.
+  ;; Flycheck-eglot bridges LSP diagnostics into Flycheck, so we don't need
+  ;; Flymake's overlays which would otherwise duplicate Flycheck's display.
+  (add-hook 'eglot-managed-mode-hook
+            (lambda ()
+              (when (bound-and-true-p flymake-mode)
+                (flymake-mode -1)))))
 
 (use-package plantuml-mode
   :config
