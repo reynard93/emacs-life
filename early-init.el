@@ -11,14 +11,18 @@
 
 (setq native-comp-async-report-warnings-errors 'silent)
 
-;; Boost startup performance
+;; Boost startup performance by deferring garbage collection during init
+;; This is reset after startup in the hook below
 (setq gc-cons-threshold most-positive-fixnum
       gc-cons-percentage 0.5)
 
 (add-hook 'emacs-startup-hook
           (lambda ()
             (message "Emacs started in %s" (emacs-init-time))
-            ))
+            ;; Reset GC to reasonable values after startup
+            ;; These values are defined in init-performance.el
+            (setq gc-cons-threshold (* 1024 1024 50)  ; 50MB
+                  gc-cons-percentage 0.2)))
 (setq package-enable-at-startup nil)
 
 (provide 'early-init)
