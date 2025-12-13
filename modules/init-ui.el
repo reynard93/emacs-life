@@ -36,7 +36,7 @@
   :after modus-themes
   :init
   ;; Primary light theme
-  (load-theme 'ef-day :no-confirm)
+  (load-theme 'ef-owl :no-confirm)
   :bind ("<f9>" . ef-themes-toggle))
 
 (use-package fontaine

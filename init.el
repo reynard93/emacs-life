@@ -33,3 +33,4 @@
 
 ;; Services
 (require 'init-reynard)
+(require 'init-social)

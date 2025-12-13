@@ -14,7 +14,7 @@
   :custom
   ;; Copy these specific variables from shell environment
   (exec-path-from-shell-variables
-   '("PATH" "MANPATH" "GOPATH" "CARGO_HOME" "GEM_HOME" "GEM_PATH"))
+   '("PATH" "MANPATH" "GOPATH" "CARGO_HOME" "GEM_HOME" "GEM_PATH" "LINEAR_API_KEY"))
   ;; Use a faster shell invocation
   (exec-path-from-shell-arguments '("-l"))
   :config

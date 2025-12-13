@@ -45,3 +45,4 @@ elpa-bakup
 /var/
 .idea
 .cache
+.osgrep

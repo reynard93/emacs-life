@@ -304,7 +304,7 @@ The DWIM behaviour of this command is as follows:
 
 (use-package treemacs
   :bind
-  (("C-c t t" . treemacs))
+  (("C-c e" . treemacs))
   :custom
   (treemacs-no-png-images t))
 
