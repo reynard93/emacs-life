@@ -7,9 +7,19 @@
   :ensure nil
   :defer t
   :init
+  ;; NOTE: `ruby-indent-level' affects `ruby-mode'.  `ruby-ts-mode' uses its own
+  ;; tree-sitter indentation variables.
   (setq ruby-indent-level 2
         ruby-indent-tabs-mode nil
-        ruby-align-chained-calls t))
+        ruby-align-chained-calls t)
+  (when (boundp 'ruby-ts-mode-indent-offset)
+    (setq ruby-ts-mode-indent-offset 2))
+  :hook (ruby-ts-mode . (lambda ()
+                          (setq-local tab-width 2
+                                      indent-tabs-mode nil)
+                          ;; You disabled `electric-indent-mode' globally; enable it
+                          ;; locally so RET indents in Ruby buffers.
+                          (electric-indent-local-mode 1))))
 
 (use-package bundler
   :defer t)
