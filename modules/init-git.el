@@ -55,6 +55,24 @@
   (("C-c g o" . browse-at-remote)
    ("C-c g y" . browse-at-remote-kill)))
 
+(use-package blame-reveal
+  :ensure (:host github :repo "LuciusChen/blame-reveal")
+  :config
+  ;; Smart time-based selection
+  (setq blame-reveal-recent-days-limit 'auto)
+  (setq blame-reveal-gradient-quality 'auto)
+
+  ;; Display
+  (setq blame-reveal-header-style 'block)
+  (setq blame-reveal-show-uncommitted-fringe nil)  ; Use with diff-hl
+
+  ;; Performance
+  (setq blame-reveal-async-blame 'auto)
+  (setq blame-reveal-lazy-load-threshold 3000)
+
+  ;; Enable recursive blame
+  (require 'blame-reveal-recursive))
+
 ; (use-package difftastic
 ;   :demand t
 ;   :ensure
