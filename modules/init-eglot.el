@@ -11,10 +11,28 @@
   :config
   ;; Ruby LSP configuration (simplified)
   ;; Use ruby-lsp directly from mise's PATH
+  (setq completion-category-overrides '((eglot (styles orderless flex))))
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
   (dolist (hook '(ruby-mode-hook ruby-ts-mode-hook))
-    (add-hook hook #'eglot-ensure)))
+    (add-hook hook #'eglot-ensure))
+
+  ;; Keybindings for Eglot under C-c l
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "r") #'eglot-rename)
+    (define-key map (kbd "a") #'eglot-code-actions)
+    (define-key map (kbd "f") #'eglot-format)
+    (define-key map (kbd "d") #'eldoc)
+    (define-key map (kbd "h") #'eglot-help-at-point)
+    (define-key map (kbd "i") #'eglot-find-implementation)
+    (define-key map (kbd "t") #'eglot-find-typeDefinition)
+    (define-key map (kbd "e") #'eglot-reconnect)
+    (define-key map (kbd "q") #'eglot-shutdown)
+    (define-key map (kbd "s") #'eglot)
+    (define-key map (kbd "l") #'eglot)
+    (define-key map (kbd "w") #'eglot-workspace-configuration)
+    (define-key map (kbd "m") #'eglot-managed-mode)
+    (define-key eglot-mode-map (kbd "C-c l") map)))
 
 ;;; Web development LSP configuration (TS/JS/TSX/JSX/Tailwind/ESLint)
 ;; Uses rassumfrassum to multiplex multiple LSP servers for JS/TS/TSX files.
