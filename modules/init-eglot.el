@@ -12,10 +12,16 @@
 	      ("C-c l e" . eglot-code-action-extract)
 	      ("C-c l r" . eglot-rename)
 	      ("C-c l i" . eglot-inlay-hints-mode))
+  :hook ((ruby-mode . eglot-ensure)
+         (ruby-ts-mode . eglot-ensure)
+         (typescript-ts-mode . eglot-ensure)
+         (tsx-ts-mode . eglot-ensure)
+         (js-mode . eglot-ensure)
+         (js-ts-mode . eglot-ensure))
   :custom
   (eglot-sync-connect 0)              ; Asynchronous connection for better startup
   (eglot-autoshutdown t)                ; Automatically shutdown server when not needed
-  (eglot-autoreconnect nil)
+  (eglot-autoreconnect t)
   :config
   (setf (alist-get 'eglot completion-category-overrides)
         '(styles orderless flex))
