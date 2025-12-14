@@ -319,7 +319,4 @@ The DWIM behaviour of this command is as follows:
   :custom
   (jinx-languages "en_US en_GB"))
 
-(provide 'init-spell-checker)
-
-
 (provide 'init-better-defaults)

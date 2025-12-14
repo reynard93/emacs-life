@@ -9,22 +9,14 @@
 (setq use-package-expand-minimally t)     ; Generate minimal code
 (setq use-package-minimum-reported-time 0.1) ; Report packages that take >0.1s to load
 
-;; Only collect garbage when idle
-(defvar my/gc-timer nil
-  "Timer for garbage collection.")
-
-(defun my/garbage-collect-when-idle ()
-  "Run garbage collection when Emacs is idle."
-  (when my/gc-timer
-    (cancel-timer my/gc-timer))
-  (setq my/gc-timer
-        (run-with-idle-timer 5 nil
-                            (lambda ()
-                              (message "Garbage collecting...")
-                              (garbage-collect)
-                              (message "Garbage collecting...done")))))
-
-(add-hook 'focus-out-hook #'my/garbage-collect-when-idle)
+;; Use gcmh (Garbage Collector Magic Hack) for better GC performance
+(use-package gcmh
+  :ensure t
+  :demand t
+  :config
+  (setq gcmh-idle-delay 5
+        gcmh-high-cons-threshold (* 50 1024 1024)) ; 50MB
+  (gcmh-mode 1))
 
 ;; Increase read process output max (helps with LSP)
 (setq read-process-output-max (* 1024 1024 3)) ; 3MB (default is 4KB)
