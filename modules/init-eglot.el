@@ -6,9 +6,10 @@
   :ensure nil
   :custom
   (eglot-connect-timeout 30)            ; Allow more time for LSP startup
-  (eglot-sync-connect nil)              ; Asynchronous connection for better startup
+  (eglot-sync-connect 0)              ; Asynchronous connection for better startup
   (eglot-autoshutdown t)                ; Automatically shutdown server when not needed
   :config
+  (setq eglot-autoreconnect nil)
   ;; Ruby LSP configuration (simplified)
   ;; Use ruby-lsp directly from mise's PATH
   (setq completion-category-overrides '((eglot (styles orderless flex))))
@@ -21,16 +22,11 @@
   (let ((map (make-sparse-keymap)))
     (define-key map (kbd "r") #'eglot-rename)
     (define-key map (kbd "a") #'eglot-code-actions)
-    (define-key map (kbd "f") #'eglot-format)
     (define-key map (kbd "d") #'eldoc)
     (define-key map (kbd "h") #'eglot-help-at-point)
     (define-key map (kbd "i") #'eglot-find-implementation)
     (define-key map (kbd "t") #'eglot-find-typeDefinition)
-    (define-key map (kbd "e") #'eglot-reconnect)
     (define-key map (kbd "q") #'eglot-shutdown)
-    (define-key map (kbd "s") #'eglot)
-    (define-key map (kbd "l") #'eglot)
-    (define-key map (kbd "w") #'eglot-workspace-configuration)
     (define-key map (kbd "m") #'eglot-managed-mode)
     (define-key eglot-mode-map (kbd "C-c l") map)))
 
@@ -66,7 +62,8 @@
   (setq eglot-ignored-server-capabilities
         '(:documentFormattingProvider
           :documentRangeFormattingProvider
-          :workspace/didChangeWatchedFiles)))
+          :workspace/didChangeWatchedFiles
+          :workspace/didChangeWorkspaceFolders)))
 
 ;; Auto-start Eglot for web-related modes.
 ;; These hooks ensure Eglot connects when opening JS/TS/TSX/HTML files.
