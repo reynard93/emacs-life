@@ -283,6 +283,19 @@
   )
 
 
+;; Make ".project.el" define a project root (useful for monorepo sub-workspaces).
+(require 'cl-lib)
+(require 'project)
+
+(defun my/project-try-dot-project (dir)
+  (let ((root (locate-dominating-file dir ".project.el")))
+    (when root (cons 'dot-project root))))
+
+(cl-defmethod project-root ((project (head dot-project)))
+  (cdr project))
+
+(add-hook 'project-find-functions #'my/project-try-dot-project 0)
+
 ;; TODO: checkout polymode?
 
 (provide 'init-reynard)
