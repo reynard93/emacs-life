@@ -49,8 +49,6 @@
 (add-hook 'ruby-mode-hook #'enable-rspec-for-spec-files)
 (add-hook 'ruby-ts-mode-hook #'enable-rspec-for-spec-files)
 
-(use-package rubocop
-  :hook ruby-ts-mode)
 
 ;; https://matklad.github.io/2024/10/14/missing-ide-feature.html
 ;; uses tree-sitter, supported langs: rust, c++, js, python
