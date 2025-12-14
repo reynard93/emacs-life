@@ -17,7 +17,8 @@
   (eglot-autoshutdown t)                ; Automatically shutdown server when not needed
   (eglot-autoreconnect nil)
   :config
-  (setq completion-category-overrides '((eglot (styles orderless flex))))
+  (setf (alist-get 'eglot completion-category-overrides)
+        '(styles orderless flex))
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
   (add-to-list 'eglot-server-programs
@@ -44,17 +45,21 @@
 ;; Uses rassumfrassum to multiplex multiple LSP servers for JS/TS/TSX files.
 ;; Preset: ~/.config/rassumfrassum/tsreact.py (vtsls + eslint-ls + tailwind-ls)
 (with-eval-after-load 'eglot
-  ;; Use rass to run multiple servers (vtsls + ESLint + Tailwind) for JS/TS/TSX/JSX.
-  ;; Requires: pip install rassumfrassum
-  ;; Requires: npm install -D @vtsls/language-server vscode-langservers-extracted @tailwindcss/language-server
   ;; Prefer external formatting (Apheleia/Prettier) instead of LSP formatting.
-  ;; This prevents conflicts between LSP and Apheleia when formatting on save.
-  ;; Also disable file watching to prevent conflicts with treemacs and reduce re-indexing.
   (setq eglot-ignored-server-capabilities
         '(:documentFormattingProvider
-          :documentRangeFormattingProvider
-          :workspace/didChangeWatchedFiles
-          :workspace/didChangeWorkspaceFolders)))
+          :documentRangeFormattingProvider))
+
+  ;; Some servers dynamically register workspace folder notifications, but Eglot
+  ;; doesn't implement `workspace/didChangeWorkspaceFolders'.  Don't advertise
+  ;; support so servers won't try to register it.
+  (cl-defmethod eglot-client-capabilities :around (server)
+    (let* ((caps (cl-call-next-method))
+           (ws (plist-get caps :workspace)))
+      (setq ws (plist-put ws :workspaceFolders :json-false))
+      (setq ws (plist-put ws :didChangeWatchedFiles '(:dynamicRegistration :json-false)))
+      (plist-put caps :workspace ws)
+      caps)))
 
 ;; https://github.com/jdtsmith/eglot-booster
 ;; Boosts eglot performance using emacs-lsp-booster
