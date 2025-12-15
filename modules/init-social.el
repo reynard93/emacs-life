@@ -1,8 +1,17 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package alert
-  :custom
-  (alert-default-style 'notifier))
+  :defer t
+  :commands (alert)
+  :init
+  ;; Avoid startup failures / blocking notifier calls; prefer OS notifications only
+  ;; when we're in a GUI session and terminal-notifier is available.
+  (setq alert-default-style
+        (if (and (eq system-type 'darwin)
+                 (display-graphic-p)
+                 (executable-find "terminal-notifier"))
+            'notifier
+          'message)))
 
 (use-package circe
   :defer t)
@@ -60,6 +69,22 @@ If `pass`/gpg is not working, falls back to prompting."
     (condition-case err
         (my/slack-register-team-from-pass team)
       (error (message "Slack not configured for %s yet: %s" team (error-message-string err))))))
+
+;; Linear.app
+;; Loads only when you call one of the commands below.
+(use-package linear-emacs
+  :ensure (:host github :repo "anegg0/linear-emacs" :files ("*.el"))
+  :commands (linear-emacs-list-issues
+             linear-emacs-list-issues-by-project
+             linear-emacs-new-issue
+             linear-emacs-sync-org-to-linear
+             linear-emacs-enable-org-sync
+             linear-emacs-disable-org-sync
+             linear-emacs-test-connection
+             linear-emacs-toggle-debug
+             linear-emacs-check-setup)
+  :config
+  (linear-emacs-load-api-key-from-env))
 
 ;; Telegram client (telega.el)
 (use-package telega
