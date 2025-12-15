@@ -21,6 +21,7 @@
   (eglot-sync-connect 0)              ; Asynchronous connection for better startup
   (eglot-autoshutdown t)                ; Automatically shutdown server when not needed
   (eglot-autoreconnect nil)
+  (eglot-events-buffer-size 0)        ; Disable logging to prevent performance issues
   :config
   (setf (alist-get 'eglot completion-category-overrides)
         '(styles orderless flex))
