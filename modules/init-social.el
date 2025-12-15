@@ -84,7 +84,9 @@ If `pass`/gpg is not working, falls back to prompting."
              linear-emacs-toggle-debug
              linear-emacs-check-setup)
   :config
-  (linear-emacs-load-api-key-from-env))
+  (let ((key (getenv "LINEAR_API_KEY")))
+    (when (and key (not (string= key "")))
+      (setq linear-emacs-api-key key))))
 
 ;; Telegram client (telega.el)
 (use-package telega
