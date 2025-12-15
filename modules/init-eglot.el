@@ -2,6 +2,11 @@
 
 ;; Eglot - built-in LSP client
 
+(defun my/eglot-ensure-in-project ()
+  "Start Eglot only when `project-current' can determine a project root."
+  (when (project-current nil)
+    (eglot-ensure)))
+
 (use-package eglot
   :ensure nil
   :bind ( :map eglot-mode-map
@@ -11,12 +16,12 @@
 	      ("C-c l e" . eglot-code-action-extract)
 	      ("C-c l r" . eglot-rename)
 	      ("C-c l i" . eglot-inlay-hints-mode))
-  :hook ((ruby-mode . eglot-ensure)
-         (ruby-ts-mode . eglot-ensure)
-         (typescript-ts-mode . eglot-ensure)
-         (tsx-ts-mode . eglot-ensure)
-         (js-mode . eglot-ensure)
-         (js-ts-mode . eglot-ensure))
+  :hook ((ruby-mode . my/eglot-ensure-in-project)
+         (ruby-ts-mode . my/eglot-ensure-in-project)
+         (typescript-ts-mode . my/eglot-ensure-in-project)
+         (tsx-ts-mode . my/eglot-ensure-in-project)
+         (js-mode . my/eglot-ensure-in-project)
+         (js-ts-mode . my/eglot-ensure-in-project))
   :custom
   (eglot-sync-connect 0)              ; Asynchronous connection for better startup
   (eglot-autoshutdown t)                ; Automatically shutdown server when not needed

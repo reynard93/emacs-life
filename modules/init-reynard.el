@@ -284,8 +284,13 @@
 
 
 ;; Make ".project.el" define a project root (useful for monorepo sub-workspaces).
+;; Disabled by default because it can fragment projects and spawn multiple Eglot servers.
 (require 'cl-lib)
 (require 'project)
+
+(defcustom my/project-enable-dot-project nil
+  "When non-nil, treat .project.el as a project root marker."
+  :type 'boolean)
 
 (defun my/project-try-dot-project (dir)
   (let ((root (locate-dominating-file dir ".project.el")))
@@ -294,7 +299,8 @@
 (cl-defmethod project-root ((project (head dot-project)))
   (cdr project))
 
-(add-hook 'project-find-functions #'my/project-try-dot-project 0)
+(when my/project-enable-dot-project
+  (add-hook 'project-find-functions #'my/project-try-dot-project t))
 
 ;; TODO: checkout polymode?
 
