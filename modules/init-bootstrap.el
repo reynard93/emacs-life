@@ -12,7 +12,7 @@
   ;; Use fish as the shell, run it as a login shell
   (setq exec-path-from-shell-shell-name "fish"
         exec-path-from-shell-arguments '("-l")
-  )
+        exec-path-from-shell-variables '("PATH" "MANPATH" "OPENCODE_API_KEY" "LINEAR_API_KEY" "XDG_CONFIG_HOME" "XDG_CACHE_HOME"))
   (exec-path-from-shell-initialize)
 )
 
