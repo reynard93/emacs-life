@@ -21,6 +21,7 @@
 (require 'init-highlight)
 (require 'init-git)
 (require 'init-gpt)
+(require 'init-copilot)
 (require 'init-pass)
 (require 'init-search)
 (require 'init-shell-command)

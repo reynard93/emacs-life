@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
 ;; Eglot - built-in LSP client
-;; Requires mise.el to be loaded first for proper PATH setup
 
 (use-package eglot
   :ensure nil
@@ -21,12 +20,14 @@
   :custom
   (eglot-sync-connect 0)              ; Asynchronous connection for better startup
   (eglot-autoshutdown t)                ; Automatically shutdown server when not needed
-  (eglot-autoreconnect t)
+  (eglot-autoreconnect nil)
   :config
   (setf (alist-get 'eglot completion-category-overrides)
         '(styles orderless flex))
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) . ("ruby-lsp")))
+
+
   (add-to-list 'eglot-server-programs
                '((typescript-ts-mode tsx-ts-mode js-ts-mode js-mode)
                  . ("rass" "tsreact")))
@@ -59,7 +60,7 @@
   ;; Some servers dynamically register workspace folder notifications, but Eglot
   ;; doesn't implement `workspace/didChangeWorkspaceFolders'.  Don't advertise
   ;; support so servers won't try to register it.
-  (cl-defmethod eglot-client-capabilities :around (server)
+  (cl-defmethod eglot-client-capabilities :around ()
     (let* ((caps (cl-call-next-method))
            (ws (plist-get caps :workspace)))
       (setq ws (plist-put ws :workspaceFolders :json-false))
