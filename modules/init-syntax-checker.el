@@ -32,7 +32,7 @@
   (flyover-text-tint-percent 50)
 
   ;; Icons
-  (flyover-info-icon "🛈")
+  (flyover-info-icon "ⓘ")
   (flyover-warning-icon "⚠")
   (flyover-error-icon "✘")
 
