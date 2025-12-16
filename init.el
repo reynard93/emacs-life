@@ -22,6 +22,7 @@
 (require 'init-git)
 (require 'init-gpt)
 (require 'init-agent-shell)
+(require 'init-agent-shell-manager)
 (require 'init-copilot)
 (require 'init-pass)
 (require 'init-search)
