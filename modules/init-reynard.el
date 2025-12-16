@@ -138,8 +138,29 @@
 ;; requires installation of cmake
 (use-package vterm :ensure
   :init
-  (setq vterm-shell "/opt/homebrew/bin/fish"))
-(use-package multi-vterm :ensure)
+  (setq vterm-shell "/opt/homebrew/bin/fish")
+  :bind
+  ;; Global vterm keybindings with C-c v prefix
+  (:prefix-map my-vterm-map
+   :prefix "C-c v"
+   ;; Toggle vterm (open or switch to existing)
+   ("v" . multi-vterm-dedicated-toggle)
+   ;; New vterm instance
+   ("n" . multi-vterm)
+   ;; Navigate between vterm buffers
+   ("j" . multi-vterm-next)
+   ("k" . multi-vterm-prev)
+   ;; Rename current vterm buffer
+   ("r" . multi-vterm-rename-buffer)
+   ;; Kill current vterm buffer
+   ("q" . kill-current-buffer)
+   ;; Enter copy mode
+   ("c" . vterm-copy-mode)))
+
+(use-package multi-vterm
+  :ensure
+  :after vterm
+  :demand t)
 
 (setq project-vc-extra-root-markers '("package.json" "Gemfile" "global.d.ts"))
 
