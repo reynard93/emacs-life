@@ -22,7 +22,7 @@
                 openai/gpt-4o)))
 
   :bind
-  (("C-c <return>" . gptel-send)
+  (("C-c g s"  . gptel-send)
    ("C-c C-<return>" . gptel-menu)
    ("C-c M-<return>" . my/gptel-send-all-buffers)
    :map embark-region-map
